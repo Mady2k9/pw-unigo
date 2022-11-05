@@ -1,0 +1,62 @@
+[35mpw-live-v2:build[0m: cache hit, replaying output [2meabc686e6eaf3b02[0m
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/demonfox/WebstormProjects/pw-auth-ui/site
+[35mpw-live-v2:build: [0m> next build
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/demonfox/WebstormProjects/pw-auth-ui/site/.env.production
+[35mpw-live-v2:build: [0minfo  - Linting and checking validity of types...
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/auth/LoginView.tsx
+[35mpw-live-v2:build: [0m58:6  Warning: React Hook useEffect has missing dependencies: 'onOTPGet' and 'shouldRegister'. Either include them or remove the dependency array. If 'onOTPGet' changes too often, find the parent component that defines it and wrap that definition in useCallback.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/auth/OTPView.tsx
+[35mpw-live-v2:build: [0m27:6  Warning: React Hook useEffect has a missing dependency: 'reduceCounter'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m30:6  Warning: React Hook useEffect has a missing dependency: 'reduceCounter'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m68:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/auth/RegisterView.tsx
+[35mpw-live-v2:build: [0m33:6  Warning: React Hook useEffect has a missing dependency: 'onOTPGet'. Either include it or remove the dependency array. If 'onOTPGet' changes too often, find the parent component that defines it and wrap that definition in useCallback.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/common/InfiniteLoader/ReactQueryInfiniteLoader.tsx
+[35mpw-live-v2:build: [0m69:6  Warning: React Hook useEffect has a missing dependency: 'fetchTrigger'. Either include it or remove the dependency array. If 'fetchTrigger' changes too often, find the parent component that defines it and wrap that definition in useCallback.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/common/Sidebar/Sidebar.tsx
+[35mpw-live-v2:build: [0m102:6  Warning: React Hook useMemo has an unnecessary dependency: 'SidebarConfig'. Either exclude it or remove the dependency array. Outer scope values like 'SidebarConfig' aren't valid dependencies because mutating them doesn't re-render the component.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/ui/Input/TextInput.tsx
+[35mpw-live-v2:build: [0m67:6  Warning: React Hook useEffect has a missing dependency: 'hasValidatedOnce'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m68:9  Warning: The 'handleOnChange' function makes the dependencies of useMemo Hook (at line 88) change on every render. Move it inside the useMemo callback. Alternatively, wrap the definition of 'handleOnChange' in its own useCallback() Hook.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m./components/core/ui/context.tsx
+[35mpw-live-v2:build: [0m205:6  Warning: React Hook React.useEffect has a missing dependency: 'handleUserUpdated'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m303:5  Warning: React Hook useMemo has missing dependencies: 'closeDropdown', 'closeModal', 'closeSidebar', 'closeSidebarIfPresent', 'envUpdated', 'handleUserUpdated', 'openDropdown', 'openModal', 'openSidebar', 'setModalView', 'setSidebarView', 'setUserAvatar', 'toggleSidebar', and 'updateAvailability'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0minfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+[35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
+[35mpw-live-v2:build: [0minfo  - Compiled successfully
+[35mpw-live-v2:build: [0minfo  - Collecting page data...
+[35mpw-live-v2:build: [0minfo  - Generating static pages (0/5)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (1/5)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (2/5)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (3/5)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (5/5)
+[35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0mRoute (pages)                              Size     First Load JS
+[35mpw-live-v2:build: [0m┌ ○ /                                      27.8 kB         119 kB
+[35mpw-live-v2:build: [0m├   └ css/97beef6256f95bc8.css             2.24 kB
+[35mpw-live-v2:build: [0m├   /_app                                  0 B              91 kB
+[35mpw-live-v2:build: [0m├ ○ /404                                   48.3 kB         139 kB
+[35mpw-live-v2:build: [0m├   └ css/0323ad3b2588f326.css             1.58 kB
+[35mpw-live-v2:build: [0m├ ○ /all-components                        271 B          91.2 kB
+[35mpw-live-v2:build: [0m└ ○ /login                                 43.5 kB         134 kB
+[35mpw-live-v2:build: [0m    └ css/d7bdbe3dd4e17737.css             2.41 kB
+[35mpw-live-v2:build: [0m+ First Load JS shared by all              95.7 kB
+[35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js   45.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/main-e3da2c98fd6b49f3.js        31.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-9731c1a5164a9209.js  12.5 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-3bd971e7c7fc9437.js     2.05 kB
+[35mpw-live-v2:build: [0m  └ css/7636ff426332a42e.css               4.71 kB
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
+[35mpw-live-v2:build: [0m

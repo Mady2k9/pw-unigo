@@ -1,0 +1,25 @@
+{
+  "title": "Physics Wallah | Powered by Physics Wallah",
+  "titleTemplate": "%s - Physics Wallah",
+  "description": "Physics Wallah",
+  "openGraph": {
+    "title": "Physics Wallah | Powered by Physics Wallah",
+    "description": "Physics Wallah",
+    "type": "website",
+    "url": "https://pw.live",
+    "site_name": "Physics Wallah",
+    "images": [
+      {
+        "url": "/card.png",
+        "width": "800",
+        "height": "600",
+        "alt": "Physics Wallah"
+      }
+    ]
+  },
+  "twitter": {
+    "handle": "@nextjs",
+    "site": "@nextjs",
+    "cardType": "summary_large_image"
+  }
+}
