@@ -10,3 +10,6 @@
 [submodule "site/shared/components/styles"]
 	path = site/shared/components/styles
 	url = https://gitlab.com/penpencil-services/frontend/pw-ui-components-styles.git
+[submodule "shared/components/k8"]
+	path = shared/components/k8
+	url = https://gitlab.com/penpencil-services/frontend/pw-ui-components-styles-k8.git

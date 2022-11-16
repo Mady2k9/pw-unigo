@@ -1,18 +1,14 @@
-import { Layout } from '@components/common'
-import {useEffect} from "react";
+import {Layout} from '@components/common'
 import {useRouter} from "next/router";
 
 
 export default function Home() {
     const router = useRouter()
-    useEffect(()=>{
-        router.push('/login');
-    },[router])
-  return (
-    <>
-      Home
-    </>
-  )
+    return (
+        <>
+            Home
+        </>
+    )
 }
 
 Home.Layout = Layout
