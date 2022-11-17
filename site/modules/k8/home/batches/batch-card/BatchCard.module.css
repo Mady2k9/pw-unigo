@@ -1,0 +1,37 @@
+.shape {
+  width: 0;
+  height: 0;
+  border-right: 8px solid #46b586;
+  /* border-right: 8px solid red; */
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid transparent;
+  margin-right: -1px;
+}
+
+.cardContainer {
+  @apply rounded-xl w-full relative;
+}
+
+.cardVariantChip {
+  @apply absolute -top-3 left-3 py-2 px-4 rounded-lg text-[12px] font-bold bg-white text-black flex items-center gap-2;
+}
+
+.lightBorder {
+  border: 1px solid #e3dcfe;
+}
+
+.darkBorder {
+  border: 1px solid #5a51ac;
+}
+
+.cardDescriptionContainer {
+  @apply border-b-2 pt-8 pb-4 px-2 md:px-6 flex flex-col gap-4;
+}
+
+.batchTitle {
+  @apply font-bold text-2xl;
+}
+
+.iconsContainer {
+}

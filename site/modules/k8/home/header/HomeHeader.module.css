@@ -1,0 +1,10 @@
+.headerContainer {
+  @apply flex items-center justify-between w-full;
+}
+
+.username {
+  background-image: url('../../../../assets/images/underline.svg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  @apply text-3xl pb-3 font-bold;
+}
