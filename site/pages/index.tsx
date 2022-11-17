@@ -23,4 +23,4 @@ export default function Home() {
   )
 }
 
-Home.Layout = Layout
+Home.Layout = LayoutNoContentPadding
