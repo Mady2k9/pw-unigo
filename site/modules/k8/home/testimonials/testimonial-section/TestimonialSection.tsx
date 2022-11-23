@@ -25,7 +25,7 @@ const TESTIMONIAL_DATA = [
 const TestimonialSection = () => {
   return (
     <div className="flex flex-col gap-2 md:gap-4 w-full">
-      <Typography variant="pageHeading">Parent's Voice</Typography>
+      <Typography >Parent's Voice</Typography>
 
       <div className={style.cardContainer}>
         {TESTIMONIAL_DATA.map((data: any, idx: number) => (

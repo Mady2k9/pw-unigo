@@ -6,7 +6,7 @@ import style from './DemoVideo.module.css'
 
 const DemoVideo = () => {
   const { data, isLoading } = useCohortDetails({
-    cohortId: '637cb2ad8dcf800025f2fe68',
+    cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID,
   })
   if (isLoading) return <div>loading...</div>
   return (

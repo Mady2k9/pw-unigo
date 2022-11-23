@@ -10,23 +10,15 @@
 }
 
 .cardContainer {
-  @apply rounded-xl w-full relative md:max-w-[50%];
+  @apply rounded-xl w-full relative;
 }
-
 .cardVariantChip {
   @apply absolute -top-3 left-3 py-2 px-4 rounded-lg text-[12px] font-bold bg-white text-black flex items-center gap-2;
 }
 
-.lightBorder {
-  border: 1px solid #e3dcfe;
-}
-
-.darkBorder {
-  border: 1px solid #5a51ac;
-}
 
 .cardDescriptionContainer {
-  @apply border-b-2 pt-8 pb-4 px-2 md:px-6 flex flex-col gap-2;
+  @apply border-b pt-8 pb-4 border-b-indigo-100 px-2 md:px-4 flex flex-col gap-2;
 }
 
 .batchTitle {

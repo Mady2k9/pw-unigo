@@ -1,25 +1,18 @@
-import { LayoutNoContentPadding } from '@components/common/Layout'
 import { Container } from '@components/ui'
-import {
-  BatchList,
-  DemoVideo,
-  HomeHeader,
-  ShareNow,
-  TestimonialSection,
-} from '@modules/k8'
-import { useRouter } from 'next/router'
+import {BatchList, HomeHeader} from "@modules/k8";
+import {Layout} from "@components/common";
 
 export default function Home() {
-  const router = useRouter()
   return (
-    <Container className="flex flex-col gap-9 md:gap-14">
-      <HomeHeader />
-      <BatchList />
-      <DemoVideo />
-      <TestimonialSection />
-      <ShareNow />
-    </Container>
+    <Layout isProtected={true}>
+      <Container className="flex flex-col gap-9 md:gap-14">
+        <HomeHeader />
+        <BatchList />
+        {/*<DemoVideo />*/}
+        {/*<TestimonialSection />*/}
+        {/*<ShareNow />*/}
+      </Container>
+    </Layout>
   )
 }
 
-Home.Layout = LayoutNoContentPadding
