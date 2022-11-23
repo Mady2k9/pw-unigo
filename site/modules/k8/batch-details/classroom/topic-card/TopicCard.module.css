@@ -1,0 +1,19 @@
+.root {
+  @apply flex items-center h-[66px] md:h-[80px];
+}
+
+.cardDetail {
+  @apply w-full h-full pl-2 pr-4;
+}
+
+.root:hover > .cardDetail {
+  @apply bg-[#ebe9f88d];
+}
+
+.arrrowIcon {
+  display: none;
+}
+
+.root:hover .arrrowIcon {
+  display: block;
+}

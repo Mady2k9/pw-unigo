@@ -1,21 +1,29 @@
+/* eslint-disable @next/next/no-img-element */
+import useCohortDetails from '@lib/hooks/batches/useCohortDetails'
+import Image from 'next/image'
 import React from 'react'
 import style from './DemoVideo.module.css'
 
 const DemoVideo = () => {
+  const { data, isLoading } = useCohortDetails({
+    cohortId: '637cb2ad8dcf800025f2fe68',
+  })
+  if (isLoading) return <div>loading...</div>
   return (
     <div className={style.demoVideoContainer}>
       <div className={style.textContainer}>
-        <span className={style.textHeading}>
-          Interactive, Collaborative & Fun
-        </span>
+        <span className={style.textHeading}>{data?.previewTextTitle}</span>
         <span className={style.textDescription}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+          {data?.previewTextDescription}
         </span>
       </div>
-      <div className={style.videoContainer}></div>
+      <div className={style.videoContainer}>
+        <img
+          src={data?.previewVideoId?.baseUrl + data?.previewVideoId?.key}
+          alt=""
+          className="h-full w-full object-contain"
+        />
+      </div>
     </div>
   )
 }

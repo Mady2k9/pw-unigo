@@ -19,5 +19,5 @@
 }
 
 .videoContainer {
-  @apply bg-[#8364CB] rounded-xl h-[150px] md:h-[300px] w-full max-w-[580px];
+  @apply bg-[#8364cb6a] rounded-xl h-[150px] md:h-[300px] w-full max-w-[580px];
 }
