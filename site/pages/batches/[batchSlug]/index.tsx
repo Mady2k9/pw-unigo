@@ -84,13 +84,13 @@ const BatchDetails = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <TabHeader
+      {/* <TabHeader
         title="Yojna JEE 2023"
         variant={tabHeaderVariant.round}
         currentIndex={currentIndex}
         items={TAB_ITEMS[contentType].items}
         onChange={(index: number) => setCurrentIndex(index)}
-      />
+      /> */}
       <div>{renderTabs()}</div>
     </div>
   )
