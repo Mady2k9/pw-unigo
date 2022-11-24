@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { Typography } from '@components/ui'
 import useCohortDetails from '@lib/hooks/batches/useCohortDetails'
 import Image from 'next/image'
 import React from 'react'
@@ -6,16 +7,27 @@ import style from './DemoVideo.module.css'
 
 const DemoVideo = () => {
   const { data, isLoading } = useCohortDetails({
-    cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID,
+    cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID || '',
   })
   if (isLoading) return <div>loading...</div>
   return (
     <div className={style.demoVideoContainer}>
       <div className={style.textContainer}>
-        <span className={style.textHeading}>{data?.previewTextTitle}</span>
-        <span className={style.textDescription}>
-          {data?.previewTextDescription}
-        </span>
+        {/* <Typography weight={700}>
+          <span className={style.textHeading}>{data?.previewTextTitle}</span>
+        </Typography> */}
+
+        <div className={style.textHeading}>
+          <Typography weight={700}>
+            <span className="text-base md:text-[30px]">
+              Interactive, Collaborative & Fun
+            </span>
+          </Typography>
+        </div>
+
+        <Typography variant="small" weight={500}>
+          <span className="text-[#464646]">{data?.previewTextDescription}</span>
+        </Typography>
       </div>
       <div className={style.videoContainer}>
         <img

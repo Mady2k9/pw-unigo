@@ -21,15 +21,7 @@
 }
 
 .liveBatchDetail {
-  @apply flex items-center justify-between text-[10px] font-bold;
-}
-
-.liveBatchDetail span:first-child {
-  @apply text-[#8364cb];
-}
-
-.liveBatchDetail span:last-child {
-  @apply text-[#EB427E];
+  @apply flex items-center justify-between;
 }
 
 .progressBar {
@@ -42,7 +34,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  @apply font-semibold text-sm;
 }
 
 .selfPacedTitle {
@@ -50,5 +41,5 @@
 }
 
 .timestamp {
-  @apply text-[10px] font-bold text-[#888888] flex items-center justify-between;
+  @apply flex items-center justify-between;
 }

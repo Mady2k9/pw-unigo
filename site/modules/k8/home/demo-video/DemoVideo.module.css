@@ -1,21 +1,13 @@
 .demoVideoContainer {
-  @apply flex flex-col md:flex-row gap-4 justify-between w-full;
+  @apply flex flex-col md:flex-row gap-3 justify-between w-full;
 }
 
 .textContainer {
-  /* display: flex;
-  flex-direction: column;
-  gap: 8px; */
-  @apply flex flex-col gap-0 md:gap-4 max-w-full md:max-w-[40%];
+  @apply flex flex-col gap-0 md:gap-4 max-w-full md:max-w-[30%];
 }
 
 .textHeading {
-  @apply font-bold text-base md:text-[30px] md:max-w-[60%] max-w-full leading-10;
-}
-
-.textDescription {
-  color: #464646;
-  @apply text-sm font-medium;
+  @apply md:max-w-[30%] max-w-full leading-10;
 }
 
 .videoContainer {

@@ -1,8 +1,3 @@
 .testimonialCard {
   @apply shadow-all-round rounded-xl px-2 py-2 relative flex flex-col gap-4;
 }
-
-.textimonialText {
-  color: #464646;
-  @apply w-full text-xs md:text-sm font-medium;
-}

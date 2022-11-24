@@ -1,5 +1,6 @@
 import banner from '@assets/images/banner.png'
-import { Card } from '@components/ui'
+import { Card, Typography } from '@components/ui'
+import { BatchType } from '@lib/hooks/batches/useBatches'
 import style from './VideoCard.module.css'
 
 const VideoCard = ({ variant }: { variant: string }) => {
@@ -7,7 +8,7 @@ const VideoCard = ({ variant }: { variant: string }) => {
     <Card>
       <div
         className={
-          variant === 'selfLearning'
+          variant === BatchType.SELF_LEARNING
             ? `${style.selfPacedBanner}`
             : `${style.liveBatchBanner}`
         }
@@ -16,26 +17,43 @@ const VideoCard = ({ variant }: { variant: string }) => {
         <img src={banner.src} alt="" />
       </div>
 
-      {variant === 'live' ? (
+      {variant === BatchType.LIVE ? (
         <div className={style.videoDescriptionContainer}>
           <div className={style.liveBatchDetail}>
-            <span>Physics</span>
-            <span>01:40:00</span>
+            <Typography variant="label" weight={700}>
+              <span className="text-[#8364cb]">Physics</span>
+            </Typography>
+            <Typography variant="label" weight={700}>
+              <span>01:40:00</span>
+            </Typography>
           </div>
           <div className={`${style.videoTitle}`}>
-            LAKSHAYA BATCH: Physics for class 12 + JEEMAINS / Advanced and NEET
+            <Typography variant="small" weight={600}>
+              LAKSHAYA BATCH: Physics for class 12 + JEEMAINS / Advanced and
+              NEET
+            </Typography>
           </div>
-          <div className={style.timestamp}>12 Oct, 2022</div>
+          <div className={style.timestamp}>
+            <Typography variant="label" weight={700}>
+              <span className="text-[#888]">12 Oct, 2022</span>
+            </Typography>
+          </div>
         </div>
       ) : (
         <div className={style.videoDescriptionContainer}>
           <div className={style.progressBar}></div>
           <div className={style.videoTitle}>
-            Introduction to the video with very long title.
+            <Typography variant="small" weight={600}>
+              Introduction to the video with a long title
+            </Typography>
           </div>
           <div className={style.timestamp}>
-            <span>01:00:00</span>
-            <span>23 Oct, 2022</span>
+            <Typography variant="label" weight={700}>
+              <span className="text-[#888]">01:00:00</span>
+            </Typography>
+            <Typography variant="label" weight={700}>
+              <span className="text-[#888]">12 Oct, 2022</span>
+            </Typography>
           </div>
         </div>
       )}
