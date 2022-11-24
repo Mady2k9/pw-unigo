@@ -12,7 +12,7 @@ const Meta = () => {
       <Typography variant="subHeading" weight={700}>
         This Course Includes
       </Typography>
-      <div className="flex items-center">
+      <div className="flex items-center justify-center md:justify-start">
         {META.map(
           (meta: { id: number; key: string; value: string }, idx: number) => (
             <div
