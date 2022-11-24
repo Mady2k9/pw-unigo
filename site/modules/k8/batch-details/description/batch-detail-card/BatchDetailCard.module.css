@@ -1,0 +1,11 @@
+.bannerContainer {
+  box-shadow: 0px 0px 11px #00000012;
+  border-radius: 10px;
+  @apply flex flex-col gap-3 pb-3;
+}
+
+.discountContainer {
+  background: #47b586 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  padding: 6px 12px;
+}

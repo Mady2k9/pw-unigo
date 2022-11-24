@@ -24,10 +24,12 @@ const TESTIMONIAL_DATA = [
 
 const TestimonialSection = () => {
   return (
-    <div className="flex flex-col gap-2 md:gap-4 w-full">
-      <Typography >Parent's Voice</Typography>
+    <div className="flex flex-col gap-9 md:gap-11 w-full">
+      <Typography variant="heading3" weight={700}>
+        Parent's Voice
+      </Typography>
 
-      <div className={style.cardContainer}>
+      <div className={`${style.cardContainer} no-scrollbar`}>
         {TESTIMONIAL_DATA.map((data: any, idx: number) => (
           <TestimonialCard key={data._id} testimonialData={data} />
         ))}
@@ -37,11 +39,3 @@ const TestimonialSection = () => {
 }
 
 export default TestimonialSection
-
-{
-  /* <div className={`${style.cardContainer} pt-6 pb-2 px-2`}>
-          {[1, 2, 3].map((i: any) => (
-            <TestimonialCard key={i} />
-          ))}
-        </div> */
-}
