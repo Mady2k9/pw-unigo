@@ -1,5 +1,11 @@
 import { Container } from '@components/ui'
-import { BatchList, DemoVideo, HomeHeader } from '@modules/k8'
+import {
+  BatchList,
+  DemoVideo,
+  HomeHeader,
+  ShareNow,
+  TestimonialSection,
+} from '@modules/k8'
 import { Layout } from '@components/common'
 
 export default function Home() {
@@ -9,8 +15,8 @@ export default function Home() {
         <HomeHeader />
         <BatchList />
         <DemoVideo />
-        {/*<TestimonialSection />*/}
-        {/*<ShareNow />*/}
+        <TestimonialSection />
+        <ShareNow />
       </Container>
     </Layout>
   )
