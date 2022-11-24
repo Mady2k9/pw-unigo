@@ -1,5 +1,5 @@
 import { NoClasses } from '@components/lotties'
-import { Container, Tabs } from '@components/ui'
+import { Container, Tabs, Typography } from '@components/ui'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -35,18 +35,20 @@ const Classroom = () => {
         <span className="text-xl font-bold">Today's Classes</span>
         <div className="flex flex-col items-center justify-center">
           <NoClasses />
-          <span className="text-sm text-[#444344] font-bold">
-            No Today’s Classes Scheduled Yet
-          </span>
+          <Typography variant="small" weight={700}>
+            <span className="text-[#444344]">
+              No Today’s Classes Scheduled Yet
+            </span>
+          </Typography>
         </div>
       </section>
       <section className="flex flex-col gap-1">
-        <span className="text-[#262626] text-xl font-bold ">
+        <Typography variant="heading4" weight={700}>
           Weekly Schedule
-        </span>
-        <span className="text-[#888] text-sm font-medium">
-          Classes for current week
-        </span>
+        </Typography>
+        <Typography variant="small" weight={500}>
+          <span className="text-[#888]">Classes for current week</span>
+        </Typography>
 
         <div className="flex items-center gap-4 mt-4">
           {[1, 2, 3, 4].map((subj: any) => (
@@ -56,10 +58,12 @@ const Classroom = () => {
       </section>
 
       <section className="flex flex-col gap-1">
-        <span className="text-[#262626] text-xl font-bold ">All Classes</span>
-        <span className="text-[#888] text-sm font-medium">
-          Explore all your classes
-        </span>
+        <Typography variant="heading4" weight={700}>
+          All Classes
+        </Typography>
+        <Typography variant="small" weight={500}>
+          <span className="text-[#888]">Explore all your classes</span>
+        </Typography>
 
         <div className="flex items-center gap-4 mt-4">
           {[1, 2, 3, 4].map((subj: any) => (
@@ -81,10 +85,13 @@ const Classroom = () => {
       </div>
       <section className="my-4 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <span className="text-lg font-bold text-[#585173]">Content</span>
-          <span className="text-xs font-medium text-[#8B8B8B]">
-            11 Chapters | 120 Lectures
-          </span>
+          <Typography variant="subHeading" weight={700}>
+            <span className="text-[#585173]">Content</span>
+          </Typography>
+
+          <Typography variant="tiny" weight={500}>
+            <span className="text-[#8B8B8B]">11 Chapters | 120 Lectures</span>
+          </Typography>
         </div>
         <div className={style.cardContainer}>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((topic: any) => (
