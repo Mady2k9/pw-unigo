@@ -9,7 +9,10 @@
 }
 
 .cardContainer {
-  @apply rounded-xl w-full relative flex flex-col;
+  @apply rounded-xl w-full relative flex flex-col ;
+}
+.loadingCardContainer {
+  @apply bg-gray-100 text-gray-100;
 }
 .cardVariantChip {
   @apply absolute -top-3 left-3 py-2 px-4 rounded-lg text-[12px] font-bold bg-white  flex items-center gap-2;
