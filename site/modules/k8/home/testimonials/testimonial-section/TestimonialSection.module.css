@@ -7,3 +7,10 @@
   overflow-x: auto;
   padding: 20px 10px;
 }
+
+@media (width < 576px) {
+  .cardContainer {
+    grid-template-columns: repeat(auto-fit, minmax(253px, 1fr));
+    grid-auto-columns: minmax(253px, 1fr);
+  }
+}

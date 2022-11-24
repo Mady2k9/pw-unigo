@@ -1,6 +1,8 @@
 import { LayoutNoContentPadding } from '@components/common/Layout'
 import { TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
+import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
+import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { Suspense, useState } from 'react'
@@ -50,7 +52,15 @@ const Announcement = dynamic(
 
 const BatchDetails = () => {
   const router = useRouter()
-  const { contentType } = router.query
+  const { batchSlug } = router.query
+
+  const { data: batchDetails, isLoading } = useBatchDetails({
+    batchSlug: batchSlug,
+  })
+
+  const variant = batchDetails.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const tabHeaderVariant = TabHeaderVariant
@@ -84,13 +94,13 @@ const BatchDetails = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <TabHeader
+      <TabHeader
         title="Yojna JEE 2023"
         variant={tabHeaderVariant.round}
         currentIndex={currentIndex}
-        items={TAB_ITEMS[contentType].items}
+        items={TAB_ITEMS[variant].items}
         onChange={(index: number) => setCurrentIndex(index)}
-      /> */}
+      />
       <div>{renderTabs()}</div>
     </div>
   )
