@@ -8,7 +8,9 @@ const BatchDetailCard = () => {
   return (
     <Card>
       <div className="flex flex-col gap-4 p-2 lg:p-4">
-        <div className={style.bannerContainer}>
+        <div
+          className={style.bannerContainer + ' animated fadeIn duration-200'}
+        >
           <Image src={CardBanner} alt="card-banner" />
           <div className="flex items-center justify-center gap-2 w-full cursor-pointer">
             <Image src={PlayButton} alt="play_icon" />

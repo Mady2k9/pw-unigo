@@ -8,7 +8,7 @@ const META = [
 
 const Meta = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 animated fadeIn duration-200">
       <Typography variant="subHeading" weight={700}>
         This Course Includes
       </Typography>
