@@ -4,7 +4,7 @@ import { ArrowSmallRightIcon } from '@heroicons/react/24/outline'
 
 function TeacherCard() {
   return (
-    <div className="max-w-[150px]">
+    <div className="max-w-[150px] animated fadeIn duration-200">
       <Image src={Teacher} alt={`Banner Image`} placeholder="blur" />
       <div className="bg-[#F7F7F7] m-0 p-2 rounded-[8px]">
         <span className="#464646 font-extrabold text-[12px]">

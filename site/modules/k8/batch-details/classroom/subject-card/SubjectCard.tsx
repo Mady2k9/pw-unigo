@@ -5,7 +5,7 @@ import { Card, Typography } from '@components/ui'
 const SubjectCard = () => {
   return (
     <Card>
-      <div className="flex flex-col items-center md:flex-row gap-2 px-6 py-2 md:p-2 md:min-w-[200px]">
+      <div className="flex flex-col items-center md:flex-row gap-2 px-6 py-2 md:p-2 md:min-w-[200px] animated fadeIn duration-200">
         <Image src={Subject} alt="subject_logo" />
         <Typography weight={600} variant="subHeading">
           <span className="text-[#444]">Maths</span>
