@@ -21,6 +21,7 @@
       "@modules/*": ["modules/*"],
       "@utils/*": ["utils/*"],
       "@config/*": ["config/*"],
+      "@moduleConfig/*": ["modules/config/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["shared/components/core/*"],
       "@styles/*": ["shared/components/k8/*"]

@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import {Button, Typography} from '@components/ui'
 import style from './BatchCard.module.css'
-import discount from '@assets/images/discount.svg'
 import live from '@assets/images/live.svg'
 import EBook from '@assets/images/E-Book.svg'
 import calendar from '@assets/images/calendar.svg'
@@ -14,6 +12,7 @@ import {useRouter} from 'next/router'
 import {BatchType} from '@lib/hooks/batches/useBatches'
 import cn from 'clsx'
 import placeholderImage from '@assets/images/placeholder.png';
+import {DiscountBadge} from "@components/common";
 
 const K8Card = ({batchData, loading}: { batchData: any, loading?: boolean }) => {
     const router = useRouter()
@@ -28,7 +27,7 @@ const K8Card = ({batchData, loading}: { batchData: any, loading?: boolean }) => 
     }
     return (
         <div
-            className={cn(style.cardContainer,'animated fadeIn duration-500',{
+            className={cn(style.cardContainer, 'animated fadeIn duration-500', {
                 ['bg-indigo-50']: variant === BatchType.SELF_LEARNING,
                 ['bg-indigo-500']: variant === BatchType.LIVE,
             })}
@@ -144,7 +143,7 @@ const K8Card = ({batchData, loading}: { batchData: any, loading?: boolean }) => 
               {variant === BatchType.SELF_LEARNING && (
                   <span className="text-[10px] md:text-sm">Starting at</span>
               )}
-                <Typography weight={800} >
+                <Typography weight={800}>
                 <span
                     className={` ${
                         variant === BatchType.SELF_LEARNING
@@ -171,19 +170,7 @@ const K8Card = ({batchData, loading}: { batchData: any, loading?: boolean }) => 
               (For Full Course)
             </span>
                     </div>
-                    {batchData?.feeId?.discount > 0 && (
-                        <div className="flex items-center justify-center">
-                            <div className={style.shape}></div>
-                            <div className="text-white bg-[#46B586] py-2 px-8 rounded-xl flex items-center gap-2 ">
-                                <Image src={discount} alt=""/>
-                                <Typography variant="small" weight={600}>
-                  <span className="text-white">
-                    {batchData?.feeId?.discount.toFixed()}% Discount
-                  </span>
-                                </Typography>
-                            </div>
-                        </div>
-                    )}
+                    <DiscountBadge discount={batchData?.feeId?.discount}/>
                 </div>
                 <div className="flex items-center gap-2">
                     <Button className="w-full" variant="secondary" onClick={redirectTo}>

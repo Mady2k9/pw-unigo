@@ -18,7 +18,7 @@ const BatchList = () => {
     return (
         <div className={style.cardContainer}>
             {
-                (selfPacedBatchesLoading || liveBatchesLoading) && <div className={'col-span-2'}>
+                (selfPacedBatchesLoading && liveBatchesLoading) && <div className={'col-span-2'}>
                     <LoadingSection/>
                 </div>
             }

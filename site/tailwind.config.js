@@ -34,6 +34,7 @@ module.exports = {
           900: "#140D52"
         },
         primary: "var(--primary)",
+        success: "var(--success)",
         "primary-2": "var(--primary-2)",
         secondary: "var(--secondary)",
         "secondary-2": "var(--secondary-2)",
