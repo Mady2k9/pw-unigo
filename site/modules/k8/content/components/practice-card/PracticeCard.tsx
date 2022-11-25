@@ -7,7 +7,7 @@ import Image from 'next/image'
 const PracticeCard = ({ variant }: { variant: string }) => {
   return (
     <Card>
-      <div className={style.cardContainer}>
+      <div className={style.cardContainer + ' animated fadeIn duration-200 '}>
         <div>
           <Image src={Clipboard} alt="clipboard_icon" />
           <>
@@ -17,7 +17,7 @@ const PracticeCard = ({ variant }: { variant: string }) => {
                   <span className="truncate">Test Number One</span>
                 </Typography>
                 <Typography variant="tiny" weight={500}>
-                  <span className="text-[#848484]">
+                  <span className="text-gray-500">
                     360 Marks | 60 Mins | 30 Questions
                   </span>
                 </Typography>

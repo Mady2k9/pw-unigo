@@ -7,8 +7,10 @@ import PlayButton from '@assets/images/play-button.svg'
 const BatchDetailCard = () => {
   return (
     <Card>
-      <div className="flex flex-col gap-4 px-4 pb-4 pt-6">
-        <div className={style.bannerContainer}>
+      <div className="flex flex-col gap-4 p-2 lg:p-4">
+        <div
+          className={style.bannerContainer + ' animated fadeIn duration-200'}
+        >
           <Image src={CardBanner} alt="card-banner" />
           <div className="flex items-center justify-center gap-2 w-full cursor-pointer">
             <Image src={PlayButton} alt="play_icon" />

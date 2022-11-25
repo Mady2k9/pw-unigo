@@ -2,16 +2,18 @@ import banner from '@assets/images/banner.png'
 import { Card, Typography } from '@components/ui'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import style from './VideoCard.module.css'
+import cn from 'clsx'
 
 const VideoCard = ({ variant }: { variant: string }) => {
   return (
     <Card>
       <div
-        className={
+        className={cn(
           variant === BatchType.SELF_LEARNING
             ? `${style.selfPacedBanner}`
-            : `${style.liveBatchBanner}`
-        }
+            : `${style.liveBatchBanner}`,
+          'animated fadeIn duration-200 '
+        )}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={banner.src} alt="" />

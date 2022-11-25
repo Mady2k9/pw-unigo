@@ -2,6 +2,7 @@ import { Typography } from '@components/ui'
 import Link from 'next/link'
 import React from 'react'
 import TeacherCard from '../teacher-card/TeacherCard'
+import style from './Faculties.module.css'
 
 const Faculties = () => {
   return (
@@ -17,7 +18,7 @@ const Faculties = () => {
           </Typography>
         </Link>
       </div>
-      <div className="flex items-center justify-between">
+      <div className={style.cardContainer}>
         {[1, 2, 3].map((teacher: any) => (
           <TeacherCard key={teacher} />
         ))}

@@ -5,7 +5,7 @@ import style from './DemoVideos.module.css'
 
 const DemoVideos = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <Typography variant="subHeading" weight={700}>
         Demo Videos
       </Typography>
