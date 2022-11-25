@@ -17,5 +17,5 @@
 }
 
 .practiceCardDetails {
-  @apply max-w-[207px] flex flex-col;
+  @apply max-w-[207px] flex flex-col gap-1.5;
 }

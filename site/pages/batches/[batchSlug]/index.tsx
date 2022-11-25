@@ -95,7 +95,8 @@ const BatchDetails = () => {
   return (
     <div className="flex flex-col gap-4">
       <TabHeader
-        title="Yojna JEE 2023"
+        title={batchDetails?.name}
+        loading={isLoading}
         variant={tabHeaderVariant.round}
         currentIndex={currentIndex}
         items={TAB_ITEMS[variant].items}

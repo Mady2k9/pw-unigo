@@ -2,13 +2,9 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: inset 0px 0px 6px #00000029;
   border-radius: 10px;
-  @apply flex items-center justify-between p-4 max-w-[40%];
+  @apply flex items-center justify-between p-4 w-[80%] mx-auto md:mx-0 md:w-[35%];
 }
 
 .lectureContainer {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 35px;
-  padding: 10px 0;
+  @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5;
 }
