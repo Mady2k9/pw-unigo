@@ -6,6 +6,8 @@ import { useState } from 'react'
 import SubjectCard from './subject-card/SubjectCard'
 import TopicCard from './topic-card/TopicCard'
 import style from './Classroom.module.css'
+import { BatchType } from '@lib/hooks/batches/useBatches'
+import { SubjectMode } from '@modules/k8/constants'
 
 const ContentTabItems = [
   {
@@ -20,23 +22,37 @@ const ContentTabItems = [
   },
 ]
 
-const Classroom = () => {
+const Classroom = ({ batchDetails }: { batchDetails: any }) => {
   const router = useRouter()
-  const { contentType, batchSlug } = router.query
+  const { batchSlug } = router.query
   const [contentTabIndex, setContentTabIndex] = useState(0)
 
+  const variant = batchDetails?.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
+
   const redirectTo = () => {
-    router.push(`${batchSlug}/content`)
+    BatchType.SELF_LEARNING
+      ? router.push({
+          pathname: `${batchSlug}/content`,
+          query: { contentType: variant },
+        })
+      : router.push({
+          pathname: `${batchSlug}/content`,
+          query: { contentType: variant },
+        })
   }
 
-  return contentType === 'live' ? (
-    <Container className="flex flex-col gap-10">
+  return variant === BatchType.LIVE ? (
+    <Container className="flex flex-col gap-11">
       <section>
-        <span className="text-xl font-bold">Today's Classes</span>
+        <Typography weight={700} variant="heading4">
+          Today's Classes
+        </Typography>
         <div className="flex flex-col items-center justify-center">
           <NoClasses />
           <Typography variant="small" weight={700}>
-            <span className="text-[#444344]">
+            <span className="text-gray-700">
               No Today’s Classes Scheduled Yet
             </span>
           </Typography>
@@ -47,12 +63,16 @@ const Classroom = () => {
           Weekly Schedule
         </Typography>
         <Typography variant="small" weight={500}>
-          <span className="text-[#888]">Classes for current week</span>
+          <span className="text-gray-500">Classes for current week</span>
         </Typography>
 
-        <div className="flex items-center gap-4 mt-4">
+        <div className={style.liveBatchCardContainer}>
           {[1, 2, 3, 4].map((subj: any) => (
-            <SubjectCard key={subj} />
+            <SubjectCard
+              key={subj}
+              mode={SubjectMode.WEEKLY}
+              batchSlug={batchSlug}
+            />
           ))}
         </div>
       </section>
@@ -62,19 +82,23 @@ const Classroom = () => {
           All Classes
         </Typography>
         <Typography variant="small" weight={500}>
-          <span className="text-[#888]">Explore all your classes</span>
+          <span className="text-gray-500">Explore all your classes</span>
         </Typography>
 
-        <div className="flex items-center gap-4 mt-4">
+        <div className={style.liveBatchCardContainer}>
           {[1, 2, 3, 4].map((subj: any) => (
-            <SubjectCard key={subj} />
+            <SubjectCard
+              key={subj}
+              mode={SubjectMode.ALL_CLASSES}
+              handleClick={redirectTo}
+            />
           ))}
         </div>
       </section>
     </Container>
   ) : (
     <Container>
-      <div className={'my-4'}>
+      <div>
         <Tabs
           items={ContentTabItems}
           currentIndex={contentTabIndex}
@@ -90,12 +114,16 @@ const Classroom = () => {
           </Typography>
 
           <Typography variant="tiny" weight={500}>
-            <span className="text-[#8B8B8B]">11 Chapters | 120 Lectures</span>
+            <span className="text-gray-400">11 Chapters | 120 Lectures</span>
           </Typography>
         </div>
         <div className={style.cardContainer}>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((topic: any) => (
-            <TopicCard handleClick={redirectTo} key={topic} />
+            <TopicCard
+              handleClick={redirectTo}
+              key={topic}
+              variant={BatchType.SELF_LEARNING}
+            />
           ))}
         </div>
       </section>

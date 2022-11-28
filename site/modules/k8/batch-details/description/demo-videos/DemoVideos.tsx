@@ -11,7 +11,7 @@ const DemoVideos = () => {
       </Typography>
       <div className={style.videoContainer}>
         {[1, 2].map((vid: any) => (
-          <VideoCard key={vid} variant={BatchType.SELF_LEARNING} />
+          <VideoCard key={vid} />
         ))}
       </div>
     </div>

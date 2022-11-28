@@ -13,14 +13,10 @@ const DemoVideo = () => {
   return (
     <div className={style.demoVideoContainer}>
       <div className={style.textContainer}>
-        {/* <Typography weight={700}>
-          <span className={style.textHeading}>{data?.previewTextTitle}</span>
-        </Typography> */}
-
         <div className={style.textHeading}>
           <Typography weight={700}>
             <span className="text-base md:text-[30px]">
-              Interactive, Collaborative & Fun
+              {data?.previewTextTitle}
             </span>
           </Typography>
         </div>

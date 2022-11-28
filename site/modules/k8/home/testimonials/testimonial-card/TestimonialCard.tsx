@@ -9,9 +9,14 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
       <div className={style.testimonialCard}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={user.src}
+          src={
+            testimonialData
+              ? testimonialData?.imageId?.baseUrl +
+                testimonialData?.imageId?.key
+              : user
+          }
           alt="avatar"
-          className="absolute h-[68px] md:h-[77px] -top-5"
+          className="absolute h-[68px] md:h-[77px] w-[68px] md:w-[77px]  rounded-full -top-5"
         />
         <div className="flex flex-col gap-1 ml-[100px] max-w-full">
           <div className="">
@@ -25,7 +30,9 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
                 key={i}
                 height={14}
                 width={14}
-                className={`text-[#6a4fe27a] ${i < 4 ? 'text-[#7252F7]' : ''}`}
+                className={`text-[#6a4fe27a] ${
+                  i <= testimonialData.rating ? 'text-indigo-500' : ''
+                }`}
               />
             ))}
           </div>
@@ -34,7 +41,7 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
         <div className="w-full">
           <Typography weight={500}>
             <span className="text-[#464646] text-xs md:text-sm">
-              {testimonialData.desc}
+              {testimonialData.description}
             </span>
           </Typography>
         </div>

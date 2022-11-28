@@ -1,9 +1,19 @@
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
   grid-auto-flow: column;
   grid-auto-columns: minmax(150px, 1fr);
   overflow-x: auto;
-  /* padding: 20px 10px; */
+
+  @apply gap-8 lg:gap-16;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.cardContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

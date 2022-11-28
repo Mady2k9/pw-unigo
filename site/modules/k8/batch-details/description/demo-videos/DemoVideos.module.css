@@ -8,3 +8,13 @@
   overflow-x: auto;
   padding: 8px 6px;
 }
+
+.videoContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.videoContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

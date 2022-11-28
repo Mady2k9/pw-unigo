@@ -4,7 +4,7 @@ import React from 'react'
 import TeacherCard from '../teacher-card/TeacherCard'
 import style from './Faculties.module.css'
 
-const Faculties = () => {
+const Faculties = ({ batchSlug }: { batchSlug: string }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
@@ -12,9 +12,9 @@ const Faculties = () => {
           Top Faculties
         </Typography>
 
-        <Link href="#">
+        <Link href={`${batchSlug}/faculties`}>
           <Typography variant="subHeading" weight={700}>
-            <span className="text-indigo-500">View All</span>
+            <span className="text-indigo-500 cursor-pointer">View All</span>
           </Typography>
         </Link>
       </div>

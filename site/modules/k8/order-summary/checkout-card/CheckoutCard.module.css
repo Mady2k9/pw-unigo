@@ -1,0 +1,43 @@
+.cardContainer {
+  background-color: #f4f4f4;
+  @apply flex flex-col gap-9 p-4;
+}
+
+.upperContainer {
+  @apply flex flex-col gap-4;
+}
+
+.rewardContainer {
+  background-color: #fff;
+  box-shadow: 0px 0px 6px #0000001f;
+  border-radius: 6px;
+  @apply px-4 py-2 flex flex-col gap-2;
+}
+
+.rewardContainer > div {
+  @apply flex items-center;
+}
+
+.applyCouponContainer {
+  @apply w-full flex items-center justify-between bg-white p-3;
+}
+
+.lowerContainer {
+  @apply flex flex-col gap-4;
+}
+
+.breakupsContainer {
+  background-color: #fff;
+  box-shadow: 0px 0px 6px #0000001f;
+  border-radius: 6px;
+  @apply px-4 py-2 flex flex-col gap-2;
+}
+
+.breakupsContainer div {
+  @apply flex items-center justify-between;
+}
+
+.breakupsContainer div:nth-child(-n + 2) {
+  border-bottom: 1px dashed gray;
+  padding-bottom: 8px;
+}

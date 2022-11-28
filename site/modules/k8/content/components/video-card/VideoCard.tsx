@@ -1,64 +1,38 @@
 import banner from '@assets/images/banner.png'
 import { Card, Typography } from '@components/ui'
-import { BatchType } from '@lib/hooks/batches/useBatches'
 import style from './VideoCard.module.css'
 import cn from 'clsx'
+import Image from 'next/image'
+import Clock from '@assets/images/clock.svg'
 
-const VideoCard = ({ variant }: { variant: string }) => {
+const VideoCard = () => {
   return (
     <Card>
-      <div
-        className={cn(
-          variant === BatchType.SELF_LEARNING
-            ? `${style.selfPacedBanner}`
-            : `${style.liveBatchBanner}`,
-          'animated fadeIn duration-200 '
-        )}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={banner.src} alt="" />
-      </div>
-
-      {variant === BatchType.LIVE ? (
+      <div className="flex flex-col animated fadeIn duration-200">
+        <div className={style.selfPacedBanner}>
+          <Image src={banner} alt="" objectFit="contain" />
+        </div>
         <div className={style.videoDescriptionContainer}>
-          <div className={style.liveBatchDetail}>
-            <Typography variant="label" weight={700}>
-              <span className="text-[#8364cb]">Physics</span>
-            </Typography>
-            <Typography variant="label" weight={700}>
-              <span>01:40:00</span>
-            </Typography>
-          </div>
-          <div className={`${style.videoTitle}`}>
+          <div className={style.progressBar}></div>
+          <div className={style.videoTitle}>
             <Typography variant="small" weight={600}>
               LAKSHAYA BATCH: Physics for class 12 + JEEMAINS / Advanced and
               NEET
             </Typography>
           </div>
           <div className={style.timestamp}>
+            <div className="flex items-center gap-1">
+              <Image src={Clock} alt="clock_icon" objectFit="contain" />
+              <Typography variant="label" weight={700}>
+                <span className="text-gray-400">01:00:00</span>
+              </Typography>
+            </div>
             <Typography variant="label" weight={700}>
-              <span className="text-[#888]">12 Oct, 2022</span>
+              <span className="text-gray-400">12 Oct, 2022</span>
             </Typography>
           </div>
         </div>
-      ) : (
-        <div className={style.videoDescriptionContainer}>
-          <div className={style.progressBar}></div>
-          <div className={style.videoTitle}>
-            <Typography variant="small" weight={600}>
-              Introduction to the video with a long title
-            </Typography>
-          </div>
-          <div className={style.timestamp}>
-            <Typography variant="label" weight={700}>
-              <span className="text-[#888]">01:00:00</span>
-            </Typography>
-            <Typography variant="label" weight={700}>
-              <span className="text-[#888]">12 Oct, 2022</span>
-            </Typography>
-          </div>
-        </div>
-      )}
+      </div>
     </Card>
   )
 }

@@ -3,18 +3,19 @@ import Clipboard from '@assets/images/clipboard.svg'
 import style from './PracticeCard.module.css'
 import { Card, Typography } from '@components/ui'
 import Image from 'next/image'
+import { PracticeCardType } from '@modules/k8/constants'
 
-const PracticeCard = ({ variant }: { variant: string }) => {
+const PracticeCard = ({ variant }: { variant: PracticeCardType }) => {
   return (
     <Card>
       <div className={style.cardContainer + ' animated fadeIn duration-200 '}>
         <div>
           <Image src={Clipboard} alt="clipboard_icon" />
           <>
-            {variant === 'assignment' ? (
+            {variant === PracticeCardType.PRACTICE ? (
               <div className={style.practiceCardDetails}>
                 <Typography variant="small" weight={600}>
-                  <span className="truncate">Test Number One</span>
+                  <span>Test Number One</span>
                 </Typography>
                 <Typography variant="tiny" weight={500}>
                   <span className="text-gray-500">

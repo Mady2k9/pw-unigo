@@ -4,14 +4,31 @@ import CardBanner from '@assets/images/card-banner.png'
 import style from './BatchDetailCard.module.css'
 import PlayButton from '@assets/images/play-button.svg'
 
-const BatchDetailCard = () => {
+const BatchDetailCard = ({
+  feeDetails,
+  imgDetails,
+}: {
+  feeDetails: any
+  imgDetails: any
+}) => {
+  const imgUrl =
+    imgDetails.baseUrl && imgDetails.key
+      ? imgDetails.baseUrl + imgDetails.key
+      : CardBanner
+
   return (
     <Card>
-      <div className="flex flex-col gap-4 p-2 lg:p-4">
-        <div
-          className={style.bannerContainer + ' animated fadeIn duration-200'}
-        >
-          <Image src={CardBanner} alt="card-banner" />
+      <div className="flex flex-col gap-4 p-5 animated fadeIn duration-200">
+        <div className={style.bannerContainer}>
+          <div className="min-w-[290px] lg:min-w-[318px] min-h-[143px] relative">
+            <Image
+              src={imgUrl}
+              alt="card-banner"
+              objectFit="contain"
+              layout="fill"
+              className="rounded-xl"
+            />
+          </div>
           <div className="flex items-center justify-center gap-2 w-full cursor-pointer">
             <Image src={PlayButton} alt="play_icon" />
             <Typography variant="small" weight={600}>
@@ -19,22 +36,30 @@ const BatchDetailCard = () => {
             </Typography>
           </div>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <Typography variant="regular" weight={500}>
             Starting at
           </Typography>
           <div className="flex items-center gap-4">
             <Typography variant="heading2" weight={700}>
-              <span className="text-indigo-500">₹299</span>
+              <span className="text-indigo-500">₹{feeDetails?.total}</span>
             </Typography>
-            <Typography variant="regular" weight={400}>
-              <span className="line-through text-[#888888]">329</span>
-            </Typography>
-            <div className={style.discountContainer}>
-              <Typography variant="regular" weight={700}>
-                <span className="text-white">10% OFF</span>
+            {feeDetails.discount > 0 && (
+              <Typography variant="regular" weight={400}>
+                <span className="line-through text-[#888888]">
+                  {feeDetails?.amount}
+                </span>
               </Typography>
-            </div>
+            )}
+            {feeDetails.discount > 0 && (
+              <div className={style.discountContainer}>
+                <Typography variant="regular" weight={700}>
+                  <span className="text-white">
+                    {feeDetails?.discount}% OFF
+                  </span>
+                </Typography>
+              </div>
+            )}
           </div>
           <Typography variant="regular" weight={600}>
             (Maths + Science)

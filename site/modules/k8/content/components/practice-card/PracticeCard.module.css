@@ -13,9 +13,12 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  @apply max-w-[176px];
+  @apply max-w-[80%];
 }
 
 .practiceCardDetails {
-  @apply max-w-[207px] flex flex-col gap-1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @apply max-w-[80%]  flex flex-col gap-1.5;
 }

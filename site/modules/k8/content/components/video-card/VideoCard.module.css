@@ -1,27 +1,13 @@
 .selfPacedBanner {
-  height: 103px;
-  @apply p-2;
+  @apply p-2 pb-0 rounded-lg;
 }
 
 .selfPacedBanner img {
   @apply rounded-lg h-full bg-[#353277] w-full object-contain;
 }
 
-.liveBatchBanner {
-  height: 123px;
-  margin-bottom: 10px;
-}
-
-.liveBatchBanner img {
-  @apply h-full object-contain bg-[#353277] rounded-t-lg w-full;
-}
-
 .videoDescriptionContainer {
   @apply flex flex-col gap-2 px-3 pb-2;
-}
-
-.liveBatchDetail {
-  @apply flex items-center justify-between;
 }
 
 .progressBar {
@@ -34,10 +20,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}
-
-.selfPacedTitle {
-  @apply font-semibold text-sm w-full truncate;
 }
 
 .timestamp {

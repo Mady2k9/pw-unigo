@@ -1,0 +1,42 @@
+.cardContainer {
+  @apply flex items-center justify-between p-2 lg:p-4 pl-4 lg:pl-6 pt-4  relative;
+}
+
+.cardBorder {
+  border: 2px solid #7252f7;
+  border-radius: 8px;
+}
+
+.recommendedChip {
+  background: #704eea;
+  border-radius: 10px;
+  @apply absolute -top-2 px-3 py-1;
+}
+
+.planContainer {
+  @apply flex flex-col gap-1;
+}
+
+.cardContainer > div:last-child {
+  @apply flex items-center gap-4;
+}
+
+.cardContainer > div:last-child input {
+  width: 14px;
+  height: 14px;
+}
+
+.priceContainer {
+  @apply flex flex-col gap-1;
+}
+
+.priceContainer div:first-child {
+  @apply flex items-center gap-2;
+}
+
+.priceContainer div:last-child {
+  background-color: rgba(22, 163, 51, 0.1);
+  width: fit-content;
+  border-radius: 11px;
+  @apply ml-auto px-2 py-1;
+}

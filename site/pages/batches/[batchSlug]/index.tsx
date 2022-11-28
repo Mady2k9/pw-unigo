@@ -1,7 +1,9 @@
 import { LayoutNoContentPadding } from '@components/common/Layout'
 import { TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
-import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
+import useBatchDetails, {
+  BatchDetailModel,
+} from '@lib/hooks/batches/useBatchDetails'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -65,19 +67,19 @@ const BatchDetails = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const tabHeaderVariant = TabHeaderVariant
 
-  const renderTabs = () => {
+  const renderTabs = (batchDetails: BatchDetailModel) => {
     switch (currentIndex) {
       case 0:
         return (
           <Suspense fallback="loading....">
-            <Description />
+            <Description batchDetails={batchDetails} />
           </Suspense>
         )
 
       case 1:
         return (
           <Suspense fallback="loading....">
-            <Classroom />
+            <Classroom batchDetails={batchDetails} />
           </Suspense>
         )
 
@@ -102,7 +104,7 @@ const BatchDetails = () => {
         items={TAB_ITEMS[variant].items}
         onChange={(index: number) => setCurrentIndex(index)}
       />
-      <div>{renderTabs()}</div>
+      <div>{renderTabs(batchDetails)}</div>
     </div>
   )
 }

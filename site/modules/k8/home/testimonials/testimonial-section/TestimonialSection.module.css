@@ -14,3 +14,13 @@
     grid-auto-columns: minmax(253px, 1fr);
   }
 }
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.cardContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

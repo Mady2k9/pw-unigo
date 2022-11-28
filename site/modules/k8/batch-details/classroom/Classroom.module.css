@@ -15,3 +15,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+.liveBatchCardContainer {
+  @apply flex items-center overflow-x-auto p-2  md:grid md:grid-cols-4 gap-4 md:gap-5;
+}
+
+.liveBatchCardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.liveBatchCardContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

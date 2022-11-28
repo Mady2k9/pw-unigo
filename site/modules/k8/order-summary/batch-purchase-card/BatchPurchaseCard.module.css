@@ -1,0 +1,19 @@
+.cardContainer {
+  @apply p-2 flex items-center gap-6;
+}
+
+.selfBatchPoster {
+  @apply max-w-[66px] lg:max-w-[99px];
+}
+
+.batchPoster img {
+  @apply h-full w-full object-contain;
+}
+
+.cardDetails {
+  @apply flex flex-col gap-1 md:gap-3;
+}
+
+.priceContainer {
+  @apply flex items-center gap-5;
+}
