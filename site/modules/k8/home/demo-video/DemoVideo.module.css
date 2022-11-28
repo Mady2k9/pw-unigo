@@ -1,5 +1,5 @@
 .demoVideoContainer {
-  @apply flex flex-col md:flex-row gap-3 justify-between w-full;
+  @apply flex flex-col md:flex-row gap-3 justify-between w-full mt-0 md:mt-12;
 }
 
 .textContainer {

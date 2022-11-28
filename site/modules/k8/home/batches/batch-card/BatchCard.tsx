@@ -25,7 +25,8 @@ const K8Card = ({
   const variant = batchData?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
-  const Tag = variant === BatchType.SELF_LEARNING ? 'Self Learning' : 'Live'
+  const Tag =
+    variant === BatchType.SELF_LEARNING ? 'Self Learning' : 'Live Batches'
   const redirectTo = () => {
     router.push({
       pathname: `/batches/${batchData?.slug}`,
@@ -39,7 +40,7 @@ const K8Card = ({
     <div
       className={cn(style.cardContainer, 'animated fadeIn duration-500', {
         ['bg-indigo-50']: variant === BatchType.SELF_LEARNING,
-        ['bg-indigo-500']: variant === BatchType.LIVE,
+        ['bg-indigo-400']: variant === BatchType.LIVE,
       })}
     >
       <div

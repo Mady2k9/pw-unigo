@@ -3,7 +3,7 @@ import shareNow from '@assets/images/share_now.png'
 
 const ShareNow = () => {
   return (
-    <div className="flex items-center justify-center mb-6 cursor-pointer">
+    <div className="flex items-center justify-center mb-6 cursor-pointer mt-0 md:mt-16">
       <Image
         src={shareNow}
         width={425}
