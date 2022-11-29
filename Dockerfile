@@ -1,5 +1,4 @@
 FROM node:14
-RUN git submodule update --init --recursive
 RUN npm install -g pnpm
 
 EXPOSE 3000
