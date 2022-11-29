@@ -18,7 +18,7 @@ const SubjectCard = ({
   const redirectTo = () => {
     if (mode === SubjectMode.WEEKLY) {
       router.push(`${batchSlug}/weekly-schedule`)
-    } else if (mode === SubjectMode.ALL_CLASSES) {
+    } else if (mode === SubjectMode.ALL_CLASSES && handleClick) {
       handleClick()
     }
   }

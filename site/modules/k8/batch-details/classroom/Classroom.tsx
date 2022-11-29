@@ -71,7 +71,7 @@ const Classroom = ({ batchDetails }: { batchDetails: any }) => {
             <SubjectCard
               key={subj}
               mode={SubjectMode.WEEKLY}
-              batchSlug={batchSlug}
+              batchSlug={batchSlug as string}
             />
           ))}
         </div>

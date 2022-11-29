@@ -57,7 +57,7 @@ const BatchDetails = () => {
   const { batchSlug } = router.query
 
   const { data: batchDetails, isLoading } = useBatchDetails({
-    batchSlug: batchSlug,
+    batchSlug: batchSlug as string,
   })
 
   const variant = batchDetails.isSelfLearning
