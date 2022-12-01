@@ -16,7 +16,7 @@ const OrderSummary = () => {
   const [idForMapping, setIdForMapping] = useState('')
 
   const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
-    batchSlug,
+    batchSlug: batchSlug as string,
   })
 
   const {

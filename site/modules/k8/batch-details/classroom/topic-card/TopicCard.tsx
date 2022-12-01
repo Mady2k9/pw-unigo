@@ -22,11 +22,13 @@ const TopicCard = ({
           className={style.root + ' animated fadeIn duration-200'}
           onClick={handleClick}
         >
-          <div className="px-6 h-full flex items-center justify-center bg-[#EBE9F8] rounded-l-lg">
-            <Typography variant="heading3" weight={700}>
-              {index + 1}
-            </Typography>
-          </div>
+          {index !== undefined && (
+            <div className="px-6 h-full flex items-center justify-center bg-[#EBE9F8] rounded-l-lg">
+              <Typography variant="heading3" weight={700}>
+                {index + 1}
+              </Typography>
+            </div>
+          )}
           <div
             className={`flex items-center justify-between ${style.cardDetail}`}
           >
