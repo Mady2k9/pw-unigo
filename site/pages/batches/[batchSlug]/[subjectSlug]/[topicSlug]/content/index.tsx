@@ -42,10 +42,14 @@ const ContentDetails = ({ batch }: { batch: any }) => {
 
   const { batchSlug, subjectSlug, topicSlug } = router.query
 
+  const variant = batch?.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
+
   const { data, isLoading, refetch } = useBatchContents({
     batchSlug: batchSlug as string as string,
     subjectSlug: subjectSlug as string as string,
-    contentType: TAB_ITEMS[batch.variant as BatchType]?.items[currentIndex].key,
+    contentType: TAB_ITEMS[variant as BatchType]?.items[currentIndex].key,
     tag: topicSlug as string as string,
   })
 
@@ -69,13 +73,13 @@ const ContentDetails = ({ batch }: { batch: any }) => {
         case 1:
           return (
             <Suspense fallback={<LoadingSection />}>
-              <Assignment />
+              <Assignment assignmentData={data} />
             </Suspense>
           )
         case 2:
           return (
             <Suspense fallback={<LoadingSection />}>
-              <Practice />
+              <Practice practiceData={data} />
             </Suspense>
           )
         default:
@@ -92,13 +96,13 @@ const ContentDetails = ({ batch }: { batch: any }) => {
         case 1:
           return (
             <Suspense fallback={<LoadingSection />}>
-              <Notes />
+              <Notes notesData={data} />
             </Suspense>
           )
         case 2:
           return (
             <Suspense fallback={<LoadingSection />}>
-              <Notes />
+              <Notes notesData={data} />
             </Suspense>
           )
 

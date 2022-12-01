@@ -20,7 +20,7 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
         )}
         <Meta metaData={batchDetails?.meta} />
         <Faculties batchSlug={batchDetails?.slug} />
-        <DemoVideos batchSlug={batchDetails?.slug} />
+        {/* <DemoVideos batchSlug={batchDetails?.slug} /> */}
 
         {batchDetails?.description && (
           <CourseDetails courseDetails={batchDetails?.description} />
