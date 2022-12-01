@@ -5,8 +5,13 @@ import cn from 'clsx'
 import Image from 'next/image'
 import Clock from '@assets/images/clock.svg'
 import { Lecture } from '@lib/hooks/batches/useBatchContents'
+import { DemoVideos } from '@lib/hooks/batches/useBatchDemoVideos'
 
-const VideoCard = ({ videoDetails }: { videoDetails: Lecture }) => {
+const VideoCard = ({
+  videoDetails,
+}: {
+  videoDetails: Lecture | DemoVideos
+}) => {
   console.log(videoDetails)
   const startDate = new Date(videoDetails?.date).toDateString()
   return (
@@ -32,7 +37,7 @@ const VideoCard = ({ videoDetails }: { videoDetails: Lecture }) => {
               <Image src={Clock} alt="clock_icon" objectFit="contain" />
               <Typography variant="label" weight={700}>
                 <span className="text-gray-400">
-                  {videoDetails?.videoDetails.duration}
+                  {videoDetails?.videoDetails?.duration}
                 </span>
               </Typography>
             </div>
