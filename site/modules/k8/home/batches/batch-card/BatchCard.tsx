@@ -40,13 +40,13 @@ const K8Card = ({
     <div
       className={cn(style.cardContainer, 'animated fadeIn duration-500', {
         ['bg-indigo-50']: variant === BatchType.SELF_LEARNING,
-        ['bg-indigo-400']: variant === BatchType.LIVE,
+        ['bg-indigo-600']: variant === BatchType.LIVE,
       })}
     >
       <div
         className={cn(style.cardVariantChip, {
           ['border border-indigo-100']: variant === BatchType.SELF_LEARNING,
-          ['border border-indigo-500']: variant === BatchType.LIVE,
+          ['border border-indigo-700']: variant === BatchType.LIVE,
         })}
       >
         <Image
@@ -190,10 +190,10 @@ const K8Card = ({
           <DiscountBadge discount={batchData?.feeId?.discount} />
         </div>
         <div className="flex items-center gap-2">
-          <Button className="w-full" variant="secondary" onClick={redirectTo}>
+          <Button className="w-full" variant="secondary" inverted={variant === BatchType.LIVE}  onClick={redirectTo}>
             Explore
           </Button>
-          <Button className="w-full" onClick={redirectToOrderSummary}>
+          <Button className="w-full"  inverted={variant === BatchType.LIVE} onClick={redirectToOrderSummary}>
             Buy Now
           </Button>
         </div>
