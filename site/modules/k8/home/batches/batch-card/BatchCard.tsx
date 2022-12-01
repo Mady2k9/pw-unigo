@@ -139,7 +139,7 @@ const K8Card = ({
                 </Typography>
               </div>
             </div>
-            <div className="max-w-full w-full lg:max-w-[140px] h-[134px] lg:h-[80px] ">
+            <div className="max-w-full w-full lg:max-w-[140px] h-auto md:h-[134px] lg:h-[80px] ">
               <img
                 src={
                   batchData
