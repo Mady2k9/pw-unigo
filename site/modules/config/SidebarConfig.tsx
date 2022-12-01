@@ -12,7 +12,7 @@ const SidebarConfig = [
         {
             name: 'Home',
             icon: <HomeIcon className={'h-5 font-bold'}/>,
-            route: '/dashboard',
+            route: '/',
         },
         {
             name: 'About Us',
