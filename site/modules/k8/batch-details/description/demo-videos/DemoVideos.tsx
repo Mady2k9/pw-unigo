@@ -1,20 +1,26 @@
-import { Typography } from '@components/ui'
-import { BatchType } from '@lib/hooks/batches/useBatches'
+import { LoadingSection, Typography } from '@components/ui'
+import useBatchDemoVideos from '@lib/hooks/batches/useBatchDemoVideos'
 import VideoCard from '@modules/k8/content/components/video-card/VideoCard'
 import style from './DemoVideos.module.css'
 
-const DemoVideos = () => {
-  return (
+const DemoVideos = ({ batchSlug }: { batchSlug: string }) => {
+  const { data, isLoading } = useBatchDemoVideos({ batchSlug })
+
+  if (isLoading) return <LoadingSection />
+
+  return data.length > 0 ? (
     <div className="flex flex-col gap-2">
       <Typography variant="subHeading" weight={700}>
         Demo Videos
       </Typography>
       <div className={style.videoContainer}>
         {[1, 2].map((vid: any) => (
-          <VideoCard key={vid} />
+          <VideoCard videoDetails={data} key={vid} />
         ))}
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 

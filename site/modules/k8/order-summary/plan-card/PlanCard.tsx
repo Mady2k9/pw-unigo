@@ -4,18 +4,21 @@ import style from './PlanCard.module.css'
 import cn from 'clsx'
 
 const PlanCard = ({
+  plan,
   recommended,
   active,
 }: {
+  plan: any
   recommended: boolean
-  active: boolean
+  active?: boolean
 }) => {
   return (
     <Card>
       <div
         className={cn(
+          'pr-2 pb-2 pl-4 pt-2 lg:pl-6 lg:pb-3 lg:pr-3 lg:pt-3',
           style.cardContainer,
-          active ? style.cardBorder : '',
+          active && style.cardBorder,
           recommended && 'mt-4'
         )}
       >
@@ -28,25 +31,29 @@ const PlanCard = ({
         )}
         <div className={style.planContainer}>
           <Typography variant="small" weight={700}>
-            3 Months
+            {plan.duration} Months
           </Typography>
           <Typography variant="tiny" weight={600}>
-            <span className="text-indigo-500">₹99/month</span>
+            <span className="text-indigo-500">
+              ₹{plan.pricePerMonth.toFixed(2)}/month
+            </span>
           </Typography>
         </div>
         <div className="flex items-center justify-between">
           <div className={style.priceContainer}>
             <div>
               <Typography variant="regular" weight={700}>
-                ₹299
+                ₹{plan.total}
               </Typography>
               <Typography variant="small" weight={500}>
-                <span className="text-gray-500 line-through ">329</span>
+                <span className="text-gray-500 line-through ">
+                  {plan.price}
+                </span>
               </Typography>
             </div>
             <div>
               <Typography variant="small" weight={700}>
-                <span className="text-[#16a333]">10% OFF</span>
+                <span className="text-[#16a333]">{plan.discount}% OFF</span>
               </Typography>
             </div>
           </div>

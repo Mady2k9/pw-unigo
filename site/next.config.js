@@ -5,6 +5,7 @@ module.exports = {
       'd2bps9p1kiy4ka.cloudfront.net',
       'i.ytimg.com',
       'api.penpencil.xyz',
+      'penpencil.pc.cdn.bitgravity.com',
     ],
   },
 }

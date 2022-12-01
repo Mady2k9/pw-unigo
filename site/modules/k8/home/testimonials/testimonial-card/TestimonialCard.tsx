@@ -30,9 +30,11 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
                 key={i}
                 height={14}
                 width={14}
-                className={`text-[#6a4fe27a] ${
-                  i <= testimonialData.rating ? 'text-indigo-500' : ''
-                }`}
+                className={
+                  i <= testimonialData.rating
+                    ? 'text-indigo-500'
+                    : 'text-[#6a4fe27a]'
+                }
               />
             ))}
           </div>

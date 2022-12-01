@@ -1,37 +1,21 @@
-import { FAQ, Typography } from '@components/ui'
+import { FAQ, LoadingSection, Typography } from '@components/ui'
+import useFaqs from '@lib/hooks/faq/useFaqs'
 
-const ITEMS = [
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'Can PW Money Transfer to Bank?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'Can PW Money Transfer to Bank?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-]
+const Faq = ({ categoryId }: { categoryId: string }) => {
+  const { data, isLoading } = useFaqs({
+    faqCatId: categoryId,
+  })
 
-const Faq = () => {
+  if (isLoading) return <LoadingSection />
+
+  const faqData = data.map((data: any) => ({
+    title: data.title,
+    description: data.description,
+  }))
+
   return (
     <div>
-      <FAQ items={ITEMS} multipleOpen={false} />
+      <FAQ items={faqData} multipleOpen={false} />
     </div>
   )
 }

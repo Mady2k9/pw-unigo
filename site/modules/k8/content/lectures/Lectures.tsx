@@ -6,7 +6,7 @@ import VideoCard from '../components/video-card/VideoCard'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import { useRouter } from 'next/router'
 
-const Lectures = () => {
+const Lectures = ({ videoData }: { videoData: any }) => {
   const router = useRouter()
   const { contentType } = router.query
   return (
@@ -21,9 +21,10 @@ const Lectures = () => {
         </div>
       )}
       <div className={style.lectureContainer}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((vid: any) => (
-          <VideoCard key={vid} />
-        ))}
+        {videoData &&
+          videoData.map((video: any) => (
+            <VideoCard key={video._id} videoDetails={video.videoDetails} />
+          ))}
       </div>
     </Container>
   )

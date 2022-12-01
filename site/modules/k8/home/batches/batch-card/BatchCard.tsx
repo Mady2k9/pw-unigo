@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button, Typography } from '@components/ui'
 import style from './BatchCard.module.css'
 import live from '@assets/images/live.svg'

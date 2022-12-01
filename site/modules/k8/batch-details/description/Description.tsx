@@ -20,9 +20,13 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
         )}
         <Meta metaData={batchDetails?.meta} />
         <Faculties batchSlug={batchDetails?.slug} />
-        <DemoVideos />
-        <CourseDetails />
-        <Faq />
+        <DemoVideos batchSlug={batchDetails?.slug} />
+
+        {batchDetails?.description && (
+          <CourseDetails courseDetails={batchDetails?.description} />
+        )}
+
+        {batchDetails?.faqCat && <Faq categoryId={batchDetails?.faqCat} />}
       </section>
       <section className="w-full md:max-w-[350px] mx-auto">
         <BatchDetailCard

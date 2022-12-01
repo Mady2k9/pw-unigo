@@ -37,7 +37,7 @@
   @apply flex items-center justify-between;
 }
 
-.breakupsContainer div:nth-child(-n + 2) {
+.breakupsContainer div:not(:last-child) {
   border-bottom: 1px dashed gray;
   padding-bottom: 8px;
 }

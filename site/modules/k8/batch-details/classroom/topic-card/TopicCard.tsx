@@ -7,9 +7,13 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 const TopicCard = ({
   handleClick,
   variant,
+  topicData,
+  index,
 }: {
   handleClick: () => void
   variant: BatchType
+  topicData: any
+  index?: number
 }) => {
   {
     return variant === BatchType.SELF_LEARNING ? (
@@ -20,7 +24,7 @@ const TopicCard = ({
         >
           <div className="px-6 h-full flex items-center justify-center bg-[#EBE9F8] rounded-l-lg">
             <Typography variant="heading3" weight={700}>
-              1
+              {index + 1}
             </Typography>
           </div>
           <div
@@ -28,10 +32,12 @@ const TopicCard = ({
           >
             <div className="flex flex-col justify-center">
               <Typography variant="regular" weight={600}>
-                Coordinate Geometry
+                {topicData.name}
               </Typography>
               <Typography variant="tiny" weight={500}>
-                <span className="text-[#8B8B8B]">10 Lectures</span>
+                <span className="text-[#8B8B8B]">
+                  {topicData.videos} Lectures
+                </span>
               </Typography>
             </div>
             <div className={style.arrrowIcon}>
