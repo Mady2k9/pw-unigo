@@ -14,8 +14,8 @@ const Topic = () => {
     subjectSlug: subjectSlug as string,
   })
 
-  const redirectToContent = (slug: string) => {
-    // router.push(`${subjectSlug}/${slug}/content`)
+  const redirectToContent = (topicSlug: string) => {
+    router.push(`/batches/${batchSlug}/${subjectSlug}/${topicSlug}/content`)
   }
 
   return (

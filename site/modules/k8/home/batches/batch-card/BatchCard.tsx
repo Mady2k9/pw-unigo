@@ -14,6 +14,7 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import cn from 'clsx'
 import placeholderImage from '@assets/images/placeholder.png'
 import { DiscountBadge } from '@components/common'
+import { priceDisplay } from '@lib/user-utility'
 
 const K8Card = ({
   batchData,
@@ -169,7 +170,7 @@ const K8Card = ({
                       : 'text-2xl text-white'
                   }`}
                 >
-                  ₹{batchData?.feeId?.total}
+                  {priceDisplay(batchData?.feeId?.total)}
                 </span>
               </Typography>
               {batchData?.feeId?.discount > 0 && (
@@ -180,21 +181,32 @@ const K8Card = ({
                 </Typography>
               )}
             </span>
-            <span
-              className={`text-[10px] md:text-sm font-medium ${
-                variant === BatchType.LIVE ? 'text-white' : ''
-              }`}
-            >
-              ({batchData?.byName})
-            </span>
+            {batchData?.priceLabel && (
+              <span
+                className={`text-[10px] md:text-sm font-medium ${
+                  variant === BatchType.LIVE ? 'text-white' : ''
+                }`}
+              >
+                ({batchData?.priceLabel})
+              </span>
+            )}
           </div>
           <DiscountBadge discount={batchData?.feeId?.discount} />
         </div>
         <div className="flex items-center gap-2">
-          <Button className="w-full" variant="secondary" inverted={variant === BatchType.LIVE}  onClick={redirectTo}>
+          <Button
+            className="w-full"
+            variant="secondary"
+            inverted={variant === BatchType.LIVE}
+            onClick={redirectTo}
+          >
             Explore
           </Button>
-          <Button className="w-full"  inverted={variant === BatchType.LIVE} onClick={redirectToOrderSummary}>
+          <Button
+            className="w-full"
+            inverted={variant === BatchType.LIVE}
+            onClick={redirectToOrderSummary}
+          >
             Buy Now
           </Button>
         </div>

@@ -13,6 +13,7 @@ import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
+import { priceDisplay } from '@lib/user-utility'
 
 const CheckoutCard = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
   const { user } = useUI()
@@ -93,7 +94,7 @@ const CheckoutCard = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
                   Sub Total
                 </Typography>
                 <Typography variant="small" weight={600}>
-                  ₹{batchDetail?.fee?.amount}
+                  {priceDisplay(batchDetail?.fee?.amount)}
                 </Typography>
               </div>
             )}
@@ -104,7 +105,7 @@ const CheckoutCard = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
                 </Typography>
                 <Typography variant="small" weight={500}>
                   <span className="text-[#3AA2AB]">
-                    ₹ {batchDetail?.fee?.discount}
+                    {priceDisplay(batchDetail?.fee?.discount)}
                   </span>
                 </Typography>
               </div>
@@ -114,7 +115,7 @@ const CheckoutCard = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
                 Sub Total
               </Typography>
               <Typography variant="subHeading" weight={600}>
-                ₹{totalAmount}
+                {priceDisplay(totalAmount)}
               </Typography>
             </div>
           </div>

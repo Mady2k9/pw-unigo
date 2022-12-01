@@ -54,7 +54,7 @@ const TopicCard = ({
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">
             <Typography variant="small" weight={700}>
-              All Contents
+              {topicData.name}
             </Typography>
           </div>
         </div>

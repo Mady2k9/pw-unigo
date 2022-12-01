@@ -4,6 +4,7 @@ import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
 import useBatchContents, {
   ContentType,
 } from '@lib/hooks/batches/useBatchContents'
+import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -37,22 +38,29 @@ const Content = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const router = useRouter()
 
-  const { batchSlug, subjectSlug, topicSlug, contentType } = router.query
+  const { batchSlug, subjectSlug, topicSlug } = router.query
+
+  const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
+    batchSlug: batchSlug as string,
+  })
+
+  const variant = batchDetail?.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
 
   const { data, isLoading, refetch } = useBatchContents({
-    batchSlug: batchSlug,
-    subjectSlug: subjectSlug,
-    contentType: TAB_ITEMS[contentType]?.items[currentIndex].key,
-    tag: topicSlug,
+    batchSlug: batchSlug as string,
+    subjectSlug: subjectSlug as string,
+    contentType: TAB_ITEMS[variant]?.items[currentIndex].key,
+    tag: topicSlug as string,
   })
 
   useEffect(() => {
     refetch
   }, [currentIndex])
-  console.log(data)
 
   const renderItems = (data: any) => {
-    if (contentType === BatchType.SELF_LEARNING) {
+    if (variant === BatchType.SELF_LEARNING) {
       switch (currentIndex) {
         case 0:
           return (
@@ -112,7 +120,7 @@ const Content = () => {
     <div className="flex flex-col gap-6">
       <TabHeader
         title="Coordinate Geometry"
-        items={TAB_ITEMS[contentType].items}
+        items={TAB_ITEMS[variant].items}
         currentIndex={currentIndex}
         onChange={(index: number) => setCurrentIndex(index)}
         variant={tabHeaderVariant.round}

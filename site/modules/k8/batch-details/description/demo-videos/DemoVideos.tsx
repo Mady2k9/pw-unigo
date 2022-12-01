@@ -14,7 +14,7 @@ const DemoVideos = ({ batchSlug }: { batchSlug: string }) => {
         Demo Videos
       </Typography>
       <div className={style.videoContainer}>
-        {[1, 2].map((vid: any) => (
+        {data.map((vid: any) => (
           <VideoCard videoDetails={data} key={vid} />
         ))}
       </div>
