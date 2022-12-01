@@ -116,3 +116,31 @@ a {
     opacity: 1;
   }
 }
+.slideIn {
+  animation-name: slideIn;
+  -webkit-animation-name: slideIn;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    opacity: 0.5;
+    padding-top: 10px;
+  }
+
+  to {
+    opacity: 1;
+    padding-top: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0.5;
+    padding-top: 10px;
+  }
+
+  to {
+    opacity: 1;
+    padding-top: 0;
+  }
+}
