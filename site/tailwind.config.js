@@ -61,7 +61,6 @@ module.exports = {
         cyan: 'var(--cyan)',
       },
       textColor: {
-        base: 'var(--text-base)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
       },

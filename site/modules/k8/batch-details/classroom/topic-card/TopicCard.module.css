@@ -3,7 +3,7 @@
 }
 
 .cardDetail {
-  @apply w-full h-full pl-2 pr-4;
+  @apply w-full h-full pl-4 pr-4;
 }
 
 .root:hover > .cardDetail {

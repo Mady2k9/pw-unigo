@@ -140,7 +140,7 @@ const K8Card = ({
                 </Typography>
               </div>
             </div>
-            <div className="max-w-full w-full lg:max-w-[140px] h-[134px] lg:h-[80px] ">
+            <div className="max-w-full w-full lg:max-w-[140px] h-auto md:h-[134px] lg:h-[80px] ">
               <img
                 src={
                   batchData
@@ -155,6 +155,7 @@ const K8Card = ({
           </div>
         )}
       </div>
+
       <div className="px-2 md:px-4 py-4 flex flex-col gap-4">
         <div className="flex items-center justify-between md:justify-start gap-8">
           <div className="flex flex-col">
