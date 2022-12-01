@@ -1,25 +1,28 @@
 import { LayoutNoContentPadding } from '@components/common/Layout'
-import { TabHeader } from '@components/ui'
+import { LoadingSection, TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
+import useBatchContents, {
+  ContentType,
+} from '@lib/hooks/batches/useBatchContents'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 const TAB_ITEMS = {
   selfLearning: {
     items: [
-      { name: 'Lectures', key: 'lectures' },
-      { name: 'Assignment', key: 'assignment' },
-      { name: 'Practice', key: 'practice' },
+      { name: 'Lectures', key: ContentType.VIDEOS },
+      { name: 'Assignment', key: ContentType.NOTES },
+      { name: 'Practice', key: ContentType.EXERCISES },
     ],
   },
   live: {
     items: [
-      { name: 'Lectures', key: 'lectures' },
-      { name: 'Notes', key: 'notes' },
-      { name: 'DHA', key: 'dha' },
-      { name: "DHA's Sol", key: 'dha-sol' },
+      { name: 'Lectures', key: ContentType.VIDEOS },
+      { name: 'Notes', key: ContentType.NOTES },
+      { name: 'DHA', key: ContentType.DPP_NOTES },
+      { name: "DHA's Sol", key: ContentType.DPP_VIDEOS },
     ],
   },
 }
@@ -33,15 +36,28 @@ const Content = () => {
   const tabHeaderVariant = TabHeaderVariant
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const router = useRouter()
-  const { contentType } = router.query
 
-  const renderItems = () => {
+  const { batchSlug, subjectSlug, topicSlug, contentType } = router.query
+
+  const { data, isLoading, refetch } = useBatchContents({
+    batchSlug: batchSlug,
+    subjectSlug: subjectSlug,
+    contentType: TAB_ITEMS[contentType]?.items[currentIndex].key,
+    tag: topicSlug,
+  })
+
+  useEffect(() => {
+    refetch
+  }, [currentIndex])
+  console.log(data)
+
+  const renderItems = (data: any) => {
     if (contentType === BatchType.SELF_LEARNING) {
       switch (currentIndex) {
         case 0:
           return (
             <Suspense fallback="loading...">
-              <Lectures />
+              <Lectures videoData={data} />
             </Suspense>
           )
         case 1:
@@ -64,7 +80,7 @@ const Content = () => {
         case 0:
           return (
             <Suspense fallback="loading...">
-              <Lectures />
+              <Lectures videoData={data} />
             </Suspense>
           )
         case 1:
@@ -83,7 +99,7 @@ const Content = () => {
         case 3:
           return (
             <Suspense fallback="loading...">
-              <Lectures />
+              <Lectures videoData={data} />
             </Suspense>
           )
         default:
@@ -101,7 +117,9 @@ const Content = () => {
         onChange={(index: number) => setCurrentIndex(index)}
         variant={tabHeaderVariant.round}
       />
-      <div>{renderItems()}</div>
+      {isLoading && <LoadingSection />}
+
+      {data && renderItems(data)}
     </div>
   )
 }

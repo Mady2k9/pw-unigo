@@ -6,32 +6,36 @@ import { SubjectMode } from '@modules/k8/constants'
 
 const SubjectCard = ({
   mode,
-  batchSlug,
+  subject,
   handleClick,
 }: {
   mode: SubjectMode
-  batchSlug?: string
+  subject: any
   handleClick?: () => void
 }) => {
   const router = useRouter()
-
-  const redirectTo = () => {
-    if (mode === SubjectMode.WEEKLY) {
-      router.push(`${batchSlug}/weekly-schedule`)
-    } else if (mode === SubjectMode.ALL_CLASSES) {
-      handleClick()
-    }
-  }
+  console.log(subject)
   return (
     <Card>
       <div
         className="min-w-[90px] w-full flex flex-col items-center md:flex-row gap-2 py-2 md:py-3 md:px-2 animated fadeIn duration-200"
-        onClick={redirectTo}
+        onClick={handleClick}
       >
-        <Image src={Subject} alt="subject_logo" />
-        <Typography weight={600} variant="subHeading">
-          <span className="text-[#444]">Maths</span>
-        </Typography>
+        <div className="h-[55px] w-[55px] relative">
+          <Image
+            src={subject?.imageId?.baseUrl + subject?.imageId?.key}
+            alt="subject_logo"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
+        <div>
+          <Typography weight={600} variant="subHeading">
+            <span className="text-[#444] truncate w-[60%]">
+              {subject?.subject}
+            </span>
+          </Typography>
+        </div>
       </div>
     </Card>
   )

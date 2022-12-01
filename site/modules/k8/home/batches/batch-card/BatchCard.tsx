@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button, Typography } from '@components/ui'
 import style from './BatchCard.module.css'
 import live from '@assets/images/live.svg'
@@ -168,13 +169,13 @@ const K8Card = ({
                       : 'text-2xl text-white'
                   }`}
                 >
-                  ₹{batchData?.feeId?.total?.toFixed()}
+                  ₹{batchData?.feeId?.total}
                 </span>
               </Typography>
               {batchData?.feeId?.discount > 0 && (
                 <Typography variant="tiny" weight={500}>
                   <span className="text-[#A2A1A6] line-through">
-                    {batchData?.feeId?.amount.toFixed()}
+                    {batchData?.feeId?.amount}
                   </span>
                 </Typography>
               )}

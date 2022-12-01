@@ -3,11 +3,16 @@
 }
 
 .selfBatchPoster {
-  @apply max-w-[66px] lg:max-w-[99px];
+  @apply w-[66px] lg:w-[99px];
 }
 
-.batchPoster img {
-  @apply h-full w-full object-contain;
+.liveBatchPoster {
+  @apply w-[97px] lg:w-[158px];
+}
+
+.batchPoster img,
+.liveBatchPoster img {
+  @apply h-full w-full;
 }
 
 .cardDetails {
