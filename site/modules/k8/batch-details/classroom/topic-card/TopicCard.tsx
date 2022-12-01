@@ -36,7 +36,7 @@ const TopicCard = ({
                         className={`flex items-center justify-between ${style.cardDetail}`}
                     >
                         <div className="flex flex-col justify-center">
-                            <Typography variant="regular" weight={600}>
+                            <Typography capitalize={true} variant="regular" weight={600}>
                                 {topicData.name}
                             </Typography>
                             <Typography variant="tiny" weight={500}>
