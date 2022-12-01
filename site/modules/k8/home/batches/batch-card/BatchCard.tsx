@@ -168,13 +168,13 @@ const K8Card = ({
                       : 'text-2xl text-white'
                   }`}
                 >
-                  ₹{batchData?.feeId?.total?.toFixed()}
+                  ₹{batchData?.feeId?.total}
                 </span>
               </Typography>
               {batchData?.feeId?.discount > 0 && (
                 <Typography variant="tiny" weight={500}>
                   <span className="text-[#A2A1A6] line-through">
-                    {batchData?.feeId?.amount.toFixed()}
+                    {batchData?.feeId?.amount}
                   </span>
                 </Typography>
               )}
