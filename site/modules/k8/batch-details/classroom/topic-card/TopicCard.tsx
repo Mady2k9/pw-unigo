@@ -3,6 +3,7 @@ import Image from 'next/image'
 import style from './TopicCard.module.css'
 import RightArrow from '@assets/images/right-arrow.svg'
 import {BatchType} from '@lib/hooks/batches/useBatches'
+import {getCartColorByName} from "@lib/colors";
 
 const TopicCard = ({
                        handleClick,
@@ -24,7 +25,8 @@ const TopicCard = ({
                 >
                     {
                         index !== undefined &&
-                        <div className="px-6 h-full flex items-center justify-center bg-[#EBE9F8] rounded-l-lg">
+                        <div className="px-6 h-full flex items-center justify-center rounded-l-lg"
+                             style={{background: getCartColorByName(topicData.name)}}>
                             <Typography variant="heading3" weight={700}>
                                 {index + 1}
                             </Typography>
