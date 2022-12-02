@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Typography } from '@components/ui'
+import { LoadingSection, Typography } from '@components/ui'
 import useCohortDetails from '@lib/hooks/batches/useCohortDetails'
 import Image from 'next/image'
 import React from 'react'
@@ -9,7 +9,7 @@ const DemoVideo = () => {
   const { data, isLoading } = useCohortDetails({
     cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID || '',
   })
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <LoadingSection />
   return (
     <div className={style.demoVideoContainer}>
       <div className={style.textContainer}>

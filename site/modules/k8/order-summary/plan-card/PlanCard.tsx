@@ -2,6 +2,7 @@ import { Card, Typography } from '@components/ui'
 import { Checkbox } from '@components/ui'
 import style from './PlanCard.module.css'
 import cn from 'clsx'
+import { priceDisplay } from '@lib/user-utility'
 
 const PlanCard = ({
   plan,
@@ -35,7 +36,7 @@ const PlanCard = ({
           </Typography>
           <Typography variant="tiny" weight={600}>
             <span className="text-indigo-500">
-              ₹{plan.pricePerMonth.toFixed(2)}/month
+              {priceDisplay(plan.pricePerMonth.toFixed(2))}/month
             </span>
           </Typography>
         </div>

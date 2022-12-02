@@ -4,8 +4,15 @@ import style from './PracticeCard.module.css'
 import { Card, Typography } from '@components/ui'
 import Image from 'next/image'
 import { PracticeCardType } from '@modules/k8/constants'
+import { DppNotes } from '@lib/hooks/batches/useBatchContents'
 
-const PracticeCard = ({ variant }: { variant: PracticeCardType }) => {
+const PracticeCard = ({
+  variant,
+  data,
+}: {
+  variant: PracticeCardType
+  data: DppNotes
+}) => {
   return (
     <Card>
       <div className={style.cardContainer + ' animated fadeIn duration-200 '}>
@@ -15,7 +22,7 @@ const PracticeCard = ({ variant }: { variant: PracticeCardType }) => {
             {variant === PracticeCardType.PRACTICE ? (
               <div className={style.practiceCardDetails}>
                 <Typography variant="small" weight={600}>
-                  <span>Test Number One</span>
+                  <span>{data?.exerciseIds[0]?.title}</span>
                 </Typography>
                 <Typography variant="tiny" weight={500}>
                   <span className="text-gray-500">
@@ -26,7 +33,7 @@ const PracticeCard = ({ variant }: { variant: PracticeCardType }) => {
             ) : (
               <Typography variant="small" weight={600}>
                 <span className={style.assignmentTitle}>
-                  Introduction to Number Systems
+                  {data?.homeworkIds[0]?.topic}
                 </span>
               </Typography>
             )}
