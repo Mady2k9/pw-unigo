@@ -13,6 +13,9 @@ module.exports = {
       maxWidth: {
         '8xl': '1920px',
       },
+      minWidth: {
+        'sidebar': '280px',
+      },
       padding: {
         sidebar: '0 0 0 280px',
       },

@@ -21,7 +21,7 @@ const PracticeCard = ({
           <>
             {variant === PracticeCardType.PRACTICE ? (
               <div className={style.practiceCardDetails}>
-                <Typography variant="small" weight={600}>
+                <Typography capitalize={true} variant="small" weight={600}>
                   <span>{data?.exerciseIds[0]?.title}</span>
                 </Typography>
                 <Typography variant="tiny" weight={500}>
@@ -31,7 +31,7 @@ const PracticeCard = ({
                 </Typography>
               </div>
             ) : (
-              <Typography variant="small" weight={600}>
+              <Typography capitalize={true} variant="small" weight={600}>
                 <span className={style.assignmentTitle}>
                   {data?.homeworkIds[0]?.topic}
                 </span>
