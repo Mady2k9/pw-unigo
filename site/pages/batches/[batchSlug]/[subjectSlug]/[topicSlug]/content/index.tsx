@@ -7,7 +7,7 @@ import useBatchContents, {
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import SuspenseSection from '@components/common/SuspenseSection'
 
@@ -39,44 +39,31 @@ const Notes = dynamic(() => import('@modules/k8/content/notes/Notes'))
 const ContentDetails = ({ batch }: { batch: any }) => {
   const tabHeaderVariant = TabHeaderVariant
   const [currentIndex, setCurrentIndex] = useState<number>(0)
-  const router = useRouter()
-
-  const { batchSlug, subjectSlug, topicSlug } = router.query
 
   const variant = batch?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
 
-  const { data, isLoading, refetch } = useBatchContents({
-    batchSlug: batchSlug as string as string,
-    subjectSlug: subjectSlug as string as string,
-    contentType: TAB_ITEMS[variant as BatchType]?.items[currentIndex].key,
-    tag: topicSlug as string as string,
-  })
 
-  useEffect(() => {
-    refetch
-  }, [currentIndex])
-
-  const renderItems = (data: any) => {
+  const renderItems = () => {
     if (variant === BatchType.SELF_LEARNING) {
       switch (currentIndex) {
         case 0:
           return (
             <SuspenseSection>
-              <Lectures videoData={data} />
+              <Lectures type={ContentType.VIDEOS} />
             </SuspenseSection>
           )
         case 1:
           return (
             <SuspenseSection>
-              <Assignment assignmentData={data} />
+              <Assignment type={ContentType.NOTES} />
             </SuspenseSection>
           )
         case 2:
           return (
             <SuspenseSection>
-              <Practice practiceData={data} />
+              <Practice type={ContentType.EXERCISES} />
             </SuspenseSection>
           )
         default:
@@ -87,26 +74,26 @@ const ContentDetails = ({ batch }: { batch: any }) => {
         case 0:
           return (
             <SuspenseSection>
-              <Lectures videoData={data} />
+              <Lectures type={ContentType.VIDEOS} />
             </SuspenseSection>
           )
         case 1:
           return (
             <SuspenseSection>
-              <Notes notesData={data} />
+              <Notes type={ContentType.NOTES} />
             </SuspenseSection>
           )
         case 2:
           return (
             <SuspenseSection>
-              <Notes notesData={data} />
+              <Notes type={ContentType.DPP_NOTES} />
             </SuspenseSection>
           )
 
         case 3:
           return (
             <SuspenseSection>
-              <Lectures videoData={data} />
+              <Lectures type={ContentType.DPP_VIDEOS} />
             </SuspenseSection>
           )
         default:
@@ -124,9 +111,8 @@ const ContentDetails = ({ batch }: { batch: any }) => {
         onChange={(index: number) => setCurrentIndex(index)}
         variant={tabHeaderVariant.round}
       />
-      {isLoading && <LoadingSection />}
 
-      {data && renderItems(data)}
+      {renderItems()}
     </div>
   )
 }

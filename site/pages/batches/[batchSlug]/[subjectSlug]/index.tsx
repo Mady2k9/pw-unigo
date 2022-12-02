@@ -26,6 +26,11 @@ const Topic = () => {
         </Typography>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <TopicCard
+              key={"12345"}
+              handleClick={() => redirectToContent('all-contents')}
+              variant={BatchType.LIVE}
+          />
           {data &&
             data.map((topic: any) => (
               <TopicCard

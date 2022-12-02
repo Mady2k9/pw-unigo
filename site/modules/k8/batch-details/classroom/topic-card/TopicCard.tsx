@@ -13,7 +13,7 @@ const TopicCard = ({
 }: {
   handleClick: () => void
   variant: BatchType
-  topicData: any
+  topicData?: any
   index?: number
 }) => {
   {
@@ -60,7 +60,7 @@ const TopicCard = ({
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">
             <Typography variant="small" weight={700}>
-              {topicData.name}
+              {topicData ? topicData.name : 'All Contents'}
             </Typography>
           </div>
         </div>
