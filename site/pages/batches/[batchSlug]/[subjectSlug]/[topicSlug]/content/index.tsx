@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { Suspense, useEffect, useState } from 'react'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
+import SuspenseSection from '@components/common/SuspenseSection'
 
 const TAB_ITEMS = {
   selfLearning: {
@@ -53,34 +54,30 @@ const ContentDetails = ({ batch }: { batch: any }) => {
     tag: topicSlug as string as string,
   })
 
-  const contentType = batch?.isSelfLearning
-    ? BatchType.SELF_LEARNING
-    : BatchType.LIVE
-
   useEffect(() => {
     refetch
   }, [currentIndex])
 
   const renderItems = (data: any) => {
-    if (contentType === BatchType.SELF_LEARNING) {
+    if (variant === BatchType.SELF_LEARNING) {
       switch (currentIndex) {
         case 0:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Lectures videoData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         case 1:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Assignment assignmentData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         case 2:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Practice practiceData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         default:
           return <></>
@@ -89,28 +86,28 @@ const ContentDetails = ({ batch }: { batch: any }) => {
       switch (currentIndex) {
         case 0:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Lectures videoData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         case 1:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Notes notesData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         case 2:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Notes notesData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
 
         case 3:
           return (
-            <Suspense fallback={<LoadingSection />}>
+            <SuspenseSection>
               <Lectures videoData={data} />
-            </Suspense>
+            </SuspenseSection>
           )
         default:
           return <></>
@@ -119,10 +116,10 @@ const ContentDetails = ({ batch }: { batch: any }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 min-h-[100%]">
       <TabHeader
         title="Coordinate Geometry"
-        items={TAB_ITEMS[contentType].items}
+        items={TAB_ITEMS[variant].items}
         currentIndex={currentIndex}
         onChange={(index: number) => setCurrentIndex(index)}
         variant={tabHeaderVariant.round}

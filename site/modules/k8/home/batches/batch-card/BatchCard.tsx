@@ -62,7 +62,7 @@ const K8Card = ({
       </div>
       <div className={style.cardDescriptionContainer}>
         <div className="flex items-center justify-between">
-          <Typography variant={'heading3'} weight={700}>
+          <Typography capitalize={true} variant={'heading3'} weight={700}>
             <span className={variant === BatchType.LIVE ? 'text-white' : ''}>
               {batchData?.name}
             </span>

@@ -12,7 +12,6 @@ const VideoCard = ({
 }: {
   videoDetails: Lecture | DemoVideos
 }) => {
-  console.log(videoDetails)
   const startDate = new Date(videoDetails?.date).toDateString()
   return (
     <Card>
