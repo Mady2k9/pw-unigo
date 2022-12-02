@@ -119,7 +119,7 @@ const ContentDetails = ({ batch }: { batch: any }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 min-h-[100%]">
       <TabHeader
         title="Coordinate Geometry"
         items={TAB_ITEMS[contentType].items}
