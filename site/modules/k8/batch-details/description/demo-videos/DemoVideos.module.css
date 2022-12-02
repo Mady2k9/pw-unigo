@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns: repeat(2, 224px);
   gap: 16px;
-  gap: 20px;
   grid-auto-flow: column;
   grid-auto-columns: 224px;
   overflow-x: auto;
   padding: 8px 6px;
+
+  /* @apply lg:flex lg:items-center grid grid-flow-col overflow-x-auto gap-4 px-1.5 py-2; */
 }
 
 .videoContainer::-webkit-scrollbar {

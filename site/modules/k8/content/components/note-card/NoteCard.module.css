@@ -1,9 +1,9 @@
 .cardContainer {
-  @apply shadow-all-round hover:shadow-all-round-strong transition-all duration-200 rounded-lg cursor-pointer bg-white overflow-hidden;
+  @apply shadow-all-round hover:shadow-all-round-strong transition-all duration-200 rounded-lg  bg-white overflow-hidden;
 }
 
 .noteDetails {
-  @apply py-3 px-4 flex flex-col gap-2 shadow-all-round;
+  @apply py-3 px-4 flex flex-col gap-1 shadow-all-round cursor-pointer;
 }
 
 .noteDetails span:first-child {
@@ -22,5 +22,9 @@
 }
 
 .cardContainer div:last-child {
-  @apply px-4 py-2 flex items-center justify-between;
+  @apply px-4 py-1 flex items-center justify-between;
+}
+
+.cardContainer div:last-child img {
+  @apply cursor-pointer;
 }

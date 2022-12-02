@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import cn from 'clsx'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import { priceDisplay } from '@lib/user-utility'
 
 const BatchPurchaseCard = ({
   batchDetail,
@@ -42,12 +43,12 @@ const BatchPurchaseCard = ({
           </div>
           <div className={style.priceContainer}>
             <Typography variant="heading3" weight={700}>
-              <span>₹{batchDetail?.fee?.total}</span>
+              <span>{priceDisplay(batchDetail?.fee?.total)}</span>
             </Typography>
             {batchDetail?.fee?.discount > 0 && (
               <Typography variant="regular" weight={400}>
                 <span className="text-gray-400 line-through">
-                  ₹{batchDetail?.fee?.amount}
+                  {priceDisplay(batchDetail?.fee?.amount)}
                 </span>
               </Typography>
             )}

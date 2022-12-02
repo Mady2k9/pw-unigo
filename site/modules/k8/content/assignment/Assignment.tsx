@@ -1,15 +1,22 @@
-import { Container } from '@components/ui'
+import { Container, NoData } from '@components/ui'
+import { DppNotes } from '@lib/hooks/batches/useBatchContents'
 import { PracticeCardType } from '@modules/k8/constants'
 import PracticeCard from '../components/practice-card/PracticeCard'
 import style from './Assignment.module.css'
 
-const Assignment = () => {
+const Assignment = ({ assignmentData }: { assignmentData: DppNotes[] }) => {
+  if (assignmentData.length === 0) return <NoData />
   return (
     <Container>
       <div className={style.root}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((vid: any) => (
-          <PracticeCard key={vid} variant={PracticeCardType.ASSIGNMENNT} />
-        ))}
+        {assignmentData &&
+          assignmentData.map((data: DppNotes) => (
+            <PracticeCard
+              key={data._id}
+              variant={PracticeCardType.ASSIGNMENNT}
+              data={data}
+            />
+          ))}
       </div>
     </Container>
   )

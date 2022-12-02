@@ -1,71 +1,72 @@
-import {Card, Typography} from '@components/ui'
+import { Card, Typography } from '@components/ui'
 import Image from 'next/image'
 import style from './TopicCard.module.css'
 import RightArrow from '@assets/images/right-arrow.svg'
-import {BatchType} from '@lib/hooks/batches/useBatches'
-import {getCartColorByName} from "@lib/colors";
+import { BatchType } from '@lib/hooks/batches/useBatches'
+import { getCartColorByName } from '@lib/colors'
 
 const TopicCard = ({
-                       handleClick,
-                       variant,
-                       topicData,
-                       index,
-                   }: {
-    handleClick: () => void
-    variant: BatchType
-    topicData: any
-    index?: number
+  handleClick,
+  variant,
+  topicData,
+  index,
+}: {
+  handleClick: () => void
+  variant: BatchType
+  topicData: any
+  index?: number
 }) => {
-    {
-        return variant === BatchType.SELF_LEARNING ? (
-            <Card>
-                <div
-                    className={style.root + ' animated fadeIn duration-200'}
-                    onClick={handleClick}
-                >
-                    {
-                        index !== undefined &&
-                        <div className="px-6 h-full flex items-center justify-center rounded-l-lg"
-                             style={{background: getCartColorByName(topicData.name)}}>
-                            <Typography variant="heading3" weight={700}>
-                                {index + 1}
-                            </Typography>
-                        </div>
-                    }
-                    <div
-                        className={`flex items-center justify-between ${style.cardDetail}`}
-                    >
-                        <div className="flex flex-col justify-center">
-                            <Typography capitalize={true} variant="regular" weight={600}>
-                                {topicData.name}
-                            </Typography>
-                            <Typography variant="tiny" weight={500}>
+  {
+    return variant === BatchType.SELF_LEARNING ? (
+      <Card>
+        <div
+          className={style.root + ' animated fadeIn duration-200'}
+          onClick={handleClick}
+        >
+          {index !== undefined && (
+            <div
+              className="px-6 h-full flex items-center justify-center rounded-l-lg"
+              style={{ background: getCartColorByName(topicData.name) }}
+            >
+              <Typography variant="heading3" weight={700}>
+                {index + 1}
+              </Typography>
+            </div>
+          )}
+          <div
+            className={`flex items-center justify-between ${style.cardDetail}`}
+          >
+            <div className="flex flex-col justify-center">
+              <Typography capitalize={true} variant="regular" weight={600}>
+                {topicData.name}
+              </Typography>
+              <Typography variant="tiny" weight={500}>
                 <span className="text-[#8B8B8B]">
                   {topicData.videos} Lectures
                 </span>
-                            </Typography>
-                        </div>
-                        <div className={style.arrrowIcon}>
-                            <Image src={RightArrow} alt="logo"/>
-                        </div>
-                    </div>
-                </div>
-            </Card>
-        ) : (
-            <Card>
-                <div
-                    className="pl-3 py-4 animated fadeIn duration-200"
-                    onClick={handleClick}
-                >
-                    <div className="border-l-4 border-indigo-400 py-2 pl-3">
-                        <Typography variant="small" weight={700}>
-                            All Contents
-                        </Typography>
-                    </div>
-                </div>
-            </Card>
-        )
-    }
+              </Typography>
+            </div>
+            <div className={style.arrrowIcon}>
+              <Image src={RightArrow} alt="logo" />
+            </div>
+          </div>
+        </div>
+      </Card>
+    ) : (
+      <Card>
+        <div
+          className="pl-3 py-4 animated fadeIn duration-200"
+          onClick={handleClick}
+        >
+          <div className="border-l-4 border-indigo-400 py-2 pl-3">
+            <Typography variant="small" weight={700}>
+              {topicData.name}
+            </Typography>
+          </div>
+        </div>
+      </Card>
+    )
+  }
 }
 
 export default TopicCard

@@ -4,12 +4,17 @@ import Image from 'next/image'
 import Subject from '@assets/images/subject.svg'
 import { ClassCard, WeekCard } from '@modules/k8'
 import { useRouter } from 'next/router'
+import useRecentSchedule from '@lib/hooks/batches/useRecentSchedule'
 
 const WeeklySchedule = () => {
   const router = useRouter()
   const { batchSlug, subjectSlug } = router.query
 
-  // const {data, isLoading} =
+  const { data, isLoading } = useRecentSchedule({
+    batchSlug: batchSlug as string,
+    subjectSlug: subjectSlug as string,
+  })
+
   return (
     <Container className="flex flex-col gap-28 w-full">
       <div className="flex items-center gap-4">

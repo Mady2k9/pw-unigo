@@ -1,18 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
 import style from './NoteCard.module.css'
-import clipboard from '@assets/images/clipboard.svg'
-import download from '@assets/images/download.svg'
+import Download from '@assets/images/dwnld.svg'
+import PDF from '@assets/images/pdf.svg'
+import { DppNotes } from '@lib/hooks/batches/useBatchContents'
+import Image from 'next/image'
 
-const NoteCard = () => {
+const NoteCard = ({ note }: { note: DppNotes }) => {
+  const startTime = new Date(note?.startTime).toDateString()
   return (
     <div className={style.cardContainer}>
       <div className={style.noteDetails}>
-        <span>LAKSHYA BATCH : Physics for Class 12 + JEEMAINS / NEET</span>
-        <span>12 Jan, 2021</span>
+        <span>{note?.homeworkIds[0]?.topic}</span>
+        <span>{startTime}</span>
       </div>
       <div>
-        <img src={clipboard.src} alt="" />
-        <img src={download.src} alt="" />
+        <Image src={Download} alt="download_logo" />
+        <Image src={PDF} alt="pdf_logo" />
       </div>
     </div>
   )
