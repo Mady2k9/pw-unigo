@@ -1,33 +1,35 @@
-import {Container, LoadingSection, NoData} from '@components/ui'
+import { Container, LoadingSection, NoData } from '@components/ui'
 import style from './Practice.module.css'
 import PracticeCard from '../components/practice-card/PracticeCard'
 import { PracticeCardType } from '@modules/k8/constants'
-import useBatchContents, {ContentType, DppNotes} from '@lib/hooks/batches/useBatchContents'
-import {useRouter} from "next/router";
+import useBatchContents, {
+  ContentType,
+  DppNotes,
+} from '@lib/hooks/batches/useBatchContents'
+import { useRouter } from 'next/router'
 
 const Practice = ({ type }: { type: ContentType }) => {
-    const router = useRouter()
+  const router = useRouter()
 
-    const { batchSlug, subjectSlug, topicSlug } = router.query
+  const { batchSlug, subjectSlug, topicSlug } = router.query
 
-
-    const { data: NoteData, isLoading } = useBatchContents({
-        batchSlug: batchSlug as string as string,
-        subjectSlug: subjectSlug as string as string,
-        contentType: type as ContentType,
-        tag: topicSlug as string as string,
-    })
-    if(isLoading) return <LoadingSection />
-  if (NoteData.length === 0) return <NoData />
+  const { data: noteData, isLoading } = useBatchContents({
+    batchSlug: batchSlug as string as string,
+    subjectSlug: subjectSlug as string as string,
+    contentType: type as ContentType,
+    tag: topicSlug as string as string,
+  })
+  if (isLoading) return <LoadingSection />
+  if (noteData.length === 0) return <NoData />
   return (
     <Container>
       <div className={style.root}>
-        {NoteData &&
-          NoteData.map((data: DppNotes) => (
+        {noteData &&
+          noteData.map((data) => (
             <PracticeCard
               key={data._id}
               variant={PracticeCardType.PRACTICE}
-              data={data}
+              data={data as DppNotes}
             />
           ))}
       </div>
