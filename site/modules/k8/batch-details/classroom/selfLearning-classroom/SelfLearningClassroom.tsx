@@ -1,11 +1,17 @@
-import { Container, LoadingSection, Tabs, Typography } from '@components/ui'
+import {
+  Container,
+  LoadingSection,
+  NoData,
+  Tabs,
+  Typography,
+} from '@components/ui'
 import style from './SelfLearningClassroom.module.css'
 import TopicCard from '../topic-card/TopicCard'
 import { useRouter } from 'next/router'
 import { BatchType } from '@lib/hooks/batches/useBatches'
-import useBatchTopics from '@lib/hooks/batches/useBatchTopics'
-import React from 'react'
-import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import useBatchTopics, { Topics } from '@lib/hooks/batches/useBatchTopics'
+import React, { useMemo } from 'react'
+import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 
 const SelfLearningClassroom = ({
   batchDetails,
@@ -20,7 +26,7 @@ const SelfLearningClassroom = ({
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
 
-  const subjects = batchDetails?.subjects.map((subject: any) => ({
+  const subjects = batchDetails?.subjects?.map((subject: Subject) => ({
     name: subject.subject,
     key: subject.slug,
   }))
@@ -34,25 +40,10 @@ const SelfLearningClassroom = ({
     refetch
   }, [contentTabIndex])
 
-  const redirectTo = (topic: any) => {
-    router.push({
-      pathname: `${batchDetails?.slug}/${subjects[contentTabIndex].key}/${topic.slug}/content`,
-      query: { contentType: variant },
-    })
-  }
-
-  return (
-    <Container>
-      <div>
-        <Tabs
-          items={subjects}
-          currentIndex={contentTabIndex}
-          onChange={(index) => {
-            setContentTabIndex(index)
-          }}
-        />
-      </div>
-      {isLoading && <LoadingSection />}
+  const ItemsWrapper = useMemo(() => {
+    if (isLoading) return <LoadingSection />
+    if (data.length === 0) return <NoData />
+    return (
       <section className="my-4 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <Typography variant="subHeading" weight={700}>
@@ -65,7 +56,7 @@ const SelfLearningClassroom = ({
         </div>
         <div className={style.cardContainer}>
           {data &&
-            data.map((topic: any, idx: number) => (
+            data.map((topic: Topics, idx: number) => (
               <TopicCard
                 handleClick={() => redirectTo(topic)}
                 key={topic._id}
@@ -76,6 +67,27 @@ const SelfLearningClassroom = ({
             ))}
         </div>
       </section>
+    )
+  }, [data])
+  const redirectTo = (topic: any) => {
+    router.push({
+      pathname: `${batchDetails?.slug}/${subjects[contentTabIndex].key}/${topic.slug}/content`,
+      query: { topic: topic.name },
+    })
+  }
+
+  return (
+    <Container className="flex flex-col gap-4">
+      <div>
+        <Tabs
+          items={subjects}
+          currentIndex={contentTabIndex}
+          onChange={(index) => {
+            setContentTabIndex(index)
+          }}
+        />
+      </div>
+      <div>{ItemsWrapper}</div>
     </Container>
   )
 }

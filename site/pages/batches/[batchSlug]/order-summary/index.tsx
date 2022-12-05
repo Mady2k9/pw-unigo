@@ -19,36 +19,24 @@ const OrderSummary = () => {
     batchSlug: batchSlug as string,
   })
 
-  const {
-    data: planList,
-    isLoading: plansLoading,
-    refetch: plansRefetch,
-  } = usePlansList({
+  const variant = batchDetail?.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
+
+  const { data: planList, isLoading: plansLoading } = usePlansList({
     batchSlug: batchDetail?._id,
     enabled: batchDetail?.isSelfLearning,
   })
 
-  const { data: paymentSignature, refetch: useSignatureRefetch } = useSignature(
-    {
-      enabled: !batchDetail?.isPurchased && batchDetail?.fee?.amount > 0,
-    }
-  )
-
-  // const idForMapping = batchDetail.isSelfLearning ? '' : batchDetail?._id
-
-  useEffect(() => {
-    setIdForMapping(batchDetail?._id)
-  }, [batchDetail])
-
-  const { data: feeid, refetch: useGetFeeIdRefetch } = useGetFeeId({
-    batchId: idForMapping,
+  const { data: feeid } = useGetFeeId({
+    batchId: batchDetail?._id,
     batchAmount: batchDetail?.fee?.amount,
+    enabled:
+      variant === BatchType.SELF_LEARNING ? idForMapping.length > 0 : true,
   })
 
   if (batchDetailLoading) return <LoadingSection />
-  const variant = batchDetail?.isSelfLearning
-    ? BatchType.SELF_LEARNING
-    : BatchType.LIVE
+
   return (
     <Container>
       <main className="w-full flex flex-col md:flex-row gap-5 lg:gap-16 justify-start">
@@ -79,6 +67,8 @@ const OrderSummary = () => {
                     plan={plan}
                     key={plan._id}
                     recommended={plan.isRecommended}
+                    idForMapping={idForMapping}
+                    setIdForMapping={setIdForMapping}
                   />
                 ))}
               </div>
@@ -86,7 +76,7 @@ const OrderSummary = () => {
           )}
         </section>
         <section className="lg:min-w-[348px]">
-          <CheckoutCard batchDetail={batchDetail} />
+          <CheckoutCard batchDetail={batchDetail} feeId={feeid._id} />
         </section>
       </main>
     </Container>

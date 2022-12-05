@@ -12,12 +12,14 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
   return (
     <Container className="flex flex-col-reverse lg:flex-row gap-6 mb-8">
       <section className="flex flex-col gap-6 w-full">
-        {!batchDetails?.isSelfLearning && (
-          <CourseDuration
-            startDate={batchDetails?.startDate}
-            endDate={batchDetails?.endDate}
-          />
-        )}
+        {!batchDetails?.isSelfLearning &&
+          batchDetails?.startDate &&
+          batchDetails?.endDate && (
+            <CourseDuration
+              startDate={batchDetails?.startDate}
+              endDate={batchDetails?.endDate}
+            />
+          )}
         <Meta metaData={batchDetails?.meta} />
         <Faculties batchSlug={batchDetails?.slug} />
         <DemoVideos batchSlug={batchDetails?.slug} />

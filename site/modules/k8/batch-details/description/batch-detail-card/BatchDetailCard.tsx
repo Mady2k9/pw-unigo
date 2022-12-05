@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button, Card, Typography } from '@components/ui'
 import Image from 'next/image'
 import CardBanner from '@assets/images/card-banner.png'
@@ -20,11 +21,10 @@ const BatchDetailCard = ({
     <Card>
       <div className="flex flex-col gap-4 p-5 animated fadeIn duration-200">
         <div className={style.bannerContainer}>
-          <div className="min-w-[290px] lg:min-w-[318px] min-h-[143px] relative">
+          <div className="min-w-[290px] lg:w-full h-[143px] relative">
             <Image
               src={imgUrl}
               alt="card-banner"
-              objectFit="contain"
               layout="fill"
               className="rounded-xl"
             />
