@@ -76,7 +76,7 @@ const OrderSummary = () => {
           )}
         </section>
         <section className="lg:min-w-[348px]">
-          <CheckoutCard batchDetail={batchDetail} feeId={feeid._id} />
+          {/* <CheckoutCard batchDetail={batchDetail} feeId={feeid._id} /> */}
         </section>
       </main>
     </Container>
