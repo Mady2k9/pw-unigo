@@ -1,19 +1,20 @@
-import { Card, Typography } from '@components/ui'
+import {Card, Typography} from '@components/ui'
 import Attachment from '@assets/images/attach.svg'
 import Image from 'next/image'
 import style from './ClassCard.module.css'
+import {ClassMode} from "@modules/k8/constants";
 
 const ClassCard = ({
   isLive,
   variant,
 }: {
-  isLive: boolean
-  variant?: string
+  isLive?: boolean
+  variant: ClassMode
 }) => {
   return (
     <>
       <Card>
-        <div className="flex flex-col flex-1 min-h-[150px]">
+        <div className="flex flex-col flex-1 min-h-[150px] animated fadeIn duration-200">
           <div className="flex items-center justify-between px-4 py-2 border-b">
             <Typography variant="small" weight={700}>
               2:30 <span className="font-medium text-gray-500">PM</span>
@@ -34,7 +35,7 @@ const ClassCard = ({
               </Typography>
             </div>
 
-            {isLive && variant !== 'recorded' && (
+            {isLive && variant !== ClassMode.RECORDED && (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="h-[7px] w-[7px] rounded-[50%] bg-red-600"></span>
@@ -50,7 +51,7 @@ const ClassCard = ({
               </div>
             )}
 
-            {variant === 'recorded' && (
+            {variant === ClassMode.RECORDED && (
               <div className="flex items-center justify-end">
                 <div className="px-3 py-1 bg-indigo-500 rounded-[40px]">
                   <Typography variant="small" weight={700}>
@@ -62,7 +63,7 @@ const ClassCard = ({
           </div>
         </div>
       </Card>
-      {variant === 'recorded' && (
+      {variant === ClassMode.RECORDED && (
         <div className={style.attachment}>
           <Image src={Attachment} alt="icon" />
           <Typography variant="tiny" weight={700}>

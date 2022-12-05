@@ -1,10 +1,10 @@
 import { NoClasses } from '@components/lotties'
-import { Container, Typography } from '@components/ui'
+import { Container, NoData, Typography } from '@components/ui'
 import { SubjectMode } from '@modules/k8/constants'
 import style from './LiveClassroom.module.css'
 import SubjectCard from '../subject-card/SubjectCard'
 import { useRouter } from 'next/router'
-import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 
 const LiveClassroom = ({
   batchDetails,
@@ -45,18 +45,24 @@ const LiveClassroom = ({
           <span className="text-gray-500">Classes for current week</span>
         </Typography>
 
-        <div className={style.liveBatchCardContainer}>
-          {batchDetails?.subjects.map((subject: any) => (
-            <SubjectCard
-              key={subject._id}
-              mode={SubjectMode.WEEKLY}
-              subject={subject}
-              handleClick={() =>
-                redirectToWeeklySchedule(subject.slug, subject.subject)
-              }
-            />
-          ))}
-        </div>
+        {batchDetails?.subjects.length > 0 ? (
+          <div className={style.liveBatchCardContainer}>
+            {batchDetails?.subjects?.map((subject: Subject) => (
+              <SubjectCard
+                key={subject._id}
+                mode={SubjectMode.WEEKLY}
+                subject={subject}
+                handleClick={() =>
+                  redirectToWeeklySchedule(subject.slug, subject.subject)
+                }
+              />
+            ))}
+          </div>
+        ) : (
+          <div>
+            <NoData />
+          </div>
+        )}
       </section>
 
       <section className="flex flex-col gap-1">
@@ -67,16 +73,24 @@ const LiveClassroom = ({
           <span className="text-gray-500">Explore all your classes</span>
         </Typography>
 
-        <div className={style.liveBatchCardContainer}>
-          {batchDetails?.subjects.map((subject: any) => (
-            <SubjectCard
-              key={subject._id}
-              mode={SubjectMode.ALL_CLASSES}
-              subject={subject}
-              handleClick={() => redirectToTopic(subject.slug, subject.subject)}
-            />
-          ))}
-        </div>
+        {batchDetails?.subjects.length > 0 ? (
+          <div className={style.liveBatchCardContainer}>
+            {batchDetails?.subjects.map((subject: any) => (
+              <SubjectCard
+                key={subject._id}
+                mode={SubjectMode.ALL_CLASSES}
+                subject={subject}
+                handleClick={() =>
+                  redirectToTopic(subject.slug, subject.subject)
+                }
+              />
+            ))}
+          </div>
+        ) : (
+          <div>
+            <NoData />
+          </div>
+        )}
       </section>
     </Container>
   )

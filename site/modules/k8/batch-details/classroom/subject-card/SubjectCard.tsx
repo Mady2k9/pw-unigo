@@ -14,11 +14,10 @@ const SubjectCard = ({
   handleClick?: () => void
 }) => {
   const router = useRouter()
-  console.log(subject)
   return (
     <Card>
       <div
-        className="min-w-[90px] w-full flex flex-col items-center md:flex-row gap-2 py-2 md:py-3 md:px-2 animated fadeIn duration-200"
+        className="min-w-[96px] w-full flex flex-col items-center justify-center md:justify-start md:flex-row gap-4 md:gap-3 py-1 md:py-3 md:px-2.5 animated fadeIn duration-200"
         onClick={handleClick}
       >
         <div className="h-[55px] w-[55px] relative">
@@ -30,9 +29,9 @@ const SubjectCard = ({
           />
         </div>
         <div>
-          <Typography weight={600} variant="subHeading">
-            <span className="text-[#444] truncate w-[60%]">
-              {subject?.subject}
+          <Typography weight={600} variant="regular">
+            <span className="text-[#444] line-clamp-1">
+              {subject?.subject || ''}
             </span>
           </Typography>
         </div>

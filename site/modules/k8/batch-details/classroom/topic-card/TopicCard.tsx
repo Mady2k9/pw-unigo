@@ -4,6 +4,7 @@ import style from './TopicCard.module.css'
 import RightArrow from '@assets/images/right-arrow.svg'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import { getCartColorByName } from '@lib/colors'
+import { Topics } from '@lib/hooks/batches/useBatchTopics'
 
 const TopicCard = ({
   handleClick,
@@ -13,7 +14,7 @@ const TopicCard = ({
 }: {
   handleClick: () => void
   variant: BatchType
-  topicData: any
+  topicData?: Topics
   index?: number
 }) => {
   {
@@ -26,7 +27,9 @@ const TopicCard = ({
           {index !== undefined && (
             <div
               className="px-6 h-full flex items-center justify-center rounded-l-lg"
-              style={{ background: getCartColorByName(topicData.name) }}
+              style={{
+                background: getCartColorByName(topicData?.name as string),
+              }}
             >
               <Typography variant="heading3" weight={700}>
                 {index + 1}
@@ -38,11 +41,11 @@ const TopicCard = ({
           >
             <div className="flex flex-col justify-center">
               <Typography capitalize={true} variant="regular" weight={600}>
-                {topicData.name}
+                {topicData?.name}
               </Typography>
               <Typography variant="tiny" weight={500}>
                 <span className="text-[#8B8B8B]">
-                  {topicData.videos} Lectures
+                  {topicData?.videos} Lectures
                 </span>
               </Typography>
             </div>
@@ -60,7 +63,7 @@ const TopicCard = ({
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">
             <Typography variant="small" weight={700}>
-              {topicData.name}
+              {topicData ? topicData.name : 'All Contents'}
             </Typography>
           </div>
         </div>

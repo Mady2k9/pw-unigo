@@ -1,5 +1,5 @@
 .cardContainer {
-  @apply flex items-center justify-between py-5 px-4;
+  @apply flex items-center justify-between py-4 px-4;
 }
 
 .cardContainer > div {
@@ -7,18 +7,5 @@
 }
 
 .assignmentTitle {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 40px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  @apply max-w-[80%];
-}
-
-.practiceCardDetails {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  @apply max-w-[80%]  flex flex-col gap-1.5;
+  @apply w-full line-clamp-2;
 }

@@ -1,13 +1,4 @@
-import { NoClasses } from '@components/lotties'
-import { Container, Tabs, Typography } from '@components/ui'
-import { StarIcon } from '@heroicons/react/24/solid'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import SubjectCard from './subject-card/SubjectCard'
-import TopicCard from './topic-card/TopicCard'
-import style from './Classroom.module.css'
 import { BatchType } from '@lib/hooks/batches/useBatches'
-import { SubjectMode } from '@modules/k8/constants'
 import LiveClassroom from './live-classroom/LiveClassroom'
 import SelfLearningClassroom from './selfLearning-classroom/SelfLearningClassroom'
 

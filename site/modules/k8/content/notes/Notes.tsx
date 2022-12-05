@@ -1,15 +1,34 @@
-import { Container } from '@components/ui'
+import {Container, LoadingSection, NoData} from '@components/ui'
 import style from './Notes.module.css'
 import React from 'react'
 import NoteCard from '../components/note-card/NoteCard'
-import { DppNotes } from '@lib/hooks/batches/useBatchContents'
+import useBatchContents, {ContentType} from '@lib/hooks/batches/useBatchContents'
+import {useRouter} from "next/router";
 
-const Notes = ({ notesData }: { notesData: DppNotes[] }) => {
+const Notes = ({ type }: { type: ContentType }) => {
+    const router = useRouter()
+
+    const { batchSlug, subjectSlug, topicSlug } = router.query
+
+    const payload = topicSlug === 'all-contents' ? {
+        batchSlug: batchSlug as string as string,
+        subjectSlug: subjectSlug as string as string,
+        contentType: type as ContentType,
+    } : {
+        batchSlug: batchSlug as string as string,
+        subjectSlug: subjectSlug as string as string,
+        contentType: type as ContentType,
+        tag: topicSlug as string as string,
+    }
+
+    const { data, isLoading } = useBatchContents(payload)
+    if(isLoading) return <LoadingSection />
+    if(data.length === 0) return  <NoData />
   return (
     <Container>
       <div className={style.notesContainer}>
-        {notesData &&
-          notesData.map((note: any) => <NoteCard key={note._id} note={note} />)}
+        {data &&
+          data.map((note: any) => <NoteCard key={note._id} note={note} />)}
       </div>
     </Container>
   )

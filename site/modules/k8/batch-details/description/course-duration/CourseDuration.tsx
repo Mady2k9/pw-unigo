@@ -2,6 +2,8 @@ import Calendar from '@assets/images/calendar.png'
 import { Typography } from '@components/ui'
 import Image from 'next/image'
 
+import format from 'date-fns/format'
+
 const CourseDuration = ({
   startDate,
   endDate,
@@ -9,8 +11,8 @@ const CourseDuration = ({
   startDate: string
   endDate: string
 }) => {
-  const startsOn = new Date(startDate).toDateString()
-  const endsOn = new Date(endDate).toDateString()
+  const startsOn = format(new Date(startDate), 'd LLL, yyyy')
+  const endsOn = format(new Date(endDate), 'd LLL, yyyy')
   return (
     <div className="flex items-center gap-2">
       <Image src={Calendar} alt="calendar_icon" />

@@ -13,10 +13,12 @@ const Faq = ({ categoryId }: { categoryId: string }) => {
     description: data.description,
   }))
 
-  return (
+  return faqData.length > 0 ? (
     <div>
       <FAQ items={faqData} multipleOpen={false} />
     </div>
+  ) : (
+    <></>
   )
 }
 

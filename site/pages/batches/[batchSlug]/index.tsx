@@ -1,5 +1,5 @@
 import { LayoutNoContentPadding } from '@components/common/Layout'
-import { TabHeader } from '@components/ui'
+import {LoadingSection, TabHeader} from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
 import useBatchDetails, {
   BatchDetailModel,
@@ -52,17 +52,10 @@ const Announcement = dynamic(
   import('@modules/k8/batch-details/announcement/Announcement')
 )
 
-const BatchDetails = () => {
-  const router = useRouter()
-  const { batchSlug } = router.query
-
-  const { data: batchDetails, isLoading } = useBatchDetails({
-    batchSlug: batchSlug as string,
-  })
-
+const Wrapper = ({batchDetails}: {batchDetails: any}) => {
   const variant = batchDetails.isSelfLearning
-    ? BatchType.SELF_LEARNING
-    : BatchType.LIVE
+      ? BatchType.SELF_LEARNING
+      : BatchType.LIVE
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const tabHeaderVariant = TabHeaderVariant
@@ -71,23 +64,23 @@ const BatchDetails = () => {
     switch (currentIndex) {
       case 0:
         return (
-          <Suspense fallback="loading....">
-            <Description batchDetails={batchDetails} />
-          </Suspense>
+            <Suspense fallback="loading....">
+              <Description batchDetails={batchDetails} />
+            </Suspense>
         )
 
       case 1:
         return (
-          <Suspense fallback="loading....">
-            <Classroom batchDetails={batchDetails} />
-          </Suspense>
+            <Suspense fallback="loading....">
+              <Classroom batchDetails={batchDetails} />
+            </Suspense>
         )
 
       case 2:
         return (
-          <Suspense fallback="loading....">
-            <Announcement />
-          </Suspense>
+            <Suspense fallback="loading....">
+              <Announcement />
+            </Suspense>
         )
       default:
         return <></>
@@ -95,18 +88,32 @@ const BatchDetails = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <TabHeader
-        title={batchDetails?.name}
-        loading={isLoading}
-        variant={tabHeaderVariant.round}
-        currentIndex={currentIndex}
-        items={TAB_ITEMS[variant].items}
-        onChange={(index: number) => setCurrentIndex(index)}
-      />
-      <div>{renderTabs(batchDetails)}</div>
-    </div>
+      <div className="flex flex-col gap-4">
+        <TabHeader
+            title={batchDetails?.name}
+            variant={tabHeaderVariant.round}
+            currentIndex={currentIndex}
+            items={TAB_ITEMS[variant].items}
+            onChange={(index: number) => setCurrentIndex(index)}
+        />
+        <div>{renderTabs(batchDetails)}</div>
+      </div>
   )
+}
+
+const BatchDetails = () => {
+  const router = useRouter()
+  const { batchSlug } = router.query
+
+  const { data: batchDetails, isLoading } = useBatchDetails({
+    batchSlug: batchSlug as string,
+  })
+
+
+  if(isLoading) return <LoadingSection />
+
+  return  <Wrapper batchDetails={batchDetails} />
+
 }
 
 export default BatchDetails
