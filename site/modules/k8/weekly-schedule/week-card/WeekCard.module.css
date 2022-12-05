@@ -1,22 +1,28 @@
 .cardContainer {
   background: #f1f5fe;
   border-radius: 15px;
-  @apply hidden px-4 py-4 md:flex items-center justify-between w-full;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  @apply hidden px-2 py-4 md:flex items-center justify-between w-full;
 }
 
 .today {
   box-shadow: 0px 0px 15px #33333326;
   border-radius: 15px;
   background: #ffffff;
-  @apply py-1 md:py-3 px-2;
+  @apply py-3;
 }
 
-.mobilecardContainer {
+.mobileCardContainer {
   background: #f1f5fe;
   border-radius: 15px;
-  @apply py-4 flex items-center overflow-x-auto w-full md:hidden;
+  @apply py-4 px-4 flex items-center gap-4 overflow-x-auto w-full md:hidden;
 }
 
-.mobilecardContainer.today {
-  @apply bg-indigo-500;
+.mobileCardContainer .today {
+  @apply bg-indigo-500 rounded-3xl;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
 }

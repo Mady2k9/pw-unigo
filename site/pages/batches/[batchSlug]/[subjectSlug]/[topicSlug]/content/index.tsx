@@ -36,14 +36,13 @@ const Assignment = dynamic(
 const Practice = dynamic(() => import('@modules/k8/content/practice/Practice'))
 const Notes = dynamic(() => import('@modules/k8/content/notes/Notes'))
 
-const ContentDetails = ({ batch }: { batch: any }) => {
+const ContentDetails = ({ batch, title }: { batch: any; title: string }) => {
   const tabHeaderVariant = TabHeaderVariant
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const variant = batch?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
-
 
   const renderItems = () => {
     if (variant === BatchType.SELF_LEARNING) {
@@ -105,7 +104,7 @@ const ContentDetails = ({ batch }: { batch: any }) => {
   return (
     <div className="flex flex-col gap-6 min-h-[100%]">
       <TabHeader
-        title="Coordinate Geometry"
+        title={title}
         items={TAB_ITEMS[variant].items}
         currentIndex={currentIndex}
         onChange={(index: number) => setCurrentIndex(index)}
@@ -118,7 +117,7 @@ const ContentDetails = ({ batch }: { batch: any }) => {
 }
 const Content = () => {
   const router = useRouter()
-  const { batchSlug } = router.query
+  const { batchSlug, topic } = router.query
   const { data: batchDetails, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
   })
@@ -126,7 +125,7 @@ const Content = () => {
   if (isLoading || !batchDetails) {
     return <LoadingSection />
   }
-  return <ContentDetails batch={batchDetails} />
+  return <ContentDetails batch={batchDetails} title={topic as string} />
 }
 
 export default Content

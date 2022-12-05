@@ -20,22 +20,21 @@ const PracticeCard = ({
           <Image src={Clipboard} alt="clipboard_icon" />
           <>
             {variant === PracticeCardType.PRACTICE ? (
-              <div className={style.practiceCardDetails}>
+              <div className="w-[80%]">
                 <Typography capitalize={true} variant="small" weight={600}>
-                  <span>{data?.exerciseIds[0]?.title}</span>
-                </Typography>
-                <Typography variant="tiny" weight={500}>
-                  <span className="text-gray-500">
-                    360 Marks | 60 Mins | 30 Questions
+                  <span className="block truncate">
+                    {data?.exerciseIds[0]?.title}
                   </span>
                 </Typography>
               </div>
             ) : (
-              <Typography capitalize={true} variant="small" weight={600}>
-                <span className={style.assignmentTitle}>
-                  {data?.homeworkIds[0]?.topic}
-                </span>
-              </Typography>
+              <div className="w-[65%]">
+                <Typography capitalize={true} variant="small" weight={600}>
+                  <span className={style.assignmentTitle}>
+                    {data?.homeworkIds[0]?.topic}
+                  </span>
+                </Typography>
+              </div>
             )}
           </>
         </div>

@@ -14,7 +14,7 @@ const ClassCard = ({
   return (
     <>
       <Card>
-        <div className="flex flex-col flex-1 min-h-[150px] max-w-[272px]">
+        <div className="flex flex-col flex-1 min-h-[150px] animated fadeIn duration-200">
           <div className="flex items-center justify-between px-4 py-2 border-b">
             <Typography variant="small" weight={700}>
               2:30 <span className="font-medium text-gray-500">PM</span>

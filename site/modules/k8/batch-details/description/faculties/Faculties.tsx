@@ -1,11 +1,20 @@
 import { Typography } from '@components/ui'
+import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import Link from 'next/link'
 import React from 'react'
 import TeacherCard from '../teacher-card/TeacherCard'
 import style from './Faculties.module.css'
 
 const Faculties = ({ batchSlug }: { batchSlug: string }) => {
-  return (
+  const { data, isLoading } = useBatchDetails({
+    batchSlug: batchSlug as string,
+  })
+
+  const teachers = data?.subjects
+    .map((subject: any) => [...subject.teacherIds])
+    .flat()
+
+  return teachers.length > 0 ? (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <Typography variant="subHeading" weight={700}>
@@ -19,11 +28,13 @@ const Faculties = ({ batchSlug }: { batchSlug: string }) => {
         </Link>
       </div>
       <div className={style.cardContainer}>
-        {[1, 2, 3].map((teacher: any) => (
-          <TeacherCard key={teacher} />
+        {teachers.slice(0, 3).map((teacher: any) => (
+          <TeacherCard key={teacher._id} teacherData={teacher} />
         ))}
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 

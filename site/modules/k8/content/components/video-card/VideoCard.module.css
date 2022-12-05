@@ -1,9 +1,9 @@
 .selfPacedBanner {
-  @apply p-2 pb-0 rounded-lg relative h-[69px] md:h-[103px];
+  @apply p-2 pb-0 w-full rounded-lg relative h-[103px];
 }
 
 .selfPacedBanner img {
-  @apply rounded-lg h-full bg-[#353277] w-full object-contain;
+  @apply rounded-lg h-full w-full;
 }
 
 .videoDescriptionContainer {
