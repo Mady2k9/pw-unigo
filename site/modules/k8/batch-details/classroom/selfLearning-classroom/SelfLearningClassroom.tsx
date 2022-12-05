@@ -42,7 +42,7 @@ const SelfLearningClassroom = ({
 
   const ItemsWrapper = useMemo(() => {
     if (isLoading) return <LoadingSection />
-    if (data.length === 0) return <NoData />
+    if (data.data.length === 0) return <NoData />
     return (
       <section className="my-4 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
@@ -51,12 +51,18 @@ const SelfLearningClassroom = ({
           </Typography>
 
           <Typography variant="tiny" weight={500}>
-            <span className="text-gray-400">11 Chapters | 120 Lectures</span>
+            <span className="text-gray-400">
+              {+data?.paginate?.totalCount > 1
+                ? `${data?.paginate?.totalCount} Chapters`
+                : `${data?.paginate?.totalCount} Chapter`}
+              {data?.paginate?.videoCount &&
+                `| ${data?.paginate?.videoCount} Lectures`}
+            </span>
           </Typography>
         </div>
         <div className={style.cardContainer}>
           {data &&
-            data.map((topic: Topics, idx: number) => (
+            data?.data?.map((topic: Topics, idx: number) => (
               <TopicCard
                 handleClick={() => redirectTo(topic)}
                 key={topic._id}

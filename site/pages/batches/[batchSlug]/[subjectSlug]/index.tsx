@@ -48,7 +48,7 @@ const Topic = () => {
             variant={BatchType.LIVE}
           />
           {data &&
-            data.map((topic: any) => (
+            data?.data?.map((topic: any) => (
               <TopicCard
                 key={topic}
                 handleClick={() => redirectToContent(topic.slug, topic.name)}

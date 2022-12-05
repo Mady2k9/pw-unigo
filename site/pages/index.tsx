@@ -3,6 +3,7 @@ import {
   BatchList,
   DemoVideo,
   HomeHeader,
+  MyBatchList,
   ShareNow,
   TestimonialSection,
 } from '@modules/k8'
@@ -14,6 +15,7 @@ export default function Home() {
     <Layout isProtected={true} background={<HomeBackground />}>
       <Container className="flex flex-col gap-9 md:gap-6">
         <HomeHeader />
+        <MyBatchList />
         <BatchList />
         <DemoVideo />
         <TestimonialSection />
