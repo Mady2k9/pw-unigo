@@ -3,11 +3,10 @@ import { Container, LoadingSection, Typography } from '@components/ui'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
-import useSignature from '@lib/hooks/orders/useSignature'
 import usePlansList from '@lib/hooks/batches/usePlansList'
-import { BatchPurchaseCard, CheckoutCard, PlanCard } from '@modules/k8'
+import { BatchPurchaseCard, PlanCard } from '@modules/k8'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const OrderSummary = () => {
   const router = useRouter()

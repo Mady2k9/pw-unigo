@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m01eb465d8c01f815[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2m0adce90804188c9f[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/mdamirgauhar/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -42,7 +42,7 @@
 [35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js                    45.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/main-e3da2c98fd6b49f3.js                         31.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/pages/_app-95a8c00ceafd6921.js                   12.1 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-622675dc5c6fb7d8.js                      2.46 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-a173c5fb1dad8c43.js                      2.46 kB
 [35mpw-live-v2:build: [0m  └ css/9a21f7e5f78cc426.css                                8.17 kB
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
