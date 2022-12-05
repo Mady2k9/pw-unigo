@@ -1,24 +1,38 @@
-import Teacher from '@assets/images/teacher.png'
+import TeacherPlaceholder from '@assets/images/default_teacher.svg'
 import Image from 'next/image'
 import { ArrowSmallRightIcon } from '@heroicons/react/24/outline'
 import { Typography } from '@components/ui'
 
-function TeacherCard({ teacherData }: { teacherData: any }) {
+interface TeacherData {
+  firstName: string
+  lastName: string
+  _id: string
+  qualification: string
+  imageId: { baseUrl: string; key: string; _id: string }
+  experience: string
+}
+
+function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
+  const teacherImg =
+    (teacherData?.imageId?.baseUrl &&
+      teacherData?.imageId?.key &&
+      teacherData?.imageId?.baseUrl + teacherData?.imageId?.key) ||
+    TeacherPlaceholder
   return (
     <div className="animated fadeIn duration-200">
-      <div className="relative h-[136px] w-[157px]">
+      <div className="relative h-[136px] w-[157px] mx-auto">
         <Image
-          src={teacherData?.imageId?.baseUrl + teacherData?.imageId?.key}
+          src={teacherImg}
           alt={`Banner Image`}
           layout="fill"
           objectFit="contain"
-          quality={50}
+          quality={100}
         />
       </div>
       <div className="bg-[#F7F7F7] m-0 p-2 rounded-[8px] flex flex-col">
         <Typography weight={800} variant="tiny" capitalize={true}>
           <span className="text-gray-800">
-            {teacherData?.firstName + ' ' + teacherData?.lastName}
+            {teacherData?.firstName || '' + ' ' + teacherData?.lastName || ''}
           </span>
         </Typography>
 

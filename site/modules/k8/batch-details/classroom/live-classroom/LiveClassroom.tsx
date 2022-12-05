@@ -4,7 +4,7 @@ import { SubjectMode } from '@modules/k8/constants'
 import style from './LiveClassroom.module.css'
 import SubjectCard from '../subject-card/SubjectCard'
 import { useRouter } from 'next/router'
-import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 
 const LiveClassroom = ({
   batchDetails,
@@ -47,7 +47,7 @@ const LiveClassroom = ({
 
         {batchDetails?.subjects.length > 0 ? (
           <div className={style.liveBatchCardContainer}>
-            {batchDetails?.subjects.map((subject: any) => (
+            {batchDetails?.subjects?.map((subject: Subject) => (
               <SubjectCard
                 key={subject._id}
                 mode={SubjectMode.WEEKLY}

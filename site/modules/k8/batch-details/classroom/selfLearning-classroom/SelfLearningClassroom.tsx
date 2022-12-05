@@ -9,9 +9,9 @@ import style from './SelfLearningClassroom.module.css'
 import TopicCard from '../topic-card/TopicCard'
 import { useRouter } from 'next/router'
 import { BatchType } from '@lib/hooks/batches/useBatches'
-import useBatchTopics from '@lib/hooks/batches/useBatchTopics'
+import useBatchTopics, { Topics } from '@lib/hooks/batches/useBatchTopics'
 import React, { useMemo } from 'react'
-import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 
 const SelfLearningClassroom = ({
   batchDetails,
@@ -26,7 +26,7 @@ const SelfLearningClassroom = ({
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
 
-  const subjects = batchDetails?.subjects.map((subject: any) => ({
+  const subjects = batchDetails?.subjects?.map((subject: Subject) => ({
     name: subject.subject,
     key: subject.slug,
   }))
@@ -35,7 +35,6 @@ const SelfLearningClassroom = ({
     batchSlug: batchDetails?.slug,
     subjectSlug: subjects[contentTabIndex].key,
   })
-  console.log(data)
 
   React.useEffect(() => {
     refetch
@@ -57,7 +56,7 @@ const SelfLearningClassroom = ({
         </div>
         <div className={style.cardContainer}>
           {data &&
-            data.map((topic: any, idx: number) => (
+            data.map((topic: Topics, idx: number) => (
               <TopicCard
                 handleClick={() => redirectTo(topic)}
                 key={topic._id}

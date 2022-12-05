@@ -30,7 +30,9 @@ const SubjectCard = ({
         </div>
         <div>
           <Typography weight={600} variant="regular">
-            <span className="text-[#444] line-clamp-1">{subject?.subject}</span>
+            <span className="text-[#444] line-clamp-1">
+              {subject?.subject || ''}
+            </span>
           </Typography>
         </div>
       </div>

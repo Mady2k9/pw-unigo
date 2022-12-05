@@ -1,27 +1,25 @@
 import banner from '@assets/images/banner.png'
 import { Card, Progress, Typography } from '@components/ui'
 import style from './VideoCard.module.css'
-import cn from 'clsx'
 import Image from 'next/image'
 import Clock from '@assets/images/clock.svg'
 import { Lecture } from '@lib/hooks/batches/useBatchContents'
 import { DemoVideos } from '@lib/hooks/batches/useBatchDemoVideos'
+import format from 'date-fns/format'
+import Banner from '@assets/images/banner.png'
 
 const VideoCard = ({
   videoDetails,
 }: {
   videoDetails: Lecture | DemoVideos
 }) => {
-  const startDate = new Date(videoDetails?.date).toDateString()
+  const startDate = format(new Date(videoDetails?.date), 'd LLL, yyyy')
+  const videoBanner = videoDetails?.videoDetails?.image || Banner
   return (
     <Card>
       <div className="flex flex-col gap-2 animated fadeIn duration-200 p-2.5">
         <div className={style.selfPacedBanner}>
-          <Image
-            src={videoDetails?.videoDetails?.image}
-            alt="video_banner"
-            layout="fill"
-          />
+          <Image src={videoBanner} alt="video_banner" layout="fill" />
         </div>
         <div className={style.videoDescriptionContainer}>
           <div className={style.progressBar}>
