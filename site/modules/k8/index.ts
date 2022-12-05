@@ -1,4 +1,5 @@
 export { default as HomeHeader } from './home/header/HomeHeader'
+export { default as MyBatchList } from './home/my-batches/my-batch-list/MyBatchList'
 export { default as BatchList } from './home/batches/batch-list/BatchList'
 export { default as DemoVideo } from './home/demo-video/DemoVideo'
 export { default as TestimonialSection } from './home/testimonials/testimonial-section/TestimonialSection'
