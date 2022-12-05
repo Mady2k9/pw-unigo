@@ -246,5 +246,3 @@ const CheckoutCardWrapper = ({
     </Card>
   )
 }
-
-export default CheckoutCard

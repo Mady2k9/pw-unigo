@@ -13,14 +13,14 @@ const Assignment = ({ type }: { type: ContentType }) => {
 
   const { batchSlug, subjectSlug, topicSlug } = router.query
 
-  const { data: noteData, isLoading } = useBatchContents({
-    batchSlug: batchSlug as string,
-    subjectSlug: subjectSlug as string,
+  const { data: NoteData, isLoading } = useBatchContents({
+    batchSlug: batchSlug as string as string,
+    subjectSlug: subjectSlug as string as string,
     contentType: type as ContentType,
-    tag: topicSlug as string,
+    tag: topicSlug as string as string,
   })
   if (isLoading) return <LoadingSection />
-  if (noteData.length === 0) return <NoData />
+  if (NoteData.length === 0) return <NoData />
 
   return (
     <Container>
