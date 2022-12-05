@@ -96,7 +96,7 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
               <Typography variant="heading4" weight={500}>
                 <span className="text-gray-700">Upcoming classes</span>
               </Typography>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-col gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {upcomingClasses.map((schedule: Schedule, idx: number) => {
                   const isLive =
                     isAfter(new Date(schedule.startTime), new Date()) &&
@@ -119,7 +119,7 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
                 <span className="text-gray-700">Recorded classes</span>
               </Typography>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-col gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recordedClasses.map((schedule: Schedule, idx: number) => (
                   <div
                     key={schedule._id}
