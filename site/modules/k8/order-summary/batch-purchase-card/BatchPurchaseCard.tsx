@@ -55,7 +55,7 @@ const BatchPurchaseCard = ({
             {batchDetail?.fee?.discount > 0 && (
               <Typography variant="regular" weight={700}>
                 <span className="bg-[#47b586] text-white px-2 py-1 rounded-3xl">
-                  {batchDetail?.fee?.discount}% OFF
+                  {batchDetail?.fee?.discount.toFixed()}% OFF
                 </span>
               </Typography>
             )}
