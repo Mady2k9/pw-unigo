@@ -8,27 +8,29 @@ const Meta = ({ metaData }: { metaData: any }) => {
       <Typography variant="subHeading" weight={700}>
         This Course Includes
       </Typography>
-      <div className="flex items-center justify-center md:justify-start">
-        {meta.map(
-          (
-            { id, key, value }: { id: number; key: string; value: string },
-            idx: number
-          ) => (
-            <div
-              key={id}
-              className={`flex flex-col items-center ${
-                idx < meta.length - 1 && 'border-r'
-              } ${idx !== 0 && 'pl-6'} ${idx !== meta.length - 1 && 'pr-6'}`}
-            >
-              <Typography variant="regular" weight={700}>
-                {value}
-              </Typography>
-              <Typography variant="small" weight={500}>
-                <span className="text-[#999]">{key}</span>
-              </Typography>
-            </div>
-          )
-        )}
+      <div className="flex items-center">
+        {meta
+          .slice(0, 6)
+          .map(
+            (
+              { id, key, value }: { id: number; key: string; value: string },
+              idx: number
+            ) => (
+              <div
+                key={id}
+                className={`flex flex-col items-center ${
+                  idx < meta.length - 1 && 'border-r'
+                } ${idx !== 0 && 'pl-6'} ${idx !== meta.length - 1 && 'pr-6'}`}
+              >
+                <Typography variant="regular" weight={700}>
+                  {value}
+                </Typography>
+                <Typography variant="small" weight={500}>
+                  <span className="text-[#999]">{key}</span>
+                </Typography>
+              </div>
+            )
+          )}
       </div>
     </div>
   ) : (
