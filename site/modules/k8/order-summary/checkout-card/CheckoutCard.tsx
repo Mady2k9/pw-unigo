@@ -15,13 +15,17 @@ import { useEffect } from 'react'
 import { priceDisplay } from '@lib/user-utility'
 import useCreateOrder from '@lib/hooks/orders/useCreateOrder'
 import useEnrollStudent from '@lib/hooks/batches/useEnrollStudent'
+import { Plans } from '@lib/hooks/batches/usePlansList'
+import { BatchType } from '@lib/hooks/batches/useBatches'
 
 const CheckoutCard = ({
   batchDetail,
   payload,
+  activePlan,
 }: {
   batchDetail: BatchDetailModel
   payload: any
+  activePlan?: Plans
 }) => {
   const { user } = useUI()
   const [checked, setChecked] = useState(false)
@@ -29,6 +33,10 @@ const CheckoutCard = ({
   const [walletPts, setWalletPts] = useState(0)
   const [totalAmount, setTotalAmount] = useState(0)
   const [payNow, setPayNow] = useState(false)
+
+  const variant = batchDetail?.isSelfLearning
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
 
   const rewardPoints = Math.min(
     +user?.profileId?.wallet,
@@ -122,7 +130,9 @@ const CheckoutCard = ({
                   Sub Total
                 </Typography>
                 <Typography variant="small" weight={600}>
-                  {priceDisplay(batchDetail?.fee?.amount)}
+                  {variant === BatchType.LIVE
+                    ? priceDisplay(batchDetail?.fee?.amount)
+                    : priceDisplay(activePlan?.price)}
                 </Typography>
               </div>
             )}
@@ -133,7 +143,10 @@ const CheckoutCard = ({
                 </Typography>
                 <Typography variant="small" weight={500}>
                   <span className="text-[#3AA2AB]">
-                    {priceDisplay(batchDetail?.fee?.discount)}
+                    {variant === BatchType.LIVE
+                      ? batchDetail?.fee?.discount
+                      : activePlan?.discount}
+                    %
                   </span>
                 </Typography>
               </div>
@@ -143,7 +156,9 @@ const CheckoutCard = ({
                 Sub Total
               </Typography>
               <Typography variant="subHeading" weight={600}>
-                {priceDisplay(totalAmount)}
+                {variant === BatchType.LIVE
+                  ? priceDisplay(totalAmount)
+                  : priceDisplay(activePlan?.total)}
               </Typography>
             </div>
           </div>

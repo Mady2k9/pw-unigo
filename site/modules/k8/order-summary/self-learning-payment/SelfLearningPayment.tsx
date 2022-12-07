@@ -1,12 +1,12 @@
 import { Typography } from '@components/ui'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
-import usePlansList from '@lib/hooks/batches/usePlansList'
+import usePlansList, { Plans } from '@lib/hooks/batches/usePlansList'
 import useActivePaymentKey from '@lib/hooks/orders/useActivePaymentKey'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
 import usePaymentInfo from '@lib/hooks/orders/usePaymentInfo'
 import useSignature from '@lib/hooks/orders/useSignature'
 import { PaymentSource } from '@modules/k8/constants'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BatchPurchaseCard from '../batch-purchase-card/BatchPurchaseCard'
 import CheckoutCard from '../checkout-card/CheckoutCard'
 import PlanCard from '../plan-card/PlanCard'
@@ -16,20 +16,28 @@ const SelfLearningPayment = ({
 }: {
   batchDetail: BatchDetailModel
 }) => {
+  const [razorpayKey, setRazorpayKey] = useState('')
   const [idForMapping, setIdForMapping] = useState('')
+  const [activePlan, setActivePlan] = useState<Plans>()
 
   const { data: planList, isLoading: plansLoading } = usePlansList({
     batchSlug: batchDetail?._id,
-    enabled: batchDetail?.isSelfLearning,
+    enabled: true,
   })
 
-  const { data: feeid, error } = useGetFeeId({
+  useEffect(() => {
+    const recommendedPlan = planList.find((plan: any) => plan.isRecommended)
+    setActivePlan(recommendedPlan)
+    setIdForMapping(recommendedPlan?._id as string)
+  }, [plansLoading])
+
+  const { data: feeid, refetch: refetchFeeId } = useGetFeeId({
     batchId: batchDetail?._id,
     query: {
       batchAmount: batchDetail?.fee?.amount,
       planId: idForMapping,
     },
-    enabled: idForMapping.length > 0,
+    enabled: idForMapping?.length > 0,
   })
 
   const { data: activePaymentKey, isLoading: paymentKeyLoading } =
@@ -60,18 +68,16 @@ const SelfLearningPayment = ({
     enabled: paymentSource === PaymentSource.juspay,
   })
 
-  let razorpayKey = ''
-
-  if (rzpKey) {
-    rzpKey.forEach((key) => {
-      if (key.name === 'two') {
-        razorpayKey = key.id
-        return
+  useEffect(() => {
+    if (rzpKey) {
+      if (rzpKey.length === 1) {
+        setRazorpayKey(rzpKey[0].id)
+      } else {
+        const rpKey = rzpKey.filter((item) => item.name === 'two')
+        setRazorpayKey(rpKey[0].id)
       }
-
-      razorpayKey = key.id
-    })
-  }
+    }
+  }, [rzpKey])
 
   const payload =
     paymentSource === PaymentSource.juspay
@@ -106,7 +112,7 @@ const SelfLearningPayment = ({
           <BatchPurchaseCard batchDetail={batchDetail} />
         </div>
 
-        {planList.length > 0 && (
+        {planList?.length > 0 && (
           <div className="flex flex-col">
             <Typography variant="heading4" weight={700}>
               Choose your plan
@@ -126,6 +132,8 @@ const SelfLearningPayment = ({
                   recommended={plan.isRecommended}
                   idForMapping={idForMapping}
                   setIdForMapping={setIdForMapping}
+                  setActivePlan={setActivePlan}
+                  activePlan={activePlan as Plans}
                 />
               ))}
             </div>
@@ -133,7 +141,11 @@ const SelfLearningPayment = ({
         )}
       </section>
       <section className="lg:min-w-[348px]">
-        <CheckoutCard batchDetail={batchDetail} payload={{}} />
+        <CheckoutCard
+          batchDetail={batchDetail}
+          payload={payload}
+          activePlan={activePlan}
+        />
       </section>
     </main>
   )

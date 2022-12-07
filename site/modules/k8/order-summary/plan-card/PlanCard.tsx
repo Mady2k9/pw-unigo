@@ -3,18 +3,23 @@ import { Checkbox } from '@components/ui'
 import style from './PlanCard.module.css'
 import cn from 'clsx'
 import { priceDisplay } from '@lib/user-utility'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Plans } from '@lib/hooks/batches/usePlansList'
 
 const PlanCard = ({
   plan,
   recommended,
   setIdForMapping,
   idForMapping,
+  setActivePlan,
+  activePlan,
 }: {
   plan: any
   recommended: boolean
   setIdForMapping: Dispatch<SetStateAction<string>>
   idForMapping: string
+  setActivePlan: Dispatch<SetStateAction<any>>
+  activePlan: Plans
 }) => {
   const pricePerMonth = parseInt(plan?.pricePerMonth).toFixed(2)
   return (
@@ -23,7 +28,7 @@ const PlanCard = ({
         className={cn(
           'pr-2 pb-2 pl-4 pt-2 lg:pl-6 lg:pb-3 lg:pr-3 lg:pt-3',
           style.cardContainer,
-          idForMapping === plan._id && style.cardBorder,
+          activePlan?._id === plan._id && style.cardBorder,
           recommended && 'mt-4'
         )}
       >
@@ -64,8 +69,11 @@ const PlanCard = ({
           </div>
           <Checkbox
             title=""
-            checked={idForMapping === plan._id}
-            onClick={() => setIdForMapping(plan._id)}
+            checked={activePlan?._id === plan._id}
+            onClick={() => {
+              setIdForMapping(plan._id)
+              setActivePlan(plan)
+            }}
           />
         </div>
       </div>
