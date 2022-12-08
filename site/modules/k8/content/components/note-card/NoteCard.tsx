@@ -3,9 +3,10 @@ import Download from '@assets/images/dwnld.svg'
 import PDF from '@assets/images/pdf.svg'
 import { DppNotes } from '@lib/hooks/batches/useBatchContents'
 import Image from 'next/image'
+import format from 'date-fns/format'
 
 const NoteCard = ({ note }: { note: DppNotes }) => {
-  const startTime = new Date(note?.startTime).toDateString()
+  const startTime = format(new Date(note?.startTime), 'd LLL, yyyy')
   return (
     <div className={style.cardContainer}>
       <div className={style.noteDetails}>

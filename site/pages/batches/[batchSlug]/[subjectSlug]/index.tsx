@@ -42,9 +42,7 @@ const Topic = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <TopicCard
             key={'12345'}
-            handleClick={() =>
-              redirectToContent('all-contents', 'All Contents')
-            }
+            handleClick={() => redirectToContent('all-contents', 'All Content')}
             variant={BatchType.LIVE}
           />
           {data &&

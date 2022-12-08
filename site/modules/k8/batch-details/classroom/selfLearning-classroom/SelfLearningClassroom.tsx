@@ -12,6 +12,7 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import useBatchTopics, { Topics } from '@lib/hooks/batches/useBatchTopics'
 import React, { useMemo } from 'react'
 import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
+import Image from 'next/image'
 
 const SelfLearningClassroom = ({
   batchDetails,
@@ -27,8 +28,16 @@ const SelfLearningClassroom = ({
     : BatchType.LIVE
 
   const subjects = batchDetails?.subjects?.map((subject: Subject) => ({
-    name: subject.subject,
-    key: subject.slug,
+    name: subject?.subject,
+    key: subject?.slug,
+    svgImage: (
+      <Image
+        src={subject?.imageId?.baseUrl + subject?.imageId?.key}
+        alt="subject_icon"
+        height={22}
+        width={22}
+      />
+    ),
   }))
 
   const { data, isLoading, refetch } = useBatchTopics({

@@ -7,7 +7,6 @@ import {
   Typography,
 } from '@components/ui'
 import Image from 'next/image'
-import Subject from '@assets/images/subject.svg'
 import { ClassCard, WeekCard } from '@modules/k8'
 import { useRouter } from 'next/router'
 import useRecentSchedule, {
@@ -17,7 +16,7 @@ import useRecentSchedule, {
 import { useEffect, useState } from 'react'
 import { isBefore, isAfter } from 'date-fns'
 import { ClassMode } from '@modules/k8/constants'
-import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
+import useBatchDetails, { Subject } from '@lib/hooks/batches/useBatchDetails'
 
 const WeeklySchedule = () => {
   const router = useRouter()
@@ -36,16 +35,20 @@ const WeeklySchedule = () => {
 
   const subjectName = batchDetail?.subjects.find(
     (subj: any) => subj.slug === subjectSlug
-  )?.subject
+  ) as Subject
 
   return (
     <Container className="flex flex-col gap-24 w-full">
       <div className="flex items-center justify-center md:justify-start gap-4">
         <div className="relative hidden md:block h-[71px] w-[71px]">
-          <Image src={Subject} alt="icon" layout="fill" />
+          <Image
+            src={subjectName?.imageId?.baseUrl + subjectName?.imageId?.key}
+            alt="icon"
+            layout="fill"
+          />
         </div>
         <Typography variant="heading3" weight={700}>
-          {subjectName}
+          {subjectName?.subject}
         </Typography>
       </div>
 

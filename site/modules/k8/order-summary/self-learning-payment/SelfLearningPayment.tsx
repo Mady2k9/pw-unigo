@@ -27,7 +27,12 @@ const SelfLearningPayment = ({
 
   useEffect(() => {
     const recommendedPlan = planList.find((plan: any) => plan.isRecommended)
-    setActivePlan(recommendedPlan)
+    if (recommendedPlan) {
+      setActivePlan(recommendedPlan)
+    } else {
+      setActivePlan(planList[0])
+    }
+
     setIdForMapping(recommendedPlan?._id as string)
   }, [plansLoading])
 

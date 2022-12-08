@@ -31,10 +31,7 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
         {batchDetails?.faqCat && <Faq categoryId={batchDetails?.faqCat} />}
       </section>
       <section className="w-full md:max-w-[350px] mx-auto">
-        <BatchDetailCard
-          feeDetails={batchDetails?.fee}
-          imgDetails={batchDetails?.previewImage}
-        />
+        <BatchDetailCard batchDetails={batchDetails} />
       </section>
     </Container>
   )
