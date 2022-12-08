@@ -63,7 +63,7 @@ const TopicCard = ({
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">
             <Typography variant="small" weight={700}>
-              {topicData ? topicData.name : 'All Contents'}
+              {topicData ? topicData.name : 'All Content'}
             </Typography>
           </div>
         </div>

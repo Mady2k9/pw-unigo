@@ -4,17 +4,17 @@ import Image from 'next/image'
 import CardBanner from '@assets/images/card-banner.png'
 import style from './BatchDetailCard.module.css'
 import PlayButton from '@assets/images/play-button.svg'
+import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
+import { priceDisplay } from '@lib/user-utility'
 
 const BatchDetailCard = ({
-  feeDetails,
-  imgDetails,
+  batchDetails,
 }: {
-  feeDetails: any
-  imgDetails: any
+  batchDetails: BatchDetailModel
 }) => {
   const imgUrl =
-    imgDetails.baseUrl && imgDetails.key
-      ? imgDetails.baseUrl + imgDetails.key
+    batchDetails?.previewImage?.baseUrl && batchDetails?.previewImage?.key
+      ? batchDetails?.previewImage?.baseUrl + batchDetails?.previewImage?.key
       : CardBanner
 
   return (
@@ -42,20 +42,22 @@ const BatchDetailCard = ({
           </Typography>
           <div className="flex items-center gap-4">
             <Typography variant="heading2" weight={700}>
-              <span className="text-indigo-500">₹{feeDetails?.total}</span>
+              <span className="text-indigo-500">
+                {priceDisplay(batchDetails?.fee?.total)}
+              </span>
             </Typography>
-            {feeDetails.discount > 0 && (
+            {batchDetails?.fee?.discount > 0 && (
               <Typography variant="regular" weight={400}>
                 <span className="line-through text-[#888888]">
-                  {feeDetails?.amount}
+                  {batchDetails?.fee?.amount}
                 </span>
               </Typography>
             )}
-            {feeDetails.discount > 0 && (
+            {batchDetails?.fee?.discount > 0 && (
               <div className={style.discountContainer}>
                 <Typography variant="regular" weight={700}>
                   <span className="text-white">
-                    {feeDetails?.discount}% OFF
+                    {batchDetails?.fee?.discount}% OFF
                   </span>
                 </Typography>
               </div>

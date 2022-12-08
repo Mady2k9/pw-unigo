@@ -9,7 +9,7 @@
 }
 
 .cardContainer {
-  @apply rounded-xl w-full relative flex flex-col ;
+  @apply rounded-xl w-full relative flex flex-col;
 }
 .loadingCardContainer {
   @apply bg-gray-100 text-gray-100;
@@ -19,7 +19,7 @@
 }
 
 .cardDescriptionContainer {
-  @apply border-b pt-10 pb-4 border-b-indigo-100 px-2 md:px-4 flex flex-col gap-2 flex-1;
+  @apply border-b pt-10 pb-4 border-b-indigo-200 px-2 md:px-4 flex flex-col gap-2 flex-1;
 }
 
 .batchTitle {

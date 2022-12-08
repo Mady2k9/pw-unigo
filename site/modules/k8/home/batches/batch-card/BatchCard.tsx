@@ -203,7 +203,7 @@ const K8Card = ({
                 <span
                   className={` ${
                     variant === BatchType.SELF_LEARNING
-                      ? 'text-base md:text-2xl'
+                      ? 'text-base md:text-2xl text-indigo-500'
                       : 'text-2xl text-white'
                   }`}
                 >
