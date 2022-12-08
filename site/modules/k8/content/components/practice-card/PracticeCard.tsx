@@ -5,6 +5,7 @@ import { PracticeCardType } from '@modules/k8/constants'
 import { DppNotes } from '@lib/hooks/batches/useBatchContents'
 import PracticeIcon from '@assets/images/practice-card-icon.svg'
 import AssignmentIcon from '@assets/images/assignment-card-icon.svg'
+import { useRouter } from 'next/router'
 
 const PracticeCard = ({
   variant,
@@ -13,9 +14,18 @@ const PracticeCard = ({
   variant: PracticeCardType
   data: DppNotes
 }) => {
+  const router = useRouter()
+
+  const redirectToExercise = () => {
+    router.push('/exercise')
+  }
+
   return (
     <Card>
-      <div className="flex items-center justify-between py-4 px-4 animated fadeIn duration-200 w-full">
+      <div
+        className="flex items-center justify-between py-4 px-4 animated fadeIn duration-200 w-full cursor-pointer"
+        onClick={redirectToExercise}
+      >
         <Image
           src={
             variant === PracticeCardType.PRACTICE

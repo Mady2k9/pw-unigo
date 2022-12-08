@@ -1,5 +1,5 @@
 .cardContainer {
-  @apply shadow-all-round hover:shadow-all-round-strong transition-all duration-200 rounded-lg  bg-white overflow-hidden;
+  @apply shadow-all-round hover:shadow-all-round-strong transition-all duration-200 rounded-lg cursor-pointer bg-white overflow-hidden;
 }
 
 .noteDetails {

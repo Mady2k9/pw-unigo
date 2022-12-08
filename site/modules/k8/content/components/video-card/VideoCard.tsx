@@ -27,9 +27,16 @@ const VideoCard = ({
 
   const startDate = format(new Date(videoDetails?.date), 'd LLL, yyyy')
   const videoBanner = videoDetails?.videoDetails?.image || Banner
+
+  const redirectToPlayer = () => {
+    router.push('/video-player')
+  }
   return (
     <Card>
-      <div className="flex flex-col gap-3 animated fadeIn duration-200 p-2.5">
+      <div
+        className="flex flex-col gap-3 animated fadeIn duration-200 p-2.5 cursor-pointer"
+        onClick={redirectToPlayer}
+      >
         <div className={style.selfPacedBanner}>
           <Image src={videoBanner} alt="video_banner" layout="fill" />
           <div className={style.icon}>
