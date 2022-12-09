@@ -23,7 +23,7 @@ const TESTIMONIAL_DATA = [
 
 const TestimonialSection = () => {
   const { data, isLoading } = useTestimonials({
-    cohortId: '637cb2ad8dcf800025f2fe68',
+    cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID as string,
   })
   if (isLoading) return <LoadingSection />
 

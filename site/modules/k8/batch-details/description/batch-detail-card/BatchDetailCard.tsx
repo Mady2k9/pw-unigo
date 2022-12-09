@@ -6,16 +6,22 @@ import style from './BatchDetailCard.module.css'
 import PlayButton from '@assets/images/play-button.svg'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import { priceDisplay } from '@lib/user-utility'
+import { useRouter } from 'next/router'
 
 const BatchDetailCard = ({
   batchDetails,
 }: {
   batchDetails: BatchDetailModel
 }) => {
+  const router = useRouter()
   const imgUrl =
     batchDetails?.previewImage?.baseUrl && batchDetails?.previewImage?.key
       ? batchDetails?.previewImage?.baseUrl + batchDetails?.previewImage?.key
       : CardBanner
+
+  const redirectToOrderSummary = () => {
+    router.push(`${batchDetails?.slug}/order-summary`)
+  }
 
   return (
     <Card>
@@ -66,7 +72,7 @@ const BatchDetailCard = ({
           <Typography variant="regular" weight={600}>
             (Maths + Science)
           </Typography>
-          <Button>Buy Now</Button>
+          <Button onClick={redirectToOrderSummary}>Buy Now</Button>
         </div>
       </div>
     </Card>
