@@ -17,18 +17,16 @@ const VideoCard = ({
   videoDetails: Lecture | DemoVideos
 }) => {
   const router = useRouter()
-  const { batchSlug } = router.query
-
+  const { batchSlug, topicSlug } = router.query
   const { data: batchDetails, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
   })
-
   const isPurchased = batchDetails?.isPurchased
-
   const startDate = format(new Date(videoDetails?.date), 'd LLL, yyyy')
   const videoBanner = videoDetails?.videoDetails?.image || Banner
 
   const redirectToPlayer = () => {
+    if (!isPurchased) return
     router.push('/video-player')
   }
   return (
@@ -40,7 +38,7 @@ const VideoCard = ({
         <div className={style.selfPacedBanner}>
           <Image src={videoBanner} alt="video_banner" layout="fill" />
           <div className={style.icon}>
-            <Image src={isPurchased ? Play : Lock} alt="" />
+            <Image src={isPurchased ? Play : topicSlug && Lock} alt="" />
           </div>
         </div>
         <div className={style.videoDescriptionContainer}>

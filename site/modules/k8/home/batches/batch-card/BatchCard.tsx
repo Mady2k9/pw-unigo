@@ -135,7 +135,7 @@ const K8Card = ({
             </div>
           </div>
         ) : (
-          <div className="flex flex-col-reverse md:flex-row items-start gap-2 justify-between">
+          <div className="flex flex-col-reverse md:flex-row items-start gap-3 justify-between">
             <div className="flex flex-col gap-3 px-2 md:px-0">
               {batchData?.class && (
                 <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ const K8Card = ({
                 </Typography>
               </div>
             </div>
-            <div className="max-w-full w-full lg:max-w-[140px] h-auto md:h-[134px] lg:h-[80px] ">
+            <div className="lg:h-[80px] h-[134px] w-full lg:max-w-[140px]">
               <img
                 src={
                   batchData
@@ -184,7 +184,7 @@ const K8Card = ({
                       batchData?.previewImage?.key
                     : placeholderImage
                 }
-                className="h-full w-full object-contain"
+                className="h-full w-full"
                 alt=""
               />
             </div>
@@ -193,7 +193,7 @@ const K8Card = ({
       </div>
 
       <div className="px-2 md:px-4 py-4 flex flex-col gap-4">
-        <div className="flex items-center justify-between md:justify-start gap-8">
+        <div className="flex items-center gap-12 md:gap-8">
           <div className="flex flex-col">
             <span className="flex items-center gap-1.5 text-sm font-medium">
               {variant === BatchType.SELF_LEARNING && (
