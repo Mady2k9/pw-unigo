@@ -42,7 +42,7 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
 
         <div className="w-full">
           <Typography weight={500}>
-            <span className="text-[#464646] text-xs md:text-sm">
+            <span className="text-gray-700 text-xs md:text-sm">
               {testimonialData.description}
             </span>
           </Typography>

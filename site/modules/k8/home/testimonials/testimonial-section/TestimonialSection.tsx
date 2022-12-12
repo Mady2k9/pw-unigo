@@ -37,8 +37,10 @@ const TestimonialSection = () => {
 
       <div className={style.cardContainer}>
         {testimonialsData &&
-          testimonialsData.map((data: any, idx: number) => (
-            <TestimonialCard key={data._id} testimonialData={data} />
+          testimonialsData.map((data: any) => (
+            <div key={data._id} className="min-w-[287px]">
+              <TestimonialCard testimonialData={data} />
+            </div>
           ))}
       </div>
     </div>

@@ -108,18 +108,14 @@ const K8Card = ({
           </div>
         </div>
         {variant === BatchType.SELF_LEARNING ? (
-          <div className="flex  justify-between">
-            <div className="flex flex-col gap-2">
+          <div className="flex justify-between mt-6 ">
+            <div className="flex flex-col gap-2 max-w-[70%] ">
               <span className="text-white font-bold text-[12px] uppercase bg-[#2E2676] p-1 px-1.5 rounded-md w-fit">
                 What you get
               </span>
-              <ul className="list-disc text-[12px] px-4 font-medium">
-                <li>1500+ hours of Recorded Videos</li>
-                <li>Interactive Learning Approach</li>
-                <li>Learn at your own pace</li>
-              </ul>
+              <Typography html={batchData?.description} />
             </div>
-            <div>
+            <div className="h-[112px] w-[112px] relative">
               <Image
                 src={
                   batchData
@@ -128,23 +124,14 @@ const K8Card = ({
                     : placeholderImage
                 }
                 objectFit={'contain'}
-                width={112}
-                height={112}
+                layout="fill"
                 alt=""
               />
             </div>
           </div>
         ) : (
-          <div className="flex flex-col-reverse md:flex-row items-start gap-3 justify-between">
-            <div className="flex flex-col gap-3 px-2 md:px-0">
-              {batchData?.class && (
-                <div className="flex items-center gap-2">
-                  <Image src={student} alt="" />
-                  <Typography variant="tiny" weight={600}>
-                    <span className="text-white">{batchData?.class}</span>
-                  </Typography>
-                </div>
-              )}
+          <div className="flex flex-col-reverse md:flex-row items-start gap-3 justify-between mt-6">
+            <div className="flex flex-col gap-3 px-2 md:px-0 ">
               <div className="flex items-center gap-2">
                 <Image src={calendar} alt="" />
                 <div className="flex items-center gap-1">
@@ -165,14 +152,16 @@ const K8Card = ({
                 <div className="flex items-center gap-2">
                   <Image src={teacher} alt="" />
                   <Typography variant="tiny" weight={600}>
-                    <span className="text-white">{teachersToMap}</span>
+                    <span className="text-white line-clamp-1">
+                      {teachersToMap}
+                    </span>
                   </Typography>
                 </div>
               )}
               <div className="flex items-center gap-2">
                 <Image src={meta} alt="" />
                 <Typography variant="tiny" weight={600}>
-                  <span className="text-white">{metaToMap}</span>
+                  <span className="text-white line-clamp-1">{metaToMap}</span>
                 </Typography>
               </div>
             </div>
@@ -192,7 +181,7 @@ const K8Card = ({
         )}
       </div>
 
-      <div className="px-2 md:px-4 py-4 flex flex-col gap-4">
+      <div className="px-2 md:px-4 pb-4 flex flex-col gap-4">
         <div className="flex items-center gap-12 md:gap-8">
           <div className="flex flex-col">
             <span className="flex items-center gap-1.5 text-sm font-medium">

@@ -10,6 +10,7 @@ import BatchPurchaseCard from '../batch-purchase-card/BatchPurchaseCard'
 import CheckoutCard from '../checkout-card/CheckoutCard'
 
 const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
+  const isFree = batchDetail?.fee?.amount === 0
   const [razorpayKey, setRazorpayKey] = useState('')
   const { data: feeid } = useGetFeeId({
     batchId: batchDetail?._id,
@@ -19,7 +20,7 @@ const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
   })
 
   const { data: activePaymentKey, isLoading: paymentKeyLoading } =
-    useActivePaymentKey()
+    useActivePaymentKey({})
 
   let paymentSource = ''
   for (let source in activePaymentKey) {
@@ -39,7 +40,7 @@ const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
   }
 
   const { data: rzpKey, isLoading: rzpKeyLoading } = usePaymentInfo({
-    enabled: paymentSource === PaymentSource.razorpay,
+    enabled: paymentSource === PaymentSource.razorpay && !isFree,
   })
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
   }, [rzpKey])
 
   const { data, isLoading } = useSignature({
-    enabled: paymentSource === PaymentSource.juspay,
+    enabled: paymentSource === PaymentSource.juspay && !isFree,
   })
 
   const payload =

@@ -33,6 +33,7 @@ const CheckoutCard = ({
   const [walletPts, setWalletPts] = useState(0)
   const [totalAmount, setTotalAmount] = useState(0)
   const [payNow, setPayNow] = useState(false)
+  const isFree = batchDetail?.fee?.amount === 0
 
   const variant = batchDetail?.isSelfLearning
     ? BatchType.SELF_LEARNING
@@ -66,7 +67,7 @@ const CheckoutCard = ({
     refetch: refetchCreateOrder,
   } = useCreateOrder({
     orderData: orderPayload,
-    enabled: payNow && batchDetail?.fee?.amount > 0,
+    enabled: payNow && !isFree,
   })
 
   // const { data: enrollNow} = useEnrollStudent({batchId: batchDetail?._id})
