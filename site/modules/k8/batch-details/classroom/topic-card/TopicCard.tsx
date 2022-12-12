@@ -3,7 +3,7 @@ import Image from 'next/image'
 import style from './TopicCard.module.css'
 import RightArrow from '@assets/images/right-arrow.svg'
 import { BatchType } from '@lib/hooks/batches/useBatches'
-import { getCartColorByName } from '@lib/colors'
+import { getCardColorByName } from '@lib/colors'
 import { Topics } from '@lib/hooks/batches/useBatchTopics'
 
 const TopicCard = ({
@@ -28,7 +28,7 @@ const TopicCard = ({
             <div
               className="px-6 h-full flex items-center justify-center rounded-l-lg"
               style={{
-                background: getCartColorByName(topicData?.name as string),
+                background: getCardColorByName(topicData?.name as string),
               }}
             >
               <Typography variant="heading3" weight={700}>

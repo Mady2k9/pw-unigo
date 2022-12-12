@@ -18,7 +18,7 @@ const TestimonialCard = ({ testimonialData }: { testimonialData: any }) => {
           alt="avatar"
           className="absolute h-[68px] md:h-[77px] w-[68px] md:w-[77px]  rounded-full -top-5"
         />
-        <div className="flex flex-col gap-1 ml-[100px] max-w-full">
+        <div className="flex flex-col gap-1 ml-[85px] max-w-full">
           <div className="">
             <Typography variant="regular" weight={700}>
               <span className="truncate">{testimonialData.name}</span>
