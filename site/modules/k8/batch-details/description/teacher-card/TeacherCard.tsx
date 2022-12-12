@@ -24,7 +24,7 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
   return (
     <>
       <div
-        className="animated fadeIn duration-200"
+        className="animated fadeIn duration-200 cursor-pointer"
         onClick={() => setModalOpen(true)}
       >
         <div className="relative h-[136px] w-[157px] mx-auto">
@@ -52,7 +52,7 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
                 {meta}
               </div>
             ))}
-            <ArrowSmallRightIcon className={`w-4 text-[#6B4FE2]`} />
+            <ArrowSmallRightIcon className={`w-4 text-[#6B4FE2] font-bold`} />
           </div>
         </div>
       </div>
