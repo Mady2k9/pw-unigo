@@ -1,0 +1,17 @@
+.quoteContainer {
+  background-image: url('../../../../../assets/images/quote-bg.svg');
+  background-position: center;
+  background-size: cover;
+  padding: 16px 24px;
+}
+
+.rightDiv::-webkit-scrollbar {
+  width: 4px;
+}
+.rightDiv::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.rightDiv::-webkit-scrollbar-thumb {
+  background: #7b6fe2;
+  border-radius: 5px;
+}

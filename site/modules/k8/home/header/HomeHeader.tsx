@@ -12,7 +12,7 @@ const HomeHeader = () => {
       <div className={'flex relative'}>
         <div className={s.username}>
           <Typography variant={'heading2'} weight={700}>
-            Hello, {getFullName(user)}
+            Hello! {getFullName(user)}
           </Typography>
         </div>
         <div className={'absolute -right-10 -bottom-5'}>

@@ -6,5 +6,5 @@
 }
 
 .lectureContainer {
-  @apply grid  gap-5;
+  @apply grid gap-5;
 }
