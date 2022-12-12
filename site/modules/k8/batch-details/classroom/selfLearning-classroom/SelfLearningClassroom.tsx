@@ -51,7 +51,12 @@ const SelfLearningClassroom = ({
 
   const ItemsWrapper = useMemo(() => {
     if (isLoading) return <LoadingSection />
-    if (data.data.length === 0) return <NoData />
+    if (data.data.length === 0)
+      return (
+        <div className="flex items-center justify-center">
+          <NoData />
+        </div>
+      )
     return (
       <section className="my-4 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
@@ -92,7 +97,7 @@ const SelfLearningClassroom = ({
   }
 
   return (
-    <Container className="flex flex-col gap-4">
+    <Container className="flex flex-col gap-4 h-full">
       <div>
         <Tabs
           items={subjects}
