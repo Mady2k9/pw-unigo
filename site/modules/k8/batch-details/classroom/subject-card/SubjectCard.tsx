@@ -20,7 +20,7 @@ const SubjectCard = ({
         className="min-w-[96px] w-full flex flex-col items-center justify-center md:justify-start md:flex-row gap-4 md:gap-3 py-1 md:py-3 md:px-2.5 animated fadeIn duration-200"
         onClick={handleClick}
       >
-        <div className="h-[55px] w-[55px] relative">
+        <div className="h-[40px] w-[40px] relative">
           <Image
             src={subject?.imageId?.baseUrl + subject?.imageId?.key}
             alt="subject_logo"

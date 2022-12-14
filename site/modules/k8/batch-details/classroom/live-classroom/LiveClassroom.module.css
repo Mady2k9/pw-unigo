@@ -1,5 +1,5 @@
 .liveBatchCardContainer {
-  @apply flex items-center mt-2 md:grid md:grid-cols-4 gap-4 md:gap-5;
+  @apply flex items-center mt-2 md:grid md:grid-cols-3 gap-4 md:gap-5;
 }
 
 .liveBatchCardContainer::-webkit-scrollbar {
