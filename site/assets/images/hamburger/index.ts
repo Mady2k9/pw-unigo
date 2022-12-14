@@ -1,0 +1,5 @@
+export { default as Home } from './Home'
+export { default as Batches } from './Batches'
+export { default as ContactUs } from './ContactUs'
+export { default as AboutUs } from './AboutUs'
+export { default as TermsAndCondition } from './TermsAndCondition'

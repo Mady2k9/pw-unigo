@@ -1,33 +1,16 @@
 import { Layout } from '@components/common'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { termsAndConditionsFetcher } from '@lib/api/fetchers/public-fetchers'
-import { Container, Typography } from '@components/ui'
+import { Container, LoadingSection, Typography } from '@components/ui'
+import useTermsAndConditions from '@lib/hooks/public/useTermsAndConditions'
 
-export async function getStaticProps({}: GetStaticPropsContext) {
-  let content = ''
-  try {
-    const response = await termsAndConditionsFetcher()
-    if (response?.data?.[0]) {
-      content = response?.data?.[0]?.description
-    }
-  } catch (e) {
-    console.log(e)
-  }
+export default function TermsAndConditions() {
+  const { data, isLoading } = useTermsAndConditions()
+  if (isLoading) return <LoadingSection />
 
-  return {
-    props: {
-      content,
-    },
-    revalidate: 60 * 60 * 24 * 30,
-  }
-}
-
-export default function TermsAndConditions({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container>
-      <Typography html={content} />
+      <Typography html={data[0]?.description} />
     </Container>
   )
 }
