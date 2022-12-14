@@ -94,7 +94,7 @@ const SelfLearningClassroom = ({
   }
 
   return (
-    <Container className="flex flex-col gap-4 h-full">
+    <Container className="flex flex-col gap-4">
       <div>
         <Tabs
           items={subjects}

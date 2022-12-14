@@ -20,7 +20,7 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
               endDate={batchDetails?.endDate}
             />
           )}
-        <Meta metaData={batchDetails?.meta} />
+        <Meta batchDetail={batchDetails} />
         <Faculties batchSlug={batchDetails?.slug} />
         <DemoVideos batchSlug={batchDetails?.slug} />
 

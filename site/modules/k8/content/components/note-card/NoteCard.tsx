@@ -20,8 +20,8 @@ const NoteCard = ({ note }: { note: DppNotes }) => {
         <span>{startTime}</span>
       </div>
       <div>
-        <Image src={Download} alt="download_logo" />
         <Image src={PDF} alt="pdf_logo" />
+        <Image src={Download} alt="download_logo" />
       </div>
     </div>
   )

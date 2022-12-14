@@ -20,6 +20,12 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import { useRouter } from 'next/router'
 import useApplyCoupon from '@lib/hooks/orders/useApplyCoupon'
 
+interface CheckoutDetails {
+  discount: number
+  amount: number
+  total: number
+}
+
 const CheckoutCard = ({
   batchDetail,
   payload,
@@ -32,6 +38,11 @@ const CheckoutCard = ({
   planId?: string
 }) => {
   const { user } = useUI()
+  const [checkoutDetails, setCheckotDetails] = useState<CheckoutDetails>({
+    discount: 0,
+    amount: 0,
+    total: 0,
+  })
   const [checked, setChecked] = useState(false)
   const [coupon, setCoupon] = useState('')
   // const [walletPts, setWalletPts] = useState(0)
@@ -42,6 +53,23 @@ const CheckoutCard = ({
   const variant = batchDetail?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
+
+  useEffect(() => {
+    if (variant === BatchType.SELF_LEARNING) {
+      activePlan &&
+        setCheckotDetails({
+          discount: activePlan?.discount as number,
+          amount: activePlan?.price as number,
+          total: activePlan?.total as number,
+        })
+    } else {
+      setCheckotDetails({
+        discount: batchDetail?.fee?.discount as number,
+        amount: batchDetail?.fee?.amount as number,
+        total: batchDetail?.fee?.total as number,
+      })
+    }
+  }, [batchDetail, activePlan])
 
   const rewardPoints = Math.min(
     +user?.profileId?.wallet,
@@ -117,15 +145,13 @@ const CheckoutCard = ({
   return (
     <Card>
       <div className={style.cardContainer}>
-        {((variant === BatchType.LIVE && batchDetail?.fee?.amount > 0) ||
-          (variant === BatchType.SELF_LEARNING &&
-            activePlan &&
-            +activePlan?.total > 0)) && (
+        {checkoutDetails.amount > 0 && (
           <div className={style.upperContainer}>
             <Typography variant="heading4" weight={700}>
               Offers & Coupons
             </Typography>
-            <div>
+
+            {rewardPoints > 0 && (
               <div className={style.rewardContainer}>
                 <div className="flex items-center">
                   <Checkbox
@@ -146,7 +172,7 @@ const CheckoutCard = ({
                   </span>
                 </Typography>
               </div>
-            </div>
+            )}
             <div className={style.applyCouponContainer}>
               <TextInput
                 action={{
@@ -168,29 +194,24 @@ const CheckoutCard = ({
             Breakups
           </Typography>
           <div className={style.breakupsContainer}>
-            {batchDetail?.fee?.amount > 0 && (
+            {checkoutDetails.amount > 0 && (
               <div>
                 <Typography variant="small" weight={500}>
                   Sub Total
                 </Typography>
                 <Typography variant="small" weight={600}>
-                  {variant === BatchType.LIVE
-                    ? priceDisplay(batchDetail?.fee?.amount)
-                    : priceDisplay(activePlan?.price)}
+                  {priceDisplay(checkoutDetails.amount)}
                 </Typography>
               </div>
             )}
-            {batchDetail?.fee.amount > 0 && batchDetail?.fee?.discount > 0 && (
+            {checkoutDetails.amount > 0 && checkoutDetails.discount > 0 && (
               <div>
                 <Typography variant="small" weight={500}>
                   Discount
                 </Typography>
                 <Typography variant="small" weight={500}>
                   <span className="text-[#3AA2AB]">
-                    {variant === BatchType.LIVE
-                      ? batchDetail?.fee?.discount
-                      : activePlan?.discount}
-                    %
+                    {checkoutDetails.discount.toFixed()}%
                   </span>
                 </Typography>
               </div>
@@ -200,9 +221,7 @@ const CheckoutCard = ({
                 Sub Total
               </Typography>
               <Typography variant="subHeading" weight={600}>
-                {variant === BatchType.LIVE
-                  ? priceDisplay(totalAmount)
-                  : priceDisplay(activePlan?.total)}
+                {priceDisplay(checkoutDetails.total)}
               </Typography>
             </div>
           </div>
@@ -212,10 +231,7 @@ const CheckoutCard = ({
           onClick={pay}
           disabled={variant === BatchType.SELF_LEARNING && !activePlan}
         >
-          {batchDetail?.fee.amount === 0 ||
-          (activePlan && +activePlan.total === 0)
-            ? 'Enroll'
-            : 'Pay Now'}
+          {checkoutDetails.amount === 0 ? 'Enroll' : 'Pay Now'}
         </Button>
       </div>
     </Card>

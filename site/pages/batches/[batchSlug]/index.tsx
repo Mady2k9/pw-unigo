@@ -88,7 +88,7 @@ const Wrapper = ({ batchDetails }: { batchDetails: any }) => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 min-h-full">
       <TabHeader
         title={batchDetails?.name}
         variant={tabHeaderVariant.round}
