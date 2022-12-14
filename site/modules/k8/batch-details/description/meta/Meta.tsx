@@ -13,11 +13,11 @@ const Meta = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
       <Typography variant="subHeading" weight={700}>
         This {variant === BatchType.SELF_LEARNING ? 'Course' : 'Batch'} Includes
       </Typography>
-      <div className="flex items-center">
+      <div className="flex items-center flex-wrap ">
         {meta.slice(0, 6).map((m: any, idx: number) => (
           <div
             key={idx}
-            className={`flex flex-col items-center ${
+            className={`flex inline-flex flex-col items-center mb-4 ${
               idx < meta.length - 1 && 'border-r'
             } ${idx !== 0 && 'pl-6'} ${idx !== meta.length - 1 && 'pr-6'}`}
           >
