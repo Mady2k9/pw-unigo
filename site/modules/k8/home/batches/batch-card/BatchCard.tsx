@@ -4,7 +4,6 @@ import style from './BatchCard.module.css'
 import live from '@assets/images/live.svg'
 import EBook from '@assets/images/E-Book.svg'
 import calendar from '@assets/images/calendar.svg'
-import student from '@assets/images/student.svg'
 import teacher from '@assets/images/teacher.svg'
 import meta from '@assets/images/meta.svg'
 import Image from 'next/image'
@@ -113,7 +112,7 @@ const K8Card = ({
               <span className="text-white font-bold text-[12px] uppercase bg-[#2E2676] p-1 px-1.5 rounded-md w-fit">
                 What you get
               </span>
-              <Typography html={batchData?.description} />
+              <Typography html={batchData?.byName} />
             </div>
             <div className="h-[112px] w-[112px] relative">
               <Image

@@ -1,6 +1,5 @@
 import TeacherPlaceholder from '@assets/images/default_teacher.svg'
 import Image from 'next/image'
-import { ArrowSmallRightIcon } from '@heroicons/react/24/outline'
 import { Typography } from '@components/ui'
 import { useState } from 'react'
 import TeacherModal from '../teacher-modal/TeacherModal'
@@ -52,7 +51,6 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
                 {meta}
               </div>
             ))}
-            <ArrowSmallRightIcon className={`w-4 text-[#6B4FE2] font-bold`} />
           </div>
         </div>
       </div>

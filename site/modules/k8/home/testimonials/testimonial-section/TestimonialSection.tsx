@@ -17,14 +17,14 @@ const TestimonialSection = () => {
         Parent's Voice
       </Typography>
 
-      <div className={style.cardContainer}>
+      {/* <div className={style.cardContainer}>
         {testimonialsData &&
           testimonialsData.map((data: any) => (
             <div key={data._id} className="min-w-[287px]">
               <TestimonialCard testimonialData={data} />
             </div>
           ))}
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import Calendar from '@assets/images/calendar.png'
+import Calendar from '@assets/images/calender.svg'
 import { Typography } from '@components/ui'
 import Image from 'next/image'
 

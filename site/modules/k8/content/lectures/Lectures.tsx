@@ -65,16 +65,18 @@ const Lectures = ({ type }: { type: ContentType }) => {
     <Container className="flex flex-col gap-4 mb-6">
       {variant === BatchType.SELF_LEARNING && (
         <div
-          className="relative text-gray-400 flex space-x-2 border rounded-md border-gray-200 px-4 py-2 shadow w-[400px] max-w-full"
+          className="relative text-gray-400 flex items-center justify-between space-x-2 border rounded-md border-gray-200 px-4 py-2 shadow w-[400px] max-w-full"
           onClick={() => {
             setEnableSearch(true)
           }}
         >
+          <Typography variant="small" weight={500}>
+            Search Lectures
+          </Typography>
           <MagnifyingGlassIcon
-            className="pointer-events-none h-5 w-5 "
+            className="pointer-events-none h-5 w-5 text-gray-900"
             aria-hidden="true"
           />
-          <Typography>Search for Lectures</Typography>
         </div>
       )}
       {enableSearch ? (

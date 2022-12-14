@@ -1,13 +1,11 @@
 import { LayoutNoContentPadding } from '@components/common/Layout'
 import { LoadingSection, TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
-import {
-  ContentType,
-} from '@lib/hooks/batches/useBatchContents'
+import { ContentType } from '@lib/hooks/batches/useBatchContents'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import {  useState } from 'react'
+import { useState } from 'react'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import SuspenseSection from '@components/common/SuspenseSection'
 
@@ -105,7 +103,7 @@ const ContentDetails = ({ batch, title }: { batch: any; title: string }) => {
     <div className="flex flex-col gap-6 min-h-[100%]">
       <TabHeader
         title={title}
-        dynamicColor={true}
+        dynamicColor={variant === BatchType.SELF_LEARNING && true}
         items={TAB_ITEMS[variant].items}
         currentIndex={currentIndex}
         onChange={(index: number) => setCurrentIndex(index)}

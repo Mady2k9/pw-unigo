@@ -13,7 +13,7 @@ import useBatchTopics, { Topics } from '@lib/hooks/batches/useBatchTopics'
 import React, { useMemo } from 'react'
 import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 import Image from 'next/image'
-import {getImageUrlFromObjectImageId} from "@lib/utilities";
+import { getImageUrlFromObjectImageId } from '@lib/utilities'
 
 const SelfLearningClassroom = ({
   batchDetails,
@@ -50,7 +50,7 @@ const SelfLearningClassroom = ({
     if (isLoading) return <LoadingSection />
     if (data.data.length === 0)
       return (
-        <div className="flex items-center justify-center">
+        <div>
           <NoData />
         </div>
       )

@@ -17,10 +17,13 @@ const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
     query: {
       batchAmount: batchDetail?.fee?.amount,
     },
+    enabled: !isFree,
   })
 
   const { data: activePaymentKey, isLoading: paymentKeyLoading } =
-    useActivePaymentKey({})
+    useActivePaymentKey({
+      enabled: !isFree,
+    })
 
   let paymentSource = ''
   for (let source in activePaymentKey) {
