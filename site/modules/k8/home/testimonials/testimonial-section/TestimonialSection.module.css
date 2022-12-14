@@ -1,5 +1,5 @@
 .cardContainer {
-  @apply flex items-center gap-5 overflow-x-auto px-2 py-4;
+  @apply flex lg:items-center gap-10 lg:gap-5 overflow-x-auto px-2 py-6 flex-col lg:flex-row;
 }
 
 .cardContainer::-webkit-scrollbar {
