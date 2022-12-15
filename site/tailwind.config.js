@@ -24,9 +24,11 @@ module.exports = {
             },
             colors: {
                 answered: '#58AD32',
+                bookmarked: '#5029A0',
+                noted: '#666666',
                 notAnswered: '#CF5023',
                 markedForReview: '#5029A0',
-                notVisited: '#DADADA',
+                notVisited: '#aaaaaa',
                 indigo: {
                     50: '#D8CFFD',
                     100: '#CCC1FC',

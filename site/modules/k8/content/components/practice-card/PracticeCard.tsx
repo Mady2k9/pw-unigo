@@ -6,6 +6,8 @@ import {DppNotes} from '@lib/hooks/batches/useBatchContents'
 import PracticeIcon from '@assets/images/practice-card-icon.svg'
 import AssignmentIcon from '@assets/images/assignment-card-icon.svg'
 import {useRouter} from 'next/router'
+import useGetTestStatus from "@lib/hooks/test-engine/useGetTestStatus";
+import {TestStatuses} from "@components/test-engine";
 
 const PracticeCard = ({
                           variant,
@@ -16,8 +18,24 @@ const PracticeCard = ({
 }) => {
     const router = useRouter()
 
-    const redirectToExercise = () => {
-        router.push('/practice/' + data._id);
+    const TestId = '637226cbd080bb02402a68bf';
+    const {data: isLoading, refetch} = useGetTestStatus(TestId);
+    const redirectToExercise = async () => {
+        if (isLoading) {
+            return;
+        }
+        try {
+            const data = await refetch({testId: TestId});
+            const status: TestStatuses = data?.data?.data?.data?.testStatus;
+            if ([TestStatuses.Finished, TestStatuses.Submitted].includes(status)) {
+                return router.push('/result/' + data._id);
+            } else if (status) {
+                return router.push('/practice/' + data._id);
+            }
+        } catch (e) {
+
+        }
+
     }
 
     return (
