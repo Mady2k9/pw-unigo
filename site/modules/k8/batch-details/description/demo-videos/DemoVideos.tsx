@@ -1,6 +1,6 @@
 import { LoadingSection, Typography } from '@components/ui'
 import useBatchDemoVideos from '@lib/hooks/batches/useBatchDemoVideos'
-import VideoCard from '@modules/k8/content/components/video-card/VideoCard'
+import VideoCard from '@modules/../../../../../shared/components/core/contents/video-card/VideoCard'
 import style from './DemoVideos.module.css'
 // import { DemoVideos } from '@lib/hooks/batches/useBatchDemoVideos'
 

@@ -1,6 +1,6 @@
 import { Container, LoadingSection, NoData } from '@components/ui'
 import style from './Practice.module.css'
-import PracticeCard from '../components/practice-card/PracticeCard'
+import PracticeCard from '../../../../shared/components/core/contents/practice-card/PracticeCard'
 import { PracticeCardType } from '@modules/k8/constants'
 import useBatchContents, {
   ContentType,
