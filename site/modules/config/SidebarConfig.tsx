@@ -1,39 +1,42 @@
 import {
-    AcademicCapIcon,
-    HomeIcon
-} from "@heroicons/react/24/outline";
-import React from "react";
+  AboutUs,
+  ContactUs,
+  Home,
+  TermsAndCondition,
+} from '@assets/images/hamburger'
+import { AcademicCapIcon, HomeIcon } from '@heroicons/react/24/outline'
+import React from 'react'
 
-export const ShowCohortOn = '/';
+export const ShowCohortOn = '/'
 const SidebarConfig = [
-    [
-        {
-            name: 'Home',
-            icon: <HomeIcon className={'h-5 font-bold'}/>,
-            pattern: /\/*/,
-            route: '/',
-        },
-        {
-            name: 'About Us',
-            icon: <AcademicCapIcon className={'h-5 font-bold'}/>,
+  [
+    {
+      name: 'Home',
+      icon: <Home />,
+      pattern: /\/*/,
+      route: '/',
+    },
+    {
+      name: 'About Us',
+      icon: <AboutUs />,
 
-            pattern: /\/about-us/,
-            route: '/about-us',
-        },
-        {
-            name: 'Contact Us',
-            icon: <AcademicCapIcon className={'h-5 font-bold'}/>,
+      pattern: /\/about-us/,
+      route: '/about-us',
+    },
+    {
+      name: 'Contact Us',
+      icon: <ContactUs />,
 
-            pattern: /\/contact-us/,
-            route: '/contact-us',
-        },
-        {
-            name: 'Terms & Conditions',
-            icon: <AcademicCapIcon className={'h-5 font-bold'}/>,
+      pattern: /\/contact-us/,
+      route: '/contact-us',
+    },
+    {
+      name: 'Terms & Conditions',
+      icon: <TermsAndCondition />,
 
-            pattern: /\/terms-and-conditions/,
-            route: '/terms-and-conditions',
-        },
-    ],
-];
+      pattern: /\/terms-and-conditions/,
+      route: '/terms-and-conditions',
+    },
+  ],
+]
 export default SidebarConfig
