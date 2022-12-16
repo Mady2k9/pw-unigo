@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Subject from '@assets/images/subject.svg'
 import { Card, Typography } from '@components/ui'
 import { useRouter } from 'next/router'
 import { SubjectMode } from '@modules/k8/constants'
