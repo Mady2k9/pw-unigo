@@ -1,6 +1,6 @@
 import { Container, LoadingSection, NoData, Typography } from '@components/ui'
 import style from './Lecture.module.css'
-import VideoCard from '../../../../shared/components/core/contents/video-card/VideoCard'
+import VideoCard from '@components/contents/video-card/VideoCard'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import { useRouter } from 'next/router'
 import useBatchContents, {

@@ -1,7 +1,7 @@
 import {Container, LoadingSection, NoData} from '@components/ui'
 import style from './Notes.module.css'
 import React from 'react'
-import NoteCard from '../../../../shared/components/core/contents/note-card/NoteCard'
+import NoteCard from '@components/contents/note-card/NoteCard'
 import useBatchContents, {ContentType} from '@lib/hooks/batches/useBatchContents'
 import {useRouter} from "next/router";
 
