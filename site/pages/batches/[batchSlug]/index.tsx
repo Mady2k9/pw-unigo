@@ -1,4 +1,3 @@
-import { LayoutNoContentPadding } from '@components/common/Layout'
 import { LoadingSection, TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
 import useBatchDetails, {

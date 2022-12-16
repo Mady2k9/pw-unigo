@@ -34,6 +34,7 @@ importers:
       '@types/node': ^18.0.3
       '@types/react': ^18.0.20
       '@types/react-dom': ^18.0.6
+      '@types/react-pdf': ^6.2.0
       autoprefixer: ^10.4.2
       axios: ^1.1.3
       body-scroll-lock: ^4.0.0-beta.0
@@ -64,6 +65,7 @@ importers:
       react-intersection-observer: ^9.4.0
       react-merge-refs: ^1.1.0
       react-otp-input: ^2.4.0
+      react-pdf: ^6.2.0
       react-use-measure: ^2.1.1
       react-uuid: ^1.0.2
       tabbable: ^5.2.1
@@ -103,6 +105,7 @@ importers:
       react-intersection-observer: 9.4.0_react@18.2.0
       react-merge-refs: 1.1.0
       react-otp-input: 2.4.0_biqbaboplfbrettd7655fr4n2y
+      react-pdf: 6.2.0_biqbaboplfbrettd7655fr4n2y
       react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
       react-uuid: 1.0.3
       tabbable: 5.3.3
@@ -117,6 +120,7 @@ importers:
       '@types/node': 18.7.18
       '@types/react': 18.0.20
       '@types/react-dom': 18.0.6
+      '@types/react-pdf': 6.2.0
       eslint: 8.23.1
       eslint-config-next: 12.3.0_4brgkhw6cq4me3drk3kxrpb2mm
       eslint-config-prettier: 8.5.0_eslint@8.23.1
@@ -1629,7 +1633,6 @@ packages:
 
   /dommatrix/1.0.3:
     resolution: {integrity: sha512-l32Xp/TLgWb8ReqbVJAFIvXmY7go4nTxxlWiAFyhoQw9RKEOHBZNnyGvJWqDVSPmq3Y9HlM4npqF/T6VMOXhww==}
-    dev: true
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -2611,15 +2614,12 @@ packages:
 
   /make-cancellable-promise/1.1.0:
     resolution: {integrity: sha512-X5Opjm2xcZsOLuJ+Bnhb4t5yfu4ehlA3OKEYLtqUchgVzL/QaqW373ZUVxVHKwvJ38cmYuR4rAHD2yUvAIkTPA==}
-    dev: true
 
   /make-event-props/1.3.0:
     resolution: {integrity: sha512-oWiDZMcVB1/A487251hEWza1xzgCzl6MXxe9aF24l5Bt9N9UEbqTqKumEfuuLhmlhRZYnc+suVvW4vUs8bwO7Q==}
-    dev: true
 
   /merge-refs/1.0.0:
     resolution: {integrity: sha512-WZ4S5wqD9FCR9hxkLgvcHJCBxzXzy3VVE6p8W2OzxRzB+hLRlcadGE2bW9xp2KSzk10rvp4y+pwwKO6JQVguMg==}
-    dev: true
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -2776,7 +2776,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -2939,7 +2938,6 @@ packages:
     dependencies:
       dommatrix: 1.0.3
       web-streams-polyfill: 3.2.1
-    dev: true
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -3384,7 +3382,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
@@ -3447,7 +3444,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-merge-refs/1.1.0:
     resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
@@ -3485,6 +3481,31 @@ packages:
     transitivePeerDependencies:
       - worker-loader
     dev: true
+
+  /react-pdf/6.2.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-FKUoUKKxoIipIbRHzXQZui1j+f1QcEuFuVL03qI1GFDm0jC4eUrMyOCpPR98lY7+rsCswPn1rjfKd+8k9PrZmQ==}
+    peerDependencies:
+      file-loader: ^6.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      file-loader:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.19.0
+      clsx: 1.2.1
+      make-cancellable-promise: 1.1.0
+      make-event-props: 1.3.0
+      merge-refs: 1.0.0
+      pdfjs-dist: 2.16.105
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tiny-invariant: 1.3.1
+      tiny-warning: 1.0.3
+    transitivePeerDependencies:
+      - worker-loader
+    dev: false
 
   /react-remove-scroll-bar/2.3.3_w5j4k42lgipnm43s3brx6h3c34:
     resolution: {integrity: sha512-i9GMNWwpz8XpUpQ6QlevUtFjHGqnPG4Hxs+wlIJntu/xcsZVEpJcIV71K3ZkqNy2q3GfgvkD7y6t/Sv8ofYSbw==}
@@ -3903,11 +3924,9 @@ packages:
 
   /tiny-invariant/1.3.1:
     resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
-    dev: true
 
   /tiny-warning/1.0.3:
     resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
-    dev: true
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -4190,7 +4209,6 @@ packages:
   /web-streams-polyfill/3.2.1:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
-    dev: true
 
   /webpack-bundle-analyzer/4.3.0:
     resolution: {integrity: sha512-J3TPm54bPARx6QG8z4cKBszahnUglcv70+N+8gUqv2I5KOFHJbzBiLx+pAp606so0X004fxM7hqRu10MLjJifA==}
