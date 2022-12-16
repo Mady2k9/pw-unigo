@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react'
 import { isBefore, isAfter } from 'date-fns'
 import { ClassMode } from '@modules/k8/constants'
 import useBatchDetails, { Subject } from '@lib/hooks/batches/useBatchDetails'
+import {getImageUrlFromObjectImageId} from "@lib/utilities";
 
 const WeeklySchedule = () => {
   const router = useRouter()
@@ -42,7 +43,7 @@ const WeeklySchedule = () => {
       <div className="flex items-center justify-center md:justify-start gap-4">
         <div className="relative hidden md:block h-[71px] w-[71px]">
           <Image
-            src={subjectName?.imageId?.baseUrl + subjectName?.imageId?.key}
+            src={getImageUrlFromObjectImageId(subjectName?.imageId)}
             alt="icon"
             layout="fill"
           />
