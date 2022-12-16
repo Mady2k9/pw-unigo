@@ -21,6 +21,8 @@ const Lectures = ({ type }: { type: ContentType }) => {
     batchSlug: batchSlug as string,
   })
 
+  const isPurchased = batchDetails?.isPurchased
+
   const variant = batchDetails?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
@@ -60,6 +62,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
               slug={video?.slug}
               date={video?.date}
               image={video?.videoDetails?.image}
+              isLocked={!isPurchased}
             />
           ))}
       </div>
