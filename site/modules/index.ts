@@ -1,1 +1,1 @@
-export {default as AuthModule} from './auth';
+export { default as AuthModule } from './auth'

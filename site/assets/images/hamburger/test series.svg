@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="test_series" data-name="test series" transform="translate(15605 -2058)">
+    <rect id="Rectangle_7591" data-name="Rectangle 7591" width="24" height="24" transform="translate(-15605 2058)" fill="none"/>
+    <g id="ebook" transform="translate(-15599.574 2061.031)">
+      <g id="Group_718" data-name="Group 718" transform="translate(0)">
+        <g id="Group_717" data-name="Group 717">
+          <path id="Path_944" data-name="Path 944" d="M153.185,314.823a.7.7,0,0,0-.7-.7H148.7a.7.7,0,1,0,0,1.4h3.784A.7.7,0,0,0,153.185,314.823Z" transform="translate(-145.206 -303.116)" fill="#8b90d4"/>
+          <circle id="Ellipse_86" data-name="Ellipse 86" cx="0.701" cy="0.701" r="0.701" transform="translate(5.874 14.054)" fill="#8b90d4"/>
+          <path id="Path_945" data-name="Path 945" d="M80.449,12.337a.7.7,0,0,0,.7-.7V2.8a2.8,2.8,0,0,0-2.8-2.8H70.8A2.8,2.8,0,0,0,68,2.8V15.136a2.8,2.8,0,0,0,2.8,2.8h7.554a2.8,2.8,0,0,0,2.8-2.8.7.7,0,1,0-1.4,0,1.4,1.4,0,0,1-1.4,1.4H70.8a1.4,1.4,0,0,1-1.4-1.4V2.8a1.4,1.4,0,0,1,1.4-1.4h7.554a1.4,1.4,0,0,1,1.4,1.4v8.833A.7.7,0,0,0,80.449,12.337Z" transform="translate(-68 0)" fill="#8b90d4"/>
+          <path id="Path_946" data-name="Path 946" d="M155.543,236.823a.7.7,0,0,0-.7-.7H148.7a.7.7,0,0,0,0,1.4h6.146A.7.7,0,0,0,155.543,236.823Z" transform="translate(-145.197 -227.849)" fill="#8b90d4"/>
+          <path id="Path_947" data-name="Path 947" d="M154.844,80.122H148.7a.7.7,0,0,0,0,1.4h6.146a.7.7,0,0,0,0-1.4Z" transform="translate(-145.197 -77.315)" fill="#8b90d4"/>
+          <path id="Path_948" data-name="Path 948" d="M154.844,158.122H148.7a.7.7,0,0,0,0,1.4h6.146a.7.7,0,0,0,0-1.4Z" transform="translate(-145.197 -152.582)" fill="#8b90d4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

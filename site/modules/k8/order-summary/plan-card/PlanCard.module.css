@@ -10,7 +10,7 @@
 .recommendedChip {
   background: #704eea;
   border-radius: 10px;
-  @apply absolute -top-6 px-3 py-1;
+  @apply absolute -top-4 px-3 py-1;
 }
 
 .planContainer {
@@ -34,7 +34,7 @@
   @apply flex items-center gap-2;
 }
 
-.priceContainer div:last-child {
+.priceContainer .discountContainer {
   background-color: rgba(22, 163, 51, 0.1);
   width: fit-content;
   border-radius: 11px;

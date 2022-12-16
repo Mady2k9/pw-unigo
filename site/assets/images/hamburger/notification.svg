@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="notification" transform="translate(15605 -2023)">
+    <rect id="Rectangle_7590" data-name="Rectangle 7590" width="24" height="24" transform="translate(-15605 2023)" fill="none"/>
+    <path id="notification-2" data-name="notification" d="M8.64,10.92A4.92,4.92,0,0,1,13.56,6H15.2a4.92,4.92,0,0,1,4.92,4.92v6.22l1.4,1.4a.82.82,0,0,1-.58,1.4H7.82a.82.82,0,0,1-.58-1.4l1.4-1.4v-.48a.82.82,0,1,1,1.64,0v.82a.82.82,0,0,1-.24.58l-.24.24h9.16l-.24-.24a.82.82,0,0,1-.24-.58V10.92A3.28,3.28,0,0,0,15.2,7.64H13.56a3.28,3.28,0,0,0-3.28,3.28v.82a.82.82,0,1,1-1.64,0Zm1.64,3.28a.82.82,0,1,1-.82-.82A.82.82,0,0,1,10.28,14.2Zm4.1,8.2a.82.82,0,1,0-.82-.82A.82.82,0,0,0,14.38,22.4Z" transform="translate(-15607.38 2020.8)" fill="#8b90d4"/>
+  </g>
+</svg>

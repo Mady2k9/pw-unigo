@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 RUN npm install -g pnpm
 
 EXPOSE 3000

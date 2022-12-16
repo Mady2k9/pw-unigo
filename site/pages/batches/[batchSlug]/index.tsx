@@ -1,5 +1,4 @@
-import { LayoutNoContentPadding } from '@components/common/Layout'
-import {LoadingSection, TabHeader} from '@components/ui'
+import { LoadingSection, TabHeader } from '@components/ui'
 import { TabHeaderVariant } from '@components/ui/TabHeader/TabHeader'
 import useBatchDetails, {
   BatchDetailModel,
@@ -8,6 +7,7 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { Suspense, useState } from 'react'
+import { Layout } from '@components/common'
 
 const TAB_ITEMS = {
   selfLearning: {
@@ -52,10 +52,10 @@ const Announcement = dynamic(
   import('@modules/k8/batch-details/announcement/Announcement')
 )
 
-const Wrapper = ({batchDetails}: {batchDetails: any}) => {
+const Wrapper = ({ batchDetails }: { batchDetails: any }) => {
   const variant = batchDetails.isSelfLearning
-      ? BatchType.SELF_LEARNING
-      : BatchType.LIVE
+    ? BatchType.SELF_LEARNING
+    : BatchType.LIVE
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const tabHeaderVariant = TabHeaderVariant
@@ -64,23 +64,23 @@ const Wrapper = ({batchDetails}: {batchDetails: any}) => {
     switch (currentIndex) {
       case 0:
         return (
-            <Suspense fallback="loading....">
-              <Description batchDetails={batchDetails} />
-            </Suspense>
+          <Suspense fallback="loading....">
+            <Description batchDetails={batchDetails} />
+          </Suspense>
         )
 
       case 1:
         return (
-            <Suspense fallback="loading....">
-              <Classroom batchDetails={batchDetails} />
-            </Suspense>
+          <Suspense fallback="loading....">
+            <Classroom batchDetails={batchDetails} />
+          </Suspense>
         )
 
       case 2:
         return (
-            <Suspense fallback="loading....">
-              <Announcement />
-            </Suspense>
+          <Suspense fallback="loading....">
+            <Announcement />
+          </Suspense>
         )
       default:
         return <></>
@@ -88,16 +88,18 @@ const Wrapper = ({batchDetails}: {batchDetails: any}) => {
   }
 
   return (
-      <div className="flex flex-col gap-4">
+    <Layout isProtected={true} variant={'NoPadding'}>
+      <div className="flex flex-col gap-8 min-h-full">
         <TabHeader
-            title={batchDetails?.name}
-            variant={tabHeaderVariant.round}
-            currentIndex={currentIndex}
-            items={TAB_ITEMS[variant].items}
-            onChange={(index: number) => setCurrentIndex(index)}
+          title={batchDetails?.name}
+          variant={tabHeaderVariant.round}
+          currentIndex={currentIndex}
+          items={TAB_ITEMS[variant].items}
+          onChange={(index: number) => setCurrentIndex(index)}
         />
         <div>{renderTabs(batchDetails)}</div>
       </div>
+    </Layout>
   )
 }
 
@@ -109,13 +111,9 @@ const BatchDetails = () => {
     batchSlug: batchSlug as string,
   })
 
+  if (isLoading) return <LoadingSection />
 
-  if(isLoading) return <LoadingSection />
-
-  return  <Wrapper batchDetails={batchDetails} />
-
+  return <Wrapper batchDetails={batchDetails} />
 }
 
 export default BatchDetails
-
-BatchDetails.Layout = LayoutNoContentPadding

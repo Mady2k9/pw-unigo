@@ -1,7 +1,7 @@
 import { FlyingBoy } from '@components/lotties'
 import s from './HomeHeader.module.css'
 import { Typography, useUI } from '@components/ui'
-import { getFullName } from '@lib/user-utility'
+import { getFirstName } from '@lib/user-utility'
 import Image from 'next/image'
 import StarImage from '@assets/images/background/Star.png'
 
@@ -12,7 +12,7 @@ const HomeHeader = () => {
       <div className={'flex relative'}>
         <div className={s.username}>
           <Typography variant={'heading2'} weight={700}>
-            Hello, {getFullName(user)}
+            Hello! {getFirstName(user)}
           </Typography>
         </div>
         <div className={'absolute -right-10 -bottom-5'}>

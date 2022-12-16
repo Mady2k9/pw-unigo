@@ -13,7 +13,7 @@ const MyBatchList = () => {
   if (isLoading) return <LoadingSection />
 
   return data.length > 0 ? (
-    <section className="flex flex-col gap-8 mb-32">
+    <section className="flex flex-col gap-8 mb-10 lg:mb-32">
       <div className="flex items-center gap-3 ">
         <Image src={Verified} alt="verified_logo" />
         <Typography variant="heading3" weight={700}>

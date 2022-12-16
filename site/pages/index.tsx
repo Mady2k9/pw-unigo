@@ -13,7 +13,7 @@ import HomeBackground from '@modules/k8/home/background'
 export default function Home() {
   return (
     <Layout isProtected={true} background={<HomeBackground />}>
-      <Container className="flex flex-col gap-9 md:gap-6">
+      <Container className="flex flex-col gap-9 md:gap-6 overflow-auto">
         <HomeHeader />
         <MyBatchList />
         <BatchList />

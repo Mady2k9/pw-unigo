@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="feeds" transform="translate(15605 -2130)">
+    <rect id="Rectangle_7593" data-name="Rectangle 7593" width="24" height="24" transform="translate(-15605 2130)" fill="none"/>
+    <g id="newspaper" transform="translate(-15601 2134)">
+      <rect id="Rectangle_7599" data-name="Rectangle 7599" width="16" height="16" fill="none"/>
+      <line id="Line_484" data-name="Line 484" x2="5" transform="translate(6 7)" fill="none" stroke="#8b90d4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_485" data-name="Line 485" x2="5" transform="translate(6 9)" fill="none" stroke="#8b90d4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_35038" data-name="Path 35038" d="M17,65a1,1,0,0,0,1-1V56.5a.5.5,0,0,1,.5-.5h10a.5.5,0,0,1,.5.5V64a1,1,0,0,1-1,1Zm0,0a1,1,0,0,1-1-1V58" transform="translate(-15 -52.5)" fill="none" stroke="#8b90d4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
