@@ -157,12 +157,14 @@ const K8Card = ({
                   </Typography>
                 </div>
               )}
-              <div className="flex items-center gap-2">
-                <Image src={meta} alt="" />
-                <Typography variant="tiny" weight={600}>
-                  <span className="text-white line-clamp-1">{metaToMap}</span>
-                </Typography>
-              </div>
+              {metaToMap.length > 0 && (
+                <div className="flex items-center gap-2">
+                  <Image src={meta} alt="" />
+                  <Typography variant="tiny" weight={600}>
+                    <span className="text-white line-clamp-1">{metaToMap}</span>
+                  </Typography>
+                </div>
+              )}
             </div>
             <div className="lg:h-[80px] h-[134px] w-full lg:max-w-[140px]">
               <img
@@ -212,7 +214,7 @@ const K8Card = ({
                   variant === BatchType.LIVE ? 'text-white' : ''
                 }`}
               >
-                ({batchData?.priceLabel})
+                {batchData?.priceLabel}
               </span>
             )}
           </div>

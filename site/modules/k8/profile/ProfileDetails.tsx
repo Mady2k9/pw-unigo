@@ -141,6 +141,7 @@ const ProfileDetails = () => {
           </div>
         </div>
       </div>
+
       {modalState && <EditProfile onClose={() => setModalState(false)} />}
     </>
   )

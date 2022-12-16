@@ -53,7 +53,14 @@ const Lectures = ({ type }: { type: ContentType }) => {
       >
         {data &&
           data.map((video: any) => (
-            <VideoCard key={video._id} videoDetails={video} />
+            <VideoCard
+              key={video._id}
+              name={video?.topic || video?.videoDetails?.name}
+              duration={video?.videoDetails?.duration}
+              slug={video?.slug}
+              date={video?.date}
+              image={video?.videoDetails?.image}
+            />
           ))}
       </div>
     )
