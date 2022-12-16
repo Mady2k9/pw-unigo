@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-    plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/line-clamp'), require('tailwind-scrollbar-hide'), require('@tailwindcss/forms')],
     content: [
         './pages/**/*.{js,ts,jsx,tsx}',
         './modules/**/*.{js,ts,jsx,tsx}',
@@ -23,6 +23,12 @@ module.exports = {
                 sidebar: '280px',
             },
             colors: {
+                answered: '#58AD32',
+                bookmarked: '#5029A0',
+                noted: '#666666',
+                notAnswered: '#CF5023',
+                markedForReview: '#5029A0',
+                notVisited: '#aaaaaa',
                 indigo: {
                     50: '#D8CFFD',
                     100: '#CCC1FC',

@@ -4,7 +4,7 @@ import useBatchContents, {
   DppNotes,
 } from '@lib/hooks/batches/useBatchContents'
 import { PracticeCardType } from '@modules/k8/constants'
-import PracticeCard from '../components/practice-card/PracticeCard'
+import PracticeCard from '../../../../shared/components/core/contents/practice-card/PracticeCard'
 import style from './Assignment.module.css'
 import { useRouter } from 'next/router'
 
