@@ -21,7 +21,9 @@ const TopicCard = ({
     return variant === BatchType.SELF_LEARNING ? (
       <Card>
         <div
-          className={style.root + ' animated fadeIn duration-200'}
+          className={
+            style.root + ' animated fadeIn duration-200 cursor-pointer'
+          }
           onClick={handleClick}
         >
           {index !== undefined && (
@@ -58,7 +60,7 @@ const TopicCard = ({
     ) : (
       <Card>
         <div
-          className="pl-3 py-4 animated fadeIn duration-200"
+          className="pl-3 py-4 animated fadeIn duration-200 cursor-pointer"
           onClick={handleClick}
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">

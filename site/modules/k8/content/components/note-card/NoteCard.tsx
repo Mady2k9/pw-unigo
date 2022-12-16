@@ -11,7 +11,14 @@ const NoteCard = ({ note }: { note: DppNotes }) => {
   const startTime = format(new Date(note?.startTime), 'd LLL, yyyy')
 
   const redirectToPdf = () => {
-    router.push('/pdf')
+    router.push({
+      pathname: '/pdf',
+      query: {
+        noteDetail:
+          note?.homeworkIds[0]?.attachmentIds[0]?.baseUrl +
+          note?.homeworkIds[0]?.attachmentIds[0]?.key,
+      },
+    })
   }
   return (
     <div className={style.cardContainer} onClick={redirectToPdf}>
