@@ -7,6 +7,7 @@
   overflow-x: auto;
   padding: 8px 6px;
 
+  @apply pb-[20px];
   /* @apply lg:flex lg:items-center grid grid-flow-col overflow-x-auto gap-4 px-1.5 py-2; */
 }
 

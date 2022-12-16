@@ -10,18 +10,17 @@ const PlanCard = ({
   plan,
   recommended,
   setIdForMapping,
-  idForMapping,
   setActivePlan,
   activePlan,
 }: {
   plan: any
   recommended: boolean
   setIdForMapping: Dispatch<SetStateAction<string>>
-  idForMapping: string
   setActivePlan: Dispatch<SetStateAction<any>>
   activePlan: Plans
 }) => {
-  const pricePerMonth = parseInt(plan?.pricePerMonth).toFixed(2)
+  const pricePerMonth =
+    plan.pricePerMonth > 0 ? +(plan?.pricePerMonth).toFixed() : 0
   return (
     <Card>
       <div
@@ -44,9 +43,7 @@ const PlanCard = ({
             {plan.duration} Months
           </Typography>
           <Typography variant="tiny" weight={600}>
-            <span className="text-indigo-500">
-              {priceDisplay(+pricePerMonth)}/month
-            </span>
+            <span className="text-indigo-500">{pricePerMonth}/month</span>
           </Typography>
         </div>
         <div className="flex items-center justify-between">
@@ -61,11 +58,13 @@ const PlanCard = ({
                 </span>
               </Typography>
             </div>
-            <div>
-              <Typography variant="small" weight={700}>
-                <span className="text-[#16a333]">{plan.discount}% OFF</span>
-              </Typography>
-            </div>
+            {plan.discount > 0 && (
+              <div className={style.discountContainer}>
+                <Typography variant="small" weight={700}>
+                  <span className="text-[#16a333]">{plan.discount}% OFF</span>
+                </Typography>
+              </div>
+            )}
           </div>
           <Checkbox
             title=""

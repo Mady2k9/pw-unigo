@@ -20,15 +20,16 @@ const OrderSummary = () => {
     : BatchType.LIVE
 
   return (
-    <Container>
-      {variant === BatchType.SELF_LEARNING ? (
-        <SelfLearningPayment batchDetail={batchDetail} />
-      ) : (
-        <LivePayment batchDetail={batchDetail} />
-      )}
-    </Container>
+    <Layout isProtected={true}>
+      <Container>
+        {variant === BatchType.SELF_LEARNING ? (
+            <SelfLearningPayment batchDetail={batchDetail} />
+        ) : (
+            <LivePayment batchDetail={batchDetail} />
+        )}
+      </Container>
+    </Layout>
   )
 }
 
 export default OrderSummary
-OrderSummary.Layout = Layout

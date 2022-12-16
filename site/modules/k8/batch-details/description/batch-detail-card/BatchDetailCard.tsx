@@ -7,6 +7,7 @@ import PlayButton from '@assets/images/play-button.svg'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import { priceDisplay } from '@lib/user-utility'
 import { useRouter } from 'next/router'
+import { Arrow } from '@components/lotties'
 
 const BatchDetailCard = ({
   batchDetails,
@@ -72,7 +73,16 @@ const BatchDetailCard = ({
           <Typography variant="regular" weight={600}>
             (Maths + Science)
           </Typography>
-          <Button onClick={redirectToOrderSummary}>Buy Now</Button>
+          <Button
+            onClick={redirectToOrderSummary}
+            postIcon={
+              <div className="-rotate-90">
+                <Arrow />
+              </div>
+            }
+          >
+            Buy Now
+          </Button>
         </div>
       </div>
     </Card>

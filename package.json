@@ -10,8 +10,10 @@
     "prettier-fix": "prettier --write ."
   },
   "devDependencies": {
+    "@types/react-pdf": "^6.2.0",
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
+    "react-pdf": "^6.2.0",
     "turbo": "^1.4.6"
   },
   "husky": {
