@@ -6,6 +6,10 @@ module.exports = {
       'i.ytimg.com',
       'api.penpencil.xyz',
       'penpencil.pc.cdn.bitgravity.com',
+      'penpencil-drive.sgp1.cdn.digitaloceanspaces.com',
+      'www.pw.live',
+      'pw2.pc.cdn.bitgravity.com',
+      'i.pinimg.com',
     ],
   },
 }

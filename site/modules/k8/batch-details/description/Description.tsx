@@ -11,7 +11,7 @@ import Meta from './meta/Meta'
 const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
   return (
     <Container className="flex flex-col-reverse lg:flex-row gap-6 mb-8">
-      <section className="flex flex-col gap-6 w-full">
+      <div className="flex flex-col gap-6 flex-1">
         {!batchDetails?.isSelfLearning &&
           batchDetails?.startDate &&
           batchDetails?.endDate && (
@@ -20,7 +20,7 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
               endDate={batchDetails?.endDate}
             />
           )}
-        <Meta metaData={batchDetails?.meta} />
+        <Meta batchDetail={batchDetails} />
         <Faculties batchSlug={batchDetails?.slug} />
         <DemoVideos batchSlug={batchDetails?.slug} />
 
@@ -29,10 +29,12 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
         )}
 
         {batchDetails?.faqCat && <Faq categoryId={batchDetails?.faqCat} />}
-      </section>
-      <section className="w-full md:max-w-[350px] mx-auto">
-        <BatchDetailCard batchDetails={batchDetails} />
-      </section>
+      </div>
+      {!batchDetails?.isPurchased && (
+        <div className=" flex-1 md:max-w-[350px]">
+          <BatchDetailCard batchDetails={batchDetails} />
+        </div>
+      )}
     </Container>
   )
 }

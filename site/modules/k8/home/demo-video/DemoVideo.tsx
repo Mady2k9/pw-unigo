@@ -10,6 +10,7 @@ const DemoVideo = () => {
     cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID || '',
   })
   if (isLoading) return <LoadingSection />
+
   return (
     <div className={style.demoVideoContainer}>
       <div className={style.textContainer}>

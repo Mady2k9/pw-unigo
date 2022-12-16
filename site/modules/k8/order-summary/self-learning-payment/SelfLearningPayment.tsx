@@ -46,7 +46,7 @@ const SelfLearningPayment = ({
   })
 
   const { data: activePaymentKey, isLoading: paymentKeyLoading } =
-    useActivePaymentKey()
+    useActivePaymentKey({ enabled: planList.length > 0 })
 
   let paymentSource = ''
   for (let source in activePaymentKey) {
@@ -66,11 +66,11 @@ const SelfLearningPayment = ({
   }
 
   const { data: rzpKey, isLoading: rzpKeyLoading } = usePaymentInfo({
-    enabled: paymentSource === PaymentSource.razorpay,
+    enabled: paymentSource === PaymentSource.razorpay && planList.length > 0,
   })
 
   const { data, isLoading } = useSignature({
-    enabled: paymentSource === PaymentSource.juspay,
+    enabled: paymentSource === PaymentSource.juspay && planList.length > 0,
   })
 
   useEffect(() => {
@@ -135,7 +135,6 @@ const SelfLearningPayment = ({
                   plan={plan}
                   key={plan._id}
                   recommended={plan.isRecommended}
-                  idForMapping={idForMapping}
                   setIdForMapping={setIdForMapping}
                   setActivePlan={setActivePlan}
                   activePlan={activePlan as Plans}
@@ -150,6 +149,7 @@ const SelfLearningPayment = ({
           batchDetail={batchDetail}
           payload={payload}
           activePlan={activePlan}
+          planId={idForMapping}
         />
       </section>
     </main>

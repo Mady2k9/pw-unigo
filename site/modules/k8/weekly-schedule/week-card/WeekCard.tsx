@@ -26,7 +26,7 @@ const WeekCard = ({
           return (
             <div
               key={date}
-              className={`flex flex-col items-center w-full min-w-[120px]  ${
+              className={`flex flex-col items-center w-full min-w-[120px] cursor-pointer  ${
                 idx === isActive ? style.today : ''
               }`}
               onClick={() => {
@@ -36,9 +36,9 @@ const WeekCard = ({
             >
               <Typography variant="small" weight={500}>
                 <span
-                  className={`text-gray-500 ${
-                    idx === isActive ? 'text-indigo-500' : ''
-                  }`}
+                  className={
+                    idx === isActive ? 'text-indigo-500' : 'text-gray-500'
+                  }
                 >
                   {day}
                 </span>
@@ -46,18 +46,18 @@ const WeekCard = ({
               <div className="flex flex-col md:flex-row items-center gap-2">
                 <Typography variant="heading3" weight={700}>
                   <span
-                    className={`text-gray-500 ${
-                      idx === isActive ? 'text-indigo-500' : ''
-                    }`}
+                    className={
+                      idx === isActive ? 'text-indigo-500' : 'text-gray-500'
+                    }
                   >
                     {month}
                   </span>
                 </Typography>
                 <Typography variant="heading3" weight={700}>
                   <span
-                    className={`text-gray-500 ${
-                      idx === isActive ? 'text-indigo-500' : ''
-                    }`}
+                    className={
+                      idx === isActive ? 'text-indigo-500' : 'text-gray-500'
+                    }
                   >
                     {currDate}
                   </span>
@@ -77,7 +77,7 @@ const WeekCard = ({
           return (
             <div
               key={d}
-              className={`flex flex-col gap-1 items-center bg-white py-3 px-2 rounded-3xl ${
+              className={`flex flex-col gap-1 items-center bg-white py-3 px-2 rounded-3xl cursor-pointer ${
                 idx === isActive ? style.today : ''
               }`}
               onClick={() => {
@@ -87,9 +87,7 @@ const WeekCard = ({
             >
               <Typography variant="small" weight={500}>
                 <span
-                  className={`text-gray-500 ${
-                    idx === isActive ? 'text-white' : ''
-                  }`}
+                  className={idx === isActive ? 'text-white' : 'text-gray-500'}
                 >
                   {day}
                 </span>
@@ -97,18 +95,18 @@ const WeekCard = ({
               <div className="flex flex-col gap-1 md:flex-row items-center">
                 <Typography variant="subHeading" weight={700}>
                   <span
-                    className={`text-gray-500 ${
-                      idx === isActive ? 'text-white' : ''
-                    }`}
+                    className={
+                      idx === isActive ? 'text-white' : 'text-gray-500'
+                    }
                   >
                     {month}
                   </span>
                 </Typography>
                 <Typography variant="heading3" weight={700}>
                   <span
-                    className={`text-gray-500 ${
-                      idx === isActive ? 'text-white' : ''
-                    }`}
+                    className={
+                      idx === isActive ? 'text-white' : 'text-gray-500'
+                    }
                   >
                     {currDate}
                   </span>

@@ -1,6 +1,6 @@
 import { LoadingSection, Typography } from '@components/ui'
 import useBatchDemoVideos from '@lib/hooks/batches/useBatchDemoVideos'
-import VideoCard from '@modules/k8/content/components/video-card/VideoCard'
+import VideoCard from '@components/contents/video-card/VideoCard'
 import style from './DemoVideos.module.css'
 // import { DemoVideos } from '@lib/hooks/batches/useBatchDemoVideos'
 
@@ -16,7 +16,14 @@ const DemoVideos = ({ batchSlug }: { batchSlug: string }) => {
       </Typography>
       <div className={style.videoContainer}>
         {data.slice(0, 2).map((vid: any) => (
-          <VideoCard videoDetails={vid} key={vid._id} />
+          <VideoCard
+            key={vid._id}
+            name={vid?.topic || vid?.videoDetails?.name}
+            duration={vid?.videoDetails?.duration}
+            slug={vid?.slug}
+            date={vid?.date}
+            image={vid?.videoDetails?.image}
+          />
         ))}
       </div>
     </div>
