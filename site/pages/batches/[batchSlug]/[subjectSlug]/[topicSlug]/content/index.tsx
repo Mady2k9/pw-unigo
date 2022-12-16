@@ -100,7 +100,7 @@ const ContentDetails = ({ batch, title }: { batch: any; title: string }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 min-h-[100%]">
+    <div className="flex flex-col gap-12 min-h-[100%]">
       <TabHeader
         title={title}
         dynamicColor={variant === BatchType.SELF_LEARNING && true}

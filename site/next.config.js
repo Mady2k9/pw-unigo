@@ -9,6 +9,7 @@ module.exports = {
       'penpencil-drive.sgp1.cdn.digitaloceanspaces.com',
       'www.pw.live',
       'pw2.pc.cdn.bitgravity.com',
+      'i.pinimg.com',
     ],
   },
 }
