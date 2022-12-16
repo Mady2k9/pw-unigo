@@ -10,6 +10,9 @@ module.exports = {
     safelist: ['outline-none'],
     theme: {
         extend: {
+            aspectRatio: {
+                'video': '16/9',
+            },
             maxWidth: {
                 '8xl': '1920px',
             },
