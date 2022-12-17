@@ -16,8 +16,8 @@ import useCohortDetails from "@lib/hooks/batches/useCohortDetails";
 const Noop: FC<{ children?: ReactNode }> = ({children}) => <>{children}</>;
 const CohortWrapper = ({Component, pageProps}: AppProps) => {
     const Layout = (Component as any).Layout || Noop;
-    const {cohortData} = useUI();
-    if (!cohortData) {
+    const {latestCohortData, user} = useUI();
+    if (!latestCohortData && user) {
         return <div className={'h-screen w-screen'}>
             <LoadingSection message={'Preparing your class'}/>
         </div>
