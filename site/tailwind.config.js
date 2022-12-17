@@ -27,12 +27,17 @@ module.exports = {
             },
             animation: {
                 fadeBeat: 'fadeBeat 2s infinite',
+                highlight: 'highlight 1000ms ease-out',
             },
             keyframes: theme => ({
                 fadeBeat: {
                     '0%': {opacity: 1},
                     '50%': {opacity: 0.2},
                     '100%': {opacity: 1},
+                },
+                highlight: {
+                    '0%': {background: '#B6A5FB'},
+                    '100%': {background: '#ffffff'},
                 },
             }),
             colors: {
