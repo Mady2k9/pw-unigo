@@ -25,6 +25,16 @@ module.exports = {
             width: {
                 sidebar: '280px',
             },
+            animation: {
+                fadeBeat: 'fadeBeat 2s infinite',
+            },
+            keyframes: theme => ({
+                fadeBeat: {
+                    '0%': {opacity: 1},
+                    '50%': {opacity: 0.2},
+                    '100%': {opacity: 1},
+                },
+            }),
             colors: {
                 answered: '#58AD32',
                 bookmarked: '#5029A0',
