@@ -46,6 +46,7 @@ const Topic = () => {
             variant={BatchType.LIVE}
           />
           {data &&
+
             data?.data?.map((topic: any) => (
               <TopicCard
                 key={topic}
