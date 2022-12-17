@@ -27,7 +27,7 @@ module.exports = {
             },
             animation: {
                 fadeBeat: 'fadeBeat 2s infinite',
-                highlight: 'highlight 1000ms ease-out',
+                highlight: 'highlight 1500ms ease-out',
             },
             keyframes: theme => ({
                 fadeBeat: {
