@@ -79,7 +79,7 @@ const Wrapper = ({ batchDetails }: { batchDetails: any }) => {
       case 2:
         return (
           <Suspense fallback="loading....">
-            <Announcement />
+            <Announcement batchDetails={batchDetails}/>
           </Suspense>
         )
       default:
