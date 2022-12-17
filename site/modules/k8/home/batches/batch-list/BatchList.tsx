@@ -7,12 +7,12 @@ const BatchList = () => {
   const {latestCohortData} = useUI();
   const { data: selfPacedBatches, isLoading: selfPacedBatchesLoading } =
     useBatches({
-      cohortId: latestCohortData._id,
+      cohortId: latestCohortData?._id,
       contentType: BatchType.SELF_LEARNING,
     })
 
   const { data: liveBatches, isLoading: liveBatchesLoading } = useBatches({
-    cohortId: latestCohortData._id,
+    cohortId: latestCohortData?._id,
     contentType: BatchType.LIVE,
   })
 
