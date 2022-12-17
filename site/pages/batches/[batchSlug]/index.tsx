@@ -111,7 +111,9 @@ const BatchDetails = () => {
     batchSlug: batchSlug as string,
   })
 
-  if (isLoading) return <LoadingSection />
+  if (isLoading) return <div className={'h-screen w-screen'}>
+    <LoadingSection />
+  </div>
 
   return <Wrapper batchDetails={batchDetails} />
 }
