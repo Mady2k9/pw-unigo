@@ -2,6 +2,7 @@ import React from 'react'
 import VideoPlayerComponent from "@components/video";
 
 const VideoPlayer = () => {
+
     return (
         <VideoPlayerComponent />
     )
