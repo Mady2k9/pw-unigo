@@ -83,6 +83,7 @@ module.exports = {
                 pink: colors.pink,
                 red: colors.red,
                 green: colors.green,
+                yellow: colors.yellow,
                 blue: colors.blue,
                 'pink-light': 'var(--pink-light)',
                 cyan: 'var(--cyan)',
