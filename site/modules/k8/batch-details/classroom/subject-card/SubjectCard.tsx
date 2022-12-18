@@ -13,7 +13,6 @@ const SubjectCard = ({
   subject: any
   handleClick?: () => void
 }) => {
-  const router = useRouter()
   return (
     <Card>
       <div
