@@ -16,8 +16,7 @@ const SelfLearningPayment = ({
 }: {
   batchDetail: BatchDetailModel
 }) => {
-  const [razorpayKey, setRazorpayKey] = useState('')
-  const [idForMapping, setIdForMapping] = useState('')
+  const [idForMapping, setIdForMapping] = useState<string>('')
   const [activePlan, setActivePlan] = useState<Plans>()
 
   const { data: planList, isLoading: plansLoading } = usePlansList({
@@ -36,75 +35,18 @@ const SelfLearningPayment = ({
     setIdForMapping(recommendedPlan?._id as string)
   }, [plansLoading])
 
-  const { data: feeid, refetch: refetchFeeId } = useGetFeeId({
-    batchId: batchDetail?._id,
-    query: {
-      batchAmount: batchDetail?.fee?.amount,
-      planId: idForMapping,
-    },
-    enabled: idForMapping?.length > 0,
-  })
-
-  const { data: activePaymentKey, isLoading: paymentKeyLoading } =
-    useActivePaymentKey({ enabled: planList.length > 0 })
-
-  let paymentSource = ''
-  for (let source in activePaymentKey) {
-    switch (source) {
-      case 'juspay':
-        if (activePaymentKey[source]) paymentSource = PaymentSource.juspay
-        break
-
-      case 'razorpay':
-        if (activePaymentKey[source]) paymentSource = PaymentSource.razorpay
-        break
-
-      case 'paytm':
-        if (activePaymentKey[source]) paymentSource = PaymentSource.paytm
-        break
-    }
-  }
-
-  const { data: rzpKey, isLoading: rzpKeyLoading } = usePaymentInfo({
-    enabled: paymentSource === PaymentSource.razorpay && planList.length > 0,
-  })
-
-  const { data, isLoading } = useSignature({
-    enabled: paymentSource === PaymentSource.juspay && planList.length > 0,
-  })
+  const { data: feeId, mutate: getFeeId } = useGetFeeId()
 
   useEffect(() => {
-    if (rzpKey) {
-      if (rzpKey.length === 1) {
-        setRazorpayKey(rzpKey[0].id)
-      } else {
-        const rpKey = rzpKey.filter((item) => item.name === 'two')
-        setRazorpayKey(rpKey[0].id)
-      }
-    }
-  }, [rzpKey])
-
-  const payload =
-    paymentSource === PaymentSource.juspay
-      ? {
-          name: batchDetail?.name,
-          paymentSource: paymentSource.toUpperCase(),
-          client: 'web',
-          returnHost: 'k8-dev.penpencil.co',
-          feeMapId: feeid._id,
-          type: 'BATCH',
-          // wallet: '',
-          // couponCode: '',
-        }
-      : {
-          name: batchDetail?.name,
-          paymentSource: 'RAZOR_PAY',
-          paymentKey: razorpayKey,
-          feeMapId: feeid._id,
-          type: 'BATCH',
-          //   wallet: '',
-          //   couponCode: '',
-        }
+    if (!idForMapping) return
+    getFeeId({
+      batchId: batchDetail?._id,
+      query: {
+        batchAmount: batchDetail?.fee?.amount,
+        planId: idForMapping,
+      },
+    })
+  }, [idForMapping])
 
   return (
     <main className="w-full flex flex-col md:flex-row gap-5 lg:gap-16 justify-start">
@@ -147,7 +89,7 @@ const SelfLearningPayment = ({
       <section className="lg:min-w-[348px]">
         <CheckoutCard
           batchDetail={batchDetail}
-          payload={payload}
+          feeId={feeId._id}
           activePlan={activePlan}
           planId={idForMapping}
         />

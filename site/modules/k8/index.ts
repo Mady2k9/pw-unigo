@@ -10,3 +10,4 @@ export { default as TopicCard } from './batch-details/classroom/topic-card/Topic
 export { default as LivePayment } from './order-summary/live-payment/LivePayment'
 export { default as SelfLearningPayment } from './order-summary/self-learning-payment/SelfLearningPayment'
 export { default as ProfilePage } from './profile/ProfilePage'
+export { default as RecentlyWatched } from './home/recently-watched/RecentlyWatched'
