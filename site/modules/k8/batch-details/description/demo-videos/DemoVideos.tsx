@@ -18,6 +18,7 @@ const DemoVideos = ({ batchSlug }: { batchSlug: string }) => {
         {data.slice(0, 2).map((vid: any) => (
           <VideoCard
             key={vid._id}
+            id={vid._id}
             name={vid?.topic || vid?.videoDetails?.name}
             duration={vid?.videoDetails?.duration}
             slug={vid?.slug}

@@ -1,7 +1,5 @@
 import Image from 'next/image'
-import Subject from '@assets/images/subject.svg'
 import { Card, Typography } from '@components/ui'
-import { useRouter } from 'next/router'
 import { SubjectMode } from '@modules/k8/constants'
 import {getImageUrlFromObjectImageId} from "@lib/utilities";
 
@@ -14,7 +12,6 @@ const SubjectCard = ({
   subject: any
   handleClick?: () => void
 }) => {
-  const router = useRouter()
   return (
     <Card>
       <div
