@@ -21,6 +21,7 @@ const RecentlyWatched = () => {
           return (
             <VideoCard
               key={video.videoDetails?.id}
+              id={video.videoDetails?.id}
               name={video?.videoDetails?.name}
               image={video?.videoDetails?.image}
               slug={video?.slug}
