@@ -5,6 +5,8 @@ import style from './LiveClassroom.module.css'
 import SubjectCard from '../subject-card/SubjectCard'
 import { useRouter } from 'next/router'
 import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
+import useTodaySchedule from '@lib/hooks/batches/useTodaySchedule'
+import VideoCard from '@components/contents/video-card/VideoCard'
 
 const LiveClassroom = ({
   batchDetails,
@@ -13,6 +15,10 @@ const LiveClassroom = ({
 }) => {
   const router = useRouter()
   const { batchSlug } = router.query
+
+  const { data: todaySchedule } = useTodaySchedule({
+    batchSlug: batchSlug as string,
+  })
 
   const redirectToWeeklySchedule = (slug: string, subject: string) => {
     router.push(`${batchSlug}/${slug}/weekly-schedule`)
@@ -28,14 +34,33 @@ const LiveClassroom = ({
         <Typography weight={700} variant="heading4">
           Today's Classes
         </Typography>
-        <div className="flex flex-col items-center justify-center">
-          <NoClasses />
-          <Typography variant="small" weight={700}>
-            <span className="text-gray-700">
-              No Today’s Classes Scheduled Yet
-            </span>
-          </Typography>
-        </div>
+        {todaySchedule && todaySchedule.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mt-8">
+            {todaySchedule.map((ts) => {
+              return (
+                <VideoCard
+                  key={ts._id}
+                  name={ts?.topic || ts?.videoDetails?.name}
+                  duration={ts?.videoDetails?.duration}
+                  slug={ts?.slug}
+                  image={ts?.videoDetails?.image}
+                  isTodaysScheduled={true}
+                  date={ts?.startTime}
+                  subject={ts?.subjectId?.name}
+                />
+              )
+            })}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center">
+            <NoClasses />
+            <Typography variant="small" weight={700}>
+              <span className="text-gray-700">
+                No Today’s Classes Scheduled Yet
+              </span>
+            </Typography>
+          </div>
+        )}
       </section>
       <section className="flex flex-col gap-1">
         <Typography variant="heading4" weight={700}>

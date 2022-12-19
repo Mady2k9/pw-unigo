@@ -8,7 +8,7 @@ const ProfilePage = () => {
     <Container>
       <Card>
         <div className="grid grid-cols-8 p-2 md:p-6 lg:p-16 gap-4 lg:gap-0">
-          <UserAvatar imageId={{}} />
+          <UserAvatar />
           <ProfileDetails />
         </div>
       </Card>
