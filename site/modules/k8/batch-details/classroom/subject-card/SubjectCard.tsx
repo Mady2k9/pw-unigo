@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Card, Typography } from '@components/ui'
 import { SubjectMode } from '@modules/k8/constants'
-import {getImageUrlFromObjectImageId} from "@lib/utilities";
+import { getImageUrlFromObjectImageId } from '@lib/utilities'
 
 const SubjectCard = ({
   mode,
@@ -27,11 +27,11 @@ const SubjectCard = ({
           />
         </div>
         <div>
-          <Typography weight={600} variant="regular">
-            <span className="text-[#444] line-clamp-1">
+          <span className="text-[#444] line-clamp-1">
+            <Typography capitalize={true} weight={600} variant="regular">
               {subject?.subject || ''}
-            </span>
-          </Typography>
+            </Typography>
+          </span>
         </div>
       </div>
     </Card>

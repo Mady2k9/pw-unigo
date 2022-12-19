@@ -92,11 +92,11 @@ const K8Card = ({
       </div>
       <div className={style.cardDescriptionContainer}>
         <div className="flex items-center justify-between">
-          <Typography capitalize={true} variant={'heading3'} weight={700}>
-            <span className={variant === BatchType.LIVE ? 'text-white' : ''}>
+          <span className={variant === BatchType.LIVE ? 'text-white' : ''}>
+            <Typography capitalize={true} variant={'heading3'} weight={700}>
               {batchData?.name}
-            </span>
-          </Typography>
+            </Typography>
+          </span>
           <div className={style.iconsContainer}>
             <div className="rounded-md text-black bg-[#FBDE47] px-2 py-1 text-xs font-bold">
               New
@@ -132,6 +132,14 @@ const K8Card = ({
           <div className="flex flex-col-reverse md:flex-row items-start gap-3 justify-between mt-6">
             <div className="flex flex-col gap-3 px-2 md:px-0 ">
               <div className="flex items-center gap-2">
+                <Image src={teacher} alt="" />
+                <Typography variant="tiny" weight={600}>
+                  <span className="text-white line-clamp-1">
+                    {batchData?.byName}
+                  </span>
+                </Typography>
+              </div>
+              <div className="flex items-center gap-2">
                 <Image src={calendar} alt="" />
                 <div className="flex items-center gap-1">
                   <Typography variant="tiny" weight={600}>
@@ -147,16 +155,6 @@ const K8Card = ({
                   </Typography>
                 </div>
               </div>
-              {teachersToMap.length > 0 && (
-                <div className="flex items-center gap-2">
-                  <Image src={teacher} alt="" />
-                  <Typography variant="tiny" weight={600}>
-                    <span className="text-white line-clamp-1">
-                      {teachersToMap}
-                    </span>
-                  </Typography>
-                </div>
-              )}
               {metaToMap.length > 0 && (
                 <div className="flex items-center gap-2">
                   <Image src={meta} alt="" />

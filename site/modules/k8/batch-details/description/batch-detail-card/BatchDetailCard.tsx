@@ -72,9 +72,12 @@ const BatchDetailCard = ({
               </div>
             )}
           </div>
-          <Typography variant="regular" weight={600}>
-            {batchDetails?.byName}
-          </Typography>
+          <Typography
+            variant="regular"
+            weight={600}
+            html={batchDetails?.byName}
+          />
+
           <Button
             onClick={redirectToOrderSummary}
             postIcon={

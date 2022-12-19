@@ -34,25 +34,25 @@ const WeekCard = ({
                 setIsActive(idx)
               }}
             >
-              <Typography variant="small" weight={500}>
+              <span
+                className={
+                  idx === isActive ? 'text-indigo-500' : 'text-gray-500'
+                }
+              >
+                <Typography variant="small" weight={500} capitalize={true}>
+                  {day}
+                </Typography>
+              </span>
+              <div className="flex flex-col md:flex-row items-center gap-2">
                 <span
                   className={
                     idx === isActive ? 'text-indigo-500' : 'text-gray-500'
                   }
                 >
-                  {day}
-                </span>
-              </Typography>
-              <div className="flex flex-col md:flex-row items-center gap-2">
-                <Typography variant="heading3" weight={700}>
-                  <span
-                    className={
-                      idx === isActive ? 'text-indigo-500' : 'text-gray-500'
-                    }
-                  >
+                  <Typography variant="heading3" weight={700} capitalize={true}>
                     {month}
-                  </span>
-                </Typography>
+                  </Typography>
+                </span>
                 <Typography variant="heading3" weight={700}>
                   <span
                     className={
@@ -85,23 +85,25 @@ const WeekCard = ({
                 setIsActive(idx)
               }}
             >
-              <Typography variant="small" weight={500}>
+              <span
+                className={idx === isActive ? 'text-white' : 'text-gray-500'}
+              >
+                <Typography variant="small" weight={500} capitalize={true}>
+                  {day}
+                </Typography>
+              </span>
+              <div className="flex flex-col gap-1 md:flex-row items-center">
                 <span
                   className={idx === isActive ? 'text-white' : 'text-gray-500'}
                 >
-                  {day}
-                </span>
-              </Typography>
-              <div className="flex flex-col gap-1 md:flex-row items-center">
-                <Typography variant="subHeading" weight={700}>
-                  <span
-                    className={
-                      idx === isActive ? 'text-white' : 'text-gray-500'
-                    }
+                  <Typography
+                    variant="subHeading"
+                    weight={700}
+                    capitalize={true}
                   >
                     {month}
-                  </span>
-                </Typography>
+                  </Typography>
+                </span>
                 <Typography variant="heading3" weight={700}>
                   <span
                     className={
