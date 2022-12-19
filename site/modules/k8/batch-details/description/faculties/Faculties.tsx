@@ -11,6 +11,7 @@ import style from './Faculties.module.css'
 const Faculties = ({ batchSlug }: { batchSlug: string }) => {
   const { data, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug
   })
 
   const teachers = data?.subjects

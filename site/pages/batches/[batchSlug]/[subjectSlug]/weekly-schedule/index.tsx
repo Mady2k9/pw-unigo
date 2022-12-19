@@ -25,6 +25,7 @@ const WeeklySchedule = () => {
 
   const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug
   })
 
   const { data, isLoading } = useRecentSchedule({

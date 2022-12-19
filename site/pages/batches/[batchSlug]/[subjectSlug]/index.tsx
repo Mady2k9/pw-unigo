@@ -5,6 +5,7 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import useBatchTopics from '@lib/hooks/batches/useBatchTopics'
 import { TopicCard } from '@modules/k8'
 import { useRouter } from 'next/router'
+import {ALL_CONTENTS} from "@lib/content-constants";
 
 const Topic = () => {
   const router = useRouter()
@@ -42,7 +43,7 @@ const Topic = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <TopicCard
             key={'12345'}
-            handleClick={() => redirectToContent('all-contents', 'All Content')}
+            handleClick={() => redirectToContent(ALL_CONTENTS, 'All Content')}
             variant={BatchType.LIVE}
           />
           {data &&
