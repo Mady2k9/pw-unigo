@@ -40,6 +40,7 @@ const LiveClassroom = ({
               return (
                 <VideoCard
                   key={ts._id}
+                  id={ts._id}
                   name={ts?.topic || ts?.videoDetails?.name}
                   duration={ts?.videoDetails?.duration}
                   slug={ts?.slug}
