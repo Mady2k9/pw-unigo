@@ -124,7 +124,7 @@ a {
 @-webkit-keyframes slideIn {
   from {
     opacity: 0.5;
-    padding-top: 10px;
+    padding-top: 5px;
   }
 
   to {
@@ -136,7 +136,7 @@ a {
 @keyframes slideIn {
   from {
     opacity: 0.5;
-    padding-top: 10px;
+    padding-top: 5px;
   }
 
   to {

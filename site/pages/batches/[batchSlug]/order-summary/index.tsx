@@ -11,6 +11,7 @@ const OrderSummary = () => {
 
   const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug
   })
 
   if (batchDetailLoading) return <LoadingSection />

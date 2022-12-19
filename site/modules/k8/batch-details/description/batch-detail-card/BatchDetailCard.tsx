@@ -8,6 +8,7 @@ import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import { priceDisplay } from '@lib/user-utility'
 import { useRouter } from 'next/router'
 import { Arrow } from '@components/lotties'
+import { getImageUrlFromObjectImageId } from '@lib/utilities'
 
 const BatchDetailCard = ({
   batchDetails,
@@ -15,10 +16,11 @@ const BatchDetailCard = ({
   batchDetails: BatchDetailModel
 }) => {
   const router = useRouter()
-  const imgUrl =
-    batchDetails?.previewImage?.baseUrl && batchDetails?.previewImage?.key
-      ? batchDetails?.previewImage?.baseUrl + batchDetails?.previewImage?.key
-      : CardBanner
+  // const imgUrl =
+  //   batchDetails?.previewImage?.baseUrl && batchDetails?.previewImage?.key
+  //     ?getImageUrlFromObjectImageId()
+  //      batchDetails?.previewImage?.baseUrl + batchDetails?.previewImage?.key
+  //     : CardBanner
 
   const redirectToOrderSummary = () => {
     router.push(`${batchDetails?.slug}/order-summary`)
@@ -30,7 +32,7 @@ const BatchDetailCard = ({
         <div className={style.bannerContainer}>
           <div className="min-w-[290px] lg:w-full h-[143px] relative">
             <Image
-              src={imgUrl}
+              src={getImageUrlFromObjectImageId(batchDetails?.previewImage)}
               alt="card-banner"
               layout="fill"
               className="rounded-xl"
@@ -71,7 +73,7 @@ const BatchDetailCard = ({
             )}
           </div>
           <Typography variant="regular" weight={600}>
-            (Maths + Science)
+            {batchDetails?.byName}
           </Typography>
           <Button
             onClick={redirectToOrderSummary}

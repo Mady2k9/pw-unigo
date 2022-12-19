@@ -79,7 +79,7 @@ const Wrapper = ({ batchDetails }: { batchDetails: any }) => {
       case 2:
         return (
           <Suspense fallback="loading....">
-            <Announcement />
+            <Announcement batchDetails={batchDetails}/>
           </Suspense>
         )
       default:
@@ -109,9 +109,12 @@ const BatchDetails = () => {
 
   const { data: batchDetails, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug
   })
 
-  if (isLoading) return <LoadingSection />
+  if (isLoading) return <div className={'h-screen w-screen'}>
+    <LoadingSection />
+  </div>
 
   return <Wrapper batchDetails={batchDetails} />
 }
