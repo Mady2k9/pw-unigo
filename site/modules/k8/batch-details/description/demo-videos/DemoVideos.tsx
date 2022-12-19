@@ -2,7 +2,6 @@ import { LoadingSection, Typography } from '@components/ui'
 import useBatchDemoVideos from '@lib/hooks/batches/useBatchDemoVideos'
 import VideoCard from '@components/contents/video-card/VideoCard'
 import style from './DemoVideos.module.css'
-// import { DemoVideos } from '@lib/hooks/batches/useBatchDemoVideos'
 
 const DemoVideos = ({ batchSlug }: { batchSlug: string }) => {
   const { data, isLoading } = useBatchDemoVideos({ batchSlug })

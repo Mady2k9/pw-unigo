@@ -1,5 +1,4 @@
 import { Card, Typography, useUI } from '@components/ui'
-import IndiaFlag from '@assets/images/profile/indiaflag.png'
 import Image from 'next/image'
 import Edit from '@assets/images/profile/edit.svg'
 import { useEffect, useState } from 'react'
