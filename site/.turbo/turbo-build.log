@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m892db4f612b57e4e[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2me64475a686f74e15[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/mdamirgauhar/K8V2/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -10,10 +10,53 @@
 [35mpw-live-v2:build: [0m86:6  Warning: React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0minfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-[35mpw-live-v2:build: [0mFailed to compile.
+[35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
+[35mpw-live-v2:build: [0minfo  - Compiled successfully
+[35mpw-live-v2:build: [0minfo  - Collecting page data...
+[35mpw-live-v2:build: [0minfo  - Generating static pages (0/17)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (4/17)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (8/17)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (12/17)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (17/17)
+[35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m./modules/k8/order-summary/checkout-card/CheckoutCard.tsx:296:9
-[35mpw-live-v2:build: [0mType error: Expected 0 arguments, but got 2.
+[35mpw-live-v2:build: [0mRoute (pages)                                               Size     First Load JS
+[35mpw-live-v2:build: [0m┌ ○ /                                                       26.4 kB         260 kB
+[35mpw-live-v2:build: [0m├   └ css/444e23e3c60a13fb.css                              3.55 kB
+[35mpw-live-v2:build: [0m├   /_app                                                   0 B            91.3 kB
+[35mpw-live-v2:build: [0m├ ○ /404                                                    48.3 kB         140 kB
+[35mpw-live-v2:build: [0m├   └ css/7de4637d6192895c.css                              1.69 kB
+[35mpw-live-v2:build: [0m├ ○ /about-us                                               4.41 kB         153 kB
+[35mpw-live-v2:build: [0m├   └ css/4f8343764217d5d6.css                              2.39 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]                                    3.68 kB         157 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]                      4.73 kB         159 kB
+[35mpw-live-v2:build: [0m├   └ css/a5cf56e909691ba4.css                              2.5 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content  3.74 kB         157 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/weekly-schedule      5.3 kB          166 kB
+[35mpw-live-v2:build: [0m├   └ css/0cdd11f4b3340d56.css                              2.66 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/faculties                          4.83 kB         159 kB
+[35mpw-live-v2:build: [0m├   └ css/472077999d155195.css                              2.54 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/order-summary                      10.9 kB         165 kB
+[35mpw-live-v2:build: [0m├   └ css/57cc97da3127c8f0.css                              3.48 kB
+[35mpw-live-v2:build: [0m├ ○ /contact-us                                             36.1 kB         253 kB
+[35mpw-live-v2:build: [0m├ ○ /login                                                  13.6 kB         138 kB
+[35mpw-live-v2:build: [0m├   └ css/be78c1fb2a808145.css                              2.53 kB
+[35mpw-live-v2:build: [0m├ ○ /pdf                                                    91.2 kB         190 kB
+[35mpw-live-v2:build: [0m├ ○ /practice/[id]                                          12.9 kB         144 kB
+[35mpw-live-v2:build: [0m├   └ css/4ecf0a3c055da781.css                              2.65 kB
+[35mpw-live-v2:build: [0m├ ○ /profile                                                16.7 kB         165 kB
+[35mpw-live-v2:build: [0m├   └ css/aafb5390eb12880e.css                              2.9 kB
+[35mpw-live-v2:build: [0m├ ○ /terms-and-conditions                                   1.59 kB         149 kB
+[35mpw-live-v2:build: [0m├   └ css/213ae92f681d64ef.css                              2.39 kB
+[35mpw-live-v2:build: [0m└ ○ /video-player                                           937 B           145 kB
+[35mpw-live-v2:build: [0m+ First Load JS shared by all                               101 kB
+[35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js                    45.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/main-e3da2c98fd6b49f3.js                         31.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-9c9b16fc06123a7e.js                   12.3 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-961aeb9c128b5aab.js                      2.57 kB
+[35mpw-live-v2:build: [0m  └ css/63afdfc7426f4c3d.css                                9.71 kB
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m[0m [90m 294 | [39m    } [36melse[39m {[0m
 [35mpw-live-v2:build: [0m[0m [90m 295 | [39m      signatureMutate([0m
