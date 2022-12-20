@@ -11,7 +11,7 @@ const OrderSummary = () => {
 
   const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
-    enabled: !!batchSlug
+    enabled: !!batchSlug,
   })
 
   if (batchDetailLoading) return <LoadingSection />
@@ -24,9 +24,9 @@ const OrderSummary = () => {
     <Layout isProtected={true}>
       <Container>
         {variant === BatchType.SELF_LEARNING ? (
-            <SelfLearningPayment batchDetail={batchDetail} />
+          <SelfLearningPayment batchDetail={batchDetail} />
         ) : (
-            <LivePayment batchDetail={batchDetail} />
+          <LivePayment batchDetail={batchDetail} />
         )}
       </Container>
     </Layout>

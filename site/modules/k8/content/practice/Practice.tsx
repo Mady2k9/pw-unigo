@@ -4,7 +4,6 @@ import PracticeCard from '@components/contents/practice-card/PracticeCard'
 import { PracticeCardType } from '@modules/k8/constants'
 import useBatchContents, {
   ContentType,
-  DppNotes,
 } from '@lib/hooks/batches/useBatchContents'
 import { useRouter } from 'next/router'
 
@@ -30,7 +29,9 @@ const Practice = ({ type }: { type: ContentType }) => {
             <PracticeCard
               key={data._id}
               variant={PracticeCardType.PRACTICE}
-              data={data as DppNotes}
+              exerciseDetails={data?.exerciseIds[0]?.exerciseDetails}
+              title={data?.exerciseIds[0]?.title}
+              exerciseId={data?.exerciseIds?.[0]?.content?.[0]?.exerciseId}
             />
           ))}
       </div>

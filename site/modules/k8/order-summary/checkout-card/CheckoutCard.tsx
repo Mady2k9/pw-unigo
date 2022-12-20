@@ -23,6 +23,7 @@ import useRazorpay from 'react-razorpay'
 import usePaymentInfo from '@lib/hooks/orders/usePaymentInfo'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
 import useActivePaymentKey from '@lib/hooks/orders/useActivePaymentKey'
+import { PaymentStatus } from '@components/common/AfterPayment/AfterPaymentComponent'
 
 interface CheckoutDetails {
   discount: number
@@ -196,13 +197,15 @@ const CheckoutCard = ({
         key: razorpayKey,
         currency: 'INR',
         theme: {
-          color: '#3399cc',
+          color: '#068bce',
         },
         amount: data.amount_due,
         name: batchDetail?.name,
         order_id: data.id,
         handler: function (_response: any) {
-          router.push(`/payment-success?status=CHARGED&order_id=${order_id}`)
+          router.push(
+            `/after-payment?status=${PaymentStatus.SUCCESS}&order_id=${order_id}`
+          )
           // alert(response.razorpay_order_id)
           // alert(response.razorpay_signature)
         },
@@ -215,7 +218,7 @@ const CheckoutCard = ({
 
       const rzpay = new Razorpay(options)
       rzpay.on('payment.failed', function (_response: any) {
-        router.push('/payment-success')
+        router.push('/after-payment')
       })
       rzpay.open()
     }
