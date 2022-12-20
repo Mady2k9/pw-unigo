@@ -43,7 +43,7 @@ const TopicCard = ({
           >
             <div className="flex flex-col justify-center">
               <Typography capitalize={true} variant="regular" weight={600}>
-                {topicData?.name}
+               {topicData?.name}
               </Typography>
               <span className="text-[#8B8B8B]">
                 <Typography variant="tiny" weight={500}>
