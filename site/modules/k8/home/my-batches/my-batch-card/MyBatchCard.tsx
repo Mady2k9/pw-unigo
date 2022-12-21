@@ -1,4 +1,4 @@
-import { Card, Typography } from '@components/ui'
+import { Button, Card, Typography } from '@components/ui'
 import Live from '@assets/images/live.svg'
 import EBook from '@assets/images/E-Book.svg'
 import Image from 'next/image'
@@ -6,12 +6,14 @@ import Link from 'next/link'
 import PencilBoy from '@assets/images/pencilboy.svg'
 import { Arrow } from '@components/lotties'
 import { BatchType } from '@lib/hooks/batches/useBatches'
+import { useRouter } from 'next/router'
 
 const MyBatchCard = ({ batchDetail }: { batchDetail: any }) => {
   const variant = batchDetail?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
 
+  const router = useRouter()
   const Tag =
     variant === BatchType.SELF_LEARNING ? 'Self Learning' : 'Live Batches'
   return (
@@ -27,25 +29,30 @@ const MyBatchCard = ({ batchDetail }: { batchDetail: any }) => {
               {Tag}
             </Typography>
           </div>
-          <span className="block truncate max-w-[80%]">
+          <span className="block truncate mb-2 max-w-[80%]">
             <Typography variant="regular" weight={700} capitalize={true}>
               {batchDetail?.name}
             </Typography>
           </span>
-          <Link
-            href={`batches/${batchDetail?.slug}#${
-              variant === BatchType.SELF_LEARNING ? 'study-room' : 'classroom'
-            }`}
+          <Button
+            size={'tiny'}
+            onClick={() => {
+              router.push(
+                `batches/${batchDetail?.slug}#${
+                  variant === BatchType.SELF_LEARNING
+                    ? 'study-room'
+                    : 'classroom'
+                }`
+              )
+            }}
           >
-            <div className="bg-indigo-600 flex items-center w-fit py-1 px-3 rounded-lg mt-4 cursor-pointer hover:bg-indigo-600">
-              <Typography variant="tiny" weight={700}>
-                <span className="text-white">Let’s Study</span>
-              </Typography>
-              <div className="-rotate-90">
-                <Arrow />
-              </div>
+            <Typography variant="tiny" weight={700}>
+              <span className="text-white">Let’s Study</span>
+            </Typography>
+            <div className="-rotate-90">
+              <Arrow />
             </div>
-          </Link>
+          </Button>
         </div>
         <div className="absolute right-2 -top-5">
           <Image src={PencilBoy} alt="pencilboy" />

@@ -67,7 +67,7 @@ const SelfLearningPayment = ({
               </span>
             </Typography>
 
-            <div className="flex flex-col gap-4 mt-4">
+            <div className="flex flex-col gap-4 mt-4 ">
               {planList.map((plan) => (
                 <PlanCard
                   plan={plan}

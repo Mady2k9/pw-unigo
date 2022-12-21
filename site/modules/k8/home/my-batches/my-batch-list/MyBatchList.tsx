@@ -20,7 +20,7 @@ const MyBatchList = () => {
           My Subscription
         </Typography>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
         {data.map((data: any) => (
           <MyBatchCard key={data._id} batchDetail={data} />
         ))}

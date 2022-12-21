@@ -10,6 +10,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+
         <script src="https://public.releases.juspay.in/hyper-sdk-web/HyperServices.js" />
       </Html>
     )
