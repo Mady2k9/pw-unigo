@@ -4,14 +4,15 @@ import VideoCard from '@components/contents/video-card/VideoCard'
 import { BatchType } from '@lib/hooks/batches/useBatches'
 import { useRouter } from 'next/router'
 import useBatchContents, {
+  ContentModel,
   ContentType,
-  Lecture,
 } from '@lib/hooks/batches/useBatchContents'
 import { ModalSearch } from '@components/common'
 import { useEffect, useMemo, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import cn from 'clsx'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
+import { ALL_CONTENTS } from '@lib/content-constants'
 
 const Lectures = ({ type }: { type: ContentType }) => {
   const router = useRouter()
@@ -19,6 +20,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
 
   const { data: batchDetails } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug,
   })
 
   const isPurchased = batchDetails?.isPurchased
@@ -28,7 +30,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
     : BatchType.LIVE
 
   const payload =
-    topicSlug === 'all-contents'
+    topicSlug === ALL_CONTENTS
       ? {
           batchSlug: batchSlug as string as string,
           subjectSlug: subjectSlug as string as string,
@@ -57,6 +59,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
           data.map((video: any) => (
             <VideoCard
               key={video._id}
+              id={video._id}
               name={video?.topic || video?.videoDetails?.name}
               duration={video?.videoDetails?.duration}
               slug={video?.slug}
@@ -97,7 +100,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
             setEnableSearch(false)
             setQuery('')
           }}
-          videos={data as Lecture[]}
+          videos={data as ContentModel[]}
         />
       ) : (
         ItemsWrapper

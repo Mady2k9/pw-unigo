@@ -1,17 +1,18 @@
 import useBatches, { BatchType } from '@lib/hooks/batches/useBatches'
 import BatchCard from '../batch-card/BatchCard'
 import style from './BatchList.module.css'
-import { LoadingSection } from '@components/ui'
+import {LoadingSection, useUI} from '@components/ui'
 
 const BatchList = () => {
+  const {latestCohortData} = useUI();
   const { data: selfPacedBatches, isLoading: selfPacedBatchesLoading } =
     useBatches({
-      cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID,
+      cohortId: latestCohortData?._id,
       contentType: BatchType.SELF_LEARNING,
     })
 
   const { data: liveBatches, isLoading: liveBatchesLoading } = useBatches({
-    cohortId: process.env.NEXT_PUBLIC_K8_COHORT_ID,
+    cohortId: latestCohortData?._id,
     contentType: BatchType.LIVE,
   })
 
@@ -23,10 +24,10 @@ const BatchList = () => {
         </div>
       )}
       {selfPacedBatches.map((data: any) => (
-        <BatchCard key={data._id} batchData={data?.batchId} />
+        <BatchCard key={data._id + 'self'} batchData={data?.batchId} />
       ))}
       {liveBatches.map((data: any) => (
-        <BatchCard key={data._id} batchData={data?.batchId} />
+        <BatchCard key={data._id + 'live'} batchData={data?.batchId} />
       ))}
     </div>
   )

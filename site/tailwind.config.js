@@ -25,6 +25,21 @@ module.exports = {
             width: {
                 sidebar: '280px',
             },
+            animation: {
+                fadeBeat: 'fadeBeat 2s infinite',
+                highlight: 'highlight 1500ms ease-out',
+            },
+            keyframes: theme => ({
+                fadeBeat: {
+                    '0%': {opacity: 1},
+                    '50%': {opacity: 0.2},
+                    '100%': {opacity: 1},
+                },
+                highlight: {
+                    '0%': {background: '#B6A5FB'},
+                    '100%': {background: '#ffffff'},
+                },
+            }),
             colors: {
                 answered: '#58AD32',
                 bookmarked: '#5029A0',
@@ -68,6 +83,7 @@ module.exports = {
                 pink: colors.pink,
                 red: colors.red,
                 green: colors.green,
+                yellow: colors.yellow,
                 blue: colors.blue,
                 'pink-light': 'var(--pink-light)',
                 cyan: 'var(--cyan)',

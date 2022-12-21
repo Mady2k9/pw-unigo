@@ -12,7 +12,7 @@ const RecentlyWatched = () => {
 
   if (isLoading) return <LoadingSection />
   return data?.data.length > 0 ? (
-    <div className="hidden md:flex flex-col gap-8 mb-12">
+    <div className="hidden md:flex flex-col gap-4 mb-12">
       <Typography variant="heading3" weight={700}>
         Recently Watched
       </Typography>
@@ -21,6 +21,7 @@ const RecentlyWatched = () => {
           return (
             <VideoCard
               key={video.videoDetails?.id}
+              id={video.videoDetails?.id}
               name={video?.videoDetails?.name}
               image={video?.videoDetails?.image}
               slug={video?.slug}

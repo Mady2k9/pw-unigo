@@ -119,6 +119,7 @@ const Content = () => {
   const { batchSlug, topic } = router.query
   const { data: batchDetails, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+    enabled: !!batchSlug
   })
 
   if (isLoading || !batchDetails) {

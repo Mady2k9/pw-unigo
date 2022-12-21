@@ -36,11 +36,11 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
           />
         </div>
         <div className="bg-[#F7F7F7] m-0 p-2 rounded-[8px] flex flex-col">
-          <Typography weight={800} variant="tiny" capitalize={true}>
-            <span className="text-gray-800">
+          <span className="text-gray-800">
+            <Typography weight={800} variant="tiny" capitalize={true}>
               {teacherData?.firstName || '' + ' ' + teacherData?.lastName || ''}
-            </span>
-          </Typography>
+            </Typography>
+          </span>
 
           <div className={`flex items-center justify-between mt-1`}>
             {['B.Tech', '9 Year Exp.'].map((meta, i) => (

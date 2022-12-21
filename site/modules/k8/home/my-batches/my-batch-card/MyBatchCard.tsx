@@ -27,11 +27,11 @@ const MyBatchCard = ({ batchDetail }: { batchDetail: any }) => {
               {Tag}
             </Typography>
           </div>
-          <Typography variant="regular" weight={700}>
-            <span className="block truncate max-w-[80%]">
+          <span className="block truncate max-w-[80%]">
+            <Typography variant="regular" weight={700} capitalize={true}>
               {batchDetail?.name}
-            </span>
-          </Typography>
+            </Typography>
+          </span>
           <Link
             href={`batches/${batchDetail?.slug}#${
               variant === BatchType.SELF_LEARNING ? 'study-room' : 'classroom'

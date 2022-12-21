@@ -43,13 +43,13 @@ const TopicCard = ({
           >
             <div className="flex flex-col justify-center">
               <Typography capitalize={true} variant="regular" weight={600}>
-                {topicData?.name}
+               {topicData?.name}
               </Typography>
-              <Typography variant="tiny" weight={500}>
-                <span className="text-[#8B8B8B]">
+              <span className="text-[#8B8B8B]">
+                <Typography variant="tiny" weight={500}>
                   {topicData?.videos} Lectures
-                </span>
-              </Typography>
+                </Typography>
+              </span>
             </div>
             <div className={style.arrrowIcon}>
               <Image src={RightArrow} alt="logo" />
@@ -64,7 +64,7 @@ const TopicCard = ({
           onClick={handleClick}
         >
           <div className="border-l-4 border-indigo-400 py-2 pl-3">
-            <Typography variant="small" weight={700}>
+            <Typography variant="small" capitalize={true} weight={700}>
               {topicData ? topicData.name : 'All Content'}
             </Typography>
           </div>

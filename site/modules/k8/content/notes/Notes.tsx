@@ -6,6 +6,7 @@ import useBatchContents, {
   ContentType,
 } from '@lib/hooks/batches/useBatchContents'
 import { useRouter } from 'next/router'
+import {ALL_CONTENTS} from "@lib/content-constants";
 
 const Notes = ({ type }: { type: ContentType }) => {
   const router = useRouter()
@@ -13,7 +14,7 @@ const Notes = ({ type }: { type: ContentType }) => {
   const { batchSlug, subjectSlug, topicSlug } = router.query
 
   const payload =
-    topicSlug === 'all-contents'
+    topicSlug === ALL_CONTENTS
       ? {
           batchSlug: batchSlug as string as string,
           subjectSlug: subjectSlug as string as string,

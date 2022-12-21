@@ -1,5 +1,4 @@
 import { Card, Typography, useUI } from '@components/ui'
-import IndiaFlag from '@assets/images/profile/indiaflag.png'
 import Image from 'next/image'
 import Edit from '@assets/images/profile/edit.svg'
 import { useEffect, useState } from 'react'
@@ -44,7 +43,7 @@ const ProfileDetails = () => {
                 </Typography>
               </div>
               <div className="col-span-3 md:col-span-4">
-                <Typography variant="small" weight={600}>
+                <Typography variant="small" weight={600} capitalize={true}>
                   {user?.firstName || '' + ' ' + user?.lastName}
                 </Typography>
               </div>
@@ -56,7 +55,7 @@ const ProfileDetails = () => {
                 </Typography>
               </div>
               <div className="col-span-3 md:col-span-4">
-                <Typography variant="small" weight={600}>
+                <Typography variant="small" weight={600} capitalize={true}>
                   {user?.profileId?.gender}
                 </Typography>
               </div>
@@ -104,7 +103,7 @@ const ProfileDetails = () => {
                 </Typography>
               </div>
               <div className="col-span-3 md:col-span-4">
-                <Typography variant="small" weight={600}>
+                <Typography variant="small" weight={600} capitalize={true}>
                   {user?.profileId?.address?.state}
                 </Typography>
               </div>
@@ -116,7 +115,7 @@ const ProfileDetails = () => {
                 </Typography>
               </div>
               <div className="col-span-3 md:col-span-4">
-                <Typography variant="small" weight={600}>
+                <Typography variant="small" weight={600} capitalize={true}>
                   {user?.profileId?.address?.city}
                 </Typography>
               </div>
@@ -154,7 +153,7 @@ const ProfileDetails = () => {
                     </Typography>
                   </div>
                   <div className="col-span-3 md:col-span-4">
-                    <Typography variant="small" weight={600}>
+                    <Typography variant="small" weight={600} capitalize={true}>
                       {user?.profileId?.stream}
                     </Typography>
                   </div>
@@ -168,7 +167,7 @@ const ProfileDetails = () => {
                   </Typography>
                 </div>
                 <div className="col-span-3 md:col-span-4">
-                  <Typography variant="small" weight={600}>
+                  <Typography variant="small" weight={600} capitalize={true}>
                     {user?.profileId?.board}
                   </Typography>
                 </div>
@@ -181,7 +180,7 @@ const ProfileDetails = () => {
                 </Typography>
               </div>
               <div className="col-span-3 md:col-span-4">
-                <Typography variant="small" weight={600}>
+                <Typography variant="small" weight={600} capitalize={true}>
                   {user?.profileId?.exams[0]}
                 </Typography>
               </div>

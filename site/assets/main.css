@@ -3,10 +3,17 @@
 
 @tailwind components;
 @import './components.css';
-
+@import "assets/js/videojs-plus/videojs-plus.css";
+@import "assets/js/videojs-plus/plugins/skip/style.css";
 @tailwind utilities;
 input {
   background: white;
+}
+.vp-player,
+.vp-player .video-js {
+  width: 100%;
+  position: relative;
+  height: 100%;
 }
 
 @layer base {

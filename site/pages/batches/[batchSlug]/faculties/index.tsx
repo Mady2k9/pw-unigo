@@ -10,6 +10,7 @@ const Faculties = () => {
 
   const { data, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
+      enabled: !!batchSlug
   })
 
   if (isLoading) <LoadingSection />
