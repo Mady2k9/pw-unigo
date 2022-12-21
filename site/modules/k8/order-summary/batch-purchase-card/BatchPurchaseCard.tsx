@@ -38,7 +38,7 @@ const BatchPurchaseCard = ({
         </div>
         <div className={style.cardDetails}>
           <div className="max-w-full truncate">
-            <Typography variant="subHeading" weight={700}>
+            <Typography variant="subHeading" weight={700} capitalize={true}>
               {batchDetail?.name}
             </Typography>
           </div>

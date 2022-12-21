@@ -1,7 +1,7 @@
 import { Container, LoadingSection, NoData } from '@components/ui'
 import useBatchContents, {
   ContentType,
-  DppNotes,
+  ContentModel,
 } from '@lib/hooks/batches/useBatchContents'
 import { PracticeCardType } from '@modules/k8/constants'
 import PracticeCard from '@components/contents/practice-card/PracticeCard'
@@ -30,7 +30,11 @@ const Assignment = ({ type }: { type: ContentType }) => {
             <div key={data._id}>
               <PracticeCard
                 variant={PracticeCardType.ASSIGNMENNT}
-                data={data as DppNotes}
+                attachmentId={
+                  data?.homeworkIds[0]?.attachmentIds[0]?.baseUrl +
+                  data?.homeworkIds[0]?.attachmentIds[0]?.key
+                }
+                title={data?.homeworkIds[0]?.topic}
               />
             </div>
           ))}

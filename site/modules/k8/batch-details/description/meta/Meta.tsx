@@ -21,12 +21,14 @@ const Meta = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
               idx < meta.length - 1 && 'border-r'
             } ${idx !== 0 && 'pl-6'} ${idx !== meta.length - 1 && 'pr-6'}`}
           >
-            <Typography variant="regular" weight={700}>
+            <Typography variant="regular" weight={700} capitalize={true}>
               {m.value}
             </Typography>
-            <Typography variant="small" weight={500}>
-              <span className="text-[#999]">{m.key}</span>
-            </Typography>
+            <span className="text-[#999]">
+              <Typography variant="small" weight={500} capitalize={true}>
+                {m.key}
+              </Typography>
+            </span>
           </div>
         ))}
       </div>

@@ -59,7 +59,11 @@ const TeacherModal = ({
               <div className="flex flex-col lg:flex-row h-fit lg:max-h-[352px] gap-4 px-3 py-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-2 px-2">
-                    <Typography variant="regular" weight={700}>
+                    <Typography
+                      variant="regular"
+                      weight={700}
+                      capitalize={true}
+                    >
                       {data?.firstName || '' + ' ' + data?.lastName || ''}
                     </Typography>
                     <Typography variant="tiny" weight={400}>
@@ -89,7 +93,11 @@ const TeacherModal = ({
                       layout="fill"
                     />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <Image src={PlayCircle} objectFit={'contain'} alt="play-icon" />
+                      <Image
+                        src={PlayCircle}
+                        objectFit={'contain'}
+                        alt="play-icon"
+                      />
                     </div>
                   </div>
                 </div>

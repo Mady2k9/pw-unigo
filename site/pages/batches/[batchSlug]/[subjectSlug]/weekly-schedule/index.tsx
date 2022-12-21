@@ -17,7 +17,7 @@ import { useEffect, useState } from 'react'
 import { isBefore, isAfter } from 'date-fns'
 import { ClassMode } from '@modules/k8/constants'
 import useBatchDetails, { Subject } from '@lib/hooks/batches/useBatchDetails'
-import {getImageUrlFromObjectImageId} from "@lib/utilities";
+import { getImageUrlFromObjectImageId } from '@lib/utilities'
 
 const WeeklySchedule = () => {
   const router = useRouter()
@@ -25,7 +25,7 @@ const WeeklySchedule = () => {
 
   const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
-    enabled: !!batchSlug
+    enabled: !!batchSlug,
   })
 
   const { data, isLoading } = useRecentSchedule({
@@ -49,7 +49,7 @@ const WeeklySchedule = () => {
             layout="fill"
           />
         </div>
-        <Typography variant="heading3" weight={700}>
+        <Typography variant="heading3" weight={700} capitalize={true}>
           {subjectName?.subject}
         </Typography>
       </div>
