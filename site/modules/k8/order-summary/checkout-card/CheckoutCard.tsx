@@ -395,7 +395,7 @@ const CheckoutCard = ({
 
         <Button
           onClick={pay}
-          // disabled={variant === BatchType.SELF_LEARNING && !activePlan}
+          disabled={variant === BatchType.SELF_LEARNING && !activePlan}
         >
           {checkoutDetails.amount === 0 ? 'Enroll' : 'Pay Now'}
         </Button>
