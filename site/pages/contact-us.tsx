@@ -6,7 +6,7 @@ import React from 'react'
 
 const ContactUs = () => {
   return (
-    <Layout>
+    <Layout isProtected={true}>
       <Container>
         <Typography variant={'heading3'} weight={700}>
           Contact Us:

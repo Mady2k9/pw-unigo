@@ -1,9 +1,9 @@
 [35mpw-live-v2:build[0m: cache hit, replaying output [2m13cc276b1c6350f7[0m
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/himanshusharma/WebstormProjects/pw/k8/site
+[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/mdamirgauhar/K8V2/k8/site
 [35mpw-live-v2:build: [0m> next build
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/himanshusharma/WebstormProjects/pw/k8/site/.env
+[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/mdamirgauhar/K8V2/k8/site/.env
 [35mpw-live-v2:build: [0minfo  - Linting and checking validity of types...
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m./pages/batches/[batchSlug]/[subjectSlug]/weekly-schedule/index.tsx
@@ -61,3 +61,11 @@
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
 [35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m[0m [90m 294 | [39m    } [36melse[39m {[0m
+[35mpw-live-v2:build: [0m[0m [90m 295 | [39m      signatureMutate([0m
+[35mpw-live-v2:build: [0m[0m[31m[1m>[22m[39m[90m 296 | [39m        {}[33m,[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m     | [39m        [31m[1m^[22m[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m 297 | [39m        {[0m
+[35mpw-live-v2:build: [0m[0m [90m 298 | [39m          onSuccess[33m:[39m (_data[33m:[39m any) [33m=>[39m {[0m
+[35mpw-live-v2:build: [0m[0m [90m 299 | [39m            [36mconst[39m newSignaturePay [33m=[39m {[0m
+[35mpw-live-v2:build: [0m ELIFECYCLE  Command failed with exit code 1.
