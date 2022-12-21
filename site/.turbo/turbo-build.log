@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m13cc276b1c6350f7[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2m7a6cb62c26081124[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/mdamirgauhar/K8V2/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -55,9 +55,9 @@
 [35mpw-live-v2:build: [0m+ First Load JS shared by all                                                  136 kB
 [35mpw-live-v2:build: [0m  ├ chunks/framework-e6af074d2e298f55.js                                       45.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/main-f2c1f8ffd6de9689.js                                            31.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-d15a92ba804dc12f.js                                      35.8 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-78f8b6d6d2daa2f7.js                                         2.61 kB
-[35mpw-live-v2:build: [0m  └ css/a6977dbe3007bc2e.css                                                   21.5 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-55dbd95581a0f27b.js                                      35.8 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-e3595221d84c8516.js                                         2.63 kB
+[35mpw-live-v2:build: [0m  └ css/f8f2ca99d4a21d3b.css                                                   21.5 kB
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
 [35mpw-live-v2:build: [0m

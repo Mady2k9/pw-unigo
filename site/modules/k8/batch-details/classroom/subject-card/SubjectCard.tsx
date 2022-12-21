@@ -23,6 +23,8 @@ const SubjectCard = ({
             src={getImageUrlFromObjectImageId(subject?.imageId)}
             alt="subject_logo"
             layout="fill"
+            width={40}
+            height={40}
             objectFit="contain"
           />
         </div>
