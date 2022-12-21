@@ -1,4 +1,4 @@
-import { Card, Typography } from '@components/ui'
+import {Button, Card, Typography} from '@components/ui'
 import Attachment from '@assets/images/attach.svg'
 import Image from 'next/image'
 import style from './ClassCard.module.css'
@@ -53,11 +53,9 @@ const ClassCard = ({
 
             {variant === ClassMode.RECORDED && (
               <div className="flex items-center justify-end">
-                <div className="px-3 py-1 bg-indigo-500 rounded-[40px]">
-                  <Typography variant="small" weight={700}>
-                    <span className="text-white">Start class</span>
-                  </Typography>
-                </div>
+                <Button size={'tiny'} rounded>
+                  Start Class
+                </Button>
               </div>
             )}
           </div>
