@@ -20,7 +20,7 @@ const BatchPurchaseCard = ({
       <div className={style.cardContainer}>
         <div
           className={cn(
-            'relative h-[59px] lg:h-[90px]',
+            'relative h-[59px] lg:h-[90px] rounded-xl',
             variant === BatchType.SELF_LEARNING
               ? style.selfBatchPoster
               : style.liveBatchPoster
@@ -33,11 +33,12 @@ const BatchPurchaseCard = ({
             }
             alt="batch-image"
             layout="fill"
+            className="rounded-xl"
           />
         </div>
         <div className={style.cardDetails}>
           <div className="max-w-full truncate">
-            <Typography variant="subHeading" weight={700}>
+            <Typography variant="subHeading" weight={700} capitalize={true}>
               {batchDetail?.name}
             </Typography>
           </div>

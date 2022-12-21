@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
@@ -9,10 +10,11 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+
+        <script src="https://public.releases.juspay.in/hyper-sdk-web/HyperServices.js" />
       </Html>
     )
   }
 }
-
 
 export default MyDocument

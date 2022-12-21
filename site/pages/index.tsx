@@ -4,6 +4,7 @@ import {
   DemoVideo,
   HomeHeader,
   MyBatchList,
+  RecentlyWatched,
   ShareNow,
   TestimonialSection,
 } from '@modules/k8'
@@ -16,6 +17,7 @@ export default function Home() {
       <Container className="flex flex-col gap-9 md:gap-6 overflow-auto">
         <HomeHeader />
         <MyBatchList />
+        <RecentlyWatched />
         <BatchList />
         <DemoVideo />
         <TestimonialSection />

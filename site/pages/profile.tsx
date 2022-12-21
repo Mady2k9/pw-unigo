@@ -4,7 +4,7 @@ import React from 'react'
 
 const Profile = () => {
   return (
-    <Layout>
+    <Layout isProtected={true}>
       <ProfilePage />
     </Layout>
   )
