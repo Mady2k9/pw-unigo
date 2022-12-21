@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { Suspense, useState } from 'react'
 import { Layout } from '@components/common'
+import SuspenseSection from '@components/common/SuspenseSection'
 
 const TAB_ITEMS = {
   selfLearning: {
@@ -64,23 +65,23 @@ const Wrapper = ({ batchDetails }: { batchDetails: any }) => {
     switch (currentIndex) {
       case 0:
         return (
-          <Suspense fallback="loading....">
+          <SuspenseSection>
             <Description batchDetails={batchDetails} />
-          </Suspense>
+          </SuspenseSection>
         )
 
       case 1:
         return (
-          <Suspense fallback="loading....">
+          <SuspenseSection>
             <Classroom batchDetails={batchDetails} />
-          </Suspense>
+          </SuspenseSection>
         )
 
       case 2:
         return (
-          <Suspense fallback="loading....">
-            <Announcement batchDetails={batchDetails}/>
-          </Suspense>
+          <SuspenseSection>
+            <Announcement batchDetails={batchDetails} />
+          </SuspenseSection>
         )
       default:
         return <></>
@@ -109,12 +110,15 @@ const BatchDetails = () => {
 
   const { data: batchDetails, isLoading } = useBatchDetails({
     batchSlug: batchSlug as string,
-    enabled: !!batchSlug
+    enabled: !!batchSlug,
   })
 
-  if (isLoading) return <div className={'h-screen w-screen'}>
-    <LoadingSection />
-  </div>
+  if (isLoading)
+    return (
+      <div className={'h-screen w-screen'}>
+        <LoadingSection />
+      </div>
+    )
 
   return <Wrapper batchDetails={batchDetails} />
 }
