@@ -37,7 +37,7 @@ const MyBatchCard = ({ batchDetail }: { batchDetail: any }) => {
               variant === BatchType.SELF_LEARNING ? 'study-room' : 'classroom'
             }`}
           >
-            <div className="bg-indigo-600 flex items-center w-fit py-1 px-3 rounded-lg mt-4">
+            <div className="bg-indigo-600 flex items-center w-fit py-1 px-3 rounded-lg mt-4 cursor-pointer hover:bg-indigo-600">
               <Typography variant="tiny" weight={700}>
                 <span className="text-white">Let’s Study</span>
               </Typography>

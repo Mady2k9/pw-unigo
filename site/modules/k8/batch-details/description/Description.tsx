@@ -7,6 +7,7 @@ import DemoVideos from './demo-videos/DemoVideos'
 import Faculties from './faculties/Faculties'
 import Faq from './faq/Faq'
 import Meta from './meta/Meta'
+import BatchSchedule from './batch-schedule/BatchSchedule'
 
 const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
   return (
@@ -23,6 +24,10 @@ const Description = ({ batchDetails }: { batchDetails: BatchDetailModel }) => {
         <Meta batchDetail={batchDetails} />
         <Faculties batchSlug={batchDetails?.slug} />
         <DemoVideos batchSlug={batchDetails?.slug} />
+
+        {!batchDetails?.isSelfLearning && batchDetails?.subjects.length > 0 && (
+          <BatchSchedule subjects={batchDetails?.subjects} />
+        )}
 
         {batchDetails?.description && (
           <CourseDetails courseDetails={batchDetails?.description} />
