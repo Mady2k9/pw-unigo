@@ -26,6 +26,7 @@ const RecentlyWatched = () => {
               image={video?.videoDetails?.image}
               slug={video?.slug}
               duration={video?.videoDetails?.duration}
+              lastWatchedTimeInSec={video?.lastWatchedPointInSec}
             />
           )
         })}

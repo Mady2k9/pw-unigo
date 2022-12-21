@@ -34,6 +34,7 @@ module.exports = {
       },
       animation: {
         fadeBeat: 'fadeBeat 2s infinite',
+        notificationZoom: 'notificationZoom 200ms',
         highlight: 'highlight 1500ms ease-out',
       },
       keyframes: (theme) => ({
@@ -45,6 +46,10 @@ module.exports = {
         highlight: {
           '0%': { background: '#B6A5FB' },
           '100%': { background: '#ffffff' },
+        },
+        notificationZoom: {
+          '0%': { transform: 'scale(1.02) translateY(5px)' },
+          '100%': { transform: 'scale(1) translateY(0)' },
         },
       }),
       colors: {
