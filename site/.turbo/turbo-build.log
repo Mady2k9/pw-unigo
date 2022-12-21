@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m1f6c0fe10a42fade[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2mb1c48ce7ca38813e[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/himanshusharma/WebstormProjects/pw/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -58,7 +58,7 @@
 [35mpw-live-v2:build: [0m  ├ chunks/framework-e6af074d2e298f55.js                                       45.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/main-f2c1f8ffd6de9689.js                                            31.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/pages/_app-83369e8d5abf4af3.js                                      35.8 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-9ae792d6b6e6e441.js                                         2.64 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-4ad9f1d777c40735.js                                         2.64 kB
 [35mpw-live-v2:build: [0m  └ css/34ed44366a5dca55.css                                                   21.5 kB
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
