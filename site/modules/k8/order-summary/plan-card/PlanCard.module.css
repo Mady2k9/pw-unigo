@@ -1,4 +1,5 @@
 .cardContainer {
+  border: 2px solid #ffffff;
   @apply flex items-center justify-between relative;
 }
 
