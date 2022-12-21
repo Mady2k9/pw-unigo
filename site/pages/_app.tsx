@@ -12,6 +12,7 @@ import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 import {SystemThemeIndicator} from "@components/index";
 import {LoadingSection} from "@components/ui";
 import useCohortDetails from "@lib/hooks/batches/useCohortDetails";
+import NotificationWrapper from "@components/notification/NotificationWrapper";
 
 const Noop: FC<{ children?: ReactNode }> = ({children}) => <>{children}</>;
 const CohortWrapper = ({Component, pageProps}: AppProps) => {
@@ -22,7 +23,9 @@ const CohortWrapper = ({Component, pageProps}: AppProps) => {
             <LoadingSection message={'Preparing your class'}/>
         </div>
     }
+    console.log('here');
     return <Layout pageProps={pageProps}>
+        <NotificationWrapper/>
         <Component {...pageProps} />
     </Layout>
 }
