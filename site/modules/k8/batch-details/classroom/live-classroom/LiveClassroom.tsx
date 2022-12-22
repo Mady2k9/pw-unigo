@@ -71,7 +71,7 @@ const LiveClassroom = ({
                     <span className="text-gray-500">Classes for current week</span>
                 </Typography>
 
-                <div className={'flex flex-1 overflow-x-auto pb-4'}>
+                <div className={'flex flex-1 overflow-x-auto pb-4 px-2 -mx-2'}>
                     {batchDetails?.subjects.length > 0 ? (
                         <div className={style.liveBatchCardContainer}>
                             {batchDetails?.subjects?.map((subject: Subject) => (
@@ -102,7 +102,7 @@ const LiveClassroom = ({
                 </Typography>
 
 
-                <div className={'flex flex-1 overflow-x-auto pb-4'}>
+                <div className={'flex flex-1 overflow-x-auto pb-4  px-2 -mx-2'}>
                     {batchDetails?.subjects.length > 0 ? (
                         <div className={style.liveBatchCardContainer}>
                             {batchDetails?.subjects.map((subject: any) => (

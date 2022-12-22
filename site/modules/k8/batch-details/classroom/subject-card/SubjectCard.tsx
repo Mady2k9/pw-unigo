@@ -15,7 +15,7 @@ const SubjectCard = ({
   return (
     <Card>
       <div
-        className="min-w-[96px] w-full cursor-pointer flex flex-col items-center justify-center md:justify-start md:flex-row gap-4 md:gap-3 py-2 md:py-3 md:px-2.5 animated fadeIn duration-200"
+        className="w-[150px] md:w-full cursor-pointer flex flex-col items-center justify-center md:justify-start md:flex-row gap-4 md:gap-3 py-3 md:px-2.5 animated fadeIn duration-200 px-2"
         onClick={handleClick}
       >
         <div className="h-[40px] w-[40px] relative ">
