@@ -1,10 +1,10 @@
 import useBatches, { BatchType } from '@lib/hooks/batches/useBatches'
 import BatchCard from '../batch-card/BatchCard'
 import style from './BatchList.module.css'
-import {LoadingSection, useUI} from '@components/ui'
+import { LoadingSection, useUI } from '@components/ui'
 
 const BatchList = () => {
-  const {latestCohortData} = useUI();
+  const { latestCohortData } = useUI()
   const { data: selfPacedBatches, isLoading: selfPacedBatchesLoading } =
     useBatches({
       cohortId: latestCohortData?._id,
