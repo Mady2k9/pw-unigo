@@ -74,18 +74,26 @@ const Lectures = ({ type }: { type: ContentType }) => {
         })}
       >
         {data &&
-          data.map((video: any) => (
-            <VideoCard
-              key={video._id}
-              id={video._id}
-              name={video?.topic || video?.videoDetails?.name}
-              duration={video?.videoDetails?.duration}
-              slug={video?.slug}
-              date={video?.date}
-              image={video?.videoDetails?.image}
-              isLocked={!isPurchased}
-            />
-          ))}
+          data.map((video: any) => {
+            const lastWatchedTimeInSec =
+              videoStatsData &&
+              videoStatsData.find((v: any) => v.typeId === video._id)
+                ?.lastWatchedPointInSec
+
+            return (
+              <VideoCard
+                key={video._id}
+                id={video._id}
+                name={video?.topic || video?.videoDetails?.name}
+                duration={video?.videoDetails?.duration}
+                slug={video?.slug}
+                date={video?.date}
+                image={video?.videoDetails?.image}
+                isLocked={!isPurchased}
+                lastWatchedTimeInSec={lastWatchedTimeInSec}
+              />
+            )
+          })}
       </div>
     )
   }, [data, enableSearch])
