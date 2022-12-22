@@ -7,6 +7,7 @@ const Classroom = ({ batchDetails }: { batchDetails: any }) => {
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
 
+
   return variant === BatchType.LIVE ? (
     <LiveClassroom batchDetails={batchDetails} />
   ) : (
