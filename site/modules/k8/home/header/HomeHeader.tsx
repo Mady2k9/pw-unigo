@@ -26,14 +26,14 @@ const HomeHeader = () => {
             <Button onClick={() => {
                 showNotification({
                     description: "Description  " + new Date().getTime(),
-                    type: NotificationEnums.LOADING,
+                    type: NotificationEnums.SUCCESS,
                     title: "New Title",
                     onClose: () => {
                         console.log('closed');
                     }
                 })
             }}>
-                Hllo
+                Dummy show Notification
             </Button>
         </div>
     )
