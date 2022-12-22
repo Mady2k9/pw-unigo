@@ -23,7 +23,6 @@ const CohortWrapper = ({Component, pageProps}: AppProps) => {
             <LoadingSection message={'Preparing your class'}/>
         </div>
     }
-    console.log('here');
     return <Layout pageProps={pageProps}>
         <NotificationWrapper/>
         <Component {...pageProps} />

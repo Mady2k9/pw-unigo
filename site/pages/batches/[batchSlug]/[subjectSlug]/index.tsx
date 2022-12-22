@@ -40,7 +40,7 @@ const Topic = () => {
           {subjectName}
         </Typography>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TopicCard
             key={'12345'}
             handleClick={() => redirectToContent(ALL_CONTENTS, 'All Content')}

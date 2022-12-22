@@ -1,13 +1,5 @@
 .videoContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 224px);
-  gap: 16px;
-  grid-auto-flow: column;
-  grid-auto-columns: 224px;
-  overflow-x: auto;
-  padding: 8px 6px;
-
-  @apply pb-[20px];
+  @apply pb-[20px] grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4;
   /* @apply lg:flex lg:items-center grid grid-flow-col overflow-x-auto gap-4 px-1.5 py-2; */
 }
 

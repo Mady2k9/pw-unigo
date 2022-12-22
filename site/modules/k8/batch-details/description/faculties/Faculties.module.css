@@ -1,11 +1,12 @@
 .cardContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(150px, 1fr);
-  overflow-x: auto;
+  /*display: grid;*/
+  /*grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));*/
+  /*grid-auto-flow: column;*/
+  /*grid-auto-columns: minmax(150px, 1fr);*/
+  /*overflow-x: auto;*/
 
-  @apply gap-8 lg:gap-16;
+  /*@apply gap-8 lg:gap-16;*/
+  @apply flex space-x-4;
 }
 
 .cardContainer::-webkit-scrollbar {
