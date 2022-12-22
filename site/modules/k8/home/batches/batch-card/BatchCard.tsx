@@ -131,14 +131,16 @@ const K8Card = ({
         ) : (
           <div className="flex flex-col-reverse md:flex-row items-start gap-3 justify-between mt-6">
             <div className="flex flex-col gap-3 px-2 md:px-0 ">
-              <div className="flex items-center gap-2">
-                <Image src={teacher} alt="" />
-                <Typography variant="tiny" weight={600}>
-                  <span className="text-white line-clamp-1">
-                    {batchData?.byName}
-                  </span>
-                </Typography>
-              </div>
+              {batchData?.byName && (
+                <div className="flex items-center gap-2">
+                  <Image src={teacher} alt="" />
+                  <Typography variant="tiny" weight={600}>
+                    <span className="text-white line-clamp-1">
+                      {batchData?.byName}
+                    </span>
+                  </Typography>
+                </div>
+              )}
               <div className="flex items-center gap-2">
                 <Image src={calendar} alt="" />
                 <div className="flex items-center gap-1">

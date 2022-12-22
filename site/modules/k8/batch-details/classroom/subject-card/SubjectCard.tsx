@@ -8,7 +8,7 @@ const SubjectCard = ({
   subject,
   handleClick,
 }: {
-  mode: SubjectMode
+  mode?: 'compact'
   subject: any
   handleClick?: () => void
 }) => {

@@ -56,7 +56,7 @@ const WeeklySchedule = () => {
 
       {isLoading && <LoadingSection />}
 
-      <WeeklyScheduleCard data={data} />
+      {!isLoading && <WeeklyScheduleCard data={data} />}
     </Container>
   )
 }
@@ -69,7 +69,6 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
   useEffect(() => {
     const dataLength = data && data.length
     const active = data.findIndex((d) => d.isActive)
-    console.log(active, 'active')
     setActiveDay(active !== -1 ? active : dataLength - 2)
   }, [data])
 
