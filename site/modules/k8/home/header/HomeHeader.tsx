@@ -23,7 +23,18 @@ const HomeHeader = () => {
             </div>
 
             <FlyingBoy/>
-
+            <Button onClick={() => {
+                showNotification({
+                    description: "Description  " + new Date().getTime(),
+                    type: NotificationEnums.LOADING,
+                    title: "New Title",
+                    onClose: () => {
+                        console.log('closed');
+                    }
+                })
+            }}>
+                Hllo
+            </Button>
         </div>
     )
 }
