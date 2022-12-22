@@ -1,4 +1,10 @@
-import { Container, LoadingSection, NoData, Typography } from '@components/ui'
+import {
+  Container,
+  LoadingSection,
+  NoData,
+  Typography,
+  useUI,
+} from '@components/ui'
 import style from './Lecture.module.css'
 import VideoCard from '@components/contents/video-card/VideoCard'
 import { BatchType } from '@lib/hooks/batches/useBatches'
@@ -13,9 +19,11 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import cn from 'clsx'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import { ALL_CONTENTS } from '@lib/content-constants'
+import useFetchStats from '@lib/hooks/video-player/useFetchStats'
 
 const Lectures = ({ type }: { type: ContentType }) => {
   const router = useRouter()
+  const { user } = useUI()
   const { batchSlug, subjectSlug, topicSlug } = router.query
 
   const { data: batchDetails } = useBatchDetails({
@@ -44,6 +52,16 @@ const Lectures = ({ type }: { type: ContentType }) => {
         }
 
   const { data, isLoading } = useBatchContents(payload)
+
+  const videoIds = data?.map((video) => video._id).join(',')
+
+  const { data: videoStatsData } = useFetchStats({
+    typeId: videoIds,
+    userId: user?.id,
+    enabled: videoIds.length > 0,
+  })
+
+  console.log(videoStatsData)
 
   const [enableSearch, setEnableSearch] = useState(false)
   const [query, setQuery] = useState('')
