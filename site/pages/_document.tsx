@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import React from 'react'
 
 class MyDocument extends Document {
   render() {
@@ -10,6 +11,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+
         <script src="https://public.releases.juspay.in/hyper-sdk-web/HyperServices.js" />
       </Html>
     )

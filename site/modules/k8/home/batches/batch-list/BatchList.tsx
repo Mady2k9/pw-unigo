@@ -24,10 +24,10 @@ const BatchList = () => {
         </div>
       )}
       {selfPacedBatches.map((data: any) => (
-        <BatchCard key={data._id + 'self'} batchData={data?.batchId} />
+        <BatchCard key={data.batchId?._id + 'self'} batchData={data?.batchId} />
       ))}
       {liveBatches.map((data: any) => (
-        <BatchCard key={data._id + 'live'} batchData={data?.batchId} />
+        <BatchCard key={data.batchId?._id + 'live'} batchData={data?.batchId} />
       ))}
     </div>
   )

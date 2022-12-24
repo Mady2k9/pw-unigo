@@ -11,7 +11,6 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 import {SystemThemeIndicator} from "@components/index";
 import {LoadingSection} from "@components/ui";
-import useCohortDetails from "@lib/hooks/batches/useCohortDetails";
 import NotificationWrapper from "@components/notification/NotificationWrapper";
 
 const Noop: FC<{ children?: ReactNode }> = ({children}) => <>{children}</>;

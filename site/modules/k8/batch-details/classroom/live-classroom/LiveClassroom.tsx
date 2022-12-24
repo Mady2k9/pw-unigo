@@ -1,12 +1,12 @@
 import {NoClasses} from '@components/lotties'
 import {Container, NoData, Typography} from '@components/ui'
-import {SubjectMode} from '@modules/k8/constants'
 import style from './LiveClassroom.module.css'
 import SubjectCard from '../subject-card/SubjectCard'
 import {useRouter} from 'next/router'
 import {BatchDetailModel, Subject} from '@lib/hooks/batches/useBatchDetails'
 import useTodaySchedule from '@lib/hooks/batches/useTodaySchedule'
 import VideoCard from '@components/contents/video-card/VideoCard'
+import {SubjectMode} from "@lib/content-constants";
 
 const LiveClassroom = ({
                            batchDetails,
@@ -47,6 +47,7 @@ const LiveClassroom = ({
                                     image={ts?.videoDetails?.image}
                                     isTodaysScheduled={true}
                                     date={ts?.startTime}
+                                    subjectSlug={ts?.subjectId?.slug}
                                     subject={ts?.subjectId?.name}
                                 />
                             )
