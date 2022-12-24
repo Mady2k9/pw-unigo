@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import { Card, Typography } from '@components/ui'
-import { SubjectMode } from '@modules/k8/constants'
 import { getImageUrlFromObjectImageId } from '@lib/utilities'
+import {SubjectMode} from "@lib/content-constants";
 
 const SubjectCard = ({
   mode,
   subject,
   handleClick,
 }: {
-  mode?: 'compact'
+  mode?: SubjectMode
   subject: any
   handleClick?: () => void
 }) => {
