@@ -9,11 +9,9 @@ importers:
       husky: ^8.0.1
       prettier: ^2.7.1
       react-pdf: ^6.2.0
-      react-razorpay: ^1.2.0
       turbo: ^1.4.6
     dependencies:
       formik: 2.2.9
-      react-razorpay: 1.2.0
     devDependencies:
       '@types/react-pdf': 6.2.0
       husky: 8.0.1
@@ -4345,12 +4343,6 @@ packages:
       tiny-warning: 1.0.3
     transitivePeerDependencies:
       - worker-loader
-    dev: false
-
-  /react-razorpay/1.2.0:
-    resolution: {integrity: sha512-UMQF8od/yKPPgXcbv5+IaCDeRrZdeu9HCYsKjALpSsPMtPP1LU0QBcjJVYsPi1vjdrlXbrUH9/YhOVMcvFVsIQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dev: false
 
   /react-remove-scroll-bar/2.3.3_w5j4k42lgipnm43s3brx6h3c34:
