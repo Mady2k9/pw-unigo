@@ -19,7 +19,7 @@
 }
 
 .cardDescriptionContainer {
-  @apply border-b pt-10 pb-6 border-b-indigo-200 px-2 md:px-4 flex flex-col;
+  @apply border-b pt-10 pb-6 border-b-indigo-50 px-2 md:px-4 flex flex-col;
 }
 
 .batchTitle {

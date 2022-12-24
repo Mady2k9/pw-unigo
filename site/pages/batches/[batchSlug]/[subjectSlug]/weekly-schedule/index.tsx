@@ -50,7 +50,7 @@ const WeeklySchedule = () => {
           />
         </div>
         <Typography variant="heading3" weight={700} capitalize={true}>
-          {subjectName?.subject}
+          {subjectName?.subject} Weekly Scheduled
         </Typography>
       </div>
 
