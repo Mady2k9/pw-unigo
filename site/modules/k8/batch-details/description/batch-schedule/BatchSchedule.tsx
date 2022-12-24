@@ -21,7 +21,7 @@ const BatchSchedule = ({ subjects }: { subjects: Subject[] }) => {
         Batch Schedule
       </Typography>
       <div className={'flex overflow-x-auto'}>
-        <div className="flex p-2 py-4">
+        <div className="flex p-2 py-4 gap-6">
           {subjects.map((subject) => {
             return (
               <SubjectCard
