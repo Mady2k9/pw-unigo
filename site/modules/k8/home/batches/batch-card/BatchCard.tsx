@@ -17,7 +17,7 @@ import { priceDisplay } from '@lib/user-utility'
 import format from 'date-fns/format'
 import { useEffect, useState } from 'react'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
-import { generateWhatsappLink } from '@lib/utilities'
+import { generateWhatsappLink, truncateString } from '@lib/utilities'
 
 const K8Card = ({
   batchData,
