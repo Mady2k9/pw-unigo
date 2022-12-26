@@ -6,6 +6,7 @@ import Image from 'next/image'
 import StarImage from '@assets/images/background/Star.png'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { truncateString } from '@lib/utilities'
 
 const HomeHeader = () => {
   const { user } = useUI()
@@ -15,7 +16,7 @@ const HomeHeader = () => {
       <div className={'flex relative'}>
         <div className={s.username}>
           <Typography variant={'heading2'} weight={700}>
-            Hello! {getFirstName(user)}
+            Hello! {truncateString(getFirstName(user), 10)}
           </Typography>
         </div>
         <div className={'absolute -right-10 -bottom-5'}>

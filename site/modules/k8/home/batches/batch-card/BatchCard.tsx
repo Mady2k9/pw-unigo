@@ -16,6 +16,7 @@ import { DiscountBadge } from '@components/common'
 import { priceDisplay } from '@lib/user-utility'
 import format from 'date-fns/format'
 import { useEffect, useState } from 'react'
+import { truncateString } from '@lib/utilities'
 
 const K8Card = ({
   batchData,
@@ -94,7 +95,7 @@ const K8Card = ({
         <div className="flex items-center justify-between">
           <span className={variant === BatchType.LIVE ? 'text-white' : ''}>
             <Typography capitalize={true} variant={'heading3'} weight={700}>
-              {batchData?.name}
+              {truncateString(batchData?.name, 16)}
             </Typography>
           </span>
           <div className={style.iconsContainer}>
@@ -114,7 +115,7 @@ const K8Card = ({
               </span>
               <Typography html={batchData?.byName} />
             </div>
-            <div className="h-[112px] w-[112px] relative">
+            <div className="h-[112px] w-[112px] relative rounded-md">
               <Image
                 src={
                   batchData
@@ -125,6 +126,7 @@ const K8Card = ({
                 objectFit={'contain'}
                 layout="fill"
                 alt=""
+                className="rounded-md"
               />
             </div>
           </div>
@@ -231,6 +233,7 @@ const K8Card = ({
           </Button>
           <Button
             className="w-full"
+            variant="primary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectToOrderSummary}
           >

@@ -3,8 +3,18 @@ export enum PracticeCardType {
   PRACTICE = 'practice',
 }
 
-
 export enum ClassMode {
   UPCOMING = 'upcoming',
   RECORDED = 'recorded',
+}
+
+export enum PDFActions {
+  DOWNLOAD = 'Download',
+  OPEN = 'Open',
+  PRINT = 'Print',
+}
+
+export enum VideoType {
+  PENPENCILVDO = 'penpencilvdo',
+  YOUTUBEVDO = 'youtubevdo',
 }
