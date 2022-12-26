@@ -16,7 +16,8 @@ import { DiscountBadge } from '@components/common'
 import { priceDisplay } from '@lib/user-utility'
 import format from 'date-fns/format'
 import { useEffect, useState } from 'react'
-import { truncateString } from '@lib/utilities'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
+import { generateWhatsappLink } from '@lib/utilities'
 
 const K8Card = ({
   batchData,
@@ -26,6 +27,7 @@ const K8Card = ({
   loading?: boolean
 }) => {
   const router = useRouter()
+  const { showNotification } = useNotify()
   const [teachersToMap, setTeachersToMap] = useState('')
   const variant = batchData?.isSelfLearning
     ? BatchType.SELF_LEARNING
@@ -93,7 +95,11 @@ const K8Card = ({
       </div>
       <div className={style.cardDescriptionContainer}>
         <div className="flex items-center justify-between">
-          <span className={variant === BatchType.LIVE ? 'text-white' : ''}>
+          <span
+            className={
+              (variant === BatchType.LIVE ? 'text-white' : '') + ' line-clamp-1'
+            }
+          >
             <Typography capitalize={true} variant={'heading3'} weight={700}>
               {truncateString(batchData?.name, 16)}
             </Typography>
@@ -102,7 +108,24 @@ const K8Card = ({
             <div className="rounded-md text-black bg-[#FBDE47] px-2 py-1 text-xs font-bold">
               New
             </div>
-            <div className="bg-white rounded-md h-[20px] w-[20px] flex items-center justify-center cursor-pointer">
+            <div
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  generateWhatsappLink(batchData?.slug)
+                )
+                window.open(generateWhatsappLink(batchData?.slug))
+                showNotification({
+                  description: 'Whatsapp link copied !',
+                  type: NotificationEnums.SUCCESS,
+                  title: 'Share Link',
+                  identifier: generateWhatsappLink(batchData?.slug),
+                  onClose: () => {
+                    console.log('closed')
+                  },
+                })
+              }}
+              className="bg-white rounded-md h-[20px] w-[20px] flex items-center justify-center cursor-pointer"
+            >
               <Image src={Share} alt="share_icon" />
             </div>
           </div>
@@ -115,7 +138,7 @@ const K8Card = ({
               </span>
               <Typography html={batchData?.byName} />
             </div>
-            <div className="h-[112px] w-[112px] relative rounded-md">
+            <div className="h-[112px] w-[112px] relative">
               <Image
                 src={
                   batchData
@@ -126,7 +149,6 @@ const K8Card = ({
                 objectFit={'contain'}
                 layout="fill"
                 alt=""
-                className="rounded-md"
               />
             </div>
           </div>
