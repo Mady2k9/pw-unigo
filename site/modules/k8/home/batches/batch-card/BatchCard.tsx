@@ -225,7 +225,6 @@ const K8Card = ({
         <div className="flex items-center gap-2">
           <Button
             className="w-full"
-            variant="secondary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectTo}
           >
@@ -233,7 +232,7 @@ const K8Card = ({
           </Button>
           <Button
             className="w-full"
-            variant="primary"
+            variant="secondary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectToOrderSummary}
           >

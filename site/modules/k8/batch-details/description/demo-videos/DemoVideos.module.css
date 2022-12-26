@@ -1,5 +1,5 @@
 .videoContainer {
-  @apply pb-[20px] grid grid-cols-4 md:grid-cols-4  gap-4;
+  @apply pb-[20px] flex gap-4;
   /* @apply lg:flex lg:items-center grid grid-flow-col overflow-x-auto gap-4 px-1.5 py-2; */
 }
 
