@@ -20,7 +20,7 @@ const BatchSchedule = ({subjects}: { subjects: Subject[] }) => {
             <Typography variant="subHeading" weight={700}>
                 Batch Schedule
             </Typography>
-            <div className={'flex overflow-x-auto'}>
+            <div className={'flex overflow-x-auto -mx-2'}>
                 <div className="flex flex-wrap p-2 py-4 gap-4">
                     {subjects.map((subject) => {
                         return (
