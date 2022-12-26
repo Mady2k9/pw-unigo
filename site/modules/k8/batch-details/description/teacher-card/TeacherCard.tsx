@@ -10,7 +10,7 @@ interface TeacherData {
   _id: string
   qualification: string
   imageId: { baseUrl: string; key: string; _id: string }
-  experience: string
+  experience: number
 }
 
 function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
@@ -20,6 +20,7 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
       teacherData?.imageId?.key &&
       teacherData?.imageId?.baseUrl + teacherData?.imageId?.key) ||
     TeacherPlaceholder
+
   return (
     <>
       <div
@@ -35,22 +36,31 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
             quality={100}
           />
         </div>
-        <div className="bg-[#F7F7F7] m-0 p-2 rounded-[8px] flex flex-col">
-          <span className="text-gray-800">
-            <Typography weight={800} variant="tiny" capitalize={true}>
-              {teacherData?.firstName || '' + ' ' + teacherData?.lastName || ''}
-            </Typography>
-          </span>
+        <div className="bg-[#F7F7F7] m-0 py-2 px-3 rounded-[8px] flex flex-col">
+          <div className="text-gray-800 flex items-center gap-1">
+            {teacherData?.firstName && (
+              <Typography weight={800} variant="tiny" capitalize={true}>
+                {teacherData?.firstName}
+              </Typography>
+            )}
+            {teacherData?.lastName && (
+              <Typography weight={800} variant="tiny" capitalize={true}>
+                {teacherData?.lastName}
+              </Typography>
+            )}
+          </div>
 
-          <div className={`flex items-center justify-between mt-1`}>
-            {['B.Tech', '9 Year Exp.'].map((meta, i) => (
-              <div
-                className="bg-white px-2 py-1 rounded-[6px] text-gray-800 text-[9px] font-bold"
-                key={i}
-              >
-                {meta}
-              </div>
-            ))}
+          <div className={`flex items-center gap-2 mt-1`}>
+            <div className="bg-white rounded-md px-2 py-1">
+              <Typography variant="label" weight={700}>
+                {teacherData?.qualification}
+              </Typography>
+            </div>
+            <div className="bg-white rounded-md px-2 py-1">
+              <Typography variant="label" weight={700}>
+                {teacherData?.experience} years of Exp.
+              </Typography>
+            </div>
           </div>
         </div>
       </div>

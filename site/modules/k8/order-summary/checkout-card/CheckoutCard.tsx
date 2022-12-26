@@ -19,11 +19,12 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import { useRouter } from 'next/router'
 import useApplyCoupon from '@lib/hooks/orders/useApplyCoupon'
 import useSignature from '@lib/hooks/orders/useSignature'
-import useRazorpay from 'react-razorpay'
 import usePaymentInfo from '@lib/hooks/orders/usePaymentInfo'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
 import useActivePaymentKey from '@lib/hooks/orders/useActivePaymentKey'
 import { PaymentStatus } from '@components/common/AfterPayment/AfterPaymentComponent'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
+import loadScript from '@lib/load-script'
 
 interface CheckoutDetails {
   discount: number
@@ -44,6 +45,7 @@ const CheckoutCard = ({
 }) => {
   const isFree = batchDetail?.fee?.amount === 0
   const { user } = useUI()
+  const { showNotification } = useNotify()
   const [checkoutDetails, setCheckoutDetails] = useState<CheckoutDetails>({
     discount: 0,
     amount: 0,
@@ -58,7 +60,6 @@ const CheckoutCard = ({
   // const [walletPts, setWalletPts] = useState(0)
   const [totalAmount, setTotalAmount] = useState(0)
   const router = useRouter()
-  const Razorpay = useRazorpay()
 
   const variant = batchDetail?.isSelfLearning
     ? BatchType.SELF_LEARNING
@@ -92,8 +93,13 @@ const CheckoutCard = ({
   )
 
   useEffect(() => {
-    setTotalAmount(batchDetail?.fee?.total)
-  }, [batchDetail])
+    if (variant === BatchType.SELF_LEARNING && !activePlan) {
+      showNotification({
+        title: 'No Plans Found!',
+        type: NotificationEnums.ERROR,
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (checked) {
@@ -157,7 +163,6 @@ const CheckoutCard = ({
 
   const juspayRedirect = (order: any) => {
     let orderResponse: any
-    console.log(order)
 
     if (order) {
       order['response']['customerEmail'] = user?.email
@@ -169,14 +174,12 @@ const CheckoutCard = ({
         payload: orderResponse?.response,
       }
 
-      console.log(sdkPayload)
-
       hyperServiceObject.process(sdkPayload)
     }
   }
 
   const { data: rzpKey, isLoading: rzpKeyLoading } = usePaymentInfo({
-    enabled: activePaymentKey.razorpay,
+    enabled: !activePaymentKey.razorpay,
   })
 
   useEffect(() => {
@@ -184,45 +187,12 @@ const CheckoutCard = ({
       if (rzpKey.length === 1) {
         setRazorpayKey(rzpKey[0].id)
       } else {
-        const rpKey = rzpKey.filter((item) => item.name === 'two')
-        setRazorpayKey(rpKey[0].id)
+        const rpKey = rzpKey.find((item) => item.name === 'two')
+
+        setRazorpayKey(rpKey!.id)
       }
     }
   }, [rzpKey])
-
-  const razorpayHandler = (data: any) => {
-    if (data) {
-      const order_id = data.receipt || data.id
-      const options = {
-        key: razorpayKey,
-        currency: 'INR',
-        theme: {
-          color: '#068bce',
-        },
-        amount: data.amount_due,
-        name: batchDetail?.name,
-        order_id: data.id,
-        handler: function (_response: any) {
-          router.push(
-            `/after-payment?status=${PaymentStatus.SUCCESS}&order_id=${order_id}`
-          )
-          // alert(response.razorpay_order_id)
-          // alert(response.razorpay_signature)
-        },
-        prefill: {
-          name: user?.first_name + user?.last_name,
-          email: user?.email,
-          contact: user?.phone,
-        },
-      }
-
-      const rzpay = new Razorpay(options)
-      rzpay.on('payment.failed', function (_response: any) {
-        router.push('/after-payment')
-      })
-      rzpay.open()
-    }
-  }
 
   const initiateHyperService = (data: any) => {
     const sdkPayload = {
@@ -239,7 +209,7 @@ const CheckoutCard = ({
           feeMapId: feeId,
           name: batchDetail?.name,
           paymentSource: 'JUSPAY',
-          returnHost: 'https://localhost:3000/',
+          returnHost: `${window.location.origin}/after-payment/`,
           wallet: checked ? rewardPoints : 0,
           couponCode: !couponError ? coupon : '',
           type: 'BATCH',
@@ -251,6 +221,56 @@ const CheckoutCard = ({
         }
       )
     }, 1500)
+  }
+
+  const razorpay = async (orderDetails: any) => {
+    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+    if (!res) {
+      showNotification({
+        title: 'Razorpay failed to load!!! Are you online?',
+        type: NotificationEnums.ERROR,
+      })
+    }
+
+    const options = {
+      key: razorpayKey,
+      amount: orderDetails.amount_due,
+      currency: 'INR',
+      name: batchDetail?.name,
+      description: 'A PW Product',
+      order_id: orderDetails.id,
+      // callback_url: 'localhost:3000/after-payment',
+      handler: function (response: any) {
+        router.push(
+          `/after-payment?status=${PaymentStatus.SUCCESS}&order_id=${orderDetails.receipt}`
+        )
+        alert(response.razorpay_payment_id)
+        alert(response.razorpay_order_id)
+        alert(response.razorpay_signature)
+      },
+      prefill: {
+        name: user?.firstName + user?.lastName,
+        email: user?.email,
+        contact: user?.primaryNumber,
+      },
+      themes: {
+        color: '#000000',
+      },
+    }
+
+    const _window = window as any
+    const rzpay = new _window.Razorpay(options)
+    rzpay.on('payment.failed', function (_response: any) {
+      router.push(
+        `/after-payment?status=${PaymentStatus.FAILURE}&order_id=${orderDetails.receipt}`
+      )
+    })
+
+    rzpay.on('payment.cancel', function (_response: any) {
+      alert('cancelleddd')
+    })
+
+    rzpay.open()
   }
 
   const pay = () => {
@@ -265,19 +285,19 @@ const CheckoutCard = ({
     if (activePaymentKey.razorpay) {
       orderMutate(
         {
-          client: 'web',
           feeMapId: feeId,
           paymentKey: razorpayKey,
           name: batchDetail?.name,
           paymentSource: 'RAZOR_PAY',
-          wallet: checked ? rewardPoints : 0,
-          couponCode: !couponError ? coupon : '',
+          // wallet: checked ? rewardPoints : 0,
+          // couponCode: !couponError ? coupon : '',
           type: 'BATCH',
         },
         {
           onSuccess: (data: any) => {
-            console.log(data?.data?.data?.response)
-            razorpayHandler(data?.data?.data?.response)
+            console.log(data)
+            const orderDetails = data?.data?.data?.response
+            razorpay(orderDetails)
           },
 
           onError: (err: any) => console.error(err),
@@ -293,8 +313,6 @@ const CheckoutCard = ({
               hyperSDKDiv: 'merchantViewId',
               integrationType: 'redirection',
             }
-
-            console.log(JSON.stringify(newSignaturePay))
 
             initiateHyperService(newSignaturePay)
           },

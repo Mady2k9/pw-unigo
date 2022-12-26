@@ -66,17 +66,15 @@ const BatchDetailCard = ({
               <div className={style.discountContainer}>
                 <Typography variant="regular" weight={700}>
                   <span className="text-white">
-                    {batchDetails?.fee?.discount}% OFF
+                    {+(batchDetails?.fee?.discount).toFixed()}% OFF
                   </span>
                 </Typography>
               </div>
             )}
           </div>
-          <Typography
-            variant="regular"
-            weight={600}
-            html={batchDetails?.byName}
-          />
+          <Typography variant="regular" weight={600}>
+            {batchDetails?.priceLabel}
+          </Typography>
 
           <Button
             onClick={redirectToOrderSummary}

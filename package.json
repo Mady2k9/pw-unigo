@@ -23,7 +23,6 @@
   },
   "packageManager": "pnpm@7.5.0",
   "dependencies": {
-    "formik": "^2.2.9",
-    "react-razorpay": "^1.2.0"
+    "formik": "^2.2.9"
   }
 }

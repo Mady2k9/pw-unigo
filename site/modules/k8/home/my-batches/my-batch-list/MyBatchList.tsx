@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Verified from '@assets/images/verified.svg'
 import MyBatchCard from '../my-batch-card/MyBatchCard'
 import useMyBatches from '@lib/hooks/batches/useMyBatches'
+import Carousel from '@components/common/Carousel'
 
 const MyBatchList = () => {
   const { data, isLoading } = useMyBatches({
@@ -13,18 +14,25 @@ const MyBatchList = () => {
   if (isLoading) return <LoadingSection />
 
   return data.length > 0 ? (
-    <section className="flex flex-col gap-8 mb-10 lg:mb-32">
+    <section className="flex flex-col gap-8 mb-10 lg:mb-10">
       <div className="flex items-center gap-3 ">
         <Image src={Verified} alt="verified_logo" />
         <Typography variant="heading3" weight={700}>
           My Subscription
         </Typography>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
-        {data.map((data: any) => (
-          <MyBatchCard key={data._id} batchDetail={data} />
-        ))}
-      </div>
+
+      {!!data.length && (
+        <Carousel showControlBtn={data.length > 2}>
+          {
+            <div className="grid grid-flow-col auto-cols-[calc(100%-10px)] md:auto-cols-[calc(50%-10px)] gap-6 py-4">
+              {data.map((data: any) => (
+                <MyBatchCard key={data._id} batchDetail={data} />
+              ))}
+            </div>
+          }
+        </Carousel>
+      )}
     </section>
   ) : (
     <></>
