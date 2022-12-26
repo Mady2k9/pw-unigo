@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m52b87d7553ac5115[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2md99eada7f81a38de[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/himanshusharma/WebstormProjects/pw/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -13,15 +13,51 @@
 [35mpw-live-v2:build: [0m15:8  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0minfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-[35mpw-live-v2:build: [0mFailed to compile.
+[35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
+[35mpw-live-v2:build: [0minfo  - Compiled successfully
+[35mpw-live-v2:build: [0minfo  - Collecting page data...
+[35mpw-live-v2:build: [0minfo  - Generating static pages (0/20)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (5/20)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (10/20)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (15/20)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (20/20)
+[35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m./shared/components/core/ui/Carousel/Carousel.tsx:2:49
-[35mpw-live-v2:build: [0mType error: Cannot find module 'react-slick' or its corresponding type declarations.
+[35mpw-live-v2:build: [0mRoute (pages)                                                                  Size     First Load JS
+[35mpw-live-v2:build: [0m┌ ○ /                                                                          27.2 kB         235 kB
+[35mpw-live-v2:build: [0m├   └ css/482e6f7b8a2f5b45.css                                                 1.66 kB
+[35mpw-live-v2:build: [0m├   /_app                                                                      0 B             122 kB
+[35mpw-live-v2:build: [0m├ ○ /404                                                                       45.9 kB         168 kB
+[35mpw-live-v2:build: [0m├ ○ /about-us                                                                  6.87 kB         133 kB
+[35mpw-live-v2:build: [0m├ ○ /after-payment                                                             2.04 kB         128 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]                                                       1.14 kB         133 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]                                         7.7 kB          137 kB
+[35mpw-live-v2:build: [0m├   └ css/501c8b6898ccd9e5.css                                                 393 B
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content                     1.13 kB         133 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content/[scheduleId]/video  319 B           147 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/weekly-schedule                         6.72 kB         142 kB
+[35mpw-live-v2:build: [0m├   └ css/5f80e4dfd42014be.css                                                 663 B
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/faculties                                             6.85 kB         142 kB
+[35mpw-live-v2:build: [0m├   └ css/d448f1c3f46feaf4.css                                                 402 B
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/order-summary                                         13.3 kB         142 kB
+[35mpw-live-v2:build: [0m├   └ css/e97a962c4a7fc996.css                                                 1.67 kB
+[35mpw-live-v2:build: [0m├ ○ /contact-us                                                                39.2 kB         234 kB
+[35mpw-live-v2:build: [0m├ ○ /login                                                                     19.9 kB         146 kB
+[35mpw-live-v2:build: [0m├   └ css/f79cd05634e6ff08.css                                                 1.25 kB
+[35mpw-live-v2:build: [0m├ ○ /pdf                                                                       91.2 kB         213 kB
+[35mpw-live-v2:build: [0m├ ○ /practice/[id]                                                             11.9 kB         151 kB
+[35mpw-live-v2:build: [0m├   └ css/8ae68d617cde618d.css                                                 1.41 kB
+[35mpw-live-v2:build: [0m├ ○ /profile                                                                   19 kB           152 kB
+[35mpw-live-v2:build: [0m├   └ css/0c89faeff01b142d.css                                                 1.01 kB
+[35mpw-live-v2:build: [0m├ ○ /terms-and-conditions                                                      3.98 kB         126 kB
+[35mpw-live-v2:build: [0m├ ○ /video                                                                     277 B           147 kB
+[35mpw-live-v2:build: [0m└ ○ /video-player                                                              3.46 kB         126 kB
+[35mpw-live-v2:build: [0m+ First Load JS shared by all                                                  134 kB
+[35mpw-live-v2:build: [0m  ├ chunks/framework-e6af074d2e298f55.js                                       45.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/main-f2c1f8ffd6de9689.js                                            31.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-373b129e8e31a94f.js                                      43.1 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-0c02b77a9e0da039.js                                         2.65 kB
+[35mpw-live-v2:build: [0m  └ css/5e6f87ae821a7792.css                                                   11.9 kB
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m[0m [90m 1 | [39m[36mimport[39m { useState } [36mfrom[39m [32m'react'[39m[0m
-[35mpw-live-v2:build: [0m[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m [33mSlider[39m[33m,[39m { [33mSettings[39m [36mas[39m [33mSliderProps[39m } [36mfrom[39m [32m'react-slick'[39m[33m;[39m[0m
-[35mpw-live-v2:build: [0m[0m [90m   | [39m                                                [31m[1m^[22m[39m[0m
-[35mpw-live-v2:build: [0m[0m [90m 3 | [39m[36mimport[39m cn [36mfrom[39m [32m'clsx'[39m[33m;[39m[0m
-[35mpw-live-v2:build: [0m[0m [90m 4 | [39m[36mimport[39m [32m"slick-carousel/slick/slick.css"[39m[33m;[39m[0m
-[35mpw-live-v2:build: [0m[0m [90m 5 | [39m[36mimport[39m [32m"slick-carousel/slick/slick-theme.css"[39m[33m;[39m[0m
-[35mpw-live-v2:build: [0m ELIFECYCLE  Command failed with exit code 1.
+[35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
+[35mpw-live-v2:build: [0m
