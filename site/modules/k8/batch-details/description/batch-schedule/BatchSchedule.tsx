@@ -13,7 +13,7 @@ const BatchSchedule = ({subjects}: { subjects: Subject[] }) => {
     const redirectToPDF = (subject: Subject) => {
         if (!subject?.fileId) {
             showNotification({
-                type: NotificationEnums.INFO,
+                type: NotificationEnums.WARNING,
                 duration: NotificationDuration.SHORT,
                 title: "No Preview Available for " + subject.subject,
                 identifier: `no-preview-${subject._id}`,
