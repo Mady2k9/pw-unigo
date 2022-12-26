@@ -14,6 +14,22 @@ import React, { useMemo } from 'react'
 import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 import Image from 'next/image'
 import { getImageUrlFromObjectImageId } from '@lib/utilities'
+import i18next from 'i18next'
+
+i18next.init({
+  fallbackLng: 'en-US',
+  resources: {
+    'en-US': {
+      translation: {
+        video_one: '{{count}} Video',
+        video_other: '{{count}} Videos',
+
+        chapter_one: '{{count}} Chapter',
+        chapter_other: '{{count}} Chapters',
+      },
+    },
+  },
+})
 
 const SelfLearningClassroom = ({
   batchDetails,
@@ -63,11 +79,14 @@ const SelfLearningClassroom = ({
 
           <Typography variant="tiny" weight={500}>
             <span className="text-gray-400">
-              {+data?.paginate?.totalCount > 1
-                ? `${data?.paginate?.totalCount} Chapters`
-                : `${data?.paginate?.totalCount} Chapter`}
-              {data?.paginate?.videoCount &&
-                `| ${data?.paginate?.videoCount} Lectures`}
+              {+data?.paginate?.totalCount > 0 &&
+                i18next.t('chapter', {
+                  count: data?.paginate?.totalCount,
+                })}
+              {+data?.paginate?.videosCount > 0 &&
+                ` | ${i18next.t('video', {
+                  count: data?.paginate?.videosCount,
+                })}`}
             </span>
           </Typography>
         </div>
@@ -95,7 +114,7 @@ const SelfLearningClassroom = ({
 
   return (
     <Container className="flex flex-col gap-4">
-      <div>
+      <div className={''}>
         <Tabs
           items={subjects}
           currentIndex={contentTabIndex}

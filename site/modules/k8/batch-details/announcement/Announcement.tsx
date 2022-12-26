@@ -2,6 +2,7 @@ import {Container, LoadingSection, NoData} from "@components/ui";
 import useBatchAnnouncements from "@lib/hooks/batches/useBatchAnnouncements";
 import {AnnouncementCard} from "@components/common";
 
+
 const Announcement = ({batchDetails}: { batchDetails: any }) => {
     const {data, isLoading} = useBatchAnnouncements({batchSlug: batchDetails?._id});
     return <Container>

@@ -50,13 +50,13 @@ const WeeklySchedule = () => {
           />
         </div>
         <Typography variant="heading3" weight={700} capitalize={true}>
-          {subjectName?.subject}
+          {subjectName?.subject} Weekly Scheduled
         </Typography>
       </div>
 
       {isLoading && <LoadingSection />}
 
-      <WeeklyScheduleCard data={data} />
+      {!isLoading && <WeeklyScheduleCard data={data} />}
     </Container>
   )
 }
@@ -69,7 +69,6 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
   useEffect(() => {
     const dataLength = data && data.length
     const active = data.findIndex((d) => d.isActive)
-    console.log(active, 'active')
     setActiveDay(active !== -1 ? active : dataLength - 2)
   }, [data])
 
@@ -111,7 +110,16 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
                       key={schedule._id}
                       className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
                     >
-                      <ClassCard variant={ClassMode.UPCOMING} isLive={isLive} />
+                      <ClassCard
+                        variant={ClassMode.UPCOMING}
+                        isLive={isLive}
+                        title={schedule?.topic || schedule?.videoDetails?.name}
+                        duration={schedule?.videoDetails?.duration}
+                        teacher={schedule?.teachers.join(',')}
+                        startTime={schedule?.startTime}
+                        homeworkId={schedule?.homeworkIds}
+                        exerciseId={schedule?.exerciseIds}
+                      />
                     </div>
                   )
                 })}
@@ -130,7 +138,16 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
                     key={schedule._id}
                     className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
                   >
-                    <ClassCard variant={ClassMode.RECORDED} />
+                    <ClassCard
+                      variant={ClassMode.RECORDED}
+                      title={schedule?.topic || schedule?.videoDetails?.name}
+                      duration={schedule?.videoDetails?.duration}
+                      teacher={schedule?.teachers.join(',')}
+                      startTime={schedule?.startTime}
+                      homeworkId={schedule?.homeworkIds}
+                      exerciseId={schedule?.exerciseIds}
+                      videoDetails={schedule?.videoDetails}
+                    />
                   </div>
                 ))}
               </div>
