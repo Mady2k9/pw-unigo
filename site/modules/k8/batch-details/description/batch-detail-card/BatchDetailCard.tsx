@@ -9,6 +9,7 @@ import { priceDisplay } from '@lib/user-utility'
 import { useRouter } from 'next/router'
 import { Arrow } from '@components/lotties'
 import { getImageUrlFromObjectImageId } from '@lib/utilities'
+import eventTracker from '@lib/eventTracker/eventTracker'
 
 const BatchDetailCard = ({
   batchDetails,
@@ -16,20 +17,20 @@ const BatchDetailCard = ({
   batchDetails: BatchDetailModel
 }) => {
   const router = useRouter()
-  // const imgUrl =
-  //   batchDetails?.previewImage?.baseUrl && batchDetails?.previewImage?.key
-  //     ?getImageUrlFromObjectImageId()
-  //      batchDetails?.previewImage?.baseUrl + batchDetails?.previewImage?.key
-  //     : CardBanner
 
   const redirectToOrderSummary = () => {
+    eventTracker.batchBuyNow(batchDetails, 'batch_description')
     router.push(`${batchDetails?.slug}/order-summary`)
+  }
+
+  const playPreviewVideo = () => {
+    eventTracker.batchPreviewVideo(batchDetails)
   }
 
   return (
     <Card>
       <div className="flex flex-col gap-4 p-5 animated fadeIn duration-200">
-        <div className={style.bannerContainer}>
+        <div className={style.bannerContainer} onClick={playPreviewVideo}>
           <div className="min-w-[290px] lg:w-full h-[143px] relative">
             <Image
               src={getImageUrlFromObjectImageId(batchDetails?.previewImage)}
