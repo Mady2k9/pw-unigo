@@ -22,9 +22,12 @@ const DemoVideo = () => {
           </Typography>
         </div>
         <span className="text-[#464646]">
-          <Typography variant="small" weight={500} capitalize={true}>
-            {data?.previewTextDescription}
-          </Typography>
+          <Typography
+            variant="small"
+            weight={500}
+            capitalize={true}
+            html={data?.previewTextDescription}
+          />
         </span>
       </div>
       <div className={style.videoContainer}>

@@ -110,7 +110,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
           }}
         >
           <Typography variant="small" weight={500}>
-            Search Lectures
+            Search lectures
           </Typography>
           <MagnifyingGlassIcon
             className="pointer-events-none h-5 w-5 text-gray-900"
@@ -127,6 +127,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
             setQuery('')
           }}
           videos={data as ContentModel[]}
+          batchId={batchDetails?._id}
         />
       ) : (
         ItemsWrapper
