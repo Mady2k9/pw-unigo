@@ -9,11 +9,13 @@ const BatchList = () => {
     useBatches({
       cohortId: latestCohortData?._id,
       contentType: BatchType.SELF_LEARNING,
+      enabled: !!latestCohortData?._id,
     })
 
   const { data: liveBatches, isLoading: liveBatchesLoading } = useBatches({
     cohortId: latestCohortData?._id,
     contentType: BatchType.LIVE,
+    enabled: !!latestCohortData?._id,
   })
 
   return (

@@ -25,6 +25,8 @@ import useActivePaymentKey from '@lib/hooks/orders/useActivePaymentKey'
 import { PaymentStatus } from '@components/common/AfterPayment/AfterPaymentComponent'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
 import loadScript from '@lib/load-script'
+import eventTracker from '@lib/eventTracker/eventTracker'
+import { Arrow } from '@components/lotties'
 
 interface CheckoutDetails {
   discount: number
@@ -91,15 +93,6 @@ const CheckoutCard = ({
     +user?.profileId?.wallet,
     +batchDetail?.maxWalletPoint
   )
-
-  useEffect(() => {
-    if (variant === BatchType.SELF_LEARNING && !activePlan) {
-      showNotification({
-        title: 'No Plans Found!',
-        type: NotificationEnums.ERROR,
-      })
-    }
-  }, [])
 
   useEffect(() => {
     if (checked) {
@@ -274,6 +267,11 @@ const CheckoutCard = ({
   }
 
   const pay = () => {
+    eventTracker.batchPayNow(
+      batchDetail,
+      checkoutDetails.amount,
+      activePlan?.title
+    )
     if (checkoutDetails.amount === 0) {
       refetchEnroll()
       if (!enrollError) {
@@ -295,7 +293,6 @@ const CheckoutCard = ({
         },
         {
           onSuccess: (data: any) => {
-            console.log(data)
             const orderDetails = data?.data?.data?.response
             razorpay(orderDetails)
           },
@@ -412,6 +409,11 @@ const CheckoutCard = ({
         </div>
 
         <Button
+          postIcon={
+            <div className="-rotate-90">
+              <Arrow />
+            </div>
+          }
           onClick={pay}
           disabled={variant === BatchType.SELF_LEARNING && !activePlan}
         >

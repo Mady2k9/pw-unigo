@@ -10,6 +10,8 @@ import { ActionModal } from '@components/ui/Modal'
 import Download from '@assets/images/dwnld.svg'
 import PDF from '@assets/images/pdf.svg'
 import PracticeIcon from '@assets/images/practice.svg'
+import { useRouter } from 'next/router'
+import { getVideoUrl } from '@lib/video-utility'
 
 const ClassCard = ({
   isLive,
@@ -21,6 +23,9 @@ const ClassCard = ({
   exerciseId,
   videoDetails,
   homeworkId,
+  url,
+  batchSubjectId,
+  scheduleId,
 }: {
   isLive?: boolean
   variant: ClassMode
@@ -31,11 +36,27 @@ const ClassCard = ({
   homeworkId: any
   exerciseId: any
   videoDetails?: VideoDetails
+  url: string
+  batchSubjectId: string
+  scheduleId: string
 }) => {
   const [openAttachment, setOpenAttachment] = useState(false)
   const time = format(new Date(startTime), 'hh:mm a')
-
+  const router = useRouter()
+  const { batchSlug, topicSlug } = router.query
   const timeDuration = duration && duration.split(':')
+  console.log(videoDetails)
+
+  const redirectToPlayer = () => {
+    router.push(
+      getVideoUrl({
+        scheduleId: scheduleId as string,
+        topicSlug: 'all-contents',
+        batchSubjectSlug: batchSubjectId as string,
+        batchSlug: batchSlug as string,
+      })
+    )
+  }
 
   return (
     <>
@@ -62,14 +83,14 @@ const ClassCard = ({
                   {title}
                 </Typography>
               </div>
-              {teacher?.length > 0 && (
+              {/* {teacher?.length > 0 && (
                 <Typography variant="tiny" weight={500}>
                   <span className="text-gray-400">{teacher}</span>
                 </Typography>
-              )}
+              )} */}
             </div>
 
-            {isLive && variant !== ClassMode.RECORDED && (
+            {isLive && variant !== ClassMode.UPCOMING && (
               <div className="flex items-center justify-between ">
                 <div className="flex items-center gap-2">
                   <span className="h-[7px] w-[7px] rounded-[50%] bg-red-600"></span>
@@ -88,13 +109,15 @@ const ClassCard = ({
               </div>
             )}
 
-            {variant === ClassMode.RECORDED && videoDetails && (
-              <div className="flex items-center justify-end">
-                <Button size={'tiny'} rounded>
-                  Start Class
-                </Button>
-              </div>
-            )}
+            {variant === ClassMode.RECORDED &&
+              !!videoDetails?.id.length &&
+              !!url?.length && (
+                <div className="flex items-center justify-end">
+                  <Button size={'tiny'} rounded onClick={redirectToPlayer}>
+                    Start Class
+                  </Button>
+                </div>
+              )}
           </div>
         </div>
       </Card>

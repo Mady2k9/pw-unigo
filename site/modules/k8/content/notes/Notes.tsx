@@ -6,7 +6,7 @@ import useBatchContents, {
   ContentType,
 } from '@lib/hooks/batches/useBatchContents'
 import { useRouter } from 'next/router'
-import {ALL_CONTENTS} from "@lib/content-constants";
+import { ALL_CONTENTS } from '@lib/content-constants'
 
 const Notes = ({ type }: { type: ContentType }) => {
   const router = useRouter()
@@ -44,6 +44,7 @@ const Notes = ({ type }: { type: ContentType }) => {
                 note?.homeworkIds[0]?.attachmentIds[0]?.key
               }
               date={note?.date}
+              // isLocked={batc}
             />
           ))}
       </div>

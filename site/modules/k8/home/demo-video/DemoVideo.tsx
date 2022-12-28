@@ -1,15 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import { LoadingSection, Typography } from '@components/ui'
+import { LoadingSection, Typography, useUI } from '@components/ui'
 import useCohortDetails from '@lib/hooks/batches/useCohortDetails'
 import Play from '@assets/images/play-btn.svg'
 import React from 'react'
 import style from './DemoVideo.module.css'
 import { getImageUrlFromObjectImageId } from '@lib/utilities'
 import Image from 'next/image'
+import eventTracker from '@lib/eventTracker/eventTracker'
 
 const DemoVideo = () => {
   const { data, isLoading } = useCohortDetails()
   if (isLoading) return <LoadingSection />
+
+  const playVideo = () => {
+    eventTracker.interactiveVideoClick(data?.previewVideoId?._id)
+  }
 
   return (
     <div className={style.demoVideoContainer}>
@@ -30,7 +35,7 @@ const DemoVideo = () => {
           />
         </span>
       </div>
-      <div className={style.videoContainer}>
+      <div className={style.videoContainer} onClick={playVideo}>
         <img
           src={getImageUrlFromObjectImageId(data?.previewVideoThumbnail)}
           alt=""

@@ -15,6 +15,7 @@ import { BatchDetailModel, Subject } from '@lib/hooks/batches/useBatchDetails'
 import Image from 'next/image'
 import { getImageUrlFromObjectImageId } from '@lib/utilities'
 import i18next from 'i18next'
+import eventTracker from '@lib/eventTracker/eventTracker'
 
 i18next.init({
   fallbackLng: 'en-US',
@@ -106,6 +107,7 @@ const SelfLearningClassroom = ({
     )
   }, [data])
   const redirectTo = (topic: any) => {
+    eventTracker.studyRoomChapter(batchDetails, topic.name)
     router.push({
       pathname: `${batchDetails?.slug}/${subjects[contentTabIndex].key}/${topic.slug}/content`,
       query: { topic: topic.name },
@@ -119,6 +121,7 @@ const SelfLearningClassroom = ({
           items={subjects}
           currentIndex={contentTabIndex}
           onChange={(index) => {
+            eventTracker.studyRoomSubject(batchDetails, subjects[index].name)
             setContentTabIndex(index)
           }}
         />

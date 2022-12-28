@@ -8,6 +8,12 @@ import useTodaySchedule from '@lib/hooks/batches/useTodaySchedule'
 import VideoCard from '@components/contents/video-card/VideoCard'
 import { SubjectMode } from '@lib/content-constants'
 import Carousel from '@components/common/Carousel'
+import { getVideoUrl } from '@lib/video-utility'
+import { format, formatDistance, isBefore } from 'date-fns'
+import useNotify, {
+  NotificationDuration,
+  NotificationEnums,
+} from '@lib/useNotify'
 
 const LiveClassroom = ({
   batchDetails,
@@ -15,6 +21,7 @@ const LiveClassroom = ({
   batchDetails: BatchDetailModel
 }) => {
   const router = useRouter()
+  const { showNotification } = useNotify()
   const { batchSlug } = router.query
 
   const { data: todaySchedule, isLoading } = useTodaySchedule({
@@ -27,6 +34,43 @@ const LiveClassroom = ({
 
   const redirectToTopic = (slug: string, subject: string) => {
     router.push(`${batchSlug}/${slug}`)
+  }
+
+  const redirectToPlayer = (video: any) => {
+    if (!batchDetails?.isPurchased) {
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: 'Batch not purchased!!!',
+        description: 'Please purchase the batch to unlock all the contents',
+        identifier: video._id,
+        duration: NotificationDuration.SHORT,
+      })
+      return
+    }
+
+    if (isBefore(new Date(), new Date(video.startTime))) {
+      const willStartAter = formatDistance(
+        new Date(video.startTime),
+        new Date(),
+        { addSuffix: true }
+      )
+      showNotification({
+        type: NotificationEnums.INFO,
+        identifier: video._id,
+        title: `Class will start  ${willStartAter}`,
+        duration: NotificationDuration.SHORT,
+      })
+      return
+    }
+
+    router.push(
+      getVideoUrl({
+        scheduleId: video._id as string,
+        topicSlug: 'all-contents',
+        batchSubjectSlug: video?.batchSubjectId as string,
+        batchSlug: batchSlug as string,
+      })
+    )
   }
 
   return (
@@ -52,6 +96,8 @@ const LiveClassroom = ({
                     date={ts?.startTime}
                     subjectSlug={ts?.subjectId?.slug}
                     subject={ts?.subjectId?.name}
+                    handleClick={() => redirectToPlayer(ts)}
+                    endDate={ts?.endTime}
                   />
                 )
               })}

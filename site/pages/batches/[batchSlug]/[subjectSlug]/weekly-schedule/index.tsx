@@ -50,7 +50,7 @@ const WeeklySchedule = () => {
           />
         </div>
         <Typography variant="heading3" weight={700} capitalize={true}>
-          {subjectName?.subject} Weekly Scheduled
+          {subjectName?.subject} Weekly Schedule
         </Typography>
       </div>
 
@@ -119,6 +119,9 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
                         startTime={schedule?.startTime}
                         homeworkId={schedule?.homeworkIds}
                         exerciseId={schedule?.exerciseIds}
+                        batchSubjectId={schedule?.batchSubjectId}
+                        url={schedule?.url}
+                        scheduleId={schedule?._id}
                       />
                     </div>
                   )
@@ -147,6 +150,9 @@ const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
                       homeworkId={schedule?.homeworkIds}
                       exerciseId={schedule?.exerciseIds}
                       videoDetails={schedule?.videoDetails}
+                      batchSubjectId={schedule?.batchSubjectId}
+                      url={schedule?.url}
+                      scheduleId={schedule?._id}
                     />
                   </div>
                 ))}
