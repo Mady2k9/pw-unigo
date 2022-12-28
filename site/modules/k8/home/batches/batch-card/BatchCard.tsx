@@ -254,12 +254,13 @@ const K8Card = ({
             className="w-full"
             inverted={variant === BatchType.LIVE}
             onClick={redirectTo}
+            variant="secondary"
           >
             Explore
           </Button>
           <Button
             className="w-full"
-            variant="secondary"
+            variant="primary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectToOrderSummary}
           >
