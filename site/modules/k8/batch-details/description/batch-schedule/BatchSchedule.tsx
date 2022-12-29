@@ -20,9 +20,7 @@ const BatchSchedule = ({ subjects }: { subjects: Subject[] }) => {
         duration: NotificationDuration.SHORT,
         title: 'No Preview Available for ' + subject.subject,
         identifier: `no-preview-${subject._id}`,
-        onClose: () => {
-          console.log('closed')
-        },
+        onClose: () => {},
       })
       return
     }

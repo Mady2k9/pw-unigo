@@ -124,9 +124,7 @@ const K8Card = ({
                   type: NotificationEnums.SUCCESS,
                   title: 'Share Link',
                   identifier: generateWhatsappLink(batchData?.slug),
-                  onClose: () => {
-                    console.log('closed')
-                  },
+                  onClose: () => {},
                 })
               }}
               className="bg-white rounded-md h-[20px] w-[20px] flex items-center justify-center cursor-pointer"
