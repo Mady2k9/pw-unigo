@@ -143,8 +143,8 @@ const TestResult = () => {
             }
           >
             {!testLoading &&
-              resultArrray.map((item: TestResultArray) => {
-                return <ResultBox testResult={item} />
+              resultArrray.map((item: TestResultArray, idx: number) => {
+                return <ResultBox key={idx} testResult={item} />
               })}
           </div>
 
