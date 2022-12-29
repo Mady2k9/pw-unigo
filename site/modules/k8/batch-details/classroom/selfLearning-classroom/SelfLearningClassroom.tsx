@@ -56,7 +56,7 @@ const SelfLearningClassroom = ({
 
   const { data, isLoading, refetch } = useBatchTopics({
     batchSlug: batchDetails?.slug,
-    subjectSlug: subjects[contentTabIndex].key,
+    subjectSlug: subjects[contentTabIndex]?.key,
   })
 
   React.useEffect(() => {
