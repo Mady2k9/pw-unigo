@@ -10,7 +10,6 @@ import Incorrect from '@assets/images/results/incorrect.png'
 import Completed from '@assets/images/results/completed.png'
 import useGetTestResult from '@lib/hooks/exercise/useGetTestResult'
 import { useRouter } from 'next/router'
-import { router } from 'next/client'
 
 export interface TestResultArray {
   title: string
