@@ -82,7 +82,7 @@ const SelfLearningPayment = ({
           </div>
         )}
       </section>
-      <section className="lg:min-w-[348px]">
+      <section className="lg:w-[348px]">
         <CheckoutCard
           batchDetail={batchDetail}
           feeId={feeId._id}

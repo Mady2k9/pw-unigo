@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   Button,
   Card,
@@ -25,6 +26,10 @@ import useActivePaymentKey from '@lib/hooks/orders/useActivePaymentKey'
 import { PaymentStatus } from '@components/common/AfterPayment/AfterPaymentComponent'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
 import loadScript from '@lib/load-script'
+import eventTracker from '@lib/eventTracker/eventTracker'
+import { Arrow } from '@components/lotties'
+import Offers from '@components/icons/Offers'
+import cn from 'clsx'
 
 interface CheckoutDetails {
   discount: number
@@ -58,6 +63,7 @@ const CheckoutCard = ({
 
   const [hyperServiceObject, setHyperServiceObject] = useState(null as any)
   // const [walletPts, setWalletPts] = useState(0)
+  const [couponsApplied, setCouponsApplied] = useState(false)
   const [totalAmount, setTotalAmount] = useState(0)
   const router = useRouter()
 
@@ -66,6 +72,10 @@ const CheckoutCard = ({
     : BatchType.LIVE
 
   useEffect(() => {
+    resetBatchPriceDetails()
+  }, [batchDetail, activePlan])
+
+  const resetBatchPriceDetails = () => {
     if (variant === BatchType.SELF_LEARNING) {
       activePlan &&
         setCheckoutDetails({
@@ -80,7 +90,7 @@ const CheckoutCard = ({
         total: +batchDetail?.fee?.total as number,
       })
     }
-  }, [batchDetail, activePlan])
+  }
 
   const { data: activePaymentKey, isLoading: paymentKeyLoading } =
     useActivePaymentKey({
@@ -91,15 +101,6 @@ const CheckoutCard = ({
     +user?.profileId?.wallet,
     +batchDetail?.maxWalletPoint
   )
-
-  useEffect(() => {
-    if (variant === BatchType.SELF_LEARNING && !activePlan) {
-      showNotification({
-        title: 'No Plans Found!',
-        type: NotificationEnums.ERROR,
-      })
-    }
-  }, [])
 
   useEffect(() => {
     if (checked) {
@@ -114,9 +115,36 @@ const CheckoutCard = ({
     isLoading: couponLoading,
     mutate: couponMutation,
     error: couponError,
+    isError,
+    isSuccess,
   } = useApplyCoupon()
 
   const { data: orderData, isLoading, mutate: orderMutate } = useCreateOrder()
+
+  useEffect(() => {
+    if (isSuccess) {
+      setCheckoutDetails({
+        discount: +couponData?.data.data.discountedAmount as number,
+        amount: +couponData?.data.data.totalAmount as number,
+        total: +couponData?.data.data.finalAmount as number,
+      })
+    } else {
+      resetBatchPriceDetails()
+    }
+  }, [isSuccess, isError])
+
+  useEffect(() => {
+    if (checked) {
+      let data = {
+        discount: +(checkoutDetails.discount + rewardPoints),
+        amount: checkoutDetails.amount,
+        total: +(checkoutDetails.total - rewardPoints),
+      }
+      setCheckoutDetails(data)
+    } else {
+      resetBatchPriceDetails()
+    }
+  }, [checked])
 
   const enrollPayload =
     variant === BatchType.LIVE
@@ -274,6 +302,11 @@ const CheckoutCard = ({
   }
 
   const pay = () => {
+    eventTracker.batchPayNow(
+      batchDetail,
+      checkoutDetails.amount,
+      activePlan?.title
+    )
     if (checkoutDetails.amount === 0) {
       refetchEnroll()
       if (!enrollError) {
@@ -289,13 +322,12 @@ const CheckoutCard = ({
           paymentKey: razorpayKey,
           name: batchDetail?.name,
           paymentSource: 'RAZOR_PAY',
-          // wallet: checked ? rewardPoints : 0,
-          // couponCode: !couponError ? coupon : '',
+          wallet: checked ? rewardPoints : 0,
+          couponCode: !couponError ? coupon : '',
           type: 'BATCH',
         },
         {
           onSuccess: (data: any) => {
-            console.log(data)
             const orderDetails = data?.data?.data?.response
             razorpay(orderDetails)
           },
@@ -337,6 +369,7 @@ const CheckoutCard = ({
                     title=""
                     checked={checked}
                     onClick={() => setChecked((prev) => !prev)}
+                    disabled={isSuccess}
                   />
                   <div className="flex items-center gap-2">
                     <img src={coin.src} alt="" />
@@ -352,8 +385,8 @@ const CheckoutCard = ({
                 </Typography>
               </div>
             )}
-            <div className={style.applyCouponContainer}>
-              <TextInput
+            {/* <div className={style.applyCouponContainer}> */}
+            {/* <TextInput
                 action={{
                   text: 'APPLY',
                   onAction: () =>
@@ -365,12 +398,114 @@ const CheckoutCard = ({
                   disabled: checked,
                 }}
                 variant="gray"
+                invalid={isError}
                 value={coupon}
                 onChange={(e: any) => setCoupon(e)}
                 placeholder="Have a Coupon Code?"
               />
-            </div>
+
+              {isError && (
+                <Typography variant="small" weight={500}>
+                  <span className="text-red-500 pl-4">
+                    {couponError.response?.data?.error?.message ||
+                      'Cannot apply Coupon'}
+                  </span>
+                </Typography>
+              )}
+              {isSuccess && (
+                <Typography variant="small" weight={500}>
+                  <span className="text-green-500 pl-4">
+                    Coupon Applied Successfully
+                  </span>
+                </Typography>
+              )} */}
+
+            {couponsApplied ? (
+              <div className={cn(style.applyCouponContainer)}>
+                <div
+                  className={cn('flex h-[55px] items-center rounded-lg', {
+                    ['border border-red-400']: isError,
+                    ['border border-green-400']: isSuccess,
+                  })}
+                >
+                  <div className={'pl-3'}>
+                    <Offers isError={isError} isSuccess={isSuccess} />
+                  </div>
+                  <div className={'px-2 flex-1'}>
+                    {isSuccess && (
+                      <div className={'flex flex-col'}>
+                        <Typography weight={700}>
+                          <span className={'text-[#2755BC]'}>
+                            YAY! You saved{' '}
+                            {priceDisplay(couponData?.discountedAmount)}
+                          </span>
+                        </Typography>
+                        <Typography weight={700} variant="label">
+                          <span className={'text-[#333333]'}>{coupon}</span>
+                        </Typography>
+                      </div>
+                    )}
+                    {isError && (
+                      <div className="text-red-500">
+                        <Typography weight={700}>Invalid Coupon</Typography>
+                      </div>
+                    )}
+                  </div>
+                  <div className={'pr-4 pl-1 flex'}>
+                    <Button
+                      onClick={() => {
+                        setCouponsApplied(false)
+                        setCoupon('')
+                      }}
+                      variant={'naked'}
+                    >
+                      <span className={'text-[#FF0F48]'}>REMOVE</span>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className={cn(style.applyCouponContainer)}>
+                <TextInput
+                  action={{
+                    text: 'APPLY',
+                    onAction: () =>
+                      couponMutation(
+                        {
+                          couponCode: coupon,
+                          type: 'BATCH',
+                          typeIds: [feeId],
+                        },
+                        {
+                          onSuccess: (data: any) => {
+                            setCouponsApplied(true)
+                            setCheckoutDetails({
+                              ...checkoutDetails,
+                              discount: data?.data?.discountedAmount,
+                            })
+                          },
+                          onError: (e: any) => {
+                            setCouponsApplied(true)
+                            console.log(e)
+                          },
+                        }
+                      ),
+                    disabled: checked || !!!coupon.length,
+                  }}
+                  variant="gray"
+                  value={coupon}
+                  onChange={(e: any) => setCoupon(e)}
+                  placeholder="Have a Coupon Code?"
+                  preElement={
+                    <div className="pl-2">
+                      <Offers />
+                    </div>
+                  }
+                />
+              </div>
+            )}
           </div>
+          // </div>
         )}
 
         <div className={style.lowerContainer}>
@@ -412,6 +547,11 @@ const CheckoutCard = ({
         </div>
 
         <Button
+          postIcon={
+            <div className="-rotate-90">
+              <Arrow />
+            </div>
+          }
           onClick={pay}
           disabled={variant === BatchType.SELF_LEARNING && !activePlan}
         >

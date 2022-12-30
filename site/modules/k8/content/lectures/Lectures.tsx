@@ -14,16 +14,22 @@ import useBatchContents, {
   ContentType,
 } from '@lib/hooks/batches/useBatchContents'
 import { ModalSearch } from '@components/common'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import cn from 'clsx'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
 import { ALL_CONTENTS } from '@lib/content-constants'
 import useFetchStats from '@lib/hooks/video-player/useFetchStats'
+import useNotify, {
+  NotificationDuration,
+  NotificationEnums,
+} from '@lib/useNotify'
+import { getVideoUrl } from '@lib/video-utility'
 
 const Lectures = ({ type }: { type: ContentType }) => {
   const router = useRouter()
   const { user } = useUI()
+  const { showNotification } = useNotify()
   const { batchSlug, subjectSlug, topicSlug } = router.query
 
   const { data: batchDetails } = useBatchDetails({
@@ -61,10 +67,30 @@ const Lectures = ({ type }: { type: ContentType }) => {
     enabled: videoIds.length > 0,
   })
 
-  console.log(videoStatsData)
-
   const [enableSearch, setEnableSearch] = useState(false)
   const [query, setQuery] = useState('')
+
+  const redirectToPlayer = (video: any) => {
+    if (!isPurchased) {
+      showNotification({
+        title: 'Batch not purchased!!!',
+        type: NotificationEnums.ERROR,
+        duration: NotificationDuration.LONG,
+        description: 'Please purchase this batch to watch this content',
+        identifier: video._id,
+      })
+      return
+    }
+    router.push(
+      getVideoUrl({
+        scheduleId: video._id as string,
+        topicSlug: topicSlug as string,
+        batchSubjectSlug: subjectSlug as string,
+        batchSlug: batchSlug as string,
+      })
+    )
+  }
+
   const ItemsWrapper = useMemo(() => {
     return (
       <div
@@ -91,6 +117,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
                 image={video?.videoDetails?.image}
                 isLocked={!isPurchased}
                 lastWatchedTimeInSec={lastWatchedTimeInSec}
+                handleClick={() => redirectToPlayer(video)}
               />
             )
           })}
@@ -128,6 +155,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
           }}
           videos={data as ContentModel[]}
           batchId={batchDetails?._id}
+          isPurchased={isPurchased}
         />
       ) : (
         ItemsWrapper
