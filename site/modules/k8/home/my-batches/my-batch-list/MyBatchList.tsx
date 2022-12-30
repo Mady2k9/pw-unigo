@@ -25,7 +25,7 @@ const MyBatchList = () => {
       {!!data.length && (
         <Carousel showControlBtn={data.length > 2}>
           {
-            <div className="grid grid-flow-col auto-cols-[calc(100%-10px)] md:auto-cols-[calc(50%-10px)] gap-6 py-4">
+            <div className="grid grid-flow-col auto-cols-[calc(100%-10px)] md:auto-cols-[calc(50%-10px)] gap-6 pb-4 pt-6">
               {data.map((data: any) => (
                 <MyBatchCard key={data._id} batchDetail={data} />
               ))}

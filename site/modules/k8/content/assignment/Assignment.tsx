@@ -34,6 +34,7 @@ const Assignment = ({ type }: { type: ContentType }) => {
                   data?.homeworkIds[0]?.attachmentIds[0]?.baseUrl +
                   data?.homeworkIds[0]?.attachmentIds[0]?.key
                 }
+                solution={data?.homeworkIds[0]?.solutionVideoId}
                 title={data?.homeworkIds[0]?.topic}
               />
             </div>

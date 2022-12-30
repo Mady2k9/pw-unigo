@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button, Typography } from '@components/ui'
+import { Button, Typography, useUI } from '@components/ui'
 import style from './BatchCard.module.css'
 import live from '@assets/images/live.svg'
 import EBook from '@assets/images/E-Book.svg'
@@ -18,6 +18,7 @@ import format from 'date-fns/format'
 import { useEffect, useState } from 'react'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
 import { generateWhatsappLink, truncateString } from '@lib/utilities'
+import eventTracker from '@lib/eventTracker/eventTracker'
 
 const K8Card = ({
   batchData,
@@ -27,6 +28,7 @@ const K8Card = ({
   loading?: boolean
 }) => {
   const router = useRouter()
+  const { user } = useUI()
   const { showNotification } = useNotify()
   const [teachersToMap, setTeachersToMap] = useState('')
   const variant = batchData?.isSelfLearning
@@ -34,7 +36,9 @@ const K8Card = ({
     : BatchType.LIVE
   const Tag =
     variant === BatchType.SELF_LEARNING ? 'Self Learning' : 'Live Batches'
+
   const redirectTo = () => {
+    eventTracker.batchExploreClick(batchData)
     router.push({
       pathname: `/batches/${batchData?.slug}`,
     })
@@ -69,6 +73,7 @@ const K8Card = ({
   }, [batchData])
 
   const redirectToOrderSummary = () => {
+    eventTracker.batchBuyNow(batchData, 'batch_listing')
     router.push(`/batches/${batchData?.slug}/order-summary`)
   }
   return (
@@ -119,9 +124,7 @@ const K8Card = ({
                   type: NotificationEnums.SUCCESS,
                   title: 'Share Link',
                   identifier: generateWhatsappLink(batchData?.slug),
-                  onClose: () => {
-                    console.log('closed')
-                  },
+                  onClose: () => {},
                 })
               }}
               className="bg-white rounded-md h-[20px] w-[20px] flex items-center justify-center cursor-pointer"
@@ -249,12 +252,13 @@ const K8Card = ({
             className="w-full"
             inverted={variant === BatchType.LIVE}
             onClick={redirectTo}
+            variant="secondary"
           >
             Explore
           </Button>
           <Button
             className="w-full"
-            variant="secondary"
+            variant="primary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectToOrderSummary}
           >

@@ -16,5 +16,5 @@ export enum PDFActions {
 
 export enum VideoType {
   PENPENCILVDO = 'penpencilvdo',
-  YOUTUBEVDO = 'youtubevdo',
+  YOUTUBE = 'youtube',
 }
