@@ -2,6 +2,7 @@ import {NotFound as NotFoundIcon} from "@components/icons";
 import {Button, Typography} from "@components/ui";
 import {useRouter} from "next/router";
 
+
 export default function NotFound() {
     const router = useRouter()
     return (
