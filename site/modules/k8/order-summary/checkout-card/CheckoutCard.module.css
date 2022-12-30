@@ -1,5 +1,5 @@
 .cardContainer {
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   @apply flex flex-col gap-9 p-4;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .applyCouponContainer {
-  @apply w-full flex items-center justify-between bg-white p-3;
+  @apply w-full flex flex-col gap-1 justify-between rounded-xl bg-white;
 }
 
 .lowerContainer {

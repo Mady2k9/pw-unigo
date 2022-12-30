@@ -14,7 +14,7 @@ import useBatchContents, {
   ContentType,
 } from '@lib/hooks/batches/useBatchContents'
 import { ModalSearch } from '@components/common'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import cn from 'clsx'
 import useBatchDetails from '@lib/hooks/batches/useBatchDetails'
@@ -76,6 +76,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
         title: 'Batch not purchased!!!',
         type: NotificationEnums.ERROR,
         duration: NotificationDuration.LONG,
+        description: 'Please purchase this batch to watch this content',
         identifier: video._id,
       })
       return

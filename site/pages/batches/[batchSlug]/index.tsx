@@ -43,15 +43,15 @@ const TAB_ITEMS = {
 }
 
 const Classroom = dynamic(
-  import('@modules/k8/batch-details/classroom/Classroom')
+  () => import('@modules/k8/batch-details/classroom/Classroom')
 )
 
 const Description = dynamic(
-  import('@modules/k8/batch-details/description/Description')
+  () => import('@modules/k8/batch-details/description/Description')
 )
 
 const Announcement = dynamic(
-  import('@modules/k8/batch-details/announcement/Announcement')
+  () => import('@modules/k8/batch-details/announcement/Announcement')
 )
 
 const Wrapper = ({ batchDetails }: { batchDetails: any }) => {

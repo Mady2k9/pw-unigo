@@ -124,9 +124,7 @@ const K8Card = ({
                   type: NotificationEnums.SUCCESS,
                   title: 'Share Link',
                   identifier: generateWhatsappLink(batchData?.slug),
-                  onClose: () => {
-                    console.log('closed')
-                  },
+                  onClose: () => {},
                 })
               }}
               className="bg-white rounded-md h-[20px] w-[20px] flex items-center justify-center cursor-pointer"
@@ -254,12 +252,13 @@ const K8Card = ({
             className="w-full"
             inverted={variant === BatchType.LIVE}
             onClick={redirectTo}
+            variant="secondary"
           >
             Explore
           </Button>
           <Button
             className="w-full"
-            variant="secondary"
+            variant="primary"
             inverted={variant === BatchType.LIVE}
             onClick={redirectToOrderSummary}
           >
