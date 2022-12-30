@@ -1,4 +1,4 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m181e67a4b726c4d2[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2m95d9294c91eb000b[0m
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/himanshusharma/WebstormProjects/pw/k8/site
 [35mpw-live-v2:build: [0m> next build
@@ -19,45 +19,45 @@
 [35mpw-live-v2:build: [0minfo  - Generating static pages (0/21)
 [35mpw-live-v2:build: [0minfo  - Generating static pages (5/21)
 [35mpw-live-v2:build: [0minfo  - Generating static pages (10/21)
+[35mpw-live-v2:build: [0mundefined
 [35mpw-live-v2:build: [0minfo  - Generating static pages (15/21)
 [35mpw-live-v2:build: [0minfo  - Generating static pages (21/21)
 [35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0mRoute (pages)                                                                  Size     First Load JS
-[35mpw-live-v2:build: [0m┌ ○ /                                                                          31.5 kB         253 kB
-[35mpw-live-v2:build: [0m├   └ css/951cef75e0462697.css                                                 1.69 kB
+[35mpw-live-v2:build: [0m┌ ○ /                                                                          31.8 kB         253 kB
+[35mpw-live-v2:build: [0m├   └ css/c45d9d6d0fc824f1.css                                                 1.69 kB
 [35mpw-live-v2:build: [0m├   /_app                                                                      0 B             123 kB
 [35mpw-live-v2:build: [0m├ ○ /404                                                                       45.9 kB         169 kB
 [35mpw-live-v2:build: [0m├ ○ /about-us                                                                  6.87 kB         134 kB
-[35mpw-live-v2:build: [0m├ ○ /after-payment                                                             3.73 kB         130 kB
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]                                                       2.45 kB         148 kB
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]                                         7.08 kB         136 kB
+[35mpw-live-v2:build: [0m├ ○ /after-payment                                                             3.72 kB         130 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]                                                       2.46 kB         148 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]                                         7.1 kB          137 kB
 [35mpw-live-v2:build: [0m├   └ css/501c8b6898ccd9e5.css                                                 393 B
 [35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content                     1.14 kB         134 kB
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content/[scheduleId]/video  322 B           157 kB
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/weekly-schedule                         5.56 kB         152 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/[topicSlug]/content/[scheduleId]/video  318 B           156 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/[subjectSlug]/weekly-schedule                         8.37 kB         151 kB
 [35mpw-live-v2:build: [0m├   └ css/5f80e4dfd42014be.css                                                 663 B
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/faculties                                             6.89 kB         143 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/faculties                                             6.91 kB         143 kB
 [35mpw-live-v2:build: [0m├   └ css/d448f1c3f46feaf4.css                                                 402 B
-[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/order-summary                                         17 kB           232 kB
-[35mpw-live-v2:build: [0m├   └ css/e97a962c4a7fc996.css                                                 1.67 kB
+[35mpw-live-v2:build: [0m├ ○ /batches/[batchSlug]/order-summary                                         18.3 kB         233 kB
+[35mpw-live-v2:build: [0m├   └ css/bedacc5db3dce12a.css                                                 1.67 kB
 [35mpw-live-v2:build: [0m├ ○ /contact-us                                                                39.2 kB         234 kB
-[35mpw-live-v2:build: [0m├ ○ /login                                                                     19.7 kB         146 kB
+[35mpw-live-v2:build: [0m├ ○ /login                                                                     19.8 kB         146 kB
 [35mpw-live-v2:build: [0m├   └ css/f79cd05634e6ff08.css                                                 1.25 kB
-[35mpw-live-v2:build: [0m├ ○ /pdf                                                                       91.3 kB         214 kB
-[35mpw-live-v2:build: [0m├ ○ /practice/[id]                                                             1.06 kB         124 kB
+[35mpw-live-v2:build: [0m├ ○ /pdf                                                                       93.4 kB         223 kB
+[35mpw-live-v2:build: [0m├ ○ /practice/[id]                                                             12.8 kB         146 kB
+[35mpw-live-v2:build: [0m├ ○ /practice/[id]/mapping/[testMappingId]/test-result                         4.85 kB         132 kB
 [35mpw-live-v2:build: [0m├ ○ /profile                                                                   19.3 kB         153 kB
-[35mpw-live-v2:build: [0m├   └ css/0c89faeff01b142d.css                                                 1.01 kB
 [35mpw-live-v2:build: [0m├ ○ /terms-and-conditions                                                      3.98 kB         127 kB
-[35mpw-live-v2:build: [0m├ ○ /test-result                                                               268 B           123 kB
-[35mpw-live-v2:build: [0m├ ○ /video                                                                     279 B           157 kB
+[35mpw-live-v2:build: [0m├ ○ /video                                                                     274 B           156 kB
 [35mpw-live-v2:build: [0m└ ○ /video-player                                                              3.46 kB         126 kB
 [35mpw-live-v2:build: [0m+ First Load JS shared by all                                                  135 kB
 [35mpw-live-v2:build: [0m  ├ chunks/framework-e6af074d2e298f55.js                                       45.2 kB
 [35mpw-live-v2:build: [0m  ├ chunks/main-f2c1f8ffd6de9689.js                                            31.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-e036e171b1775b8b.js                                      43.6 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-a2f8c530992a0b93.js                                         2.75 kB
-[35mpw-live-v2:build: [0m  └ css/97829a8396884c8b.css                                                   12.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-a2ea6d83232a5d60.js                                      43.6 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-7283bf3a821a366a.js                                         2.76 kB
+[35mpw-live-v2:build: [0m  └ css/5d88f465b5195076.css                                                   12.6 kB
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
 [35mpw-live-v2:build: [0m
