@@ -237,7 +237,7 @@ const CheckoutCard = ({
           feeMapId: feeId,
           name: batchDetail?.name,
           paymentSource: 'JUSPAY',
-          returnHost: `${window.location.origin}/after-payment/`,
+          returnHost: `${window.location.origin}/`,
           wallet: checked ? rewardPoints : 0,
           couponCode: !couponError ? coupon : '',
           type: 'BATCH',
@@ -308,6 +308,24 @@ const CheckoutCard = ({
       activePlan?.title
     )
     if (checkoutDetails.amount === 0) {
+      if (checked) {
+        orderMutate(
+          {
+            feeMapId: feeId,
+            name: batchDetail?.name,
+            paymentSource: 'WALLET',
+            wallet: checked ? rewardPoints : 0,
+            type: 'BATCH',
+          },
+          {
+            onSuccess: (data: any) => {
+              router.push(
+                `/after-payment?status=${PaymentStatus.SUCCESS}&order_id=${''}`
+              )
+            },
+          }
+        )
+      }
       refetchEnroll()
       if (!enrollError) {
         router.replace(`/batches/${batchDetail?.slug}#classroom`)
@@ -369,7 +387,7 @@ const CheckoutCard = ({
                     title=""
                     checked={checked}
                     onClick={() => setChecked((prev) => !prev)}
-                    disabled={isSuccess}
+                    disabled={couponsApplied}
                   />
                   <div className="flex items-center gap-2">
                     <img src={coin.src} alt="" />
@@ -385,40 +403,6 @@ const CheckoutCard = ({
                 </Typography>
               </div>
             )}
-            {/* <div className={style.applyCouponContainer}> */}
-            {/* <TextInput
-                action={{
-                  text: 'APPLY',
-                  onAction: () =>
-                    couponMutation({
-                      couponCode: coupon,
-                      type: 'BATCH',
-                      typeIds: [feeId],
-                    }),
-                  disabled: checked,
-                }}
-                variant="gray"
-                invalid={isError}
-                value={coupon}
-                onChange={(e: any) => setCoupon(e)}
-                placeholder="Have a Coupon Code?"
-              />
-
-              {isError && (
-                <Typography variant="small" weight={500}>
-                  <span className="text-red-500 pl-4">
-                    {couponError.response?.data?.error?.message ||
-                      'Cannot apply Coupon'}
-                  </span>
-                </Typography>
-              )}
-              {isSuccess && (
-                <Typography variant="small" weight={500}>
-                  <span className="text-green-500 pl-4">
-                    Coupon Applied Successfully
-                  </span>
-                </Typography>
-              )} */}
 
             {couponsApplied ? (
               <div className={cn(style.applyCouponContainer)}>
@@ -435,7 +419,7 @@ const CheckoutCard = ({
                     {isSuccess && (
                       <div className={'flex flex-col'}>
                         <Typography weight={700}>
-                          <span className={'text-[#2755BC]'}>
+                          <span className={'text-[#3BB143]'}>
                             YAY! You saved{' '}
                             {priceDisplay(couponData?.discountedAmount)}
                           </span>
@@ -456,6 +440,7 @@ const CheckoutCard = ({
                       onClick={() => {
                         setCouponsApplied(false)
                         setCoupon('')
+                        resetBatchPriceDetails()
                       }}
                       variant={'naked'}
                     >
@@ -530,7 +515,10 @@ const CheckoutCard = ({
                 </Typography>
                 <Typography variant="small" weight={500}>
                   <span className="text-[#3AA2AB]">
-                    {checkoutDetails.discount.toFixed()}%
+                    -
+                    {priceDisplay(
+                      checkoutDetails.amount - checkoutDetails.total
+                    )}
                   </span>
                 </Typography>
               </div>

@@ -97,7 +97,7 @@ const TestResult = () => {
   }
 
   const reAttempt = () => {
-    router.replace(`/practice/638f359037d3930012e2684a`)
+    router.replace(`/practice/${id}`)
   }
 
   return (
@@ -111,7 +111,7 @@ const TestResult = () => {
               </span>
             }
             variant={'naked'}
-            // onClick={() => setExitModalOpen(true)}
+            onClick={() => router.replace('/')}
             size={'small'}
           >
             <Typography weight={500}>Back</Typography>
