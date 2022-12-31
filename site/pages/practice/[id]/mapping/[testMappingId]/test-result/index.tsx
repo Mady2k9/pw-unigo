@@ -10,7 +10,6 @@ import Incorrect from '@assets/images/results/incorrect.png'
 import Completed from '@assets/images/results/completed.png'
 import useGetTestResult from '@lib/hooks/exercise/useGetTestResult'
 import { useRouter } from 'next/router'
-import { router } from 'next/client'
 
 export interface TestResultArray {
   title: string
@@ -98,7 +97,7 @@ const TestResult = () => {
   }
 
   const reAttempt = () => {
-    router.replace(`/practice/638f359037d3930012e2684a`)
+    router.replace(`/practice/${id}`)
   }
 
   return (
@@ -112,7 +111,7 @@ const TestResult = () => {
               </span>
             }
             variant={'naked'}
-            // onClick={() => setExitModalOpen(true)}
+            onClick={() => router.replace('/')}
             size={'small'}
           >
             <Typography weight={500}>Back</Typography>

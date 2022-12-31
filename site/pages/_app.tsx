@@ -13,6 +13,7 @@ import {SystemThemeIndicator} from "@components/index";
 import {LoadingSection} from "@components/ui";
 import NotificationWrapper from "@components/notification/NotificationWrapper";
 
+
 const Noop: FC<{ children?: ReactNode }> = ({children}) => <>{children}</>;
 const CohortWrapper = ({Component, pageProps}: AppProps) => {
     const Layout = (Component as any).Layout || Noop;
