@@ -175,3 +175,4 @@ const ResultBox = ({ testResult }: { testResult: TestResultArray }) => {
     </article>
   )
 }
+
