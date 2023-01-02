@@ -136,6 +136,8 @@ const CheckoutCard = ({
     isSuccess,
   } = useApplyCoupon()
 
+  console.log(couponData)
+
   const { data: orderData, isLoading, mutate: orderMutate } = useCreateOrder()
 
   const {
@@ -468,7 +470,9 @@ const CheckoutCard = ({
                         <Typography weight={700}>
                           <span className={'text-[#3BB143]'}>
                             YAY! You saved{' '}
-                            {priceDisplay(couponData?.discountedAmount)}
+                            {priceDisplay(
+                              couponData?.data?.data?.discountedAmount
+                            )}
                           </span>
                         </Typography>
                         <Typography weight={700} variant="label">
