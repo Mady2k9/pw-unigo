@@ -6,6 +6,7 @@ import { BatchType } from '@lib/hooks/batches/useBatches'
 import cn from 'clsx'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import { priceDisplay } from '@lib/user-utility'
+import { truncateString } from '@lib/utilities'
 
 const BatchPurchaseCard = ({
   batchDetail,
@@ -39,24 +40,38 @@ const BatchPurchaseCard = ({
         <div className={style.cardDetails}>
           <div className="max-w-full truncate">
             <Typography variant="subHeading" weight={700} capitalize={true}>
-              {batchDetail?.name}
+              {truncateString(batchDetail?.name, 50)}
             </Typography>
           </div>
           <div className={style.priceContainer}>
             <Typography variant="heading3" weight={700}>
-              <span>{priceDisplay(batchDetail?.fee?.total)}</span>
+              <span>
+                {priceDisplay(
+                  batchDetail.planCount > 0
+                    ? batchDetail?.startingPlan?.total
+                    : batchDetail?.fee?.total
+                )}
+              </span>
             </Typography>
-            {batchDetail?.fee?.discount > 0 && (
+            {((batchDetail?.startingPlan?.discount > 0 &&
+              batchDetail?.startingPlan?.discount < 100) ||
+              (batchDetail?.fee?.discount > 0 &&
+                batchDetail?.fee?.discount < 100)) && (
               <Typography variant="regular" weight={400}>
                 <span className="text-gray-400 line-through">
-                  {priceDisplay(batchDetail?.fee?.amount)}
+                  {batchDetail?.startingPlan?.price ?? batchDetail?.fee?.amount}
                 </span>
               </Typography>
             )}
-            {batchDetail?.fee?.discount > 0 && (
+            {(batchDetail?.startingPlan?.discount > 0 ||
+              batchDetail?.fee?.discount > 0) && (
               <Typography variant="regular" weight={700}>
                 <span className="bg-[#47b586] text-white px-2 py-1 rounded-3xl">
-                  {batchDetail?.fee?.discount.toFixed()}% OFF
+                  {(
+                    batchDetail?.startingPlan?.discount ||
+                    batchDetail?.fee?.discount
+                  ).toFixed()}
+                  % OFF
                 </span>
               </Typography>
             )}

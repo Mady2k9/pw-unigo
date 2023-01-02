@@ -213,7 +213,8 @@ const K8Card = ({
           <div className="flex flex-col">
             <span className="flex items-center gap-1.5 text-sm font-medium">
               {variant === BatchType.SELF_LEARNING &&
-                batchData.planCount > 1 && (
+                batchData.planCount > 0 &&
+                batchData.startingPlan.total > 0 && (
                   <span className="text-[10px] md:text-sm">Starting at</span>
                 )}
               <Typography weight={800}>
@@ -225,7 +226,7 @@ const K8Card = ({
                   }`}
                 >
                   {variant === BatchType.SELF_LEARNING &&
-                  batchData.planCount > 1
+                  batchData.planCount > 0
                     ? priceDisplay(batchData?.startingPlan?.total)
                     : priceDisplay(batchData?.feeId?.total)}
                 </span>
@@ -235,7 +236,7 @@ const K8Card = ({
                 <Typography variant="tiny" weight={500}>
                   <span className="text-[#A2A1A6] line-through">
                     {variant === BatchType.SELF_LEARNING &&
-                    batchData.planCount > 1
+                    batchData.planCount > 0
                       ? batchData?.startingPlan?.price
                       : batchData?.feeId?.amount}
                   </span>
@@ -254,7 +255,7 @@ const K8Card = ({
           </div>
           <DiscountBadge
             discount={
-              variant === BatchType.SELF_LEARNING && batchData.planCount > 1
+              variant === BatchType.SELF_LEARNING && batchData.planCount > 0
                 ? batchData?.startingPlan?.discount
                 : batchData?.feeId?.discount
             }

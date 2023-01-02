@@ -53,7 +53,7 @@ const MyBatchCard = ({ batchDetail }: { batchDetail: any }) => {
             </div>
           </Button>
         </div>
-        <div className="absolute right-2 -top-5">
+        <div className="absolute right-6 -top-5">
           <Image src={PencilBoy} alt="pencilboy" />
         </div>
       </div>

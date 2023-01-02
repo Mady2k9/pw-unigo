@@ -51,16 +51,20 @@ function TeacherCard({ teacherData }: { teacherData: TeacherData }) {
           </div>
 
           <div className={`flex items-center gap-2 mt-1`}>
-            <div className="bg-white rounded-md px-2 py-1">
-              <Typography variant="label" weight={700}>
-                {teacherData?.qualification}
-              </Typography>
-            </div>
-            <div className="bg-white rounded-md px-2 py-1">
-              <Typography variant="label" weight={700}>
-                {teacherData?.experience} years of Exp.
-              </Typography>
-            </div>
+            {teacherData?.qualification && (
+              <div className="bg-white rounded-md px-2 py-1">
+                <Typography variant="label" weight={700}>
+                  {teacherData?.qualification}
+                </Typography>
+              </div>
+            )}
+            {teacherData?.experience && (
+              <div className="bg-white rounded-md px-2 py-1">
+                <Typography variant="label" weight={700}>
+                  {teacherData?.experience} years of Exp.
+                </Typography>
+              </div>
+            )}
           </div>
         </div>
       </div>

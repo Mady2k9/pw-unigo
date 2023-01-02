@@ -11,7 +11,10 @@ import CheckoutCard from '../checkout-card/CheckoutCard'
 
 const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
   const { showNotification } = useNotify()
-  const isFree = batchDetail?.fee?.amount === 0
+  const isFree =
+    batchDetail.planCount > 0
+      ? batchDetail?.startingPlan?.amount === 0
+      : batchDetail?.fee?.amount === 0
 
   const { data: feeId, mutate: feeIdMutate } = useGetFeeId()
 
@@ -37,6 +40,21 @@ const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
           },
         }
       )
+    } else {
+      // console.log({
+      //   enddate: new Date(batchDetail.endDate).toUTCString(),
+      //   today: new Date().toUTCString(),
+      //   isExpired:
+      //     new Date(batchDetail.endDate).getTime() < new Date().getTime(),
+      // })
+      if (new Date(batchDetail.endDate).getTime() < new Date().getTime()) {
+        showNotification({
+          title: 'Batch registration has ended',
+          type: NotificationEnums.ERROR,
+          identifier: batchDetail?._id,
+          duration: NotificationDuration.LONG,
+        })
+      }
     }
   }, [])
 

@@ -7,6 +7,7 @@ import { Fragment, useEffect, useState } from 'react'
 import PlayCircle from '@assets/images/play-circle.svg'
 import style from './TeacherModal.module.css'
 import VideoPlayerComponentWrapper from '@components/video/Player/VideoPlayerComponentWrapper'
+import { getImageUrlFromObjectImageId } from '@lib/utilities'
 
 const TeacherModal = ({
   children,
@@ -105,20 +106,15 @@ const TeacherModal = ({
                     }}
                   >
                     <Image
-                      src={
-                        data?.companyId?.imageId?.baseUrl +
-                        data?.companyId?.imageId?.key
-                      }
+                      src={getImageUrlFromObjectImageId(
+                        data?.introVideoThumbnail
+                      )}
                       alt=""
-                      objectFit={'contain'}
                       layout="fill"
+                      className="rounded-2xl"
                     />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <Image
-                        src={PlayCircle}
-                        objectFit={'contain'}
-                        alt="play-icon"
-                      />
+                      <Image src={PlayCircle} alt="play-icon" />
                     </div>
 
                     {play && (
