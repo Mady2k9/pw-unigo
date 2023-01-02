@@ -1,0 +1,67 @@
+.header {
+  max-width: 723px !important;
+  @apply flex items-center justify-between mx-auto space-x-4 !important;
+}
+
+.heroSection {
+  height: 287px;
+  @apply w-full flex items-center justify-center;
+}
+
+.bannerImg {
+  height: 287px;
+  object-fit: contain;
+}
+
+.videoContainer {
+  clip-path: inset(0 -2px);
+  box-shadow: 0 0 0 2px #f7f5ff;
+}
+
+.videoDiv {
+  width: 271px;
+  height: 140px;
+  border-radius: 8px;
+  background-image: url('../../../assets/images/banner.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.redeemLink {
+  border: 1px solid #5a4bda;
+  border-radius: 10px;
+}
+
+.shadow {
+  box-shadow: 0px 3px 10px #00000029;
+}
+
+.dashedBorder {
+  border: 1px dashed #707070;
+}
+
+.redeemNowHeader {
+  background: transparent
+    linear-gradient(180deg, #2c2850 0%, #3f3a65 48%, #201d33 100%) 0% 0%
+    no-repeat padding-box;
+  @apply py-10;
+}
+
+.transferButton {
+  box-shadow: 0px 4px 15px #00000021;
+  border-radius: 10px;
+  @apply flex items-center justify-between bg-white py-4 px-3 max-w-[307px] cursor-pointer;
+}
+
+.couponContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
+  grid-gap: 3rem;
+  align-items: stretch;
+  @apply my-4;
+}
+
+.voucherHeader {
+  height: 204px;
+}

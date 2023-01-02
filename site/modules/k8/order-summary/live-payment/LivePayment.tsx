@@ -1,23 +1,42 @@
 import { Typography } from '@components/ui'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
+import useNotify, {
+  NotificationDuration,
+  NotificationEnums,
+} from '@lib/useNotify'
 import React, { useEffect, useState } from 'react'
 import BatchPurchaseCard from '../batch-purchase-card/BatchPurchaseCard'
 import CheckoutCard from '../checkout-card/CheckoutCard'
 
 const LivePayment = ({ batchDetail }: { batchDetail: BatchDetailModel }) => {
+  const { showNotification } = useNotify()
   const isFree = batchDetail?.fee?.amount === 0
 
   const { data: feeId, mutate: feeIdMutate } = useGetFeeId()
 
   useEffect(() => {
     if (!isFree) {
-      feeIdMutate({
-        batchId: batchDetail?._id,
-        query: {
-          batchAmount: batchDetail?.fee?.amount,
+      feeIdMutate(
+        {
+          batchId: batchDetail?._id,
+          query: {
+            batchAmount: batchDetail?.fee?.amount,
+          },
         },
-      })
+        {
+          onError: (err: any) => {
+            if (err.status === 400) {
+              showNotification({
+                title: 'Batch registration has ended',
+                type: NotificationEnums.ERROR,
+                identifier: batchDetail?._id,
+                duration: NotificationDuration.LONG,
+              })
+            }
+          },
+        }
+      )
     }
   }, [])
 

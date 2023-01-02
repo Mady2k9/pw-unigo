@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 import PlayCircle from '@assets/images/play-circle.svg'
 import style from './TeacherModal.module.css'
+import VideoPlayerComponentWrapper from '@components/video/Player/VideoPlayerComponentWrapper'
 
 const TeacherModal = ({
   children,
@@ -17,11 +18,13 @@ const TeacherModal = ({
   teacherId: string
 }) => {
   const [open, setOpen] = useState(true)
+  const [play, setPlay] = useState(false)
   const router = useRouter()
   const { batchSlug } = router.query
   const { data, isLoading } = useTeacherDetails({
     batchSlug: batchSlug as string,
     teacherId: teacherId,
+    enabled: !!batchSlug && !!teacherId,
   })
 
   useEffect(() => {
@@ -59,13 +62,26 @@ const TeacherModal = ({
               <div className="flex flex-col lg:flex-row h-fit lg:max-h-[352px] gap-4 px-3 py-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-2 px-2">
-                    <Typography
-                      variant="regular"
-                      weight={700}
-                      capitalize={true}
-                    >
-                      {data?.firstName || '' + ' ' + data?.lastName || ''}
-                    </Typography>
+                    <div className="flex items-center gap-0.5">
+                      {data?.firstName && (
+                        <Typography
+                          weight={700}
+                          variant="regular"
+                          capitalize={true}
+                        >
+                          {data?.firstName}
+                        </Typography>
+                      )}
+                      {data?.lastName && (
+                        <Typography
+                          weight={700}
+                          variant="regular"
+                          capitalize={true}
+                        >
+                          {data?.lastName}
+                        </Typography>
+                      )}
+                    </div>
                     <Typography variant="tiny" weight={400}>
                       {data?.qualification || ''}
                     </Typography>
@@ -82,7 +98,12 @@ const TeacherModal = ({
                       ))}
                     </div>
                   </div>
-                  <div className="w-full h-[155px] lg:w-[417px] lg:h-[239px] relative rounded-2xl border-2 mx-auto">
+                  <div
+                    className="w-full h-[155px] lg:w-[417px] lg:h-[239px] relative rounded-2xl border-2 mx-auto"
+                    onClick={() => {
+                      setPlay(true)
+                    }}
+                  >
                     <Image
                       src={
                         data?.companyId?.imageId?.baseUrl +
@@ -99,6 +120,18 @@ const TeacherModal = ({
                         alt="play-icon"
                       />
                     </div>
+
+                    {play && (
+                      <div className="absolute inset-0 w-full h-full">
+                        <VideoPlayerComponentWrapper
+                          type="MP4"
+                          src={
+                            data?.introductionVideoId?.baseUrl +
+                            data?.introductionVideoId?.key
+                          }
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div

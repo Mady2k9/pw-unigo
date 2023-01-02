@@ -3,6 +3,7 @@ import {
   ContactUs,
   Home,
   TermsAndCondition,
+  Refer,
 } from '@assets/images/hamburger'
 import { AcademicCapIcon, HomeIcon } from '@heroicons/react/24/outline'
 import React from 'react'
@@ -15,6 +16,13 @@ const SidebarConfig = [
       icon: <Home />,
       pattern: /\/*/,
       route: '/',
+    },
+    {
+      name: 'Refer & Earn',
+      icon: <Refer />,
+
+      pattern: /\/refer-and-earn/,
+      route: '/refer-and-earn',
     },
     {
       name: 'About Us',

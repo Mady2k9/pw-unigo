@@ -9,7 +9,7 @@ import meta from '@assets/images/meta.svg'
 import Image from 'next/image'
 import Share from '@assets/images/share.svg'
 import { useRouter } from 'next/router'
-import { BatchType, Teachers } from '@lib/hooks/batches/useBatches'
+import { BatchId, BatchType, Teachers } from '@lib/hooks/batches/useBatches'
 import cn from 'clsx'
 import placeholderImage from '@assets/images/placeholder.png'
 import { DiscountBadge } from '@components/common'
@@ -17,14 +17,18 @@ import { priceDisplay } from '@lib/user-utility'
 import format from 'date-fns/format'
 import { useEffect, useState } from 'react'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
-import { generateWhatsappLink, truncateString } from '@lib/utilities'
+import {
+  generateWhatsappLink,
+  getImageUrlFromObjectImageId,
+  truncateString,
+} from '@lib/utilities'
 import eventTracker from '@lib/eventTracker/eventTracker'
 
 const K8Card = ({
   batchData,
   loading,
 }: {
-  batchData: any
+  batchData: BatchId
   loading?: boolean
 }) => {
   const router = useRouter()
@@ -38,7 +42,7 @@ const K8Card = ({
     variant === BatchType.SELF_LEARNING ? 'Self Learning' : 'Live Batches'
 
   const redirectTo = () => {
-    eventTracker.batchExploreClick(batchData)
+    // eventTracker.batchExploreClick(batchData)
     router.push({
       pathname: `/batches/${batchData?.slug}`,
     })
@@ -73,7 +77,7 @@ const K8Card = ({
   }, [batchData])
 
   const redirectToOrderSummary = () => {
-    eventTracker.batchBuyNow(batchData, 'batch_listing')
+    // eventTracker.batchBuyNow(batchData, 'batch_listing')
     router.push(`/batches/${batchData?.slug}/order-summary`)
   }
   return (
@@ -195,12 +199,7 @@ const K8Card = ({
             </div>
             <div className="lg:h-[80px] h-[134px] w-full lg:max-w-[140px]">
               <img
-                src={
-                  batchData
-                    ? batchData?.previewImage?.baseUrl +
-                      batchData?.previewImage?.key
-                    : placeholderImage
-                }
+                src={getImageUrlFromObjectImageId(batchData.previewImage)}
                 className="h-full w-full"
                 alt=""
               />
@@ -209,13 +208,14 @@ const K8Card = ({
         )}
       </div>
 
-      <div className="px-2 md:px-4 pb-4 flex flex-col gap-4">
+      <div className="px-2 md:px-4 pb-4 flex flex-col justify-between gap-4">
         <div className="flex items-center gap-12 md:gap-8">
           <div className="flex flex-col">
             <span className="flex items-center gap-1.5 text-sm font-medium">
-              {variant === BatchType.SELF_LEARNING && (
-                <span className="text-[10px] md:text-sm">Starting at</span>
-              )}
+              {variant === BatchType.SELF_LEARNING &&
+                batchData.planCount > 1 && (
+                  <span className="text-[10px] md:text-sm">Starting at</span>
+                )}
               <Typography weight={800}>
                 <span
                   className={` ${
@@ -224,13 +224,20 @@ const K8Card = ({
                       : 'text-2xl text-white'
                   }`}
                 >
-                  {priceDisplay(batchData?.feeId?.total)}
+                  {variant === BatchType.SELF_LEARNING &&
+                  batchData.planCount > 1
+                    ? priceDisplay(batchData?.startingPlan?.total)
+                    : priceDisplay(batchData?.feeId?.total)}
                 </span>
               </Typography>
-              {batchData?.feeId?.discount > 0 && (
+              {(batchData?.feeId?.discount > 0 ||
+                batchData?.startingPlan?.discount > 0) && (
                 <Typography variant="tiny" weight={500}>
                   <span className="text-[#A2A1A6] line-through">
-                    {batchData?.feeId?.amount}
+                    {variant === BatchType.SELF_LEARNING &&
+                    batchData.planCount > 1
+                      ? batchData?.startingPlan?.price
+                      : batchData?.feeId?.amount}
                   </span>
                 </Typography>
               )}
@@ -245,7 +252,13 @@ const K8Card = ({
               </span>
             )}
           </div>
-          <DiscountBadge discount={batchData?.feeId?.discount} />
+          <DiscountBadge
+            discount={
+              variant === BatchType.SELF_LEARNING && batchData.planCount > 1
+                ? batchData?.startingPlan?.discount
+                : batchData?.feeId?.discount
+            }
+          />
         </div>
         <div className="flex items-center gap-2">
           <Button
