@@ -30,6 +30,8 @@ import eventTracker from '@lib/eventTracker/eventTracker'
 import { Arrow } from '@components/lotties'
 import Offers from '@components/icons/Offers'
 import cn from 'clsx'
+import usePayByWallet from '@lib/hooks/batches/usePayByWallet'
+import { parseMutationObject } from '@lib/utilities'
 
 interface CheckoutDetails {
   discount: number
@@ -67,6 +69,16 @@ const CheckoutCard = ({
   const [totalAmount, setTotalAmount] = useState(0)
   const router = useRouter()
 
+  const isBatchFree =
+    batchDetail.planCount > 0
+      ? batchDetail?.startingPlan?.amount === 0
+      : batchDetail?.fee?.amount === 0
+
+  const isAvailableFromPoints =
+    batchDetail.planCount > 0
+      ? activePlan?.isAvailableFromPoints
+      : batchDetail.isAvailableFromPoints
+
   const variant = batchDetail?.isSelfLearning
     ? BatchType.SELF_LEARNING
     : BatchType.LIVE
@@ -76,13 +88,12 @@ const CheckoutCard = ({
   }, [batchDetail, activePlan])
 
   const resetBatchPriceDetails = () => {
-    if (variant === BatchType.SELF_LEARNING) {
-      activePlan &&
-        setCheckoutDetails({
-          discount: +activePlan?.discount as number,
-          amount: +activePlan?.price as number,
-          total: +activePlan?.total as number,
-        })
+    if (variant === BatchType.SELF_LEARNING && activePlan?._id) {
+      setCheckoutDetails({
+        discount: +activePlan?.discount as number,
+        amount: +activePlan?.price as number,
+        total: +activePlan?.total as number,
+      })
     } else {
       setCheckoutDetails({
         discount: +batchDetail?.fee?.discount as number,
@@ -99,7 +110,9 @@ const CheckoutCard = ({
 
   const rewardPoints = Math.min(
     +user?.profileId?.wallet,
-    +batchDetail?.maxWalletPoint
+    batchDetail.planCount > 0
+      ? +parseMutationObject(activePlan?.maxWalletPoints)
+      : +batchDetail.maxWalletPoint
   )
 
   useEffect(() => {
@@ -109,6 +122,10 @@ const CheckoutCard = ({
       setTotalAmount(batchDetail?.fee?.total)
     }
   }, [checked])
+
+  useEffect(() => {
+    setChecked(false)
+  }, [activePlan?._id])
 
   const {
     data: couponData,
@@ -120,6 +137,13 @@ const CheckoutCard = ({
   } = useApplyCoupon()
 
   const { data: orderData, isLoading, mutate: orderMutate } = useCreateOrder()
+
+  const {
+    data: payByPointsData,
+    isLoading: payByPointsLoading,
+    error,
+    payByPoints,
+  } = usePayByWallet()
 
   useEffect(() => {
     if (isSuccess) {
@@ -304,10 +328,10 @@ const CheckoutCard = ({
   const pay = () => {
     eventTracker.batchPayNow(
       batchDetail,
-      checkoutDetails.amount,
+      checkoutDetails.total,
       activePlan?.title
     )
-    if (checkoutDetails.amount === 0) {
+    if (checkoutDetails.total === 0) {
       if (checked) {
         orderMutate(
           {
@@ -319,18 +343,41 @@ const CheckoutCard = ({
           },
           {
             onSuccess: (data: any) => {
-              router.push(
-                `/after-payment?status=${PaymentStatus.SUCCESS}&order_id=${''}`
+              const orderId = data?.data?.data?._id
+              payByPoints(
+                { orderId },
+                {
+                  onSuccess: () => {
+                    router.push({
+                      pathname: `/after-payment`,
+                      query: {
+                        status: PaymentStatus.SUCCESS,
+                        order_id: orderId,
+                      },
+                    })
+                  },
+                  onError: () => {
+                    router.push({
+                      pathname: `/after-payment`,
+                      query: {
+                        status: PaymentStatus.FAILURE,
+                        order_id: orderId,
+                      },
+                    })
+                  },
+                }
               )
             },
           }
         )
+        return
+      } else {
+        refetchEnroll()
+        if (!enrollError) {
+          router.replace(`/batches/${batchDetail?.slug}#classroom`)
+        }
+        return
       }
-      refetchEnroll()
-      if (!enrollError) {
-        router.replace(`/batches/${batchDetail?.slug}#classroom`)
-      }
-      return
     }
 
     if (activePaymentKey.razorpay) {
@@ -380,7 +427,7 @@ const CheckoutCard = ({
               Offers & Coupons
             </Typography>
 
-            {batchDetail?.isAvailableFromPoints && (
+            {!!rewardPoints && isAvailableFromPoints && (
               <div className={style.rewardContainer}>
                 <div className="flex items-center">
                   <Checkbox
@@ -542,7 +589,10 @@ const CheckoutCard = ({
           }
           onClick={pay}
           disabled={
-            (variant === BatchType.SELF_LEARNING && !activePlan) || !feeId
+            (variant === BatchType.SELF_LEARNING && !activePlan) ||
+            (isBatchFree
+              ? new Date(batchDetail.endDate).getTime() < new Date().getTime()
+              : !feeId)
           }
         >
           {checkoutDetails.amount === 0 ? 'Enroll' : 'Pay Now'}
