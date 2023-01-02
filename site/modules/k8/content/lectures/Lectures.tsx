@@ -72,13 +72,23 @@ const Lectures = ({ type }: { type: ContentType }) => {
   const [query, setQuery] = useState('')
 
   const redirectToPlayer = (video: any) => {
-    if (!isPurchased) {
+    if (!isPurchased && !video.isFree) {
       showNotification({
         title: 'Batch not purchased!!!',
         type: NotificationEnums.ERROR,
         duration: NotificationDuration.LONG,
         description: 'Please purchase this batch to watch this content',
         identifier: video._id,
+        content: (
+          <div className="mt-2">
+            <Button
+              onClick={() => router.push(`/batches/${batchSlug}/order-summary`)}
+            >
+              {' '}
+              Buy Now
+            </Button>
+          </div>
+        ),
       })
       return
     }
@@ -117,7 +127,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
                   slug={video?.slug}
                   date={video?.date}
                   image={video?.videoDetails?.image}
-                  isLocked={!isPurchased}
+                  isLocked={!isPurchased && !video.isFree}
                   lastWatchedTimeInSec={lastWatchedTimeInSec}
                   handleClick={() => redirectToPlayer(video)}
                 />
@@ -127,8 +137,13 @@ const Lectures = ({ type }: { type: ContentType }) => {
       </>
     )
   }, [data, enableSearch])
+
   if (isLoading) return <LoadingSection />
   if (data.length === 0) return <NoData />
+
+  const subjName = batchDetails?.subjects?.filter(
+    (subj: any) => subj.slug === subjectSlug
+  )[0].subject
 
   return (
     <Container className="flex flex-col gap-4 mb-6">
@@ -159,6 +174,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
           videos={data as ContentModel[]}
           batchId={batchDetails?._id}
           isPurchased={isPurchased}
+          subjectName={subjName}
         />
       ) : (
         ItemsWrapper
