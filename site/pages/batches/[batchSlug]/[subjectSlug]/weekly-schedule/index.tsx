@@ -1,167 +1,168 @@
-import {Layout} from '@components/common'
+import { Layout } from '@components/common'
 import {
-    Card,
-    Container,
-    LoadingSection,
-    NoData,
-    Typography,
+  Card,
+  Container,
+  LoadingSection,
+  NoData,
+  Typography,
 } from '@components/ui'
 import Image from 'next/image'
-import {ClassCard, WeekCard} from '@modules/k8'
-import {useRouter} from 'next/router'
+import { ClassCard, WeekCard } from '@modules/k8'
+import { useRouter } from 'next/router'
 import useRecentSchedule, {
-    RecentSchedule,
-    Schedule,
+  RecentSchedule,
+  Schedule,
 } from '@lib/hooks/batches/useRecentSchedule'
-import {useEffect, useState} from 'react'
-import {isBefore, isAfter} from 'date-fns'
-import {ClassMode} from '@modules/k8/constants'
-import useBatchDetails, {Subject} from '@lib/hooks/batches/useBatchDetails'
-import {getImageUrlFromObjectImageId, isScheduleLive} from '@lib/utilities'
+import { useEffect, useState } from 'react'
+import { isBefore, isAfter } from 'date-fns'
+import { ClassMode } from '@modules/k8/constants'
+import useBatchDetails, { Subject } from '@lib/hooks/batches/useBatchDetails'
+import { getImageUrlFromObjectImageId, isScheduleLive } from '@lib/utilities'
 
 const WeeklySchedule = () => {
-    const router = useRouter()
-    const {batchSlug, subjectSlug} = router.query
+  const router = useRouter()
+  const { batchSlug, subjectSlug } = router.query
 
-    const {data: batchDetail, isLoading: batchDetailLoading} = useBatchDetails({
-        batchSlug: batchSlug as string,
-        enabled: !!batchSlug,
-    })
+  const { data: batchDetail, isLoading: batchDetailLoading } = useBatchDetails({
+    batchSlug: batchSlug as string,
+    enabled: !!batchSlug,
+  })
 
-    const {data, isLoading} = useRecentSchedule({
-        batchSlug: batchSlug as string,
-        subjectSlug: subjectSlug as string,
-    })
+  const { data, isLoading } = useRecentSchedule({
+    batchSlug: batchSlug as string,
+    subjectSlug: subjectSlug as string,
 
-    if (batchDetailLoading) return <LoadingSection/>
+    enabled: !!batchSlug?.length && !!subjectSlug?.length,
+  })
 
-    const subjectName = batchDetail?.subjects.find(
-        (subj: any) => subj.slug === subjectSlug
-    ) as Subject
+  if (batchDetailLoading) return <LoadingSection />
 
-    return (
-        <Container className="flex flex-col gap-24 w-full">
-            <div className="flex items-center justify-center md:justify-start gap-4">
-                <div className="relative hidden md:block h-[71px] w-[71px]">
-                    <Image
-                        src={getImageUrlFromObjectImageId(subjectName?.imageId)}
-                        alt="icon"
-                        layout="fill"
-                    />
-                </div>
-                <Typography variant="heading3" weight={700} capitalize={true}>
-                    {subjectName?.subject} Weekly Schedule
-                </Typography>
-            </div>
+  const subjectName = batchDetail?.subjects.find(
+    (subj: any) => subj.slug === subjectSlug
+  ) as Subject
 
-            {isLoading && <LoadingSection/>}
+  return (
+    <Container className="flex flex-col gap-24 w-full">
+      <div className="flex items-center justify-center md:justify-start gap-4">
+        <div className="relative hidden md:block h-[71px] w-[71px]">
+          <Image
+            src={getImageUrlFromObjectImageId(subjectName?.imageId)}
+            alt="icon"
+            layout="fill"
+          />
+        </div>
+        <Typography variant="heading3" weight={700} capitalize={true}>
+          {subjectName?.subject} Weekly Schedule
+        </Typography>
+      </div>
 
-            {!isLoading && <WeeklyScheduleCard data={data}/>}
-        </Container>
-    )
+      {isLoading && <LoadingSection />}
+
+      {!isLoading && <WeeklyScheduleCard data={data} />}
+    </Container>
+  )
 }
 
-const WeeklyScheduleCard = ({data}: { data: RecentSchedule[] }) => {
-    const [activeDay, setActiveDay] = useState(0)
-    const [upcomingClasses, setUpcomingClasses] = useState<Schedule[]>([])
-    const [recordedClasses, setRecordedClasses] = useState<Schedule[]>([])
+const WeeklyScheduleCard = ({ data }: { data: RecentSchedule[] }) => {
+  const [activeDay, setActiveDay] = useState(0)
+  const [upcomingClasses, setUpcomingClasses] = useState<Schedule[]>([])
+  const [recordedClasses, setRecordedClasses] = useState<Schedule[]>([])
 
-    useEffect(() => {
-        const dataLength = data && data.length
-        const active = data.findIndex((d) => d.isActive)
-        setActiveDay(active !== -1 ? active : dataLength - 2)
-    }, [data])
+  useEffect(() => {
+    const dataLength = data && data.length
+    const active = data.findIndex((d) => d.isActive)
+    setActiveDay(active !== -1 ? active : dataLength - 2)
+  }, [data])
 
-    useEffect(() => {
-        const recorded = data[activeDay]?.schedules.filter((c: Schedule) => {
-            return isBefore(new Date(c.endTime), new Date())
-        })
+  useEffect(() => {
+    const recorded = data[activeDay]?.schedules.filter((c: Schedule) => {
+      return isBefore(new Date(c.endTime), new Date())
+    })
 
-        setRecordedClasses(recorded)
+    setRecordedClasses(recorded)
 
-        const upcoming = data[activeDay]?.schedules.filter((c: Schedule) => {
-            return isAfter(new Date(c.endTime), new Date())
-        })
-        setUpcomingClasses(upcoming)
-    }, [activeDay])
+    const upcoming = data[activeDay]?.schedules.filter((c: Schedule) => {
+      return isAfter(new Date(c.endTime), new Date())
+    })
+    setUpcomingClasses(upcoming)
+  }, [activeDay])
 
-    if (data.length === 0) return <NoData/>
+  if (data.length === 0) return <NoData />
 
-    return (
-        <Card>
-            <div className="px-8 md:px-16 relative">
-                <div className="absolute left-1/2 -top-[3.5rem] -translate-x-1/2 w-[90%]">
-                    <WeekCard data={data} setActiveDay={setActiveDay}/>
-                </div>
+  return (
+    <Card>
+      <div className="px-8 md:px-16 relative">
+        <div className="absolute left-1/2 -top-[3.5rem] -translate-x-1/2 w-[90%]">
+          <WeekCard data={data} setActiveDay={setActiveDay} />
+        </div>
 
-                <div className="pt-28 md:pt-20 pb-12 flex flex-col gap-8">
-                    {upcomingClasses && upcomingClasses.length > 0 && (
-                        <div className="flex flex-col gap-4">
-                            <Typography variant="heading4" weight={500}>
-                                <span className="text-gray-700">Upcoming classes</span>
-                            </Typography>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {upcomingClasses.map((schedule: Schedule, idx: number) => {
-                                    const isLive =
-                                        isScheduleLive(schedule)
-                                    return (
-                                        <div
-                                            key={schedule._id}
-                                            className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
-                                        >
-                                            <ClassCard
-                                                variant={ClassMode.UPCOMING}
-                                                isLive={isLive}
-                                                title={schedule?.topic || schedule?.videoDetails?.name}
-                                                duration={schedule?.videoDetails?.duration}
-                                                teacher={schedule?.teachers.join(',')}
-                                                startTime={schedule?.startTime}
-                                                homeworkId={schedule?.homeworkIds}
-                                                exerciseId={schedule?.exerciseIds}
-                                                batchSubjectId={schedule?.batchSubjectId}
-                                                url={schedule?.url}
-                                                scheduleId={schedule?._id}
-                                            />
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    )}
-                    {recordedClasses && recordedClasses.length > 0 && (
-                        <div className="flex flex-col gap-4 ">
-                            <Typography variant="heading4" weight={500}>
-                                <span className="text-gray-700">Recorded classes</span>
-                            </Typography>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {recordedClasses.map((schedule: Schedule, idx: number) => (
-                                    <div
-                                        key={schedule._id}
-                                        className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
-                                    >
-                                        <ClassCard
-                                            variant={ClassMode.RECORDED}
-                                            title={schedule?.topic || schedule?.videoDetails?.name}
-                                            duration={schedule?.videoDetails?.duration}
-                                            teacher={schedule?.teachers.join(',')}
-                                            startTime={schedule?.startTime}
-                                            homeworkId={schedule?.homeworkIds}
-                                            exerciseId={schedule?.exerciseIds}
-                                            videoDetails={schedule?.videoDetails}
-                                            batchSubjectId={schedule?.batchSubjectId}
-                                            url={schedule?.url}
-                                            scheduleId={schedule?._id}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
+        <div className="pt-28 md:pt-20 pb-12 flex flex-col gap-8">
+          {upcomingClasses && upcomingClasses.length > 0 && (
+            <div className="flex flex-col gap-4">
+              <Typography variant="heading4" weight={500}>
+                <span className="text-gray-700">Upcoming classes</span>
+              </Typography>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {upcomingClasses.map((schedule: Schedule, idx: number) => {
+                  const isLive = isScheduleLive(schedule)
+                  return (
+                    <div
+                      key={schedule._id}
+                      className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
+                    >
+                      <ClassCard
+                        variant={ClassMode.UPCOMING}
+                        isLive={isLive}
+                        title={schedule?.topic || schedule?.videoDetails?.name}
+                        duration={schedule?.videoDetails?.duration}
+                        teacher={schedule?.teachers.join(',')}
+                        startTime={schedule?.startTime}
+                        homeworkId={schedule?.homeworkIds}
+                        exerciseId={schedule?.exerciseIds}
+                        batchSubjectId={schedule?.batchSubjectId}
+                        url={schedule?.url}
+                        scheduleId={schedule?._id}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
             </div>
-        </Card>
-    )
+          )}
+          {recordedClasses && recordedClasses.length > 0 && (
+            <div className="flex flex-col gap-4 ">
+              <Typography variant="heading4" weight={500}>
+                <span className="text-gray-700">Recorded classes</span>
+              </Typography>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recordedClasses.map((schedule: Schedule, idx: number) => (
+                  <div
+                    key={schedule._id}
+                    className={`grow ${idx > 0 ? 'hidden md:block' : ''}`}
+                  >
+                    <ClassCard
+                      variant={ClassMode.RECORDED}
+                      title={schedule?.topic || schedule?.videoDetails?.name}
+                      duration={schedule?.videoDetails?.duration}
+                      teacher={schedule?.teachers.join(',')}
+                      startTime={schedule?.startTime}
+                      homeworkId={schedule?.homeworkIds}
+                      exerciseId={schedule?.exerciseIds}
+                      videoDetails={schedule?.videoDetails}
+                      batchSubjectId={schedule?.batchSubjectId}
+                      url={schedule?.url}
+                      scheduleId={schedule?._id}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </Card>
+  )
 }
 
 export default WeeklySchedule

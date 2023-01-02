@@ -1,4 +1,5 @@
 import {
+  Button,
   Container,
   LoadingSection,
   NoData,
@@ -57,7 +58,7 @@ const Lectures = ({ type }: { type: ContentType }) => {
           tag: topicSlug as string as string,
         }
 
-  const { data, isLoading } = useBatchContents(payload)
+  const { data, isLoading, fetchNextPage } = useBatchContents(payload)
 
   const videoIds = data?.map((video) => video._id).join(',')
 
@@ -93,35 +94,37 @@ const Lectures = ({ type }: { type: ContentType }) => {
 
   const ItemsWrapper = useMemo(() => {
     return (
-      <div
-        className={cn(style.lectureContainer, {
-          ['grid-cols-2 md:grid-cols-3 lg:grid-cols-4']: !enableSearch,
-          ['grid-cols-1 md:grid-cols-2 lg:grid-cols-3']: enableSearch,
-        })}
-      >
-        {data &&
-          data.map((video: any) => {
-            const lastWatchedTimeInSec =
-              videoStatsData &&
-              videoStatsData.find((v: any) => v.typeId === video._id)
-                ?.lastWatchedPointInSec
-
-            return (
-              <VideoCard
-                key={video._id}
-                id={video._id}
-                name={video?.topic || video?.videoDetails?.name}
-                duration={video?.videoDetails?.duration}
-                slug={video?.slug}
-                date={video?.date}
-                image={video?.videoDetails?.image}
-                isLocked={!isPurchased}
-                lastWatchedTimeInSec={lastWatchedTimeInSec}
-                handleClick={() => redirectToPlayer(video)}
-              />
-            )
+      <>
+        <div
+          className={cn(style.lectureContainer, {
+            ['grid-cols-2 md:grid-cols-3 lg:grid-cols-4']: !enableSearch,
+            ['grid-cols-1 md:grid-cols-2 lg:grid-cols-3']: enableSearch,
           })}
-      </div>
+        >
+          {data &&
+            data.map((video: any) => {
+              const lastWatchedTimeInSec =
+                videoStatsData &&
+                videoStatsData.find((v: any) => v.typeId === video._id)
+                  ?.lastWatchedPointInSec
+
+              return (
+                <VideoCard
+                  key={video._id}
+                  id={video._id}
+                  name={video?.topic || video?.videoDetails?.name}
+                  duration={video?.videoDetails?.duration}
+                  slug={video?.slug}
+                  date={video?.date}
+                  image={video?.videoDetails?.image}
+                  isLocked={!isPurchased}
+                  lastWatchedTimeInSec={lastWatchedTimeInSec}
+                  handleClick={() => redirectToPlayer(video)}
+                />
+              )
+            })}
+        </div>
+      </>
     )
   }, [data, enableSearch])
   if (isLoading) return <LoadingSection />

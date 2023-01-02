@@ -475,7 +475,7 @@ const CheckoutCard = ({
                           },
                         }
                       ),
-                    disabled: checked || !!!coupon.length,
+                    disabled: checked || !!!coupon.length || !feeId,
                   }}
                   variant="gray"
                   value={coupon}
@@ -541,7 +541,9 @@ const CheckoutCard = ({
             </div>
           }
           onClick={pay}
-          disabled={variant === BatchType.SELF_LEARNING && !activePlan}
+          disabled={
+            (variant === BatchType.SELF_LEARNING && !activePlan) || !feeId
+          }
         >
           {checkoutDetails.amount === 0 ? 'Enroll' : 'Pay Now'}
         </Button>

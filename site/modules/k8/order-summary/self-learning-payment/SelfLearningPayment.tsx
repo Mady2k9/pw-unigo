@@ -2,6 +2,10 @@ import { Typography } from '@components/ui'
 import { BatchDetailModel } from '@lib/hooks/batches/useBatchDetails'
 import usePlansList, { Plans } from '@lib/hooks/batches/usePlansList'
 import useGetFeeId from '@lib/hooks/orders/useGetFeeId'
+import useNotify, {
+  NotificationDuration,
+  NotificationEnums,
+} from '@lib/useNotify'
 import { useEffect, useState } from 'react'
 import BatchPurchaseCard from '../batch-purchase-card/BatchPurchaseCard'
 import CheckoutCard from '../checkout-card/CheckoutCard'
@@ -14,6 +18,7 @@ const SelfLearningPayment = ({
 }) => {
   const [idForMapping, setIdForMapping] = useState<string>('')
   const [activePlan, setActivePlan] = useState<Plans>()
+  const { showNotification } = useNotify()
 
   const { data: planList, isLoading: plansLoading } = usePlansList({
     batchSlug: batchDetail?._id,
@@ -35,13 +40,27 @@ const SelfLearningPayment = ({
 
   useEffect(() => {
     if (!idForMapping) return
-    getFeeId({
-      batchId: batchDetail?._id,
-      query: {
-        batchAmount: batchDetail?.fee?.amount,
-        planId: idForMapping,
+    getFeeId(
+      {
+        batchId: batchDetail?._id,
+        query: {
+          batchAmount: batchDetail?.fee?.amount,
+          planId: idForMapping,
+        },
       },
-    })
+      {
+        onError: (err: any) => {
+          if (err.status === 400) {
+            showNotification({
+              title: 'Batch registration has ended',
+              type: NotificationEnums.ERROR,
+              identifier: batchDetail?._id,
+              duration: NotificationDuration.LONG,
+            })
+          }
+        },
+      }
+    )
   }, [idForMapping])
 
   return (
