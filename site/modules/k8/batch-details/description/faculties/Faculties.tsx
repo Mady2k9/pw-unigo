@@ -21,8 +21,6 @@ const Faculties = ({ batchSlug }: { batchSlug: string }) => {
 
   const isPurchased = data?.isPurchased
 
-  console.log(isPurchased)
-
   return teachers.length > 0 ? (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
