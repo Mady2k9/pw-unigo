@@ -18,7 +18,7 @@ pipeline {
     }
   }
   environment {
-    serviceName = 'k8'
+    serviceName = 'pw-widgets'
     envName = getEnvName()
   }
   stages{
