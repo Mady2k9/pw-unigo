@@ -1,1 +1,0 @@
-export {PracticeComponent} from '@components/test-engine';

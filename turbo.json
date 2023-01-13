@@ -32,6 +32,9 @@
     "start": {
       "cache": false
     },
+    "export": {
+      "cache": false
+    },
     "types": {
       "outputs": ["dist/**/*.d.ts"]
     }

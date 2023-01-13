@@ -1,6 +1,0 @@
-.attachment {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 9px 17px #2326311f;
-  border-radius: 0px 0px 12px 12px;
-  @apply py-2 px-4 flex items-center cursor-pointer hover:bg-gray-50 gap-2 w-fit ml-4;
-}

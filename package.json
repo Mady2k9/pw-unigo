@@ -6,6 +6,7 @@
     "build": "turbo run build --filter=pw-live-v2...",
     "dev": "turbo run dev",
     "start": "turbo run start",
+    "export": "turbo run export",
     "types": "turbo run types",
     "prettier-fix": "prettier --write ."
   },
