@@ -327,7 +327,7 @@ function BatchFormComponent({ query }: { query: any }) {
   }, [query.cityId])
 
   useEffect(() => {
-    if (user && centerClass && dept) {
+    if (user || centerClass || dept) {
       setValues({
         ...values,
         name: (user?.firstName || '') + ' ' + (user?.lastName || ''),
