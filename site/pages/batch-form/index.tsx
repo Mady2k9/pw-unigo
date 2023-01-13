@@ -310,7 +310,11 @@ function BatchFormComponent({ query }: { query: any }) {
 
   useEffect(() => {
     if (query.cls) {
-      setCenterClass(query.cls as string)
+      let cls: string = query.cls
+      if (cls.includes(' ')) {
+        cls = cls.replace(' ', '+')
+      }
+      setCenterClass(cls as string)
     }
   }, [query.cls])
 
