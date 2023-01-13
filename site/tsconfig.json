@@ -24,7 +24,7 @@
       "@moduleConfig/*": ["modules/config/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["shared/components/core/*"],
-      "@styles/*": ["shared/components/k8/*"]
+      "@styles/*": ["shared/components/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],

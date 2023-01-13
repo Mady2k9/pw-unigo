@@ -1,50 +1,32 @@
-import "@assets/main.css";
-import "@assets/chrome-bug.css";
-import "keen-slider/keen-slider.min.css";
+import '@assets/main.css'
+import '@assets/chrome-bug.css'
 
-import React, {FC, ReactNode, useEffect} from "react";
-import type {AppProps} from "next/app";
-import {Head} from "@components/common";
-import {ManagedUIContext, useUI} from "@components/ui/context";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import React, { FC, ReactNode, useEffect } from 'react'
+import type { AppProps } from 'next/app'
+import { Head } from '@components/common'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // @ts-ignore
-import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
-import {SystemThemeIndicator} from "@components/index";
-import {LoadingSection} from "@components/ui";
-import NotificationWrapper from "@components/notification/NotificationWrapper";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import NotificationWrapper from '@components/notification/NotificationWrapper'
+import { ManagedUIMinimalContext } from '@components/ui/contextMinimal'
 
+const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>
+export default function MyApp({ Component, ...props }: AppProps) {
+  const [queryClient] = React.useState(() => new QueryClient())
+  useEffect(() => {
+    document.body.classList?.remove('loading')
+  }, [])
 
-const Noop: FC<{ children?: ReactNode }> = ({children}) => <>{children}</>;
-const CohortWrapper = ({Component, pageProps}: AppProps) => {
-    const Layout = (Component as any).Layout || Noop;
-    const {latestCohortData, user} = useUI();
-    if (!latestCohortData && user) {
-        return <div className={'h-screen w-screen'}>
-            <LoadingSection message={'Preparing your class'}/>
-        </div>
-    }
-    return <Layout pageProps={pageProps}>
-        <NotificationWrapper/>
-        <Component {...pageProps} />
-    </Layout>
-}
-export default function MyApp(props: AppProps) {
-    const [queryClient] = React.useState(() => new QueryClient());
-    useEffect(() => {
-        document.body.classList?.remove("loading");
-    }, []);
-
-    return (
-        <QueryClientProvider client={queryClient}>
-            <>
-                <Head/>
-                <ManagedUIContext>
-                    <CohortWrapper {...props}/>
-                </ManagedUIContext>
-            </>
-            <ReactQueryDevtools initialIsOpen={false}/>
-            <SystemThemeIndicator/>
-
-        </QueryClientProvider>
-    );
+  return (
+    <QueryClientProvider client={queryClient}>
+      <>
+        <Head />
+        <ManagedUIMinimalContext>
+          <NotificationWrapper />
+          <Component {...props} />
+        </ManagedUIMinimalContext>
+      </>
+    </QueryClientProvider>
+  )
 }

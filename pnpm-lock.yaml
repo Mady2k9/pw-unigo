@@ -68,6 +68,7 @@ importers:
       postcss-preset-env: ^7.2.3
       prettier: ^2.5.1
       react: ^18.2.0
+      react-day-picker: ^8.4.1
       react-dom: ^18.2.0
       react-fast-marquee: ^1.3.1
       react-hot-toast: ^2.4.0
@@ -77,6 +78,7 @@ importers:
       react-pdf: ^6.2.0
       react-popper: ^2.3.0
       react-slick: ^0.29.0
+      react-tooltip: ^5.3.4
       react-use-measure: ^2.1.1
       react-uuid: ^1.0.2
       slick-carousel: ^1.8.1
@@ -120,6 +122,7 @@ importers:
       postcss: 8.4.16
       postcss-nesting: 10.1.10_postcss@8.4.16
       react: 18.2.0
+      react-day-picker: 8.4.1_r6j3756ioqf5pjc2u22wj25rla
       react-dom: 18.2.0_react@18.2.0
       react-fast-marquee: 1.3.5_biqbaboplfbrettd7655fr4n2y
       react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
@@ -129,6 +132,7 @@ importers:
       react-pdf: 6.2.0_biqbaboplfbrettd7655fr4n2y
       react-popper: 2.3.0_r6q5zrenym2zg7je7hgi674bti
       react-slick: 0.29.0_biqbaboplfbrettd7655fr4n2y
+      react-tooltip: 5.3.4_biqbaboplfbrettd7655fr4n2y
       react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
       react-uuid: 1.0.3
       slick-carousel: 1.8.1_jquery@3.6.3
@@ -820,10 +824,20 @@ packages:
     resolution: {integrity: sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg==}
     dev: false
 
+  /@floating-ui/core/1.1.0:
+    resolution: {integrity: sha512-zbsLwtnHo84w1Kc8rScAo5GMk1GdecSlrflIbfnEBJwvTSj1SL6kkOYV+nHraMCPEy+RNZZUaZyL8JosDGCtGQ==}
+    dev: false
+
   /@floating-ui/dom/0.5.4:
     resolution: {integrity: sha512-419BMceRLq0RrmTSDxn8hf9R3VCJv2K9PUfugh5JyEFmdjzDo+e8U5EdR8nzKq8Yj1htzLm3b6eQEEam3/rrtg==}
     dependencies:
       '@floating-ui/core': 0.7.3
+    dev: false
+
+  /@floating-ui/dom/1.1.0:
+    resolution: {integrity: sha512-TSogMPVxbRe77QCj1dt8NmRiJasPvuc+eT5jnJ6YpLqgOD2zXc5UA3S1qwybN+GVCDNdKfpKy1oj8RpzLJvh6A==}
+    dependencies:
+      '@floating-ui/core': 1.1.0
     dev: false
 
   /@floating-ui/react-dom/0.7.2_7ey2zzynotv32rpkwno45fsx4e:
@@ -4301,6 +4315,16 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /react-day-picker/8.4.1_r6j3756ioqf5pjc2u22wj25rla:
+    resolution: {integrity: sha512-uqp/d3POv7127MmL7A16BNW746zYM/CxwfFdVanHMunKh2/8Y2a188KUpiHZH2Ck8IQlcS0I5HgC7xpRbBxK9w==}
+    peerDependencies:
+      date-fns: ^2.28.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      date-fns: 2.29.3
+      react: 18.2.0
+    dev: false
+
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -4495,6 +4519,18 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.4.0
+    dev: false
+
+  /react-tooltip/5.3.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-iqzRINx6M50AvfoP4cWOl8BK8PLBpjyEATFr7MfJULKLM6cjaQQ46gsdaa25grDoD5ruxzuj+EWACNiAO1zNug==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      '@floating-ui/dom': 1.1.0
+      classnames: 2.3.2
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-use-measure/2.1.1_biqbaboplfbrettd7655fr4n2y:

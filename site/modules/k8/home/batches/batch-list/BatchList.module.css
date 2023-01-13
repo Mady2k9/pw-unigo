@@ -1,3 +1,0 @@
-.cardContainer {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-[70px] min-h-[350px];
-}

@@ -1,7 +1,0 @@
-export { default as Header } from './Header'
-export { default as Hero } from './Hero'
-export { default as RedeemSection } from './RedeemSection'
-export { default as RedeemNowHeader } from './RedeemNowHeader'
-export { default as ReferredFriend } from './ReferredFriend'
-export { default as ProductCoupons } from './ProductCoupons'
-export { default as VoucherRedeemCard } from './VoucherRedeemCard'
