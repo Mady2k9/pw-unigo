@@ -454,9 +454,11 @@ function BatchFormComponent({ query }: { query: any }) {
         <div className="flex flex-col md:flex-row gap-5 mt-4">
           <div className="flex-1">
             <Dropdown
+              stretched
               trigger={
                 <div>
                   <TextInput
+                    disabled
                     placeholder="Select Center"
                     value={values.centerName}
                   />
@@ -475,9 +477,11 @@ function BatchFormComponent({ query }: { query: any }) {
           </div>
           <div className="flex-1">
             <Dropdown
+              stretched
               trigger={
                 <div>
                   <TextInput
+                    disabled
                     placeholder="Select Department"
                     value={values.department}
                   />
@@ -496,9 +500,14 @@ function BatchFormComponent({ query }: { query: any }) {
         <div className="flex flex-col md:flex-row gap-5 mt-4">
           <div className="flex-1">
             <Dropdown
+              stretched
               trigger={
                 <div>
-                  <TextInput placeholder="Select Class" value={values.class} />
+                  <TextInput
+                    disabled
+                    placeholder="Select Class"
+                    value={values.class}
+                  />
                 </div>
               }
               items={pathshalaDetails?.classes?.map((item: any) => {
