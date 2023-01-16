@@ -33,10 +33,10 @@ const css = `
 
 type FormValues = {
   applicationId: string
-  rollNumber: string
+  // rollNumber: string
   name: string
   dob: string
-  imageId: string
+  // imageId: string
   admitCardId: string
   phoneNumber: string
 }
@@ -162,20 +162,20 @@ const AdmitCard = () => {
   const { mutate: sendAdmitCardData } = useSendAdmitCardData()
   const [payload, setPayload] = useState<FormValues>({
     applicationId: '',
-    rollNumber: '',
+    // rollNumber: '',
     name: '',
     dob: '',
-    imageId: '',
+    // imageId: '',
     admitCardId: '',
     phoneNumber: '',
   })
 
   const [error, setError] = useState<FormValues>({
     applicationId: '',
-    rollNumber: '',
+    // rollNumber: '',
     name: '',
     dob: '',
-    imageId: '',
+    // imageId: '',
     admitCardId: '',
     phoneNumber: '',
   })
@@ -195,14 +195,14 @@ const AdmitCard = () => {
   }, [trigger])
 
   // Update image Id
-  useEffect(() => {
-    if (uploadImageId) {
-      setPayload({
-        ...payload,
-        imageId: uploadImageId?.data?.data?._id,
-      })
-    }
-  }, [uploadImageId])
+  // useEffect(() => {
+  //   if (uploadImageId) {
+  //     setPayload({
+  //       ...payload,
+  //       imageId: uploadImageId?.data?.data?._id,
+  //     })
+  //   }
+  // }, [uploadImageId])
 
   // Upadte Application Id
   useEffect(() => {
@@ -229,11 +229,11 @@ const AdmitCard = () => {
     const rollNumberRegex = new RegExp(/^[A-Za-z]{2}[0-9]{8}$/)
     const {
       applicationId,
-      rollNumber,
+      // rollNumber,
       name,
       dob,
       admitCardId,
-      imageId,
+      // imageId,
       phoneNumber,
     } = payload
     let applicationIdError = ''
@@ -252,11 +252,11 @@ const AdmitCard = () => {
       applicationIdError = 'Application Id should not exceed 12 digit'
     }
 
-    if (!rollNumberRegex.test(rollNumber) || rollNumber.length !== 10) {
-      rollNoError = 'Please enter a valid roll number'
-    } else {
-      rollNoError = ''
-    }
+    // if (!rollNumberRegex.test(rollNumber) || rollNumber.length !== 10) {
+    //   rollNoError = 'Please enter a valid roll number'
+    // } else {
+    //   rollNoError = ''
+    // }
 
     if (phoneNumber?.length === 0) {
       phoneError = 'Please enter phone number'
@@ -286,13 +286,13 @@ const AdmitCard = () => {
       admitCardIdError = ''
     }
 
-    if (imageId?.length === 0) {
-      imageIdError = 'Please upload png/jpg only'
-    } else if (imageIdFileName.split('.')[1].toLowerCase() === 'jpeg') {
-      imageIdError = 'Please upload jpg/png only'
-    } else {
-      imageIdError = ''
-    }
+    // if (imageId?.length === 0) {
+    //   imageIdError = 'Please upload png/jpg only'
+    // } else if (imageIdFileName.split('.')[1].toLowerCase() === 'jpeg') {
+    //   imageIdError = 'Please upload jpg/png only'
+    // } else {
+    //   imageIdError = ''
+    // }
     const formError = {
       applicationId: applicationIdError,
       rollNumber: rollNoError,
@@ -472,34 +472,6 @@ const AdmitCard = () => {
                 </Typography>
                 <div>
                   <TextInput
-                    maxLength={12}
-                    value={payload.applicationId}
-                    type="text"
-                    onChange={(val) => handleOnChange('applicationId', val)}
-                    placeholder="Application Id *"
-                    invalid={error?.applicationId?.length > 0}
-                    label={error?.name?.length > 0 ? 'Application Id' : ''}
-                  />
-                  {error?.applicationId && (
-                    <ShowError error={error} field={FIELD.APPLICATION_ID} />
-                  )}
-                </div>
-                <div>
-                  <TextInput
-                    maxLength={10}
-                    value={payload.rollNumber}
-                    onChange={(val) => handleOnChange(FIELD.ROLL_NUMBER, val)}
-                    placeholder="Roll Number *"
-                    label={error?.name?.length > 0 ? 'Roll Number' : ''}
-                    className="border-red-500"
-                    invalid={error?.rollNumber?.length > 0}
-                  />
-                  {error?.rollNumber && (
-                    <ShowError error={error} field={FIELD.ROLL_NUMBER} />
-                  )}
-                </div>
-                <div>
-                  <TextInput
                     type="text"
                     value={payload.name}
                     onChange={(val) => handleOnChange(FIELD.NAME, val)}
@@ -525,7 +497,7 @@ const AdmitCard = () => {
                   )}
                 </div>
                 <div>
-                  <div className="flex items-center rounded-lg relative border-2 border-gray-100 p-3 cursor-pointer">
+                  <div className="flex items-center rounded-lg relative border border-gray-300 px-3 py-4 cursor-pointer">
                     <div className="hidden">
                       <TextInput
                         variant="outlined"
@@ -557,29 +529,56 @@ const AdmitCard = () => {
                           modifiersClassNames={{
                             selected: 'my-selected',
                           }}
-                          className="absolute top-[-15] right-[-15] z-20 bg-white"
+                          className="absolute -top-10 -right-5 z-20 bg-white rounded-xl"
                         />
                       </>
                     )}
                   </div>
                   {error?.dob && <ShowError error={error} field={FIELD.DOB} />}
                 </div>
-
                 <div>
+                  <TextInput
+                    maxLength={12}
+                    value={payload.applicationId}
+                    type="text"
+                    onChange={(val) => handleOnChange('applicationId', val)}
+                    placeholder="Application Id *"
+                    invalid={error?.applicationId?.length > 0}
+                    label={error?.name?.length > 0 ? 'Application Id' : ''}
+                  />
+                  {error?.applicationId && (
+                    <ShowError error={error} field={FIELD.APPLICATION_ID} />
+                  )}
+                </div>
+                {/* <div>
+                  <TextInput
+                    maxLength={10}
+                    value={payload.rollNumber}
+                    onChange={(val) => handleOnChange(FIELD.ROLL_NUMBER, val)}
+                    placeholder="Roll Number *"
+                    label={error?.name?.length > 0 ? 'Roll Number' : ''}
+                    className="border-red-500"
+                    invalid={error?.rollNumber?.length > 0}
+                  />
+                  {error?.rollNumber && (
+                    <ShowError error={error} field={FIELD.ROLL_NUMBER} />
+                  )}
+                </div> */}
+
+                {/* <div>
                   <div className="flex items-center rounded-lg border-2 border-gray-100 cursor-pointer p-3">
-                    <div className="hidden">
-                      <input
-                        placeholder="placeholder"
-                        type="file"
-                        ref={imageRef}
-                        id="candidateImg"
-                        accept="image/png, image/jpg, image/jpeg"
-                        onChange={(val) => {
-                          if (val.target.files)
-                            handleUpload(val.target.files[0], FIELD.IMAGE_ID)
-                        }}
-                      />
-                    </div>
+                    <input
+                      className="hidden"
+                      placeholder="placeholder"
+                      type="file"
+                      ref={imageRef}
+                      id="candidateImg"
+                      accept="image/png, image/jpg, image/jpeg"
+                      onChange={(val) => {
+                        if (val.target.files)
+                          handleUpload(val.target.files[0], FIELD.IMAGE_ID)
+                      }}
+                    />
                     <label
                       className="cursor-pointer w-full truncate mr-3"
                       htmlFor="candidateImg"
@@ -597,32 +596,28 @@ const AdmitCard = () => {
                   {error?.imageId && (
                     <ShowError error={error} field={FIELD.IMAGE_ID} />
                   )}
-                </div>
+                </div> */}
                 <div>
-                  <div className="flex items-center rounded-lg border-2 border-gray-100 p-3 cursor-pointer">
-                    <div className="hidden">
-                      <input
-                        placeholder="placeholder"
-                        type={'file'}
-                        ref={fileRef}
-                        accept="application/pdf"
-                        id="admitCard"
-                        onChange={(val) => {
-                          if (val.target.files)
-                            handleUpload(
-                              val.target.files[0],
-                              FIELD.ADMIT_CARD_ID
-                            )
-                        }}
-                      />
-                    </div>
+                  <div className="flex items-center rounded-lg border border-gray-300 px-3 py-4 cursor-pointer ">
+                    <input
+                      className="hidden"
+                      placeholder="placeholder"
+                      type={'file'}
+                      ref={fileRef}
+                      accept="application/pdf"
+                      id="admitCard"
+                      onChange={(val) => {
+                        if (val.target.files)
+                          handleUpload(val.target.files[0], FIELD.ADMIT_CARD_ID)
+                      }}
+                    />
                     <label
                       className="cursor-pointer w-full"
                       htmlFor="admitCard"
                     >
                       {admitCardIdFileName
                         ? admitCardIdFileName
-                        : 'Please attach your admit card (pdf only) *'}
+                        : 'Please upload your application form (pdf only) *'}
                     </label>
 
                     <UploadIcon
