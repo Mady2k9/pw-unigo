@@ -429,6 +429,7 @@ const AdmitCard = () => {
 
     const formData = new FormData()
     formData.append('file', val)
+    console.log(formData)
 
     key === FIELD.IMAGE_ID
       ? mutateImageId(formData, key)
@@ -497,6 +498,20 @@ const AdmitCard = () => {
                   )}
                 </div>
                 <div>
+                  <TextInput
+                    maxLength={12}
+                    value={payload.applicationId}
+                    type="text"
+                    onChange={(val) => handleOnChange('applicationId', val)}
+                    placeholder="Application Id *"
+                    invalid={error?.applicationId?.length > 0}
+                    label={error?.name?.length > 0 ? 'Application Id' : ''}
+                  />
+                  {error?.applicationId && (
+                    <ShowError error={error} field={FIELD.APPLICATION_ID} />
+                  )}
+                </div>
+                <div>
                   <div className="flex items-center rounded-lg relative border border-gray-300 px-3 py-4 cursor-pointer">
                     <div className="hidden">
                       <TextInput
@@ -529,27 +544,14 @@ const AdmitCard = () => {
                           modifiersClassNames={{
                             selected: 'my-selected',
                           }}
-                          className="absolute -top-10 -right-5 z-20 bg-white rounded-xl"
+                          className="absolute top-[-15] right-[-15] z-20 bg-white rounded-xl"
                         />
                       </>
                     )}
                   </div>
                   {error?.dob && <ShowError error={error} field={FIELD.DOB} />}
                 </div>
-                <div>
-                  <TextInput
-                    maxLength={12}
-                    value={payload.applicationId}
-                    type="text"
-                    onChange={(val) => handleOnChange('applicationId', val)}
-                    placeholder="Application Id *"
-                    invalid={error?.applicationId?.length > 0}
-                    label={error?.name?.length > 0 ? 'Application Id' : ''}
-                  />
-                  {error?.applicationId && (
-                    <ShowError error={error} field={FIELD.APPLICATION_ID} />
-                  )}
-                </div>
+
                 {/* <div>
                   <TextInput
                     maxLength={10}
@@ -617,7 +619,7 @@ const AdmitCard = () => {
                     >
                       {admitCardIdFileName
                         ? admitCardIdFileName
-                        : 'Please upload your application form (pdf only) *'}
+                        : 'Upload your application form (pdf only) *'}
                     </label>
 
                     <UploadIcon
