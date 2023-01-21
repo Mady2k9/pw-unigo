@@ -32,13 +32,13 @@ const css = `
  `
 
 type FormValues = {
-  // applicationId: string
+  applicationId: string
   // rollNumber: string
-  // name: string
-  // dob: string
+  name: string
+  dob: string
   // imageId: string
-  // phoneNumber: string
   admitCardId: string
+  phoneNumber: string
 }
 
 enum FIELD {
@@ -161,23 +161,23 @@ const AdmitCard = () => {
 
   const { mutate: sendAdmitCardData } = useSendAdmitCardData()
   const [payload, setPayload] = useState<FormValues>({
-    // applicationId: '',
+    applicationId: '',
     // rollNumber: '',
-    // name: '',
-    // dob: '',
+    name: '',
+    dob: '',
     // imageId: '',
-    // phoneNumber: '',
     admitCardId: '',
+    phoneNumber: '',
   })
 
   const [error, setError] = useState<FormValues>({
-    // applicationId: '',
+    applicationId: '',
     // rollNumber: '',
-    // name: '',
-    // dob: '',
+    name: '',
+    dob: '',
     // imageId: '',
     admitCardId: '',
-    // phoneNumber: '',
+    phoneNumber: '',
   })
 
   // Set Form Id
@@ -215,26 +215,26 @@ const AdmitCard = () => {
   }, [uploadAdmitCardId])
 
   // Update Date
-  // useEffect(() => {
-  //   if (selected) {
-  //     setPayload({
-  //       ...payload,
-  //       dob: new Date(selected).toLocaleString('en-GB').split(', ')[0],
-  //     })
-  //   }
-  // }, [selected])
+  useEffect(() => {
+    if (selected) {
+      setPayload({
+        ...payload,
+        dob: new Date(selected).toLocaleString('en-GB').split(', ')[0],
+      })
+    }
+  }, [selected])
 
   const validate = async () => {
     const nameRegex = new RegExp(/^[a-zA-Z ]*$/)
     const rollNumberRegex = new RegExp(/^[A-Za-z]{2}[0-9]{8}$/)
     const {
-      // applicationId,
+      applicationId,
       // rollNumber,
-      // name,
-      // dob,
+      name,
+      dob,
       admitCardId,
       // imageId,
-      // phoneNumber,
+      phoneNumber,
     } = payload
     let applicationIdError = ''
     let rollNoError = ''
@@ -244,13 +244,13 @@ const AdmitCard = () => {
     let admitCardIdError = ''
     let phoneError = ''
 
-    // if (applicationId?.length === 0) {
-    //   applicationIdError = 'Application Id should not be empty'
-    // } else if (applicationId?.length < 12) {
-    //   applicationIdError = 'Application Id should be 12 digit'
-    // } else if (applicationId?.length > 12) {
-    //   applicationIdError = 'Application Id should not exceed 12 digit'
-    // }
+    if (applicationId?.length === 0) {
+      applicationIdError = 'Application Id should not be empty'
+    } else if (applicationId?.length < 12) {
+      applicationIdError = 'Application Id should be 12 digit'
+    } else if (applicationId?.length > 12) {
+      applicationIdError = 'Application Id should not exceed 12 digit'
+    }
 
     // if (!rollNumberRegex.test(rollNumber) || rollNumber.length !== 10) {
     //   rollNoError = 'Please enter a valid roll number'
@@ -258,27 +258,27 @@ const AdmitCard = () => {
     //   rollNoError = ''
     // }
 
-    // if (phoneNumber?.length === 0) {
-    //   phoneError = 'Please enter phone number'
-    // } else if (phoneNumber?.length !== 10) {
-    //   phoneError = 'Please enter valid phone number'
-    // } else {
-    //   phoneError = ''
-    // }
+    if (phoneNumber?.length === 0) {
+      phoneError = 'Please enter phone number'
+    } else if (phoneNumber?.length !== 10) {
+      phoneError = 'Please enter valid phone number'
+    } else {
+      phoneError = ''
+    }
 
-    // if (name?.length === 0) {
-    //   nameError = 'Name should not be empty'
-    // } else if (!nameRegex.test(name)) {
-    //   nameError = 'Please enter a valid name'
-    // } else {
-    //   nameError = ''
-    // }
+    if (name?.length === 0) {
+      nameError = 'Name should not be empty'
+    } else if (!nameRegex.test(name)) {
+      nameError = 'Please enter a valid name'
+    } else {
+      nameError = ''
+    }
 
-    // if (dob?.length === 0) {
-    //   dobError = 'DOB should not be empty'
-    // } else {
-    //   dobError = ''
-    // }
+    if (dob?.length === 0) {
+      dobError = 'DOB should not be empty'
+    } else {
+      dobError = ''
+    }
 
     if (admitCardId?.length === 0) {
       admitCardIdError = 'Please upload pdf only'
@@ -448,7 +448,7 @@ const AdmitCard = () => {
     setShowDate(false)
     setError({
       ...error,
-      // dob: '',
+      dob: '',
     })
   }
 
@@ -471,7 +471,7 @@ const AdmitCard = () => {
                 <Typography variant="heading3" weight={700}>
                   Please fill the details
                 </Typography>
-                {/* <div>
+                <div>
                   <TextInput
                     type="text"
                     value={payload.name}
@@ -550,7 +550,7 @@ const AdmitCard = () => {
                     )}
                   </div>
                   {error?.dob && <ShowError error={error} field={FIELD.DOB} />}
-                </div> */}
+                </div>
 
                 {/* <div>
                   <TextInput
@@ -619,7 +619,7 @@ const AdmitCard = () => {
                     >
                       {admitCardIdFileName
                         ? admitCardIdFileName
-                        : 'Upload your admit card (pdf only) *'}
+                        : 'Upload your application form (pdf only) *'}
                     </label>
 
                     <UploadIcon
