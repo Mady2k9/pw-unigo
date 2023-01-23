@@ -1,1 +1,1 @@
-export { default as AdmitCardBanner } from './Admit_Card_Banner.jpg'
+export { default as AdmitCardBanner } from './banner-23Jan.png'
