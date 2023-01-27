@@ -85,7 +85,6 @@ const FormSubmitted = () => {
     </div>
   )
 }
-
 const ShowError = ({ field, error }: { field: string; error: any }) => {
   return (
     <div className="mt-1 px-1 flex items-center justify-start ">
@@ -141,8 +140,12 @@ const TextInputCustom = ({
 }
 
 const AdmitCard = () => {
-  const { data: uploadImageId, mutate: mutateImageId } = useUploadFile()
-  const { data: uploadAdmitCardId, mutate: mutateAdmitCardId } = useUploadFile()
+  const { mutate: mutateImageId } = useUploadFile()
+  const {
+    mutate: mutateAdmitCardId,
+    isLoading: isAdmitCardUploading,
+    error: admitCardUploadError,
+  } = useUploadFile()
 
   const router = useRouter()
   const { form_id, trigger } = router.query
@@ -205,14 +208,14 @@ const AdmitCard = () => {
   // }, [uploadImageId])
 
   // Upadte Application Id
-  useEffect(() => {
-    if (uploadAdmitCardId) {
-      setPayload({
-        ...payload,
-        admitCardId: uploadAdmitCardId?.data?.data?._id,
-      })
-    }
-  }, [uploadAdmitCardId])
+  // useEffect(() => {
+  //   if (uploadAdmitCardId) {
+  //     setPayload({
+  //       ...payload,
+  //       admitCardId: uploadAdmitCardId?.data?.data?._id,
+  //     })
+  //   }
+  // }, [uploadAdmitCardId])
 
   // Update Date
   // useEffect(() => {
@@ -375,6 +378,25 @@ const AdmitCard = () => {
 
   const handleSubmit = async () => {
     const isFormValidate = await validate()
+
+    if (isAdmitCardUploading) {
+      showNotification({
+        title: 'Uploading Admit Card, please wait...',
+        type: NotificationEnums.INFO,
+      })
+      return
+    }
+
+    for (const [key, value] of Object.entries(error)) {
+      if (value.length > 0) {
+        setError({
+          ...error,
+          [key]: 'Something went wrong, please try again!',
+        })
+        return
+      }
+    }
+
     if (isFormValidate) {
       sendAdmitCardData(
         {
@@ -386,6 +408,10 @@ const AdmitCard = () => {
         {
           onSettled: (res: any) => {
             if (res?.success) {
+              showNotification({
+                title: 'Successfully Submitted!',
+                type: NotificationEnums.SUCCESS,
+              })
               // @ts-ignore
               if (window?.JSBridge) {
                 // @ts-ignore
@@ -395,11 +421,6 @@ const AdmitCard = () => {
               setTimeout(() => {
                 window?.parent?.postMessage(RESPONSE_TYPE.SUCCESS, '*')
               }, 200)
-
-              showNotification({
-                title: 'Successfully Submitted!',
-                type: NotificationEnums.SUCCESS,
-              })
             }
           },
           onError: (error: any) => {
@@ -417,23 +438,60 @@ const AdmitCard = () => {
     }
   }
 
-  const handleUpload = (val: any, key: string) => {
+  const handleUpload = (val: any, key: FIELD) => {
     updateError(val, key)
     setPayload({
       ...payload,
       [key]: val,
     })
     key === FIELD.IMAGE_ID
-      ? setImageIdFileName(val.name)
-      : setadmitCardIdFileName(val.name)
+      ? setImageIdFileName(val?.name)
+      : setadmitCardIdFileName(val?.name)
 
     const formData = new FormData()
     formData.append('file', val)
-    console.log(formData)
 
     key === FIELD.IMAGE_ID
-      ? mutateImageId(formData, key)
-      : mutateAdmitCardId(formData, key)
+      ? mutateImageId(formData, {
+          onSuccess: (res: any) => {
+            if (res) {
+              setPayload({
+                ...payload,
+                admitCardId: res?.data?.data?._id,
+              })
+            }
+          },
+          onError: () => {
+            showNotification({
+              title: 'There were some error, please try again.',
+              type: NotificationEnums.ERROR,
+            })
+          },
+        })
+      : mutateAdmitCardId(formData, {
+          onSuccess: (res: any) => {
+            if (res) {
+              setPayload({
+                ...payload,
+                admitCardId: res?.data?.data?._id,
+              })
+              setError({
+                ...payload,
+                admitCardId: '',
+              })
+            }
+          },
+          onError: () => {
+            setError({
+              ...payload,
+              admitCardId: 'Upload failed, please try again.',
+            })
+            showNotification({
+              title: 'There were some error, please try again.',
+              type: NotificationEnums.ERROR,
+            })
+          },
+        })
   }
 
   const date = new Date()
@@ -632,7 +690,13 @@ const AdmitCard = () => {
                   )}
                 </div>
 
-                <Button onClick={handleSubmit}>Submit</Button>
+                <Button
+                  disabled={isAdmitCardUploading}
+                  loading={isAdmitCardUploading}
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
               </div>
             </div>
           </div>
