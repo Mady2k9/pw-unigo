@@ -272,7 +272,10 @@ function BatchFormComponent({ query }: { query: any }) {
     }
 
     sendBatchFormData(
-      { batchId: batchDetails?._id, formData: values },
+      {
+        batchId: batchDetails?._id,
+        formData: { ...values, guardianNumber: [values.guardianNumber] },
+      },
       {
         onSettled: (res: any) => {
           if (res) {
