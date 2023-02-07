@@ -1,1 +1,1 @@
-export { default as AdmitCardBanner } from './banner-1Feb.svg'
+export { default as AdmitCardBanner } from './banner.png'
