@@ -566,28 +566,30 @@ function BatchFormComponent({ query }: { query: any }) {
             )}
           </div>
 
-          <div className="col-span-1">
-            <Dropdown
-              stretched
-              trigger={
-                <div>
-                  <TextInput
-                    invalid={error.centerName.length > 0}
-                    disabled
-                    placeholder="Select Center"
-                    value={values.centerName}
-                  />
-                </div>
-              }
-              items={getMappedValue(details?.centers).sort((a, b) =>
-                a.key.localeCompare(b.key)
+          {values?.city?.length > 0 && (
+            <div className="col-span-1">
+              <Dropdown
+                stretched
+                trigger={
+                  <div>
+                    <TextInput
+                      invalid={error.centerName.length > 0}
+                      disabled
+                      placeholder="Select Center"
+                      value={values.centerName}
+                    />
+                  </div>
+                }
+                items={getMappedValue(details?.centers).sort((a, b) =>
+                  a.key.localeCompare(b.key)
+                )}
+                onSelect={(e: any) => handleChange(FIELD.CENTER_NAME, e)}
+              />
+              {error.centerName.length > 0 && (
+                <ShowError error={error} field={FIELD.CENTER_NAME} />
               )}
-              onSelect={(e: any) => handleChange(FIELD.CENTER_NAME, e)}
-            />
-            {error.centerName.length > 0 && (
-              <ShowError error={error} field={FIELD.CENTER_NAME} />
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="col-span-1">
             <Dropdown
