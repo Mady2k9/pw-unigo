@@ -303,29 +303,38 @@ function BatchFormComponent({ query }: { query: any }) {
     sendBatchFormData(
       { batchId: batchDetails?._id, formData: values },
       {
-        onSettled: (res: any) => {
+        onSuccess: (res: any) => {
           if (res) {
-            if (res?.success) {
-              const formId = res?.data?._id || ''
-              if (formId.length > 0) {
+            const formId = res['data']['_id']
+            if (formId.length > 0) {
+              // @ts-ignore
+              if (window?.JSBridge) {
                 // @ts-ignore
-                if (window?.JSBridge) {
-                  // @ts-ignore
-                  window.JSBridge.onFormSubmit(res?.data?._id || '')
-                  return
-                }
-                setTimeout(() => {
-                  window?.parent?.postMessage(formId, '*')
-                }, 100)
-                showNotification({
-                  type: NotificationEnums.SUCCESS,
-                  title: 'Successfully Submitted!',
-                })
+                window.JSBridge.onFormSubmit(res?.data?._id || '')
+                return
               }
+              setTimeout(() => {
+                window?.parent?.postMessage(
+                  {
+                    type: 'success',
+                    formId,
+                  },
+                  '*'
+                )
+              }, 100)
+
+              showNotification({
+                type: NotificationEnums.SUCCESS,
+                title: 'Successfully Submitted!',
+              })
             }
-          } else {
-            // SHOW ERROR MESSAGE
           }
+        },
+        onError: () => {
+          showNotification({
+            type: NotificationEnums.ERROR,
+            title: 'Something went wrong, please try again!',
+          })
         },
       }
     )
