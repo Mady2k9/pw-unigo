@@ -1,9 +1,11 @@
+import { Footer } from '@components/common'
+import Header from '@components/common/Header/Header'
 import { Loader } from '@components/ui'
 
 const Home = () => {
   return (
-    <div className="flex items-center justify-center mt-12">
-      <h1>PW SIP</h1>
+    <div>
+      <Footer variant="SIP" />
     </div>
   )
 }
