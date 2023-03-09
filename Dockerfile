@@ -1,4 +1,4 @@
-FROM node:16
+FROM public.ecr.aws/w8s9y1m4/node:16
 RUN npm install -g pnpm
 
 EXPOSE 3000
