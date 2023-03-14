@@ -5,7 +5,7 @@ import React from 'react'
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html style={{ scrollBehavior: 'smooth' }}>
         <Head />
         <body className="loading">
           <Main />
