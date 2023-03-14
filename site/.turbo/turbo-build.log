@@ -1,51 +1,32 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2mec5a60144ed80a6e[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2m6c5e1ce8e2412352[0m
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/demonfox/WebstormProjects/pw-projects/pw-webview-widgets/site
+[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/ayushvishwakarma/Desktop/PhysicsWallah/pw-sip/site
 [35mpw-live-v2:build: [0m> next build
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/demonfox/WebstormProjects/pw-projects/pw-webview-widgets/site/.env
+[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/ayushvishwakarma/Desktop/PhysicsWallah/pw-sip/site/.env
 [35mpw-live-v2:build: [0minfo  - Linting and checking validity of types...
-[35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m./pages/admit-card/index.tsx
-[35mpw-live-v2:build: [0m246:15  Warning: Do not use `<img>` element. Use `<Image />` from `next/image` instead. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-[35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m./pages/batch-form/index.tsx
-[35mpw-live-v2:build: [0m299:6  Warning: React Hook useEffect has a missing dependency: 'values'. Either include it or remove the dependency array. You can also do a functional update 'setValues(v => ...)' if you only need 'values' in the 'setValues' call.  react-hooks/exhaustive-deps
-[35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m./pages/redirection/index.tsx
-[35mpw-live-v2:build: [0m85:6  Warning: React Hook useEffect has a missing dependency: 'effect'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-[35mpw-live-v2:build: [0m91:6  Warning: React Hook useEffect has a missing dependency: 'handleWidgetRequest'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-[35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0minfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 [35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
 [35mpw-live-v2:build: [0minfo  - Compiled successfully
 [35mpw-live-v2:build: [0minfo  - Collecting page data...
-[35mpw-live-v2:build: [0minfo  - Generating static pages (0/6)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (1/6)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (2/6)
-[35mpw-live-v2:build: [0m-------------- REDIRECTION PAGE---------------
-[35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0minfo  - Generating static pages (4/6)
-[35mpw-live-v2:build: [0mhome
-[35mpw-live-v2:build: [0mnot found
-[35mpw-live-v2:build: [0minfo  - Generating static pages (6/6)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (0/4)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (1/4)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (2/4)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (3/4)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (4/4)
 [35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0mRoute (pages)                              Size     First Load JS
-[35mpw-live-v2:build: [0m┌ ○ / (357 ms)                             316 B           120 kB
-[35mpw-live-v2:build: [0m├   /_app                                  0 B             120 kB
-[35mpw-live-v2:build: [0m├ ○ /404 (356 ms)                          46.8 kB         167 kB
-[35mpw-live-v2:build: [0m├ ○ /admit-card                            21.5 kB         141 kB
-[35mpw-live-v2:build: [0m├   └ css/5a2242ff3c1ea519.css             2.15 kB
-[35mpw-live-v2:build: [0m├ ○ /batch-form                            88.5 kB         208 kB
-[35mpw-live-v2:build: [0m├   └ css/8f4aa418fe6bbc82.css             1.16 kB
-[35mpw-live-v2:build: [0m└ ○ /redirection                           2.34 kB         122 kB
+[35mpw-live-v2:build: [0m┌ ○ /                                      4.64 kB         163 kB
+[35mpw-live-v2:build: [0m├   /_app                                  0 B             119 kB
+[35mpw-live-v2:build: [0m├ ○ /404                                   46.8 kB         165 kB
+[35mpw-live-v2:build: [0m├   └ css/83e12858ee69e379.css             242 B
+[35mpw-live-v2:build: [0m└ ○ /school/all                            617 B           159 kB
 [35mpw-live-v2:build: [0m+ First Load JS shared by all              131 kB
 [35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js   45.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/main-e3da2c98fd6b49f3.js        31.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-2ce42584f178de6d.js  42.7 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-5dcbf4f62e053e1f.js     777 B
-[35mpw-live-v2:build: [0m  └ css/57256e275e88e67f.css               11.4 kB
+[35mpw-live-v2:build: [0m  ├ chunks/main-18d9a05c10f45fd9.js        31.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-e5e18523fa91a391.js  41.4 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-28ba801a7017a0d3.js     772 B
+[35mpw-live-v2:build: [0m  └ css/4dc411a51e1e030c.css               12.2 kB
 [35mpw-live-v2:build: [0m
 [35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
 [35mpw-live-v2:build: [0m

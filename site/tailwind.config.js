@@ -97,6 +97,7 @@ module.exports = {
         green: colors.green,
         yellow: colors.yellow,
         blue: colors.blue,
+        image: 'linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);',
         'pink-light': 'var(--pink-light)',
         cyan: 'var(--cyan)',
       },
@@ -110,7 +111,9 @@ module.exports = {
         'all-round-red': '1px 4px 12px rgba(218, 60, 60, 0.30)',
         'all-round-primary': '0px 3px 10px #B2A9FF',
         'all-round-strong': '1px 4px 12px rgba(0, 0, 0, 0.2)',
-        sip: '0px 1px 8px rgba(0, 0, 0, 0.08)',
+        sip: '0px 1px 8px rgba(0, 0, 0, 0.08);',
+        text: '0 2px 3px rgba(0, 0, 0, 0.3)',
+
         magical:
           'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
       },
