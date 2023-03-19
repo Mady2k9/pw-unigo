@@ -2,16 +2,27 @@ import {
   School1,
   School10,
   School12,
+  School13,
+  School14,
+  School15,
   School17,
   School18,
+  School19,
   School20,
   School21,
   School22,
+  School23,
   School24,
+  School25,
+  School26,
+  School27,
+  School3,
   School4,
   School5,
   School6,
+  School7,
   School8,
+  School9,
 } from '@assets/images/schools'
 
 export const data = [
@@ -22,7 +33,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 2500,
     establishmentYear: 1994,
-    image: {},
+    image: School1,
   },
   {
     schoolName: 'Presidency School and College',
@@ -40,7 +51,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1000,
     establishmentYear: 2007,
-    image: {},
+    image: School3,
   },
   {
     schoolName: 'Symbiosis School For Excellence',
@@ -76,7 +87,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 2000,
     establishmentYear: 2008,
-    image: {},
+    image: School7,
   },
   {
     schoolName: 'Seth M.R. Jaipuria Main School Malwan, Fatehpur',
@@ -94,7 +105,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1500,
     establishmentYear: 2010,
-    image: {},
+    image: School9,
   },
   {
     schoolName: 'Roorkee public school',
@@ -130,7 +141,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1000,
     establishmentYear: 2012,
-    image: {},
+    image: School13,
   },
   {
     schoolName: 'K.D. Public School',
@@ -139,7 +150,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 2000,
     establishmentYear: 2008,
-    image: {},
+    image: School14,
   },
   {
     schoolName: 'Unique Science Academy Senior Secondary School',
@@ -148,7 +159,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 2500,
     establishmentYear: 2004,
-    image: {},
+    image: School15,
   },
   {
     schoolName: 'Rashtra Dev International Academy',
@@ -157,7 +168,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1500,
     establishmentYear: 1990,
-    image: {},
+    image: {}, // School16
   },
   {
     schoolName: 'TRB Senior Secondary School',
@@ -184,7 +195,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 800,
     establishmentYear: 2016,
-    image: {},
+    image: School19,
   },
   {
     schoolName: 'Trident Academy Senior Secondary school',
@@ -220,7 +231,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 4000,
     establishmentYear: 1986,
-    image: {},
+    image: School23,
   },
   {
     schoolName: 'DPS Rudrapur',
@@ -238,7 +249,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1030,
     establishmentYear: 1980,
-    image: {},
+    image: School25,
   },
   {
     schoolName: 'Sri Agrasen School',
@@ -247,7 +258,7 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1200,
     establishmentYear: 2012,
-    image: {},
+    image: School26,
   },
   {
     schoolName: 'Seven Hills Inter college',
@@ -256,6 +267,6 @@ export const data = [
     uptoClass: 'Upto Class 12th',
     strength: 1500,
     establishmentYear: 1990,
-    image: {},
+    image: School27,
   },
 ]
