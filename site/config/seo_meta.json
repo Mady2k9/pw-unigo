@@ -1,16 +1,16 @@
 {
-  "title": "Physics Wallah | Powered by Physics Wallah",
+  "title": "PW Vidyapeeth School Centre",
   "titleTemplate": "%s - Physics Wallah",
-  "description": "Physics Wallah",
+  "description": "The PW Vidyapeeth School Centre, a new-age Hi-Tech classrooms designed to train students for academic and competitive success.",
   "openGraph": {
-    "title": "Physics Wallah | Powered by Physics Wallah",
-    "description": "Physics Wallah",
+    "title": "PW Vidyapeeth School Centre",
+    "description": "The PW Vidyapeeth School Centre, a new-age Hi-Tech classrooms designed to train students for academic and competitive success.",
     "type": "website",
-    "url": "https://pw.live",
+    "url": "https://pw.live/sip",
     "site_name": "Physics Wallah",
     "images": [
       {
-        "url": "/card.png",
+        "url": "../assets/images/pw.png",
         "width": "800",
         "height": "600",
         "alt": "Physics Wallah"

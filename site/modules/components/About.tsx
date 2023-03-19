@@ -17,14 +17,14 @@ export default function About() {
         <div className="font-semibold">
           <span className="text-[#757575] ">
             PW offers School Integrated Learning Center for
-            <span className="text-[#1B2124]"> IIT-JEE & NEET</span>
+            <span className="text-[#1B2124]"> IIT-JEE & NEET </span>
             preparation for class
-            <span className="text-[#1B2124]">11th and 12th</span> students
+            <span className="text-[#1B2124]"> 11th and 12th</span> students
             within the school campus. It delivers quality education with
             cutting-edge technological support with a combination of
             <span className="text-[#1B2124]">
-              online interactive classes, doubts solving app and
-              comprehensivepsch study material.
+              &nbsp;online interactive classes, doubts solving app and
+              comprehensive study material.
             </span>
           </span>
         </div>
@@ -37,7 +37,7 @@ export default function About() {
             new-age Hi-Tech classrooms designed to train students for academic
             and competitive success. It will be
             <span className="text-[#1B2124]">
-              a blend of both online teaching and offline learning
+              &nbsp;a blend of both online teaching and offline learning&nbsp;
             </span>
             where students will avail the benefit of getting tutored in a
             secured and comfortable environment within the school premises.
