@@ -23,6 +23,8 @@ import {
   School7,
   School8,
   School9,
+  School28,
+  School29,
 } from '@assets/images/schools'
 
 export const data = [
@@ -268,5 +270,23 @@ export const data = [
     strength: 1500,
     establishmentYear: 1990,
     image: School27,
+  },
+  {
+    schoolName: 'Sanskar the Gurukul International School',
+    city: 'Bastar',
+    state: 'Chhattisgarh',
+    uptoClass: 'Upto Class 12th',
+    strength: 475,
+    establishmentYear: 2005,
+    image: School28,
+  },
+  {
+    schoolName: 'Happy Evergreen Sr. Sec. School',
+    city: 'Mahendragarh',
+    state: 'Haryana',
+    uptoClass: 'Upto Class 12th',
+    strength: 2500,
+    establishmentYear: 1981,
+    image: School29,
   },
 ]
