@@ -286,7 +286,7 @@ export const data = [
     city: 'Bastar',
     state: 'Chhattisgarh',
     uptoClass: 'Upto Class 12th',
-    strength: 475,
+    strength: 785,
     establishmentYear: 2005,
     image: School28,
   },
