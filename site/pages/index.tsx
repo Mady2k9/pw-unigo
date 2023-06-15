@@ -6,9 +6,6 @@ const Home = () => {
   return (
     <>
       <Header variant="MARVELSHeader" />
-      <div className="flex items-center justify-center">
-        <h1>PW MARVEL</h1>
-      </div>
       <Footer variant={'MARVELSFooter'} />
     </>
   )
