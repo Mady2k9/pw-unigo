@@ -1,0 +1,40 @@
+.text{
+@apply flex justify-center mx-auto;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #757575;
+}
+.text1{
+    @apply flex justify-center mx-auto;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #1B2124;
+
+}
+.box{
+    position: absolute;
+    width: 439px;
+    height: 72px;
+    left: 34px;
+    top: 104px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3D3D3D;
+}
+.cardc{
+    background: rgba(248, 248, 248, 0.6);
+    
+}

@@ -8,9 +8,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      {/* <WebCheck data={undefined} /> */}
-      <Banner data={undefined} />
-      <RewardsCard data={undefined} />
+      <WebCheck data={undefined} />
       <NominationSteps data={undefined} />
       <Faq data={undefined} />
       <Footer variant="SIP" />
