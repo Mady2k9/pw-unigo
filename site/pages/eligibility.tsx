@@ -11,10 +11,10 @@ const items = [{ name: 'Eligibility', url: '/' }]
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header variant="MARVELSHeader" />
       <Breadcrumb items={items} title="Eligibility" homeLink="/" />
       <Eligibility />
-      <Footer variant="SIP" />
+      <Footer variant={'MARVELSFooter'} />
     </>
   )
 }

@@ -7,10 +7,10 @@ import Layout from '@components/common/Layout'
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header variant="MARVELSHeader" />
       <NominationSteps data={undefined} />
       <Faq data={undefined} />
-      <Footer variant="SIP" />
+      <Footer variant={'MARVELSFooter'} />
     </>
   )
 }
