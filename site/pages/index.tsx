@@ -5,7 +5,7 @@ import { Loader, Typography } from '@components/ui'
 const Home = () => {
   return (
     <div className="flex items-center justify-center">
-      <h1>PW MARVEL</h1>
+      <h1>PW MARVELS</h1>
     </div>
   )
 }
