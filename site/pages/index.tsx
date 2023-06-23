@@ -3,6 +3,8 @@ import Header from '@components/common/Header/Header'
 import { Loader, Typography } from '@components/ui'
 import { Banner, Faq, RewardsCard, NominationSteps } from 'modules'
 import Layout from '@components/common/Layout'
+import TermsCon from './terms-and-conditions'
+
 
 const Home = () => {
   return (
