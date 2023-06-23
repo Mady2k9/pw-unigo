@@ -1,5 +1,11 @@
-import Dashboard from '@modules/Dashboard/dashboard'
+import Header from '@modules/Dashboard/components/Header/header'
 
-export default function DashboardPage() {
-  return <Dashboard data={''} />
+const Home = () => {
+  return (
+    <>
+      <Header title="Step 1: Profile Details" />
+    </>
+  )
 }
+
+export default Home
