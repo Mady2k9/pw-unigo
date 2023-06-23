@@ -25,11 +25,11 @@
 .heading {
   @apply relative sm:text-[32px] text-[24px]  sm:leading-[50px] leading-[32px] mx-auto sm:m-0 mt-10 max-[320px]:mt-[10px];
   font-weight: 600;
-  color: #3d3d3d;
+    color: #3D3D3D;
 }
 
 .heading .orange_color {
-  color: #e77356;
+    color: #E77356;
 }
 
 .sub_heading {
@@ -41,7 +41,7 @@
 .color_btn {
   @apply lg:w-[177px]  lg:h-[56px] lg:text-[18px]  lg:pl-[22px] lg:pt-[15px]  mt-[20px]  w-[130px] h-[40px] text-[14px] pt-[11px] sm:pl-[12px]  pl-[4px] mx-auto sm:m-0;
   align-items: center;
-  background: #5a4bda;
+background: #5A4BDA;
   font-weight: 500;
   border-radius: 6px;
   flex-direction: row;

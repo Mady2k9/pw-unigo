@@ -27,12 +27,12 @@ const Banner: React.FC<BannerProps> = (props) => {
             <div className={s.banner_left_section}>
               <div className="flex flex-row sm:text-left text-center">
                 <div className={s.heading}>
-                  Safalta ki udaan <br className='sm:hidden flex'/> ka
+                  Safalta ki udaan <br className="sm:hidden flex" /> ka
                   <span className={s.orange_color}> Samman</span>
                   <img className={s.top_arrow} src="/arrow.svg" alt="Logo"  />
                 </div>
                 <div>
-                  <img className='hidden sm:flex' src="/arrow.svg" alt="Logo"  />
+                  <img className="hidden sm:flex" src="/arrow.svg" alt="Logo" />
                 </div>
               </div>
               <div className={s.sub_heading}>
