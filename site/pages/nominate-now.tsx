@@ -1,4 +1,3 @@
-
 import { NominateLeft, NominateRight } from 'modules'
 
 function nominateNow() {
