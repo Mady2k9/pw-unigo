@@ -5,15 +5,15 @@ import Breadcrumb from '../modules/Breadcrumb'
 import PrivatePolicy from '../modules/PrivatePolicy'
 const items = [{ name: 'Private Policy', url: '/' }]
 
-const Home = () => {
+const PrivacyPolicy = () => {
   return (
     <>
-      <Header />
+      <Header variant="MARVELSHeader" />
       <Breadcrumb items={items} title={'Private & Policy'} homeLink={''} />
       <PrivatePolicy data={undefined} />
-      <Footer variant={'SIP'} />
+      <Footer variant={'MARVELSFooter'} />
     </>
   )
 }
 
-export default Home
+export default PrivacyPolicy
