@@ -15,7 +15,7 @@ const Recognise: React.FC<RecogniseProps> = (props) => {
   const rootClassName = cn(s.root, {})
 
   return (
-    <Container className="mx-auto max-w-6xl w-full">
+    <Container className="mx-auto max-w-6xl w-full mt-10">
       <div className={s.text}>Why pw marvels?</div>
       <div className={s.text1}>We Believe in Recognising Talent</div>
       <div className="md:flex md:flex-row gap-4 w-full mb-10">
