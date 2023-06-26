@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <Header title="Step 1: Profile Details" />
-      <div className="sticky left-0 h-[calc(100vh-80px)]  bg-[#f8f8f8] z-19 flex">
+      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
         <Sidebar></Sidebar>
         <Content></Content>
       </div>
