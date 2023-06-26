@@ -8,66 +8,7 @@ export interface contentProps {}
 const content: React.FC<contentProps> = (props) => {
   return (
     <div className="w-full bg-white h-[calc(100vh-80px)] overflow-scroll p-4">
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
-      <div>ASDA</div>
+      <div>Content Area</div>
     </div>
   )
 }
