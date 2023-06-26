@@ -74,7 +74,7 @@
   color: #1b2124;
 }
 .reward_section_left {
-  @apply lg:w-8/12 pe-[16px];
+  @apply lg:w-8/12 pr-[16px];
 }
 
 .img1m {

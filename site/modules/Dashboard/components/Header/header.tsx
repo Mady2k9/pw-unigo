@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         </div>
 
         <div className="w-full ">
-          <div className="flex py-4 sm:w-10/12 w-full sm:justify-between sm:mx-auto justify-end sm:pe-0 pe-[16px]">
+          <div className="flex py-4 sm:w-10/12 w-full sm:justify-between sm:mx-auto justify-end sm:pe-0 pr-[16px]">
             <div className="text-[24px] font-[600] my-auto leading-[32px] hidden sm:block">
               {title}
             </div>
