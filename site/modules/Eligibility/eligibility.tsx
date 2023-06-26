@@ -995,7 +995,7 @@ const Eligibility: React.FC<EligibilityProps> = (props) => {
       <Container className="mx-auto max-w-6xl py-10 flex flex-col">
         <Typography weight={500}>
           Below Eligibility criteria :-
-          <ul className="list-disc mt-4 ms-4">
+          <ul className={s.list_disc}>
             <li>
               Students from Class 8th to 11th are eligible for this awards.
             </li>

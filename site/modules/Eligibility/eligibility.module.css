@@ -42,3 +42,9 @@
   font-weight: 500;
   color: #1b2124;
 }
+
+.list_disc {
+  list-style-type: disc;
+  margin-top: 16px;
+  margin-left: 16px;
+}

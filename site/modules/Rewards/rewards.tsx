@@ -13,7 +13,7 @@ const Rewards: React.FC<RewardsProps> = (props) => {
     <>
       <Container className="mx-auto max-w-6xl py-10 flex flex-col">
         <Typography weight={500}>
-          <ul className="list-disc ms-4">
+          <ul className={s.list_disc}>
             <li>
               After Stage 2 of the Interactive activity session with our experts
               10 students from each class will be selected for rewards based on
