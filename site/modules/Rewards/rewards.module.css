@@ -70,11 +70,11 @@
   height: 100px;
 }
 .reward_bottom_heading {
-  @apply sm:text-[24px] sm:leading-[32px] text-[14px] leading-[22px] sm:text-left text-center sm:text-[500] text-[600];
+  @apply sm:text-[24px] sm:leading-[32px] text-[14px] leading-[22px] sm:text-left text-center sm:font-[500] font-[600];
   color: #1b2124;
 }
 .reward_section_left {
-  @apply lg:w-8/12 pe-[16px];
+  @apply lg:w-8/12 pr-[16px];
 }
 
 .img1m {
@@ -91,4 +91,9 @@
   @apply sm:hidden block mx-auto;
   margin-bottom: 15px;
   height: 73px;
+}
+
+.list_disc {
+  list-style-type: disc;
+  margin-left: 16px;
 }
