@@ -1,7 +1,7 @@
 import Header from '@modules/Dashboard/components/Header/header'
 import Sidebar from '@modules/Dashboard/components/Sidebar/sidebar'
 import Content from '@modules/Dashboard/components/Content/content'
-const Home = () => {
+const profileDetails = () => {
   return (
     <>
       <Header title="Step 1: Profile Details" />
@@ -13,4 +13,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default profileDetails
