@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               <div className="sm:w-[45px] w-[24px]">
                 <img src="/logo.svg" alt="PW Logo" />
               </div>
-              <div className="ms-2 sm:ms-0 text-[16px] md:text-[18px] lg:text-[22px] font-[600]">
+              <div className="ml-2 sm:ms-0 text-[16px] md:text-[18px] lg:text-[22px] font-[600]">
                 Marvels
               </div>
             </div>
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               </button>
             </div>
             <div className="flex w-[142px] h-[32px] sm:hidden ">
-              <button className="w-[66px] h-full bg-white border-[1px] rounded-md text-[12px] me-2">
+              <button className="w-[66px] h-full bg-white border-[1px] rounded-md text-[12px] mr-2">
                 Notice
               </button>
               <button className="w-[76px] h-full bg-white border-[1px] rounded-md text-[12px] flex justify-center items-center">

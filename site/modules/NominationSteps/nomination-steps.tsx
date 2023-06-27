@@ -90,7 +90,7 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
           <a href="/" className={s.color_btn}>
             <span className="inline-flex text-white">
               Register Now
-              <img className="ms-2" src="/right-arrow.svg" alt="right-arrow" />
+              <img className="ml-2" src="/right-arrow.svg" alt="right-arrow" />
             </span>
           </a>
         </div>
