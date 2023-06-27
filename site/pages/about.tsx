@@ -6,7 +6,7 @@ import Achiever from '../modules/Achiever'
 import Recognise from '../modules/Recognise'
 const items = [{ name: 'About Us', url: '/' }]
 
-const Home = () => {
+const About = () => {
   return (
     <>
       <Header variant="MARVELSHeader" />
@@ -18,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default About
