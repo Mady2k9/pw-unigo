@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'clsx'
 import s from './banner.module.css'
 import Image from 'next/image'
-import {Button, Typography } from '@components/ui'
+import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
 export interface BannerProps {
   data: any
@@ -29,7 +29,7 @@ const Banner: React.FC<BannerProps> = (props) => {
                 <div className={s.heading}>
                   Safalta ki udaan <br className="sm:hidden flex" /> ka
                   <span className={s.orange_color}> Samman</span>
-                  <img className={s.top_arrow} src="/arrow.svg" alt="Logo"  />
+                  <img className={s.top_arrow} src="/arrow.svg" alt="Logo" />
                 </div>
                 <div>
                   <img className="hidden sm:flex" src="/arrow.svg" alt="Logo" />
@@ -43,7 +43,7 @@ const Banner: React.FC<BannerProps> = (props) => {
                 <span className="inline-flex text-white">
                   Register Now
                   <img
-                    className="ms-2"
+                    className="ml-2"
                     src="/right-arrow.svg"
                     alt="right-arrow"
                   />
@@ -60,7 +60,7 @@ const Banner: React.FC<BannerProps> = (props) => {
           </div>
         </div>
       </Container>
-      </div>
+    </div>
   )
 }
 
