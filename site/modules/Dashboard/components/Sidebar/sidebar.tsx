@@ -27,18 +27,9 @@ const sidebar: React.FC<sidebarProps> = (props) => {
         </div>
 
         <div className="flex items-center">
-          <div className="mx-2">
-            <div className="flex flex-col items-center">
-              <img src="/dot-a.svg" alt="dot" />
-              <div className="w-[2px]  h-[60px] bg-[#C1C6CE]  inline-block"></div>
-              <img src="/dot-g.svg" alt="dot" />
-              <div className="w-[2px]  h-[60px] bg-[#C1C6CE] inline-block"></div>
-              <img src="/dot-g.svg" alt="dot" />
-            </div>
-          </div>
-          <div className="">
-            <div className="mb-2">
-              <p className="text-[#1B7938] text-[12px]">Step 1</p>
+          <div className="flex sm:flex-col flex-row sm:order-2">
+            <div className="mb-2 text-center">
+              <span className="text-[#1B7938] text-[12px]">Step 1</span>
               <div className={s.iconContainer}>
                 <img className="mx-2" src="/step_1c.svg" alt="step1" />
                 <p className="text-[14px]">Profile Details</p>
@@ -59,6 +50,15 @@ const sidebar: React.FC<sidebarProps> = (props) => {
                 <img className="mx-2" src="/step_3g.svg" alt="step1" />
                 <p className="text-[14px]">Upload Documents</p>
               </div>
+            </div>
+          </div>
+          <div className="mx-2 sm:order-1">
+            <div className="flex flex-col items-center">
+              <img src="/dot-a.svg" alt="dot" />
+              <div className="w-[2px]  h-[60px] bg-[#C1C6CE]  inline-block"></div>
+              <img src="/dot-g.svg" alt="dot" />
+              <div className="w-[2px]  h-[60px] bg-[#C1C6CE] inline-block"></div>
+              <img src="/dot-g.svg" alt="dot" />
             </div>
           </div>
         </div>
