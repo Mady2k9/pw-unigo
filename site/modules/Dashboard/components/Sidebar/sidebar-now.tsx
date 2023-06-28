@@ -3,12 +3,12 @@ import s from './sidebar.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
-export interface sidebarProps {
+export interface sidebarNowProps {
   name: string
   phone: string
 }
 
-const sidebar: React.FC<sidebarProps> = (props) => {
+const sidebarNow: React.FC<sidebarNowProps> = (props) => {
   const { name } = props
   const { phone } = props
 
@@ -29,9 +29,9 @@ const sidebar: React.FC<sidebarProps> = (props) => {
         <div className="flex items-center">
           <div className="mx-2">
             <div className="flex flex-col items-center">
+              <img src="/dot-d.svg" alt="dot" />
+              <div className="w-[2px]  h-[60px] bg-[#1B7938]  inline-block"></div>
               <img src="/dot-a.svg" alt="dot" />
-              <div className="w-[2px]  h-[60px] bg-[#C1C6CE]  inline-block"></div>
-              <img src="/dot-g.svg" alt="dot" />
               <div className="w-[2px]  h-[60px] bg-[#C1C6CE] inline-block"></div>
               <img src="/dot-g.svg" alt="dot" />
             </div>
@@ -48,7 +48,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
             <div className="mb-2">
               <p className="text-[#1B7938] text-[12px]">Step 2</p>
               <div className={s.iconContainer}>
-                <img className="mx-2" src="/step_2g.svg" alt="step1" />
+                <img className="mx-2" src="/step_2c.svg" alt="step1" />
                 <p className="text-[14px]">Nomination Form</p>
               </div>
             </div>
@@ -85,4 +85,4 @@ const sidebar: React.FC<sidebarProps> = (props) => {
   )
 }
 
-export default sidebar
+export default sidebarNow
