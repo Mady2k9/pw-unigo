@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const { title } = props
   return (
     <>
-      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center bg-white z-20 shadow-lg flex">
+      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex">
         <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
           <a href="/" className="my-auto sm:ps-0 ps-2">
             <div className="flex items-center">
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           </a>
         </div>
 
-        <div className="w-[calc(100vw-235px)]">
+        <div className="w-[calc(100vw-235px)] ">
           <div className="flex py-4 sm:w-10/12 w-full sm:justify-between sm:mx-auto justify-end sm:pe-0 pr-[16px]">
             <div className="text-[24px] font-[600] my-auto leading-[32px] hidden sm:block">
               {title}
