@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import s from './content.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
@@ -9,6 +9,10 @@ import { TextInput } from '@components/ui'
 export interface contentProps {}
 
 const content: React.FC<contentProps> = (props) => {
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+  }, [])
+
   return (
     <div className="w-full bg-white overflow-y-scroll">
       <div className=" flex justify-center">
