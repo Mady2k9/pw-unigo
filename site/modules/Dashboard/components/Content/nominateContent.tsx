@@ -20,7 +20,7 @@ function nominateContent() {
   }
   return (
     <>
-      <div className="m-6 max-[640px]:m-0 max-[640px]:w-full ">
+      <div className="p-4 w-full ">
         <p className="text-[#757575] max-[640px]:mt-8">
           Selected Exam Category: Profile Based scholarship award
         </p>

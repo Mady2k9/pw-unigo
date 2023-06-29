@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import s from './sidebar.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
