@@ -29,20 +29,20 @@ const Achiever: React.FC<AchieverProps> = (props) => {
         <div className="order-last sm:order-first md:order-none lg:order-last xl:order-last">
           <Typography weight={500} variant="regular">
             <p className="py-2">
-              Pw marvels are national treasures who have achieved academic
+              PW Marvels are national treasures who have achieved academic
               excellence at such a young age. It is a unique nation wide
-              initiative by PW to recognise, honour and take care of Bright
-              Minds of India.
+              initiative by PW to recognize, honor and take care of Bright Minds
+              of India.
             </p>
             <p className="py-2">
               Marvels will be identified based on achievements of students in
               national and international EXAM/ AWARDS/ Scholarships and that is
               Class wise. Each class has a certain set of standard Examinations
-              according to which marvels will be selected.
+              according to which Marvels will be selected.
             </p>
             <p className="py-2">
-              Marvels will not only be honoured but also mentored for their
-              better future endeavours.
+              Marvels will not only be honored but also mentored for their
+              better future endeavors.
             </p>
           </Typography>
         </div>
