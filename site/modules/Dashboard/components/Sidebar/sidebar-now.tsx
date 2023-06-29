@@ -54,9 +54,9 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           </div>
           <div className="mx-2 sm:order-1">
             <div className="flex sm:flex-col flex-row items-center">
+              <img src="/dot-d.svg" alt="dot" />
+              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#1B7938]  inline-block"></div>
               <img src="/dot-a.svg" alt="dot" />
-              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
-              <img src="/dot-g.svg" alt="dot" />
               <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
               <img src="/dot-g.svg" alt="dot" />
             </div>

@@ -28,11 +28,11 @@ const content: React.FC<contentProps> = (props) => {
             <div className={s.right_section_text}> John Snow</div>
           </div>
 
-          <div className="w-full h-fit p-4 flex">
+          <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}>
               Class<span className={s.alert}>*</span>:
             </div>
-            <div className={s.right_section_text}>
+            <div className={s.right_section_input}>
               <Select
                 className=""
                 onChange={function noRefCheck() {}}
@@ -58,7 +58,7 @@ const content: React.FC<contentProps> = (props) => {
                 shadow
                 withTarget
               />
-              <div className="md:p-1 flex md:flex-none">
+              <div className="p-1 flex md:flex-none">
                 <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
                   <img className="" src="/i.svg" alt="icon" />
                 </div>
@@ -69,10 +69,9 @@ const content: React.FC<contentProps> = (props) => {
             </div>
           </div>
 
-          <div className="w-full h-fit p-4 flex">
+          <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}> Alternative Mobile No.:</div>
-            <div className={s.right_section_text}>
-              {' '}
+            <div className={s.right_section_input}>
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   action={{
@@ -104,10 +103,9 @@ const content: React.FC<contentProps> = (props) => {
             </div>
           </div>
 
-          <div className="w-full h-fit p-4 flex">
+          <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}> Email address:</div>
-            <div className={s.right_section_text}>
-              {' '}
+            <div className={s.right_section_input}>
               <div className=" w-full bg-white rounded-md ">
                 <TextInput
                   action={{
@@ -134,7 +132,7 @@ const content: React.FC<contentProps> = (props) => {
             </div>
           </div>
 
-          <div className="w-full p-4 fixed bottom-0 md:hidden">
+          <div className="w-full p-4 md:hidden">
             <Button
               Component="PW"
               postIcon={[]}
