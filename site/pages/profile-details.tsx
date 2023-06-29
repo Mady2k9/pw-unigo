@@ -6,8 +6,8 @@ const profileDetails = () => {
   return (
     <>
       <Header title="Step 1: Profile Details" />
-      <div className="sm:sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex  ">
-        <Sidebar name="John Snow" phone="+91 7864546474" />
+      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
+        <Sidebar name="John Sno" phone="+91 7864546474" />
         <Content></Content>
       </div>
     </>
