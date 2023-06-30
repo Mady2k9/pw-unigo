@@ -16,59 +16,34 @@ const Recognise: React.FC<RecogniseProps> = (props) => {
 
   return (
     <Container className="mx-auto max-w-6xl w-full mt-10">
-      <div className={s.text}>Why pw marvels?</div>
-      <div className={s.text1}>We Believe in Recognising Talent</div>
-      <div className="md:flex md:flex-row gap-4 w-full mb-10">
-        <Card
-          children={
-            <>
-              <div className="flex mx-4 mt-6">
-                <div>
-                  <img src={Rec.src} alt="Achiever" width={47} height={47} />
-                </div>
-                <div className="mx-4 mt-3">
-                  <Typography weight={500} variant="heading3">
-                    Vision
-                  </Typography>
-                </div>
-              </div>
-              <div className="px-6 py-4">
-                <p className="text-gray-700 text-base">
-                  <Typography weight={500} variant="regular">
-                    To Nurture & Transform Young Minds Into Leaders Of Change,
-                    Who Succeed In Everything They Do & Make Progress An
-                    Everyday Habit!
-                  </Typography>
-                </p>
-              </div>
-            </>
-          }
-        />
-        <Card
-          children={
-            <div>
-              <div className="flex mx-4 mt-6">
-                <div>
-                  <img src={Recog.src} alt="Achiever" width={47} height={47} />
-                </div>
-                <div className="mx-4 mt-3">
-                  <Typography weight={500} variant="heading3">
-                    Mission
-                  </Typography>
-                </div>
-              </div>
-              <div className="px-6 py-4">
-                <p className="text-gray-700 text-base">
-                  <Typography weight={500} variant="regular">
-                    To Encourage These Young Minds By Celebrating Their
-                    Accomplishments & Mentoring Them To Become Successful In
-                    Their Academic Pursuits & Their Career Goals!
-                  </Typography>
-                </p>
-              </div>
-            </div>
-          }
-        />
+      <div className="flex justify-center">
+        <span className={s.heading_top}>Why pw marvels?</span>
+      </div>
+      <div className="flex justify-center">
+        <span className={s.heading}>We Believe in Recognising Talent</span>
+      </div>
+      <div className="flex sm:flex-row flex-col gap-8 w-full mb-10 mt-5">
+        <div className={s.card}>
+          <div className="flex flex-row">
+            <img src="/vision.svg" alt="vision" />
+            <span className={s.card_heading}>Vision</span>
+          </div>
+          <div className={s.card_sub_heading}>
+            To Nurture & Transform Young Minds Into Leaders Of Change, Who
+            Succeed In Everything They Do & Make Progress An Everyday Habit!
+          </div>
+        </div>
+        <div className={s.card}>
+          <div className="flex flex-row">
+            <img src="/vision.svg" alt="vision" />
+            <span className={s.card_heading}>Mission</span>
+          </div>
+          <div className={s.card_sub_heading}>
+            To Encourage These Young Minds By Celebrating Their Accomplishments
+            & Mentoring Them To Become Successful In Their Academic Pursuits &
+            Their Career Goals!
+          </div>
+        </div>
       </div>
     </Container>
   )

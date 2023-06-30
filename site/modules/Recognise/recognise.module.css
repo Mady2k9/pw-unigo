@@ -1,40 +1,31 @@
-.text{
-@apply flex justify-center mx-auto;
-    font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    text-align: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #757575;
+.heading_top {
+  @apply sm:text-[18px] sm:leading-[28px] text-[12px] leading-[18px];
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #757575;
 }
-.text1{
-    @apply flex justify-center mx-auto;
-    font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 48px;
-    text-align: center;
-    color: #1B2124;
 
+.heading {
+  @apply sm:text-[32px] sm:leading-[48px] text-[18px] leading-[26px];
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: center;
+  color: #1b2124;
 }
-.box{
-    position: absolute;
-    width: 439px;
-    height: 72px;
-    left: 34px;
-    top: 104px;
-    font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #3D3D3D;
+
+.card {
+  @apply sm:p-[28px] p-[12px] sm:w-[536px] w-full sm:min-h-[256px];
+  border-radius: 8px;
+  border: 1px solid #eaecef;
+  background: rgba(248, 248, 248, 0.6);
 }
-.cardc{
-    background: rgba(248, 248, 248, 0.6);
-    
+
+.card_heading {
+  @apply sm:text-[24px] sm:leading-[32px] text-[16px] leading-[22px] font-[500] my-auto sm:pl-10 pl-5 text-[#1B2124];
+}
+
+.card_sub_heading {
+  @apply sm:text-[16px] sm:leading-[24px] text-[14px] leading-[22px] font-[500] sm:pt-6 pt-3 text-[#3D3D3D];
 }

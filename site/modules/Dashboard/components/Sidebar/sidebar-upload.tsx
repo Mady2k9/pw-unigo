@@ -1,19 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import s from './sidebar.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
-export interface sidebarUploadProps {
+export interface sidebarProps {
   name: string
   phone: string
 }
 
-const sidebarUpload: React.FC<sidebarUploadProps> = (props) => {
+const sidebar: React.FC<sidebarProps> = (props) => {
   const { name } = props
   const { phone } = props
 
   return (
-    <div className="sm:w-[235px]  flex pt-4 sm:justify-center">
+    <div className="sm:w-[235px]  flex pt-4 sm:justify-center w-full">
       <div className={s.mainContainer}>
         <div className={s.container}>
           <img className="mx-auto" src="/user_profile.svg" alt="user profile" />
@@ -25,44 +25,45 @@ const sidebarUpload: React.FC<sidebarUploadProps> = (props) => {
             <p className="text-[12px] text-[#757575]">{phone}</p>
           </div>
         </div>
-        <div className="flex items-center">
-          <div className="mx-2">
-            <div className="flex flex-col items-center">
-              <img src="/dot-d.svg" alt="dot" />
-              <div className="w-[2px]  h-[60px] bg-[#1B7938]  inline-block"></div>
-              <img src="/dot-d.svg" alt="dot" />
-              <div className="w-[2px]  h-[60px] bg-[#1B7938]  inline-block"></div>
-              <img src="/dot-a.svg" alt="dot" />
+
+        <div className="flex sm:flex-row flex-col items-center sm:pb-0 pb-4">
+          <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
+            <div className="mb-2 sm:text-left text-center">
+              <span className={s.step_text_active}>Step 1</span>
+              <div className={s.icon_container}>
+                <img className={s.step_img} src="/step_1c.svg" alt="step1" />
+                <span className={s.step_icon_text}>Profile Details</span>
+              </div>
+            </div>
+
+            <div className="mb-2 sm:text-left text-center">
+              <span className={s.step_text}>Step 2</span>
+              <div className={s.icon_container}>
+                <img className={s.step_img} src="/step_2c.svg" alt="step2" />
+                <p className={s.step_icon_text}>Nomination Form</p>
+              </div>
+            </div>
+
+            <div className="mb-2 sm:text-left text-center">
+              <span className={s.step_text}>Step 3</span>
+              <div className={s.icon_container}>
+                <img className={s.step_img} src="/step_3c.svg" alt="step3" />
+                <p className={s.step_icon_text}>Upload Documents</p>
+              </div>
             </div>
           </div>
-          <div className="">
-            <div className="mb-2">
-              <p className="text-[#1B7938] text-[12px]">Step 1</p>
-              <div className={s.iconContainer}>
-                <img className="mx-2" src="/step_1c.svg" alt="step1" />
-                <p className="text-[14px]">Profile Details</p>
-              </div>
-            </div>
-
-            <div className="mb-2">
-              <p className="text-[#1B7938] text-[12px]">Step 2</p>
-              <div className={s.iconContainer}>
-                <img className="mx-2" src="/step_2c.svg" alt="step1" />
-                <p className="text-[14px]">Nomination Form</p>
-              </div>
-            </div>
-
-            <div className="mb-2">
-              <p className="text-[#1B7938] text-[12px]">Step 3</p>
-              <div className={s.iconContainer}>
-                <img className="mx-2" src="/step_3c.svg" alt="step1" />
-                <p className="text-[14px]">Upload Documents</p>
-              </div>
+          <div className="mx-2 sm:order-1">
+            <div className="flex sm:flex-col flex-row items-center">
+              <img src="/dot-d.svg" alt="dot" />
+              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#1B7938]  inline-block"></div>
+              <img src="/dot-d.svg" alt="dot" />
+              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#1B7938]  inline-block"></div>
+              <img src="/dot-a.svg" alt="dot" />
             </div>
           </div>
         </div>
 
-        <div className="mt-[30%] w-[235px]">
+        <div className="mt-[30%] w-[235px] sm:block hidden">
           <div className=" ml-8 flex  ">
             <img className="w-[48px]" src="/profile_ani.gif" alt="animated" />
             <p className=" text-[#3D3D3D] self-center">Important Notices</p>
@@ -76,7 +77,7 @@ const sidebarUpload: React.FC<sidebarUploadProps> = (props) => {
                 alt="log out"
               />
             </span>
-            <p className={s.logOutText}>Log Out</p>
+            <p className={s.logout_text}>Log Out</p>
           </div>
         </div>
       </div>
@@ -84,4 +85,4 @@ const sidebarUpload: React.FC<sidebarUploadProps> = (props) => {
   )
 }
 
-export default sidebarUpload
+export default sidebar
