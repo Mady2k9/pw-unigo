@@ -5,10 +5,12 @@ import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
 export interface HeaderProps {
   title: string
+  onSubmit?: () => void // TODO - remove optional chaining
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { title } = props
+  const { title, onSubmit } = props
+
   return (
     <>
       <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex">
@@ -31,7 +33,10 @@ const Header: React.FC<HeaderProps> = (props) => {
               {title}
             </div>
             <div className="hidden sm:block">
-              <button className=" bg-[#D2CCFF] hover:bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] ">
+              <button
+                className=" bg-[#D2CCFF] hover:bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
+                onClick={onSubmit}
+              >
                 Submit
               </button>
             </div>

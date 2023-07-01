@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './content.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
+import { ProfileType } from '@modules/auth/components/ProfileView'
 
-export interface contentProps {}
+export interface contentProps {
+  name: string
+  profileData: ProfileType
+  setProfileData: (val: ProfileType) => void
+}
 
 const content: React.FC<contentProps> = (props) => {
+  const { name, profileData, setProfileData } = props
+  /*   const [number, setNumber] = useState('')
+  const [email, setEmail] = useState('') */
+  useEffect(() => {
+    const user = JSON.stringify(localStorage.getItem('user'))
+    /**
+     * 0. User.profile.class
+     * 1. Class set in useSTate
+     * 2. onCHnage on select
+     *          - !class ?/&& onSelectChange : void
+     *
+     */
+  }, [])
+
+  const onClassChange = (e: any) => {
+    const val = e.target.value
+    setProfileData({ ...profileData, class: val })
+  }
+
   return (
     <div className="w-full bg-white overflow-y-scroll">
       <div className=" flex justify-center">
@@ -25,7 +49,7 @@ const content: React.FC<contentProps> = (props) => {
           </div>
           <div className="w-full h-fit p-4 flex">
             <div className={s.left_section_text}> Full name of Applicant:</div>
-            <div className={s.right_section_text}> John Snow</div>
+            <div className={s.right_section_text}>{name}</div>
           </div>
 
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
@@ -35,23 +59,27 @@ const content: React.FC<contentProps> = (props) => {
             <div className={s.right_section_input}>
               <Select
                 className=""
-                onChange={function noRefCheck() {}}
+                onChange={onClassChange}
                 options={[
                   {
-                    id: 1,
+                    id: '8th',
                     name: 'Class 8th',
                   },
                   {
-                    id: 2,
+                    id: '9th',
                     name: 'Class 9th',
                   },
                   {
-                    id: 3,
+                    id: '10th',
                     name: 'Class 10th',
                   },
                   {
-                    id: 3,
+                    id: '11th',
                     name: 'Class 11th',
+                  },
+                  {
+                    id: '12th',
+                    name: 'Class 12th',
                   },
                 ]}
                 placeholder="Select Class"
@@ -86,8 +114,10 @@ const content: React.FC<contentProps> = (props) => {
                   className="  w-[328px] h-[48px] bg-white"
                   id="text-input-1"
                   label="Mobile Number"
-                  onChange={function noRefCheck() {}}
-                  placeholder="Enter Text"
+                  onChange={(val) =>
+                    setProfileData({ ...profileData, alternateNumber: val })
+                  }
+                  placeholder="Enter number"
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                       <select className=" border-none bg-transparent">
@@ -122,8 +152,10 @@ const content: React.FC<contentProps> = (props) => {
                   id="text-input-1"
                   label="Email id"
                   variant="flat"
-                  onChange={function noRefCheck() {}}
-                  placeholder="Enter Text"
+                  onChange={(val) =>
+                    setProfileData({ ...profileData, email: val })
+                  }
+                  placeholder="Enter Email"
                   preElement={[]}
                   setRef={function noRefCheck() {}}
                   spellCheck="false"
