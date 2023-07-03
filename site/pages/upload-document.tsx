@@ -1,6 +1,6 @@
-import Header from '@modules/Dashboard/components/Header/header'
-import SidebarUpload from '@modules/Dashboard/components/Sidebar/sidebar-upload'
-import ContentUploads from '@modules/Dashboard/components/Content/content-upload'
+import Header from '@modules/Onboarding/components/Header/header'
+import SidebarUpload from '@modules/Onboarding/components/Sidebar/sidebar-upload'
+import ContentUploads from '@modules/Onboarding/components/Content/content-upload'
 const contentUploads = () => {
   return (
     <>
