@@ -1,12 +1,12 @@
 import Header from '@components/common/Header/Header'
-import { Register } from '@modules/auth/components'
+import { Registration } from '@modules/screens'
 const items = [{ name: 'Register Now', url: '/' }]
 
 const UserRegister = () => {
   return (
     <>
       <Header variant="MARVELSRegisterHeader" />
-      <Register />
+      <Registration />
     </>
   )
 }
