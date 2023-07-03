@@ -6,6 +6,7 @@ import Container from '@components/ui/Container/Container'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
 import { ProfileType } from '@modules/auth/components/ProfileView'
+import { CLASSES_ARRAY } from '@config/types/classes'
 
 export interface contentProps {
   name: string
@@ -13,20 +14,9 @@ export interface contentProps {
   setProfileData: (val: ProfileType) => void
 }
 
-const content: React.FC<contentProps> = (props) => {
+const Content: React.FC<contentProps> = (props) => {
   const { name, profileData, setProfileData } = props
-  /*   const [number, setNumber] = useState('')
-  const [email, setEmail] = useState('') */
-  useEffect(() => {
-    const user = JSON.stringify(localStorage.getItem('user'))
-    /**
-     * 0. User.profile.class
-     * 1. Class set in useSTate
-     * 2. onCHnage on select
-     *          - !class ?/&& onSelectChange : void
-     *
-     */
-  }, [])
+  const [user, setUser] = useState({})
 
   const onClassChange = (e: any) => {
     const val = e.target.value
@@ -60,28 +50,7 @@ const content: React.FC<contentProps> = (props) => {
               <Select
                 className=""
                 onChange={onClassChange}
-                options={[
-                  {
-                    id: '8th',
-                    name: 'Class 8th',
-                  },
-                  {
-                    id: '9th',
-                    name: 'Class 9th',
-                  },
-                  {
-                    id: '10th',
-                    name: 'Class 10th',
-                  },
-                  {
-                    id: '11th',
-                    name: 'Class 11th',
-                  },
-                  {
-                    id: '12th',
-                    name: 'Class 12th',
-                  },
-                ]}
+                options={CLASSES_ARRAY}
                 placeholder="Select Class"
                 shadow
                 withTarget
@@ -118,6 +87,7 @@ const content: React.FC<contentProps> = (props) => {
                     setProfileData({ ...profileData, alternateNumber: val })
                   }
                   placeholder="Enter number"
+                  maxLength={10}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                       <select className=" border-none bg-transparent">
@@ -182,4 +152,4 @@ const content: React.FC<contentProps> = (props) => {
   )
 }
 
-export default content
+export default Content

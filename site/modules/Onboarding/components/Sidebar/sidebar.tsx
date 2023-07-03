@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import s from './sidebar.module.css'
-import Image from 'next/image'
-import { Button, Typography } from '@components/ui'
-import Container from '@components/ui/Container/Container'
+
 export interface sidebarProps {
   name: string
   phone: string
 }
 
 const sidebar: React.FC<sidebarProps> = (props) => {
-  const { name } = props
-  const { phone } = props
+  const { name, phone } = props
 
   return (
     <div className="sm:w-[235px]  flex pt-4 sm:justify-center w-full">
@@ -25,7 +22,6 @@ const sidebar: React.FC<sidebarProps> = (props) => {
             <p className="text-[12px] text-[#757575]">{phone}</p>
           </div>
         </div>
-
         <div className="flex sm:flex-row flex-col items-center sm:pb-0 pb-4">
           <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
             <div className="mb-2 sm:text-left text-center">
@@ -54,15 +50,14 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           </div>
           <div className="mx-2 sm:order-1">
             <div className="flex sm:flex-col flex-row items-center">
-              <img src="/dot-d.svg" alt="dot" />
-              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#1B7938]  inline-block"></div>
-              <img src="/dot-d.svg" alt="dot" />
-              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#1B7938]  inline-block"></div>
               <img src="/dot-a.svg" alt="dot" />
+              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
+              <img src="/dot-g.svg" alt="dot" />
+              <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
+              <img src="/dot-g.svg" alt="dot" />
             </div>
           </div>
         </div>
-
         <div className="mt-[30%] w-[235px] sm:block hidden">
           <div className=" ml-8 flex  ">
             <img className="w-[48px]" src="/profile_ani.gif" alt="animated" />
