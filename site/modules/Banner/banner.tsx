@@ -4,11 +4,18 @@ import s from './banner.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
+import { useRouter } from 'next/router'
 export interface BannerProps {
   data: any
 }
 
 const Banner: React.FC<BannerProps> = (props) => {
+  const router = useRouter()
+
+  const handleRegister = () => {
+    window.open('register', '_self')
+  }
+
   return (
     <div className={s.banner}>
       <img
@@ -39,7 +46,7 @@ const Banner: React.FC<BannerProps> = (props) => {
                 Get awarded for all your meritorious hard work and Glorious
                 achievements and be a proud PW Marvel
               </div>
-              <a href="/" className={s.color_btn}>
+              <a href={'/register'} className={s.color_btn}>
                 <span className="inline-flex text-white">
                   Register Now
                   <img

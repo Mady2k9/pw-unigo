@@ -88,7 +88,7 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
           and stand a chance to win amazing rewards
         </div>
         <div className="mt-6 mb-10">
-          <a href="/" className={s.color_btn}>
+          <a href="/register" className={s.color_btn}>
             <span className="inline-flex text-white">
               Register Now
               <img className="ml-2" src="/right-arrow.svg" alt="right-arrow" />

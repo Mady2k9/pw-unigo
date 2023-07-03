@@ -95,11 +95,21 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
 
   return (
     <Layout>
-      <div className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4">
-        <div className={'flex-1 flex flex-col justify-center px-3'}>
-          <div className="flex flex-col mb-6">
-            <div className={p.login_otp_subheading}>
-              A 6 digit OTP has been sent to <strong>{`+91 ${mobile}`}</strong>
+      <div className="bg-white h-[568px] md:w-[445px] sm:w-full mx-auto w-full px-5  sm:px-4 shadow-none md:shadow-lg md:rounded-xl rounded-none ">
+        <div className="flex justify-center">
+          <img src="/computer-otp.gif" alt="" width={174} />
+        </div>
+        <div className={'flex justify-center px-3'}>
+          <div className="mb-6 text-center">
+            <Typography variant="heading4" weight={600}>
+              Verification
+            </Typography>
+            <Typography>Enter the OTP sent on your phone number</Typography>
+            <div className="inline-flex items-center gap-2">
+              <Typography weight={600}>{`+91 ${mobile}`} </Typography>
+              <a href="register">
+                <img src="/edit.svg" alt="edit-number" />
+              </a>
               <div
                 onClick={() => {
                   reset()
@@ -145,14 +155,18 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
           </div>
 
           {error && <Alert message={error} type="error" />}
-          <Button
-            type="button"
-            onClick={handleSubmit}
-            loading={loading}
-            disabled={!isOTPValid(otp)}
-          >
-            Login
-          </Button>
+          <div className="text-center">
+            <Button
+              type="button"
+              onClick={handleSubmit}
+              loading={loading}
+              disabled={!isOTPValid(otp)}
+              size="large"
+              className="w-[148px]"
+            >
+              Submit
+            </Button>
+          </div>
         </div>
       </div>
     </Layout>
