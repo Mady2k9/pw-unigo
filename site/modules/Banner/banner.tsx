@@ -4,11 +4,18 @@ import s from './banner.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
+import { useRouter } from 'next/router'
 export interface BannerProps {
   data: any
 }
 
 const Banner: React.FC<BannerProps> = (props) => {
+  const router = useRouter()
+
+  const handleRegister = () => {
+    window.open('register', '_self')
+  }
+
   return (
     <div className={s.banner}>
       <img
@@ -27,7 +34,7 @@ const Banner: React.FC<BannerProps> = (props) => {
             <div className={s.banner_left_section}>
               <div className="flex flex-row sm:text-left text-center">
                 <div className={s.heading}>
-                  Safalta ki udaan <br className="sm:hidden flex" /> ka
+                  Safalta Ki Udaan <br className="sm:hidden flex" /> Ka
                   <span className={s.orange_color}> Samman</span>
                   <img className={s.top_arrow} src="/arrow.svg" alt="Logo" />
                 </div>
@@ -36,10 +43,10 @@ const Banner: React.FC<BannerProps> = (props) => {
                 </div>
               </div>
               <div className={s.sub_heading}>
-                Get awarded for all your Meritorious Hard-work and Glorious
-                Achievement and be a proud PW Marvel
+                Get awarded for all your meritorious hard work and Glorious
+                achievements and be a proud PW Marvel
               </div>
-              <a href="/" className={s.color_btn}>
+              <a href={'/register'} className={s.color_btn}>
                 <span className="inline-flex text-white">
                   Register Now
                   <img

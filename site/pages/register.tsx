@@ -1,14 +1,14 @@
 import Header from '@components/common/Header/Header'
-import RegisterNow from '../modules/auth/components/RegisterView'
+import { Registration } from '@modules/screens'
 const items = [{ name: 'Register Now', url: '/' }]
 
-const Register = () => {
+const UserRegister = () => {
   return (
     <>
       <Header variant="MARVELSRegisterHeader" />
-      <RegisterNow onOTPGet={undefined} onCallRegister={undefined} />
+      <Registration />
     </>
   )
 }
 
-export default Register
+export default UserRegister
