@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import Header from '@modules/screens/Onboarding/components/Header/header'
-import Sidebar from '@modules/screens/Onboarding/components/Sidebar/sidebar'
-import Content from '@modules/screens/Onboarding/components/Content/Content'
+import Header from '@modules/Screens/Onboarding/components/Header/header'
+import Sidebar from '@modules/Screens/Onboarding/components/Sidebar/sidebar'
+import Content from '@modules/Screens/Onboarding/components/Content/Content'
 import { updateUserProfile } from '@modules/auth/lib'
 
 export type ProfileType = {

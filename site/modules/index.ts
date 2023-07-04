@@ -1,4 +1,4 @@
-export { default as AuthModule } from './auth'
+//export { default as AuthModule } from './auth'
 export { default as Banner } from './Banner'
 export { default as Faq } from './Faq'
 export { default as NominationSteps } from './NominationSteps'
