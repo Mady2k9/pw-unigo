@@ -10,7 +10,7 @@ export interface AchieverProps {
 const Achiever: React.FC<AchieverProps> = (props) => {
   const rootClassName = cn(s.root, {})
   return (
-    <Container className="mx-auto xl:max-w-6xl w-full mt-10 flex flex-col sm:flex-row gap-4">
+    <Container className="mx-auto xl:max-w-6xl w-full mt-10 flex flex-col sm:flex-row gap-4 pb-40">
       <div className="sm:hidden block">
         <div className="flex justify-center">
           <div className={s.heading}>About PW Marvels</div>
@@ -42,7 +42,7 @@ const Achiever: React.FC<AchieverProps> = (props) => {
         </div>
       </div>
       <div className="md:w-1/2 order-1">
-        <img src="/frame-626471.svg" alt="Achiever" width={610} height={350} />
+        <img src="/about.png" alt="Achiever" width={610} height={350} />
       </div>
     </Container>
   )

@@ -15,7 +15,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   const rootClassName = cn(s.root, {})
 
   return (
-    <div className="bg-gray-100 w-full">
+    <div className="bg-[#F8F8F8] w-full">
       <Container className="w-full max-w-6xl py-4">
         <div className={s.text}>
           <Typography weight={500} variant="small">
