@@ -1,6 +1,6 @@
-import Header from '@modules/screens/Onboarding/components/Header/header'
-import SidebarNow from '@modules/screens/Onboarding/components/Sidebar/sidebar-now'
-import ContentNow from '@modules/screens/Onboarding/components/Content/NominationForm'
+import Header from '@modules/Screens/Onboarding/components/Header/header'
+import SidebarNow from '@modules/Screens/Onboarding/components/Sidebar/sidebar-now'
+import ContentNow from '@modules/Screens/Onboarding/components/Content/NominationForm'
 import { useEffect, useMemo, useState } from 'react'
 
 const NominationForm = () => {

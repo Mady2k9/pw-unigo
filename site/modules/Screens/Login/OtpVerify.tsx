@@ -7,7 +7,8 @@ import OtpInput from 'react-otp-input'
 import s from '@styles/auth/auth.module.css'
 import { useRouter } from 'next/router'
 import p from '@modules/auth/components/components.module.css' // TODO - Changes module to tailwind
-import { Layout } from '@modules/screens/Login/Layout'
+//import { Layout } from '@modules/screens/Login/Layout'
+import { Layout } from '@modules/Screens/Login/Layout'
 
 const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
   const [counter, setCounter] = useState(30)

@@ -7,10 +7,10 @@ type OnboardingProps = {
 const Onboarding = ({ mainContent }: OnboardingProps) => {
   return (
     <div>
-      <Header />
+      <Header title={''} />
       <div className="grid grid-cols-12">
         <div className="col-span-3">
-          <Sidebar />
+          <Sidebar name={''} phone={''} />
         </div>
         <div className="col-span-9">{mainContent}</div>
       </div>

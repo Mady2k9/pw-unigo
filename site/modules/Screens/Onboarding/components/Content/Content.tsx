@@ -5,7 +5,7 @@ import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
-import { ProfileType } from '@modules/screens/Onboarding/components/ProfileDetails'
+import { ProfileType } from '@modules/Screens/Onboarding/components/ProfileDetails'
 import { CLASSES_ARRAY } from '@config/types/classes'
 
 export interface contentProps {
