@@ -37,7 +37,7 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
                   </span>
                   <span className={s.card_text}>
                     Fill your basic details to make an account on PW so that you
-                    can Nominate yourself for PW Marvels
+                    can nominate yourself for PW Marvels
                   </span>
                 </div>
               </div>
@@ -47,11 +47,12 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
                 </div>
                 <div className={s.card_text_box}>
                   <span className={s.card_heading_top}>Step 2</span>
-                  <span className={s.card_heading}>Fill Nomination form</span>
+                  <span className={s.card_heading}>Fill Nomination Form</span>
                   <span className={s.card_text}>
-                    you’ll get a dashboard where you can fill the nomination
-                    form that is defined, based on your class. Select your
-                    Qualified Exams/Awards/Scholarships in form.
+                    You will get a dashboard where you can fill the nomination
+                    form that is defined based on your class.
+                    <br />
+                    Select your qualified exams/awards/scholarships in the form.
                   </span>
                 </div>
               </div>
@@ -64,8 +65,8 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
                   <span className={s.card_heading}>Get Awarded</span>
                   <span className={s.card_text}>
                     Get recognised for your efforts and rewarded according to
-                    merit! The more you accomplish, the better your chances to
-                    win big!
+                    merit! The more you accomplish, the more your chances to win
+                    big!
                   </span>
                 </div>
               </div>
@@ -87,7 +88,7 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
           and stand a chance to win amazing rewards
         </div>
         <div className="mt-6 mb-10">
-          <a href="/" className={s.color_btn}>
+          <a href="/register" className={s.color_btn}>
             <span className="inline-flex text-white">
               Register Now
               <img className="ml-2" src="/right-arrow.svg" alt="right-arrow" />

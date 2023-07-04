@@ -15,19 +15,22 @@ const Rewards: React.FC<RewardsProps> = (props) => {
         <Typography weight={500}>
           <ul className={s.list_disc}>
             <li>
-              After Stage 2 of the Interactive activity session with our experts
-              10 students from each class will be selected for rewards based on
-              their Ranks that is determined by Profile evaluation and interview
-              round. These performances are based on exposure of students in
-              different areas Excellence in Academics, Aptitude, Skills,
-              Exposure and Language Capabilities.
+              <strong>
+                After Stage 2 of the Interactive Session with our experts,10
+                students from each class will be selected for rewards based on
+                their ranks that is determined by Profile Evaluation and
+                Interactive activity Round. These performances are based on
+                exposure of students in different areas:&nbsp;
+              </strong>
+              Excellence in Academics, Aptitude, Skills, Exposure and Language
+              Capabilities.
             </li>
-            <li>Each Student who cleared Stage 1 will be awarded.</li>
+            <li>Each student who cleared Stage 1 will be awarded.</li>
             <li>
-              10 Best students from each class will be invited to PW marvels
-              Grand felicitation function along with their parents and Mentors.
-              Here Students will be awarded as well as have a chance to meet our
-              esteem mentors who’ll guide them for there future endeavors.
+              10 best students from each class will be invited to PW Marvels
+              Grand Felicitation Function along with their parents and mentors.
+              Here, students will be awarded as well as have a chance to meet
+              our esteem mentors who’ll guide them for there future endeavors.
               Rewards based on student rank are described below
             </li>
           </ul>
@@ -202,7 +205,7 @@ const Rewards: React.FC<RewardsProps> = (props) => {
         className="mx-auto md:max-w-6xl md:px-6 py-3 flex flex-col mb-10"
         clean
       >
-        <div className="bg-[#F8F8F8] px-[16px] py-[24px]  sm:rounded-xl">
+        <div className="bg-[#F8F8F8] px-[16px] py-[24px]  sm:rounded-xl sm:mx-3">
           <div className={s.reward_bottom_heading}>
             A memento and coated ‘Silver Coin’ for all who crosses PW Marvel
             Evaluation
