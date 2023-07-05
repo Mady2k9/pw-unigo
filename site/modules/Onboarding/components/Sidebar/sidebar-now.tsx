@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import s from './sidebar.module.css'
 import { useRouter } from 'next/router'
+import ImportantNoticeData from '@modules/ImportantNotices/importantNoticeData'
 export interface sidebarProps {
   name: string
   phone: string
@@ -19,6 +20,10 @@ const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
   }
   const stayOnThisPage = () => {
     setProfilePageAgain(false)
+  }
+  const [show, setShow] = useState(false)
+  const openImportantNotices = () => {
+    setShow(!show)
   }
   return (
     <>
@@ -82,7 +87,12 @@ const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
           <div className="mt-[30%] w-[235px] sm:block hidden">
             <div className=" ml-8 flex  ">
               <img className="w-[48px]" src="/profile_ani.gif" alt="animated" />
-              <p className=" text-[#3D3D3D] self-center">Important Notices</p>
+              <p
+                onClick={openImportantNotices}
+                className=" cursor-pointer text-[#3D3D3D] self-center"
+              >
+                Important Notices
+              </p>
             </div>
             <hr className={s.linecss} />
             <div className="flex justify-center">
@@ -131,6 +141,7 @@ const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
           ''
         )}
       </div>
+      {show === true ? <ImportantNoticeData /> : ''}
     </>
   )
 }

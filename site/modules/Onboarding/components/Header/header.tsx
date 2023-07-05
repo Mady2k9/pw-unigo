@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <>
-      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex">
+      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex ">
         <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
           <a href="/" className="my-auto sm:ps-0 ps-2">
             <div className="flex items-center">

@@ -76,7 +76,7 @@ function SelectedExamAchievements({
                                 name: el,
                               }))}
                               placeholder="Select"
-                              className="h-[50px] mr-2"
+                              className="h-[50px] text-[14px] mr-2"
                             />
                             <input
                               type="checkbox"

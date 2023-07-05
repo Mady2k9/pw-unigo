@@ -54,7 +54,7 @@ const contentUpload: React.FC<contentUploadProps> = (props) => {
                 <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
                   <img src="/profile-picture.svg" alt="profile icon" />
                 </div>
-                <div>
+                <div className="ml-2">
                   <div className="text-[14px] sm:text-[16px] font-semibold">
                     Student Passport size photo
                   </div>
@@ -84,7 +84,7 @@ const contentUpload: React.FC<contentUploadProps> = (props) => {
                 <div className="bg-[#FFF6E5] px-[6px] py-[9px] h-[32px] w-[32px] rounded-lg">
                   <img src="/adhar_icon.svg" alt="profile icon" />
                 </div>
-                <div>
+                <div className="ml-2">
                   <div className="text-[14px] sm:text-[16px] font-semibold">
                     Student Adhar card
                   </div>
@@ -138,7 +138,7 @@ const contentUpload: React.FC<contentUploadProps> = (props) => {
                 <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
                   <img src="/report_icon.svg" alt="profile icon" />
                 </div>
-                <div>
+                <div className="ml-2">
                   <div className="text-[14px] sm:text-[16px] font-semibold">
                     Student latest Report card
                   </div>

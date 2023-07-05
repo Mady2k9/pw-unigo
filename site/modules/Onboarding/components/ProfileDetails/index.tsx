@@ -4,7 +4,7 @@ import Header from '@modules/Onboarding/components/Header/header'
 import Sidebar from '@modules/Onboarding/components/Sidebar/sidebar'
 import Content from '@modules/Onboarding/components/Content/Content'
 import { updateUserProfile } from '@modules/auth/lib'
-import { Cross } from '@components/icons'
+import CrossIcon from 'public/Cross-icon.svg'
 export type ProfileType = {
   email: string
   class: string
@@ -56,15 +56,18 @@ const ProfileDetails = () => {
   return (
     <>
       <Header title="Step 1: Profile Details" onSubmit={onSubmit} />
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
+      <div className=" left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
         <Sidebar name={name} phone={profileData?.primaryNumber} />
         <Content
           name={name}
           profileData={profileData}
           setProfileData={setProfileData}
         />
-        {modalShow == true ? 
-          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div> : ''}
+        {modalShow == true ? (
+          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+        ) : (
+          ''
+        )}
         {modalShow === true ? (
           <div className="absolute bg-[#FFFFFF] w-[480px] h-[218px] rounded-lg top-[30%] left-[35%] z-50 text-center ">
             <div className="flex justify-center flex-col m-4">
