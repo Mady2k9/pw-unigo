@@ -1,47 +1,55 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Button } from '@components/ui'
+import { uploadFile } from '@modules/auth/lib'
+
+const INSRUCTIONS = [
+  'For report card please upload the PDF with all the pages including front section of your report card .',
+  'Passport size photo file size should not exceed more than 20 KB',
+  'Upload front and back side of Adhar card and the file size should not exceed more than 20 KB each',
+  'Upload supporting documents i.e. certificate in front of exams selected.',
+]
 
 const DocumentsSection: React.FC = (props) => {
-  const [file, setFile] = useState<File>()
+  const [files, setFiles] = useState<FileList>()
+  const [upload, setUpload] = useState(false)
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFile(e.target.files[0])
-      console.log(e.target.files)
-      handleClick()
+      setFiles(e.target.files)
     }
   }
-  const [upload, setUpload] = useState(true)
-  function handleClick() {
-    setUpload(!upload)
+  async function handleClick() {
+    /**
+     * Make Upload API call here
+     */
+
+    const formData = new FormData()
+    for (let file in files) {
+      if (files.hasOwnProperty(file)) {
+        formData.append('file', files[file as any])
+      } else {
+        break
+      }
+    }
+    const randomId = localStorage.getItem('randomId') || ''
+
+    const res = await uploadFile(formData, randomId)
+    console.log(res)
   }
+
   return (
     <div className="w-full bg-white overflow-y-scroll">
       <div className=" flex justify-center">
         <div className="md:bg-[#F8F8F8] w-full md:w-[90%] lg:w-[85%] h-fit  rounded-b-xl lg:p-3 items-center relative">
-          <div className="w-full ">
-            <div className="bg-white rounded-[8px] px-[8px] sm:px-[24px] py-[12px]">
-              <div className="text-[16px] font-semibold mb-2">
-                Instructions for Upload Document:
-              </div>
-              <ol className="bg-white list-disc px-[12px]">
-                <li>
-                  For report card please upload the PDF with all the pages
-                  including front section of your report card .
-                </li>
-                <li>
-                  Passport size photo file size should not exceed more than 20
-                  KB
-                </li>
-                <li>
-                  Upload front and back side of Adhar card and the file size
-                  should not exceed more than 20 KB each
-                </li>
-                <li>
-                  Upload supporting documents i.e. certificate in front of exams
-                  selected.
-                </li>
-              </ol>
+          <div className="bg-white rounded-[8px] px-[8px] sm:px-[24px] py-[12px]">
+            <div className="text-[16px] font-semibold mb-2">
+              Instructions for Upload Document:
             </div>
+            <ol className="bg-white list-disc px-[12px]">
+              {INSRUCTIONS.map((intruction, index) => (
+                <li key={`instructions-${index}`}>{intruction}</li>
+              ))}
+            </ol>
           </div>
           <div className="bg-[#F8F8F8] sm:py-[12px] ">
             <div className="pt-6 flex sm:rounded-[8px] sm:bg-white bg-[#F8F8F8] px-[16px] py-[8px] lg:p-[16px]">
@@ -53,13 +61,14 @@ const DocumentsSection: React.FC = (props) => {
               </div>
             </div>
           </div>
-          <div className="bg-[#F8F8F8] justify-evenly xl:justify-between flex  flex-wrap py-[12px]">
-            <div className="w-[328px] h-[208px] p-[12px] bg-white rounded-[4px] my-[4px]">
-              <div className=" flex items-center">
+
+          <div className="grid grid-cols-3 py-[12px] gap-8">
+            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
+              <div className="flex items-center">
                 <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
                   <img src="/profile-picture.svg" alt="profile icon" />
                 </div>
-                <div>
+                <div className="ml-2">
                   <div className="text-[14px] sm:text-[16px] font-semibold">
                     Student Passport size photo
                   </div>
@@ -69,7 +78,7 @@ const DocumentsSection: React.FC = (props) => {
                 </div>
               </div>
               <div>
-                {!file ? (
+                {!files ? (
                   <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
                     <div className="items-center flex flex-col  ">
                       <img src="/upload.svg" alt="upload icon" />
@@ -78,7 +87,7 @@ const DocumentsSection: React.FC = (props) => {
                           type="file"
                           placeholder="Choose File"
                           onChange={handleChange}
-                          className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
+                          className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] cursor-pointer file:bg-white"
                         />
                       </div>
                       <div className="text-[10px] mt-[2px]">
@@ -91,7 +100,7 @@ const DocumentsSection: React.FC = (props) => {
                     {upload ? (
                       <div className="flex flex-col items-center ">
                         <div className=" text-[12px] leading-[18px]">
-                          {file.name}
+                          {files[0].name}
                         </div>
                         <div className="flex justify-between w-[114px] mt-[16px] mb-[8px]">
                           <div className="w-[74px] h-[32px] relative ">
@@ -123,8 +132,6 @@ const DocumentsSection: React.FC = (props) => {
                         <div className="mt-[4px]">
                           <Button
                             Component="PW"
-                            postIcon={[]}
-                            preIcon={[]}
                             size="tiny"
                             variant="primary"
                             onClick={handleClick}
@@ -132,14 +139,16 @@ const DocumentsSection: React.FC = (props) => {
                             Upload
                           </Button>
                         </div>
-                        <div className="text-[10px] mt-[2px]">{file.name}</div>
+                        <div className="text-[10px] mt-[2px]">
+                          {files[0].name}
+                        </div>
                       </div>
                     )}
                   </div>
                 )}
               </div>
             </div>
-            <div className="w-[328px] h-[208px] p-[12px] bg-white rounded-[4px] my-[4px]">
+            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
               <div className=" flex items-center">
                 <div className="bg-[#FFF6E5] px-[6px] py-[9px] h-[32px] w-[32px] rounded-lg">
                   <img src="/adhar_icon.svg" alt="profile icon" />
@@ -192,9 +201,8 @@ const DocumentsSection: React.FC = (props) => {
                 </div>
               </div>
             </div>
-
-            <div className="w-[328px] h-[208px] p-[12px] bg-white rounded-[4px] my-[4px]">
-              <div className=" flex items-center">
+            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
+              <div className="flex items-center">
                 <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
                   <img src="/report_icon.svg" alt="profile icon" />
                 </div>
@@ -225,7 +233,7 @@ const DocumentsSection: React.FC = (props) => {
             </div>
           </div>
           {/* thrid div */}
-          <div className="bg-[#F8F8F8] sm:py-[12px]">
+          {/* <div className="bg-[#F8F8F8] sm:py-[12px]">
             <div className="flex sm:rounded-[8px] sm:bg-white bg-[#F8F8F8] px-2 py-2 lg:p-4 ">
               <div className="mr-[2px] text-[16px] font-bold">
                 Nomination Documents
@@ -234,10 +242,10 @@ const DocumentsSection: React.FC = (props) => {
                 (*Mandatory Fields)
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="sm:py-[12px] bg-[#F8F8F8] py-[16px] sm:pt-0 ">
             <div className="overflow-x-auto border-[1px] bg-white rounded-[6px]">
-              <div className="w-[1012px] flex items-center ">
+              {/* <div className="w-[1012px] flex items-center ">
                 <div className="w-[55px] px-[10px] py-[12px] font-[700] text-[14px] ">
                   S. no.
                 </div>
@@ -259,10 +267,10 @@ const DocumentsSection: React.FC = (props) => {
                 <div className=" font-[700] text-[14px]  px-[10px] py-[12px]">
                   upload document
                 </div>
-              </div>
+              </div> */}
 
               {/* second row*/}
-              <div className="w-[1012px] flex items-start border-t-[2px] ">
+              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
                 <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
                   1
                 </div>
@@ -306,9 +314,9 @@ const DocumentsSection: React.FC = (props) => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/*third row*/}
-              <div className="w-[1012px] flex items-start border-t-[2px] ">
+              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
                 <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
                   2
                 </div>
@@ -352,9 +360,9 @@ const DocumentsSection: React.FC = (props) => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/*fouth row*/}
-              <div className="w-[1012px] flex items-start border-t-[2px] ">
+              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
                 <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
                   3
                 </div>
@@ -398,7 +406,7 @@ const DocumentsSection: React.FC = (props) => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

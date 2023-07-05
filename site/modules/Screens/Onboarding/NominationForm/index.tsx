@@ -1,4 +1,4 @@
-import Header from '@modules/Onboarding/components/Header/header'
+import { Header } from '@modules/screens/Onboarding/components'
 import NominationForm from '@modules/screens/Onboarding/NominationForm/NominationForm'
 import { useEffect, useMemo, useState } from 'react'
 import { fetchNomationFormat, postMarvelDataAsDraft } from '@modules/auth/lib'
