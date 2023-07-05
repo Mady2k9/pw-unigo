@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NominateContent from '@modules/NominateRightContent/nominateContent'
 
 function nominateRight() {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   const [showSecond, setShowSecond] = useState(false)
   const [showThird, setShowThird] = useState(false)
 
