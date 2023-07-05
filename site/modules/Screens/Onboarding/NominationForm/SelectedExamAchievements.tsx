@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import Image from 'next/image'
 import downArrow from 'public/downArrow.svg'
 import { Select } from '@components/ui'
-import { AchievementBEType } from './NominationForm'
+import { AchievementBEType } from '.'
 
 type SelectedExamAchievementsProps = {
   achievements: any
@@ -82,7 +82,6 @@ function SelectedExamAchievements({
           <Image src={downArrow} alt="Accordion Icon" />
         </div>
       </div>
-
       {isAccordionOpen && (
         <div className="text-[#757575]">
           <div className="text-[#1B2124] font-bold grid grid-cols-12 py-4 mt-5 border-b-2">
@@ -97,6 +96,7 @@ function SelectedExamAchievements({
             const competitions = groupData['Competition Title'] || []
             const criterias = groupData['Criteria'] || []
             const dropdownArray = groupData['Select Criteria (dropdown)'] || []
+
             return (
               <div
                 key={`${achievement}-${index}`}

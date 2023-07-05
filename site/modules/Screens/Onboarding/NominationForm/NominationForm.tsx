@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SelectedExamAchievements from './SelectedExamAchievements'
-import { AchievementFEType } from '../NominationForm'
+import { AchievementFEType } from '.'
 
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',

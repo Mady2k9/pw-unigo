@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import s from './content-upload.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
@@ -8,7 +8,19 @@ import { TextInput } from '@components/ui'
 
 export interface contentUploadProps {}
 
-const contentUpload: React.FC<contentUploadProps> = (props) => {
+const ContentUpload: React.FC<contentUploadProps> = (props) => {
+  const [file, setFile] = useState<File>()
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0])
+      console.log(e.target.files)
+      handleClick()
+    }
+  }
+  const [upload, setUpload] = useState(true)
+  function handleClick() {
+    setUpload(!upload)
+  }
   return (
     <div className="w-full bg-white overflow-y-scroll">
       <div className=" flex justify-center">
@@ -63,20 +75,75 @@ const contentUpload: React.FC<contentUploadProps> = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
-                <div className="items-center flex flex-col  ">
-                  <img src="/upload.svg" alt="upload icon" />
-                  <div className="w-[107px] h-[32px] mt-[4px]">
-                    <input
-                      type="file"
-                      placeholder="Choose File"
-                      className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                    />
+              <div>
+                {!file ? (
+                  <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
+                    <div className="items-center flex flex-col  ">
+                      <img src="/upload.svg" alt="upload icon" />
+                      <div className="w-[107px] h-[32px] mt-[4px]">
+                        <input
+                          type="file"
+                          placeholder="Choose File"
+                          onChange={handleChange}
+                          className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
+                        />
+                      </div>
+                      <div className="text-[10px] mt-[2px]">
+                        50 KB max file size, JPG or PNG
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-[10px] mt-[2px]">
-                    50 KB max file size, JPG or PNG
+                ) : (
+                  <div className="border-dashed border-[2px] border-[#D2CCFF] bg-[#F9F9FF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
+                    {upload ? (
+                      <div className="flex flex-col items-center ">
+                        <div className=" text-[12px] leading-[18px]">
+                          {file.name}
+                        </div>
+                        <div className="flex justify-between w-[114px] mt-[16px] mb-[8px]">
+                          <div className="w-[74px] h-[32px] relative ">
+                            <div className="z-10 w-full h-full border-[1px]  text-[12px] border-[#5A4BDA] flex rounded-[4px] ">
+                              <div className="m-auto text-[#5A4BDA]">Edit</div>
+                            </div>
+                            <input
+                              type="file"
+                              onChange={handleChange}
+                              className="w-[74px] file:w-[74px] file:h-[32px] h-[32px] absolute top-0 opacity-0"
+                            />
+                          </div>
+                          <div className="w-[32px] h-[32px] bg-[#5A4BDA] flex rounded-[4px]">
+                            <img
+                              src="/eye.svg"
+                              alt="preview logo"
+                              className="h-[20px] w-[20px] m-auto
+                            "
+                            />
+                          </div>
+                        </div>
+                        <div className="text-[10px]">
+                          50 KB max file size, JPG or PNG
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="items-center flex flex-col  ">
+                        <img src="/upload.svg" alt="upload icon" />
+                        <div className="mt-[4px]">
+                          <Button
+                            Component="PW"
+                            postIcon={[]}
+                            preIcon={[]}
+                            size="tiny"
+                            variant="primary"
+                            onClick={handleClick}
+                          >
+                            Upload
+                          </Button>
+                        </div>
+                        <div className="text-[10px] mt-[2px]">{file.name}</div>
+                      </div>
+                    )}
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="w-[328px] h-[208px] p-[12px] bg-white rounded-[4px] my-[4px]">
@@ -347,4 +414,4 @@ const contentUpload: React.FC<contentUploadProps> = (props) => {
   )
 }
 
-export default contentUpload
+export default ContentUpload

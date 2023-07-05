@@ -1,6 +1,6 @@
 import Header from '@modules/Onboarding/components/Header/header'
 import SidebarUpload from '@modules/Onboarding/components/Sidebar/sidebar-upload'
-import ContentUploads from '@modules/Onboarding/components/Content/content-upload'
+import ContentUploads from '@modules/screens/Onboarding/UploadDocuments/content-upload'
 const contentUploads = () => {
   return (
     <>
