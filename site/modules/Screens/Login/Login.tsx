@@ -103,7 +103,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
           </Button>
           <div className="flex mx-auto pt-[25px] gap-8">
             <div className={s.have_acount}>Don’t have an account?</div>
-            <a href="register-now" className={s.register_now}>
+            <a href="/register" className={s.register_now}>
               Register Now
             </a>
           </div>
