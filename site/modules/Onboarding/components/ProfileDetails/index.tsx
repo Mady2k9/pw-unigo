@@ -4,7 +4,7 @@ import Header from '@modules/Onboarding/components/Header/header'
 import Sidebar from '@modules/Onboarding/components/Sidebar/sidebar'
 import Content from '@modules/Onboarding/components/Content/Content'
 import { updateUserProfile } from '@modules/auth/lib'
-import { Cross } from '@components/icons'
+
 export type ProfileType = {
   email: string
   class: string
@@ -63,8 +63,11 @@ const ProfileDetails = () => {
           profileData={profileData}
           setProfileData={setProfileData}
         />
-        {modalShow == true ? 
-          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div> : ''}
+        {modalShow == true ? (
+          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+        ) : (
+          ''
+        )}
         {modalShow === true ? (
           <div className="absolute bg-[#FFFFFF] w-[480px] h-[218px] rounded-lg top-[30%] left-[35%] z-50 text-center ">
             <div className="flex justify-center flex-col m-4">

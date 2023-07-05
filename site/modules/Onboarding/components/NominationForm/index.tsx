@@ -2,6 +2,18 @@ import Header from '@modules/Onboarding/components/Header/header'
 import SidebarNow from '@modules/Onboarding/components/Sidebar/sidebar-now'
 import ContentNow from '@modules/Onboarding/components/Content/NominationForm'
 import { useEffect, useMemo, useState } from 'react'
+import { fetchNomationFormat, postMarvelDataAsDraft } from '@modules/auth/lib'
+
+export type AchievementFEType = {
+  examGroup: string
+  remarks: string
+  achievementName: string
+  criteria: string
+}
+
+export type AchievementBEType = AchievementFEType & {
+  year: string
+}
 
 const NominationForm = () => {
   const [profileData, setProfileData] = useState<any>({
@@ -9,6 +21,11 @@ const NominationForm = () => {
     class: '',
     alternateNumber: '',
   })
+  const [selectedValues, setSelectedValues] = useState<AchievementFEType[]>([])
+  const [nominationsFormat, setNominationsFormat] = useState<any>([])
+  const [isChecked, setIsChecked] = useState(false)
+  const [opcatitylow, setOpacityLow] = useState(false)
+  const [showPopUp, setShowPopUp] = useState(false)
 
   useEffect(() => {
     const user = localStorage.getItem('user')
@@ -21,14 +38,30 @@ const NominationForm = () => {
     return profileData?.firstName || '' + profileData?.lastName
   }, [profileData?.firstName, profileData?.lastName])
 
+  const onValueSelect = (value: AchievementFEType) => {
+    setSelectedValues([...selectedValues, value])
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      const randomId = localStorage.getItem('randomId') || ''
+      const nominationFormatData = await fetchNomationFormat(10, randomId) // TODO class should be dynamic
+      setNominationsFormat(nominationFormatData?.data?.data?.['Exam Category'])
+    })()
+  }, [])
+
   const onSubmit = () => {
     /**
      * MAKE DRAFT API TO SAVE DATA
      */
+    const randomId = localStorage.getItem('randomId') || ''
+    const dataToSend = {
+      nominationDocsInfo: selectedValues,
+    }
+
+    postMarvelDataAsDraft(dataToSend, randomId)
   }
-  const [isChecked, setIsChecked] = useState(false)
-  const [opcatitylow, setOpacityLow] = useState(false)
-  const [showPopUp, setShowPopUp] = useState(false)
+
   const checkboxButton = () => {
     setIsChecked(!isChecked)
   }
@@ -42,13 +75,17 @@ const NominationForm = () => {
       <Header title="Step 2: Nominate Now" onSubmit={onSubmit} />
       <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
         <SidebarNow name={name} phone={profileData?.primaryNumber} />
-        <ContentNow />
-        {opcatitylow === false ? (
+        <ContentNow
+          onValueSelect={onValueSelect}
+          selectedValues={selectedValues}
+          nominationsFormat={nominationsFormat}
+        />
+        {opcatitylow !== false ? (
           <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
         ) : (
           ''
         )}
-        {showPopUp === false ? (
+        {showPopUp !== false ? (
           <div className="absolute bg-[#FFFFFF] w-[882px] h-[332px] rounded-lg top-[20%] left-[20%] z-50 text-center ">
             <div className="flex justify-center flex-col m-4">
               <p className="font-semibold text-[18px] mt-2 mb-6">

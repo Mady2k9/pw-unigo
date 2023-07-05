@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SelectedExamAchievements from './SelectedExamAchievements'
-import { fetchNomationFormat } from '@modules/auth/lib'
-import uuid from 'react-uuid'
+import { AchievementFEType } from '../NominationForm'
 
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',
@@ -10,22 +9,24 @@ const REGSISTARTION_FORM_INSTRUCTION = [
   'After selecting the title of your choice, please click on submit button and your form will be saved.',
 ]
 
-function NominationForm() {
+type NominationFormTypes = {
+  onValueSelect: (value: AchievementFEType) => void
+  selectedValues: AchievementFEType[]
+  nominationsFormat: any
+}
+
+function NominationForm({
+  onValueSelect,
+  selectedValues,
+  nominationsFormat,
+}: NominationFormTypes) {
   // TODO - Remove any and apply proper TS
-  const [nominationsFormat, setNominationsFormat] = useState<any>([])
   const [activeExamCategory, setActiveExamCategory] = useState('')
   const [selectedExamFormatData, setselectedExamFormatData] = useState<any>([])
 
   useEffect(() => {
-    ;(async () => {
-      // TODO class should be dynamic
-      const nominationFormatData = await fetchNomationFormat(10, uuid())
-      setNominationsFormat(nominationFormatData?.data?.data?.['Exam Category'])
-      setActiveExamCategory(
-        Object.keys(nominationFormatData?.data?.data?.['Exam Category'])[0]
-      )
-    })()
-  }, [])
+    setActiveExamCategory(Object.keys(nominationsFormat)[0])
+  }, [nominationsFormat])
 
   const onExamSelect = (examCategory: string) => {
     if (activeExamCategory !== examCategory) {
@@ -74,7 +75,11 @@ function NominationForm() {
                   }
                 )}
               </div>
-              <SelectedExamAchievements achievements={selectedExamFormatData} />
+              <SelectedExamAchievements
+                achievements={selectedExamFormatData}
+                onValueSelect={onValueSelect}
+                selectedValues={selectedValues}
+              />
             </div>
           </div>
         </div>
