@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import s from './header.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
@@ -9,6 +9,7 @@ export interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
+  // const [alert , setAlert] = useState()
   const { title, onSubmit } = props
 
   return (

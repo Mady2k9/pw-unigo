@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './sidebar.module.css'
+import { useRouter } from 'next/router'
 
 export interface sidebarProps {
   name: string
   phone: string
 }
 
-const sidebar: React.FC<sidebarProps> = (props) => {
-  const { name, phone } = props
+const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
+  const router = useRouter()
+  var link = '/nomination-form'
+  const [nominatePageAgain, setNominatePageAgain] = useState(false)
 
+  const goToNominatePage = () => {
+    setNominatePageAgain(true)
+  }
+  const areYouSureGoTonominate = () => {
+    router.push(link)
+  }
+  const stayOnThisPage = () => {
+    setNominatePageAgain(false)
+  }
   return (
     <div className="sm:w-[235px]  flex pt-4 sm:justify-center w-full">
       <div className={s.mainContainer}>
@@ -32,8 +44,10 @@ const sidebar: React.FC<sidebarProps> = (props) => {
                 <span className={s.step_icon_text}>Profile Details</span>
               </div>
             </div>
-
-            <div className="mb-2 sm:text-left text-center">
+            <div
+              className="mb-2 sm:text-left text-center"
+              onClick={goToNominatePage}
+            >
               <span className={s.step_text}>Step 2</span>
               <div className={s.icon_container}>
                 <img className={s.step_img} src="/step_2c.svg" alt="step2" />
@@ -78,6 +92,39 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           </div>
         </div>
       </div>
+      {nominatePageAgain === true ? (
+        <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+      ) : (
+        ''
+      )}
+      {nominatePageAgain === true ? (
+        <div className="absolute bg-[#FFFFFF] w-[480px] h-[212px] rounded-lg top-[30%] left-[40%] z-50 text-center ">
+          <div className="flex justify-center flex-col m-4">
+            <p className="font-bold text-[20px] mt-2 ">
+              Going to previous step?
+            </p>
+            <p className="text-[16px] font-medium mt-6">
+              Are you sure you want to go back without completing this step?{' '}
+            </p>
+          </div>
+          <div className="flex justify-center mt-6 text-[16px] font-semibold">
+            <button
+              onClick={areYouSureGoTonominate}
+              className="w-[208px] h-[48px] border border-[#5A4BDA] rounded text-[#5A4BDA]"
+            >
+              Go to Nomination Form
+            </button>
+            <button
+              onClick={stayOnThisPage}
+              className="w-[208px] h-[48px] ml-6 bg-[#5A4BDA] text-white rounded"
+            >
+              Complete it first
+            </button>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   )
 }

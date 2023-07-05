@@ -4,7 +4,7 @@ import Header from '@modules/Onboarding/components/Header/header'
 import Sidebar from '@modules/Onboarding/components/Sidebar/sidebar'
 import Content from '@modules/Onboarding/components/Content/Content'
 import { updateUserProfile } from '@modules/auth/lib'
-
+import { Cross } from '@components/icons'
 export type ProfileType = {
   email: string
   class: string
@@ -27,19 +27,26 @@ const ProfileDetails = () => {
     }
   }, [])
 
-  const onSubmit = async () => {
+  const [modalShow, setModalShow] = useState(false)
+  const onSubmit = () => {
+    setModalShow(true)
+  }
+  const dataSendHandler = async () => {
     const dataToSend = {
       email: profileData.email,
       class: profileData.class,
       alternateNumber: profileData.alternateNumber,
       centerName: 'Others',
     }
-
     const randomId = localStorage.getItem('randomId') || ''
     const res = await updateUserProfile(dataToSend, randomId)
+    //console.log(res)
     if (res) {
-      router.push('')
+      router.push('/nomination-form')
     }
+  }
+  const backHandler = () => {
+    setModalShow(false)
   }
 
   const name = useMemo(() => {
@@ -56,6 +63,37 @@ const ProfileDetails = () => {
           profileData={profileData}
           setProfileData={setProfileData}
         />
+        {modalShow == true ? 
+          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div> : ''}
+        {modalShow === true ? (
+          <div className="absolute bg-[#FFFFFF] w-[480px] h-[218px] rounded-lg top-[30%] left-[35%] z-50 text-center ">
+            <div className="flex justify-center flex-col m-4">
+              <p className="font-bold text-[20px] ">
+                Are you sure you want to submit
+              </p>
+              <p className="mb-6 font-bold text-[20px]">Profile details</p>
+              <p className="text-[16px]">
+                Class is not editable once filled and submitted
+              </p>
+            </div>
+            <div className="flex justify-center mt-6 text-[16px] font-[600px]">
+              <button
+                onClick={backHandler}
+                className="w-[208px] h-[48px] border border-[#5A4BDA] rounded text-[#5A4BDA]"
+              >
+                No
+              </button>
+              <button
+                onClick={dataSendHandler}
+                className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </>
   )
