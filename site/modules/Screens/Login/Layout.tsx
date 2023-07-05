@@ -1,4 +1,4 @@
-import s from '@modules/auth/components/components.module.css' // TODO - Changes module to tailwind
+import s from '@modules/screens/components.module.css' // TODO - Changes module to tailwind
 
 type LayoutProps = {
   children: React.ReactNode

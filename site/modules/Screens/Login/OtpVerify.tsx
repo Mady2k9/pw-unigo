@@ -6,7 +6,7 @@ import { isOTPValid } from '@lib/validations'
 import OtpInput from 'react-otp-input'
 import s from '@styles/auth/auth.module.css'
 import { useRouter } from 'next/router'
-import p from '@modules/auth/components/components.module.css' // TODO - Changes module to tailwind
+import p from '@modules/screens/components.module.css' // TODO - Changes module to tailwind
 //import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from '@modules/screens/Login/Layout'
 
