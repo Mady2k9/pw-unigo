@@ -51,8 +51,6 @@ const ProfileDetails = () => {
   return (
     <Layout
       header={<Header title="Step 1: Profile Details" onSubmit={toggleModal} />}
-      name={name}
-      phone={profileData?.primaryNumber}
     >
       <ProfileForm
         name={name}

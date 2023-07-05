@@ -1,14 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
-import s from './content-upload.module.css'
-import Image from 'next/image'
-import { Button, Typography } from '@components/ui'
-import Container from '@components/ui/Container/Container'
-import { Select } from '@components/ui'
-import { TextInput } from '@components/ui'
+import { Button } from '@components/ui'
 
-export interface contentUploadProps {}
-
-const ContentUpload: React.FC<contentUploadProps> = (props) => {
+const DocumentsSection: React.FC = (props) => {
   const [file, setFile] = useState<File>()
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -414,4 +407,4 @@ const ContentUpload: React.FC<contentUploadProps> = (props) => {
   )
 }
 
-export default ContentUpload
+export default DocumentsSection

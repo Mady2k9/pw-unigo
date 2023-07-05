@@ -6,6 +6,7 @@ import Layout from '../Layout'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import { Button } from '@components/ui'
+import { useRouter } from 'next/router'
 
 export type AchievementFEType = {
   examGroup: string
@@ -28,29 +29,14 @@ const TERMS_AND_CONDITIONS = [
 ]
 
 const NominationFormScreen = () => {
-  const [profileData, setProfileData] = useState<any>({
-    email: '',
-    class: '',
-    alternateNumber: '',
-  })
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [selectedValues, setSelectedValues] = useState<AchievementFEType[]>([])
   const [nominationsFormat, setNominationsFormat] = useState<any>([])
   const [isChecked, setIsChecked] = useState(false)
-
-  // HOOKS
-  useEffect(() => {
-    const user = localStorage.getItem('user')
-    if (typeof user === 'string') {
-      setProfileData(JSON.parse(user))
-    }
-  }, [])
-
-  const name = useMemo(() => {
-    return profileData?.firstName || '' + profileData?.lastName
-  }, [profileData?.firstName, profileData?.lastName])
+  const { push } = useRouter()
 
   useEffect(() => {
+    // TODO Check why this is calling twice
     ;(async () => {
       const randomId = localStorage.getItem('randomId') || ''
       const nominationFormatData = await fetchNomationFormat(10, randomId) // TODO class should be dynamic
@@ -63,12 +49,17 @@ const NominationFormScreen = () => {
     setSelectedValues([...selectedValues, value])
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
       nominationDocsInfo: selectedValues,
     }
-    postMarvelDataAsDraft(dataToSend, randomId)
+
+    const res = await postMarvelDataAsDraft(dataToSend, randomId)
+
+    if (res) {
+      push('/upload-document')
+    }
   }
 
   const checkboxButton = () => {
@@ -82,8 +73,6 @@ const NominationFormScreen = () => {
   return (
     <Layout
       header={<Header title="Step 2: Nominate Now" onSubmit={onSubmit} />}
-      name={name}
-      phone={profileData?.primaryNumber}
     >
       <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
         <NominationForm

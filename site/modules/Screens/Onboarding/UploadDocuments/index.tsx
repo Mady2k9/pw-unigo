@@ -1,9 +1,9 @@
 import Header from '@modules/screens/Onboarding/components/Header'
-import SidebarNow from '@modules/screens/Onboarding/components/Sidebar'
-import ContentNow from '@modules/screens/Onboarding/components/Content/NominationForm'
+import DocumentsSection from '@modules/screens/Onboarding/UploadDocuments/DocumentsSection'
 import { useEffect, useMemo, useState } from 'react'
+import Layout from '../Layout'
 
-const NominationForm = () => {
+const UploadDocumentsScreen = () => {
   const [profileData, setProfileData] = useState<any>({
     email: '',
     class: '',
@@ -28,14 +28,12 @@ const NominationForm = () => {
   }
 
   return (
-    <>
-      <Header title="Step 2: Nominate Now" onSubmit={onSubmit} />
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
-        <SidebarNow name={name} phone={profileData?.primaryNumber} />
-        <ContentNow></ContentNow>
-      </div>
-    </>
+    <Layout
+      header={<Header title="Step 2: Nominate Now" onSubmit={onSubmit} />}
+    >
+      <DocumentsSection />
+    </Layout>
   )
 }
 
-export default NominationForm
+export default UploadDocumentsScreen
