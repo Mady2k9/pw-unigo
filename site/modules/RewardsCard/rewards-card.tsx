@@ -61,7 +61,8 @@ const RewardsCards: React.FC<RewardsCardsProps> = (props) => {
             </div>
             <div className={s.card_heading}>Cash Prize</div>
             <div className={s.card_subheading}>
-              Students will be awarded with a cash prize up to 2 lakhs
+              Students will be awarded with a cash
+              <br className="sm:hidden lg:block" /> prize up to 2 lakhs
             </div>
           </div>
           <div className={s.card}>
@@ -76,7 +77,9 @@ const RewardsCards: React.FC<RewardsCardsProps> = (props) => {
             </div>
             <div className={s.card_heading}>Medals</div>
             <div className={s.card_subheading}>
-              Students will be awarded with 24K original Gold medal Up to 10 Gms
+              Students will be awarded with 24K
+              <br className="sm:hidden lg:block" /> original Gold medal Up to 10
+              Gms
             </div>
           </div>
           <div className={s.card}>
