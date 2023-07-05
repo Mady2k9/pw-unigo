@@ -3,7 +3,7 @@ import Header from '@components/common/Header/Header'
 import Breadcrumb from '../modules/Breadcrumb'
 import Achiever from '../modules/Achiever'
 import Recognise from '../modules/Recognise'
-const items = [{ name: 'About Us', url: '/' }]
+const items = [{ name: 'About PW Marvels', url: '/' }]
 
 const About = () => {
   return (
