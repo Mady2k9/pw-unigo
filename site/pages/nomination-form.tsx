@@ -1,4 +1,4 @@
-import NominationForm from '@modules/Onboarding/components/NominationForm'
+import NominationForm from '@modules/screens/Onboarding/NominationForm'
 
 const profileDetails = () => <NominationForm />
 

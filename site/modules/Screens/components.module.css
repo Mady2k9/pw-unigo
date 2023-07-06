@@ -1,0 +1,77 @@
+.login_left_heading {
+  position: relative;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 600;
+  color: #1b2124;
+}
+
+.login_left_subheading {
+  font-size: 16px;
+  line-height: 24px;
+  color: #3d3d3d;
+  margin-top: 16px;
+}
+
+.login_right_heading {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 500;
+  color: #1b2124;
+}
+
+.login_right_subheading {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  color: #3d3d3d;
+}
+
+.register_now {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #0592cb;
+}
+
+.have_acount {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #757575;
+}
+
+.login_otp_heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: #333333;
+}
+.login_otp_subheading {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #5f5f5f;
+}
+.login_otp_change {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration-line: underline;
+  color: #584cd2;
+  margin-top: 8px;
+}
+.warning {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #c5292a;
+}
+.shine_stars {
+  position: absolute;
+  height: 160px;
+  top: -95px;
+}

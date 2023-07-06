@@ -1,23 +1,30 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Header from '@modules/Onboarding/components/Header/header'
-import Sidebar from '@modules/Onboarding/components/Sidebar/sidebar'
-import Content from '@modules/Onboarding/components/Content/Content'
+import ProfileForm from '@modules/screens/Onboarding/ProfileDetails/ProfileForm'
 import { updateUserProfile } from '@modules/auth/lib'
+<<<<<<< HEAD:site/modules/Onboarding/components/ProfileDetails/index.tsx
 import CrossIcon from 'public/Cross-icon.svg'
 export type ProfileType = {
   email: string
   class: string
   alternateNumber: string
 }
+=======
+import Layout from '../Layout'
+import { Dialog } from '@headlessui/react'
+import { Cross } from '@components/icons'
+>>>>>>> 872896ef2116c9863532c972b188ff529250b176:site/modules/Screens/Onboarding/ProfileDetails/index.tsx
 
 const ProfileDetails = () => {
   // TODO REMOVE any for the Profile type
-  const [profileData, setProfileData] = useState<ProfileType | any>({
+  // HOOKS
+  const [profileData, setProfileData] = useState<any>({
     email: '',
     class: '',
     alternateNumber: '',
   })
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -27,11 +34,12 @@ const ProfileDetails = () => {
     }
   }, [])
 
-  const [modalShow, setModalShow] = useState(false)
-  const onSubmit = () => {
-    setModalShow(true)
-  }
-  const dataSendHandler = async () => {
+  const name = useMemo(() => {
+    return profileData?.firstName || '' + profileData?.lastName
+  }, [profileData?.firstName, profileData?.lastName])
+
+  // FUNCTIONS
+  const onSubmit = async () => {
     const dataToSend = {
       email: profileData.email,
       class: profileData.class,
@@ -40,20 +48,17 @@ const ProfileDetails = () => {
     }
     const randomId = localStorage.getItem('randomId') || ''
     const res = await updateUserProfile(dataToSend, randomId)
-    //console.log(res)
     if (res) {
       router.push('/nomination-form')
     }
   }
-  const backHandler = () => {
-    setModalShow(false)
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen)
   }
 
-  const name = useMemo(() => {
-    return profileData?.firstName || '' + profileData?.lastName
-  }, [profileData?.firstName, profileData?.lastName])
-
   return (
+<<<<<<< HEAD:site/modules/Onboarding/components/ProfileDetails/index.tsx
     <>
       <Header title="Step 1: Profile Details" onSubmit={onSubmit} />
       <div className=" left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
@@ -70,6 +75,31 @@ const ProfileDetails = () => {
         )}
         {modalShow === true ? (
           <div className="absolute bg-[#FFFFFF] w-[480px] h-[218px] rounded-lg top-[30%] left-[35%] z-50 text-center ">
+=======
+    <Layout
+      header={<Header title="Step 1: Profile Details" onSubmit={toggleModal} />}
+    >
+      <ProfileForm
+        name={name}
+        profileData={profileData}
+        setProfileData={setProfileData}
+        registrationDate="12th May[DUMMY_DATA]"
+      />
+      <Dialog
+        className={'relative z-[999999]'}
+        open={isModalOpen}
+        onClose={toggleModal}
+      >
+        <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
+        <div className="fixed inset-0 flex items-center justify-center p-4 ">
+          <Dialog.Panel className="mx-auto w-full max-w-3xl rounded-xl bg-white ring-1 transition-all p-5 relative">
+            <div
+              className="cursor-pointer absolute top-4 right-4"
+              onClick={toggleModal}
+            >
+              <Cross className="h-6 w-6" />
+            </div>
+>>>>>>> 872896ef2116c9863532c972b188ff529250b176:site/modules/Screens/Onboarding/ProfileDetails/index.tsx
             <div className="flex justify-center flex-col m-4">
               <p className="font-bold text-[20px] ">
                 Are you sure you want to submit
@@ -81,24 +111,22 @@ const ProfileDetails = () => {
             </div>
             <div className="flex justify-center mt-6 text-[16px] font-[600px]">
               <button
-                onClick={backHandler}
+                onClick={toggleModal}
                 className="w-[208px] h-[48px] border border-[#5A4BDA] rounded text-[#5A4BDA]"
               >
                 No
               </button>
               <button
-                onClick={dataSendHandler}
+                onClick={onSubmit}
                 className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded"
               >
                 Yes
               </button>
             </div>
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
-    </>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
+    </Layout>
   )
 }
 

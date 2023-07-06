@@ -1,4 +1,4 @@
-import { Login } from '@modules/Screens'
+import { Login } from '@modules/screens'
 
 export default function LoginPage() {
   return <Login />
