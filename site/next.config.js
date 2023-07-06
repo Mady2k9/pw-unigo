@@ -10,4 +10,12 @@ module.exports = {
     ],
     domains: [],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/about-us',
+        destination: '/about',
+      },
+    ]
+  },
 }
