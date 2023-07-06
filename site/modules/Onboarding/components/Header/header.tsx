@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import s from './header.module.css'
 import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
@@ -9,11 +9,12 @@ export interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
+  // const [alert , setAlert] = useState()
   const { title, onSubmit } = props
 
   return (
     <>
-      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex">
+      <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-20 shadow-lg flex ">
         <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
           <a href="/" className="my-auto sm:ps-0 ps-2">
             <div className="flex items-center">

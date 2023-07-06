@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Typography } from '@components/ui'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
-function importantNoticeData() {
+function ImportantNoticeData() {
   const [closeNotice, setCloseNotice] = useState(true)
   const closeButton = () => {
     setCloseNotice(!closeNotice)
@@ -67,4 +67,4 @@ function importantNoticeData() {
   )
 }
 
-export default importantNoticeData
+export default ImportantNoticeData
