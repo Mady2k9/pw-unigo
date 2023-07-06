@@ -1,5 +1,5 @@
 import React from 'react'
-import s from '@modules/Onboarding/components/Content/content.module.css'
+import s from '@modules/screens/components.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
@@ -27,7 +27,7 @@ const Content: React.FC<contentProps> = (props) => {
             <div className={s.left_section_text}>Registration Date:</div>
             <div className={s.right_section_text}>{registrationDate}</div>
           </div>
-          <div className="w-full  px-3 py-4  flex  lg:rounded-xl bg-[#F8F8F8] md:bg-white items-center ">
+          <div className="w-full  px-3 py-4 flex lg:rounded-xl bg-[#F8F8F8] md:bg-white items-center ">
             <div className=" text-base md:text-lg font-bold ">
               Personal Information
             </div>

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import Header from '@modules/Onboarding/components/Header/header'
+import { Header } from '@modules/screens/Onboarding/components'
 import ProfileForm from '@modules/screens/Onboarding/ProfileDetails/ProfileForm'
 import { updateUserProfile } from '@modules/auth/lib'
 import Layout from '../Layout'
