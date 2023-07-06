@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Sidebar } from '../components'
+import { Sidebar } from '../Components'
 
 type LayoutProps = {
   children: React.ReactNode

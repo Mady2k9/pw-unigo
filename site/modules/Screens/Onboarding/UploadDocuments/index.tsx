@@ -1,5 +1,5 @@
-import { Header } from '@modules/screens/Onboarding/components'
-import DocumentsSection from '@modules/screens/Onboarding/UploadDocuments/DocumentsSection'
+import { Header } from '@modules/Screens/Onboarding/Components'
+import DocumentsSection from '@modules/Screens/Onboarding/UploadDocuments/DocumentsSection'
 import Layout from '../Layout'
 
 const UploadDocumentsScreen = () => {

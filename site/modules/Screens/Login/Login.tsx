@@ -4,7 +4,7 @@ import { useAuth } from '@lib/hooks/useAuth'
 import { isNameValid, isPhoneValid } from '@lib/validations'
 import { TextInput } from '@components/ui/Input'
 import { useRouter } from 'next/router'
-import s from '@modules/screens/components.module.css' // TODO - Changes module to tailwind
+import s from '@modules/Screens/components.module.css' // TODO - Changes module to tailwind
 //import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from './Layout'
 

@@ -1,5 +1,5 @@
-import { Header } from '@modules/screens/Onboarding/components'
-import NominationForm from '@modules/screens/Onboarding/NominationForm/NominationForm'
+import { Header } from '@modules/Screens/Onboarding/Components'
+import NominationForm from '@modules/Screens/Onboarding/NominationForm/NominationForm'
 import { useEffect, useMemo, useState } from 'react'
 import { fetchNomationFormat, postMarvelDataAsDraft } from '@modules/auth/lib'
 import Layout from '../Layout'
@@ -85,20 +85,14 @@ const NominationFormScreen = () => {
           open={isModalOpen}
           onClose={toggleModal}
         >
-          <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
+          <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
           <div className="fixed inset-0 flex items-center justify-center p-4 ">
-            <Dialog.Panel className="mx-auto w-full max-w-3xl rounded-xl bg-white ring-1 transition-all p-5 relative">
-              <div
-                className="cursor-pointer absolute top-4 right-4"
-                onClick={toggleModal}
-              >
-                <Cross className="h-6 w-6" />
-              </div>
-              <div className="flex justify-center flex-col m-4">
-                <p className="font-semibold text-[18px] mt-2 mb-4">
+            <Dialog.Panel className="mx-auto w-full max-w-4xl rounded-xl shadow-xl bg-white ring-1 transition-all p-5  relative">
+              <div className=" m-4">
+                <p className="font-semibold text-[18px] mt-2 mb-4 text-center">
                   Nomination Terms and Conditions
                 </p>
-                <ul className="list-disc text-[14px]">
+                <ul className="list-disc text-[14px] px-12">
                   {TERMS_AND_CONDITIONS.map((termsConditions, index) => (
                     <li key={`terms-conditions-${index}`}>{termsConditions}</li>
                   ))}

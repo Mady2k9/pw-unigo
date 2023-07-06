@@ -1,5 +1,5 @@
 import React from 'react'
-import s from '@modules/Onboarding/components/Content/content.module.css'
+import s from '@modules/Screens/content.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'

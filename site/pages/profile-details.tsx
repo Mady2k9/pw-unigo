@@ -1,4 +1,4 @@
-import ProfileView from '@modules/screens/Onboarding/ProfileDetails'
+import ProfileView from '@modules/Screens/Onboarding/ProfileDetails'
 
 const ProfileDetails = () => <ProfileView />
 

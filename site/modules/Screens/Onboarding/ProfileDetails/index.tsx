@@ -1,20 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Header from '@modules/Onboarding/components/Header/header'
-import ProfileForm from '@modules/screens/Onboarding/ProfileDetails/ProfileForm'
+import ProfileForm from '@modules/Screens/Onboarding/ProfileDetails/ProfileForm'
 import { updateUserProfile } from '@modules/auth/lib'
-<<<<<<< HEAD:site/modules/Onboarding/components/ProfileDetails/index.tsx
-import CrossIcon from 'public/Cross-icon.svg'
-export type ProfileType = {
-  email: string
-  class: string
-  alternateNumber: string
-}
-=======
 import Layout from '../Layout'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
->>>>>>> 872896ef2116c9863532c972b188ff529250b176:site/modules/Screens/Onboarding/ProfileDetails/index.tsx
 
 const ProfileDetails = () => {
   // TODO REMOVE any for the Profile type
@@ -58,24 +49,6 @@ const ProfileDetails = () => {
   }
 
   return (
-<<<<<<< HEAD:site/modules/Onboarding/components/ProfileDetails/index.tsx
-    <>
-      <Header title="Step 1: Profile Details" onSubmit={onSubmit} />
-      <div className=" left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
-        <Sidebar name={name} phone={profileData?.primaryNumber} />
-        <Content
-          name={name}
-          profileData={profileData}
-          setProfileData={setProfileData}
-        />
-        {modalShow == true ? (
-          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
-        ) : (
-          ''
-        )}
-        {modalShow === true ? (
-          <div className="absolute bg-[#FFFFFF] w-[480px] h-[218px] rounded-lg top-[30%] left-[35%] z-50 text-center ">
-=======
     <Layout
       header={<Header title="Step 1: Profile Details" onSubmit={toggleModal} />}
     >
@@ -90,17 +63,16 @@ const ProfileDetails = () => {
         open={isModalOpen}
         onClose={toggleModal}
       >
-        <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
+        <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4 ">
-          <Dialog.Panel className="mx-auto w-full max-w-3xl rounded-xl bg-white ring-1 transition-all p-5 relative">
+          <Dialog.Panel className="mx-auto w-full max-w-md rounded-xl bg-white ring-1 transition-all p-5 relative">
             <div
               className="cursor-pointer absolute top-4 right-4"
               onClick={toggleModal}
             >
               <Cross className="h-6 w-6" />
             </div>
->>>>>>> 872896ef2116c9863532c972b188ff529250b176:site/modules/Screens/Onboarding/ProfileDetails/index.tsx
-            <div className="flex justify-center flex-col m-4">
+            <div className="text-center m-2">
               <p className="font-bold text-[20px] ">
                 Are you sure you want to submit
               </p>
@@ -112,13 +84,13 @@ const ProfileDetails = () => {
             <div className="flex justify-center mt-6 text-[16px] font-[600px]">
               <button
                 onClick={toggleModal}
-                className="w-[208px] h-[48px] border border-[#5A4BDA] rounded text-[#5A4BDA]"
+                className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
               >
                 No
               </button>
               <button
                 onClick={onSubmit}
-                className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded"
+                className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
               >
                 Yes
               </button>

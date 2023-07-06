@@ -1,4 +1,4 @@
-import UploadDocumentsScreen from '@modules/screens/Onboarding/UploadDocuments'
+import UploadDocumentsScreen from '@modules/Screens/Onboarding/UploadDocuments'
 
 const UploadDocuments = () => <UploadDocumentsScreen />
 
