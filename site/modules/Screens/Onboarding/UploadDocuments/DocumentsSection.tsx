@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useState } from 'react'
-import { Button } from '@components/ui'
-import { uploadFile } from '@modules/auth/lib'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import FileUploadBox from './FileUploadBox'
+import { getDraftData } from '@modules/auth/lib'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
@@ -9,406 +9,184 @@ const INSRUCTIONS = [
   'Upload supporting documents i.e. certificate in front of exams selected.',
 ]
 
-const DocumentsSection: React.FC = (props) => {
-  const [files, setFiles] = useState<FileList>()
-  const [upload, setUpload] = useState(false)
+export type UploadedFileResponse = {
+  baseUrl: string
+  createdAt: string
+  key: string
+  name: string
+  _id: string
+}
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(e.target.files)
-    }
-  }
-  async function handleClick() {
-    /**
-     * Make Upload API call here
-     */
+type DocumentsSectionProps = {
+  onNominationDocumentUpload: (data: any) => void
+  onStudentDocUpload: (key: string, value: string) => void
+}
 
-    const formData = new FormData()
-    for (let file in files) {
-      if (files.hasOwnProperty(file)) {
-        formData.append('file', files[file as any])
-      } else {
-        break
+const DocumentsSection: React.FC<DocumentsSectionProps> = ({
+  onNominationDocumentUpload,
+  onStudentDocUpload,
+}) => {
+  const [draftData, setdraftData] = useState<any>([])
+
+  useEffect(() => {
+    ;(async () => {
+      const randomId = localStorage.getItem('randomId') || ''
+      const { data } = await getDraftData(randomId)
+      if (data.success) {
+        setdraftData(data.data)
       }
-    }
-    const randomId = localStorage.getItem('randomId') || ''
+    })()
+  }, [])
 
-    const res = await uploadFile(formData, randomId)
-    console.log(res)
+  const onNominationDocsSuccess = (res: UploadedFileResponse, data: any) => {
+    onNominationDocumentUpload({
+      achivementId: res._id,
+      ...data,
+    })
   }
 
   return (
-    <div className="w-full bg-white overflow-y-scroll">
-      <div className=" flex justify-center">
-        <div className="md:bg-[#F8F8F8] w-full md:w-[90%] lg:w-[85%] h-fit  rounded-b-xl lg:p-3 items-center relative">
-          <div className="bg-white rounded-[8px] px-[8px] sm:px-[24px] py-[12px]">
-            <div className="text-[16px] font-semibold mb-2">
-              Instructions for Upload Document:
-            </div>
-            <ol className="bg-white list-disc px-[12px]">
-              {INSRUCTIONS.map((intruction, index) => (
-                <li key={`instructions-${index}`}>{intruction}</li>
-              ))}
-            </ol>
+    <div className="bg-white w-full">
+      <div className="bg-[#F8F8F8] w-[90%] items-center relative mx-auto p-10">
+        <div className="bg-white rounded-md p-6">
+          <div className="text-base font-semibold mb-2">
+            Instructions for Upload Document:
           </div>
-          <div className="bg-[#F8F8F8] sm:py-[12px] ">
-            <div className="pt-6 flex sm:rounded-[8px] sm:bg-white bg-[#F8F8F8] px-[16px] py-[8px] lg:p-[16px]">
-              <div className="mr-[2px] text-[16px] font-bold">
-                Student Documents
+          <ol className="list-disc px-3">
+            {INSRUCTIONS.map((intruction, index) => (
+              <li key={`instructions-${index}`}>{intruction}</li>
+            ))}
+          </ol>
+        </div>
+        <div className="p-6 flex rounded-md bg-white my-4">
+          <div className="text-base font-bold">Student Documents</div>
+          <div className="text-[#BF2734] pt-1 text-xs ml-1">
+            (*Mandatory Fields)
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-8">
+          <div className="p-6 col-span-1 bg-white rounded-md">
+            <div className="flex items-center">
+              <div className="bg-[#FFF6E5] p-2 rounded-md">
+                <img src="/profile-picture.svg" alt="profile icon" />
               </div>
-              <div className="text-[#BF2734] pt-1 text-[12px] ml-1">
-                (*Mandatory Fields)
+              <div className="ml-2">
+                <div className="text-sm md:text-base font-semibold">
+                  Student Passport size photo
+                </div>
+                <div className="text-xs sm:text-sm">
+                  Upload your photo here...
+                </div>
+              </div>
+            </div>
+            <FileUploadBox
+              fileHelperText={'50 KB max file size, JPG or PNG'}
+              onUploadSucces={(res: UploadedFileResponse) =>
+                onStudentDocUpload('passportPhoto', res._id)
+              }
+              wrapperClass="mt-6"
+            />
+          </div>
+          <div className="p-6 col-span-1 bg-white rounded-md">
+            <div className="flex items-center">
+              <div className="bg-[#FFF6E5] p-3 rounded-md">
+                <img src="/adhar_icon.svg" alt="profile icon" />
+              </div>
+              <div className="ml-2">
+                <div className="text-sm sm:text-base font-semibold">
+                  Student Adhar card
+                </div>
+                <div className="text-xs sm:text-sm">
+                  Upload Adhar Card (Front & Back)
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="col-span-1">
+                <FileUploadBox
+                  fileHelperText={'50 KB max file size, JPG or PNG'}
+                  onUploadSucces={(res: UploadedFileResponse) =>
+                    onStudentDocUpload('adhaarInfo.adhaarFrontPage', res._id)
+                  }
+                  wrapperClass="mt-6"
+                  aadharText="Front"
+                />
+              </div>
+              <div className="col-span-1">
+                <FileUploadBox
+                  fileHelperText={'50 KB max file size, JPG or PNG'}
+                  onUploadSucces={(res: UploadedFileResponse) =>
+                    onStudentDocUpload('adhaarInfo.adhaarBackPage', res._id)
+                  }
+                  wrapperClass="mt-6"
+                  aadharText="Back"
+                />
               </div>
             </div>
           </div>
-
-          <div className="grid grid-cols-3 py-[12px] gap-8">
-            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
-              <div className="flex items-center">
-                <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
-                  <img src="/profile-picture.svg" alt="profile icon" />
-                </div>
-                <div className="ml-2">
-                  <div className="text-[14px] sm:text-[16px] font-semibold">
-                    Student Passport size photo
-                  </div>
-                  <div className="text-[12px] sm:text-[14px] font-[400]">
-                    Upload your photo here...
-                  </div>
-                </div>
+          <div className="p-6 col-span-1 bg-white rounded-md">
+            <div className="flex items-center">
+              <div className="bg-[#FFF6E5] p-2 rounded-md">
+                <img src="/report_icon.svg" alt="profile icon" />
               </div>
-              <div>
-                {!files ? (
-                  <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
-                    <div className="items-center flex flex-col  ">
-                      <img src="/upload.svg" alt="upload icon" />
-                      <div className="w-[107px] h-[32px] mt-[4px]">
-                        <input
-                          type="file"
-                          placeholder="Choose File"
-                          onChange={handleChange}
-                          className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] cursor-pointer file:bg-white"
-                        />
-                      </div>
-                      <div className="text-[10px] mt-[2px]">
-                        50 KB max file size, JPG or PNG
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="border-dashed border-[2px] border-[#D2CCFF] bg-[#F9F9FF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
-                    {upload ? (
-                      <div className="flex flex-col items-center ">
-                        <div className=" text-[12px] leading-[18px]">
-                          {files[0].name}
-                        </div>
-                        <div className="flex justify-between w-[114px] mt-[16px] mb-[8px]">
-                          <div className="w-[74px] h-[32px] relative ">
-                            <div className="z-10 w-full h-full border-[1px]  text-[12px] border-[#5A4BDA] flex rounded-[4px] ">
-                              <div className="m-auto text-[#5A4BDA]">Edit</div>
-                            </div>
-                            <input
-                              type="file"
-                              onChange={handleChange}
-                              className="w-[74px] file:w-[74px] file:h-[32px] h-[32px] absolute top-0 opacity-0"
-                            />
-                          </div>
-                          <div className="w-[32px] h-[32px] bg-[#5A4BDA] flex rounded-[4px]">
-                            <img
-                              src="/eye.svg"
-                              alt="preview logo"
-                              className="h-[20px] w-[20px] m-auto
-                            "
-                            />
-                          </div>
-                        </div>
-                        <div className="text-[10px]">
-                          50 KB max file size, JPG or PNG
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="items-center flex flex-col  ">
-                        <img src="/upload.svg" alt="upload icon" />
-                        <div className="mt-[4px]">
-                          <Button
-                            Component="PW"
-                            size="tiny"
-                            variant="primary"
-                            onClick={handleClick}
-                          >
-                            Upload
-                          </Button>
-                        </div>
-                        <div className="text-[10px] mt-[2px]">
-                          {files[0].name}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
-              <div className=" flex items-center">
-                <div className="bg-[#FFF6E5] px-[6px] py-[9px] h-[32px] w-[32px] rounded-lg">
-                  <img src="/adhar_icon.svg" alt="profile icon" />
+              <div className="ml-2">
+                <div className="text-sm sm:text-base font-semibold">
+                  Student latest Report card
                 </div>
-                <div>
-                  <div className="text-[14px] sm:text-[16px] font-semibold">
-                    Student Adhar card
-                  </div>
-                  <div className="text-[12px] sm:text-[14px] font-[400]">
-                    Upload Adhar Card (Front & Back)
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-between">
-                <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px]  w-[147px] p-[4px] ">
-                  <div className="items-center flex flex-col  ">
-                    <div className="text-[12px] text-right z-10 w-full">
-                      Front
-                    </div>
-                    <img src="/upload.svg" alt="upload icon" />
-                    <div className="w-[107px] h-[32px] mt-[4px]">
-                      <input
-                        type="file"
-                        placeholder="Choose File"
-                        className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                      />
-                    </div>
-                    <div className="text-[10px] mt-[2px] text-center px-[16px]">
-                      200 KB max file size JPG, PNG or Pdf
-                    </div>
-                  </div>
-                </div>
-                <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px]  w-[147px] p-[4px]">
-                  <div className="items-center flex flex-col ">
-                    <div className="text-[12px] text-right z-10 w-full">
-                      Back
-                    </div>
-                    <img src="/upload.svg" alt="upload icon" />
-                    <div className="w-[107px] h-[32px] mt-[4px]">
-                      <input
-                        type="file"
-                        placeholder="Choose File"
-                        className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                      />
-                    </div>
-                    <div className="text-[10px] mt-[2px] text-center px-[16px]">
-                      200 KB max file size JPG, PNG or Pdf
-                    </div>
-                  </div>
+                <div className="text-xs sm:text-sm">
+                  Upload all pages of your report card
                 </div>
               </div>
             </div>
-            <div className="p-3 px-6 col-span-1 bg-white rounded-md">
-              <div className="flex items-center">
-                <div className="bg-[#FFF6E5] m-[4px] p-[4px] h-[32px] w-[32px] rounded-lg">
-                  <img src="/report_icon.svg" alt="profile icon" />
-                </div>
-                <div>
-                  <div className="text-[14px] sm:text-[16px] font-semibold">
-                    Student latest Report card
-                  </div>
-                  <div className="text-[12px] sm:text-[14px] font-[400]">
-                    Upload all pages of your report card
-                  </div>
-                </div>
-              </div>
-              <div className="border-dashed border-[2px] border-[#D2CCFF] rounded-[8px] mt-[4px] px-[65px] py-[22px] ">
-                <div className="items-center flex flex-col  ">
-                  <img src="/upload.svg" alt="upload icon" />
-                  <div className="w-[107px] h-[32px] mt-[4px]">
-                    <input
-                      type="file"
-                      placeholder="Choose File"
-                      className="file:border-[1px] file:border-[#5A4BDA] file:m-auto w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
+            <FileUploadBox
+              fileHelperText={'50 KB max file size, JPG or PNG'}
+              onUploadSucces={(res: UploadedFileResponse) =>
+                onStudentDocUpload('reportCard', res._id)
+              }
+              wrapperClass="mt-6"
+            />
+          </div>
+        </div>
+        <div className="flex rounded-md bg-white p-6 my-6 items-center">
+          <div className="mr-2 text-base font-bold">Nomination Documents</div>
+          <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
+        </div>
+        <div className="bg-white w-full divide-y">
+          <div className="grid grid-cols-12 font-bold p-6 py-3">
+            <div className="col-span-1">S. no.</div>
+            <div className="col-span-2">Nomination year</div>
+            <div className="col-span-1">Exam Group</div>
+            <div className="col-span-2">Competition title</div>
+            <div className="col-span-2">Remarks</div>
+            <div className="col-span-2">Criteria</div>
+            <div className="col-span-2">Upload document</div>
+          </div>
+          {draftData &&
+            draftData.nominationDocsInfo?.map((data: any, index: number) => {
+              const { criteria, examGroup, remarks, year } = data
+              return (
+                <div
+                  className="grid grid-cols-12 p-6 py-3 text-[#757575]"
+                  key={criteria}
+                >
+                  <div className="col-span-1 my-auto">{index + 1}</div>
+                  <div className="col-span-2 my-auto">{year}</div>
+                  <div className="col-span-1 my-auto">{examGroup}</div>
+                  <div className="col-span-2 my-auto">Competition title</div>
+                  <div className="col-span-2 my-auto">{remarks}</div>
+                  <div className="col-span-2 my-auto">{criteria}</div>
+                  <div className="col-span-2 my-auto">
+                    <FileUploadBox
+                      fileHelperText={'50 KB max file size, JPG or PNG'}
+                      onUploadSucces={(response: UploadedFileResponse) =>
+                        onNominationDocsSuccess(response, data)
+                      }
+                      wrapperClass="mt-6"
                     />
                   </div>
-                  <div className="text-[10px] mt-[2px]">
-                    200 KB max file size, Pdf only
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* thrid div */}
-          {/* <div className="bg-[#F8F8F8] sm:py-[12px]">
-            <div className="flex sm:rounded-[8px] sm:bg-white bg-[#F8F8F8] px-2 py-2 lg:p-4 ">
-              <div className="mr-[2px] text-[16px] font-bold">
-                Nomination Documents
-              </div>
-              <div className="text-[#BF2734] pt-1 text-[12px] ml-1">
-                (*Mandatory Fields)
-              </div>
-            </div>
-          </div> */}
-          <div className="sm:py-[12px] bg-[#F8F8F8] py-[16px] sm:pt-0 ">
-            <div className="overflow-x-auto border-[1px] bg-white rounded-[6px]">
-              {/* <div className="w-[1012px] flex items-center ">
-                <div className="w-[55px] px-[10px] py-[12px] font-[700] text-[14px] ">
-                  S. no.
-                </div>
-                <div className="w-[100px] font-[700] text-[14px]  px-[10px] py-[12px]">
-                  Nomination year
-                </div>
-                <div className="w-[63px] font-[700] text-[14px]  px-[10px] py-[12px]">
-                  Exam Group
-                </div>
-                <div className="w-[220px] font-[700] text-[14px]  px-[10px] py-[12px]">
-                  Competition title
-                </div>
-                <div className="w-[220px] font-[700] text-[14px]  px-[10px] py-[12px]">
-                  Remarks
-                </div>
-                <div className="w-[195px] font-[700] text-[14px]  px-[10px] py-[12px]">
-                  Criteria
-                </div>
-                <div className=" font-[700] text-[14px]  px-[10px] py-[12px]">
-                  upload document
-                </div>
-              </div> */}
-
-              {/* second row*/}
-              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
-                <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
-                  1
-                </div>
-                <div className="w-[100px] text-[14px]  px-[10px] py-[12px]">
-                  Current year
-                </div>
-                <div className="w-[63px] text-[14px]  px-[10px] py-[12px]">
-                  A
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Certificate issued by exam conducting body
-                </div>
-                <div className="w-[195px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)s
-                </div>
-                <div className=" py-[12px]">
-                  <div className="w-[160px] h-[128px] flex flex-col items-center bg-white">
-                    <div className=" w-[156px] h-[80px] mx-1 mt-1 flex flex-col items-center  border-dashed border-[1px] border-[#5A4BDA] rounded-md p-1">
-                      <img
-                        src="/subtract.svg"
-                        height={18}
-                        width={14}
-                        className=""
-                      />
-                      <div className=" w-[75px] h-[22px]  bg-white mt-2 ">
-                        <input
-                          type="file"
-                          className="file:border-0 w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                          placeholder="Choose file"
-                        />
-                      </div>
-                      <p className="text-[11px]">No file choosen</p>
-                    </div>
-                    <button className="w-[76px] h-[28px] rounded-md bg-[#5A4BDA] text-white my-2">
-                      upload
-                    </button>
-                  </div>
-                </div>
-              </div> */}
-              {/*third row*/}
-              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
-                <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
-                  2
-                </div>
-                <div className="w-[100px] text-[14px]  px-[10px] py-[12px]">
-                  Current year
-                </div>
-                <div className="w-[63px] text-[14px]  px-[10px] py-[12px]">
-                  A
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Certificate issued by exam conducting body
-                </div>
-                <div className="w-[195px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)
-                </div>
-                <div className=" text-[14px] py-[12px]">
-                  <div className="w-[160px] h-[128px] flex flex-col items-center bg-white">
-                    <div className=" w-[156px] h-[80px] mx-1 mt-1 flex flex-col items-center  border-dashed border-[1px] border-[#5A4BDA] rounded-md p-1">
-                      <img
-                        src="/subtract.svg"
-                        height={18}
-                        width={14}
-                        className=""
-                      />
-                      <div className=" w-[75px] h-[22px]  bg-white mt-2 ">
-                        <input
-                          type="file"
-                          className="file:border-0 w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                          placeholder="Choose file"
-                        />
-                      </div>
-                      <p className="text-[11px]">No file choosen</p>
-                    </div>
-                    <button className="w-[76px] h-[28px] rounded-md bg-[#5A4BDA] text-white my-2">
-                      upload
-                    </button>
-                  </div>
-                </div>
-              </div> */}
-              {/*fouth row*/}
-              {/* <div className="w-[1012px] flex items-start border-t-[2px] ">
-                <div className="w-[55px] px-[10px] py-[12px] text-[14px] ">
-                  3
-                </div>
-                <div className="w-[100px] text-[14px]  px-[10px] py-[12px]">
-                  Current year
-                </div>
-                <div className="w-[63px] text-[14px]  px-[10px] py-[12px]">
-                  A
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)
-                </div>
-                <div className="w-[220px] text-[14px]  px-[10px] py-[12px]">
-                  Certificate issued by exam conducting body
-                </div>
-                <div className="w-[195px] text-[14px]  px-[10px] py-[12px]">
-                  Bal Shakti Purasakar (National Child Award in Academics/
-                  Research/ Innovation)
-                </div>
-                <div className=" text-[14px]  py-[12px]">
-                  <div className="w-[160px] h-[128px] flex flex-col items-center bg-white">
-                    <div className=" w-[156px] h-[80px] mx-1 mt-1 flex flex-col items-center  border-dashed border-[1px] border-[#5A4BDA] rounded-md p-1">
-                      <img
-                        src="/subtract.svg"
-                        height={18}
-                        width={14}
-                        className=""
-                      />
-                      <div className=" w-[75px] h-[22px]  bg-white mt-2 ">
-                        <input
-                          type="file"
-                          className="file:border-0 w-full h-full rounded-md file:w-full file:h-full file:rounded-md text-[12px] file:text-[#5A4BDA] file:bg-white"
-                          placeholder="Choose file"
-                        />
-                      </div>
-                      <p className="text-[11px]">No file choosen</p>
-                    </div>
-                    <button className="w-[76px] h-[28px] rounded-md bg-[#5A4BDA] text-white my-2">
-                      upload
-                    </button>
-                  </div>
-                </div>
-              </div> */}
-            </div>
-          </div>
+              )
+            })}
         </div>
       </div>
     </div>
