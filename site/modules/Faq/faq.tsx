@@ -56,7 +56,7 @@ const Faq: React.FC<FaqProps> = (props) => {
           <div className="flex justify-center">
             <span className={s.heading}>Frequently asked questions</span>
           </div>
-          <div className="my-14 w-3/4	 mx-auto ">
+          <div className="my-14 sm:w-3/4 mx-auto w-full">
             <FAQ items={items} hideFAQTitle />
           </div>
         </Container>
