@@ -7,7 +7,6 @@ import { Layout } from './Layout'
 import OtpInput from 'react-otp-input'
 import s from '@styles/auth/auth.module.css'
 import { useRouter } from 'next/router'
-import p from '@modules/auth/components/components.module.css'
 import uuid from 'react-uuid'
 import { tokenFetcher } from '@modules/auth/lib'
 
