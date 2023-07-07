@@ -4,7 +4,7 @@ import { useAuth } from '@lib/hooks/useAuth'
 import { isNameValid, isPhoneValid } from '@lib/validations'
 import { TextInput } from '@components/ui/Input'
 import { useRouter } from 'next/router'
-import s from '@modules/auth/components/components.module.css' // TODO - Changes module to tailwind
+import s from '@modules/Screens/components.module.css' // TODO - Changes module to tailwind
 //import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from './Layout'
 
@@ -103,7 +103,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
           </Button>
           <div className="flex mx-auto pt-[25px] gap-8">
             <div className={s.have_acount}>Don’t have an account?</div>
-            <a href="register-now" className={s.register_now}>
+            <a href="/register" className={s.register_now}>
               Register Now
             </a>
           </div>

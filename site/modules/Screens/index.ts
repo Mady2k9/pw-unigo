@@ -1,5 +1,2 @@
 export { default as Login } from './Login'
 export { default as Registration } from './Registration'
-// export { default as ProfileDetails } from './Onboarding/ProfileDetails'
-// export { default as NominationForm } from './Onboarding/NominationForm'
-// export { default as UploadDocuments } from './Onboarding/UploadDocuments'

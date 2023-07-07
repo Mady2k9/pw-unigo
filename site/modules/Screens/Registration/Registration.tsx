@@ -79,7 +79,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                 <Typography>Full Name*</Typography>
                 <TextInput
                   onChange={setFullName}
-                  variant={'shadow'}
+                  variant={'outlined'}
                   placeholder={'Enter your name'}
                 />
               </div>
@@ -88,7 +88,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                 <TextInput
                   invalid={!isPhoneValid(mobile)}
                   onChange={setMobile}
-                  variant={'shadow'}
+                  variant={'outlined'}
                   placeholder={'Enter your mobile number'}
                 />
               </div>
