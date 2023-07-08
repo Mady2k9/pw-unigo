@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from '@modules/Screens/components.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
@@ -10,14 +10,27 @@ export interface contentProps {
   profileData: any
   setProfileData: (val: any) => void
   registrationDate: string
+  editForm: boolean
 }
 
 const Content: React.FC<contentProps> = (props) => {
-  const { name, profileData, setProfileData, registrationDate } = props
-
+  const { name, profileData, setProfileData, registrationDate, editForm } =
+    props
+  //console.log(props)
+  const [enableEditForm, setEnableEditForm] = useState(false)
   const onClassChange = (classVal: string) => {
     setProfileData({ ...profileData, class: classVal })
   }
+
+  useEffect(() => {
+    // if (props.editForm) {
+    //   setEnableEditForm(true)
+    // }
+    //else {
+    //console.log(props)
+    //setEnableEditForm(props.profileData.profileId.class ? true : false)
+    // }
+  }, [])
 
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
@@ -47,6 +60,7 @@ const Content: React.FC<contentProps> = (props) => {
                 options={CLASSES_ARRAY}
                 placeholder="Select Class"
               />
+
               <div className="p-1 flex md:flex-none">
                 <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
                   <img className="" src="/i.svg" alt="icon" />
@@ -85,6 +99,7 @@ const Content: React.FC<contentProps> = (props) => {
             <div className={s.left_section_text}> Email address:</div>
             <div className={s.right_section_input}>
               <div className=" w-full bg-white rounded-md ">
+                {/* {!props.profileData.profileId.class || props.editForm ? ( */}
                 <TextInput
                   label="Email id"
                   onChange={(val) =>
@@ -93,6 +108,9 @@ const Content: React.FC<contentProps> = (props) => {
                   placeholder="Enter Email"
                   spellCheck="false"
                 />
+                {/* ) : (
+                  <p>{props.profileData.email}</p>
+                )} */}
               </div>
             </div>
           </div>

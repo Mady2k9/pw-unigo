@@ -16,6 +16,7 @@ const ProfileDetails = () => {
     alternateNumber: '',
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [editForm, setEditForm] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const ProfileDetails = () => {
       email: profileData.email,
       class: profileData.class,
       alternateNumber: profileData.alternateNumber,
-      centerName: 'Others',
+      //centerName: 'Others',
     }
     const randomId = localStorage.getItem('randomId') || ''
     const res = await updateUserProfile(dataToSend, randomId)
@@ -44,18 +45,34 @@ const ProfileDetails = () => {
     }
   }
 
+  const enableEditForm = () => {
+    setEditForm(true)
+  }
+
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen)
+    if (profileData.profileId.class) {
+      onSubmit()
+    } else {
+      setIsModalOpen(!isModalOpen)
+    }
   }
 
   return (
     <Layout
-      header={<Header title="Step 1: Profile Details" onSubmit={toggleModal} />}
+      header={
+        <Header
+          title="Step 1: Profile Details"
+          onSubmit={toggleModal}
+          profileData={profileData}
+          editForm={enableEditForm}
+        />
+      }
     >
       <ProfileForm
         name={name}
         profileData={profileData}
         setProfileData={setProfileData}
+        editForm={editForm}
         registrationDate="12th May[DUMMY_DATA]"
       />
       <Dialog
