@@ -1,4 +1,4 @@
-import { Footer } from '@components/common'
+import Footer from '@modules/SiteFooter'
 import Header from '@components/common/Header/Header'
 import { Banner, Faq, RewardsCard, NominationSteps } from 'modules'
 
@@ -10,7 +10,7 @@ const Home = () => {
       <RewardsCard data={undefined} />
       <NominationSteps data={undefined} />
       <Faq data={undefined} />
-      <Footer variant={'MARVELSFooter'} />
+      <Footer />
     </>
   )
 }

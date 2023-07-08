@@ -1,4 +1,4 @@
-import { Footer } from '@components/common'
+import Footer from '@modules/SiteFooter'
 import Header from '@components/common/Header/Header'
 import Breadcrumb from '../modules/Breadcrumb'
 import Achiever from '../modules/Achiever'
@@ -12,7 +12,7 @@ const About = () => {
       <Breadcrumb items={items} title={'About us'} homeLink={''} />
       <Achiever data={undefined} />
       <Recognise data={undefined} />
-      <Footer variant={'MARVELSFooter'} />
+      <Footer />
     </>
   )
 }
