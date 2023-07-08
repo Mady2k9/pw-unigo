@@ -1,4 +1,4 @@
-import { Footer } from '@components/common'
+import Footer from '@modules/SiteFooter'
 import Header from '@components/common/Header/Header'
 import Breadcrumb from '@modules/Breadcrumb/breadcrumb'
 import Container from '@components/ui/Container/Container'
@@ -71,7 +71,7 @@ const termsCon = () => {
         </div>
       </Container>
 
-      <Footer variant={'MARVELSFooter'} />
+      <Footer />
     </>
   )
 }
