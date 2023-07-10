@@ -49,7 +49,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
     <>
       <div className="bg-white w-full overflow-y-scroll">
         <div className="sm:bg-[#F8F8F8] bg-white sm:w-[90%] w-full items-center relative mx-auto px-3 py-3">
-          <div className="bg-white rounded-md p-6 my-3 border border-[#EFEFEF]">
+          <div className="bg-white rounded-md p-6 my-3 border sm:border-0 border-[#EFEFEF]">
             <div className="text-base font-semibold mb-2">
               Instructions for Upload Document:
             </div>
@@ -65,15 +65,15 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               (*Mandatory Fields)
             </div>
           </div>
-          <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:gap-3 sm:gap-1">
-            <div className="p-6 col-span-1 bg-white rounded-md border border-[#EFEFEF]">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:gap-3 sm:gap-1 gap-3">
+            <div className="p-3 col-span-1 bg-white rounded-md border  sm:border-0 border-[#EFEFEF]">
               <div className="flex items-center">
                 <div className="bg-[#FFF6E5] p-2 rounded-md">
                   <img src="/profile-picture.svg" alt="profile icon" />
                 </div>
-                <div className="ml-2">
+                <div className="ml-3">
                   <div className="text-sm md:text-base font-semibold">
-                    Student Passport size photo
+                    Student Passport Size Photo
                   </div>
                   <div className="text-xs sm:text-sm">
                     Upload your photo here...
@@ -88,14 +88,14 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 wrapperClass="mt-6"
               />
             </div>
-            <div className="p-6 col-span-1 bg-white rounded-md">
+            <div className="p-3 col-span-1 bg-white rounded-md  border sm:border-0 border-[#EFEFEF]">
               <div className="flex items-center">
                 <div className="bg-[#FFF6E5] p-3 rounded-md">
                   <img src="/adhar_icon.svg" alt="profile icon" />
                 </div>
-                <div className="ml-2">
+                <div className="ml-3">
                   <div className="text-sm sm:text-base font-semibold">
-                    Student Adhar card
+                    Student Adhar Card
                   </div>
                   <div className="text-xs sm:text-sm">
                     Upload Adhar Card (Front & Back)
@@ -125,12 +125,12 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 </div>
               </div>
             </div>
-            <div className="p-6 col-span-1 bg-white rounded-md">
+            <div className="p-3 col-span-1 bg-white rounded-md border sm:border-0 border-[#EFEFEF]">
               <div className="flex items-center">
                 <div className="bg-[#FFF6E5] p-2 rounded-md">
                   <img src="/report_icon.svg" alt="profile icon" />
                 </div>
-                <div className="ml-2">
+                <div className="ml-3">
                   <div className="text-sm sm:text-base font-semibold">
                     Student latest Report card
                   </div>
