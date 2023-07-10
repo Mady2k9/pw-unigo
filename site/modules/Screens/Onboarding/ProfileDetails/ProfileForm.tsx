@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from '@modules/Screens/components.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
@@ -15,11 +15,13 @@ export interface contentProps {
 
 const Content: React.FC<contentProps> = (props) => {
   const { name, profileData, setProfileData, registrationDate } = props
-
+  const [countryNumber, setCountryNumber] = useState(false)
   const onClassChange = (classVal: string) => {
     setProfileData({ ...profileData, class: classVal })
   }
-
+  const showCountryNumber = () => {
+    setCountryNumber(true)
+  }
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
       <div className=" flex justify-center">
@@ -71,6 +73,7 @@ const Content: React.FC<contentProps> = (props) => {
                   }
                   placeholder="Enter number"
                   maxLength={10}
+                  onClick={showCountryNumber}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                       <select className=" border-none bg-transparent select-arrow-mob">
