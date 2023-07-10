@@ -124,7 +124,7 @@ function SelectedExamAchievements({
                               name: el,
                             }))}
                             placeholder="Select"
-                            className="h-[50px] mr-2"
+                            className="h-[50px] mr-2 select-arrow"
                             onChange={(val: string) =>
                               onSelectCriteria(
                                 group,

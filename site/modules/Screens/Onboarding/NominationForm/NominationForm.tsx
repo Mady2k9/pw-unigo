@@ -62,7 +62,7 @@ function NominationForm({
                   (nomintaionFormat: any) => {
                     return (
                       <div
-                        className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
+                        className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer  ${
                           nomintaionFormat === activeExamCategory &&
                           'text-indigo-500 bg-white border-l-2 !border-indigo-500'
                         }`}

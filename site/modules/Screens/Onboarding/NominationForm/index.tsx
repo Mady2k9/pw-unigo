@@ -88,11 +88,11 @@ const NominationFormScreen = () => {
           <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
           <div className="fixed inset-0 flex items-center justify-center p-4 ">
             <Dialog.Panel className="mx-auto w-full max-w-4xl rounded-xl shadow-xl bg-white ring-1 transition-all p-5  relative">
-              <div className=" m-4">
+              <div className=" sm:m-4">
                 <p className="font-semibold text-[18px] mt-2 mb-4 text-center">
                   Nomination Terms and Conditions
                 </p>
-                <ul className="list-disc text-[14px] px-12">
+                <ul className="list-disc text-[14px] px-8 sm:px-12">
                   {TERMS_AND_CONDITIONS.map((termsConditions, index) => (
                     <li key={`terms-conditions-${index}`}>{termsConditions}</li>
                   ))}
