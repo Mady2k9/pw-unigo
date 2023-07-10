@@ -5,9 +5,7 @@ import { isNameValid, isPhoneValid } from '@lib/validations'
 import { TextInput } from '@components/ui/Input'
 import { useRouter } from 'next/router'
 import s from '@modules/Screens/components.module.css' // TODO - Changes module to tailwind
-// import { Layout } from '@modules/screens/Login/Layout'
-import { LogoMarvels } from '@components/assets/icons/LogoMarvels'
-import Link from 'next/link'
+//import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from './Layout'
 
 const Login = ({ onOTPGet }: { onOTPGet: any }) => {
@@ -53,92 +51,32 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
     localStorage.removeItem('fullName')
     localStorage.removeItem('shouldRegister')
   }, [username])
-  const [countryNumber, setCountryNumber] = useState(false)
 
-  const showCountryNumber = () => {
-    setCountryNumber(true)
-  }
   return (
-    <>
-      <div className="p-2 shadow xl:hidden">
-        <nav className="bg-white flex w-full items-center p-1 ">
-          <Link href="/">
-            <img src={LogoMarvels.src} alt="LogoMarvels" draggable={false} />
-          </Link>
-        </nav>
-      </div>
-
-      <Layout>
-        <form
-          onSubmit={handleSubmit}
-          className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4"
-        >
-          <div className="">
-            <div className={s.login_right_heading}>Login</div>
-            <div className={s.login_right_subheading}>
-              Registered Mobile Number
-            </div>
+    <Layout>
+      <form
+        onSubmit={handleSubmit}
+        className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4"
+      >
+        <div className="">
+          <div className={s.login_right_heading}>Login</div>
+          <div className={s.login_right_subheading}>
+            Registered Mobile Number
           </div>
-          <div className="flex flex-col space-y-3">
-            <div className="mb-8 sm:w-[432px]">
-              <TextInput
-                invalid={!isPhoneValid(username)}
-                maxLength={10}
-                onClick={showCountryNumber}
-                preElement={
-                  <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                    {countryNumber === true ? (
-                      <select className=" border-none bg-transparent">
-                        <option value="india">IN +91</option>
-                      </select>
-                    ) : (
-                      ''
-                    )}
-                  </div>
-                }
-                onChange={(e: any) => {
-                  setUsername(e)
-                  localStorage.setItem('username', e)
-                }}
-                variant={'outlined'}
-                placeholder={'Enter your Registered Mobile Number'}
-              />
+        </div>
+        <div className="flex flex-col space-y-3">
+          <div className="mb-8">
+            <TextInput
+              invalid={!isPhoneValid(username)}
+              maxLength={10}
+              onChange={(e: any) => {
+                setUsername(e)
+                localStorage.setItem('username', e)
+              }}
+              variant={'outlined'}
+              placeholder={'Enter your Registered Mobile Number'}
+            />
 
-              {
-                <div
-                  className={` animated fadeIn flex gap-2 my-2  ${
-                    shouldRegister ? '' : 'hidden'
-                  }`}
-                >
-                  <img src="/warning.svg" alt="warning" height="12px" />
-                  <span className={s.warning}>
-                    This number is not registerd, please register it first.
-                  </span>
-                </div>
-              }
-            </div>
-            {error && <Alert message={error} type="error" />}
-            <Button
-              type="submit"
-              className="sm:w-[432px] sm:h-[56px]"
-              loading={loading}
-              disabled={
-                !isPhoneValid(username) ||
-                ((!agree || !isNameValid(fullName)) && shouldRegister)
-              }
-            >
-              Get OTP
-            </Button>
-            <div className="flex mx-auto pt-[25px] gap-8">
-              <div className={s.have_acount}>Don’t have an account?</div>
-              <a href="/register" className={s.register_now}>
-                Register Now
-              </a>
-            </div>
-          </div>
-        </form>
-      </Layout>
-    </>
             {
               <div
                 className={` animated fadeIn flex gap-2 my-2  ${
