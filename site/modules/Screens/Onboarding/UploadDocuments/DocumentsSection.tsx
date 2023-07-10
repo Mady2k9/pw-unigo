@@ -47,7 +47,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
 
   return (
     <>
-      <div className="bg-white w-full">
+      <div className="bg-white w-full overflow-y-scroll">
         <div className="sm:bg-[#F8F8F8] bg-white sm:w-[90%] w-full items-center relative mx-auto px-3 py-3">
           <div className="bg-white rounded-md p-6 my-3 border border-[#EFEFEF]">
             <div className="text-base font-semibold mb-2">
