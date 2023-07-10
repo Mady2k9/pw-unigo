@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from '@modules/Screens/components.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
 import { CLASSES_ARRAY } from '@config/types/classes'
+import { isPhoneValid } from '@lib/validations'
 
 export interface contentProps {
   name: string
@@ -14,11 +15,13 @@ export interface contentProps {
 
 const Content: React.FC<contentProps> = (props) => {
   const { name, profileData, setProfileData, registrationDate } = props
-
+  const [countryNumber, setCountryNumber] = useState(false)
   const onClassChange = (classVal: string) => {
     setProfileData({ ...profileData, class: classVal })
   }
-
+  const showCountryNumber = () => {
+    setCountryNumber(true)
+  }
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
       <div className=" flex justify-center">
@@ -43,6 +46,7 @@ const Content: React.FC<contentProps> = (props) => {
             </div>
             <div className={s.right_section_input}>
               <Select
+                className="select-arrow"
                 onChange={onClassChange}
                 options={CLASSES_ARRAY}
                 placeholder="Select Class"
@@ -63,17 +67,22 @@ const Content: React.FC<contentProps> = (props) => {
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   className="bg-white"
-                  label="Mobile Number"
+                  label="Phone Number"
                   onChange={(val) =>
                     setProfileData({ ...profileData, alternateNumber: val })
                   }
                   placeholder="Enter number"
                   maxLength={10}
+                  onClick={showCountryNumber}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      <select className=" border-none bg-transparent">
-                        <option value="india">IN +91</option>
-                      </select>
+                      {countryNumber === true ? (
+                        <select className=" border-none bg-transparent">
+                          <option value="india">IN +91</option>
+                        </select>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   }
                   variant="flat"
@@ -90,7 +99,7 @@ const Content: React.FC<contentProps> = (props) => {
                   onChange={(val) =>
                     setProfileData({ ...profileData, email: val })
                   }
-                  placeholder="Enter Email"
+                  placeholder="Email id"
                   spellCheck="false"
                 />
               </div>

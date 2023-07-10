@@ -9,6 +9,8 @@ import { useRouter } from 'next/router'
 import p from '@modules/Screens/components.module.css' // TODO - Changes module to tailwind
 //import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from '@modules/Screens/Login/Layout'
+import { LogoMarvels } from '@components/assets/icons/LogoMarvels'
+import Link from 'next/link'
 
 const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
   const [counter, setCounter] = useState(30)
@@ -91,66 +93,77 @@ const OTPView = ({ onReset }: { onReset: any }) => {
     _setOtp(o)
   }
   return (
-    <Layout>
-      <div className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4">
-        <div className={'flex-1 flex flex-col justify-center px-3'}>
-          <div className="flex flex-col mb-6">
-            <div className={p.login_otp_subheading}>
-              A 6 digit OTP has been sent to{' '}
-              <strong>{`+91 ${username}`}</strong>
-              <div
-                onClick={() => {
-                  reset()
-                  onReset()
-                }}
-              ></div>
-            </div>
-            <div className={p.login_otp_heading}>
-              Please enter your <strong>OTP</strong>
-            </div>
-            <a className={p.login_otp_change} href="#">
-              Change Number
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col space-b-3">
-          <div className={'flex justify-center'}>
-            <OtpInput
-              containerStyle="mb-4"
-              inputStyle={s.inputStyle}
-              focusStyle={s.focusStyle}
-              // placeholder="------"
-              shouldAutoFocus
-              isInputNum
-              value={_otp}
-              onChange={handleOnChange}
-              numInputs={6}
-              separator={<span> </span>}
-            />
-          </div>
-          <div className={'mb-10 mx-auto '}>
-            <ResendOTP
-              resendOTP={() => {
-                resendOTP()
-              }}
-              canResend={canResend}
-              setCanResend={setCanResend}
-            />
-          </div>
-
-          {error && <Alert message={error} type="error" />}
-          <Button
-            type="button"
-            onClick={handleSubmit}
-            loading={loading || navigating}
-            disabled={!isOTPValid(_otp)}
-          >
-            Login
-          </Button>
-        </div>
+    <>
+      <div className="p-2 shadow xl:hidden">
+        <nav className="bg-white flex w-full items-center p-1 ">
+          <Link href="/">
+            <img src={LogoMarvels.src} alt="LogoMarvels" draggable={false} />
+          </Link>
+        </nav>
       </div>
-    </Layout>
+      <Layout>
+        <div className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4">
+          <div className={'flex-1 flex flex-col justify-center px-3'}>
+            <div className="flex flex-col mb-6">
+              <div className={p.login_otp_heading}>
+                Please enter your <strong>OTP</strong>
+              </div>
+              <div className={p.login_otp_subheading}>
+                A 6 digit OTP has been sent to{' '}
+                <strong>{`+91 ${username}`}</strong>
+                <div
+                  onClick={() => {
+                    reset()
+                    onReset()
+                  }}
+                ></div>
+              </div>
+
+              <a className={p.login_otp_change} href="/login">
+                Change Number
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col space-b-3">
+            <div className={'flex justify-center'}>
+              <OtpInput
+                containerStyle="mb-4"
+                inputStyle={s.inputStyle}
+                focusStyle={s.focusStyle}
+                // placeholder="------"
+                shouldAutoFocus
+                isInputNum
+                value={_otp}
+                onChange={handleOnChange}
+                numInputs={6}
+                separator={<span> </span>}
+              />
+            </div>
+            <div className={'mb-10 mx-auto '}>
+              <ResendOTP
+                resendOTP={() => {
+                  resendOTP()
+                }}
+                canResend={canResend}
+                setCanResend={setCanResend}
+              />
+            </div>
+
+            {error && <Alert message={error} type="error" />}
+            <Button
+              type="button"
+              onClick={handleSubmit}
+              loading={loading || navigating}
+              disabled={!isOTPValid(_otp)}
+              className="w-full md:w-[432px] md:h-14 h-12  font-bold "
+            >
+              Login
+            </Button>
+          </div>
+        </div>
+      </Layout>
+    </>
   )
 }
 

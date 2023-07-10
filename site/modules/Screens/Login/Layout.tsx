@@ -33,7 +33,7 @@ export const Layout = ({ children }: LayoutProps) => {
           alt="login-arrow"
         />
       </div>
-      <div className="sm:w-1/2 h-screen items-center flex w-full">
+      <div className="sm:w-1/2 h-screen sm:items-center flex w-full mt-8">
         {children}
       </div>
     </div>

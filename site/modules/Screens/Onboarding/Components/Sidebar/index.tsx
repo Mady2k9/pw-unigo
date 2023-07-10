@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import s from './sidebar.module.css'
+import { useRouter } from 'next/router'
+import { Dialog } from '@headlessui/react'
+import { Cross } from '@components/icons'
 import ImportantNoticeData from '@modules/ImportantNotices/importantNoticeData'
 
 export interface sidebarProps {
@@ -10,9 +13,32 @@ export interface sidebarProps {
 const sidebar: React.FC<sidebarProps> = (props) => {
   const { name, phone } = props
   const [show, setShow] = useState(false)
+  const router = useRouter()
+  const [isProfilePageOpened, setIsProfilePageOpened] = useState(false)
+  const [nominateAgain, setNominateAgain] = useState(false)
+  var profileLink = '/profile-details'
+  var nominateLink = '/nomination-form'
+
   const openImportantNotices = () => {
     setShow(!show)
   }
+  const toggleModal = () => {
+    setIsProfilePageOpened(false)
+    setNominateAgain(false)
+  }
+  const onSubmitProfile = () => {
+    router.push(profileLink)
+  }
+  const onSubmitNominate = () => {
+    router.push(nominateLink)
+  }
+  const goToProfilePage = () => {
+    setIsProfilePageOpened(true)
+  }
+  const goToNominatePage = () => {
+    setNominateAgain(true)
+  }
+
   return (
     <>
       <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full">
@@ -95,7 +121,6 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           </div>
         </div>
       </div>
-      
       {show === true ? <ImportantNoticeData /> : ''}
     </>
   )
