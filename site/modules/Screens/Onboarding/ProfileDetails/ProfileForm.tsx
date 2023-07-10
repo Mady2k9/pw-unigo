@@ -43,6 +43,7 @@ const Content: React.FC<contentProps> = (props) => {
             </div>
             <div className={s.right_section_input}>
               <Select
+                className="select-arrow"
                 onChange={onClassChange}
                 options={CLASSES_ARRAY}
                 placeholder="Select Class"
@@ -71,7 +72,7 @@ const Content: React.FC<contentProps> = (props) => {
                   maxLength={10}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      <select className=" border-none bg-transparent">
+                      <select className=" border-none bg-transparent select-arrow-mob">
                         <option value="india">IN +91</option>
                       </select>
                     </div>
