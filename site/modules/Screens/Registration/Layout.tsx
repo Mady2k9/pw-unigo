@@ -7,7 +7,7 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div
-      className="bg-cover flex items-center lg:min-h-[90vh] justify-around"
+      className="bg-cover flex items-center lg:min-h-[90vh] md:min-h-[100vh] min-h-[85vh]  justify-around"
       style={{
         backgroundImage: `url(${BackgroundImage.src})`,
       }}
