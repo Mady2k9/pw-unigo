@@ -76,9 +76,13 @@ const Content: React.FC<contentProps> = (props) => {
                   onClick={showCountryNumber}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      <select className=" border-none bg-transparent select-arrow-mob">
-                        <option value="india">IN +91</option>
-                      </select>
+                      {countryNumber === true ? (
+                        <select className=" border-none bg-transparent">
+                          <option value="india">IN +91</option>
+                        </select>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   }
                   variant="flat"
