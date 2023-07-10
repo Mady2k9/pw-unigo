@@ -47,8 +47,8 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
 
   return (
     <div className="bg-white w-full">
-      <div className="bg-[#F8F8F8] w-[90%] items-center relative mx-auto p-10">
-        <div className="bg-white rounded-md p-6">
+      <div className="sm:bg-[#F8F8F8] bg-white sm:w-[90%] w-full items-center relative mx-auto px-3 py-3">
+        <div className="bg-white rounded-md p-6 my-3 border-1 border-[#EFEFEF]">
           <div className="text-base font-semibold mb-2">
             Instructions for Upload Document:
           </div>
@@ -58,7 +58,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             ))}
           </ol>
         </div>
-        <div className="p-6 flex rounded-md bg-white my-4">
+        <div className="p-6 flex rounded-md bg-white mt-6 mb-3">
           <div className="text-base font-bold">Student Documents</div>
           <div className="text-[#BF2734] pt-1 text-xs ml-1">
             (*Mandatory Fields)
