@@ -107,7 +107,7 @@ const Footer = () => {
         <span>
           <ChevronUpIcon width={20} height={20} />
         </span>
-        <button onClick={scrollToTop}>
+        <button onClick={scrollToTop} className="">
           <Typography weight={600} variant="heading3">
             Back to top
           </Typography>
