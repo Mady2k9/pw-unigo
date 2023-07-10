@@ -95,6 +95,9 @@ const OTPView = ({ onReset }: { onReset: any }) => {
       <div className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4">
         <div className={'flex-1 flex flex-col justify-center px-3'}>
           <div className="flex flex-col mb-6">
+            <div className={p.login_otp_heading}>
+              Please enter your <strong>OTP</strong>
+            </div>
             <div className={p.login_otp_subheading}>
               A 6 digit OTP has been sent to{' '}
               <strong>{`+91 ${username}`}</strong>
@@ -105,10 +108,8 @@ const OTPView = ({ onReset }: { onReset: any }) => {
                 }}
               ></div>
             </div>
-            <div className={p.login_otp_heading}>
-              Please enter your <strong>OTP</strong>
-            </div>
-            <a className={p.login_otp_change} href="#">
+
+            <a className={p.login_otp_change} href="/login">
               Change Number
             </a>
           </div>
@@ -145,6 +146,7 @@ const OTPView = ({ onReset }: { onReset: any }) => {
             onClick={handleSubmit}
             loading={loading || navigating}
             disabled={!isOTPValid(_otp)}
+            className="w-full md:w-[432px] md:h-14 h-12  font-bold "
           >
             Login
           </Button>

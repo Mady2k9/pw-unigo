@@ -63,7 +63,7 @@ const Content: React.FC<contentProps> = (props) => {
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   className="bg-white"
-                  label="Mobile Number"
+                  label="Phone Number"
                   onChange={(val) =>
                     setProfileData({ ...profileData, alternateNumber: val })
                   }
@@ -90,7 +90,7 @@ const Content: React.FC<contentProps> = (props) => {
                   onChange={(val) =>
                     setProfileData({ ...profileData, email: val })
                   }
-                  placeholder="Enter Email"
+                  placeholder="Email id"
                   spellCheck="false"
                 />
               </div>
