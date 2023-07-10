@@ -99,19 +99,20 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      <div
-        className="flex justify-center flex-row items-center  py-4 gap-6 h-[72px] w-100 bg-[#F8F8F8] z-30 sticky"
-        id="contact"
-      >
-        <span>
-          <ChevronUpIcon width={20} height={20} />
-        </span>
-        <button onClick={scrollToTop} className="">
-          <Typography weight={600} variant="heading3">
-            Back to top
-          </Typography>
-        </button>
+      <div className="hidden md:block">
+        <div
+          className="flex justify-center flex-row items-center  py-4 gap-6 h-[72px] w-100 bg-[#F8F8F8] z-30 sticky "
+          id="contact"
+        >
+          <span>
+            <ChevronUpIcon width={20} height={20} />
+          </span>
+          <button onClick={scrollToTop} className="">
+            <Typography weight={600} variant="heading3">
+              Back to top
+            </Typography>
+          </button>
+        </div>
       </div>
       <div className="bg-[#1B2124] py-4 px-[16px] md:px-4 lg:px-0 static">
         <div className="max-w-6xl py-3 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto">
