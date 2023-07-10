@@ -41,36 +41,31 @@ const sidebar: React.FC<sidebarProps> = (props) => {
 
   return (
     <>
-      <div className="sticky">
-        <div className=" sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full">
-          <div className={s.mainContainer}>
-            <div className={s.container}>
-              <img
-                className="mx-auto"
-                src="/user_profile.svg"
-                alt="user profile"
-              />
-              <p className="text-[16px] ">{name}</p>
-              <div className="flex justify-center items-center">
-                <span className="stroke-black">
-                  <img className="mr-2" src="/phone.svg" alt="phone" />
-                </span>
-                <p className="text-[12px] text-[#757575]">{phone}</p>
-              </div>
+      <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full">
+        <div className={s.mainContainer}>
+          <div className={s.container}>
+            <img
+              className="mx-auto"
+              src="/user_profile.svg"
+              alt="user profile"
+            />
+            <p className="text-[16px] ">{name}</p>
+            <div className="flex justify-center items-center">
+              <span className="stroke-black">
+                <img className="mr-2" src="/phone.svg" alt="phone" />
+              </span>
+              <p className="text-[12px] text-[#757575]">{phone}</p>
             </div>
-            <div className="flex sm:flex-row flex-col items-center sm:pb-0 pb-4">
-              <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
-                <div className="mb-2 sm:text-left text-center">
-                  <span className={s.step_text_active}>Step 1</span>
-                  <div className={s.icon_container}>
-                    <img
-                      className={s.step_img}
-                      src="/step_1c.svg"
-                      alt="step1"
-                    />
-                    <span className={s.step_icon_text}>Profile Details</span>
-                  </div>
+          </div>
+          <div className="flex sm:flex-row flex-col items-center sm:pb-0 pb-4">
+            <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
+              <div className="mb-2 sm:text-left text-center">
+                <span className={s.step_text_active}>Step 1</span>
+                <div className={s.icon_container}>
+                  <img className={s.step_img} src="/step_1c.svg" alt="step1" />
+                  <span className={s.step_icon_text}>Profile Details</span>
                 </div>
+              </div>
 
               <div className="mb-2 sm:text-left text-center">
                 <span className={s.step_text}>Step 2</span>
