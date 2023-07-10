@@ -4,6 +4,7 @@ import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
 import { CLASSES_ARRAY } from '@config/types/classes'
+import { isPhoneValid } from '@lib/validations'
 
 export interface contentProps {
   name: string
