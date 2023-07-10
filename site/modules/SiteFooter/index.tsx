@@ -115,7 +115,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#1B2124] py-4 px-[16px] md:px-4 lg:px-0 static">
         <div className="max-w-6xl py-3 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto">
-          <div className="col-span-12 lg:col-span-4 md:col-span-12 space-y-2 flex md:justify-start justify-center lg:hidden border-[#ffffff7d] border-b-[1px] pb-6">
+          <div className="col-span-12 lg:col-span-4 md:col-span-12 space-y-2 flex md:justify-start justify-center sm:hidden border-[#ffffff7d] border-b-[1px] pb-6">
             <div className="md:w-80 w-full h-[84px]  border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">
               <div className=" text-white flex justify-center">
                 <Typography weight={600} variant="heading4">
@@ -172,7 +172,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-4  space-y-2 lg:flex lg:justify-center hidden">
+          <div className="col-span-12 md:col-span-4  space-y-2 sm:flex lg:justify-center hidden">
             <div className="w-[344px] h-[84px] border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">
               <div className=" text-white flex justify-center">
                 <Typography weight={600} variant="heading4">
@@ -227,10 +227,10 @@ const Footer = () => {
 
           <div></div>
         </div>
-        <div className="max-w-6xl  md:py-6 py-2 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto md:border-t-[1px] md:border-[#ffffff7d] md:mt-0 -mt-4">
-          <div className="flex flex-col col-span-12 md:col-span-12 lg:col-span-6  space-y-2">
+        <div className="max-w-6xl md:py-6 py-2 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto md:border-t-[1px] md:border-[#ffffff7d] md:mt-0 -mt-4">
+          <div className="flex flex-col col-span-12 sm:col-span-5 space-y-2">
             <div className="flex items-center ">
-              <span className="text-sm md:text-base text-white font-semibold">
+              <span className="text-sm md:text-sm  text-white font-semibold">
                 Follow Us:
               </span>
 
@@ -253,8 +253,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex  lg:justify-end   col-span-12 md:col-span-12 lg:col-span-6 space-y-2 border-[#ffffff7d] border-t-[1px] md:border-none md:pt-0 pt-3">
-            <span className=" text-xs md:text-base text-white font-semibold">
+          <div className="flex sm:justify-end col-span-12 sm:col-span-7 space-y-2 border-[#ffffff7d] border-t-[1px] md:border-none md:pt-0 pt-3">
+            <span className="text-xs md:text-sm text-white font-semibold">
               Copyright © 2023 Physics Wallah Pvt. Ltd. All rights reserved.
             </span>
           </div>
