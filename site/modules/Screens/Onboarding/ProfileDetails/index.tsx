@@ -1,56 +1,76 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Header from '@modules/Screens/Onboarding/Components/Header'
 import ProfileForm from '@modules/Screens/Onboarding/ProfileDetails/ProfileForm'
-import { updateUserProfile } from '@modules/auth/lib'
+import { getAlternateMobile, updateUserProfile } from '@modules/auth/lib'
 import Layout from '../Layout'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
+import { localStorageHelper } from '@utils/helps'
+import { StudentDataProps } from './types'
 
 const ProfileDetails = () => {
-  // TODO REMOVE any for the Profile type
-  // HOOKS
-  const [profileData, setProfileData] = useState<any>({
+  const [profileData, setProfileData] = useState<StudentDataProps>({
     email: '',
     class: '',
     alternateNumber: '',
+    name: '',
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [editForm, setEditForm] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
+  const [navBarText, setNavBarText] = useState('Submit')
   const router = useRouter()
 
+  // to fetch and update student data
   useEffect(() => {
-    const user = localStorage.getItem('user')
-    if (typeof user === 'string') {
-      setProfileData(JSON.parse(user))
+    const studentData = localStorageHelper.getItem('user')
+    async function fetchAlternateNumber() {
+      const randomId = localStorage.getItem('randomId') || ''
+      const { data } = await getAlternateMobile(randomId)
+      const studentProfile = {
+        email: studentData?.email,
+        class: studentData?.profileId?.class,
+        name: studentData.firstName + ' ' + studentData.lastName,
+        alternateNumber: data.data.alternateNumber,
+      }
+      setProfileData({
+        ...profileData,
+        ...studentProfile,
+      })
+    }
+    fetchAlternateNumber()
+    if (studentData?.profileId?.class) {
+      setNavBarText('Edit')
     }
   }, [])
 
-  const name = useMemo(() => {
-    return profileData?.firstName || '' + profileData?.lastName
-  }, [profileData?.firstName, profileData?.lastName])
-
-  // FUNCTIONS
+  // onSubmit Function for first time student onboarding
   const onSubmit = async () => {
     const dataToSend = {
       email: profileData.email,
       class: profileData.class,
       alternateNumber: profileData.alternateNumber,
-      //centerName: 'Others',
     }
-    const randomId = localStorage.getItem('randomId') || ''
+    const randomId = localStorage.getItem('randomId') ?? ''
     const res = await updateUserProfile(dataToSend, randomId)
     if (res) {
       router.push('/nomination-form')
     }
   }
 
-  const enableEditForm = () => {
-    setEditForm(true)
+  //to toggle state of is edit form and navbar text
+  const enableEditForm = (navBarText: string) => {
+    setIsEdit(!isEdit)
+    if (navBarText === 'Edit') {
+      setNavBarText('Submit')
+    } else {
+      setNavBarText('Edit')
+    }
   }
 
+  //to toggle modal for agreement accept or reject
   const toggleModal = () => {
-    if (profileData.profileId.class) {
+    if (profileData.class) {
       onSubmit()
     } else {
       setIsModalOpen(!isModalOpen)
@@ -62,17 +82,18 @@ const ProfileDetails = () => {
       header={
         <Header
           title="Step 1: Profile Details"
-          onSubmit={toggleModal}
           profileData={profileData}
-          editForm={enableEditForm}
+          handleEditForm={enableEditForm}
+          handleSubmitForm={toggleModal}
+          isEditEnabled={isEdit}
+          navBarText={navBarText}
         />
       }
     >
       <ProfileForm
-        name={name}
-        profileData={profileData}
+        studentData={profileData}
         setProfileData={setProfileData}
-        editForm={editForm}
+        isEditEnabled={isEdit}
         registrationDate="12th May[DUMMY_DATA]"
       />
       <Dialog

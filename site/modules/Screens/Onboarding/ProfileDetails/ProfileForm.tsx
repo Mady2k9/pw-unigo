@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import s from '@modules/Screens/components.module.css'
 import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
 import { CLASSES_ARRAY } from '@config/types/classes'
+import { StudentDataProps } from './types'
+import { addSuffixToNumber } from '@utils/helps'
 
-export interface contentProps {
-  name: string
-  profileData: any
+export interface ProfileFormProps {
+  studentData: StudentDataProps
   setProfileData: (val: any) => void
   registrationDate: string
-  editForm: boolean
+  isEditEnabled: boolean
 }
 
-const Content: React.FC<contentProps> = (props) => {
-  const { name, profileData, setProfileData, registrationDate, editForm } =
-    props
-  //console.log(props)
-  const [enableEditForm, setEnableEditForm] = useState(false)
+const Content = ({
+  studentData,
+  setProfileData,
+  registrationDate,
+  isEditEnabled,
+}: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
-    setProfileData({ ...profileData, class: classVal })
+    setProfileData({ ...studentData, class: classVal })
   }
-
-  useEffect(() => {
-    // if (props.editForm) {
-    //   setEnableEditForm(true)
-    // }
-    //else {
-    //console.log(props)
-    //setEnableEditForm(props.profileData.profileId.class ? true : false)
-    // }
-  }, [])
 
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
@@ -48,25 +40,31 @@ const Content: React.FC<contentProps> = (props) => {
           </div>
           <div className="w-full h-fit p-4 flex">
             <div className={s.left_section_text}>Full name of Applicant:</div>
-            <div className={s.right_section_text}>{name}</div>
+            <div className={s.right_section_text}>{studentData.name}</div>
           </div>
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}>
               Class<span className={s.alert}>*</span>:
             </div>
             <div className={s.right_section_input}>
-              <Select
-                onChange={onClassChange}
-                options={CLASSES_ARRAY}
-                placeholder="Select Class"
-              />
+              {studentData.class ? (
+                <p>{`Class ${addSuffixToNumber(+studentData.class)}`}</p>
+              ) : (
+                <Select
+                  onChange={onClassChange}
+                  options={CLASSES_ARRAY}
+                  placeholder="Select Class"
+                />
+              )}
 
               <div className="p-1 flex md:flex-none">
                 <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
                   <img className="" src="/i.svg" alt="icon" />
                 </div>
                 <div className="text-[12px] align-middle text-[#3D3D3D]">
-                  Class can’t be changed once details are submitted
+                  {studentData.class
+                    ? 'Class cant be changed now '
+                    : 'Class can’t be changed once details are submitted'}
                 </div>
               </div>
             </div>
@@ -77,18 +75,29 @@ const Content: React.FC<contentProps> = (props) => {
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   className="bg-white"
-                  label="Mobile Number"
-                  onChange={(val) =>
-                    setProfileData({ ...profileData, alternateNumber: val })
+                  label={
+                    isEditEnabled && studentData.alternateNumber
+                      ? 'Mobile Number'
+                      : ''
                   }
+                  onChange={(mobileNumber) =>
+                    setProfileData({
+                      ...studentData,
+                      alternateNumber: mobileNumber,
+                    })
+                  }
+                  readOnly={!isEditEnabled}
+                  value={studentData.alternateNumber}
                   placeholder="Enter number"
                   maxLength={10}
                   preElement={
-                    <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      <select className=" border-none bg-transparent">
-                        <option value="india">IN +91</option>
-                      </select>
-                    </div>
+                    isEditEnabled ? (
+                      <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
+                        <select className=" border-none bg-transparent">
+                          <option value="india">IN +91</option>
+                        </select>
+                      </div>
+                    ) : null
                   }
                   variant="flat"
                 />
@@ -99,18 +108,16 @@ const Content: React.FC<contentProps> = (props) => {
             <div className={s.left_section_text}> Email address:</div>
             <div className={s.right_section_input}>
               <div className=" w-full bg-white rounded-md ">
-                {/* {!props.profileData.profileId.class || props.editForm ? ( */}
                 <TextInput
-                  label="Email id"
-                  onChange={(val) =>
-                    setProfileData({ ...profileData, email: val })
+                  label={isEditEnabled && studentData.email ? 'Email' : ''}
+                  value={studentData.email}
+                  readOnly={!isEditEnabled}
+                  onChange={(email) =>
+                    setProfileData({ ...studentData, email: email })
                   }
                   placeholder="Enter Email"
                   spellCheck="false"
                 />
-                {/* ) : (
-                  <p>{props.profileData.email}</p>
-                )} */}
               </div>
             </div>
           </div>
