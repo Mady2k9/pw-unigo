@@ -39,7 +39,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
     <Layout>
       <div className="lg:w-8/12 md:w-10/12 w-12/12  bg-white   shadow-none md:shadow-lg md:rounded-xl rounded-none">
         <form onSubmit={handleSubmit} className=" ">
-          <div className=" px-6 pt-8 ">
+          <div className=" px-6 md:pt-8 pt-0 ">
             <div className="text-center sm:block hidden">
               <Typography weight={500} variant="heading2">
                 Register Now
@@ -94,7 +94,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
               </div>
             </div>
           </div>
-          <div className=" w-full mt-20  border-t-[1px] border-[#D9DCE1] h-2"></div>
+          <div className=" w-full md:mt-20 mt-32  border-t-[1px] border-[#D9DCE1] h-2"></div>
           <div className="flex justify-center pb-5 pt-4">
             {error && <Alert message={error} type="error" />}
             <Button

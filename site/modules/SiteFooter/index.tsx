@@ -1,5 +1,6 @@
 import { Typography } from '@components/ui'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -19,8 +20,8 @@ import {
 } from '@components/assets/icons/footer'
 import EmojiAnnouncement from '@components/assets/icons/footer/emoji_announce.gif'
 
-import { useState } from 'react'
 import ImportantNoticeData from '../ImportantNotices/importantNoticeData'
+import { useState } from 'react'
 
 const itemsHorizontal = [
   {
@@ -99,6 +100,20 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="block md:hidden">
+        <button
+          onClick={scrollToTop}
+          className="h-[46px] w-[46px] bg-[#F1EFFF] shadow-xl fixed bottom-5 right-5 text-[32px] cursor-pointer rounded-full border-none"
+        >
+          <Image
+            className=""
+            src="/back-to-top.svg"
+            alt=""
+            width={27}
+            height={27}
+          />
+        </button>
+      </div>
       <div className="hidden md:block">
         <div
           className="flex justify-center flex-row items-center  py-4 gap-6 h-[72px] w-100 bg-[#F8F8F8] z-30 sticky "
@@ -141,7 +156,7 @@ const Footer = () => {
           </div>
           <div className="lg:grid lg:content-between col-span-12 md:col-span-4 space-y-2  ">
             <div className="flex items-center space-x-2 text-white md:pb-0 pb-4">
-              <Link href="">
+              <Link href="/">
                 <>
                   <img src={LogoWhite.src} className="w-[37px]" />
                   <span className="whitespace-nowrap">
