@@ -61,6 +61,8 @@ function SelectedExamAchievements({
     return null
   }
 
+  console.log('Achivement Data :: ', achievementsData)
+
   return (
     <div className="p-4 w-full cursor-pointer">
       <p className="text-[#757575] max-[640px]:mt-8">
@@ -91,11 +93,11 @@ function SelectedExamAchievements({
             <div className="col-span-4">Select Criteria</div>
           </div>
           {Object.keys(achievementsData)?.map((achievement, index) => {
+            //debugger
+            console.log('test debug')
             const group = achievement
-            const groupData = achievements?.['Group'][0][achievement][0] || {}
+            const groupData = achievementsData?.[group][0] || {}
             const competitions = groupData['Competition Title'] || []
-            const criterias = groupData['Criteria'] || []
-            const dropdownArray = groupData['Select Criteria (dropdown)'] || []
 
             return (
               <div
@@ -104,46 +106,62 @@ function SelectedExamAchievements({
               >
                 <div className="col-span-1 py-2">{group}</div>
                 <div className="col-span-11">
-                  {competitions.map((_: any, index: number) => {
-                    const selectedVal = getSelectedValue(
-                      group,
-                      competitions[index],
-                      criterias[index]
-                    )
-                    return (
-                      <div
-                        key={index}
-                        className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
-                      >
-                        <div className="col-span-4">{competitions[index]}</div>
-                        <div className="col-span-3">{criterias[index]}</div>
-                        <div className="col-span-4 flex">
-                          <Select
-                            options={dropdownArray.map((el: string) => ({
-                              id: el,
-                              name: el,
-                            }))}
-                            placeholder="Select"
-                            className="h-[50px] mr-2"
-                            onChange={(val: string) =>
-                              onSelectCriteria(
-                                group,
-                                val,
-                                competitions[index],
-                                criterias[index]
-                              )
-                            }
-                            value={selectedVal}
-                          />
-                          <input
-                            type="checkbox"
-                            className="appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full"
-                            checked={!!selectedVal}
-                          />
+                  {competitions.map(
+                    (competitionDetails: any, index: number) => {
+                      let competitionNameArr = Object.keys(competitionDetails)
+                      //assuming array to be of only length 1, will otimize is later
+
+                      let competitionName = competitionNameArr[0]
+                      let criteria =
+                        competitionDetails[competitionName]?.Criteria
+
+                      //assuming array to be of only length 1, will otimize is later
+                      let criteraName = Object.keys(criteria)[0]
+
+                      let dropdownArray =
+                        criteria[criteraName]['Select Criteria (dropdown)']
+
+                      /*  const selectedVal = getSelectedValue(
+                        group,
+                        competitions[index],
+                        criterias[index]
+                      ) */
+                      //console.log(Object.keys(competitions[index]))
+                      return (
+                        <div
+                          key={index}
+                          className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
+                        >
+                          <div className="col-span-4">{competitionName}</div>
+                          <div className="col-span-3">{criteraName}</div>
+                          <div className="col-span-4 flex">
+                            <Select
+                              options={dropdownArray.map((el: string) => ({
+                                id: el,
+                                name: el,
+                              }))}
+                              placeholder="Select"
+                              className="h-[50px] mr-2"
+                              /*  onChange={(val: string) =>
+                                onSelectCriteria(
+                                  group,
+                                  val,
+                                  competitions[index],
+                                  criterias[index]
+                                )
+                              } */
+                              /* value={selectedVal} */
+                            />
+                            <input
+                              type="checkbox"
+                              className="appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full"
+                              /* checked={!!selectedVal} */
+                            />
+                          </div>
                         </div>
-                      </div>
-                    )
-                  })}
+                      )
+                    }
+                  )}
                 </div>
               </div>
             )
