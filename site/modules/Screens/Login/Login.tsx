@@ -109,7 +109,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
                 !isPhoneValid(username) ||
                 ((!agree || !isNameValid(fullName)) && shouldRegister)
               }
-              className="w-full md:w-[432px] md:h-14 h-12  font-bold "
+              className="w-full md:h-14 h-12  font-bold "
             >
               Get OTP
             </Button>
