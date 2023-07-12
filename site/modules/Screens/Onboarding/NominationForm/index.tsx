@@ -13,10 +13,11 @@ export type AchievementFEType = {
   remarks: string
   achievementName: string
   criteria: string
+  year: number
 }
 
 export type AchievementBEType = AchievementFEType & {
-  year: string
+  year: number
 }
 
 const TERMS_AND_CONDITIONS = [
@@ -46,20 +47,37 @@ const NominationFormScreen = () => {
 
   //FUNCTIONS
   const onValueSelect = (value: AchievementFEType) => {
+    console.log('onValueSelect', value)
     setSelectedValues([...selectedValues, value])
   }
 
-  const onSubmit = async () => {
+  const onDeselectValue = (value: AchievementFEType) => {
+    console.log('onDeselectValueSelect', value)
+    let filteredArr = selectedValues.filter((arrValue) => {
+      return (
+        arrValue.achievementName != value.achievementName &&
+        arrValue.criteria != value.criteria &&
+        arrValue.examGroup != value.examGroup &&
+        arrValue.remarks != value.remarks
+      )
+    })
+    //setSelectedValues([...filteredArr])
+    setSelectedValues([])
+  }
+
+  const onSubmit = () => {
+    console.log('submitting the form')
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
       nominationDocsInfo: selectedValues,
     }
 
-    const res = await postMarvelDataAsDraft(dataToSend, randomId)
-
-    if (res) {
-      push('/upload-document')
-    }
+    postMarvelDataAsDraft(dataToSend, randomId).then((res) => {
+      console.log(res)
+      if (res) {
+        push('/upload-document')
+      }
+    })
   }
 
   const checkboxButton = () => {
@@ -70,15 +88,19 @@ const NominationFormScreen = () => {
     setIsModalOpen(!isModalOpen)
   }
 
+  console.log('-------------------------', selectedValues)
   return (
     <Layout
-      header={<Header title="Step 2: Nominate Now" onSubmit={onSubmit} />}
+      header={
+        <Header title="Step 2: Nominate Now" handleSubmitForm={onSubmit} />
+      }
     >
       <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
         <NominationForm
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}
           nominationsFormat={nominationsFormat}
+          onDeselectValue={onDeselectValue}
         />
         <Dialog
           className={'relative z-[999999]'}

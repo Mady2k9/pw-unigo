@@ -7,13 +7,20 @@ import { AchievementBEType } from '.'
 type SelectedExamAchievementsProps = {
   achievements: any
   onValueSelect: (val: AchievementBEType) => void
+  onDeselectValue: (val: AchievementBEType) => void
   selectedValues: any
+  year: {
+    year: number
+    title: string
+  }
 }
 
 function SelectedExamAchievements({
   achievements,
   onValueSelect,
+  onDeselectValue,
   selectedValues,
+  year,
 }: SelectedExamAchievementsProps) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(true)
 
@@ -27,7 +34,7 @@ function SelectedExamAchievements({
     criteria: string
   ) => {
     onValueSelect({
-      year: '2023',
+      year: year?.year,
       examGroup,
       achievementName,
       remarks: val,
@@ -36,7 +43,12 @@ function SelectedExamAchievements({
   }
 
   const getSelectedValue = useCallback(
-    (examGroup: string, achievementName: string, criteria: string) => {
+    (
+      examGroup: string,
+      achievementName: string,
+      criteria: string,
+      year: number
+    ) => {
       /**
        * Write logic if the value is available then it should retuen the value
        */
@@ -44,7 +56,8 @@ function SelectedExamAchievements({
         if (
           value.examGroup === examGroup &&
           value.achievementName === achievementName &&
-          value.criteria === criteria
+          value.criteria === criteria &&
+          value.year === year
         ) {
           return value
         }
@@ -56,25 +69,45 @@ function SelectedExamAchievements({
     [selectedValues]
   )
 
+  const unselectAcievement = (
+    isChecked: boolean,
+    examGroup: string,
+    achievementName: string,
+    criteria: string,
+    val: string
+  ) => {
+    console.log('isChecked', isChecked)
+    if (isChecked) {
+      return false
+    }
+
+    onDeselectValue({
+      year: year?.year,
+      examGroup,
+      achievementName,
+      remarks: val,
+      criteria,
+    })
+  }
+
   if (!achievementsData) {
     //TODO fix this
     return null
   }
 
-  console.log('Achivement Data :: ', achievementsData)
+  console.log('Achivement Data :: ', achievementsData, selectedValues)
 
   return (
-    <div className="p-4 w-full cursor-pointer">
-      <p className="text-[#757575] max-[640px]:mt-8">
-        Selected Exam Category: Profile Based scholarship award
-      </p>
+    <>
       <div
         className="mt-6 bg-[#F8F8F8] flex justify-between items-center p-4 max-[640px]:mt-3"
         onClick={() => setIsAccordionOpen(!isAccordionOpen)}
       >
         <div>
           <p className="text-[#757575]">Fill your achievements here for</p>
-          <p className="text-[#1B2124] text-base">Current Year (2023)</p>
+          <p className="text-[#1B2124] text-base">
+            Current Year ({year?.year})
+          </p>
         </div>
         <div
           className={`transition-all duration-300 ${
@@ -121,11 +154,14 @@ function SelectedExamAchievements({
                       let dropdownArray =
                         criteria[criteraName]['Select Criteria (dropdown)']
 
-                      /*  const selectedVal = getSelectedValue(
+                      const selectedVal = getSelectedValue(
                         group,
-                        competitions[index],
-                        criterias[index]
-                      ) */
+                        competitionName,
+                        criteraName,
+                        year?.year
+                      )
+
+                      console.log('selectedVal', selectedVal)
                       //console.log(Object.keys(competitions[index]))
                       return (
                         <div
@@ -142,20 +178,29 @@ function SelectedExamAchievements({
                               }))}
                               placeholder="Select"
                               className="h-[50px] mr-2"
-                              /*  onChange={(val: string) =>
+                              onChange={(val: string) =>
                                 onSelectCriteria(
                                   group,
                                   val,
-                                  competitions[index],
-                                  criterias[index]
+                                  competitionName,
+                                  criteraName
                                 )
-                              } */
-                              /* value={selectedVal} */
+                              }
+                              value={selectedVal || ''}
                             />
                             <input
                               type="checkbox"
                               className="appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full"
-                              /* checked={!!selectedVal} */
+                              onChange={(e) => {
+                                unselectAcievement(
+                                  e.target.checked,
+                                  group,
+                                  competitionName,
+                                  criteraName,
+                                  selectedVal
+                                )
+                              }}
+                              checked={!!selectedVal}
                             />
                           </div>
                         </div>
@@ -168,7 +213,7 @@ function SelectedExamAchievements({
           })}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

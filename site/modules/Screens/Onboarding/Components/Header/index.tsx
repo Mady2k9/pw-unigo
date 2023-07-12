@@ -36,11 +36,12 @@ const Header: React.FC<HeaderProps> = ({
           <div className="hidden sm:block">
             <button
               className=" bg-[#D2CCFF] hover:bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
-              onClick={
+              onClick={handleSubmitForm}
+              /* onClick={
                 navBarText === 'Edit'
                   ? () => handleEditForm(navBarText)
                   : handleSubmitForm
-              }
+              } */
             >
               {navBarText === 'Edit' ? 'Edit Form' : 'Submit'}
             </button>
