@@ -74,7 +74,7 @@ const NominationFormScreen = () => {
     <Layout
       header={<Header title="Step 2: Nominate Now" onSubmit={onSubmit} />}
     >
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
+      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}
