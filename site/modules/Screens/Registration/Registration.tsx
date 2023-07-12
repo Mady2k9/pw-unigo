@@ -5,6 +5,8 @@ import { isPhoneValid } from '@lib/validations'
 import { Layout } from './Layout'
 import { TextInput } from '@components/ui/Input'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
+import s from '@modules/Screens/components.module.css'
 
 type RegisterViewProps = {
   onOTPGet: () => void
@@ -12,20 +14,54 @@ type RegisterViewProps = {
 
 const Register = ({ onOTPGet }: RegisterViewProps) => {
   // Form State
-  const { otpSent, error, loading, handleRegister } = useAuth()
+  const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
+    useAuth()
+
   const [mobile, setMobile] = useState('')
   const [firstName, setFullName] = useState('')
+  const [username, setUsername] = useState('')
+  const [shouldRegister, setShouldRegister] = useState(false)
 
-  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
-    localStorage.setItem('userMobile', mobile)
+  const router = useRouter()
+
+  useEffect(() => {
+    setUsername(localStorage.getItem('username') as string)
+    localStorage.removeItem('fullName')
+    localStorage.removeItem('shouldRegister')
+  }, [])
+
+  /*  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+    localStorage.setItem('username', mobile)
     e.preventDefault()
     try {
-      handleRegister(mobile, firstName)
+      //handleRegister(mobile, firstName)
+
+      if (shouldRegister) {
+        handleRegister(mobile, firstName)
+        setShouldRegister(false)
+        localStorage.removeItem('shouldRegister')
+      } else {
+        setShouldRegister(true)
+        localStorage.setItem('shouldRegister', 'true')
+      }
     } catch (e) {
-      /**
-       * Ask for better messages
-       */
+      
+
       toast.error('Something Went wrong. Please try again after some time')
+    }
+  } */
+
+  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+    localStorage.setItem('username', mobile)
+    e.preventDefault()
+    if (shouldRegister) {
+      await handleRegister(mobile, firstName)
+    } else {
+      const response = await handleGenerateOTP(username)
+      if (!response) {
+        setShouldRegister(true)
+        localStorage.setItem('shouldRegister', 'true')
+      }
     }
   }
 
@@ -91,6 +127,16 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   variant={'outlined'}
                   placeholder={'Enter your mobile number'}
                 />
+                {
+                  <div
+                    className={` animated fadeIn flex gap-2 my-2  ${
+                      shouldRegister ? '' : 'hidden'
+                    }`}
+                  >
+                    <img src="/warning.svg" alt="warning" height="12px" />
+                    <span className={s.warning}>User Already Exist!.</span>
+                  </div>
+                }
               </div>
             </div>
           </div>

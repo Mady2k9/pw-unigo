@@ -1,11 +1,19 @@
 export interface HeaderProps {
   title: string
-  onSubmit?: () => void // TODO - remove optional chaining
+  handleSubmitForm?: () => void // TODO - remove optional chaining
+  handleEditForm: (navBarText: string) => void
+  profileData: any
+  isEditEnabled: boolean
+  navBarText: string
 }
 
-const Header: React.FC<HeaderProps> = (props) => {
-  const { title, onSubmit } = props
-
+const Header: React.FC<HeaderProps> = ({
+  title,
+  handleSubmitForm,
+  handleEditForm,
+  isEditEnabled,
+  navBarText,
+}: HeaderProps) => {
   return (
     <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-10 shadow-md flex">
       <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
@@ -28,9 +36,13 @@ const Header: React.FC<HeaderProps> = (props) => {
           <div className="hidden sm:block">
             <button
               className=" bg-[#D2CCFF] hover:bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
-              onClick={onSubmit}
+              onClick={
+                navBarText === 'Edit'
+                  ? () => handleEditForm(navBarText)
+                  : handleSubmitForm
+              }
             >
-              Submit
+              {navBarText === 'Edit' ? 'Edit Form' : 'Submit'}
             </button>
           </div>
           <div className="flex w-[142px] h-[32px] sm:hidden ">

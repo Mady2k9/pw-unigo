@@ -107,7 +107,7 @@ const Footer = () => {
         <span>
           <ChevronUpIcon width={20} height={20} />
         </span>
-        <button onClick={scrollToTop} className="">
+        <button onClick={scrollToTop}>
           <Typography weight={600} variant="heading3">
             Back to top
           </Typography>
@@ -115,7 +115,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#1B2124] py-4 px-[16px] md:px-4 lg:px-0 static">
         <div className="max-w-6xl py-3 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto">
-          <div className="col-span-12 lg:col-span-4 md:col-span-12 space-y-2 flex md:justify-start justify-center sm:hidden border-[#ffffff7d] border-b-[1px] pb-6">
+          <div className="col-span-12 lg:col-span-4 md:col-span-12 space-y-2 flex md:justify-start justify-center lg:hidden border-[#ffffff7d] border-b-[1px] pb-6">
             <div className="md:w-80 w-full h-[84px]  border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">
               <div className=" text-white flex justify-center">
                 <Typography weight={600} variant="heading4">
@@ -172,7 +172,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-4  space-y-2 sm:flex lg:justify-center hidden">
+          <div className="col-span-12 md:col-span-4  space-y-2 lg:flex lg:justify-center hidden">
             <div className="w-[344px] h-[84px] border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">
               <div className=" text-white flex justify-center">
                 <Typography weight={600} variant="heading4">

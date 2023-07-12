@@ -24,18 +24,21 @@ function NominationForm({
   const [activeExamCategory, setActiveExamCategory] = useState('')
   const [selectedExamFormatData, setselectedExamFormatData] = useState<any>([])
 
+  console.log('nomination Form ::: ', onValueSelect)
+
   useEffect(() => {
-    setActiveExamCategory(Object.keys(nominationsFormat)[0])
+    // setActiveExamCategory(Object.keys(nominationsFormat)[0])
   }, [nominationsFormat])
 
   const onExamSelect = (examCategory: string) => {
     if (activeExamCategory !== examCategory) {
       setActiveExamCategory(examCategory)
+      setselectedExamFormatData(nominationsFormat[examCategory])
     }
   }
 
   useEffect(() => {
-    setselectedExamFormatData(nominationsFormat[activeExamCategory])
+    // setselectedExamFormatData(nominationsFormat[activeExamCategory])
   }, [activeExamCategory, nominationsFormat])
 
   return (
