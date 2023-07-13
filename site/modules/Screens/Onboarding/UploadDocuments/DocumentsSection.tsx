@@ -33,6 +33,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
       const randomId = localStorage.getItem('randomId') || ''
       const { data } = await getDraftData(randomId)
       if (data.success) {
+        console.log('Draft Data :: ', data)
         setdraftData(data.data)
       }
     })()
@@ -71,12 +72,57 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 <div className="bg-[#FFF6E5] p-2 rounded-md">
                   <img src="/profile-picture.svg" alt="profile icon" />
                 </div>
-                <div className="ml-3">
-                  <div className="text-sm md:text-base font-semibold">
-                    Student Passport Size Photo
-                  </div>
-                  <div className="text-xs sm:text-sm">
-                    Upload your photo here...
+                <div className="text-xs sm:text-sm">
+                  Upload all pages of your report card
+                </div>
+              </div>
+            </div>
+            <FileUploadBox
+              fileHelperText={'50 KB max file size, JPG or PNG'}
+              onUploadSucces={(res: UploadedFileResponse) =>
+                onStudentDocUpload('reportCard', res._id)
+              }
+              wrapperClass="mt-6"
+            />
+          </div>
+        </div>
+        <div className="flex rounded-md bg-white p-6 my-6 items-center">
+          <div className="mr-2 text-base font-bold">Nomination Documents</div>
+          <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
+        </div>
+        <div className="bg-white w-full divide-y">
+          <div className="grid grid-cols-12 font-bold p-6 py-3">
+            <div className="col-span-1">S. no.</div>
+            <div className="col-span-2">Nomination year</div>
+            <div className="col-span-1">Exam Group</div>
+            <div className="col-span-2">Competition title</div>
+            <div className="col-span-2">Remarks</div>
+            <div className="col-span-2">Criteria</div>
+            <div className="col-span-2">Upload document</div>
+          </div>
+          {draftData &&
+            draftData.nominationDocsInfo?.map((data: any, index: number) => {
+              const { criteria, examGroup, remarks, year, achivementName } =
+                data
+              return (
+                <div
+                  className="grid grid-cols-12 p-6 py-3 text-[#757575]"
+                  key={criteria}
+                >
+                  <div className="col-span-1 my-auto">{index + 1}</div>
+                  <div className="col-span-2 my-auto">{year}</div>
+                  <div className="col-span-1 my-auto">{examGroup}</div>
+                  <div className="col-span-2 my-auto">{achivementName}</div>
+                  <div className="col-span-2 my-auto">{remarks}</div>
+                  <div className="col-span-2 my-auto">{criteria}</div>
+                  <div className="col-span-2 my-auto">
+                    <FileUploadBox
+                      fileHelperText={'50 KB max file size, JPG or PNG'}
+                      onUploadSucces={(response: UploadedFileResponse) =>
+                        onNominationDocsSuccess(response, data)
+                      }
+                      wrapperClass="mt-6"
+                    />
                   </div>
                 </div>
               </div>
