@@ -23,6 +23,7 @@ const Content = ({
   const onClassChange = (classVal: string) => {
     setProfileData({ ...studentData, class: classVal })
   }
+  const [countryNumber, setCountryNumber] = useState(false)
   const showCountryNumber = () => {
     setCountryNumber(true)
   }

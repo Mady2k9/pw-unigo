@@ -48,7 +48,7 @@ const ProfileDetails = () => {
   const onSubmit = async () => {
     const dataToSend = {
       email: profileData.email,
-      class: profileData.class,
+      class: '', //profileData.class,
       alternateNumber: profileData.alternateNumber,
     }
     const randomId = localStorage.getItem('randomId') ?? ''

@@ -15,7 +15,8 @@ const sidebar: React.FC<sidebarProps> = (props) => {
   const [show, setShow] = useState(false)
   const router = useRouter()
   const [isProfilePageOpened, setIsProfilePageOpened] = useState(false)
-  const [nominateAgain, setNominateAgain] = useState(false)
+  const [toggleButton, setToggleButton] = useState(false)
+  // const [nominateAgain, setNominateAgain] = useState(false)
   var profileLink = '/profile-details'
   var nominateLink = '/nomination-form'
 
@@ -24,7 +25,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
   }
   const toggleModal = () => {
     setIsProfilePageOpened(false)
-    setNominateAgain(false)
+    // setNominateAgain(false)
   }
   const onSubmitProfile = () => {
     router.push(profileLink)
@@ -34,14 +35,17 @@ const sidebar: React.FC<sidebarProps> = (props) => {
   }
   const goToProfilePage = () => {
     setIsProfilePageOpened(true)
+    setToggleButton(true)
   }
   const goToNominatePage = () => {
-    setNominateAgain(true)
+    // setNominateAgain(true)
+    setToggleButton(false)
+    setIsProfilePageOpened(true)
   }
 
   return (
     <>
-      <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full bg-[#f8f8f8]">
+      <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full">
         <div className={s.mainContainer}>
           <div className={s.container}>
             <img
@@ -61,7 +65,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
             <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
               <div className="mb-2 sm:text-left text-center">
                 <span className={s.step_text_active}>Step 1</span>
-                <div className={s.icon_container}>
+                <div className={s.icon_container} onClick={goToProfilePage}>
                   <img className={s.step_img} src="/step_1c.svg" alt="step1" />
                   <span className={s.step_icon_text}>Profile Details</span>
                 </div>
@@ -69,7 +73,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
 
               <div className="mb-2 sm:text-left text-center">
                 <span className={s.step_text}>Step 2</span>
-                <div className={s.icon_container}>
+                <div className={s.icon_container} onClick={goToNominatePage}>
                   <img className={s.step_img} src="/step_2c.svg" alt="step2" />
                   <p className={s.step_icon_text}>Nomination Form</p>
                 </div>
@@ -120,7 +124,68 @@ const sidebar: React.FC<sidebarProps> = (props) => {
             </div>
           </div>
         </div>
+        {/* {isProfilePageOpened === true  ? (
+          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+        ) : (
+          ''
+        )} */}
+
+        {isProfilePageOpened === true && router.pathname != profileLink ? (
+          <>
+            <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+            <Dialog
+              className={'relative z-[999999]'}
+              open={isProfilePageOpened}
+              onClose={toggleModal}
+            >
+              <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
+              <div className="fixed inset-0 flex items-center justify-center p-4 ">
+                <Dialog.Panel className="mx-auto w-full max-w-[480px] max-h-[212px] rounded-xl bg-white ring-1 transition-all p-5 relative">
+                  <div
+                    className="cursor-pointer absolute top-4 right-4"
+                    onClick={toggleModal}
+                  >
+                    <Cross className="h-6 w-6" />
+                  </div>
+                  <div className="text-center m-2">
+                    <p className="font-bold text-[20px] ">
+                      Going to previous step?
+                    </p>
+                    <p className="text-[16px] mt-[20px]">
+                      Are you sure you want to go back without completing this
+                      step?{' '}
+                    </p>
+                  </div>
+                  <div className="flex justify-center mt-6 text-[16px] font-[600px]">
+                    <button
+                      onClick={
+                        toggleButton === true
+                          ? onSubmitProfile
+                          : onSubmitNominate
+                      }
+                      className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
+                    >
+                      {toggleButton == true
+                        ? 'Go to profile details'
+                        : 'Go to Nominate details'}
+                    </button>
+
+                    <button
+                      onClick={toggleModal}
+                      className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
+                    >
+                      Complete it first
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </div>
+            </Dialog>
+          </>
+        ) : (
+          ''
+        )}
       </div>
+
       {show === true ? <ImportantNoticeData /> : ''}
     </>
   )
