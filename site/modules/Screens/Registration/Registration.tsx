@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Alert, Button, Typography } from '@components/ui'
 import { useAuth } from '@lib/hooks/useAuth'
-import { isPhoneValid } from '@lib/validations'
+import { isPhoneValid, isNameValid } from '@lib/validations'
 import { Layout } from './Layout'
 import { TextInput } from '@components/ui/Input'
 import toast from 'react-hot-toast'
@@ -27,6 +27,10 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
        */
       toast.error('Something Went wrong. Please try again after some time')
     }
+  }
+  const [countryNumber, setCountryNumber] = useState(false)
+  const showCountryNumber = () => {
+    setCountryNumber(true)
   }
 
   useEffect(() => {
@@ -76,19 +80,37 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
           <div className="flex flex-col space-y-3">
             <div className="flex w-full flex-col md:flex-row gap-4 p-6 ">
               <div className={'mb-4 w-full'}>
-                <Typography>Full Name*</Typography>
+                <Typography>
+                  Full Name<span className=" text-red-600 text-xl">*</span>
+                </Typography>
                 <TextInput
+                  invalid={!isNameValid(firstName)}
                   onChange={setFullName}
-                  variant={'outlined'}
+                  variant={'flatlogin'}
                   placeholder={'Enter your name'}
                 />
               </div>
               <div className={'mb-4 w-full'}>
-                <Typography>Mobile Number*</Typography>
+                <Typography>
+                  Mobile Number<span className=" text-red-600 text-xl">*</span>
+                </Typography>
                 <TextInput
                   invalid={!isPhoneValid(mobile)}
+                  maxLength={10}
                   onChange={setMobile}
-                  variant={'outlined'}
+                  variant={'flatlogin'}
+                  onClick={showCountryNumber}
+                  preElement={
+                    <div className="text-[16px] font-semibold bg-white pl-2 ">
+                      {countryNumber === true ? (
+                        <select className=" border-none bg-transparent select-arrow-mob">
+                          <option value="india">IN +91</option>
+                        </select>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  }
                   placeholder={'Enter your mobile number'}
                 />
               </div>
@@ -101,7 +123,8 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
               size="large"
               type="submit"
               loading={loading}
-              disabled={!isPhoneValid(mobile)}
+              disabled={!isNameValid(firstName) || !isPhoneValid(mobile)}
+              /* disabled={!isPhoneValid(mobile)} */
               className="w-80 md:w-[432px] md:h-14 h-12  font-bold "
             >
               <Typography weight={700} variant="heading4">
