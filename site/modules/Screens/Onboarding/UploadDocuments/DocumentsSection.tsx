@@ -33,6 +33,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
       const randomId = localStorage.getItem('randomId') || ''
       const { data } = await getDraftData(randomId)
       if (data.success) {
+        console.log('Draft Data :: ', data)
         setdraftData(data.data)
       }
     })()

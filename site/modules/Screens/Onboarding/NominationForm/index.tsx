@@ -41,7 +41,7 @@ const NominationFormScreen = () => {
     ;(async () => {
       const randomId = localStorage.getItem('randomId') || ''
       const nominationFormatData = await fetchNomationFormat(10, randomId) // TODO class should be dynamic
-      setNominationsFormat(nominationFormatData?.data?.data?.['Exam Category'])
+      setNominationsFormat(nominationFormatData?.data?.data?.['exam_category'])
     })()
   }, [])
 
@@ -72,7 +72,7 @@ const NominationFormScreen = () => {
       nominationDocsInfo: selectedValues,
     }
 
-    postMarvelDataAsDraft(dataToSend, randomId).then((res) => {
+    postMarvelDataAsDraft(dataToSend, randomId).then((res: any) => {
       console.log(res)
       if (res) {
         push('/upload-document')
@@ -88,7 +88,7 @@ const NominationFormScreen = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  console.log('-------------------------', selectedValues)
+  //console.log('-------------------------', selectedValues)
   return (
     <Layout
       header={

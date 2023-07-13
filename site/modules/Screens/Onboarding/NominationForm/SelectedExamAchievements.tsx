@@ -161,7 +161,7 @@ function SelectedExamAchievements({
                         year?.year
                       )
 
-                      console.log('selectedVal', selectedVal)
+                      //console.log('selectedVal', selectedVal)
                       //console.log(Object.keys(competitions[index]))
                       return (
                         <div

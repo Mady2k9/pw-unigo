@@ -27,24 +27,32 @@ function NominationForm({
   nominationsFormat,
   onDeselectValue,
 }: NominationFormTypes) {
-  // TODO: Writting this code only to meet deadlines, ptimize it later
-  let firstSelectedExamCategory = Object.keys(nominationsFormat)[0]
-  //console.log('firstSelectedExamCategory', firstSelectedExamCategory)
+  // TODO: Writting this code only to meet deadlines, otimize it later
+
+  //let firstSelectedExamCategory = Object.keys(nominationsFormat)[0]
+
+  //let firstSelectedExamCategory = nominationsFormat
+
+  //console.log('firstSelectedExamCategory', firstSelectedExamCategory[0].name)
   // TODO - Remove any and apply proper TS
   const [activeExamCategory, setActiveExamCategory] = useState(
-    firstSelectedExamCategory
+    //firstSelectedExamCategory
+    nominationsFormat
   )
 
   const [selectedExamFormatData, setselectedExamFormatData] = useState<any>(
-    nominationsFormat[firstSelectedExamCategory]
+    //nominationsFormat[firstSelectedExamCategory]
+    nominationsFormat
   )
 
-  console.log('nomination Form ::: ', onValueSelect)
+  //console.log('nomination Form ::: ', onValueSelect)
 
   useEffect(() => {
-    setActiveExamCategory(Object.keys(nominationsFormat)[0])
+    //setActiveExamCategory(Object.keys(nominationsFormat)[0])
+    setActiveExamCategory(nominationsFormat)
     setselectedExamFormatData(
-      nominationsFormat[Object.keys(nominationsFormat)[0]]
+      // nominationsFormat[Object.keys(nominationsFormat)[0]]
+      nominationsFormat
     )
   }, [nominationsFormat])
 
@@ -78,7 +86,7 @@ function NominationForm({
     })
   }
 
-  console.log('activeExamCategory', activeExamCategory)
+  //console.log('activeExamCategory', activeExamCategory)
 
   return (
     <div className="w-full bg-white overflow-y-scroll">
@@ -100,22 +108,21 @@ function NominationForm({
                 <p className="text-[#1B2124] bg-[#E4E7EA] p-3 font-bold ">
                   Exam Category
                 </p>
-                {Object.keys(nominationsFormat)?.map(
-                  (nomintaionFormat: any) => {
-                    return (
-                      <div
-                        className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
-                          nomintaionFormat === activeExamCategory &&
-                          'text-indigo-500 bg-white border-l-2 !border-indigo-500'
-                        }`}
-                        key={nomintaionFormat}
-                        onClick={() => onExamSelect(nomintaionFormat)}
-                      >
-                        {nomintaionFormat}
-                      </div>
-                    )
-                  }
-                )}
+                {/* {Object.keys(nominationsFormat)?.map( */}
+                {nominationsFormat?.map((nomintaionFormat: any, index: any) => {
+                  return (
+                    <div
+                      className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
+                        nomintaionFormat.name === activeExamCategory &&
+                        'text-indigo-500 bg-white border-l-2 !border-indigo-500'
+                      }`}
+                      key={nomintaionFormat.name}
+                      onClick={() => onExamSelect(nomintaionFormat.name)}
+                    >
+                      {nomintaionFormat.name}
+                    </div>
+                  )
+                })}
               </div>
               <div className="p-4 w-full cursor-pointer">
                 <p className="text-[#757575] max-[640px]:mt-8">
