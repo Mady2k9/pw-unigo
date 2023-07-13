@@ -17,6 +17,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
   const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
     useAuth()
 
+  /*  const [dataNumber, setDataNumber] = useState('') */
   const [mobile, setMobile] = useState('')
   const [firstName, setFullName] = useState('')
   const [username, setUsername] = useState('')
@@ -29,6 +30,13 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
     localStorage.removeItem('fullName')
     localStorage.removeItem('shouldRegister')
   }, [])
+
+  /*  const dataSetMobile = (e: any) => {
+    setDataNumber(e.replace(/[a-z!@#\$%\^\&*\)\(+=._-]/, ''))
+    {
+      setMobile
+    }
+  } */
 
   /*  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     localStorage.setItem('username', mobile)
@@ -134,6 +142,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   invalid={!isPhoneValid(mobile)}
                   maxLength={10}
                   onChange={setMobile}
+                  /*  value={dataNumber} */
                   variant={'flatlogin'}
                   onClick={showCountryNumber}
                   preElement={

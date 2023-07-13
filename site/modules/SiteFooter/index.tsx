@@ -1,9 +1,6 @@
 import { Typography } from '@components/ui'
 import Link from 'next/link'
-<<<<<<< HEAD
 import Image from 'next/image'
-=======
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -23,13 +20,8 @@ import {
 } from '@components/assets/icons/footer'
 import EmojiAnnouncement from '@components/assets/icons/footer/emoji_announce.gif'
 
-<<<<<<< HEAD
 import ImportantNoticeData from '../ImportantNotices/importantNoticeData'
 import { useState } from 'react'
-=======
-import { useState } from 'react'
-import ImportantNoticeData from '../ImportantNotices/importantNoticeData'
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
 
 const itemsHorizontal = [
   {
@@ -164,11 +156,7 @@ const Footer = () => {
           </div>
           <div className="lg:grid lg:content-between col-span-12 md:col-span-4 space-y-2  ">
             <div className="flex items-center space-x-2 text-white md:pb-0 pb-4">
-<<<<<<< HEAD
               <Link href="/">
-=======
-              <Link href="">
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
                 <>
                   <img src={LogoWhite.src} className="w-[37px]" />
                   <span className="whitespace-nowrap">
@@ -200,11 +188,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-<<<<<<< HEAD
           <div className="col-span-12 md:col-span-4  space-y-2 sm:flex lg:justify-center hidden">
-=======
-          <div className="col-span-12 md:col-span-4  space-y-2 lg:flex lg:justify-center hidden">
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
             <div className="w-[344px] h-[84px] border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">
               <div className=" text-white flex justify-center">
                 <Typography weight={600} variant="heading4">
@@ -259,17 +243,10 @@ const Footer = () => {
 
           <div></div>
         </div>
-<<<<<<< HEAD
         <div className="max-w-6xl md:py-6 py-2 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto md:border-t-[1px] md:border-[#ffffff7d] md:mt-0 -mt-4">
           <div className="flex flex-col col-span-12 sm:col-span-5 space-y-2">
             <div className="flex items-center ">
               <span className="text-sm md:text-sm  text-white font-semibold">
-=======
-        <div className="max-w-6xl  md:py-6 py-2 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto md:border-t-[1px] md:border-[#ffffff7d] md:mt-0 -mt-4">
-          <div className="flex flex-col col-span-12 md:col-span-12 lg:col-span-6  space-y-2">
-            <div className="flex items-center ">
-              <span className="text-sm md:text-base text-white font-semibold">
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
                 Follow Us:
               </span>
 
@@ -292,13 +269,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
           <div className="flex sm:justify-end col-span-12 sm:col-span-7 space-y-2 border-[#ffffff7d] border-t-[1px] md:border-none md:pt-0 pt-3">
             <span className="text-xs md:text-sm text-white font-semibold">
-=======
-          <div className="flex  lg:justify-end   col-span-12 md:col-span-12 lg:col-span-6 space-y-2 border-[#ffffff7d] border-t-[1px] md:border-none md:pt-0 pt-3">
-            <span className=" text-xs md:text-base text-white font-semibold">
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
               Copyright © 2023 Physics Wallah Pvt. Ltd. All rights reserved.
             </span>
           </div>

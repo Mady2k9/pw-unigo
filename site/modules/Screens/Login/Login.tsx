@@ -84,7 +84,6 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
           <div className="flex flex-col space-y-3">
             <div className="mb-6 mt-2 md:w-[432px]">
               <TextInput
-                type="number"
                 invalid={!isPhoneValid(username)}
                 maxLength={10}
                 onChange={(e: any) => {

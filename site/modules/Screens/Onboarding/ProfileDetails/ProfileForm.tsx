@@ -4,12 +4,8 @@ import { Button } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
 import { CLASSES_ARRAY } from '@config/types/classes'
-<<<<<<< HEAD
-import { isPhoneValid } from '@lib/validations'
-=======
 import { StudentDataProps } from './types'
 import { addSuffixToNumber } from '@utils/helps'
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
 
 export interface ProfileFormProps {
   studentData: StudentDataProps
@@ -18,18 +14,12 @@ export interface ProfileFormProps {
   isEditEnabled: boolean
 }
 
-<<<<<<< HEAD
-const Content: React.FC<contentProps> = (props) => {
-  const { name, profileData, setProfileData, registrationDate } = props
-  const [countryNumber, setCountryNumber] = useState(false)
-=======
 const Content = ({
   studentData,
   setProfileData,
   registrationDate,
   isEditEnabled,
 }: ProfileFormProps) => {
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
   const onClassChange = (classVal: string) => {
     setProfileData({ ...studentData, class: classVal })
   }
@@ -87,16 +77,10 @@ const Content = ({
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   className="bg-white"
-<<<<<<< HEAD
-                  label="Phone Number"
-                  onChange={(val) =>
-                    setProfileData({ ...profileData, alternateNumber: val })
-=======
                   label={
                     isEditEnabled && studentData.alternateNumber
                       ? 'Mobile Number'
                       : ''
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
                   }
                   onChange={(mobileNumber) =>
                     setProfileData({
@@ -110,17 +94,6 @@ const Content = ({
                   maxLength={10}
                   onClick={showCountryNumber}
                   preElement={
-<<<<<<< HEAD
-                    <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      {countryNumber === true ? (
-                        <select className=" border-none bg-transparent">
-                          <option value="india">IN +91</option>
-                        </select>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-=======
                     isEditEnabled ? (
                       <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                         <select className=" border-none bg-transparent">
@@ -128,7 +101,6 @@ const Content = ({
                         </select>
                       </div>
                     ) : null
->>>>>>> 7472edbe1c80951ee603ae8ed31327776b04d1ae
                   }
                   variant="flat"
                 />
