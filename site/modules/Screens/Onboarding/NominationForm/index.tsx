@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 export type AchievementFEType = {
   examGroup: string
   remarks: string
-  achievementName: string
+  achivementName: string
   criteria: string
   year: number
 }
@@ -55,7 +55,7 @@ const NominationFormScreen = () => {
     console.log('onDeselectValueSelect', value)
     let filteredArr = selectedValues.filter((arrValue) => {
       return (
-        arrValue.achievementName != value.achievementName &&
+        arrValue.achivementName != value.achivementName &&
         arrValue.criteria != value.criteria &&
         arrValue.examGroup != value.examGroup &&
         arrValue.remarks != value.remarks
@@ -66,6 +66,10 @@ const NominationFormScreen = () => {
   }
 
   const onSubmit = () => {
+    // Do not submit the form if no value is selected
+    if (selectedValues.length === 0) {
+      return false
+    }
     console.log('submitting the form')
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
@@ -95,7 +99,7 @@ const NominationFormScreen = () => {
         <Header title="Step 2: Nominate Now" handleSubmitForm={onSubmit} />
       }
     >
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
+      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}

@@ -22,10 +22,9 @@ function SelectedExamAchievements({
   selectedValues,
   year,
 }: SelectedExamAchievementsProps) {
-  const [isAccordionOpen, setIsAccordionOpen] = useState(true)
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
-  const achievementsData =
-    achievements && achievements?.['Group'] && achievements?.['Group']?.[0]
+  const achievementsData = (achievements && achievements?.['Group']) || []
 
   const onSelectCriteria = (
     examGroup: string,
@@ -36,7 +35,7 @@ function SelectedExamAchievements({
     onValueSelect({
       year: year?.year,
       examGroup,
-      achievementName,
+      achivementName: achievementName,
       remarks: val,
       criteria,
     })
@@ -55,7 +54,7 @@ function SelectedExamAchievements({
       const value = selectedValues.find((value: any) => {
         if (
           value.examGroup === examGroup &&
-          value.achievementName === achievementName &&
+          value.achivementName === achievementName &&
           value.criteria === criteria &&
           value.year === year
         ) {
@@ -84,13 +83,13 @@ function SelectedExamAchievements({
     onDeselectValue({
       year: year?.year,
       examGroup,
-      achievementName,
+      achivementName: achievementName,
       remarks: val,
       criteria,
     })
   }
 
-  if (!achievementsData) {
+  if (!achievementsData.length) {
     //TODO fix this
     return null
   }
@@ -125,12 +124,11 @@ function SelectedExamAchievements({
             <div className="col-span-3">Criteria</div>
             <div className="col-span-4">Select Criteria</div>
           </div>
-          {Object.keys(achievementsData)?.map((achievement, index) => {
+          {achievementsData?.map((achievement: any, index: number) => {
             //debugger
             console.log('test debug')
-            const group = achievement
-            const groupData = achievementsData?.[group][0] || {}
-            const competitions = groupData['Competition Title'] || []
+            const group = achievement?.groupName
+            const competitions = achievement?.competitions
 
             return (
               <div
@@ -141,18 +139,11 @@ function SelectedExamAchievements({
                 <div className="col-span-11">
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
-                      let competitionNameArr = Object.keys(competitionDetails)
-                      //assuming array to be of only length 1, will otimize is later
-
-                      let competitionName = competitionNameArr[0]
-                      let criteria =
-                        competitionDetails[competitionName]?.Criteria
-
-                      //assuming array to be of only length 1, will otimize is later
-                      let criteraName = Object.keys(criteria)[0]
+                      let competitionName = competitionDetails?.achievementName
+                      let criteraName = competitionDetails?.criteria
 
                       let dropdownArray =
-                        criteria[criteraName]['Select Criteria (dropdown)']
+                        competitionDetails?.criteriaDDValuesArr
 
                       const selectedVal = getSelectedValue(
                         group,

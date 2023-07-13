@@ -164,7 +164,8 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
           </div>
           {draftData &&
             draftData.nominationDocsInfo?.map((data: any, index: number) => {
-              const { criteria, examGroup, remarks, year } = data
+              const { criteria, examGroup, remarks, year, achivementName } =
+                data
               return (
                 <div
                   className="grid grid-cols-12 p-6 py-3 text-[#757575]"
@@ -173,7 +174,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="col-span-1 my-auto">{index + 1}</div>
                   <div className="col-span-2 my-auto">{year}</div>
                   <div className="col-span-1 my-auto">{examGroup}</div>
-                  <div className="col-span-2 my-auto">Competition title</div>
+                  <div className="col-span-2 my-auto">{achivementName}</div>
                   <div className="col-span-2 my-auto">{remarks}</div>
                   <div className="col-span-2 my-auto">{criteria}</div>
                   <div className="col-span-2 my-auto">

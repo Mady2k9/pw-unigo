@@ -34,42 +34,54 @@ function NominationForm({
   //let firstSelectedExamCategory = nominationsFormat
 
   //console.log('firstSelectedExamCategory', firstSelectedExamCategory[0].name)
-  // TODO - Remove any and apply proper TS
   const [activeExamCategory, setActiveExamCategory] = useState(
-    //firstSelectedExamCategory
-    nominationsFormat
+    nominationsFormat[0]?.name
   )
 
   const [selectedExamFormatData, setselectedExamFormatData] = useState<any>(
-    //nominationsFormat[firstSelectedExamCategory]
-    nominationsFormat
+    nominationsFormat[0]
   )
 
   //console.log('nomination Form ::: ', onValueSelect)
 
   useEffect(() => {
     //setActiveExamCategory(Object.keys(nominationsFormat)[0])
-    setActiveExamCategory(nominationsFormat)
-    setselectedExamFormatData(
-      // nominationsFormat[Object.keys(nominationsFormat)[0]]
-      nominationsFormat
-    )
+    setActiveExamCategory(nominationsFormat[0]?.name)
+    setselectedExamFormatData(nominationsFormat[0])
   }, [nominationsFormat])
 
-  const onExamSelect = (examCategory: string) => {
+  const onExamSelect = (examCategory: string, index: number) => {
     if (activeExamCategory !== examCategory) {
       setActiveExamCategory(examCategory)
-      setselectedExamFormatData(nominationsFormat[examCategory])
+
+      setselectedExamFormatData(nominationsFormat[index])
     }
   }
 
   useEffect(() => {
-    onExamSelect(activeExamCategory)
+    // onExamSelect(activeExamCategory)
   }, [activeExamCategory])
 
   useEffect(() => {
-    // setselectedExamFormatData(nominationsFormat[activeExamCategory])
-  }, [activeExamCategory, nominationsFormat])
+    setselectedExamFormatData(nominationsFormat[0])
+  }, [nominationsFormat])
+
+  const renderLeftCategories = () => {
+    return nominationsFormat?.map((nomintaionCategory: any, index: any) => {
+      return (
+        <div
+          className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
+            nomintaionCategory.name === activeExamCategory &&
+            'text-indigo-500 bg-white border-l-2 !border-indigo-500'
+          }`}
+          key={nomintaionCategory.name}
+          onClick={() => onExamSelect(nomintaionCategory.name, index)}
+        >
+          {nomintaionCategory.name}
+        </div>
+      )
+    })
+  }
 
   const renderRightForm = () => {
     console.log('yearValueArr', yearValueArr, selectedExamFormatData)
@@ -109,20 +121,7 @@ function NominationForm({
                   Exam Category
                 </p>
                 {/* {Object.keys(nominationsFormat)?.map( */}
-                {nominationsFormat?.map((nomintaionFormat: any, index: any) => {
-                  return (
-                    <div
-                      className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
-                        nomintaionFormat.name === activeExamCategory &&
-                        'text-indigo-500 bg-white border-l-2 !border-indigo-500'
-                      }`}
-                      key={nomintaionFormat.name}
-                      onClick={() => onExamSelect(nomintaionFormat.name)}
-                    >
-                      {nomintaionFormat.name}
-                    </div>
-                  )
-                })}
+                {renderLeftCategories()}
               </div>
               <div className="p-4 w-full cursor-pointer">
                 <p className="text-[#757575] max-[640px]:mt-8">
