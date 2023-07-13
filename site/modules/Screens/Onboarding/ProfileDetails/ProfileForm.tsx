@@ -124,8 +124,13 @@ const Content = ({
               </div>
             </div>
           </div>
-          <div className="w-full p-4 md:hidden">
-            <Button Component="PW" variant="primary" type="submit">
+          <div className="p-4 md:hidden">
+            <Button
+              Component="PW"
+              variant="primary"
+              type="submit"
+              className="w-full"
+            >
               Submit
             </Button>
           </div>

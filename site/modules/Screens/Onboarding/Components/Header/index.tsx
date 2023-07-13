@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="flex w-[142px] h-[32px] sm:hidden ">
             <button className="w-[66px] h-full bg-white border-[1px] rounded-md text-[12px] mr-2">
-              Notice
+              Notices
             </button>
             <button className="w-[76px] h-full bg-white border-[1px] rounded-md text-[12px] flex justify-center items-center">
               <div className="mr-1">

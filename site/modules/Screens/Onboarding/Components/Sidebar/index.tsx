@@ -41,7 +41,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
 
   return (
     <>
-      <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full">
+      <div className="sm:w-[235px] z-40 flex pt-4 sm:justify-center w-full bg-[#f8f8f8]">
         <div className={s.mainContainer}>
           <div className={s.container}>
             <img
