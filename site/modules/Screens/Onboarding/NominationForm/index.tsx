@@ -96,7 +96,16 @@ const NominationFormScreen = () => {
   return (
     <Layout
       header={
-        <Header title="Step 2: Nominate Now" handleSubmitForm={onSubmit} />
+        <Header
+          title="Step 2: Nominate Now"
+          handleSubmitForm={onSubmit}
+          handleEditForm={function (navBarText: string): void {
+            throw new Error('Function not implemented.')
+          }}
+          profileData={undefined}
+          isEditEnabled={false}
+          navBarText={''}
+        />
       }
     >
       <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">

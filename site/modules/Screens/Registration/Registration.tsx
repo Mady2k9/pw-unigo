@@ -17,7 +17,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
   const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
     useAuth()
 
-  /*  const [dataNumber, setDataNumber] = useState('') */
+  //const [dataNumber, setDataNumber] = useState('')
   const [mobile, setMobile] = useState('')
   const [firstName, setFullName] = useState('')
   const [username, setUsername] = useState('')
@@ -31,18 +31,18 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
     localStorage.removeItem('shouldRegister')
   }, [])
 
-  /*  const dataSetMobile = (e: any) => {
+  /* const dataSetMobile = (e: any) => {
     setDataNumber(e.replace(/[a-z!@#\$%\^\&*\)\(+=._-]/, ''))
     {
       setMobile
     }
   } */
 
-  /*  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+  /*    const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     localStorage.setItem('username', mobile)
     e.preventDefault()
     try {
-      //handleRegister(mobile, firstName)
+     handleRegister(mobile, firstName)
 
       if (shouldRegister) {
         handleRegister(mobile, firstName)
@@ -57,7 +57,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
 
       toast.error('Something Went wrong. Please try again after some time')
     }
-  } */
+  }  */
 
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     localStorage.setItem('username', mobile)
@@ -142,7 +142,6 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   invalid={!isPhoneValid(mobile)}
                   maxLength={10}
                   onChange={setMobile}
-                  /*  value={dataNumber} */
                   variant={'flatlogin'}
                   onClick={showCountryNumber}
                   preElement={
