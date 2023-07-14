@@ -5,10 +5,22 @@ import { useState } from 'react'
 import { postFormData } from '@modules/auth/lib'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import { Dialog } from '@headlessui/react'
+import { Button } from '@components/ui'
 
 const UploadDocumentsScreen = () => {
   const [studentDocsInfo, setStudentDocsInfo] = useState<any>({})
   const [nominationDocsInfo, setNominationDocsInfo] = useState<any>([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const router = useRouter()
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
+  const successRedirectModal = () => {
+    router.push('/rewards')
+  }
 
   const { push } = useRouter()
 
@@ -83,6 +95,45 @@ const UploadDocumentsScreen = () => {
         onNominationDocumentUpload={onNominationDocumentUpload}
         onStudentDocUpload={onStudentDocUpload}
       />
+      <Dialog
+        className={'relative z-[999999]'}
+        open={isModalOpen}
+        onClose={toggleModal}
+      >
+        <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
+        <div className="fixed inset-0  p-4  mt-[7%]">
+          <Dialog.Panel className="mx-auto w-full max-w-[480px] rounded-xl shadow-xl bg-white ring-1 transition-all p-5  relative">
+            <img
+              src="/success.gif"
+              alt="success"
+              className="w-[174px] mx-auto"
+            />
+            <div className="text-center font-semibold text-[18px] mx-1">
+              Form Saved
+            </div>
+            <div className="text-center text-[16px] mt-4">
+              You can edit the form till
+              <span className="font-semibold text-[18px] mx-1">
+                25th June, 2023
+              </span>
+              <br />
+              After this form will be auto-submitted
+            </div>
+            <div className="flex justify-center mt-6 items-center gap-8">
+              <Button
+                variant="secondary"
+                onClick={toggleModal}
+                className="w-[100px] bg-red-600"
+              >
+                Edit form
+              </Button>
+              <Button onClick={successRedirectModal} className="w-[100px]">
+                Done
+              </Button>
+            </div>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </Layout>
   )
 }
