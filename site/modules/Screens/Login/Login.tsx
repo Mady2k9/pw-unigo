@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Alert, Button } from '@components/ui'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { Alert, Button, Typography } from '@components/ui'
 import { useAuth } from '@lib/hooks/useAuth'
 import { isNameValid, isPhoneValid } from '@lib/validations'
 import { TextInput } from '@components/ui/Input'
@@ -9,6 +9,7 @@ import s from '@modules/Screens/components.module.css' // TODO - Changes module 
 import { Layout } from './Layout'
 import { LogoMarvels } from '@components/assets/icons/LogoMarvels'
 import Link from 'next/link'
+import React from 'react'
 
 const Login = ({ onOTPGet }: { onOTPGet: any }) => {
   // Form State
@@ -54,6 +55,11 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
     localStorage.removeItem('shouldRegister')
   }, [username])
 
+  const [countryNumber, setCountryNumber] = useState(false)
+  const showCountryNumber = () => {
+    setCountryNumber(true)
+  }
+
   return (
     <>
       <div className="p-2 shadow xl:hidden">
@@ -76,7 +82,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
             </div>
           </div>
           <div className="flex flex-col space-y-3">
-            <div className="mb-8">
+            <div className="mb-6 mt-2 md:w-[432px]">
               <TextInput
                 invalid={!isPhoneValid(username)}
                 maxLength={10}
@@ -84,7 +90,19 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
                   setUsername(e)
                   localStorage.setItem('username', e)
                 }}
-                variant={'outlined'}
+                variant={'flatlogin'}
+                onClick={showCountryNumber}
+                preElement={
+                  <div className="text-[16px] font-semibold bg-white pl-2 ">
+                    {countryNumber === true ? (
+                      <select className=" border-none bg-transparent select-arrow-mob">
+                        <option value="india">IN +91</option>
+                      </select>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                }
                 placeholder={'Enter your Registered Mobile Number'}
               />
 
@@ -109,7 +127,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
                 !isPhoneValid(username) ||
                 ((!agree || !isNameValid(fullName)) && shouldRegister)
               }
-              className="w-full md:w-[432px] md:h-14 h-12  font-bold "
+              className="w-full md:h-14 h-12  font-bold "
             >
               Get OTP
             </Button>

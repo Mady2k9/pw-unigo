@@ -22,7 +22,7 @@ const Layout = ({ children, header }: LayoutProps) => {
   return (
     <>
       {header}
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex">
+      <div className="sticky left-0 h-[calc(100vh-80px)] sm:bg-[#f8f8f8] bg-white  z-19 sm:flex">
         <Sidebar name={name} phone={userData?.primaryNumber} />
         {children}
       </div>
