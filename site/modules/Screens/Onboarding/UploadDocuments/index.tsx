@@ -43,7 +43,7 @@ const UploadDocumentsScreen = () => {
     postFormData(dataToSend, randomId).then((res: any) => {
       console.log(res)
       if (res) {
-        // push('/rewards')
+        push('/rewards')
       }
     })
   }
