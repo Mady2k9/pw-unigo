@@ -46,6 +46,8 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
     })
   }
 
+  console.log('new darft data', draftData.pwMarvelData?.nominationDocsInfo)
+
   return (
     <div className="bg-white w-full">
       <div className="bg-[#F8F8F8] w-[90%] items-center relative mx-auto p-10">
@@ -163,32 +165,34 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             <div className="col-span-2">Upload document</div>
           </div>
           {draftData &&
-            draftData.nominationDocsInfo?.map((data: any, index: number) => {
-              const { criteria, examGroup, remarks, year, achivementName } =
-                data
-              return (
-                <div
-                  className="grid grid-cols-12 p-6 py-3 text-[#757575]"
-                  key={criteria}
-                >
-                  <div className="col-span-1 my-auto">{index + 1}</div>
-                  <div className="col-span-2 my-auto">{year}</div>
-                  <div className="col-span-1 my-auto">{examGroup}</div>
-                  <div className="col-span-2 my-auto">{achivementName}</div>
-                  <div className="col-span-2 my-auto">{remarks}</div>
-                  <div className="col-span-2 my-auto">{criteria}</div>
-                  <div className="col-span-2 my-auto">
-                    <FileUploadBox
-                      fileHelperText={'50 KB max file size, JPG or PNG'}
-                      onUploadSucces={(response: UploadedFileResponse) =>
-                        onNominationDocsSuccess(response, data)
-                      }
-                      wrapperClass="mt-6"
-                    />
+            draftData.pwMarvelData?.nominationDocsInfo?.map(
+              (data: any, index: number) => {
+                const { criteria, examGroup, remarks, year, achivementName } =
+                  data
+                return (
+                  <div
+                    className="grid grid-cols-12 p-6 py-3 text-[#757575]"
+                    key={criteria}
+                  >
+                    <div className="col-span-1 my-auto">{index + 1}</div>
+                    <div className="col-span-2 my-auto">{year}</div>
+                    <div className="col-span-1 my-auto">{examGroup}</div>
+                    <div className="col-span-2 my-auto">{achivementName}</div>
+                    <div className="col-span-2 my-auto">{remarks}</div>
+                    <div className="col-span-2 my-auto">{criteria}</div>
+                    <div className="col-span-2 my-auto">
+                      <FileUploadBox
+                        fileHelperText={'50 KB max file size, JPG or PNG'}
+                        onUploadSucces={(response: UploadedFileResponse) =>
+                          onNominationDocsSuccess(response, data)
+                        }
+                        wrapperClass="mt-6"
+                      />
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              }
+            )}
         </div>
       </div>
     </div>
