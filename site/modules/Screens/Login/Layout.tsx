@@ -7,8 +7,8 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex w-full">
-      <div className="sm:w-1/2 h-screen bg-[#FFF2C2] items-center sm:flex  hidden">
-        <div className="mx-auto lg:w-1/2 sm:w-full sm:px-4">
+      <div className="sm:w-1/2 h-screen bg-[#FFF2C2] items-center sm:flex hidden">
+        <div className="mx-auto lg:w-96 sm:w-full sm:px-4">
           <div className={s.login_left_heading}>
             <img
               className={s.shine_stars}
