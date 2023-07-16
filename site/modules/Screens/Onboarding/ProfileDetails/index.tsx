@@ -8,6 +8,9 @@ import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import { localStorageHelper } from '@utils/helps'
 import { StudentDataProps } from './types'
+import { useUI } from '@components/ui'
+import { useMarvelContext } from '@modules/MarvelContext'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 
 const ProfileDetails = () => {
   const [profileData, setProfileData] = useState<StudentDataProps>({
@@ -20,6 +23,9 @@ const ProfileDetails = () => {
   const [isEdit, setIsEdit] = useState(false)
   const [navBarText, setNavBarText] = useState('Submit')
   const router = useRouter()
+  const { user } = useUI() 
+  const { draftData, isLoadingDraftData } = useGetDraftData()
+  const { completedStepTill, updateCompletedSteps } = useMarvelContext()
 
   // to fetch and update student data
   useEffect(() => {
@@ -29,9 +35,9 @@ const ProfileDetails = () => {
       const { data } = await getAlternateMobile(randomId)
       const studentProfile = {
         email: studentData?.email,
-        class: studentData?.profileId?.class,
-        name: studentData.firstName + ' ' + studentData.lastName,
-        alternateNumber: data.data.alternateNumber,
+        class: data?.data?.class,
+        name: studentData?.firstName + ' ' + studentData?.lastName,
+        alternateNumber: data.data.alternateNumber || '',
       }
       setProfileData({
         ...profileData,
@@ -39,17 +45,23 @@ const ProfileDetails = () => {
       })
     }
     fetchAlternateNumber()
-    if (studentData?.profileId?.class) {
+    if (user?.profileId?.class) {
+      const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
+      const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
+      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
       setNavBarText('Edit')
+      updateCompletedSteps(Math.max(completedStepTill, step))
     }
-  }, [])
+  }, [user, draftData])
 
   // onSubmit Function for first time student onboarding
   const onSubmit = async () => {
     const dataToSend = {
-      email: profileData.email,
-      class: '', //profileData.class,
-      alternateNumber: profileData.alternateNumber,
+      email: profileData?.email,
+      alternateNumber: profileData?.alternateNumber,
+      ...(!(user?.profileId?.class) && {
+        class: profileData?.class
+      }),
     }
     const randomId = localStorage.getItem('randomId') ?? ''
     const res = await updateUserProfile(dataToSend, randomId)
@@ -77,6 +89,10 @@ const ProfileDetails = () => {
     }
   }
 
+  const shouldSubmitDisable = () => {
+      return !profileData?.class
+  }
+
   return (
     <Layout
       header={
@@ -87,6 +103,8 @@ const ProfileDetails = () => {
           handleSubmitForm={toggleModal}
           isEditEnabled={isEdit}
           navBarText={navBarText}
+          shouldDisabled={shouldSubmitDisable()}
+          hideSubmitButton={draftData?.isRegistrationEnded}
         />
       }
     >

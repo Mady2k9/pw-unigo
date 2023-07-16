@@ -3,6 +3,7 @@ import Image from 'next/image'
 import downArrow from 'public/downArrow.svg'
 import { Select } from '@components/ui'
 import { AchievementBEType } from '.'
+import cn from 'clsx'
 
 type SelectedExamAchievementsProps = {
   achievements: any
@@ -12,7 +13,8 @@ type SelectedExamAchievementsProps = {
   year: {
     year: number
     title: string
-  }
+  },
+  isEditEnabled: boolean
 }
 
 function SelectedExamAchievements({
@@ -21,6 +23,7 @@ function SelectedExamAchievements({
   onDeselectValue,
   selectedValues,
   year,
+  isEditEnabled
 }: SelectedExamAchievementsProps) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
@@ -47,17 +50,17 @@ function SelectedExamAchievements({
       achievementName: string,
       criteria: string,
       year: number
-    ) => {
+      ) => {
       /**
        * Write logic if the value is available then it should retuen the value
        */
       const value = selectedValues.find((value: any) => {
         if (
           value.examGroup === examGroup &&
-          value.achivementName === achievementName &&
           value.criteria === criteria &&
-          value.year === year
+          value.year == year // !need to confirm this with BE, WHY !!!
         ) {
+          // console.log('value: ', value);
           return value
         }
       })
@@ -74,9 +77,8 @@ function SelectedExamAchievements({
     achievementName: string,
     criteria: string,
     val: string
-  ) => {
-    console.log('isChecked', isChecked)
-    if (isChecked) {
+    ) => {
+      if (isChecked) {
       return false
     }
 
@@ -93,8 +95,6 @@ function SelectedExamAchievements({
     //TODO fix this
     return null
   }
-
-  console.log('Achivement Data :: ', achievementsData, selectedValues)
 
   return (
     <>
@@ -150,9 +150,9 @@ function SelectedExamAchievements({
                         competitionName,
                         criteraName,
                         year?.year
-                      )
+                        )
 
-                      //console.log('selectedVal', selectedVal)
+                      console.log('selectedVal', selectedVal)
                       //console.log(Object.keys(competitions[index]))
                       return (
                         <div
@@ -167,8 +167,12 @@ function SelectedExamAchievements({
                                 id: el,
                                 name: el,
                               }))}
+                              disabled={!isEditEnabled}
                               placeholder="Select"
-                              className="h-[50px] mr-2"
+                              className={cn(
+                                "h-[50px] mr-2",
+                                {"cursor-not-allowed": !isEditEnabled}
+                              )}
                               onChange={(val: string) =>
                                 onSelectCriteria(
                                   group,
@@ -181,7 +185,11 @@ function SelectedExamAchievements({
                             />
                             <input
                               type="checkbox"
-                              className="appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full"
+                              disabled={!isEditEnabled}
+                              className={cn(
+                                "appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full",
+                                {"cursor-not-allowed": !isEditEnabled}
+                              )}
                               onChange={(e) => {
                                 unselectAcievement(
                                   e.target.checked,

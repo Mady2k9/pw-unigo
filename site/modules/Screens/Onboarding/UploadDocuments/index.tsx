@@ -1,16 +1,21 @@
 import { Header } from '@modules/Screens/Onboarding/Components'
 import DocumentsSection from '@modules/Screens/Onboarding/UploadDocuments/DocumentsSection'
 import Layout from '../Layout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { postFormData } from '@modules/auth/lib'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import { useMarvelContext } from '@modules/MarvelContext'
 import { Dialog } from '@headlessui/react'
 import { Button } from '@components/ui'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 
 const UploadDocumentsScreen = () => {
   const [studentDocsInfo, setStudentDocsInfo] = useState<any>({})
   const [nominationDocsInfo, setNominationDocsInfo] = useState<any>([])
+  const { draftData } = useGetDraftData()
+  const { completedStepTill, updateCompletedSteps } = useMarvelContext()
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
 
@@ -21,6 +26,22 @@ const UploadDocumentsScreen = () => {
   const successRedirectModal = () => {
     router.push('/rewards')
   }
+
+  useEffect(() => {
+      const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
+      const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
+      const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
+      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      updateCompletedSteps(Math.max(completedStepTill, step))
+
+      if (studentDocsInfo) {
+        setStudentDocsInfo(studentDocsInfo)
+      } 
+
+      if (nominationDocsInfo) {
+        setNominationDocsInfo(nominationDocsInfo)
+      }
+  }, [draftData, completedStepTill, updateCompletedSteps])
 
   const { push } = useRouter()
 
@@ -45,7 +66,6 @@ const UploadDocumentsScreen = () => {
   } */
 
   const onSubmit = () => {
-    console.log('submitting the form')
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
       studentDocsInfo,
@@ -61,7 +81,16 @@ const UploadDocumentsScreen = () => {
   }
 
   const onNominationDocumentUpload = (data: any) => {
-    setNominationDocsInfo([...nominationDocsInfo, data])
+    const updatedDocInfo = nominationDocsInfo?.map((el: any) => {
+      if (
+        (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria
+      ) {
+        el.achivementId = data?.achivementId
+      }
+
+      return el
+    })
+    setNominationDocsInfo([...updatedDocInfo])
   }
 
   const onStudentDocUpload = (key: string, id: string) => {
@@ -74,6 +103,15 @@ const UploadDocumentsScreen = () => {
         adhaarInfo: { ...studentDocsInfo.adhaarInfo, [objectKeys[1]]: id },
       })
     }
+  }
+  const shouldSubmitDisable = () => {
+    const checkStudentDoc = (studentDocsInfo?.adhaarInfo?.adhaarFrontPage)
+                            && (studentDocsInfo?.adhaarInfo?.adhaarBackPage)
+                            && (studentDocsInfo?.passportPhoto)
+                            && (studentDocsInfo?.reportCard)
+
+    const checkForNominationDocs = draftData?.nominationDocsInfo?.every((el: any) => el?.achivementId)
+    return !(checkStudentDoc && checkForNominationDocs)
   }
 
   return (
@@ -88,6 +126,8 @@ const UploadDocumentsScreen = () => {
           profileData={undefined}
           isEditEnabled={false}
           navBarText={''}
+          shouldDisabled={shouldSubmitDisable()}
+          hideSubmitButton={draftData?.isRegistrationEnded}
         />
       }
     >

@@ -17,10 +17,10 @@ export enum CLASSES {
   TWELVE_PLUS = '12+',
 }
 
-const CLASS_MAP = {
-  [CLASSES.LKG]: 'LKG',
-  [CLASSES.PLAY_GROUP_1]: 'Play Group 1',
-  [CLASSES.PLAY_GROUP_2]: 'Play Group 2',
+export const CLASS_MAP = {
+  [CLASSES.LKG]: 'Class LKG',
+  [CLASSES.PLAY_GROUP_1]: 'Class Play Group 1',
+  [CLASSES.PLAY_GROUP_2]: 'Class Play Group 2',
   [CLASSES.ONE]: 'Class 1st',
   [CLASSES.TWO]: 'Class 2nd',
   [CLASSES.THREE]: 'Class 3rd',

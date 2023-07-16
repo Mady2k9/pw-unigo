@@ -7,6 +7,8 @@ import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import { Button } from '@components/ui'
 import { useRouter } from 'next/router'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { useMarvelContext } from '@modules/MarvelContext'
 
 export type AchievementFEType = {
   examGroup: string
@@ -35,6 +37,21 @@ const NominationFormScreen = () => {
   const [nominationsFormat, setNominationsFormat] = useState<any>([])
   const [isChecked, setIsChecked] = useState(false)
   const { push } = useRouter()
+  const { draftData, isLoadingDraftData } = useGetDraftData()
+  const [navBarText, setNavBarText] = useState('Submit')
+  const { updateCompletedSteps, completedStepTill } = useMarvelContext()
+
+  useEffect(() => {
+    const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
+    const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
+    if (nominationDocsInfo) {
+      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      setSelectedValues(nominationDocsInfo)
+      updateCompletedSteps(Math.max(step, completedStepTill))
+      setNavBarText('Edit')
+    }
+  }, [draftData, updateCompletedSteps, completedStepTill])
+
 
   useEffect(() => {
     // TODO Check why this is calling twice
@@ -92,19 +109,30 @@ const NominationFormScreen = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  //console.log('-------------------------', selectedValues)
+  const shouldSubmitDisable = () => {
+    return !selectedValues?.length
+  }
+
+  const enableEditForm = (navBarText: string) => {
+    if (navBarText === 'Edit') {
+      setNavBarText('Submit')
+    } else {
+      setNavBarText('Edit')
+    }
+  }
+
   return (
     <Layout
       header={
         <Header
           title="Step 2: Nominate Now"
+          hideSubmitButton={draftData?.isRegistrationEnded}
           handleSubmitForm={onSubmit}
-          handleEditForm={function (navBarText: string): void {
-            throw new Error('Function not implemented.')
-          }}
+          handleEditForm={(navBarText: string) => enableEditForm(navBarText)}
           profileData={undefined}
           isEditEnabled={false}
-          navBarText={''}
+          navBarText={navBarText}
+          shouldDisabled={shouldSubmitDisable()}
         />
       }
     >
@@ -114,6 +142,7 @@ const NominationFormScreen = () => {
           selectedValues={selectedValues}
           nominationsFormat={nominationsFormat}
           onDeselectValue={onDeselectValue}
+          isEditEnabled={navBarText === 'Submit'}
         />
         <Dialog
           className={'relative z-[999999]'}

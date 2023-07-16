@@ -19,6 +19,7 @@ type NominationFormTypes = {
   selectedValues: AchievementFEType[]
   nominationsFormat: any
   onDeselectValue: (val: AchievementFEType) => void
+  isEditEnabled: boolean
 }
 
 function NominationForm({
@@ -26,6 +27,7 @@ function NominationForm({
   selectedValues,
   nominationsFormat,
   onDeselectValue,
+  isEditEnabled
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
@@ -85,14 +87,16 @@ function NominationForm({
 
   const renderRightForm = () => {
     console.log('yearValueArr', yearValueArr, selectedExamFormatData)
-    return yearValueArr.map((value) => {
+    return yearValueArr.map((value, index) => {
       return (
         <SelectedExamAchievements
+          key={index}
           achievements={selectedExamFormatData}
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}
           year={value}
           onDeselectValue={onDeselectValue}
+          isEditEnabled={isEditEnabled}
         />
       )
     })

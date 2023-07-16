@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
 import { getDraftData } from '@modules/auth/lib'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
@@ -26,17 +27,18 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
   onNominationDocumentUpload,
   onStudentDocUpload,
 }) => {
-  const [draftData, setdraftData] = useState<any>([])
+  const { draftData } = useGetDraftData()
+  // const [draftData, setdraftData] = useState<any>([])
 
-  useEffect(() => {
-    ;(async () => {
-      const randomId = localStorage.getItem('randomId') || ''
-      const { data } = await getDraftData(randomId)
-      if (data.success) {
-        setdraftData(data.data)
-      }
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     const randomId = localStorage.getItem('randomId') || ''
+  //     const { data } = await getDraftData(randomId)
+  //     if (data.success) {
+  //       setdraftData(data.data)
+  //     }
+  //   })()
+  // }, [])
 
   const onNominationDocsSuccess = (res: UploadedFileResponse, data: any) => {
     onNominationDocumentUpload({
@@ -45,7 +47,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
     })
   }
 
-  console.log('new darft data', draftData.pwMarvelData?.nominationDocsInfo)
+  console.log('new darft data', draftData?.pwMarvelData?.studentDocsInfo?.nominationDocsInfo)
 
   return (
     <>
@@ -83,6 +85,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </div>
             </div>
             <FileUploadBox
+              uploadedFile={`${draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto?.baseUrl}/${draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto?.key}`}
               fileHelperText={'50 KB max file size, JPG or PNG'}
               onUploadSucces={(res: UploadedFileResponse) =>
                 onStudentDocUpload('passportPhoto', res._id)

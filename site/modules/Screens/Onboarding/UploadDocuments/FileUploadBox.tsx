@@ -12,6 +12,7 @@ type FileUploadBoxProps = {
   wrapperClass?: string
   onUploadSucces: (res: UploadedFileResponse) => void
   aadharText?: string
+  uploadedFile?: string
 }
 
 const FileUploadBox = ({
@@ -19,6 +20,7 @@ const FileUploadBox = ({
   wrapperClass,
   onUploadSucces,
   aadharText,
+  uploadedFile = ''
 }: FileUploadBoxProps) => {
   const [files, setFiles] = useState<FileList | null>()
 
