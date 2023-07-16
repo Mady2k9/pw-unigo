@@ -27,7 +27,7 @@ function NominationForm({
   selectedValues,
   nominationsFormat,
   onDeselectValue,
-  isEditEnabled
+  isEditEnabled,
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
@@ -119,15 +119,15 @@ function NominationForm({
                 ))}
               </ol>
             </div>
-            <div className="mt-4 bg-white h-full flex max-[640px]:flex-col max-[640px]:h-screen ">
-              <div className="w-[270px] p-4 max-[640px]:w-full max-[640px]:p-0 justify-end">
+            <div className="mt-4 bg-white h-full flex lg:flex-row flex-col max-[640px]:h-screen ">
+              <div className="xl:w-3/12 lg:w-4/12 p-4 w-full max-[640px]:p-0 justify-end">
                 <p className="text-[#1B2124] bg-[#E4E7EA] p-3 font-bold ">
                   Exam Category
                 </p>
                 {/* {Object.keys(nominationsFormat)?.map( */}
                 {renderLeftCategories()}
               </div>
-              <div className="p-4 w-full cursor-pointer">
+              <div className="p-4 lg:w-8/12 xl:w-9/12 w-full cursor-pointer">
                 <p className="text-[#757575] max-[640px]:mt-8">
                   Selected Exam Category: Profile Based scholarship award
                 </p>
