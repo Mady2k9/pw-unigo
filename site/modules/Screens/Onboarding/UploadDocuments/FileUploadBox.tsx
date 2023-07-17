@@ -1,17 +1,23 @@
-import { Button, Loader } from '@components/ui'
+import { Button, Loader, Typography } from '@components/ui'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'clsx'
 import { uploadFile } from '@modules/auth/lib'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { UploadedFileResponse } from './DocumentsSection'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
+import uuid from 'react-uuid'
+import { ActionModal } from '@components/ui/Modal'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 
 type FileUploadBoxProps = {
   fileHelperText?: string
   wrapperClass?: string
   onUploadSucces: (res: UploadedFileResponse) => void
   aadharText?: string
+  uploadedFile?: string
+  onEditCallBack: () => void
 }
 
 const FileUploadBox = ({
@@ -19,42 +25,115 @@ const FileUploadBox = ({
   wrapperClass,
   onUploadSucces,
   aadharText,
+  uploadedFile = '',
+  onEditCallBack = () => {}
 }: FileUploadBoxProps) => {
-  const [files, setFiles] = useState<FileList | null>()
+  // const [files, setFiles] = useState<FileList | null>()
+  const id = uuid()
+  const [uploadedFileData, setUploadedFileData] = useState<any>(null)
+  console.log('uploadedFileData: ', uploadedFileData);
+  const [isUploading, setIsUploading] = useState(false)
+  const { showNotification } = useNotify()
+  // const [uploadedFile, setUploadedFile] = useState<any>(null)
+
+  useEffect(() => {
+    setUploadedFileData(uploadedFile)
+  }, [uploadedFile,  setUploadedFileData])
+
+  const onFileUpload = async (files: any) => {
+    setIsUploading(true)
+    try {
+      const formData = new FormData()
+      for (let file in files) {
+        if (files.hasOwnProperty(file)) {
+          formData.append('file', files[file as any])
+        } else {
+          break
+        }
+      }
+      const randomId = localStorage.getItem('randomId') || ''
+      try {
+        const { data } = await uploadFile(formData, randomId)
+        if (data.success) {
+          onUploadSucces(data.data)
+          setUploadedFileData(data.data)
+        }
+      } catch (error: any) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: error?.message
+        })
+      }
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsUploading(false)
+    }
+  }
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFiles(e.target.files)
+      onFileUpload(e.target.files)
     }
   }
 
   const onEdit = () => {
-    setFiles(null)
+    // setFiles(null)
+    setUploadedFileData(null)
+    if (onEditCallBack) {
+      onEditCallBack()
+    }
   }
 
-  if (files && files.length !== 0) {
+  if (uploadedFileData) {
     return (
-      <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
-        <FileSelected
-          files={files}
+      <FileUploadWrapper wrapperClass={`${wrapperClass} ${true ? '!bg-[#F9F9FF]' : ''}`} aadharText={aadharText}>
+        <FileUploaded
+          files={uploadedFileData}
           fileHelperText={fileHelperText}
           onEdit={onEdit}
-          onUploadSucces={onUploadSucces}
         />
       </FileUploadWrapper>
     )
   }
 
+  // if (files && files.length !== 0) {
+  //   return (
+  //     <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
+  //       <FileSelected
+  //         files={files}
+  //         fileHelperText={fileHelperText}
+  //         onEdit={onEdit}
+  //         onUploadSucces={onUploadSucces}
+  //       />
+  //     </FileUploadWrapper>
+  //   )
+  // }
+
   return (
     <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
       <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
       <div className="relative border-indigo-500 rounded-md py-1 px-4 border my-2 ">
-        <div className="text-indigo-500 cursor-pointer">Choose File</div>
-        <input
-          type="file"
-          className="absolute inset-0 opacity-0"
-          onChange={onFileChange}
-        />
+        {
+          isUploading ? (
+            <div className="flex items-center">
+              <span className="mr-2 text-indigo-500">Uploading</span>
+              <Loader />
+            </div>
+          ) : (
+            <>
+              <div className="text-indigo-500 cursor-pointer">
+                Choose File
+              </div>
+              <input
+                type="file"
+                accept='.jpeg,.png'
+                className="absolute inset-0 opacity-0"
+                onChange={onFileChange}
+              />
+            </>
+          )
+        }
       </div>
       {fileHelperText && (
         <div className="text-[10px] text-[#757575]">{fileHelperText}</div>
@@ -74,8 +153,9 @@ const FileSelected = ({
   onEdit: () => void
   onUploadSucces: (res: UploadedFileResponse) => void
 }) => {
+  const { showNotification } = useNotify()
   const [isUploading, setIsUploading] = useState(false)
-  const [isUploaded, setIsUploaded] = useState(false)
+  const [uploadedFile, setUploadedFile] = useState<any>(null)
   const onFileUpload = async () => {
     setIsUploading(true)
     try {
@@ -88,11 +168,17 @@ const FileSelected = ({
         }
       }
       const randomId = localStorage.getItem('randomId') || ''
-
-      const { data } = await uploadFile(formData, randomId)
-      if (data.success) {
-        onUploadSucces(data.data)
-        setIsUploaded(true)
+      try {
+        const { data } = await uploadFile(formData, randomId)
+        if (data.success) {
+          onUploadSucces(data.data)
+          setUploadedFile(data.data)
+        }
+      } catch (error: any) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: error?.message
+        })
       }
     } catch (err) {
       console.error(err)
@@ -101,10 +187,10 @@ const FileSelected = ({
     }
   }
 
-  if (isUploaded) {
+  if (uploadedFile) {
     return (
       <FileUploaded
-        files={files}
+        files={uploadedFile}
         fileHelperText={fileHelperText}
         onEdit={onEdit}
       />
@@ -128,25 +214,34 @@ const FileSelected = ({
   )
 }
 
+const textTrim = (text: string) => {
+  return text?.slice(0, 4) + '...' + text.slice(text?.length  - 6)
+}
+
 const FileUploaded = ({
   files,
   fileHelperText,
   onEdit,
 }: {
-  files: FileList
+  files: any
   fileHelperText?: string
   onEdit: () => void
 }) => {
+  const id = uuid()
+  const [previewModal, setPreviewModal] = useState(false)
   return (
     <>
-      {files[0].name}
+      <Typography variant='tiny' weight={500}>
+        <span className='text-[#3D3D3D] underline'>{textTrim(files?.name || '')}</span>
+      </Typography>
       <div className="flex my-2 items-center">
         <Button variant="secondary" onClick={onEdit}>
           Edit
         </Button>
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
-          id="preview-eye"
+          id={`preview-eye-${id}`}
+          onClick={() => setPreviewModal(true)}
         >
           <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
         </div>
@@ -156,10 +251,22 @@ const FileUploaded = ({
       )}
       <ReactTooltip
         style={{ maxWidth: '300px' }}
-        anchorId={'id-preview-eye'}
+        anchorId={`preview-eye-${id}`}
         content={'Preview'}
         place="top"
       />
+
+      <ActionModal 
+        open={previewModal}
+        setOpen={setPreviewModal}
+      >
+        <div className='p-4 relative flex justify-center'>
+          <img src={`${files?.baseUrl}${files?.key}`} alt='preview-img' />
+          <div className='absolute -right-1 -top-1' onClick={() => setPreviewModal(false)}>
+            <XMarkIcon className='cursor-pointer' width={20} height={20}/>
+          </div>
+        </div>
+      </ActionModal>
     </>
   )
 }
@@ -176,7 +283,7 @@ const FileUploadWrapper = ({
   return (
     <div
       className={cn(
-        'border relative border-dashed border-indigo-100 w-full flex flex-col justify-center items-center py-4 rounded-md bg-white',
+        'border-[1.5px] relative border-dashed border-indigo-100 w-full flex flex-col justify-center items-center py-4 rounded-md bg-white',
         wrapperClass
       )}
     >

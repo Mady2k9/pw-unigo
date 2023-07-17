@@ -16,7 +16,17 @@
   height: 48px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   background-color: white;
+}
+
+.icon_container_active {
+  background-color: white;
+  border: 1px solid #5A4BDA;
+}
+
+.icon_container_disabled {
+  background-color: #E4E7EA;
 }
 
 .linecss {
@@ -31,8 +41,11 @@
   font-size: 16px;
   font-weight: 700;
 }
-.step_text {
+.step_text_complete {
   @apply text-[#1B7938] sm:text-[12px] text-[10px];
+}
+.step_text_disabled {
+  @apply text-[#757575] sm:text-[12px] text-[10px];
 }
 .step_text_active {
   @apply text-[#5A4BDA] sm:text-[12px] text-[10px] font-[600];
@@ -42,6 +55,10 @@
 }
 .step_icon_text {
   @apply sm:text-[14px]  text-[10px];
+}
+
+.text_disabled {
+  @apply text-[#757575];
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -55,6 +72,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
+    cursor: pointer;
   }
   .step_img {
     padding-bottom: 5px;

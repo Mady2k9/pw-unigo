@@ -1,27 +1,42 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import s from '@modules/Screens/components.module.css'
-import { Button } from '@components/ui'
+import { Button, useUI } from '@components/ui'
 import { Select } from '@components/ui'
 import { TextInput } from '@components/ui'
-import { CLASSES_ARRAY } from '@config/types/classes'
-import { isPhoneValid } from '@lib/validations'
+import { CLASSES, CLASSES_ARRAY, CLASS_MAP } from '@config/types/classes'
+import { StudentDataProps } from './types'
+import { addSuffixToNumber } from '@utils/helps'
+import cn from 'clsx'
 
-export interface contentProps {
-  name: string
-  profileData: any
+export interface ProfileFormProps {
+  studentData: StudentDataProps
   setProfileData: (val: any) => void
+  setSelectedClass: (val: string) => void
   registrationDate: string
+  isEditEnabled: boolean
 }
 
-const Content: React.FC<contentProps> = (props) => {
-  const { name, profileData, setProfileData, registrationDate } = props
-  const [countryNumber, setCountryNumber] = useState(false)
+const Content = ({
+  studentData,
+  setProfileData,
+  setSelectedClass,
+  registrationDate,
+  isEditEnabled,
+}: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
-    setProfileData({ ...profileData, class: classVal })
+    setSelectedClass(classVal)
+    // setProfileData({ ...studentData, class: classVal })
   }
+  const { user } = useUI()
+  const [countryNumber, setCountryNumber] = useState(false)
   const showCountryNumber = () => {
     setCountryNumber(true)
   }
+
+  const shouldDisabled = useMemo(
+    () => Boolean(studentData?.class) && !isEditEnabled,
+    [isEditEnabled, studentData]
+  )
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
       <div className=" flex justify-center">
@@ -38,27 +53,51 @@ const Content: React.FC<contentProps> = (props) => {
           </div>
           <div className="w-full h-fit p-4 flex">
             <div className={s.left_section_text}>Full name of Applicant:</div>
-            <div className={s.right_section_text}>{name}</div>
+            <div className={s.right_section_text}>{studentData.name}</div>
           </div>
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}>
               Class<span className={s.alert}>*</span>:
             </div>
             <div className={s.right_section_input}>
-              <Select
-                className="select-arrow"
-                onChange={onClassChange}
-                options={CLASSES_ARRAY}
-                placeholder="Select Class"
-              />
-              <div className="p-1 flex md:flex-none">
-                <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
-                  <img className="" src="/i.svg" alt="icon" />
-                </div>
-                <div className="text-[12px] align-middle text-[#3D3D3D]">
-                  Class can’t be changed once details are submitted
-                </div>
-              </div>
+              {studentData.class ? (
+                <>
+                  <div className="flex">
+                    <div className="mr-6">
+                      {CLASS_MAP[studentData?.class as CLASSES]}
+                    </div>
+                    <div className="flex mt-1">
+                      <div className="px-1  pt-1 py-auto md:p-1 md:pt-[2px]">
+                        <img className="" src="/i.svg" alt="icon" />
+                      </div>
+                      <div className="text-[12px] py-auto align-middle text-[#3D3D3D]">
+                        {studentData.class
+                          ? `Class can't be changed now`
+                          : 'Class can’t be changed once details are submitted'}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Select
+                    value={studentData?.class}
+                    onChange={onClassChange}
+                    options={CLASSES_ARRAY}
+                    placeholder="Select Class"
+                  />
+                  <div className="p-1 flex md:flex-none">
+                    <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
+                      <img className="" src="/i.svg" alt="icon" />
+                    </div>
+                    <div className="text-[12px] align-middle text-[#3D3D3D]">
+                      {studentData.class
+                        ? 'Class cant be changed now '
+                        : 'Class can’t be changed once details are submitted'}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
@@ -67,25 +106,32 @@ const Content: React.FC<contentProps> = (props) => {
               <div className="w-full rounded-md bg-white">
                 <TextInput
                   className="bg-white"
-                  label="Phone Number"
-                  onChange={(val) =>
-                    setProfileData({ ...profileData, alternateNumber: val })
+                  label={
+                    isEditEnabled && studentData.alternateNumber
+                      ? 'Mobile Number'
+                      : ''
                   }
+                  onChange={(mobileNumber) => {
+                    setProfileData({
+                      ...studentData,
+                      alternateNumber: mobileNumber,
+                    })
+                  }}
+                  disabled={shouldDisabled}
+                  value={studentData.alternateNumber}
                   placeholder="Enter number"
                   maxLength={10}
                   onClick={showCountryNumber}
                   preElement={
-                    <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
-                      {countryNumber === true ? (
+                    isEditEnabled ? (
+                      <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                         <select className=" border-none bg-transparent">
                           <option value="india">IN +91</option>
                         </select>
-                      ) : (
-                        ''
-                      )}
-                    </div>
+                      </div>
+                    ) : null
                   }
-                  variant="flat"
+                  variant={shouldDisabled ? "gray" : "flat"}
                 />
               </div>
             </div>
@@ -93,20 +139,28 @@ const Content: React.FC<contentProps> = (props) => {
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}> Email address:</div>
             <div className={s.right_section_input}>
-              <div className=" w-full bg-white rounded-md ">
+              <div className={cn('w-full bg-white rounded-md')}>
                 <TextInput
-                  label="Email id"
-                  onChange={(val) =>
-                    setProfileData({ ...profileData, email: val })
+                  label={isEditEnabled && studentData.email ? 'Email' : ''}
+                  value={studentData.email}
+                  disabled={shouldDisabled}
+                  onChange={(email) =>
+                    setProfileData({ ...studentData, email: email })
                   }
                   placeholder="Email id"
                   spellCheck="false"
+                  variant={shouldDisabled ? "gray" : "flatlogin"}
                 />
               </div>
             </div>
           </div>
-          <div className="w-full p-4 md:hidden">
-            <Button Component="PW" variant="primary" type="submit">
+          <div className="p-4 md:hidden">
+            <Button
+              Component="PW"
+              variant="primary"
+              type="submit"
+              className="w-full"
+            >
               Submit
             </Button>
           </div>

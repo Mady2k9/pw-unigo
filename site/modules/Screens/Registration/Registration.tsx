@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Alert, Button, Typography } from '@components/ui'
 import { useAuth } from '@lib/hooks/useAuth'
-import { isPhoneValid } from '@lib/validations'
+import { isPhoneValid, isNameValid } from '@lib/validations'
 import { Layout } from './Layout'
 import { TextInput } from '@components/ui/Input'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
+import s from '@modules/Screens/components.module.css'
 
 type RegisterViewProps = {
   onOTPGet: () => void
@@ -12,21 +14,59 @@ type RegisterViewProps = {
 
 const Register = ({ onOTPGet }: RegisterViewProps) => {
   // Form State
-  const { otpSent, error, loading, handleRegister } = useAuth()
+  const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
+  useAuth()
+
+  //const [dataNumber, setDataNumber] = useState('')
   const [mobile, setMobile] = useState('')
   const [firstName, setFullName] = useState('')
+  const [username, setUsername] = useState('')
+  const [shouldRegister, setShouldRegister] = useState(false)
 
-  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
-    localStorage.setItem('userMobile', mobile)
+  const router = useRouter()
+
+  useEffect(() => {
+    setUsername(localStorage.getItem('username') as string)
+    localStorage.removeItem('fullName')
+    localStorage.removeItem('shouldRegister')
+  }, [])
+
+  /* const dataSetMobile = (e: any) => {
+    setDataNumber(e.replace(/[a-z!@#\$%\^\&*\)\(+=._-]/, ''))
+    {
+      setMobile
+    }
+  } */
+
+  /*    const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+    localStorage.setItem('username', mobile)
     e.preventDefault()
     try {
-      handleRegister(mobile, firstName)
+     handleRegister(mobile, firstName)
+
+      if (shouldRegister) {
+        handleRegister(mobile, firstName)
+        setShouldRegister(false)
+        localStorage.removeItem('shouldRegister')
+      } else {
+        setShouldRegister(true)
+        localStorage.setItem('shouldRegister', 'true')
+      }
     } catch (e) {
-      /**
-       * Ask for better messages
-       */
+      
+
       toast.error('Something Went wrong. Please try again after some time')
     }
+  }  */
+
+  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+    localStorage.setItem('username', mobile)
+    e.preventDefault()
+    await handleRegister(mobile, firstName)
+  }
+  const [countryNumber, setCountryNumber] = useState(false)
+  const showCountryNumber = () => {
+    setCountryNumber(true)
   }
 
   useEffect(() => {
@@ -76,32 +116,61 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
           <div className="flex flex-col space-y-3">
             <div className="flex w-full flex-col md:flex-row gap-4 p-6 ">
               <div className={'mb-4 w-full'}>
-                <Typography>Full Name*</Typography>
+                <Typography>
+                  Full Name<span className=" text-red-600 text-xl">*</span>
+                </Typography>
                 <TextInput
+                  invalid={!isNameValid(firstName)}
                   onChange={setFullName}
-                  variant={'outlined'}
+                  variant={'flatlogin'}
                   placeholder={'Enter your name'}
                 />
               </div>
               <div className={'mb-4 w-full'}>
-                <Typography>Mobile Number*</Typography>
+                <Typography>
+                  Mobile Number<span className=" text-red-600 text-xl">*</span>
+                </Typography>
                 <TextInput
                   invalid={!isPhoneValid(mobile)}
+                  maxLength={10}
                   onChange={setMobile}
-                  variant={'outlined'}
+                  variant={'flatlogin'}
+                  onClick={showCountryNumber}
+                  preElement={
+                    <div className="text-[16px] font-semibold bg-white pl-2 ">
+                      {countryNumber === true ? (
+                        <select className=" border-none bg-transparent select-arrow-mob">
+                          <option value="india">IN +91</option>
+                        </select>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  }
                   placeholder={'Enter your mobile number'}
                 />
+                {
+                  <div
+                    className={` animated fadeIn flex gap-2 my-2  ${
+                      shouldRegister ? '' : 'hidden'
+                    }`}
+                  >
+                    <img src="/warning.svg" alt="warning" height="12px" />
+                    <span className={s.warning}>User Already Exist!.</span>
+                  </div>
+                }
               </div>
             </div>
           </div>
           <div className=" w-full md:mt-20 mt-32  border-t-[1px] border-[#D9DCE1] h-2"></div>
           <div className="flex justify-center pb-5 pt-4">
-            {error && <Alert message={error} type="error" />}
+            {error && <Alert message={error?.message} type="error" />}
             <Button
               size="large"
               type="submit"
               loading={loading}
-              disabled={!isPhoneValid(mobile)}
+              disabled={!isNameValid(firstName) || !isPhoneValid(mobile)}
+              /* disabled={!isPhoneValid(mobile)} */
               className="w-80 md:w-[432px] md:h-14 h-12  font-bold "
             >
               <Typography weight={700} variant="heading4">

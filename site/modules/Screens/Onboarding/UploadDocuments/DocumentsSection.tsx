@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
 import { getDraftData } from '@modules/auth/lib'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
@@ -26,24 +27,33 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
   onNominationDocumentUpload,
   onStudentDocUpload,
 }) => {
-  const [draftData, setdraftData] = useState<any>([])
+  const { draftData } = useGetDraftData()
+  // const [draftData, setdraftData] = useState<any>([])
 
-  useEffect(() => {
-    ;(async () => {
-      const randomId = localStorage.getItem('randomId') || ''
-      const { data } = await getDraftData(randomId)
-      if (data.success) {
-        setdraftData(data.data)
-      }
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     const randomId = localStorage.getItem('randomId') || ''
+  //     const { data } = await getDraftData(randomId)
+  //     if (data.success) {
+  //       setdraftData(data.data)
+  //     }
+  //   })()
+  // }, [])
 
-  const onNominationDocsSuccess = (res: UploadedFileResponse, data: any) => {
+  const onNominationDocsSuccess = (
+    res: UploadedFileResponse | null,
+    data: any
+  ) => {
     onNominationDocumentUpload({
-      achivementId: res._id,
       ...data,
+      achievementId: res,
     })
   }
+
+  console.log(
+    'new darft data',
+    draftData?.pwMarvelData?.studentDocsInfo?.nominationDocsInfo
+  )
 
   return (
     <>
@@ -75,16 +85,22 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm md:text-base font-semibold">
                     Student Passport Size Photo
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload your photo here...
                   </div>
                 </div>
               </div>
               <FileUploadBox
+                uploadedFile={
+                  draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto
+                }
                 fileHelperText={'50 KB max file size, JPG or PNG'}
                 onUploadSucces={(res: UploadedFileResponse) =>
                   onStudentDocUpload('passportPhoto', res._id)
                 }
+                onEditCallBack={() => {
+                  onStudentDocUpload('passportPhoto', '')
+                }}
                 wrapperClass="mt-6"
               />
             </div>
@@ -97,7 +113,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm sm:text-base font-semibold">
                     Student Adhar Card
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload Adhar Card (Front & Back)
                   </div>
                 </div>
@@ -105,20 +121,34 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1">
                   <FileUploadBox
+                    uploadedFile={
+                      draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
+                        ?.adhaarFrontPage
+                    }
                     fileHelperText={'50 KB max file size, JPG or PNG'}
                     onUploadSucces={(res: UploadedFileResponse) =>
                       onStudentDocUpload('adhaarInfo.adhaarFrontPage', res._id)
                     }
+                    onEditCallBack={() => {
+                      onStudentDocUpload('adhaarInfo.adhaarFrontPage', '')
+                    }}
                     wrapperClass="mt-6"
                     aadharText="Front"
                   />
                 </div>
                 <div className="col-span-1">
                   <FileUploadBox
+                    uploadedFile={
+                      draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
+                        ?.adhaarBackPage
+                    }
                     fileHelperText={'50 KB max file size, JPG or PNG'}
                     onUploadSucces={(res: UploadedFileResponse) =>
                       onStudentDocUpload('adhaarInfo.adhaarBackPage', res._id)
                     }
+                    onEditCallBack={() => {
+                      onStudentDocUpload('adhaarInfo.adhaarBackPage', '')
+                    }}
                     wrapperClass="mt-6"
                     aadharText="Back"
                   />
@@ -134,16 +164,22 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm sm:text-base font-semibold">
                     Student latest Report card
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload all pages of your report card
                   </div>
                 </div>
               </div>
               <FileUploadBox
+                uploadedFile={
+                  draftData?.pwMarvelData?.studentDocsInfo?.reportCard
+                }
                 fileHelperText={'50 KB max file size, JPG or PNG'}
                 onUploadSucces={(res: UploadedFileResponse) =>
                   onStudentDocUpload('reportCard', res._id)
                 }
+                onEditCallBack={() => {
+                  onStudentDocUpload('reportCard', '')
+                }}
                 wrapperClass="mt-6"
               />
             </div>
@@ -152,42 +188,55 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             <div className="mr-2 text-base font-bold">Nomination Documents</div>
             <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
           </div>
-          <div className="bg-white w-full divide-y">
-            <div className="grid grid-cols-12 font-bold p-6 py-3">
-              <div className="col-span-1">S. no.</div>
-              <div className="col-span-2">Nomination year</div>
-              <div className="col-span-1">Exam Group</div>
-              <div className="col-span-2">Competition title</div>
-              <div className="col-span-2">Remarks</div>
-              <div className="col-span-2">Criteria</div>
-              <div className="col-span-2">Upload document</div>
+          <div className="bg-white w-full divide-y overflow-scroll">
+            <div className="font-bold flex p-3 xl:w-full w-[850px]">
+              <div className="w-[6%]">S. no.</div>
+              <div className="w-[11%]">Nomination year</div>
+              <div className="w-[6%]">Exam Group</div>
+              <div className="w-[20%]">Competition title</div>
+              <div className="w-[20%]">Remarks</div>
+              <div className="w-[20%]">Criteria</div>
+              <div className="w-[17%]">Upload document</div>
             </div>
             {draftData &&
-              draftData.nominationDocsInfo?.map((data: any, index: number) => {
-                const { criteria, examGroup, remarks, year } = data
-                return (
-                  <div
-                    className="grid grid-cols-12 p-6 py-3 text-[#757575]"
-                    key={criteria}
-                  >
-                    <div className="col-span-1 my-auto">{index + 1}</div>
-                    <div className="col-span-2 my-auto">{year}</div>
-                    <div className="col-span-1 my-auto">{examGroup}</div>
-                    <div className="col-span-2 my-auto">Competition title</div>
-                    <div className="col-span-2 my-auto">{remarks}</div>
-                    <div className="col-span-2 my-auto">{criteria}</div>
-                    <div className="col-span-2 my-auto">
-                      <FileUploadBox
-                        fileHelperText={'50 KB max file size, JPG or PNG'}
-                        onUploadSucces={(response: UploadedFileResponse) =>
-                          onNominationDocsSuccess(response, data)
-                        }
-                        wrapperClass="mt-6"
-                      />
+              draftData.pwMarvelData?.nominationDocsInfo?.map(
+                (data: any, index: number) => {
+                  const {
+                    criteria,
+                    examGroup,
+                    remarks,
+                    year,
+                    achievementName,
+                  } = data
+                  console.log('data:dhskd ==>', data)
+                  return (
+                    <div
+                      className="flex p-3 text-[#757575] xl:w-full w-[850px]"
+                      key={criteria}
+                    >
+                      <div className="w-[6%]">{index + 1}</div>
+                      <div className="w-[11%]">{year}</div>
+                      <div className="w-[6%]">{examGroup}</div>
+                      <div className="w-[20%]">{achievementName}</div>
+                      <div className="w-[20%]">{remarks}</div>
+                      <div className="w-[20%]">{criteria}</div>
+                      <div className="w-[17%]">
+                        <FileUploadBox
+                          uploadedFile={data?.achievementId}
+                          fileHelperText={'50 KB max file size, JPG or PNG'}
+                          onUploadSucces={(response: UploadedFileResponse) =>
+                            onNominationDocsSuccess(response, data)
+                          }
+                          onEditCallBack={() => {
+                            onNominationDocsSuccess(null, data)
+                          }}
+                          wrapperClass="mt-6"
+                        />
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                }
+              )}
           </div>
         </div>
       </div>
