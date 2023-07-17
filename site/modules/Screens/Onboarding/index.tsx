@@ -15,6 +15,7 @@ const Onboarding = ({ mainContent }: OnboardingProps) => {
         profileData={undefined}
         isEditEnabled={false}
         navBarText={''}
+        shouldDisabled={false}
       />
       <div className="grid grid-cols-12">
         <div className="col-span-3">
