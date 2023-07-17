@@ -38,7 +38,7 @@ function SelectedExamAchievements({
     onValueSelect({
       year: year?.year,
       examGroup,
-      achivementName: achievementName,
+      achievementName,
       remarks: val,
       criteria,
     })
@@ -58,7 +58,8 @@ function SelectedExamAchievements({
         if (
           value.examGroup === examGroup &&
           value.criteria === criteria &&
-          value.year == year // !need to confirm this with BE, WHY !!!
+          value.year == year && // !need to confirm this with BE, WHY !!!
+          value?.achievementName == achievementName
         ) {
           // console.log('value: ', value);
           return value
@@ -85,7 +86,7 @@ function SelectedExamAchievements({
     onDeselectValue({
       year: year?.year,
       examGroup,
-      achivementName: achievementName,
+      achievementName,
       remarks: val,
       criteria,
     })
@@ -140,7 +141,7 @@ function SelectedExamAchievements({
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
                       let competitionName = competitionDetails?.achievementName
-                      let criteraName = competitionDetails?.criteria
+                      let criteriaName = competitionDetails?.criteria
 
                       let dropdownArray =
                         competitionDetails?.criteriaDDValuesArr
@@ -148,11 +149,10 @@ function SelectedExamAchievements({
                       const selectedVal = getSelectedValue(
                         group,
                         competitionName,
-                        criteraName,
+                        criteriaName,
                         year?.year
-                        )
+                      )
 
-                      console.log('selectedVal', selectedVal)
                       //console.log(Object.keys(competitions[index]))
                       return (
                         <div
@@ -160,7 +160,7 @@ function SelectedExamAchievements({
                           className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
                         >
                           <div className="col-span-4">{competitionName}</div>
-                          <div className="col-span-3">{criteraName}</div>
+                          <div className="col-span-3">{criteriaName}</div>
                           <div className="col-span-4 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
@@ -178,7 +178,7 @@ function SelectedExamAchievements({
                                   group,
                                   val,
                                   competitionName,
-                                  criteraName
+                                  criteriaName
                                 )
                               }
                               value={selectedVal || ''}
@@ -195,7 +195,7 @@ function SelectedExamAchievements({
                                   e.target.checked,
                                   group,
                                   competitionName,
-                                  criteraName,
+                                  criteriaName,
                                   selectedVal
                                 )
                               }}

@@ -85,7 +85,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </div>
             </div>
             <FileUploadBox
-              uploadedFile={`${draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto?.baseUrl}/${draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto?.key}`}
+              uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto}
               fileHelperText={'50 KB max file size, JPG or PNG'}
               onUploadSucces={(res: UploadedFileResponse) =>
                 onStudentDocUpload('passportPhoto', res._id)
@@ -110,6 +110,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-1">
                 <FileUploadBox
+                  uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo?.adhaarFrontPage}
                   fileHelperText={'50 KB max file size, JPG or PNG'}
                   onUploadSucces={(res: UploadedFileResponse) =>
                     onStudentDocUpload('adhaarInfo.adhaarFrontPage', res._id)
@@ -120,6 +121,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </div>
               <div className="col-span-1">
                 <FileUploadBox
+                  uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo?.adhaarBackPage}
                   fileHelperText={'50 KB max file size, JPG or PNG'}
                   onUploadSucces={(res: UploadedFileResponse) =>
                     onStudentDocUpload('adhaarInfo.adhaarBackPage', res._id)
@@ -145,6 +147,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </div>
             </div>
             <FileUploadBox
+              uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.reportCard}
               fileHelperText={'50 KB max file size, JPG or PNG'}
               onUploadSucces={(res: UploadedFileResponse) =>
                 onStudentDocUpload('reportCard', res._id)
@@ -185,6 +188,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                     <div className="col-span-2 my-auto">{criteria}</div>
                     <div className="col-span-2 my-auto">
                       <FileUploadBox
+                        uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.reportCard}
                         fileHelperText={'50 KB max file size, JPG or PNG'}
                         onUploadSucces={(response: UploadedFileResponse) =>
                           onNominationDocsSuccess(response, data)

@@ -13,7 +13,7 @@ import { useMarvelContext } from '@modules/MarvelContext'
 export type AchievementFEType = {
   examGroup: string
   remarks: string
-  achivementName: string
+  achievementName: string
   criteria: string
   year: number
 }
@@ -43,9 +43,9 @@ const NominationFormScreen = () => {
 
   useEffect(() => {
     const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
-    const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
+    const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
     if (nominationDocsInfo) {
-      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
       setSelectedValues(nominationDocsInfo)
       updateCompletedSteps(Math.max(step, completedStepTill))
       setNavBarText('Edit')
@@ -64,22 +64,35 @@ const NominationFormScreen = () => {
 
   //FUNCTIONS
   const onValueSelect = (value: AchievementFEType) => {
-    console.log('onValueSelect', value)
-    setSelectedValues([...selectedValues, value])
+    const values = [...selectedValues]
+    const selectedIndex = values?.findIndex((el: any) => {
+      return (
+        el?.year == value?.year &&
+        el?.examGroup == value?.examGroup &&
+        el?.achievementName === value?.achievementName &&
+        el?.criteria === value?.criteria
+      )
+    })
+
+    if (selectedIndex !== -1) {
+      values[selectedIndex] = value
+    } else {
+      values.push(value)
+    }
+    setSelectedValues([...values])
   }
 
   const onDeselectValue = (value: AchievementFEType) => {
-    console.log('onDeselectValueSelect', value)
-    let filteredArr = selectedValues.filter((arrValue) => {
+    const filteredArr = selectedValues.filter((arrValue) => {
       return (
-        arrValue.achivementName != value.achivementName &&
-        arrValue.criteria != value.criteria &&
-        arrValue.examGroup != value.examGroup &&
-        arrValue.remarks != value.remarks
+        arrValue.achievementName !== value.achievementName ||
+        arrValue.criteria !== value.criteria ||
+        arrValue.examGroup !== value.examGroup ||
+        arrValue.year != value.year ||
+        arrValue.remarks !== value.remarks
       )
     })
-    //setSelectedValues([...filteredArr])
-    setSelectedValues([])
+    setSelectedValues([...filteredArr])
   }
 
   const onSubmit = () => {
