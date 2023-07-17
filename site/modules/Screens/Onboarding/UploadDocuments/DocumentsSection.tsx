@@ -85,7 +85,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm md:text-base font-semibold">
                     Student Passport Size Photo
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload your photo here...
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm sm:text-base font-semibold">
                     Student Adhar Card
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload Adhar Card (Front & Back)
                   </div>
                 </div>
@@ -164,7 +164,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   <div className="text-sm sm:text-base font-semibold">
                     Student latest Report card
                   </div>
-                  <div className="text-xs sm:text-sm">
+                  <div className="text-xs text-[#757575] sm:text-sm">
                     Upload all pages of your report card
                   </div>
                 </div>

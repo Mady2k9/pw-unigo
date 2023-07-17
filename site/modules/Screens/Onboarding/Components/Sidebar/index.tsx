@@ -118,7 +118,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               <div className="mb-2 sm:text-left text-center">
                 <span className={handleStepsClasses(1, isProfileDetailsRoute)}>Step 1</span>
                 <div 
-                  className={s.icon_container} 
+                  className={`${s.icon_container} ${isProfileDetailsRoute ? s.icon_container_active : ''}`} 
                   onClick={() => {
                     if (!isProfileDetailsRoute) {
                       setIsRedirectionModalOpen(true)
@@ -134,9 +134,9 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               <div className="mb-2 sm:text-left text-center">
                 <span className={handleStepsClasses(2, isNominationFormRoute)}>Step 2</span>
                 <div 
-                  className={`${s.icon_container} ${completedStepTill < 2 && !isNominationFormRoute ? s.icon_container_disabled : s.icon_container_active}`} 
+                  className={`${s.icon_container} ${completedStepTill < 2 ? s.icon_container_disabled : isNominationFormRoute ?  s.icon_container_active : ''}`} 
                   onClick={() => {
-                    if (!isNominationFormRoute && completedStepTill > 2) {
+                    if (!isNominationFormRoute && completedStepTill >= 2) {
                       setRedirectionData(REDIRECTION_DATA[1])
                       setIsRedirectionModalOpen(true)
                     }
@@ -150,7 +150,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               <div className="mb-2 sm:text-left text-center">
                 <span className={handleStepsClasses(3, isUploadDocRoute)} onClick={() => {} }>Step 3</span>
                 <div 
-                  className={`${s.icon_container} ${completedStepTill !== 3 && !isUploadDocRoute ? s.icon_container_disabled : s.icon_container_active}`}
+                  className={`${s.icon_container} ${completedStepTill !== 3 ? s.icon_container_disabled : isUploadDocRoute ? s.icon_container_active : ''}`}
                   onClick={() => {
                     if (!isUploadDocRoute && (completedStepTill === 3)) {
                       setRedirectionData(REDIRECTION_DATA[2])

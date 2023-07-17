@@ -1,4 +1,4 @@
-import { useUI } from '@components/ui'
+import { LoadingSection, useUI } from '@components/ui'
 import { useRouter } from 'next/router'
 import { FC, ReactNode, useEffect } from 'react'
 
@@ -16,9 +16,15 @@ const AuthLayout :FC<props>= ({ children, isProtected = false }) => {
             router.push('/login')
         }
      }, [router, user, isProtected])
+    if (!user) {
+        return <></>
+    }
+
     return ( 
         <>
-            {children}
+            {
+                children 
+            }
         </>
     )
 }
