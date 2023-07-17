@@ -13,6 +13,7 @@ type FileUploadBoxProps = {
   onUploadSucces: (res: UploadedFileResponse) => void
   aadharText?: string
   uploadedFile?: string
+  onEditCallBack: () => void
 }
 
 const FileUploadBox = ({
@@ -20,7 +21,8 @@ const FileUploadBox = ({
   wrapperClass,
   onUploadSucces,
   aadharText,
-  uploadedFile = ''
+  uploadedFile = '',
+  onEditCallBack = () => {}
 }: FileUploadBoxProps) => {
   const [files, setFiles] = useState<FileList | null>()
   const [uploadedFileData, setUploadedFileData] = useState<any>(null)
@@ -38,6 +40,9 @@ const FileUploadBox = ({
   const onEdit = () => {
     setFiles(null)
     setUploadedFileData(null)
+    if (onEditCallBack) {
+      onEditCallBack()
+    }
   }
 
   if (uploadedFileData) {

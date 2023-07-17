@@ -30,7 +30,10 @@ const Content = ({
     setCountryNumber(true)
   }
 
-  const shouldDisabled = useMemo(() => (user?.profileId?.class && !isEditEnabled), [user, isEditEnabled])
+  const shouldDisabled = useMemo(
+    () => user?.profileId?.class && !isEditEnabled,
+    [user, isEditEnabled]
+  )
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
       <div className=" flex justify-center">
@@ -55,25 +58,43 @@ const Content = ({
             </div>
             <div className={s.right_section_input}>
               {studentData.class ? (
-                <p>{CLASS_MAP[studentData?.class as CLASSES]}</p>
+                <>
+                  <div className="flex">
+                    <div className="mr-6">
+                      {CLASS_MAP[studentData?.class as CLASSES]}
+                    </div>
+                    <div className="flex mt-1">
+                      <div className="px-1  pt-1 py-auto md:p-1 md:pt-[2px]">
+                        <img className="" src="/i.svg" alt="icon" />
+                      </div>
+                      <div className="text-[12px] py-auto align-middle text-[#3D3D3D]">
+                        {studentData.class
+                          ? 'Class cant be changed now '
+                          : 'Class can’t be changed once details are submitted'}
+                      </div>
+                    </div>
+                  </div>
+                </>
               ) : (
-                <Select
-                  value={studentData?.class}
-                  onChange={onClassChange}
-                  options={CLASSES_ARRAY}
-                  placeholder="Select Class"
-                />
+                <>
+                  <Select
+                    value={studentData?.class}
+                    onChange={onClassChange}
+                    options={CLASSES_ARRAY}
+                    placeholder="Select Class"
+                  />
+                  <div className="p-1 flex md:flex-none">
+                    <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
+                      <img className="" src="/i.svg" alt="icon" />
+                    </div>
+                    <div className="text-[12px] align-middle text-[#3D3D3D]">
+                      {studentData.class
+                        ? 'Class cant be changed now '
+                        : 'Class can’t be changed once details are submitted'}
+                    </div>
+                  </div>
+                </>
               )}
-              <div className="p-1 flex md:flex-none">
-                <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
-                  <img className="" src="/i.svg" alt="icon" />
-                </div>
-                <div className="text-[12px] align-middle text-[#3D3D3D]">
-                  {studentData.class
-                    ? 'Class cant be changed now '
-                    : 'Class can’t be changed once details are submitted'}
-                </div>
-              </div>
             </div>
           </div>
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
@@ -92,8 +113,7 @@ const Content = ({
                       ...studentData,
                       alternateNumber: mobileNumber,
                     })
-                  }
-                  }
+                  }}
                   disabled={shouldDisabled}
                   value={studentData.alternateNumber}
                   placeholder="Enter number"
@@ -116,7 +136,7 @@ const Content = ({
           <div className="w-full h-fit p-4 flex sm:flex-row flex-col">
             <div className={s.left_section_text}> Email address:</div>
             <div className={s.right_section_input}>
-              <div className={cn("w-full bg-white rounded-md")}>
+              <div className={cn('w-full bg-white rounded-md')}>
                 <TextInput
                   label={isEditEnabled && studentData.email ? 'Email' : ''}
                   value={studentData.email}

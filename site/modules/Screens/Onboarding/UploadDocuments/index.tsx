@@ -96,7 +96,7 @@ const UploadDocumentsScreen = () => {
       if (
         (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria
       ) {
-        el.achievementId = data?.achivementId
+        el.achievementId = data?.achievementId
       }
 
       return el

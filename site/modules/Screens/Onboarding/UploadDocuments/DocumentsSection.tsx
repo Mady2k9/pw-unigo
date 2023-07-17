@@ -40,10 +40,10 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
   //   })()
   // }, [])
 
-  const onNominationDocsSuccess = (res: UploadedFileResponse, data: any) => {
+  const onNominationDocsSuccess = (res: UploadedFileResponse | null, data: any) => {
     onNominationDocumentUpload({
-      achivementId: res._id,
       ...data,
+      achievementId: res,
     })
   }
 
@@ -90,6 +90,9 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               onUploadSucces={(res: UploadedFileResponse) =>
                 onStudentDocUpload('passportPhoto', res._id)
               }
+              onEditCallBack={() => {
+                onStudentDocUpload('passportPhoto', '')
+              }}
               wrapperClass="mt-6"
             />
           </div>
@@ -115,6 +118,9 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   onUploadSucces={(res: UploadedFileResponse) =>
                     onStudentDocUpload('adhaarInfo.adhaarFrontPage', res._id)
                   }
+                  onEditCallBack={() => {
+                    onStudentDocUpload('adhaarInfo.adhaarFrontPage', '')
+                  }}
                   wrapperClass="mt-6"
                   aadharText="Front"
                 />
@@ -126,6 +132,9 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   onUploadSucces={(res: UploadedFileResponse) =>
                     onStudentDocUpload('adhaarInfo.adhaarBackPage', res._id)
                   }
+                  onEditCallBack={() => {
+                    onStudentDocUpload('adhaarInfo.adhaarBackPage', '')
+                  }}
                   wrapperClass="mt-6"
                   aadharText="Back"
                 />
@@ -152,6 +161,9 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               onUploadSucces={(res: UploadedFileResponse) =>
                 onStudentDocUpload('reportCard', res._id)
               }
+              onEditCallBack={() => {
+                onStudentDocUpload('reportCard', '')
+              }}
               wrapperClass="mt-6"
             />
           </div>
@@ -173,8 +185,9 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
           {draftData &&
             draftData.pwMarvelData?.nominationDocsInfo?.map(
               (data: any, index: number) => {
-                const { criteria, examGroup, remarks, year, achivementName } =
+                const { criteria, examGroup, remarks, year, achievementName } =
                   data
+                  console.log('data:dhskd ==>', data);
                 return (
                   <div
                     className="grid grid-cols-12 p-6 py-3 text-[#757575]"
@@ -183,16 +196,19 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                     <div className="col-span-1 my-auto">{index + 1}</div>
                     <div className="col-span-2 my-auto">{year}</div>
                     <div className="col-span-1 my-auto">{examGroup}</div>
-                    <div className="col-span-2 my-auto">{achivementName}</div>
+                    <div className="col-span-2 my-auto">{achievementName}</div>
                     <div className="col-span-2 my-auto">{remarks}</div>
                     <div className="col-span-2 my-auto">{criteria}</div>
                     <div className="col-span-2 my-auto">
                       <FileUploadBox
-                        uploadedFile={draftData?.pwMarvelData?.studentDocsInfo?.reportCard}
+                        uploadedFile={data?.achievementId}
                         fileHelperText={'50 KB max file size, JPG or PNG'}
                         onUploadSucces={(response: UploadedFileResponse) =>
                           onNominationDocsSuccess(response, data)
                         }
+                        onEditCallBack={() => {
+                          onNominationDocsSuccess(null, data)
+                        }}
                         wrapperClass="mt-6"
                       />
                     </div>
