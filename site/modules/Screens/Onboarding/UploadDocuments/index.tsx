@@ -9,6 +9,7 @@ import { useMarvelContext } from '@modules/MarvelContext'
 import { Dialog } from '@headlessui/react'
 import { Button } from '@components/ui'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { deleteAllCookies } from '@lib/user-utility'
 
 const UploadDocumentsScreen = () => {
   const [studentDocsInfo, setStudentDocsInfo] = useState<any>({})
@@ -25,6 +26,8 @@ const UploadDocumentsScreen = () => {
 
   const successRedirectModal = () => {
     router.push('/rewards')
+    localStorage.clear()
+    deleteAllCookies()
   }
 
   useEffect(() => {
@@ -86,7 +89,7 @@ const UploadDocumentsScreen = () => {
 
     postFormData(dataToSend, randomId).then((res: any) => {
       if (res) {
-        push('/rewards')
+        toggleModal()
       }
     })
   }

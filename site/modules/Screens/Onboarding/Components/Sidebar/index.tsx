@@ -14,20 +14,35 @@ export interface sidebarProps {
   phone: string
 }
 
-enum MARVEL_ROUTES {
+export enum MARVEL_ROUTES {
   PROFILE_DETAILS = '/profile-details',
   NOMINATION_FORM = '/nomination-form',
   UPLOAD_DOCUMENT = '/upload-document',
-  NOMINATE_FORM = '/nominate-form'
+  NOMINATE_FORM = '/nomination-form'
 }
+
+export const REDIRECTION_DATA = [
+  {
+    buttonText: 'Go to profile details',
+    router: MARVEL_ROUTES.PROFILE_DETAILS
+  },
+  {
+    buttonText: 'Go to Nominate details',
+    router: MARVEL_ROUTES.NOMINATE_FORM
+  },
+  {
+    buttonText: 'Go to Upload details',
+    router: MARVEL_ROUTES.UPLOAD_DOCUMENT
+  }
+]
 
 const Sidebar: React.FC<sidebarProps> = (props) => {
   const { name, phone } = props
   const [show, setShow] = useState(false)
   const router = useRouter()
-  const [isProfilePageOpened, setIsProfilePageOpened] = useState(false)
-  const [toggleButton, setToggleButton] = useState(false)
-  const { handleUserUpdated, user } = useUI()
+  const [isRedirectionModalOpen, setIsRedirectionModalOpen] = useState(false)
+  const [redirectionData, setRedirectionData] = useState(REDIRECTION_DATA[0])
+  const { handleUserUpdated } = useUI()
   const { completedStepTill } = useMarvelContext()
 
   const isProfileDetailsRoute = useMemo(() => router.pathname === MARVEL_ROUTES.PROFILE_DETAILS, [router])
@@ -40,23 +55,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
     setShow(!show)
   }
   const toggleModal = () => {
-    setIsProfilePageOpened(false)
-    // setNominateAgain(false)
-  }
-  const onSubmitProfile = () => {
-    router.push(MARVEL_ROUTES.PROFILE_DETAILS)
-  }
-  const onSubmitNominate = () => {
-    router.push(MARVEL_ROUTES.NOMINATE_FORM)
-  }
-  const goToProfilePage = () => {
-    setIsProfilePageOpened(true)
-    setToggleButton(true)
-  }
-  const goToNominatePage = () => {
-    // setNominateAgain(true)
-    setToggleButton(false)
-    setIsProfilePageOpened(true)
+    setIsRedirectionModalOpen(false)
   }
 
   const logoutHandler = () => {
@@ -99,7 +98,15 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
             <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
               <div className="mb-2 sm:text-left text-center">
                 <span className={handleStepsClasses(1, isProfileDetailsRoute)}>Step 1</span>
-                <div className={s.icon_container} onClick={goToProfilePage}>
+                <div 
+                  className={s.icon_container} 
+                  onClick={() => {
+                    if (!isProfileDetailsRoute) {
+                      setIsRedirectionModalOpen(true)
+                      setRedirectionData(REDIRECTION_DATA[0])
+                    }
+                  }}
+                >
                   <img className={s.step_img} src="/step_1c.svg" alt="step1" />
                   <span className={s.step_icon_text}>Profile Details</span>
                 </div>
@@ -107,15 +114,31 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
 
               <div className="mb-2 sm:text-left text-center">
                 <span className={handleStepsClasses(2, isNominationFormRoute)}>Step 2</span>
-                <div className={`${s.icon_container} ${completedStepTill < 2 && !isNominationFormRoute ? s.icon_container_disabled : s.icon_container_active}`} onClick={() => !isNominationFormRoute && goToNominatePage()}>
+                <div 
+                  className={`${s.icon_container} ${completedStepTill < 2 && !isNominationFormRoute ? s.icon_container_disabled : s.icon_container_active}`} 
+                  onClick={() => {
+                    if (!isNominationFormRoute) {
+                      setRedirectionData(REDIRECTION_DATA[1])
+                      setIsRedirectionModalOpen(true)
+                    }
+
+                  }}>
                   <img className={s.step_img} src={`${completedStepTill < 2 && !isNominationFormRoute ? "/step_2g.svg" : "/step_2c.svg"}`} alt="step2" />
                   <p className={`${s.step_icon_text}  ${completedStepTill < 2 && !isNominationFormRoute ? s.text_disabled : ''}`}>Nomination Form</p>
                 </div>
               </div>
 
               <div className="mb-2 sm:text-left text-center">
-                <span className={handleStepsClasses(3, isUploadDocRoute)}>Step 3</span>
-                <div className={`${s.icon_container} ${completedStepTill !== 3 && !isUploadDocRoute ? s.icon_container_disabled : s.icon_container_active}`}>
+                <span className={handleStepsClasses(3, isUploadDocRoute)} onClick={() => {} }>Step 3</span>
+                <div 
+                  className={`${s.icon_container} ${completedStepTill !== 3 && !isUploadDocRoute ? s.icon_container_disabled : s.icon_container_active}`}
+                  onClick={() => {
+                    if (!isUploadDocRoute) {
+                      setRedirectionData(REDIRECTION_DATA[2])
+                      setIsRedirectionModalOpen(true)
+                    }
+                  }}
+                >
                   <img className={s.step_img} src={completedStepTill !== 3 && !isUploadDocRoute ? "/step_3g.svg" : "/step_3c.svg"} alt="step3" />
                   <p className={`${s.step_icon_text} ${completedStepTill !== 3 && !isUploadDocRoute ? s.text_disabled : ''}`}>Upload Documents</p>
                 </div>
@@ -173,12 +196,12 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
           ''
         )} */}
 
-        {isProfilePageOpened && !isProfileDetailsRoute ? (
+        {isRedirectionModalOpen ? (
           <>
             <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
             <Dialog
               className={'relative z-[999999]'}
-              open={isProfilePageOpened}
+              open={isRedirectionModalOpen}
               onClose={toggleModal}
             >
               <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
@@ -201,16 +224,13 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   </div>
                   <div className="flex justify-center mt-6 text-[16px] font-[600px]">
                     <button
-                      onClick={
-                        toggleButton === true
-                          ? onSubmitProfile
-                          : onSubmitNominate
-                      }
+                      onClick={() => router.push(redirectionData?.router)}
                       className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
                     >
-                      {toggleButton == true
+                      {redirectionData?.buttonText}
+                      {/* {toggleButton
                         ? 'Go to profile details'
-                        : 'Go to Nominate details'}
+                        : 'Go to Nominate details'} */}
                     </button>
 
                     <button
