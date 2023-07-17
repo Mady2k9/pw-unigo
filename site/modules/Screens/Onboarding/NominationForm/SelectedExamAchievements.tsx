@@ -125,7 +125,7 @@ function SelectedExamAchievements({
               <div className="grid grid-cols-12 border-b last:border-b-0 gap-6">
                 <div className="col-span-4">Competition Title</div>
                 <div className="col-span-4">Criteria</div>
-                <div className="col-span-2">Select Criteria</div>
+                <div className="col-span-4">Select Criteria</div>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ function SelectedExamAchievements({
                           className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
                         >
                           <div className="col-span-4">{competitionName}</div>
-                          <div className="col-span-3">{criteriaName}</div>
+                          <div className="col-span-4">{criteriaName}</div>
                           <div className="col-span-4 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
