@@ -106,7 +106,7 @@ function SelectedExamAchievements({
         <div>
           <p className="text-[#757575]">Fill your achievements here for</p>
           <p className="text-[#1B2124] text-base">
-            Current Year ({year?.year})
+            {year?.title}
           </p>
         </div>
         <div
@@ -174,7 +174,7 @@ function SelectedExamAchievements({
                               disabled={!isEditEnabled}
                               placeholder="Select"
                               className={cn('h-[50px] mr-2', {
-                                'cursor-not-allowed': !isEditEnabled,
+                                'cursor-not-allowed !bg-gray-100 !border-0': !isEditEnabled,
                               })}
                               onChange={(val: string) =>
                                 onSelectCriteria(

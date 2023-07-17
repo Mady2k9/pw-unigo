@@ -86,7 +86,6 @@ function NominationForm({
   }
 
   const renderRightForm = () => {
-    console.log('yearValueArr', yearValueArr, selectedExamFormatData)
     return yearValueArr.map((value, index) => {
       return (
         <SelectedExamAchievements
