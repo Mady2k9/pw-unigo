@@ -16,13 +16,13 @@ const Home = () => {
   const router = useRouter()
   useEffect(() => {
     if (user) {
-        router.replace('/profile-details')
+      router.replace('/profile-details')
     }
-}, [user])
+  }, [user])
   return (
     <>
       <Header variant="MARVELSHeader" />
-      <Announcement title="Hi sdsfsdfsf" />
+      <Announcement />
       <Banner data={undefined} />
       <RewardsCard data={undefined} />
       <NominationSteps data={undefined} />

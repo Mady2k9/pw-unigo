@@ -45,9 +45,18 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
   const { handleUserUpdated } = useUI()
   const { completedStepTill } = useMarvelContext()
 
-  const isProfileDetailsRoute = useMemo(() => router.pathname === MARVEL_ROUTES.PROFILE_DETAILS, [router])
-  const isNominationFormRoute = useMemo(() => router.pathname === MARVEL_ROUTES.NOMINATION_FORM, [router])
-  const isUploadDocRoute = useMemo(() => router.pathname === MARVEL_ROUTES.UPLOAD_DOCUMENT, [router])
+  const isProfileDetailsRoute = useMemo(
+    () => router.pathname === MARVEL_ROUTES.PROFILE_DETAILS,
+    [router]
+  )
+  const isNominationFormRoute = useMemo(
+    () => router.pathname === MARVEL_ROUTES.NOMINATION_FORM,
+    [router]
+  )
+  const isUploadDocRoute = useMemo(
+    () => router.pathname === MARVEL_ROUTES.UPLOAD_DOCUMENT,
+    [router]
+  )
 
   // const [nominateAgain, setNominateAgain] = useState(false)
 
@@ -66,13 +75,23 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
   }
 
   const handleStepsClasses = (step: number, currentActive: boolean) => {
-    switch(step) {
+    switch (step) {
       case 1:
-        return step <= completedStepTill ? s.step_text_complete : s.step_text_active
+        return step <= completedStepTill
+          ? s.step_text_complete
+          : s.step_text_active
       case 2:
-        return step <= completedStepTill ? s.step_text_complete : currentActive ? s.step_text_active : s.step_text_disabled
+        return step <= completedStepTill
+          ? s.step_text_complete
+          : currentActive
+          ? s.step_text_active
+          : s.step_text_disabled
       case 3:
-        return step === completedStepTill ? s.step_text_complete : currentActive ? s.step_text_active : s.step_text_disabled
+        return step === completedStepTill
+          ? s.step_text_complete
+          : currentActive
+          ? s.step_text_active
+          : s.step_text_disabled
     }
   }
 
@@ -146,17 +165,44 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
             </div>
             <div className="mx-2 sm:order-1">
               <div className="flex sm:flex-col flex-row items-center">
-                <img src={1 <= completedStepTill ? "/dot-d.svg" : "/dot-a.svg"} alt="dot" />
-                <div 
+                <img
+                  src={1 <= completedStepTill ? '/dot-d.svg' : '/dot-a.svg'}
+                  alt="dot"
+                />
+                <div
                   className={cn(
-                  `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${1 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]' } inline-block`
-                  )}></div>
-                <img src={2 <= completedStepTill ? "/dot-d.svg" : router?.pathname === "/nomination-form" ? "/dot-a.svg" : "/dot-g.svg"}  alt="dot" />
-                <div 
+                    `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${
+                      1 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]'
+                    } inline-block`
+                  )}
+                ></div>
+                <img
+                  src={
+                    2 <= completedStepTill
+                      ? '/dot-d.svg'
+                      : router?.pathname === '/nomination-form'
+                      ? '/dot-a.svg'
+                      : '/dot-g.svg'
+                  }
+                  alt="dot"
+                />
+                <div
                   className={cn(
-                  `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${2 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]' } inline-block`
-                  )}></div>
-                <img src={completedStepTill === 3 ? "/dot-d.svg" : router?.pathname === "/upload-document" ? "/dot-a.svg" : "/dot-g.svg"} alt="dot" />
+                    `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${
+                      2 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]'
+                    } inline-block`
+                  )}
+                ></div>
+                <img
+                  src={
+                    completedStepTill === 3
+                      ? '/dot-d.svg'
+                      : router?.pathname === '/upload-document'
+                      ? '/dot-a.svg'
+                      : '/dot-g.svg'
+                  }
+                  alt="dot"
+                />
               </div>
             </div>
           </div>
@@ -175,8 +221,8 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               </p>
             </div>
             <hr className={s.linecss} />
-            <div 
-              className="flex justify-center cursor-pointer" 
+            <div
+              className="flex justify-center cursor-pointer"
               onClick={logoutHandler}
             >
               <span className={s.logoutHidden}>
