@@ -29,9 +29,8 @@ const UploadDocumentsScreen = () => {
 
   useEffect(() => {
       const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
-      const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
       const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
-      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
       updateCompletedSteps(Math.max(completedStepTill, step))
 
       if (studentDocsInfo) {
@@ -68,12 +67,24 @@ const UploadDocumentsScreen = () => {
   const onSubmit = () => {
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
-      studentDocsInfo,
-      nominationDocsInfo,
+      studentDocsInfo: {
+        passportPhoto: studentDocsInfo?.passportPhoto?._id || studentDocsInfo?.passportPhoto,
+        reportCard: studentDocsInfo?.reportCard?._id || studentDocsInfo?.reportCard,
+        adhaarInfo: {
+          adhaarBackPage: studentDocsInfo?.adhaarInfo?.adhaarBackPage?._id ||  studentDocsInfo?.adhaarInfo?.adhaarBackPage,
+          adhaarFrontPage: studentDocsInfo?.adhaarInfo?.adhaarFrontPage?._id ||  studentDocsInfo?.adhaarInfo?.adhaarFrontPage,
+
+        }
+      },
+      nominationDocsInfo: nominationDocsInfo?.map((el: any) => {
+        if(el?.achievementId?._id) {
+          el.achievementId = el?.achievementId?._id
+        }
+        return el
+      })
     }
 
     postFormData(dataToSend, randomId).then((res: any) => {
-      console.log(res)
       if (res) {
         push('/rewards')
       }
@@ -85,7 +96,7 @@ const UploadDocumentsScreen = () => {
       if (
         (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria
       ) {
-        el.achivementId = data?.achivementId
+        el.achievementId = data?.achievementId
       }
 
       return el
@@ -110,7 +121,7 @@ const UploadDocumentsScreen = () => {
                             && (studentDocsInfo?.passportPhoto)
                             && (studentDocsInfo?.reportCard)
 
-    const checkForNominationDocs = draftData?.nominationDocsInfo?.every((el: any) => el?.achivementId)
+    const checkForNominationDocs = nominationDocsInfo?.every((el: any) => el?.achievementId)
     return !(checkStudentDoc && checkForNominationDocs)
   }
 
