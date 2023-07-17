@@ -47,8 +47,8 @@ const ProfileDetails = () => {
     fetchAlternateNumber()
     if (user?.profileId?.class) {
       const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
-      const uploadDocsInfo = draftData?.pwMarvelData?.uploadDocsInfo
-      const step = uploadDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
+      const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
       setNavBarText('Edit')
       updateCompletedSteps(Math.max(completedStepTill, step))
     }
