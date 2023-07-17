@@ -147,7 +147,7 @@ const OTPView = ({ onReset }: { onReset: any }) => {
               />
             </div>
 
-            {error && <Alert message={error} type="error" />}
+            {error && <Alert message={error?.message} type="error" />}
             <Button
               type="button"
               onClick={handleSubmit}

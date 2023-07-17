@@ -5,7 +5,9 @@ type OnboardingProps = {
   mainContent: React.ReactNode
 }
 const Onboarding = ({ mainContent }: OnboardingProps) => {
-  return <></>
+  return (
+    <></>
+  )
 }
 
 export default Onboarding
