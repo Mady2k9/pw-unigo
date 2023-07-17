@@ -73,7 +73,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
       <Layout>
         <form
           onSubmit={handleSubmit}
-          className="lg:px-0 lg:w-7/12  sm:w-full mx-auto w-full px-5  sm:px-4"
+          className="lg:px-0 xl:w-7/12 lg:w-9/12 sm:w-full mx-auto w-full px-5 sm:px-4"
         >
           <div className="">
             <div className={s.login_right_heading}>Login</div>
@@ -82,7 +82,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
             </div>
           </div>
           <div className="flex flex-col space-y-3">
-            <div className="mb-6 mt-2 md:w-[432px]">
+            <div className="mb-6 mt-2 w-full">
               <TextInput
                 invalid={!isPhoneValid(username)}
                 maxLength={10}

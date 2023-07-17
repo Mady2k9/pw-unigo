@@ -15,7 +15,7 @@ type RegisterViewProps = {
 const Register = ({ onOTPGet }: RegisterViewProps) => {
   // Form State
   const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
-    useAuth()
+  useAuth()
 
   //const [dataNumber, setDataNumber] = useState('')
   const [mobile, setMobile] = useState('')
@@ -62,15 +62,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     localStorage.setItem('username', mobile)
     e.preventDefault()
-    if (shouldRegister) {
-      await handleRegister(mobile, firstName)
-    } else {
-      const response = await handleGenerateOTP(username)
-      if (!response) {
-        setShouldRegister(true)
-        localStorage.setItem('shouldRegister', 'true')
-      }
-    }
+    await handleRegister(mobile, firstName)
   }
   const [countryNumber, setCountryNumber] = useState(false)
   const showCountryNumber = () => {
@@ -172,7 +164,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
           </div>
           <div className=" w-full md:mt-20 mt-32  border-t-[1px] border-[#D9DCE1] h-2"></div>
           <div className="flex justify-center pb-5 pt-4">
-            {error && <Alert message={error} type="error" />}
+            {error && <Alert message={error?.message} type="error" />}
             <Button
               size="large"
               type="submit"

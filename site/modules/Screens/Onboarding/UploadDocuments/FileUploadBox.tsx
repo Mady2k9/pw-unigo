@@ -1,6 +1,6 @@
 import { Button, Loader } from '@components/ui'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'clsx'
 import { uploadFile } from '@modules/auth/lib'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
@@ -12,6 +12,8 @@ type FileUploadBoxProps = {
   wrapperClass?: string
   onUploadSucces: (res: UploadedFileResponse) => void
   aadharText?: string
+  uploadedFile?: string
+  onEditCallBack: () => void
 }
 
 const FileUploadBox = ({
@@ -19,8 +21,15 @@ const FileUploadBox = ({
   wrapperClass,
   onUploadSucces,
   aadharText,
+  uploadedFile = '',
+  onEditCallBack = () => {}
 }: FileUploadBoxProps) => {
   const [files, setFiles] = useState<FileList | null>()
+  const [uploadedFileData, setUploadedFileData] = useState<any>(null)
+
+  useEffect(() => {
+    setUploadedFileData(uploadedFile)
+  }, [uploadedFile,  setUploadedFileData])
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -30,6 +39,22 @@ const FileUploadBox = ({
 
   const onEdit = () => {
     setFiles(null)
+    setUploadedFileData(null)
+    if (onEditCallBack) {
+      onEditCallBack()
+    }
+  }
+
+  if (uploadedFileData) {
+    return (
+      <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
+        <FileUploaded
+          files={uploadedFile}
+          fileHelperText={fileHelperText}
+          onEdit={onEdit}
+        />
+      </FileUploadWrapper>
+    )
   }
 
   if (files && files.length !== 0) {
@@ -75,7 +100,7 @@ const FileSelected = ({
   onUploadSucces: (res: UploadedFileResponse) => void
 }) => {
   const [isUploading, setIsUploading] = useState(false)
-  const [isUploaded, setIsUploaded] = useState(false)
+  const [uploadedFile, setUploadedFile] = useState<any>(null)
   const onFileUpload = async () => {
     setIsUploading(true)
     try {
@@ -92,7 +117,7 @@ const FileSelected = ({
       const { data } = await uploadFile(formData, randomId)
       if (data.success) {
         onUploadSucces(data.data)
-        setIsUploaded(true)
+        setUploadedFile(data.data)
       }
     } catch (err) {
       console.error(err)
@@ -101,10 +126,10 @@ const FileSelected = ({
     }
   }
 
-  if (isUploaded) {
+  if (uploadedFile) {
     return (
       <FileUploaded
-        files={files}
+        files={uploadedFile}
         fileHelperText={fileHelperText}
         onEdit={onEdit}
       />
@@ -133,13 +158,13 @@ const FileUploaded = ({
   fileHelperText,
   onEdit,
 }: {
-  files: FileList
+  files: any
   fileHelperText?: string
   onEdit: () => void
 }) => {
   return (
     <>
-      {files[0].name}
+      {files?.name}
       <div className="flex my-2 items-center">
         <Button variant="secondary" onClick={onEdit}>
           Edit
@@ -147,6 +172,7 @@ const FileUploaded = ({
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
           id="preview-eye"
+          onClick={() => window?.open(`${files?.baseUrl}${files?.key}`)}
         >
           <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
         </div>

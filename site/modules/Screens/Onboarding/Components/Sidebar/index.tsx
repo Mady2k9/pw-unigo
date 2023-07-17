@@ -1,24 +1,40 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import s from './sidebar.module.css'
 import { useRouter } from 'next/router'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import ImportantNoticeData from '@modules/ImportantNotices/importantNoticeData'
+import { deleteAllCookies } from '@lib/user-utility'
+import { useUI } from '@components/ui'
+import { useMarvelContext } from '@modules/MarvelContext'
+import cn from 'clsx'
 
 export interface sidebarProps {
   name: string
   phone: string
 }
 
-const sidebar: React.FC<sidebarProps> = (props) => {
+enum MARVEL_ROUTES {
+  PROFILE_DETAILS = '/profile-details',
+  NOMINATION_FORM = '/nomination-form',
+  UPLOAD_DOCUMENT = '/upload-document',
+  NOMINATE_FORM = '/nominate-form'
+}
+
+const Sidebar: React.FC<sidebarProps> = (props) => {
   const { name, phone } = props
   const [show, setShow] = useState(false)
   const router = useRouter()
   const [isProfilePageOpened, setIsProfilePageOpened] = useState(false)
   const [toggleButton, setToggleButton] = useState(false)
+  const { handleUserUpdated, user } = useUI()
+  const { completedStepTill } = useMarvelContext()
+
+  const isProfileDetailsRoute = useMemo(() => router.pathname === MARVEL_ROUTES.PROFILE_DETAILS, [router])
+  const isNominationFormRoute = useMemo(() => router.pathname === MARVEL_ROUTES.NOMINATION_FORM, [router])
+  const isUploadDocRoute = useMemo(() => router.pathname === MARVEL_ROUTES.UPLOAD_DOCUMENT, [router])
+
   // const [nominateAgain, setNominateAgain] = useState(false)
-  var profileLink = '/profile-details'
-  var nominateLink = '/nomination-form'
 
   const openImportantNotices = () => {
     setShow(!show)
@@ -28,10 +44,10 @@ const sidebar: React.FC<sidebarProps> = (props) => {
     // setNominateAgain(false)
   }
   const onSubmitProfile = () => {
-    router.push(profileLink)
+    router.push(MARVEL_ROUTES.PROFILE_DETAILS)
   }
   const onSubmitNominate = () => {
-    router.push(nominateLink)
+    router.push(MARVEL_ROUTES.NOMINATE_FORM)
   }
   const goToProfilePage = () => {
     setIsProfilePageOpened(true)
@@ -41,6 +57,24 @@ const sidebar: React.FC<sidebarProps> = (props) => {
     // setNominateAgain(true)
     setToggleButton(false)
     setIsProfilePageOpened(true)
+  }
+
+  const logoutHandler = () => {
+    localStorage.clear()
+    deleteAllCookies()
+    handleUserUpdated()
+    router.push('/')
+  }
+
+  const handleStepsClasses = (step: number, currentActive: boolean) => {
+    switch(step) {
+      case 1:
+        return step <= completedStepTill ? s.step_text_complete : s.step_text_active
+      case 2:
+        return step <= completedStepTill ? s.step_text_complete : currentActive ? s.step_text_active : s.step_text_disabled
+      case 3:
+        return step === completedStepTill ? s.step_text_complete : currentActive ? s.step_text_active : s.step_text_disabled
+    }
   }
 
   return (
@@ -64,7 +98,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           <div className="flex sm:flex-row flex-col items-center sm:pb-0 pb-4">
             <div className="flex sm:flex-col flex-row sm:order-2 sm:gap-0 gap-3">
               <div className="mb-2 sm:text-left text-center">
-                <span className={s.step_text_active}>Step 1</span>
+                <span className={handleStepsClasses(1, isProfileDetailsRoute)}>Step 1</span>
                 <div className={s.icon_container} onClick={goToProfilePage}>
                   <img className={s.step_img} src="/step_1c.svg" alt="step1" />
                   <span className={s.step_icon_text}>Profile Details</span>
@@ -72,28 +106,34 @@ const sidebar: React.FC<sidebarProps> = (props) => {
               </div>
 
               <div className="mb-2 sm:text-left text-center">
-                <span className={s.step_text}>Step 2</span>
-                <div className={s.icon_container} onClick={goToNominatePage}>
-                  <img className={s.step_img} src="/step_2c.svg" alt="step2" />
-                  <p className={s.step_icon_text}>Nomination Form</p>
+                <span className={handleStepsClasses(2, isNominationFormRoute)}>Step 2</span>
+                <div className={`${s.icon_container} ${completedStepTill < 2 && !isNominationFormRoute ? s.icon_container_disabled : s.icon_container_active}`} onClick={() => !isNominationFormRoute && goToNominatePage()}>
+                  <img className={s.step_img} src={`${completedStepTill < 2 && !isNominationFormRoute ? "/step_2g.svg" : "/step_2c.svg"}`} alt="step2" />
+                  <p className={`${s.step_icon_text}  ${completedStepTill < 2 && !isNominationFormRoute ? s.text_disabled : ''}`}>Nomination Form</p>
                 </div>
               </div>
 
               <div className="mb-2 sm:text-left text-center">
-                <span className={s.step_text}>Step 3</span>
-                <div className={s.icon_container}>
-                  <img className={s.step_img} src="/step_3c.svg" alt="step3" />
-                  <p className={s.step_icon_text}>Upload Documents</p>
+                <span className={handleStepsClasses(3, isUploadDocRoute)}>Step 3</span>
+                <div className={`${s.icon_container} ${completedStepTill !== 3 && !isUploadDocRoute ? s.icon_container_disabled : s.icon_container_active}`}>
+                  <img className={s.step_img} src={completedStepTill !== 3 && !isUploadDocRoute ? "/step_3g.svg" : "/step_3c.svg"} alt="step3" />
+                  <p className={`${s.step_icon_text} ${completedStepTill !== 3 && !isUploadDocRoute ? s.text_disabled : ''}`}>Upload Documents</p>
                 </div>
               </div>
             </div>
             <div className="mx-2 sm:order-1">
               <div className="flex sm:flex-col flex-row items-center">
-                <img src="/dot-a.svg" alt="dot" />
-                <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
-                <img src="/dot-g.svg" alt="dot" />
-                <div className="sm:w-[2px]  sm:h-[60px] h-[2px]  w-[98px] bg-[#C1C6CE]  inline-block"></div>
-                <img src="/dot-g.svg" alt="dot" />
+                <img src={1 <= completedStepTill ? "/dot-d.svg" : "/dot-a.svg"} alt="dot" />
+                <div 
+                  className={cn(
+                  `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${1 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]' } inline-block`
+                  )}></div>
+                <img src={2 <= completedStepTill ? "/dot-d.svg" : router?.pathname === "/nomination-form" ? "/dot-a.svg" : "/dot-g.svg"}  alt="dot" />
+                <div 
+                  className={cn(
+                  `sm:w-[2px] sm:h-[60px] h-[2px]  w-[98px] ${2 <= completedStepTill ? 'bg-[#1B7938]' : 'bg-[#C1C6CE]' } inline-block`
+                  )}></div>
+                <img src={completedStepTill === 3 ? "/dot-d.svg" : router?.pathname === "/upload-document" ? "/dot-a.svg" : "/dot-g.svg"} alt="dot" />
               </div>
             </div>
           </div>
@@ -112,7 +152,10 @@ const sidebar: React.FC<sidebarProps> = (props) => {
               </p>
             </div>
             <hr className={s.linecss} />
-            <div className="flex justify-center">
+            <div 
+              className="flex justify-center cursor-pointer" 
+              onClick={logoutHandler}
+            >
               <span className={s.logoutHidden}>
                 <img
                   className="mt-1 mr-2 w-[20px]"
@@ -130,7 +173,7 @@ const sidebar: React.FC<sidebarProps> = (props) => {
           ''
         )} */}
 
-        {isProfilePageOpened === true && router.pathname != profileLink ? (
+        {isProfilePageOpened && !isProfileDetailsRoute ? (
           <>
             <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
             <Dialog
@@ -191,4 +234,4 @@ const sidebar: React.FC<sidebarProps> = (props) => {
   )
 }
 
-export default sidebar
+export default Sidebar

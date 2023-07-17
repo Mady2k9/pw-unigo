@@ -7,11 +7,13 @@ import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import { Button } from '@components/ui'
 import { useRouter } from 'next/router'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { useMarvelContext } from '@modules/MarvelContext'
 
 export type AchievementFEType = {
   examGroup: string
   remarks: string
-  achivementName: string
+  achievementName: string
   criteria: string
   year: number
 }
@@ -35,6 +37,21 @@ const NominationFormScreen = () => {
   const [nominationsFormat, setNominationsFormat] = useState<any>([])
   const [isChecked, setIsChecked] = useState(false)
   const { push } = useRouter()
+  const { draftData, isLoadingDraftData } = useGetDraftData()
+  const [navBarText, setNavBarText] = useState('Submit')
+  const { updateCompletedSteps, completedStepTill } = useMarvelContext()
+
+  useEffect(() => {
+    const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
+    const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
+    if (nominationDocsInfo) {
+      const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+      setSelectedValues(nominationDocsInfo)
+      updateCompletedSteps(Math.max(step, completedStepTill))
+      setNavBarText('Edit')
+    }
+  }, [draftData, updateCompletedSteps, completedStepTill])
+
 
   useEffect(() => {
     // TODO Check why this is calling twice
@@ -47,22 +64,35 @@ const NominationFormScreen = () => {
 
   //FUNCTIONS
   const onValueSelect = (value: AchievementFEType) => {
-    console.log('onValueSelect', value)
-    setSelectedValues([...selectedValues, value])
+    const values = [...selectedValues]
+    const selectedIndex = values?.findIndex((el: any) => {
+      return (
+        el?.year == value?.year &&
+        el?.examGroup == value?.examGroup &&
+        el?.achievementName === value?.achievementName &&
+        el?.criteria === value?.criteria
+      )
+    })
+
+    if (selectedIndex !== -1) {
+      values[selectedIndex] = value
+    } else {
+      values.push(value)
+    }
+    setSelectedValues([...values])
   }
 
   const onDeselectValue = (value: AchievementFEType) => {
-    console.log('onDeselectValueSelect', value)
-    let filteredArr = selectedValues.filter((arrValue) => {
+    const filteredArr = selectedValues.filter((arrValue) => {
       return (
-        arrValue.achivementName != value.achivementName &&
-        arrValue.criteria != value.criteria &&
-        arrValue.examGroup != value.examGroup &&
-        arrValue.remarks != value.remarks
+        arrValue.achievementName !== value.achievementName ||
+        arrValue.criteria !== value.criteria ||
+        arrValue.examGroup !== value.examGroup ||
+        arrValue.year != value.year ||
+        arrValue.remarks !== value.remarks
       )
     })
-    //setSelectedValues([...filteredArr])
-    setSelectedValues([])
+    setSelectedValues([...filteredArr])
   }
 
   const onSubmit = () => {
@@ -92,19 +122,30 @@ const NominationFormScreen = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  //console.log('-------------------------', selectedValues)
+  const shouldSubmitDisable = () => {
+    return !selectedValues?.length
+  }
+
+  const enableEditForm = (navBarText: string) => {
+    if (navBarText === 'Edit') {
+      setNavBarText('Submit')
+    } else {
+      setNavBarText('Edit')
+    }
+  }
+
   return (
     <Layout
       header={
         <Header
           title="Step 2: Nominate Now"
+          hideSubmitButton={draftData?.isRegistrationEnded}
           handleSubmitForm={onSubmit}
-          handleEditForm={function (navBarText: string): void {
-            throw new Error('Function not implemented.')
-          }}
+          handleEditForm={(navBarText: string) => enableEditForm(navBarText)}
           profileData={undefined}
           isEditEnabled={false}
-          navBarText={''}
+          navBarText={navBarText}
+          shouldDisabled={shouldSubmitDisable()}
         />
       }
     >
@@ -114,6 +155,7 @@ const NominationFormScreen = () => {
           selectedValues={selectedValues}
           nominationsFormat={nominationsFormat}
           onDeselectValue={onDeselectValue}
+          isEditEnabled={navBarText === 'Submit'}
         />
         <Dialog
           className={'relative z-[999999]'}

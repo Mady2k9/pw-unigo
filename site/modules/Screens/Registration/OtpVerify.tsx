@@ -161,7 +161,7 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
             />
           </div>
 
-          {error && <Alert message={error} type="error" />}
+          {error && <Alert message={error?.message} type="error" />}
           <div className="text-center">
             <Button
               type="button"

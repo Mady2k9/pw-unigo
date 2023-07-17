@@ -67,7 +67,7 @@ const OTPView = ({ onReset }: { onReset: any }) => {
   const [canResend, setCanResend] = useState(false)
   const [_otp, _setOtp] = useState('')
   const { resendOTP, reset, handleLogin, error, loading } = useAuth()
-  const { user, refeshCohort } = useUI()
+  const { user } = useUI()
   const router = useRouter()
 
   useEffect(() => {
@@ -75,18 +75,15 @@ const OTPView = ({ onReset }: { onReset: any }) => {
   }, [])
 
   useEffect(() => {
-    if (user && !localStorage.getItem('shouldRegister')) {
+    if (user) {
       setNavigating(true)
-      router.replace('/')
+      router.replace('/profile-details')
     }
   }, [user])
 
   const handleSubmit = async () => {
     setNavigating(false)
-    const success = await handleLogin(_otp, username)
-    if (success) {
-      router.push('profile-details')
-    }
+    handleLogin(_otp, username)
   }
 
   const handleOnChange = (o: string) => {

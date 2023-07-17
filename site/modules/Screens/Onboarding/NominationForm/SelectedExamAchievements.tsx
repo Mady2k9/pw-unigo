@@ -3,6 +3,7 @@ import Image from 'next/image'
 import downArrow from 'public/downArrow.svg'
 import { Select } from '@components/ui'
 import { AchievementBEType } from '.'
+import cn from 'clsx'
 
 type SelectedExamAchievementsProps = {
   achievements: any
@@ -13,6 +14,7 @@ type SelectedExamAchievementsProps = {
     year: number
     title: string
   }
+  isEditEnabled: boolean
 }
 
 function SelectedExamAchievements({
@@ -21,6 +23,7 @@ function SelectedExamAchievements({
   onDeselectValue,
   selectedValues,
   year,
+  isEditEnabled,
 }: SelectedExamAchievementsProps) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
@@ -35,7 +38,7 @@ function SelectedExamAchievements({
     onValueSelect({
       year: year?.year,
       examGroup,
-      achivementName: achievementName,
+      achievementName,
       remarks: val,
       criteria,
     })
@@ -54,10 +57,11 @@ function SelectedExamAchievements({
       const value = selectedValues.find((value: any) => {
         if (
           value.examGroup === examGroup &&
-          value.achivementName === achievementName &&
           value.criteria === criteria &&
-          value.year === year
+          value.year == year && // !need to confirm this with BE, WHY !!!
+          value?.achievementName == achievementName
         ) {
+          // console.log('value: ', value);
           return value
         }
       })
@@ -75,7 +79,6 @@ function SelectedExamAchievements({
     criteria: string,
     val: string
   ) => {
-    console.log('isChecked', isChecked)
     if (isChecked) {
       return false
     }
@@ -83,7 +86,7 @@ function SelectedExamAchievements({
     onDeselectValue({
       year: year?.year,
       examGroup,
-      achivementName: achievementName,
+      achievementName,
       remarks: val,
       criteria,
     })
@@ -94,12 +97,10 @@ function SelectedExamAchievements({
     return null
   }
 
-  console.log('Achivement Data :: ', achievementsData, selectedValues)
-
   return (
     <>
       <div
-        className="mt-6 bg-[#F8F8F8] flex justify-between items-center p-4 max-[640px]:mt-3"
+        className="mt-6 bg-[#F8F8F8] w-full flex justify-between items-center p-4 max-[640px]:mt-3"
         onClick={() => setIsAccordionOpen(!isAccordionOpen)}
       >
         <div>
@@ -117,12 +118,16 @@ function SelectedExamAchievements({
         </div>
       </div>
       {isAccordionOpen && (
-        <div className="text-[#757575]">
-          <div className="text-[#1B2124] font-bold grid grid-cols-12 py-4 mt-5 border-b-2">
+        <div className="text-[#757575] overflow-scroll">
+          <div className="text-[#1B2124] font-bold grid grid-cols-12 py-4 mt-5 border-b-2 w-[800px]">
             <div className="col-span-1">Group</div>
-            <div className="col-span-4">Competition Title</div>
-            <div className="col-span-3">Criteria</div>
-            <div className="col-span-4">Select Criteria</div>
+            <div className="col-span-11">
+              <div className="grid grid-cols-12 border-b last:border-b-0 gap-6">
+                <div className="col-span-4">Competition Title</div>
+                <div className="col-span-4">Criteria</div>
+                <div className="col-span-2">Select Criteria</div>
+              </div>
+            </div>
           </div>
           {achievementsData?.map((achievement: any, index: number) => {
             //debugger
@@ -133,14 +138,14 @@ function SelectedExamAchievements({
             return (
               <div
                 key={`${achievement}-${index}`}
-                className="grid grid-cols-12 border-b-2 py-4"
+                className="grid grid-cols-12 border-b-2 py-4  w-[800px]"
               >
                 <div className="col-span-1 py-2">{group}</div>
                 <div className="col-span-11">
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
                       let competitionName = competitionDetails?.achievementName
-                      let criteraName = competitionDetails?.criteria
+                      let criteriaName = competitionDetails?.criteria
 
                       let dropdownArray =
                         competitionDetails?.criteriaDDValuesArr
@@ -148,11 +153,10 @@ function SelectedExamAchievements({
                       const selectedVal = getSelectedValue(
                         group,
                         competitionName,
-                        criteraName,
+                        criteriaName,
                         year?.year
                       )
 
-                      //console.log('selectedVal', selectedVal)
                       //console.log(Object.keys(competitions[index]))
                       return (
                         <div
@@ -160,34 +164,41 @@ function SelectedExamAchievements({
                           className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
                         >
                           <div className="col-span-4">{competitionName}</div>
-                          <div className="col-span-3">{criteraName}</div>
+                          <div className="col-span-3">{criteriaName}</div>
                           <div className="col-span-4 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
                                 id: el,
                                 name: el,
                               }))}
+                              disabled={!isEditEnabled}
                               placeholder="Select"
-                              className="h-[50px] mr-2"
+                              className={cn('h-[50px] mr-2', {
+                                'cursor-not-allowed': !isEditEnabled,
+                              })}
                               onChange={(val: string) =>
                                 onSelectCriteria(
                                   group,
                                   val,
                                   competitionName,
-                                  criteraName
+                                  criteriaName
                                 )
                               }
                               value={selectedVal || ''}
                             />
                             <input
                               type="checkbox"
-                              className="appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full"
+                              disabled={!isEditEnabled}
+                              className={cn(
+                                'appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full',
+                                { 'cursor-not-allowed': !isEditEnabled }
+                              )}
                               onChange={(e) => {
                                 unselectAcievement(
                                   e.target.checked,
                                   group,
                                   competitionName,
-                                  criteraName,
+                                  criteriaName,
                                   selectedVal
                                 )
                               }}
