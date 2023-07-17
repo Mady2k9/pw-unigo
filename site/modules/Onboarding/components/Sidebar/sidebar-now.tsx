@@ -7,7 +7,7 @@ export interface sidebarProps {
   phone: string
 }
 
-const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
+const Sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
   const router = useRouter()
   var link = '/profile-details'
   const [profilePageAgain, setProfilePageAgain] = useState(false)
@@ -146,4 +146,4 @@ const sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
   )
 }
 
-export default sidebar
+export default Sidebar

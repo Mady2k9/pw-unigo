@@ -64,10 +64,10 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
 
   useEffect(() => {
     // TODO - Should come from the query params
-    setMobile(localStorage.getItem('userMobile') as string)
+    setMobile(localStorage.getItem('username') as string)
   }, [])
 
-  const handleSubmit = async () => {
+  /* const handleSubmit = async () => {
     const dataToSend = {
       otp,
       client_id: 'system-admin',
@@ -84,6 +84,14 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
       localStorage.setItem('user', JSON.stringify(response?.data?.user))
       localStorage.setItem('token', response?.data?.access_token)
       localStorage.setItem('refresh_token', response?.data?.refresh_token)
+      router.push('profile-details')
+    }
+  } */
+
+  const handleSubmit = async () => {
+    //setNavigating(false)
+    const success = await handleLogin(otp, mobile)
+    if (success) {
       router.push('profile-details')
     }
   }
@@ -153,7 +161,7 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
             />
           </div>
 
-          {error && <Alert message={error} type="error" />}
+          {error && <Alert message={error?.message} type="error" />}
           <div className="text-center">
             <Button
               type="button"

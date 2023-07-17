@@ -1,62 +1,142 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Header from '@modules/Screens/Onboarding/Components/Header'
 import ProfileForm from '@modules/Screens/Onboarding/ProfileDetails/ProfileForm'
-import { updateUserProfile } from '@modules/auth/lib'
+import { getAlternateMobile, getMyProfile, updateUserProfile } from '@modules/auth/lib'
 import Layout from '../Layout'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
+import { localStorageHelper } from '@utils/helps'
+import { StudentDataProps } from './types'
+import { useUI } from '@components/ui'
+import { useMarvelContext } from '@modules/MarvelContext'
+import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { format } from 'date-fns'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
 
 const ProfileDetails = () => {
-  // TODO REMOVE any for the Profile type
-  // HOOKS
-  const [profileData, setProfileData] = useState<any>({
+  const { showNotification } = useNotify()
+  const [profileData, setProfileData] = useState<StudentDataProps>({
     email: '',
     class: '',
     alternateNumber: '',
+    name: '',
   })
+  const [selectedClass, setSelectedClass] = useState<string>('')
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
+  const [navBarText, setNavBarText] = useState('Submit')
   const router = useRouter()
+  const { user, handleUserUpdated } = useUI() 
+  const { draftData, isLoadingDraftData } = useGetDraftData()
+  const { completedStepTill, updateCompletedSteps } = useMarvelContext()
 
+  // to fetch and update student data
   useEffect(() => {
-    const user = localStorage.getItem('user')
-    if (typeof user === 'string') {
-      setProfileData(JSON.parse(user))
+    const studentData = localStorageHelper.getItem('user')
+    let selectedClass = ''
+    async function fetchAlternateNumber() {
+      const randomId = localStorage.getItem('randomId') || ''
+      const { data } = await getAlternateMobile(randomId, {
+        fields: 'alternateNumber,class,email'
+      })
+      const studentProfile = {
+        email: studentData?.email,
+        class: data?.data?.class,
+        name: studentData?.firstName + ' ' + studentData?.lastName,
+        alternateNumber: data.data.alternateNumber || '',
+      }
+      selectedClass = data?.data?.class
+      setProfileData({
+        ...profileData,
+        ...studentProfile,
+      })
+      if (studentData?.profileId?.class) {
+        const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
+        const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
+        const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+        setNavBarText('Edit')
+        updateCompletedSteps(Math.max(completedStepTill, step))
+        setSelectedClass(selectedClass)
+        console.log('selectedClass: ', selectedClass);
+      }
     }
-  }, [])
+    fetchAlternateNumber()
+  }, [user, draftData])
 
-  const name = useMemo(() => {
-    return profileData?.firstName || '' + profileData?.lastName
-  }, [profileData?.firstName, profileData?.lastName])
-
-  // FUNCTIONS
+  // onSubmit Function for first time student onboarding
   const onSubmit = async () => {
     const dataToSend = {
-      email: profileData.email,
-      class: profileData.class,
-      alternateNumber: profileData.alternateNumber,
-      centerName: 'Others',
+      email: profileData?.email,
+      alternateNumber: profileData?.alternateNumber,
+      ...(!(user?.profileId?.class) && {
+        class: selectedClass
+      }),
     }
-    const randomId = localStorage.getItem('randomId') || ''
-    const res = await updateUserProfile(dataToSend, randomId)
-    if (res) {
-      router.push('/nomination-form')
+    const randomId = localStorage.getItem('randomId') ?? ''
+    try {
+      const res = await updateUserProfile(dataToSend, randomId)
+      const userDetails = await getMyProfile(randomId)
+      if (userDetails?.data?.data) {
+        localStorage.setItem('user', JSON.stringify(userDetails?.data?.data))
+        handleUserUpdated()
+      }
+      if (res) {
+        router.push('/nomination-form')
+      }
+    } catch (error: any) {
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: error?.message,
+      })
+    }
+    
+  }
+
+  //to toggle state of is edit form and navbar text
+  const enableEditForm = (navBarText: string) => {
+    setIsEdit(!isEdit)
+    if (navBarText === 'Edit') {
+      setNavBarText('Submit')
+    } else {
+      setNavBarText('Edit')
     }
   }
 
+  //to toggle modal for agreement accept or reject
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen)
+    if (profileData?.class) {
+      onSubmit()
+    } else {
+      setIsModalOpen(!isModalOpen)
+    }
+  }
+
+  const shouldSubmitDisable = () => {
+      return !selectedClass
   }
 
   return (
     <Layout
-      header={<Header title="Step 1: Profile Details" onSubmit={toggleModal} />}
+      header={
+        <Header
+          title="Step 1: Profile Details"
+          profileData={profileData}
+          handleEditForm={enableEditForm}
+          handleSubmitForm={toggleModal}
+          isEditEnabled={isEdit}
+          navBarText={navBarText}
+          shouldDisabled={shouldSubmitDisable()}
+          hideSubmitButton={draftData?.isRegistrationEnded}
+        />
+      }
     >
       <ProfileForm
-        name={name}
-        profileData={profileData}
+        studentData={profileData}
         setProfileData={setProfileData}
-        registrationDate="12th May[DUMMY_DATA]"
+        setSelectedClass={setSelectedClass}
+        isEditEnabled={isEdit}
+        registrationDate={format(new Date(user?.createdAt), 'dd MMM yyyy')}
       />
       <Dialog
         className={'relative z-[999999]'}

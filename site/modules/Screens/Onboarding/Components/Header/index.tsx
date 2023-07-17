@@ -1,11 +1,25 @@
+import { Button } from "@components/ui"
+
 export interface HeaderProps {
   title: string
-  onSubmit?: () => void // TODO - remove optional chaining
+  handleSubmitForm?: () => void // TODO - remove optional chaining
+  handleEditForm: (navBarText: string) => void
+  profileData: any
+  isEditEnabled: boolean
+  navBarText: string
+  shouldDisabled: boolean
+  hideSubmitButton?: boolean
 }
 
-const Header: React.FC<HeaderProps> = (props) => {
-  const { title, onSubmit } = props
-
+const Header: React.FC<HeaderProps> = ({
+  title,
+  handleSubmitForm,
+  handleEditForm,
+  isEditEnabled,
+  navBarText,
+  shouldDisabled,
+  hideSubmitButton = false
+}: HeaderProps) => {
   return (
     <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-10 shadow-md flex">
       <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
@@ -25,17 +39,37 @@ const Header: React.FC<HeaderProps> = (props) => {
           <div className="text-[24px] font-[600] my-auto leading-[32px] hidden sm:block">
             {title}
           </div>
-          <div className="hidden sm:block">
-            <button
-              className=" bg-[#D2CCFF] hover:bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
-              onClick={onSubmit}
+          <div className="hidden sm:block md:w-[90px]">
+            {
+              !hideSubmitButton && (
+                <Button
+                onClick={
+                  navBarText === 'Edit'
+                    ? () => handleEditForm(navBarText)
+                    : handleSubmitForm}
+                stretch
+                disabled={shouldDisabled}
+              >
+                {navBarText === 'Edit' ? 'Edit Form' : 'Submit'}
+              </Button>
+              )
+            }
+            {/* <button
+              className=" bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
+              onClick={handleSubmitForm}
+              onClick={
+                bg-[#D2CCFF] hover:
+                navBarText === 'Edit'
+                  ? () => handleEditForm(navBarText)
+                  : handleSubmitForm
+              } 
             >
-              Submit
-            </button>
+              {navBarText === 'Edit' ? 'Edit Form' : 'Submit'}
+            </button> */}
           </div>
           <div className="flex w-[142px] h-[32px] sm:hidden ">
             <button className="w-[66px] h-full bg-white border-[1px] rounded-md text-[12px] mr-2">
-              Notice
+              Notices
             </button>
             <button className="w-[76px] h-full bg-white border-[1px] rounded-md text-[12px] flex justify-center items-center">
               <div className="mr-1">
