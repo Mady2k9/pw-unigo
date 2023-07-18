@@ -219,7 +219,9 @@ const FileSelected = ({
 }
 
 const textTrim = (text: string = '') => {
-  return text?.length > 10 ? text?.slice(0, 4) + '...' + text.slice(text?.length  - 6) : text
+  return text?.length > 10
+    ? text?.slice(0, 4) + '...' + text.slice(text?.length - 6)
+    : text
 }
 
 const FileUploaded = ({
@@ -295,7 +297,7 @@ const FileUploadWrapper = ({
   return (
     <div
       className={cn(
-        'border-[1.5px] relative border-dashed border-indigo-100 w-full flex flex-col justify-center items-center py-4 rounded-md bg-white',
+        'border-[1.5px] relative border-dashed border-indigo-100 w-full flex flex-col justify-center items-center py-7 rounded-md bg-white',
         wrapperClass
       )}
     >
