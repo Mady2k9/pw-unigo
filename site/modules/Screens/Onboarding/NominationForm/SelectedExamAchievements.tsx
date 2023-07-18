@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import downArrow from 'public/downArrow.svg'
 import { Select } from '@components/ui'
@@ -28,12 +28,16 @@ function SelectedExamAchievements({
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
   const achievementsData = (achievements && achievements?.['Group']) || []
+  const isMultiSelectEnabled = useMemo(() => {
+    return achievements?.isMultiSelect
+  }, [achievements])
 
   const onSelectCriteria = (
     examGroup: string,
     val: string,
     achievementName: string,
-    criteria: string
+    criteria: string,
+    examCategory: string
   ) => {
     onValueSelect({
       year: year?.year,
@@ -41,6 +45,7 @@ function SelectedExamAchievements({
       achievementName,
       remarks: val,
       criteria,
+      examCategory
     })
   }
 
@@ -61,7 +66,6 @@ function SelectedExamAchievements({
           value.year == year && // !need to confirm this with BE, WHY !!!
           value?.achievementName == achievementName
         ) {
-          // console.log('value: ', value);
           return value
         }
       })
@@ -97,6 +101,23 @@ function SelectedExamAchievements({
     return null
   }
 
+  const checkForDisable = (
+    groupName: string, criteria: string,
+    competitionName: string, examCategory: string, year: number
+    ) => {
+      if (isMultiSelectEnabled) {
+      return false // Restricted this func to run, If we have multiSelect enabled.
+    }
+    const isFound = selectedValues?.find((el: any) => (
+      (el?.examGroup === groupName && el?.examCategory === examCategory && el?.year == year) &&
+      ((el?.criteria !== criteria) || (el?.achievementName !== competitionName))
+    ))
+    if (isFound) {
+      return true
+    }
+    return false; 
+  }
+
   return (
     <>
       <div
@@ -116,30 +137,30 @@ function SelectedExamAchievements({
         </div>
       </div>
       {isAccordionOpen && (
-        <div className="text-[#757575] overflow-scroll">
-          <div className="text-[#1B2124] font-bold grid grid-cols-12 py-4 mt-5 border-b-2 w-[800px]">
-            <div className="col-span-1">Group</div>
-            <div className="col-span-11">
-              <div className="grid grid-cols-12 border-b last:border-b-0 gap-6">
-                <div className="col-span-4">Competition Title</div>
-                <div className="col-span-4">Criteria</div>
-                <div className="col-span-4">Select Criteria</div>
+        <div className="text-[#757575] overflow-x-auto">
+          <div className="text-[#1B2124] font-bold flex py-4 mt-5 border-b-2 min-w-[590px]">
+            <div className="w-[10%] p-2">Group</div>
+            <div className="w-[90%]">
+              <div className="w-full flex border-b last:border-b-0">
+                <div className="w-[35%] p-2">Competition Title</div>
+                <div className="w-[35%] p-2">Criteria</div>
+                <div className="w-[30%] p-2">Select Criteria</div>
               </div>
             </div>
           </div>
           {achievementsData?.map((achievement: any, index: number) => {
             //debugger
-            console.log('test debug')
             const group = achievement?.groupName
             const competitions = achievement?.competitions
+            const examCategory = achievements?.name
 
             return (
               <div
                 key={`${achievement}-${index}`}
-                className="grid grid-cols-12 border-b-2 py-2  w-[800px]"
+                className="flex border-b-2 py-2  min-w-[590px]"
               >
-                <div className="col-span-1 p-2">{group}</div>
-                <div className="col-span-11">
+                <div className="w-[10%] p-2">{group}</div>
+                <div className="w-[90%]">
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
                       let competitionName = competitionDetails?.achievementName
@@ -159,31 +180,41 @@ function SelectedExamAchievements({
                       return (
                         <div
                           key={index}
-                          className="grid grid-cols-12 border-b last:border-b-0 gap-6"
+                          className="flex border-b last:border-b-0"
                         >
-                          <div className="col-span-4 p-2">
-                            {competitionName}
-                          </div>
-                          <div className="col-span-4 p-2">{criteriaName}</div>
-                          <div className="col-span-4 p-2 flex">
+                          <div className="w-[35%] p-2">{competitionName}</div>
+                          <div className="w-[35%] p-2">{criteriaName}</div>
+                          <div className="w-[30%] p-2 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
                                 id: el,
                                 name: el,
                               }))}
-                              disabled={!isEditEnabled}
+                              disabled={!isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year)}
                               placeholder="Select"
                               className={cn('h-[50px] mr-2', {
                                 'cursor-not-allowed !bg-gray-100 !border-0':
-                                  !isEditEnabled,
+                                  !isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year),
                               })}
-                              onChange={(val: string) =>
-                                onSelectCriteria(
-                                  group,
-                                  val,
-                                  competitionName,
-                                  criteriaName
-                                )
+                              onChange={(val: string) => {
+                                if (val === undefined) {
+                                  unselectAcievement(
+                                    val,
+                                    group,
+                                    competitionName,
+                                    criteriaName,
+                                    selectedVal
+                                  )
+                                } else {
+                                  onSelectCriteria(
+                                      group,
+                                      val,
+                                      competitionName,
+                                      criteriaName,
+                                      achievements?.name
+                                  )
+                                }
+                                }
                               }
                               value={selectedVal || ''}
                             />

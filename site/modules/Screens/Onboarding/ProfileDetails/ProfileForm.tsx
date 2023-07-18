@@ -122,7 +122,7 @@ const Content = ({
                   placeholder="Enter number"
                   maxLength={10}
                   onClick={showCountryNumber}
-                  preElement={
+                  /* preElement={
                     isEditEnabled ? (
                       <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
                         <select className=" border-none bg-transparent">
@@ -130,8 +130,8 @@ const Content = ({
                         </select>
                       </div>
                     ) : null
-                  }
-                  variant={shouldDisabled ? "gray" : "flat"}
+                  } */
+                  variant={shouldDisabled ? 'gray' : 'flat'}
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ const Content = ({
                   }
                   placeholder="Email id"
                   spellCheck="false"
-                  variant={shouldDisabled ? "gray" : "flatlogin"}
+                  variant={shouldDisabled ? 'gray' : 'flatlogin'}
                 />
               </div>
             </div>

@@ -17,6 +17,7 @@ export type AchievementFEType = {
   achievementName: string
   criteria: string
   year: number
+  examCategory?: string
 }
 
 export type AchievementBEType = AchievementFEType & {
