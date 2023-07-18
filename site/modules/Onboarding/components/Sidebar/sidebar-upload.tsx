@@ -133,7 +133,7 @@ const Sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
                 onClick={stayOnThisPage}
                 className="w-[208px] h-[48px] ml-6 bg-[#5A4BDA] text-white rounded"
               >
-                Complete it first
+                Save it Frist
               </button>
             </div>
           </div>
