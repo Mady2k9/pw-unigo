@@ -24,10 +24,14 @@ const Announcement: React.FC<AnnouncementProps> = () => {
       }
     })()
   }, [])
+  const [closeAnnouncement, setCloseAnnouncement] = useState(true)
+  const closeButton = () => {
+    setCloseAnnouncement(!closeAnnouncement)
+  }
 
   return (
     <>
-      {announcementData?.announcementLabel?.length > 0 && (
+      {announcementData?.announcementLabel?.length > 0 && closeAnnouncement && (
         <div className="bg-[#1B2124] text-white w-full text-center p-[12px] flex">
           <div className="mx-auto max-w-6xl mt-2">
             <Typography weight={500} variant="heading3">
@@ -36,7 +40,9 @@ const Announcement: React.FC<AnnouncementProps> = () => {
               </div>
             </Typography>
           </div>
-          <img src="/x.svg" alt="x" />
+          <button onClick={closeButton}>
+            <img src="/x.svg" alt="x" />
+          </button>
         </div>
       )}
     </>
