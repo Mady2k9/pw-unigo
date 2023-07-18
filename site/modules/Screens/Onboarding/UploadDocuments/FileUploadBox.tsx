@@ -217,8 +217,8 @@ const FileSelected = ({
   )
 }
 
-const textTrim = (text: string) => {
-  return text?.slice(0, 4) + '...' + text.slice(text?.length  - 6)
+const textTrim = (text: string = '') => {
+  return text?.length > 10 ? text?.slice(0, 4) + '...' + text.slice(text?.length  - 6) : text
 }
 
 const FileUploaded = ({
