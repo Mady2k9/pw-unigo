@@ -4,9 +4,7 @@ import { useAuth } from '@lib/hooks/useAuth'
 import { isPhoneValid, isNameValid } from '@lib/validations'
 import { Layout } from './Layout'
 import { TextInput } from '@components/ui/Input'
-import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
-import s from '@modules/Screens/components.module.css'
 
 type RegisterViewProps = {
   onOTPGet: () => void
@@ -14,14 +12,11 @@ type RegisterViewProps = {
 
 const Register = ({ onOTPGet }: RegisterViewProps) => {
   // Form State
-  const { otpSent, error, loading, handleRegister, handleGenerateOTP } =
-  useAuth()
+  const { otpSent, error, loading, handleRegister } = useAuth()
 
-  //const [dataNumber, setDataNumber] = useState('')
   const [mobile, setMobile] = useState('')
   const [firstName, setFullName] = useState('')
   const [username, setUsername] = useState('')
-  const [shouldRegister, setShouldRegister] = useState(false)
 
   const router = useRouter()
 
@@ -30,34 +25,6 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
     localStorage.removeItem('fullName')
     localStorage.removeItem('shouldRegister')
   }, [])
-
-  /* const dataSetMobile = (e: any) => {
-    setDataNumber(e.replace(/[a-z!@#\$%\^\&*\)\(+=._-]/, ''))
-    {
-      setMobile
-    }
-  } */
-
-  /*    const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
-    localStorage.setItem('username', mobile)
-    e.preventDefault()
-    try {
-     handleRegister(mobile, firstName)
-
-      if (shouldRegister) {
-        handleRegister(mobile, firstName)
-        setShouldRegister(false)
-        localStorage.removeItem('shouldRegister')
-      } else {
-        setShouldRegister(true)
-        localStorage.setItem('shouldRegister', 'true')
-      }
-    } catch (e) {
-      
-
-      toast.error('Something Went wrong. Please try again after some time')
-    }
-  }  */
 
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     localStorage.setItem('username', mobile)
@@ -149,28 +116,25 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   }
                   placeholder={'Enter your mobile number'}
                 />
-                {
-                  <div
-                    className={` animated fadeIn flex gap-2 my-2  ${
-                      shouldRegister ? '' : 'hidden'
-                    }`}
-                  >
+                {error && (
+                  <div className="animated fadeIn flex gap-2 my-2">
                     <img src="/warning.svg" alt="warning" height="12px" />
-                    <span className={s.warning}>User Already Exist!.</span>
+                    <span className=" text-xs leading-4 font-semibold text-[#c5292a]">
+                      {error?.message}
+                    </span>
                   </div>
-                }
+                )}
               </div>
             </div>
           </div>
+
           <div className=" w-full md:mt-20 mt-32  border-t-[1px] border-[#D9DCE1] h-2"></div>
           <div className="flex justify-center pb-5 pt-4">
-            {error && <Alert message={error?.message} type="error" />}
             <Button
               size="large"
               type="submit"
               loading={loading}
               disabled={!isNameValid(firstName) || !isPhoneValid(mobile)}
-              /* disabled={!isPhoneValid(mobile)} */
               className="w-80 md:w-[432px] md:h-14 h-12  font-bold "
             >
               <Typography weight={700} variant="heading4">
