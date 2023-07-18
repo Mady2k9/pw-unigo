@@ -187,19 +187,19 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               />
             </div>
           </div>
-          <div className="flex rounded-md bg-white p-6 my-6 items-center">
+          <div className="flex rounded-md sm:bg-white bg-[#F8F8F8] sm:p-6 p-3 my-6 items-center ">
             <div className="mr-2 text-base font-bold">Nomination Documents</div>
             <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
           </div>
-          <div className="bg-white w-full divide-y overflow-scroll">
-            <div className="font-bold flex p-3 xl:w-full w-[850px]">
-              <div className="w-[6%]">S. no.</div>
-              <div className="w-[11%]">Nomination year</div>
-              <div className="w-[6%]">Exam Group</div>
-              <div className="w-[20%]">Competition title</div>
-              <div className="w-[20%]">Remarks</div>
-              <div className="w-[20%]">Criteria</div>
-              <div className="w-[17%]">Upload document</div>
+          <div className="bg-white w-full divide-y overflow-x-auto ">
+            <div className="font-bold flex xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] rounded-t-lg border-b-[#ffffff]">
+              <div className="w-[6%] p-2">S. no.</div>
+              <div className="w-[11%] p-2">Nomination year</div>
+              <div className="w-[7%] p-2">Exam Group</div>
+              <div className="w-[19%] p-2">Competition title</div>
+              <div className="w-[19%] p-2">Remarks</div>
+              <div className="w-[19%] p-2">Criteria</div>
+              <div className="w-[19%] p-2">Upload document</div>
             </div>
             {draftData &&
               draftData.pwMarvelData?.nominationDocsInfo?.map(
@@ -214,16 +214,16 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   console.log('data:dhskd ==>', data)
                   return (
                     <div
-                      className="flex p-3 text-[#757575] xl:w-full w-[850px]"
+                      className="flex text-[#757575] xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
                       key={criteria}
                     >
-                      <div className="w-[6%]">{index + 1}</div>
-                      <div className="w-[11%]">{year}</div>
-                      <div className="w-[6%]">{examGroup}</div>
-                      <div className="w-[20%]">{achievementName}</div>
-                      <div className="w-[20%]">{remarks}</div>
-                      <div className="w-[20%]">{criteria}</div>
-                      <div className="w-[17%]">
+                      <div className="w-[6%] p-2">{index + 1}</div>
+                      <div className="w-[11%] p-2">{year}</div>
+                      <div className="w-[7%] p-2">{examGroup}</div>
+                      <div className="w-[19%] p-2">{achievementName}</div>
+                      <div className="w-[19%] p-2">{remarks}</div>
+                      <div className="w-[19%] p-2">{criteria}</div>
+                      <div className="w-[19%] p-2">
                         <FileUploadBox
                           isRegistrationEnded={draftData?.isRegistrationEnded}
                           uploadedFile={data?.achievementId}

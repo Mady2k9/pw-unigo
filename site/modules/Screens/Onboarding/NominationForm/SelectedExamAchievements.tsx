@@ -137,14 +137,14 @@ function SelectedExamAchievements({
         </div>
       </div>
       {isAccordionOpen && (
-        <div className="text-[#757575] overflow-scroll">
-          <div className="text-[#1B2124] font-bold grid grid-cols-12 py-4 mt-5 border-b-2 w-[800px]">
-            <div className="col-span-1">Group</div>
-            <div className="col-span-11">
-              <div className="grid grid-cols-12 border-b last:border-b-0 gap-6">
-                <div className="col-span-4">Competition Title</div>
-                <div className="col-span-4">Criteria</div>
-                <div className="col-span-4">Select Criteria</div>
+        <div className="text-[#757575] overflow-x-auto">
+          <div className="text-[#1B2124] font-bold flex py-4 mt-5 border-b-2 min-w-[590px]">
+            <div className="w-[10%] p-2">Group</div>
+            <div className="w-[90%]">
+              <div className="w-full flex border-b last:border-b-0">
+                <div className="w-[35%] p-2">Competition Title</div>
+                <div className="w-[35%] p-2">Criteria</div>
+                <div className="w-[30%] p-2">Select Criteria</div>
               </div>
             </div>
           </div>
@@ -157,10 +157,10 @@ function SelectedExamAchievements({
             return (
               <div
                 key={`${achievement}-${index}`}
-                className="grid grid-cols-12 border-b-2 py-2  w-[800px]"
+                className="flex border-b-2 py-2  min-w-[590px]"
               >
-                <div className="col-span-1 p-2">{group}</div>
-                <div className="col-span-11">
+                <div className="w-[10%] p-2">{group}</div>
+                <div className="w-[90%]">
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
                       let competitionName = competitionDetails?.achievementName
@@ -180,13 +180,11 @@ function SelectedExamAchievements({
                       return (
                         <div
                           key={index}
-                          className="grid grid-cols-12 border-b last:border-b-0 gap-6"
+                          className="flex border-b last:border-b-0"
                         >
-                          <div className="col-span-4 p-2">
-                            {competitionName}
-                          </div>
-                          <div className="col-span-4 p-2">{criteriaName}</div>
-                          <div className="col-span-4 p-2 flex">
+                          <div className="w-[35%] p-2">{competitionName}</div>
+                          <div className="w-[35%] p-2">{criteriaName}</div>
+                          <div className="w-[30%] p-2 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
                                 id: el,
