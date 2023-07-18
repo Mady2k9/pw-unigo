@@ -11,6 +11,7 @@ import cn from 'clsx'
 export interface ProfileFormProps {
   studentData: StudentDataProps
   setProfileData: (val: any) => void
+  setSelectedClass: (val: string) => void
   registrationDate: string
   isEditEnabled: boolean
 }
@@ -18,11 +19,13 @@ export interface ProfileFormProps {
 const Content = ({
   studentData,
   setProfileData,
+  setSelectedClass,
   registrationDate,
   isEditEnabled,
 }: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
-    setProfileData({ ...studentData, class: classVal })
+    setSelectedClass(classVal)
+    // setProfileData({ ...studentData, class: classVal })
   }
   const { user } = useUI()
   const [countryNumber, setCountryNumber] = useState(false)
@@ -31,8 +34,8 @@ const Content = ({
   }
 
   const shouldDisabled = useMemo(
-    () => user?.profileId?.class && !isEditEnabled,
-    [user, isEditEnabled]
+    () => Boolean(studentData?.class) && !isEditEnabled,
+    [isEditEnabled, studentData]
   )
   return (
     <div className="w-full bg-white overflow-y-scroll z-0">
@@ -69,7 +72,7 @@ const Content = ({
                       </div>
                       <div className="text-[12px] py-auto align-middle text-[#3D3D3D]">
                         {studentData.class
-                          ? 'Class cant be changed now '
+                          ? `Class can't be changed now`
                           : 'Class can’t be changed once details are submitted'}
                       </div>
                     </div>
@@ -128,7 +131,7 @@ const Content = ({
                       </div>
                     ) : null
                   }
-                  variant="flat"
+                  variant={shouldDisabled ? "gray" : "flat"}
                 />
               </div>
             </div>
@@ -141,12 +144,12 @@ const Content = ({
                   label={isEditEnabled && studentData.email ? 'Email' : ''}
                   value={studentData.email}
                   disabled={shouldDisabled}
-                  // readOnly={!isEditEnabled}
                   onChange={(email) =>
                     setProfileData({ ...studentData, email: email })
                   }
                   placeholder="Email id"
                   spellCheck="false"
+                  variant={shouldDisabled ? "gray" : "flatlogin"}
                 />
               </div>
             </div>

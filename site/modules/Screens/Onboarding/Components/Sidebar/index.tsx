@@ -3,7 +3,6 @@ import s from './sidebar.module.css'
 import { useRouter } from 'next/router'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
-import ImportantNoticeData from '@modules/ImportantNotices/importantNoticeData'
 import { deleteAllCookies } from '@lib/user-utility'
 import { useUI } from '@components/ui'
 import { useMarvelContext } from '@modules/MarvelContext'
@@ -12,22 +11,37 @@ import cn from 'clsx'
 export interface sidebarProps {
   name: string
   phone: string
+  openImportantNotices: any
 }
 
-enum MARVEL_ROUTES {
+export enum MARVEL_ROUTES {
   PROFILE_DETAILS = '/profile-details',
   NOMINATION_FORM = '/nomination-form',
   UPLOAD_DOCUMENT = '/upload-document',
   NOMINATE_FORM = '/nomination-form',
 }
 
+export const REDIRECTION_DATA = [
+  {
+    buttonText: 'Go to profile details',
+    router: MARVEL_ROUTES.PROFILE_DETAILS,
+  },
+  {
+    buttonText: 'Go to Nomination form',
+    router: MARVEL_ROUTES.NOMINATE_FORM,
+  },
+  {
+    buttonText: 'Go to Upload details',
+    router: MARVEL_ROUTES.UPLOAD_DOCUMENT,
+  },
+]
+
 const Sidebar: React.FC<sidebarProps> = (props) => {
-  const { name, phone } = props
-  const [show, setShow] = useState(false)
+  const { name, phone, openImportantNotices } = props
   const router = useRouter()
-  const [isProfilePageOpened, setIsProfilePageOpened] = useState(false)
-  const [toggleButton, setToggleButton] = useState(false)
-  const { handleUserUpdated, user } = useUI()
+  const [isRedirectionModalOpen, setIsRedirectionModalOpen] = useState(false)
+  const [redirectionData, setRedirectionData] = useState(REDIRECTION_DATA[0])
+  const { handleUserUpdated } = useUI()
   const { completedStepTill } = useMarvelContext()
 
   const isProfileDetailsRoute = useMemo(
@@ -45,27 +59,8 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
 
   // const [nominateAgain, setNominateAgain] = useState(false)
 
-  const openImportantNotices = () => {
-    setShow(!show)
-  }
   const toggleModal = () => {
-    setIsProfilePageOpened(false)
-    // setNominateAgain(false)
-  }
-  const onSubmitProfile = () => {
-    router.push(MARVEL_ROUTES.PROFILE_DETAILS)
-  }
-  const onSubmitNominate = () => {
-    router.push(MARVEL_ROUTES.NOMINATE_FORM)
-  }
-  const goToProfilePage = () => {
-    setIsProfilePageOpened(true)
-    setToggleButton(true)
-  }
-  const goToNominatePage = () => {
-    // setNominateAgain(true)
-    setToggleButton(false)
-    setIsProfilePageOpened(true)
+    setIsRedirectionModalOpen(false)
   }
 
   const logoutHandler = () => {
@@ -120,7 +115,17 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 <span className={handleStepsClasses(1, isProfileDetailsRoute)}>
                   Step 1
                 </span>
-                <div className={s.icon_container} onClick={goToProfilePage}>
+                <div
+                  className={`${s.icon_container} ${
+                    isProfileDetailsRoute ? s.icon_container_active : ''
+                  }`}
+                  onClick={() => {
+                    if (!isProfileDetailsRoute) {
+                      setIsRedirectionModalOpen(true)
+                      setRedirectionData(REDIRECTION_DATA[0])
+                    }
+                  }}
+                >
                   <img className={s.step_img} src="/step_1c.svg" alt="step1" />
                   <span className={s.step_icon_text}>Profile Details</span>
                 </div>
@@ -132,11 +137,18 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 </span>
                 <div
                   className={`${s.icon_container} ${
-                    completedStepTill < 2 && !isNominationFormRoute
+                    completedStepTill < 2
                       ? s.icon_container_disabled
-                      : s.icon_container_active
+                      : isNominationFormRoute
+                      ? s.icon_container_active
+                      : ''
                   }`}
-                  onClick={() => !isNominationFormRoute && goToNominatePage()}
+                  onClick={() => {
+                    if (!isNominationFormRoute && completedStepTill >= 2) {
+                      setRedirectionData(REDIRECTION_DATA[1])
+                      setIsRedirectionModalOpen(true)
+                    }
+                  }}
                 >
                   <img
                     className={s.step_img}
@@ -160,15 +172,26 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               </div>
 
               <div className="mb-2 sm:text-left text-center">
-                <span className={handleStepsClasses(3, isUploadDocRoute)}>
+                <span
+                  className={handleStepsClasses(3, isUploadDocRoute)}
+                  onClick={() => {}}
+                >
                   Step 3
                 </span>
                 <div
                   className={`${s.icon_container} ${
-                    completedStepTill !== 3 && !isUploadDocRoute
+                    completedStepTill !== 3
                       ? s.icon_container_disabled
-                      : s.icon_container_active
+                      : isUploadDocRoute
+                      ? s.icon_container_active
+                      : ''
                   }`}
+                  onClick={() => {
+                    if (!isUploadDocRoute && completedStepTill === 3) {
+                      setRedirectionData(REDIRECTION_DATA[2])
+                      setIsRedirectionModalOpen(true)
+                    }
+                  }}
                 >
                   <img
                     className={s.step_img}
@@ -270,12 +293,12 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
           ''
         )} */}
 
-        {isProfilePageOpened && !isProfileDetailsRoute ? (
+        {isRedirectionModalOpen ? (
           <>
             <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
             <Dialog
               className={'relative z-[999999]'}
-              open={isProfilePageOpened}
+              open={isRedirectionModalOpen}
               onClose={toggleModal}
             >
               <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
@@ -298,23 +321,17 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   </div>
                   <div className="flex justify-center mt-6 text-[16px] font-[600px]">
                     <button
-                      onClick={
-                        toggleButton === true
-                          ? onSubmitProfile
-                          : onSubmitNominate
-                      }
+                      onClick={() => router.push(redirectionData?.router)}
                       className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
                     >
-                      {toggleButton == true
-                        ? 'Go to profile details'
-                        : 'Go to Nominate details'}
+                      {redirectionData?.buttonText}
                     </button>
 
                     <button
                       onClick={toggleModal}
                       className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
                     >
-                      Complete it first
+                      Save it Frist
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -325,8 +342,6 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
           ''
         )}
       </div>
-
-      {show === true ? <ImportantNoticeData /> : ''}
     </>
   )
 }

@@ -105,9 +105,7 @@ function SelectedExamAchievements({
       >
         <div>
           <p className="text-[#757575]">Fill your achievements here for</p>
-          <p className="text-[#1B2124] text-base">
-            Current Year ({year?.year})
-          </p>
+          <p className="text-[#1B2124] text-base">{year?.title}</p>
         </div>
         <div
           className={`transition-all duration-300 ${
@@ -138,9 +136,9 @@ function SelectedExamAchievements({
             return (
               <div
                 key={`${achievement}-${index}`}
-                className="grid grid-cols-12 border-b-2 py-4  w-[800px]"
+                className="grid grid-cols-12 border-b-2 py-2  w-[800px]"
               >
-                <div className="col-span-1 py-2">{group}</div>
+                <div className="col-span-1 p-2">{group}</div>
                 <div className="col-span-11">
                   {competitions.map(
                     (competitionDetails: any, index: number) => {
@@ -161,11 +159,13 @@ function SelectedExamAchievements({
                       return (
                         <div
                           key={index}
-                          className="grid grid-cols-12 py-2 border-b last:border-b-0 gap-6"
+                          className="grid grid-cols-12 border-b last:border-b-0 gap-6"
                         >
-                          <div className="col-span-4">{competitionName}</div>
-                          <div className="col-span-4">{criteriaName}</div>
-                          <div className="col-span-4 flex">
+                          <div className="col-span-4 p-2">
+                            {competitionName}
+                          </div>
+                          <div className="col-span-4 p-2">{criteriaName}</div>
+                          <div className="col-span-4 p-2 flex">
                             <Select
                               options={dropdownArray.map((el: string) => ({
                                 id: el,
@@ -174,7 +174,8 @@ function SelectedExamAchievements({
                               disabled={!isEditEnabled}
                               placeholder="Select"
                               className={cn('h-[50px] mr-2', {
-                                'cursor-not-allowed': !isEditEnabled,
+                                'cursor-not-allowed !bg-gray-100 !border-0':
+                                  !isEditEnabled,
                               })}
                               onChange={(val: string) =>
                                 onSelectCriteria(
@@ -190,7 +191,7 @@ function SelectedExamAchievements({
                               type="checkbox"
                               disabled={!isEditEnabled}
                               className={cn(
-                                'appearance-none mt-[17px] checked:bg-[#5A4BDA] rounded-full',
+                                'appearance-none mt-[12px] checked:bg-[#5A4BDA] w-[24px] h-[24px] rounded-full',
                                 { 'cursor-not-allowed': !isEditEnabled }
                               )}
                               onChange={(e) => {

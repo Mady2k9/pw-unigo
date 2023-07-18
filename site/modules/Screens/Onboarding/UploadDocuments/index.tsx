@@ -9,8 +9,11 @@ import { useMarvelContext } from '@modules/MarvelContext'
 import { Dialog } from '@headlessui/react'
 import { Button } from '@components/ui'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { deleteAllCookies } from '@lib/user-utility'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
 
 const UploadDocumentsScreen = () => {
+  const { showNotification } = useNotify()
   const [studentDocsInfo, setStudentDocsInfo] = useState<any>({})
   const [nominationDocsInfo, setNominationDocsInfo] = useState<any>([])
   const { draftData } = useGetDraftData()
@@ -25,6 +28,8 @@ const UploadDocumentsScreen = () => {
 
   const successRedirectModal = () => {
     router.push('/rewards')
+    localStorage.clear()
+    deleteAllCookies()
   }
 
   useEffect(() => {
@@ -86,8 +91,13 @@ const UploadDocumentsScreen = () => {
 
     postFormData(dataToSend, randomId).then((res: any) => {
       if (res) {
-        push('/rewards')
+        toggleModal()
       }
+    }).catch((error: any) => {
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: error?.message,
+      })
     })
   }
 

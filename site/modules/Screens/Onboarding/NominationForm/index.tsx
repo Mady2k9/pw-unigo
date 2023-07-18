@@ -9,6 +9,7 @@ import { Button } from '@components/ui'
 import { useRouter } from 'next/router'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 import { useMarvelContext } from '@modules/MarvelContext'
+import useNotify, { NotificationEnums } from '@lib/useNotify'
 
 export type AchievementFEType = {
   examGroup: string
@@ -32,6 +33,7 @@ const TERMS_AND_CONDITIONS = [
 ]
 
 const NominationFormScreen = () => {
+  const { showNotification } = useNotify()
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [selectedValues, setSelectedValues] = useState<AchievementFEType[]>([])
   const [nominationsFormat, setNominationsFormat] = useState<any>([])
@@ -100,17 +102,20 @@ const NominationFormScreen = () => {
     if (selectedValues.length === 0) {
       return false
     }
-    console.log('submitting the form')
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
       nominationDocsInfo: selectedValues,
     }
 
     postMarvelDataAsDraft(dataToSend, randomId).then((res: any) => {
-      console.log(res)
       if (res) {
         push('/upload-document')
       }
+    }).catch((error: any) => {
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: error?.message,
+      })
     })
   }
 
