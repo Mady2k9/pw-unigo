@@ -257,7 +257,9 @@ const FileUploaded = ({
         </div>
       </div>
       {fileHelperText && (
-        <div className="text-[10px] text-[#757575]">{fileHelperText}</div>
+        <div className="text-[10px] text-[#757575] text-center">
+          {fileHelperText}
+        </div>
       )}
       <ReactTooltip
         style={{ maxWidth: '300px' }}
