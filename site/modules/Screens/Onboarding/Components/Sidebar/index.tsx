@@ -27,7 +27,7 @@ export const REDIRECTION_DATA = [
     router: MARVEL_ROUTES.PROFILE_DETAILS,
   },
   {
-    buttonText: 'Go to Nominate details',
+    buttonText: 'Go to Nomination form',
     router: MARVEL_ROUTES.NOMINATE_FORM,
   },
   {
@@ -331,7 +331,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                       onClick={toggleModal}
                       className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
                     >
-                      Complete it first
+                      Save it Frist
                     </button>
                   </div>
                 </Dialog.Panel>
