@@ -28,19 +28,19 @@ const FileUploadBox = ({
   aadharText,
   uploadedFile = '',
   onEditCallBack = () => {},
-  isRegistrationEnded = false
+  isRegistrationEnded = false,
 }: FileUploadBoxProps) => {
   // const [files, setFiles] = useState<FileList | null>()
   const id = uuid()
   const [uploadedFileData, setUploadedFileData] = useState<any>(null)
-  console.log('uploadedFileData: ', uploadedFileData);
+  console.log('uploadedFileData: ', uploadedFileData)
   const [isUploading, setIsUploading] = useState(false)
   const { showNotification } = useNotify()
   // const [uploadedFile, setUploadedFile] = useState<any>(null)
 
   useEffect(() => {
     setUploadedFileData(uploadedFile)
-  }, [uploadedFile,  setUploadedFileData])
+  }, [uploadedFile, setUploadedFileData])
 
   const onFileUpload = async (files: any) => {
     setIsUploading(true)
@@ -63,7 +63,7 @@ const FileUploadBox = ({
       } catch (error: any) {
         showNotification({
           type: NotificationEnums.ERROR,
-          title: error?.message
+          title: error?.message,
         })
       }
     } catch (err) {
@@ -89,7 +89,10 @@ const FileUploadBox = ({
 
   if (uploadedFileData) {
     return (
-      <FileUploadWrapper wrapperClass={`${wrapperClass} ${true ? '!bg-[#F9F9FF]' : ''}`} aadharText={aadharText}>
+      <FileUploadWrapper
+        wrapperClass={`${wrapperClass} ${true ? '!bg-[#F9F9FF]' : ''}`}
+        aadharText={aadharText}
+      >
         <FileUploaded
           isRegistrationEnded={isRegistrationEnded}
           files={uploadedFileData}
@@ -117,29 +120,27 @@ const FileUploadBox = ({
     <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
       <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
       <div className="relative border-indigo-500 rounded-md py-1 px-4 border my-2 ">
-        {
-          isUploading ? (
-            <div className="flex items-center">
-              <span className="mr-2 text-indigo-500">Uploading</span>
-              <Loader />
-            </div>
-          ) : (
-            <>
-              <div className="text-indigo-500 cursor-pointer">
-                Choose File
-              </div>
-              <input
-                type="file"
-                accept='.jpeg,.png'
-                className="absolute inset-0 opacity-0"
-                onChange={onFileChange}
-              />
-            </>
-          )
-        }
+        {isUploading ? (
+          <div className="flex items-center">
+            <span className="mr-2 text-indigo-500">Uploading</span>
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <div className="text-indigo-500 cursor-pointer">Choose File</div>
+            <input
+              type="file"
+              accept=".jpeg,.png"
+              className="absolute inset-0 opacity-0"
+              onChange={onFileChange}
+            />
+          </>
+        )}
       </div>
       {fileHelperText && (
-        <div className="text-[10px] text-[#757575]">{fileHelperText}</div>
+        <div className="text-[10px] text-[#757575] text-center">
+          {fileHelperText}
+        </div>
       )}
     </FileUploadWrapper>
   )
@@ -180,7 +181,7 @@ const FileSelected = ({
       } catch (error: any) {
         showNotification({
           type: NotificationEnums.ERROR,
-          title: error?.message
+          title: error?.message,
         })
       }
     } catch (err) {
@@ -225,7 +226,7 @@ const FileUploaded = ({
   files,
   fileHelperText,
   onEdit,
-  isRegistrationEnded = false
+  isRegistrationEnded = false,
 }: {
   files: any
   fileHelperText?: string
@@ -236,17 +237,17 @@ const FileUploaded = ({
   const [previewModal, setPreviewModal] = useState(false)
   return (
     <>
-      <Typography variant='tiny' weight={500}>
-        <span className='text-[#3D3D3D] underline'>{textTrim(files?.name || '')}</span>
+      <Typography variant="tiny" weight={500}>
+        <span className="text-[#3D3D3D] underline">
+          {textTrim(files?.name || '')}
+        </span>
       </Typography>
       <div className="flex my-2 items-center">
-        {
-          !isRegistrationEnded && (
-            <Button variant="secondary" onClick={onEdit}>
-              Edit
-            </Button>
-          )
-        }
+        {!isRegistrationEnded && (
+          <Button variant="secondary" onClick={onEdit}>
+            Edit
+          </Button>
+        )}
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
           id={`preview-eye-${id}`}
@@ -265,14 +266,14 @@ const FileUploaded = ({
         place="top"
       />
 
-      <ActionModal 
-        open={previewModal}
-        setOpen={setPreviewModal}
-      >
-        <div className='p-4 relative flex justify-center'>
-          <img src={`${files?.baseUrl}${files?.key}`} alt='preview-img' />
-          <div className='absolute -right-1 -top-1' onClick={() => setPreviewModal(false)}>
-            <XMarkIcon className='cursor-pointer' width={20} height={20}/>
+      <ActionModal open={previewModal} setOpen={setPreviewModal}>
+        <div className="p-4 relative flex justify-center">
+          <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
+          <div
+            className="absolute -right-1 -top-1"
+            onClick={() => setPreviewModal(false)}
+          >
+            <XMarkIcon className="cursor-pointer" width={20} height={20} />
           </div>
         </div>
       </ActionModal>

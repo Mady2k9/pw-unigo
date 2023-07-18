@@ -234,7 +234,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                           onEditCallBack={() => {
                             onNominationDocsSuccess(null, data)
                           }}
-                          wrapperClass="mt-6"
+                          wrapperClass="mt-0"
                         />
                       </div>
                     </div>
