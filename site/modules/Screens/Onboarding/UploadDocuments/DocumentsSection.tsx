@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
-import { getDraftData } from '@modules/auth/lib'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 
 const INSRUCTIONS = [
@@ -91,6 +90,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 </div>
               </div>
               <FileUploadBox
+                isRegistrationEnded={draftData?.isRegistrationEnded}
                 uploadedFile={
                   draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto
                 }
@@ -121,6 +121,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1">
                   <FileUploadBox
+                    isRegistrationEnded={draftData?.isRegistrationEnded}
                     uploadedFile={
                       draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
                         ?.adhaarFrontPage
@@ -138,6 +139,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 </div>
                 <div className="col-span-1">
                   <FileUploadBox
+                    isRegistrationEnded={draftData?.isRegistrationEnded}
                     uploadedFile={
                       draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
                         ?.adhaarBackPage
@@ -170,6 +172,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 </div>
               </div>
               <FileUploadBox
+                isRegistrationEnded={draftData?.isRegistrationEnded}
                 uploadedFile={
                   draftData?.pwMarvelData?.studentDocsInfo?.reportCard
                 }
@@ -222,6 +225,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                       <div className="w-[20%]">{criteria}</div>
                       <div className="w-[17%]">
                         <FileUploadBox
+                          isRegistrationEnded={draftData?.isRegistrationEnded}
                           uploadedFile={data?.achievementId}
                           fileHelperText={'50 KB max file size, JPG or PNG'}
                           onUploadSucces={(response: UploadedFileResponse) =>

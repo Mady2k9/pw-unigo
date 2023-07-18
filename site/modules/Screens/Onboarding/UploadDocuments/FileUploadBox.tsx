@@ -18,6 +18,7 @@ type FileUploadBoxProps = {
   aadharText?: string
   uploadedFile?: string
   onEditCallBack: () => void
+  isRegistrationEnded?: boolean
 }
 
 const FileUploadBox = ({
@@ -26,7 +27,8 @@ const FileUploadBox = ({
   onUploadSucces,
   aadharText,
   uploadedFile = '',
-  onEditCallBack = () => {}
+  onEditCallBack = () => {},
+  isRegistrationEnded = false
 }: FileUploadBoxProps) => {
   // const [files, setFiles] = useState<FileList | null>()
   const id = uuid()
@@ -89,6 +91,7 @@ const FileUploadBox = ({
     return (
       <FileUploadWrapper wrapperClass={`${wrapperClass} ${true ? '!bg-[#F9F9FF]' : ''}`} aadharText={aadharText}>
         <FileUploaded
+          isRegistrationEnded={isRegistrationEnded}
           files={uploadedFileData}
           fileHelperText={fileHelperText}
           onEdit={onEdit}
@@ -222,10 +225,12 @@ const FileUploaded = ({
   files,
   fileHelperText,
   onEdit,
+  isRegistrationEnded = false
 }: {
   files: any
   fileHelperText?: string
   onEdit: () => void
+  isRegistrationEnded?: boolean
 }) => {
   const id = uuid()
   const [previewModal, setPreviewModal] = useState(false)
@@ -235,9 +240,13 @@ const FileUploaded = ({
         <span className='text-[#3D3D3D] underline'>{textTrim(files?.name || '')}</span>
       </Typography>
       <div className="flex my-2 items-center">
-        <Button variant="secondary" onClick={onEdit}>
-          Edit
-        </Button>
+        {
+          !isRegistrationEnded && (
+            <Button variant="secondary" onClick={onEdit}>
+              Edit
+            </Button>
+          )
+        }
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
           id={`preview-eye-${id}`}
