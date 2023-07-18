@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import downArrow from 'public/downArrow.svg'
 import { Select } from '@components/ui'
@@ -28,12 +28,16 @@ function SelectedExamAchievements({
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
   const achievementsData = (achievements && achievements?.['Group']) || []
+  const isMultiSelectEnabled = useMemo(() => {
+    return achievements?.isMultiSelect
+  }, [achievements])
 
   const onSelectCriteria = (
     examGroup: string,
     val: string,
     achievementName: string,
-    criteria: string
+    criteria: string,
+    examCategory: string
   ) => {
     onValueSelect({
       year: year?.year,
@@ -41,6 +45,7 @@ function SelectedExamAchievements({
       achievementName,
       remarks: val,
       criteria,
+      examCategory
     })
   }
 
@@ -61,7 +66,6 @@ function SelectedExamAchievements({
           value.year == year && // !need to confirm this with BE, WHY !!!
           value?.achievementName == achievementName
         ) {
-          // console.log('value: ', value);
           return value
         }
       })
@@ -97,6 +101,23 @@ function SelectedExamAchievements({
     return null
   }
 
+  const checkForDisable = (
+    groupName: string, criteria: string,
+    competitionName: string, examCategory: string, year: number
+    ) => {
+      if (isMultiSelectEnabled) {
+      return false // Restricted this func to run, If we have multiSelect enabled.
+    }
+    const isFound = selectedValues?.find((el: any) => (
+      (el?.examGroup === groupName && el?.examCategory === examCategory && el?.year == year) &&
+      ((el?.criteria !== criteria) || (el?.achievementName !== competitionName))
+    ))
+    if (isFound) {
+      return true
+    }
+    return false; 
+  }
+
   return (
     <>
       <div
@@ -129,9 +150,9 @@ function SelectedExamAchievements({
           </div>
           {achievementsData?.map((achievement: any, index: number) => {
             //debugger
-            console.log('test debug')
             const group = achievement?.groupName
             const competitions = achievement?.competitions
+            const examCategory = achievements?.name
 
             return (
               <div
@@ -169,19 +190,31 @@ function SelectedExamAchievements({
                                 id: el,
                                 name: el,
                               }))}
-                              disabled={!isEditEnabled}
+                              disabled={!isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year)}
                               placeholder="Select"
                               className={cn('h-[50px] mr-2', {
                                 'cursor-not-allowed !bg-gray-100 !border-0':
-                                  !isEditEnabled,
+                                  !isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year),
                               })}
-                              onChange={(val: string) =>
-                                onSelectCriteria(
-                                  group,
-                                  val,
-                                  competitionName,
-                                  criteriaName
-                                )
+                              onChange={(val: string) => {
+                                if (val === undefined) {
+                                  unselectAcievement(
+                                    val,
+                                    group,
+                                    competitionName,
+                                    criteriaName,
+                                    selectedVal
+                                  )
+                                } else {
+                                  onSelectCriteria(
+                                      group,
+                                      val,
+                                      competitionName,
+                                      criteriaName,
+                                      achievements?.name
+                                  )
+                                }
+                                }
                               }
                               value={selectedVal || ''}
                             />

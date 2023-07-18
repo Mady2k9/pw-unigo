@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import SelectedExamAchievements from './SelectedExamAchievements'
 import { generateYearArr } from './utils'
 import { AchievementFEType } from '.'
+import { CheckMarkIcon } from '@assets/images/marvel/checkMark'
+
 
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',
@@ -72,14 +74,19 @@ function NominationForm({
     return nominationsFormat?.map((nomintaionCategory: any, index: any) => {
       return (
         <div
-          className={`text-[#1B2124] bg-[#F8F8F8] p-3 border-l-2 border-[#F8F8F8] cursor-pointer ${
-            nomintaionCategory.name === activeExamCategory &&
-            'text-indigo-500 bg-white border-l-2 !border-indigo-500'
+          className={`text-[#1B2124] flex items-center gap-3 justify-between  bg-[#F8F8F8] p-3 border-[#F8F8F8] cursor-pointer ${
+            nomintaionCategory.name === activeExamCategory ?
+            'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2' : 'hover:bg-gray-200'
           }`}
           key={nomintaionCategory.name}
           onClick={() => onExamSelect(nomintaionCategory.name, index)}
         >
           {nomintaionCategory.name}
+          <div>
+            {selectedValues?.find(el => el?.examCategory === nomintaionCategory?.name) && (
+              <CheckMarkIcon />
+            )}
+          </div>
         </div>
       )
     })
@@ -119,8 +126,8 @@ function NominationForm({
               </ol>
             </div>
             <div className="mt-4 bg-white h-full flex lg:flex-row flex-col max-[640px]:h-screen ">
-              <div className="xl:w-3/12 lg:w-4/12 p-4 w-full max-[640px]:p-0 justify-end">
-                <p className="text-[#1B2124] bg-[#E4E7EA] p-3 font-bold ">
+              <div className="xl:w-3/12 lg:w-4/12 rounded-t-lg p-4 w-full max-[640px]:p-0 justify-end">
+                <p className="text-[#1B2124] bg-[#E4E7EA] rounded-t-lg p-3 font-bold ">
                   Exam Category
                 </p>
                 {/* {Object.keys(nominationsFormat)?.map( */}

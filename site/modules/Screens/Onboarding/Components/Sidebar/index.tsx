@@ -327,7 +327,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   <div className="flex justify-center mt-6 text-[16px] font-[600px]">
                     <button
                       onClick={() => router.push(redirectionData?.router)}
-                      className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
+                      className="w-[208px] h-[48px] outline-none border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
                     >
                       {redirectionData?.buttonText}
                     </button>
