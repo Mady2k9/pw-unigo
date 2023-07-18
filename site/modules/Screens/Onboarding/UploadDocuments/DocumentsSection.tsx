@@ -187,12 +187,12 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               />
             </div>
           </div>
-          <div className="flex rounded-md bg-white p-6 my-6 items-center">
+          <div className="flex rounded-md sm:bg-white bg-[#F8F8F8] sm:p-6 p-3 my-6 items-center ">
             <div className="mr-2 text-base font-bold">Nomination Documents</div>
             <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
           </div>
-          <div className="bg-white w-full divide-y overflow-x-auto">
-            <div className="font-bold flex xl:w-full w-[850px]">
+          <div className="bg-white w-full divide-y overflow-x-auto ">
+            <div className="font-bold flex xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] rounded-t-lg border-b-[#ffffff]">
               <div className="w-[6%] p-2">S. no.</div>
               <div className="w-[11%] p-2">Nomination year</div>
               <div className="w-[7%] p-2">Exam Group</div>
@@ -214,7 +214,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   console.log('data:dhskd ==>', data)
                   return (
                     <div
-                      className="flex text-[#757575] xl:w-full w-[850px]"
+                      className="flex text-[#757575] xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
                       key={criteria}
                     >
                       <div className="w-[6%] p-2">{index + 1}</div>
