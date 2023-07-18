@@ -40,6 +40,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
   const { name, phone, openImportantNotices } = props
   const router = useRouter()
   const [isRedirectionModalOpen, setIsRedirectionModalOpen] = useState(false)
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
   const [redirectionData, setRedirectionData] = useState(REDIRECTION_DATA[0])
   const { handleUserUpdated } = useUI()
   const { completedStepTill } = useMarvelContext()
@@ -61,9 +62,13 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
 
   const toggleModal = () => {
     setIsRedirectionModalOpen(false)
+    setIsLogoutModalOpen(false)
   }
 
   const logoutHandler = () => {
+    setIsLogoutModalOpen(true)
+  }
+  const logOutComplete = () => {
     localStorage.clear()
     deleteAllCookies()
     handleUserUpdated()
@@ -332,6 +337,50 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                       className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
                     >
                       Save it Frist
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </div>
+            </Dialog>
+          </>
+        ) : (
+          ''
+        )}
+        {isLogoutModalOpen ? (
+          <>
+            <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+            <Dialog
+              className={'relative z-[999999]'}
+              open={isLogoutModalOpen}
+              onClose={toggleModal}
+            >
+              <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
+              <div className="fixed inset-0 flex items-center justify-center p-4 ">
+                <Dialog.Panel className="mx-auto w-full max-w-[480px] max-h-[212px] rounded-xl bg-white ring-1 transition-all p-5 relative">
+                  <div
+                    className="cursor-pointer absolute top-4 right-4"
+                    onClick={toggleModal}
+                  >
+                    <Cross className="h-6 w-6" />
+                  </div>
+                  <div className="text-center m-2">
+                    <p className="font-bold text-[20px] ">
+                      Are you sure you want to Logout?
+                    </p>
+                  </div>
+                  <div className="flex justify-center mt-6 text-[16px] font-[600px]">
+                    <button
+                      onClick={logOutComplete}
+                      className="w-[208px] h-[48px] border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
+                    >
+                      Yes
+                    </button>
+
+                    <button
+                      onClick={toggleModal}
+                      className="w-[208px] h-[48px] border ml-6 bg-[#5A4BDA] text-white rounded-md"
+                    >
+                      No
                     </button>
                   </div>
                 </Dialog.Panel>
