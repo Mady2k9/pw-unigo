@@ -3,7 +3,8 @@ import SelectedExamAchievements from './SelectedExamAchievements'
 import { generateYearArr } from './utils'
 import { AchievementFEType } from '.'
 import { CheckMarkIcon } from '@assets/images/marvel/checkMark'
-
+import { Button, useUI } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',
@@ -22,9 +23,11 @@ type NominationFormTypes = {
   nominationsFormat: any
   onDeselectValue: (val: AchievementFEType) => void
   isEditEnabled: boolean
+  navBarText: string
   handleSubmitForm?: () => void // TODO - remove optional chaining
   handleEditForm: (navBarText: string) => void
   hideSubmitButton?: boolean
+  shouldSubmitDisabled: boolean
 }
 
 function NominationForm({
@@ -33,9 +36,7 @@ function NominationForm({
   nominationsFormat,
   onDeselectValue,
   isEditEnabled,
-  handleSubmitForm,
-  handleEditForm,
-  hideSubmitButton = false
+  navBarText,
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
@@ -81,17 +82,18 @@ function NominationForm({
       return (
         <div
           className={`text-[#1B2124] flex items-center gap-3 justify-between  bg-[#F8F8F8] p-3 border-[#F8F8F8] cursor-pointer ${
-            nomintaionCategory.name === activeExamCategory ?
-            'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2' : 'hover:bg-gray-200'
+            nomintaionCategory.name === activeExamCategory
+              ? 'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2'
+              : 'hover:bg-gray-200'
           }`}
           key={nomintaionCategory.name}
           onClick={() => onExamSelect(nomintaionCategory.name, index)}
         >
           {nomintaionCategory.name}
           <div>
-            {selectedValues?.find(el => el?.examCategory === nomintaionCategory?.name) && (
-              <CheckMarkIcon />
-            )}
+            {selectedValues?.find(
+              (el) => el?.examCategory === nomintaionCategory?.name
+            ) && <CheckMarkIcon />}
           </div>
         </div>
       )

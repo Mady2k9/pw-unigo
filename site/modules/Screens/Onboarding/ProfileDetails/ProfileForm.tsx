@@ -32,7 +32,7 @@ const Content = ({
   handleSubmitForm,
   handleEditForm,
   hideSubmitButton = false,
-  shouldSubmitDisabled
+  shouldSubmitDisabled,
 }: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
     setSelectedClass(classVal)
@@ -165,7 +165,7 @@ const Content = ({
               </div>
             </div>
           </div>
-          <div className="p-4 md:hidden">
+          {/* <div className="p-4 md:hidden">
             {
               !hideSubmitButton && (
                 <Button
@@ -187,7 +187,7 @@ const Content = ({
                 </Button>
               )
             }
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
