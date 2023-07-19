@@ -257,7 +257,8 @@ const FileUploaded = ({
           id={`preview-eye-${id}`}
           onClick={() => {
             if (files?.key?.includes('.pdf')) {
-              openPDFViewer(`${files?.baseUrl}${files?.key}`)
+              /* openPDFViewer(`${files?.baseUrl}${files?.key}`) */
+              window.location.href = `${files?.baseUrl}${files?.key}`
             } else {
               setPreviewModal(true)
             }

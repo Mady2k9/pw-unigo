@@ -36,6 +36,9 @@ function NominationForm({
   nominationsFormat,
   onDeselectValue,
   isEditEnabled,
+  handleSubmitForm,
+  handleEditForm,
+  hideSubmitButton = false,
   navBarText,
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
