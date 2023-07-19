@@ -7,8 +7,6 @@ import { Layout } from './Layout'
 import OtpInput from 'react-otp-input'
 import s from '@styles/auth/auth.module.css'
 import { useRouter } from 'next/router'
-import uuid from 'react-uuid'
-import { tokenFetcher } from '@modules/auth/lib'
 
 const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
   const [counter, setCounter] = useState(30)
@@ -32,6 +30,7 @@ const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
   if (canResend)
     return (
       <Button
+        className=" underline"
         type="button"
         variant="naked"
         onClick={() => {
@@ -48,7 +47,8 @@ const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
     )
   return (
     <Typography>
-      <strong className="text-[14px] leading-[22px] text-[#5A4BDA]">
+      Resend OTP in{' '}
+      <strong className="text-[14px] leading-[22px] text-[#da4b4b]">
         00:{String(counter).padStart(2, '0')}
       </strong>
     </Typography>
@@ -66,27 +66,6 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
     // TODO - Should come from the query params
     setMobile(localStorage.getItem('username') as string)
   }, [])
-
-  /* const handleSubmit = async () => {
-    const dataToSend = {
-      otp,
-      client_id: 'system-admin',
-      client_secret: 'KjPXuAVfC5xbmgreETNMaL7z',
-      grant_type: 'password',
-      latitude: 0,
-      longitude: 0,
-      organizationId: process.env.NEXT_PUBLIC_PP_ORG_ID,
-      username: mobile,
-    }
-
-    const response = await tokenFetcher(dataToSend, uuid())
-    if (response) {
-      localStorage.setItem('user', JSON.stringify(response?.data?.user))
-      localStorage.setItem('token', response?.data?.access_token)
-      localStorage.setItem('refresh_token', response?.data?.refresh_token)
-      router.push('profile-details')
-    }
-  } */
 
   const handleSubmit = async () => {
     //setNavigating(false)
@@ -140,7 +119,6 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
           </div>
           <div className={'flex justify-center'}>
             <OtpInput
-              containerStyle="mb-4"
               inputStyle={s.inputStyle}
               focusStyle={s.focusStyle}
               shouldAutoFocus
@@ -150,6 +128,16 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
               numInputs={6}
               separator={<span> </span>}
             />
+          </div>
+          <div className="flex justify-center pb-4">
+            {error && (
+              <div className="animated fadeIn flex gap-2 my-2">
+                <img src="/warning.svg" alt="warning" height="12px" />
+                <span className=" text-xs leading-4 font-semibold text-[#c5292a]">
+                  {error?.message}
+                </span>
+              </div>
+            )}
           </div>
           <div className={'mb-10 mx-auto '}>
             <ResendOTP
@@ -161,7 +149,6 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
             />
           </div>
 
-          {error && <Alert message={error?.message} type="error" />}
           <div className="text-center">
             <Button
               type="button"

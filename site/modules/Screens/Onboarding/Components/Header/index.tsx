@@ -1,4 +1,5 @@
-import { Button } from "@components/ui"
+import { Button } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 export interface HeaderProps {
   title: string
@@ -18,12 +19,12 @@ const Header: React.FC<HeaderProps> = ({
   isEditEnabled,
   navBarText,
   shouldDisabled,
-  hideSubmitButton = false
+  hideSubmitButton = false,
 }: HeaderProps) => {
   return (
     <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-10 shadow-md flex">
       <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
-        <a href="/" className="my-auto sm:ps-0 ps-2">
+        <a href="" className="my-auto sm:ps-0 ps-2">
           <div className="flex items-center">
             <div className="sm:w-[45px] w-[24px]">
               <img src="/logo.svg" alt="PW Logo" />
@@ -39,21 +40,26 @@ const Header: React.FC<HeaderProps> = ({
           <div className="text-[24px] font-[600] my-auto leading-[32px] hidden sm:block">
             {title}
           </div>
-          <div className="hidden sm:block md:w-[90px]">
-            {
-              !hideSubmitButton && (
-                <Button
+          <div className="hidden sm:block md:w-[113px]">
+            {!hideSubmitButton && (
+              <Button
                 onClick={
                   navBarText === 'Edit'
                     ? () => handleEditForm(navBarText)
-                    : handleSubmitForm}
+                    : handleSubmitForm
+                }
                 stretch
+                variant={navBarText === 'Edit' ? 'outline' : 'primary'}
+                preIcon={
+                  navBarText === 'Edit' ? (
+                    <PencilSquareIcon className="text-primary" width={20} />
+                  ) : null
+                }
                 disabled={shouldDisabled}
               >
-                {navBarText === 'Edit' ? 'Edit Form' : 'Submit'}
+                {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
               </Button>
-              )
-            }
+            )}
             {/* <button
               className=" bg-[#5A4BDA] md:h-[40px] text-center text-white rounded-md md:w-[90px] "
               onClick={handleSubmitForm}
