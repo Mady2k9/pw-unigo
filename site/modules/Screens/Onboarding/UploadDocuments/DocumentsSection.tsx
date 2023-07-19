@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { Button, useUI } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',

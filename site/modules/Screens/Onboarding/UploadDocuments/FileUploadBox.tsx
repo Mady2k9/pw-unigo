@@ -279,7 +279,9 @@ const FileUploaded = ({
         place="top"
       />
 
-      {previewModal && (
+      {previewModal && files?.key?.includes('.pdf') ? (
+        window.open(`${files?.baseUrl}${files?.key}`)
+      ) : (
         <ActionModal open={previewModal} setOpen={setPreviewModal}>
           <div className="p-4 relative flex justify-center">
             <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
