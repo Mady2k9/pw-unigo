@@ -131,6 +131,7 @@ const FileUploadBox = ({
             <input
               type="file"
               accept=".jpeg,.png,.pdf"
+              accept=".jpeg,.png,.pdf"
               className="absolute inset-0 opacity-0"
               onChange={onFileChange}
             />
@@ -237,7 +238,7 @@ const FileUploaded = ({
 }) => {
   const id = uuid()
   const [previewModal, setPreviewModal] = useState(false)
-  const { openPDFViewer } = useUI() 
+  const { openPDFViewer } = useUI()
 
   return (
     <>
@@ -278,21 +279,21 @@ const FileUploaded = ({
         place="top"
       />
 
-      { 
-        previewModal && (
-          <ActionModal open={previewModal} setOpen={setPreviewModal}>
-            <div className="p-4 relative flex justify-center">
-              <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
-              <div
-                className="absolute -right-1 -top-1"
-                onClick={() => setPreviewModal(false)}
-              >
-                <XMarkIcon className="cursor-pointer" width={20} height={20} />
-              </div>
+      {previewModal && files?.key?.includes('.pdf') ? (
+        window.open(`${files?.baseUrl}${files?.key}`)
+      ) : (
+        <ActionModal open={previewModal} setOpen={setPreviewModal}>
+          <div className="p-4 relative flex justify-center">
+            <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
+            <div
+              className="absolute -right-1 -top-1"
+              onClick={() => setPreviewModal(false)}
+            >
+              <XMarkIcon className="cursor-pointer" width={20} height={20} />
             </div>
+          </div>
         </ActionModal>
-        )
-    }
+      )}
     </>
   )
 }

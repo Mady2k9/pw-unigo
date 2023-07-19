@@ -73,7 +73,7 @@ const Content = ({
             <div className={s.right_section_input}>
               {studentData.class ? (
                 <>
-                  <div className="flex">
+                  <div className="flex flex-wrap">
                     <div className="mr-6">
                       {CLASS_MAP[studentData?.class as CLASSES]}
                     </div>
