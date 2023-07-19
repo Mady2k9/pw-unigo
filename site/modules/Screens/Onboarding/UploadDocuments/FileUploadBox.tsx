@@ -1,4 +1,4 @@
-import { Button, Loader, Typography } from '@components/ui'
+import { Button, Loader, Typography, useUI } from '@components/ui'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import cn from 'clsx'
@@ -130,7 +130,7 @@ const FileUploadBox = ({
             <div className="text-indigo-500 cursor-pointer">Choose File</div>
             <input
               type="file"
-              accept=".jpeg,.png"
+              accept=".jpeg,.png,.pdf"
               className="absolute inset-0 opacity-0"
               onChange={onFileChange}
             />
@@ -237,6 +237,8 @@ const FileUploaded = ({
 }) => {
   const id = uuid()
   const [previewModal, setPreviewModal] = useState(false)
+  const { openPDFViewer } = useUI() 
+
   return (
     <>
       <Typography variant="tiny" weight={500}>
@@ -253,7 +255,13 @@ const FileUploaded = ({
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
           id={`preview-eye-${id}`}
-          onClick={() => setPreviewModal(true)}
+          onClick={() => {
+            if (files?.key?.includes('.pdf')) {
+              openPDFViewer(`${files?.baseUrl}${files?.key}`)
+            } else {
+              setPreviewModal(true)
+            }
+          }}
         >
           <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
         </div>
@@ -270,17 +278,21 @@ const FileUploaded = ({
         place="top"
       />
 
-      <ActionModal open={previewModal} setOpen={setPreviewModal}>
-        <div className="p-4 relative flex justify-center">
-          <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
-          <div
-            className="absolute -right-1 -top-1"
-            onClick={() => setPreviewModal(false)}
-          >
-            <XMarkIcon className="cursor-pointer" width={20} height={20} />
-          </div>
-        </div>
-      </ActionModal>
+      { 
+        previewModal && (
+          <ActionModal open={previewModal} setOpen={setPreviewModal}>
+            <div className="p-4 relative flex justify-center">
+              <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
+              <div
+                className="absolute -right-1 -top-1"
+                onClick={() => setPreviewModal(false)}
+              >
+                <XMarkIcon className="cursor-pointer" width={20} height={20} />
+              </div>
+            </div>
+        </ActionModal>
+        )
+    }
     </>
   )
 }

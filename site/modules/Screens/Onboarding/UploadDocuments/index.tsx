@@ -104,7 +104,7 @@ const UploadDocumentsScreen = () => {
   const onNominationDocumentUpload = (data: any) => {
     const updatedDocInfo = nominationDocsInfo?.map((el: any) => {
       if (
-        (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria
+        (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria && el?.achievementName === data?.achievementName
       ) {
         el.achievementId = data?.achievementId
       }

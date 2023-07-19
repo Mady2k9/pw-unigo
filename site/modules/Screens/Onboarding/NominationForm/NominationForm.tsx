@@ -22,6 +22,9 @@ type NominationFormTypes = {
   nominationsFormat: any
   onDeselectValue: (val: AchievementFEType) => void
   isEditEnabled: boolean
+  handleSubmitForm?: () => void // TODO - remove optional chaining
+  handleEditForm: (navBarText: string) => void
+  hideSubmitButton?: boolean
 }
 
 function NominationForm({
@@ -30,6 +33,9 @@ function NominationForm({
   nominationsFormat,
   onDeselectValue,
   isEditEnabled,
+  handleSubmitForm,
+  handleEditForm,
+  hideSubmitButton = false
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
