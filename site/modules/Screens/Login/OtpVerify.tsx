@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Alert, Button, Typography } from '@components/ui'
+import { Button, Typography } from '@components/ui'
 import { useUI } from '@components/ui/context'
 import { useAuth } from '@lib/hooks/useAuth'
 import { isOTPValid } from '@lib/validations'
@@ -7,7 +7,6 @@ import OtpInput from 'react-otp-input'
 import s from '@styles/auth/auth.module.css'
 import { useRouter } from 'next/router'
 import p from '@modules/Screens/components.module.css' // TODO - Changes module to tailwind
-//import { Layout } from '@modules/screens/Login/Layout'
 import { Layout } from '@modules/Screens/Login/Layout'
 import { LogoMarvels } from '@components/assets/icons/LogoMarvels'
 import Link from 'next/link'
@@ -37,6 +36,7 @@ const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
   if (canResend)
     return (
       <Button
+        className=" underline"
         type="button"
         variant="naked"
         onClick={() => {
@@ -54,7 +54,8 @@ const ResendOTP = ({ canResend, setCanResend, resendOTP }: any) => {
 
   return (
     <Typography>
-      <strong className="text-[14px] leading-[22px] text-[#5A4BDA]">
+      Resend OTP in{' '}
+      <strong className="text-[14px] leading-[22px] text-[#da4b4b]">
         00:{String(counter).padStart(2, '0')}
       </strong>
     </Typography>
@@ -125,10 +126,8 @@ const OTPView = ({ onReset }: { onReset: any }) => {
           <div className="flex flex-col space-b-3">
             <div className={'flex justify-center'}>
               <OtpInput
-                containerStyle="mb-4"
                 inputStyle={s.inputStyle}
                 focusStyle={s.focusStyle}
-                // placeholder="------"
                 shouldAutoFocus
                 isInputNum
                 value={_otp}
@@ -136,6 +135,16 @@ const OTPView = ({ onReset }: { onReset: any }) => {
                 numInputs={6}
                 separator={<span> </span>}
               />
+            </div>
+            <div className="flex justify-center pb-4">
+              {error && (
+                <div className="animated fadeIn flex gap-2 my-2">
+                  <img src="/warning.svg" alt="warning" height="12px" />
+                  <span className=" text-xs leading-4 font-semibold text-[#c5292a]">
+                    {error?.message}
+                  </span>
+                </div>
+              )}
             </div>
             <div className={'mb-10 mx-auto '}>
               <ResendOTP
@@ -147,7 +156,6 @@ const OTPView = ({ onReset }: { onReset: any }) => {
               />
             </div>
 
-            {error && <Alert message={error?.message} type="error" />}
             <Button
               type="button"
               onClick={handleSubmit}
