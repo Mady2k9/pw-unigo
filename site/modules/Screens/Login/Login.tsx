@@ -92,7 +92,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
                 }}
                 variant={'flatlogin'}
                 onClick={showCountryNumber}
-                preElement={
+                /*  preElement={
                   <div className="text-[16px] font-semibold bg-white pl-2 ">
                     {countryNumber === true ? (
                       <select className=" border-none bg-transparent select-arrow-mob">
@@ -102,7 +102,7 @@ const Login = ({ onOTPGet }: { onOTPGet: any }) => {
                       ''
                     )}
                   </div>
-                }
+                } */
                 placeholder={'Enter your Registered Mobile Number'}
               />
 

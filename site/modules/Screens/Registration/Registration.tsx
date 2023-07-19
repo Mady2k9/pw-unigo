@@ -103,7 +103,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   onChange={setMobile}
                   variant={'flatlogin'}
                   onClick={showCountryNumber}
-                  preElement={
+                  /* preElement={
                     <div className="text-[16px] font-semibold bg-white pl-2 ">
                       {countryNumber === true ? (
                         <select className=" border-none bg-transparent select-arrow-mob">
@@ -113,7 +113,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                         ''
                       )}
                     </div>
-                  }
+                  } */
                   placeholder={'Enter your mobile number'}
                 />
                 {error && (
