@@ -155,27 +155,6 @@ function NominationForm({
               </div>
             </div>
           </div>
-          <div className="p-4 md:hidden absolute bottom-0">
-            {!hideSubmitButton && (
-              <Button
-                onClick={
-                  navBarText === 'Edit'
-                    ? () => handleEditForm(navBarText)
-                    : handleSubmitForm
-                }
-                stretch
-                variant={navBarText === 'Edit' ? 'outline' : 'primary'}
-                preIcon={
-                  navBarText === 'Edit' ? (
-                    <PencilSquareIcon className="text-primary" width={20} />
-                  ) : null
-                }
-                disabled={shouldSubmitDisabled}
-              >
-                {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
-              </Button>
-            )}
-          </div>
         </div>
       </div>
     </div>
