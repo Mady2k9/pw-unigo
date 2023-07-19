@@ -136,6 +136,11 @@ const ProfileDetails = () => {
         setProfileData={setProfileData}
         setSelectedClass={setSelectedClass}
         isEditEnabled={isEdit}
+        navBarText={navBarText}
+        handleEditForm={enableEditForm}
+        handleSubmitForm={toggleModal}
+        hideSubmitButton={draftData?.isRegistrationEnded}
+        shouldSubmitDisabled={shouldSubmitDisable()}
         registrationDate={format(new Date(user?.createdAt), 'dd MMM yyyy')}
       />
       <Dialog

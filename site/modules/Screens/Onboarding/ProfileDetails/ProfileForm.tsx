@@ -7,6 +7,7 @@ import { CLASSES, CLASSES_ARRAY, CLASS_MAP } from '@config/types/classes'
 import { StudentDataProps } from './types'
 import { addSuffixToNumber } from '@utils/helps'
 import cn from 'clsx'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 export interface ProfileFormProps {
   studentData: StudentDataProps
@@ -14,6 +15,11 @@ export interface ProfileFormProps {
   setSelectedClass: (val: string) => void
   registrationDate: string
   isEditEnabled: boolean
+  navBarText: string
+  handleSubmitForm?: () => void // TODO - remove optional chaining
+  handleEditForm: (navBarText: string) => void
+  hideSubmitButton?: boolean
+  shouldSubmitDisabled: boolean
 }
 
 const Content = ({
@@ -22,6 +28,11 @@ const Content = ({
   setSelectedClass,
   registrationDate,
   isEditEnabled,
+  navBarText,
+  handleSubmitForm,
+  handleEditForm,
+  hideSubmitButton = false,
+  shouldSubmitDisabled
 }: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
     setSelectedClass(classVal)
@@ -155,14 +166,27 @@ const Content = ({
             </div>
           </div>
           <div className="p-4 md:hidden">
-            <Button
-              Component="PW"
-              variant="primary"
-              type="submit"
-              className="w-full"
-            >
-              Submit
-            </Button>
+            {
+              !hideSubmitButton && (
+                <Button
+                  onClick={
+                    navBarText === 'Edit'
+                      ? () => handleEditForm(navBarText)
+                      : handleSubmitForm
+                  }
+                  stretch
+                  variant={navBarText === 'Edit' ? 'outline' : 'primary'}
+                  preIcon={
+                    navBarText === 'Edit' ? (
+                      <PencilSquareIcon className="text-primary" width={20} />
+                    ) : null
+                  }
+                  disabled={shouldSubmitDisabled}
+                >
+                  {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
+                </Button>
+              )
+            }
           </div>
         </div>
       </div>

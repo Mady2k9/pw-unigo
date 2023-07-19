@@ -162,6 +162,9 @@ const NominationFormScreen = () => {
           nominationsFormat={nominationsFormat}
           onDeselectValue={onDeselectValue}
           isEditEnabled={navBarText === 'Submit'}
+          handleEditForm={enableEditForm}
+          handleSubmitForm={toggleModal}
+          hideSubmitButton={draftData?.isRegistrationEnded}
         />
         <Dialog
           className={'relative z-[999999]'}
