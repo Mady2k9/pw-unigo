@@ -37,12 +37,7 @@ function NominationForm({
   onDeselectValue,
   isEditEnabled,
   navBarText,
-  handleSubmitForm,
-  handleEditForm,
-  hideSubmitButton = false,
-  shouldSubmitDisabled,
 }: NominationFormTypes) {
-  console.log('navaf===> ', navBarText)
   // TODO: Writting this code only to meet deadlines, otimize it later
 
   //let firstSelectedExamCategory = Object.keys(nominationsFormat)[0]
