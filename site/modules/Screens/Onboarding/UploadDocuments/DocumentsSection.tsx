@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { Button, useUI } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
@@ -20,11 +22,23 @@ export type UploadedFileResponse = {
 type DocumentsSectionProps = {
   onNominationDocumentUpload: (data: any) => void
   onStudentDocUpload: (key: string, value: string) => void
+  isEditEnabled: boolean
+  navBarText: string
+  handleSubmitForm?: () => void // TODO - remove optional chaining
+  handleEditForm: (navBarText: string) => void
+  hideSubmitButton?: boolean
+  shouldSubmitDisabled: boolean
 }
 
 const DocumentsSection: React.FC<DocumentsSectionProps> = ({
   onNominationDocumentUpload,
   onStudentDocUpload,
+  isEditEnabled,
+  navBarText,
+  handleSubmitForm,
+  handleEditForm,
+  hideSubmitButton = false,
+  shouldSubmitDisabled,
 }) => {
   const { draftData } = useGetDraftData()
   // const [draftData, setdraftData] = useState<any>([])
