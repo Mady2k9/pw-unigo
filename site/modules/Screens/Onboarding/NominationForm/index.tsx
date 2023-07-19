@@ -55,7 +55,6 @@ const NominationFormScreen = () => {
     }
   }, [draftData, updateCompletedSteps, completedStepTill])
 
-
   useEffect(() => {
     // TODO Check why this is calling twice
     ;(async () => {
@@ -108,16 +107,18 @@ const NominationFormScreen = () => {
       nominationDocsInfo: selectedValues,
     }
 
-    postMarvelDataAsDraft(dataToSend, randomId).then((res: any) => {
-      if (res) {
-        push('/upload-document')
-      }
-    }).catch((error: any) => {
-      showNotification({
-        type: NotificationEnums.ERROR,
-        title: error?.message,
+    postMarvelDataAsDraft(dataToSend, randomId)
+      .then((res: any) => {
+        if (res) {
+          push('/upload-document')
+        }
       })
-    })
+      .catch((error: any) => {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: error?.message,
+        })
+      })
   }
 
   const checkboxButton = () => {
@@ -162,8 +163,10 @@ const NominationFormScreen = () => {
           nominationsFormat={nominationsFormat}
           onDeselectValue={onDeselectValue}
           isEditEnabled={navBarText === 'Submit'}
+          navBarText={navBarText}
+          shouldSubmitDisabled={shouldSubmitDisable()}
           handleEditForm={enableEditForm}
-          handleSubmitForm={toggleModal}
+          handleSubmitForm={onSubmit}
           hideSubmitButton={draftData?.isRegistrationEnded}
         />
         <Dialog

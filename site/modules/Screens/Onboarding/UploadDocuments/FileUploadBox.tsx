@@ -131,7 +131,6 @@ const FileUploadBox = ({
             <input
               type="file"
               accept=".jpeg,.png,.pdf"
-              accept=".jpeg,.png,.pdf"
               className="absolute inset-0 opacity-0"
               onChange={onFileChange}
             />
