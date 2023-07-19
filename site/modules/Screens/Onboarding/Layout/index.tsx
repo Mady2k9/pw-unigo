@@ -35,6 +35,7 @@ const Layout = ({ children, header }: LayoutProps) => {
           name={name}
           phone={userData?.primaryNumber}
           openImportantNotices={openImportantNotices}
+          email={userData?.email}
         />
         {children}
       </div>

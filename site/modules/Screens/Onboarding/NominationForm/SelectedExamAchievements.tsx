@@ -45,7 +45,7 @@ function SelectedExamAchievements({
       achievementName,
       remarks: val,
       criteria,
-      examCategory
+      examCategory,
     })
   }
 
@@ -102,20 +102,27 @@ function SelectedExamAchievements({
   }
 
   const checkForDisable = (
-    groupName: string, criteria: string,
-    competitionName: string, examCategory: string, year: number
-    ) => {
-      if (isMultiSelectEnabled) {
+    groupName: string,
+    criteria: string,
+    competitionName: string,
+    examCategory: string,
+    year: number
+  ) => {
+    if (isMultiSelectEnabled) {
       return false // Restricted this func to run, If we have multiSelect enabled.
     }
-    const isFound = selectedValues?.find((el: any) => (
-      (el?.examGroup === groupName && el?.examCategory === examCategory && el?.year == year) &&
-      ((el?.criteria !== criteria) || (el?.achievementName !== competitionName))
-    ))
+    const isFound = selectedValues?.find(
+      (el: any) =>
+        el?.examGroup === groupName &&
+        el?.examCategory === examCategory &&
+        el?.year == year &&
+        el?.criteria !== criteria &&
+        el?.achievementName !== competitionName
+    )
     if (isFound) {
       return true
     }
-    return false; 
+    return false
   }
 
   return (
@@ -190,11 +197,27 @@ function SelectedExamAchievements({
                                 id: el,
                                 name: el,
                               }))}
-                              disabled={!isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year)}
+                              disabled={
+                                !isEditEnabled ||
+                                checkForDisable(
+                                  group,
+                                  criteriaName,
+                                  competitionName,
+                                  examCategory,
+                                  year?.year
+                                )
+                              }
                               placeholder="Select"
                               className={cn('h-[50px] mr-2', {
                                 'cursor-not-allowed !bg-gray-100 !border-0':
-                                  !isEditEnabled || checkForDisable(group, criteriaName, competitionName, examCategory, year?.year),
+                                  !isEditEnabled ||
+                                  checkForDisable(
+                                    group,
+                                    criteriaName,
+                                    competitionName,
+                                    examCategory,
+                                    year?.year
+                                  ),
                               })}
                               onChange={(val: string) => {
                                 if (val === undefined) {
@@ -207,15 +230,14 @@ function SelectedExamAchievements({
                                   )
                                 } else {
                                   onSelectCriteria(
-                                      group,
-                                      val,
-                                      competitionName,
-                                      criteriaName,
-                                      achievements?.name
+                                    group,
+                                    val,
+                                    competitionName,
+                                    criteriaName,
+                                    achievements?.name
                                   )
                                 }
-                                }
-                              }
+                              }}
                               value={selectedVal || ''}
                             />
                             <input
