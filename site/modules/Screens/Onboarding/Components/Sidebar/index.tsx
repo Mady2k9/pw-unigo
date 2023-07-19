@@ -292,11 +292,6 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
             </div>
           </div>
         </div>
-        {/* {isProfilePageOpened === true  ? (
-          <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
-        ) : (
-          ''
-        )} */}
 
         {isRedirectionModalOpen ? (
           <>

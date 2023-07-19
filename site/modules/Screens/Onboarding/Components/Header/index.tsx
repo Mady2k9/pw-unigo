@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <div className="sticky top-0 sm:h-[80px] h-[60px] items-center justify-between bg-white z-10 shadow-md flex">
       <div className="sm:w-[235px] sm:h-[80px] h-[60px] flex py-2 sm:justify-center sm:border-r">
-        <a href="/" className="my-auto sm:ps-0 ps-2">
+        <a href="" className="my-auto sm:ps-0 ps-2">
           <div className="flex items-center">
             <div className="sm:w-[45px] w-[24px]">
               <img src="/logo.svg" alt="PW Logo" />
