@@ -11,6 +11,7 @@ import cn from 'clsx'
 export interface sidebarProps {
   name: string
   phone: string
+  email: string
   openImportantNotices: any
 }
 
@@ -37,7 +38,7 @@ export const REDIRECTION_DATA = [
 ]
 
 const Sidebar: React.FC<sidebarProps> = (props) => {
-  const { name, phone, openImportantNotices } = props
+  const { name, phone, email, openImportantNotices } = props
   const router = useRouter()
   const [isRedirectionModalOpen, setIsRedirectionModalOpen] = useState(false)
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
@@ -107,6 +108,15 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
               alt="user profile"
             />
             <p className="text-[16px] ">{name}</p>
+            {email?.length > 0 && (
+              <div className="flex justify-center items-center">
+                <span className="stroke-black">
+                  <img className="mr-2" src="/email.svg" alt="email" />
+                </span>
+
+                <p className="text-[12px] text-[#757575]">{email}</p>
+              </div>
+            )}
             <div className="flex justify-center items-center">
               <span className="stroke-black">
                 <img className="mr-2" src="/phone.svg" alt="phone" />
@@ -295,17 +305,17 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
 
         {isRedirectionModalOpen ? (
           <>
-            <div className="opacity-25 fixed inset-0 z-40 bg-[#414347] "></div>
+            <div className="opacity-5 fixed inset-0 z-40 bg-[#414347] "></div>
             <Dialog
               className={'relative z-[999999]'}
               open={isRedirectionModalOpen}
               onClose={toggleModal}
             >
               <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
-              <div className="fixed inset-0 flex items-center justify-center p-4 ">
-                <Dialog.Panel className="mx-auto w-full max-w-[480px] max-h-[212px] rounded-xl bg-white ring-1 transition-all p-5 relative">
+              <div className="fixed inset-0 flex md:items-center items-end justify-center md:p-4 ">
+                <Dialog.Panel className="mx-auto w-full md:max-w-[480px] md:max-h-[212px] md:rounded-xl rounded-t-2xl bg-white ring-0 transition-all p-5 relative">
                   <div
-                    className="cursor-pointer absolute top-4 right-4"
+                    className="cursor-pointer absolute md:top-4 -top-8 md:bg-none bg-white md:right-4"
                     onClick={toggleModal}
                   >
                     <Cross className="h-6 w-6" />

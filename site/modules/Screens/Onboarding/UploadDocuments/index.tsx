@@ -33,18 +33,18 @@ const UploadDocumentsScreen = () => {
   }
 
   useEffect(() => {
-      const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
-      const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
-      const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
-      updateCompletedSteps(Math.max(completedStepTill, step))
+    const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
+    const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
+    const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
+    updateCompletedSteps(Math.max(completedStepTill, step))
 
-      if (studentDocsInfo) {
-        setStudentDocsInfo(studentDocsInfo)
-      } 
+    if (studentDocsInfo) {
+      setStudentDocsInfo(studentDocsInfo)
+    }
 
-      if (nominationDocsInfo) {
-        setNominationDocsInfo(nominationDocsInfo)
-      }
+    if (nominationDocsInfo) {
+      setNominationDocsInfo(nominationDocsInfo)
+    }
   }, [draftData, completedStepTill, updateCompletedSteps])
 
   const { push } = useRouter()
@@ -73,38 +73,48 @@ const UploadDocumentsScreen = () => {
     const randomId = localStorage.getItem('randomId') || ''
     const dataToSend = {
       studentDocsInfo: {
-        passportPhoto: studentDocsInfo?.passportPhoto?._id || studentDocsInfo?.passportPhoto,
-        reportCard: studentDocsInfo?.reportCard?._id || studentDocsInfo?.reportCard,
+        passportPhoto:
+          studentDocsInfo?.passportPhoto?._id || studentDocsInfo?.passportPhoto,
+        reportCard:
+          studentDocsInfo?.reportCard?._id || studentDocsInfo?.reportCard,
         adhaarInfo: {
-          adhaarBackPage: studentDocsInfo?.adhaarInfo?.adhaarBackPage?._id ||  studentDocsInfo?.adhaarInfo?.adhaarBackPage,
-          adhaarFrontPage: studentDocsInfo?.adhaarInfo?.adhaarFrontPage?._id ||  studentDocsInfo?.adhaarInfo?.adhaarFrontPage,
-
-        }
+          adhaarBackPage:
+            studentDocsInfo?.adhaarInfo?.adhaarBackPage?._id ||
+            studentDocsInfo?.adhaarInfo?.adhaarBackPage,
+          adhaarFrontPage:
+            studentDocsInfo?.adhaarInfo?.adhaarFrontPage?._id ||
+            studentDocsInfo?.adhaarInfo?.adhaarFrontPage,
+        },
       },
       nominationDocsInfo: nominationDocsInfo?.map((el: any) => {
-        if(el?.achievementId?._id) {
+        if (el?.achievementId?._id) {
           el.achievementId = el?.achievementId?._id
         }
         return el
-      })
+      }),
     }
 
-    postFormData(dataToSend, randomId).then((res: any) => {
-      if (res) {
-        toggleModal()
-      }
-    }).catch((error: any) => {
-      showNotification({
-        type: NotificationEnums.ERROR,
-        title: error?.message,
+    postFormData(dataToSend, randomId)
+      .then((res: any) => {
+        if (res) {
+          toggleModal()
+        }
       })
-    })
+      .catch((error: any) => {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: error?.message,
+        })
+      })
   }
 
   const onNominationDocumentUpload = (data: any) => {
     const updatedDocInfo = nominationDocsInfo?.map((el: any) => {
       if (
-        (el?.exam === data?.exam) && (el?.year == data?.year) && el?.criteria === data?.criteria
+        el?.exam === data?.exam &&
+        el?.year == data?.year &&
+        el?.criteria === data?.criteria &&
+        el?.achievementName === data?.achievementName
       ) {
         el.achievementId = data?.achievementId
       }
@@ -126,12 +136,15 @@ const UploadDocumentsScreen = () => {
     }
   }
   const shouldSubmitDisable = () => {
-    const checkStudentDoc = (studentDocsInfo?.adhaarInfo?.adhaarFrontPage)
-                            && (studentDocsInfo?.adhaarInfo?.adhaarBackPage)
-                            && (studentDocsInfo?.passportPhoto)
-                            && (studentDocsInfo?.reportCard)
+    const checkStudentDoc =
+      studentDocsInfo?.adhaarInfo?.adhaarFrontPage &&
+      studentDocsInfo?.adhaarInfo?.adhaarBackPage &&
+      studentDocsInfo?.passportPhoto &&
+      studentDocsInfo?.reportCard
 
-    const checkForNominationDocs = nominationDocsInfo?.every((el: any) => el?.achievementId)
+    const checkForNominationDocs = nominationDocsInfo?.every(
+      (el: any) => el?.achievementId
+    )
     return !(checkStudentDoc && checkForNominationDocs)
   }
 
