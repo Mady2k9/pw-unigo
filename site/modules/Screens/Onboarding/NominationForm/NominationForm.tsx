@@ -4,7 +4,6 @@ import { generateYearArr } from './utils'
 import { AchievementFEType } from '.'
 import { CheckMarkIcon } from '@assets/images/marvel/checkMark'
 
-
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',
   'Weightage of the title is decreasing from group wise i.e. From Group A to Group C',
@@ -35,7 +34,7 @@ function NominationForm({
   isEditEnabled,
   handleSubmitForm,
   handleEditForm,
-  hideSubmitButton = false
+  hideSubmitButton = false,
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
@@ -81,17 +80,18 @@ function NominationForm({
       return (
         <div
           className={`text-[#1B2124] flex items-center gap-3 justify-between  bg-[#F8F8F8] p-3 border-[#F8F8F8] cursor-pointer ${
-            nomintaionCategory.name === activeExamCategory ?
-            'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2' : 'hover:bg-gray-200'
+            nomintaionCategory.name === activeExamCategory
+              ? 'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2'
+              : 'hover:bg-gray-200'
           }`}
           key={nomintaionCategory.name}
           onClick={() => onExamSelect(nomintaionCategory.name, index)}
         >
           {nomintaionCategory.name}
           <div>
-            {selectedValues?.find(el => el?.examCategory === nomintaionCategory?.name) && (
-              <CheckMarkIcon />
-            )}
+            {selectedValues?.find(
+              (el) => el?.examCategory === nomintaionCategory?.name
+            ) && <CheckMarkIcon />}
           </div>
         </div>
       )

@@ -237,7 +237,7 @@ const FileUploaded = ({
 }) => {
   const id = uuid()
   const [previewModal, setPreviewModal] = useState(false)
-  const { openPDFViewer } = useUI() 
+  const { openPDFViewer } = useUI()
 
   return (
     <>
@@ -257,7 +257,8 @@ const FileUploaded = ({
           id={`preview-eye-${id}`}
           onClick={() => {
             if (files?.key?.includes('.pdf')) {
-              openPDFViewer(`${files?.baseUrl}${files?.key}`)
+              /* openPDFViewer(`${files?.baseUrl}${files?.key}`) */
+              window.location.href = `${files?.baseUrl}${files?.key}`
             } else {
               setPreviewModal(true)
             }
@@ -278,21 +279,19 @@ const FileUploaded = ({
         place="top"
       />
 
-      { 
-        previewModal && (
-          <ActionModal open={previewModal} setOpen={setPreviewModal}>
-            <div className="p-4 relative flex justify-center">
-              <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
-              <div
-                className="absolute -right-1 -top-1"
-                onClick={() => setPreviewModal(false)}
-              >
-                <XMarkIcon className="cursor-pointer" width={20} height={20} />
-              </div>
+      {previewModal && (
+        <ActionModal open={previewModal} setOpen={setPreviewModal}>
+          <div className="p-4 relative flex justify-center">
+            <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
+            <div
+              className="absolute -right-1 -top-1"
+              onClick={() => setPreviewModal(false)}
+            >
+              <XMarkIcon className="cursor-pointer" width={20} height={20} />
             </div>
+          </div>
         </ActionModal>
-        )
-    }
+      )}
     </>
   )
 }
