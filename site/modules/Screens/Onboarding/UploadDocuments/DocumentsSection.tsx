@@ -71,7 +71,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             </ol>
           </div>
           <div className="p-3 sm:p-6 flex rounded-md sm:bg-white bg-[#F8F8F8] sm:mt-6 mt-1 mb-3">
-            <div className="text-base font-bold">Personal Information</div>
+            <div className="text-base font-bold">Student Documents</div>
             <div className="text-[#BF2734] pt-1 text-xs ml-1">
               (*Mandatory Fields)
             </div>

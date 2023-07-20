@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Button, Typography } from '@components/ui'
 import Container from '@components/ui/Container/Container'
 import { useRouter } from 'next/router'
+import { registrationClose } from '@config/types/registrationDate'
 export interface BannerProps {
   data: any
 }
@@ -46,16 +47,18 @@ const Banner: React.FC<BannerProps> = (props) => {
                 Get awarded for all your meritorious hard work and Glorious
                 achievements and be a proud PW Marvel
               </div>
-              <a href={'/register'} className={s.color_btn}>
-                <span className="inline-flex text-white">
-                  Register Now
-                  <img
-                    className="ml-2"
-                    src="/right-arrow.svg"
-                    alt="right-arrow"
-                  />
-                </span>
-              </a>
+              {registrationClose && (
+                <a href={'/register'} className={s.color_btn}>
+                  <span className="inline-flex text-white">
+                    Register Now
+                    <img
+                      className="ml-2"
+                      src="/right-arrow.svg"
+                      alt="right-arrow"
+                    />
+                  </span>
+                </a>
+              )}
             </div>
             <div className="sm:w-1/3">
               <img
