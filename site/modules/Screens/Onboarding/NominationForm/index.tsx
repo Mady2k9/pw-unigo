@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 import { useMarvelContext } from '@modules/MarvelContext'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
+import { ActionModal } from '@components/ui/Modal'
 
 export type AchievementFEType = {
   examGroup: string
@@ -155,8 +156,9 @@ const NominationFormScreen = () => {
           shouldDisabled={shouldSubmitDisable()}
         />
       }
+      navBarText={navBarText}
     >
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">
+      <div className="sticky left-0 h-100vh bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}
@@ -169,38 +171,36 @@ const NominationFormScreen = () => {
           handleSubmitForm={onSubmit}
           hideSubmitButton={draftData?.isRegistrationEnded}
         />
-        <Dialog
-          className={'relative z-[999999]'}
+        <ActionModal
+          // className={'relative z-[999999]'}
           open={isModalOpen}
-          onClose={toggleModal}
+          disableCloseOnOutsideClick
+          setOpen={toggleModal}
+          wrapperClassName="md:max-w-[900px] w-96"
+          // onClose={toggleModal}
         >
-          <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
-          <div className="fixed inset-0 flex items-center justify-center p-4 ">
-            <Dialog.Panel className="mx-auto w-full max-w-4xl rounded-xl shadow-xl bg-white ring-1 transition-all p-5  relative">
-              <div className=" sm:m-4">
-                <p className="font-semibold text-[18px] mt-2 mb-4 text-center">
-                  Nomination Terms and Conditions
-                </p>
-                <ul className="list-disc text-[14px] px-8 sm:px-12">
-                  {TERMS_AND_CONDITIONS.map((termsConditions, index) => (
-                    <li key={`terms-conditions-${index}`}>{termsConditions}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex justify-center mt-6 items-center">
-                <input onClick={checkboxButton} type="checkbox" />
-                <span className="ml-3 text-[14px]">I Accept</span>
-                <Button
-                  onClick={toggleModal}
-                  className="w-[100px] ml-8"
-                  disabled={!isChecked}
-                >
-                  Continue
-                </Button>
-              </div>
-            </Dialog.Panel>
+          <div className=" sm:m-4">
+            <p className="font-semibold text-[18px] mt-2 mb-4 text-center">
+              Nomination Terms and Conditions
+            </p>
+            <ul className="list-disc text-[14px] sm:px-12 text-left p-2">
+              {TERMS_AND_CONDITIONS.map((termsConditions, index) => (
+                <li key={`terms-conditions-${index}`}>{termsConditions}</li>
+              ))}
+            </ul>
           </div>
-        </Dialog>
+          <div className="flex justify-center mt-6 items-center">
+            <input onClick={checkboxButton} type="checkbox" />
+            <span className="ml-3 text-[14px]">I Accept</span>
+            <Button
+              onClick={toggleModal}
+              className="w-[100px] ml-8"
+              disabled={!isChecked}
+            >
+              Continue
+            </Button>
+          </div>
+        </ActionModal>
       </div>
     </Layout>
   )

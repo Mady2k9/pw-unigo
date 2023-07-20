@@ -73,8 +73,8 @@ const Content = ({
             <div className={s.right_section_input}>
               {studentData.class ? (
                 <>
-                  <div className="flex flex-wrap">
-                    <div className="mr-6">
+                  <div className="flex flex-wrap w-[300px]">
+                    <div className="mr-3">
                       {CLASS_MAP[studentData?.class as CLASSES]}
                     </div>
                     <div className="flex mt-1">
@@ -98,10 +98,15 @@ const Content = ({
                     placeholder="Select Class"
                   />
                   <div className="p-1 flex md:flex-none">
-                    <div className="px-1 py-[2px] md:p-1 md:pt-[2px]">
-                      <img className="" src="/i.svg" alt="icon" />
+                    <div className="pr-1 py-[2px] md:pr-1 md:pt-[2px]">
+                      <img
+                        className="mt-[2px]"
+                        src="/i.svg"
+                        alt="icon"
+                        width="14px"
+                      />
                     </div>
-                    <div className="text-[12px] align-middle text-[#3D3D3D]">
+                    <div className="text-[12px] align-middle text-[#3D3D3D] w-[310px]">
                       {studentData.class
                         ? 'Class cant be changed now '
                         : 'Class can’t be changed once details are submitted'}
