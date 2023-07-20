@@ -135,7 +135,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
               type="submit"
               loading={loading}
               disabled={!isNameValid(firstName) || !isPhoneValid(mobile)}
-              className="w-80 md:w-[432px] md:h-14 h-12  font-bold "
+              className="w-80 md:h-14 h-12  font-bold "
             >
               <Typography weight={700} variant="heading4">
                 Register

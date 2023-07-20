@@ -145,7 +145,7 @@ function SelectedExamAchievements({
       </div>
       {isAccordionOpen && (
         <div className="text-[#757575] overflow-x-auto">
-          <div className="text-[#1B2124] font-bold flex py-4 mt-5 border-b-2 min-w-[590px]">
+          <div className="text-[#1B2124] font-bold flex py-4 mt-5 border-b-2 min-w-[590px] sm:border-0 border border-[#EFEFEF] rounded-t-lg">
             <div className="w-[10%] p-2">Group</div>
             <div className="w-[90%]">
               <div className="w-full flex border-b last:border-b-0">
@@ -164,7 +164,7 @@ function SelectedExamAchievements({
             return (
               <div
                 key={`${achievement}-${index}`}
-                className="flex border-b-2 py-2  min-w-[590px]"
+                className="flex border-b-2 py-2  min-w-[590px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
               >
                 <div className="w-[10%] p-2">{group}</div>
                 <div className="w-[90%]">

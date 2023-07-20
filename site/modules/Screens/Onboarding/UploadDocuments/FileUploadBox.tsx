@@ -75,7 +75,18 @@ const FileUploadBox = ({
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      onFileUpload(e.target.files)
+      const file = e?.target?.files[0]
+      const fileSizeInMB = file?.size / (1024 * 1024)
+      const maxSizeInMB = 5;
+
+      if (fileSizeInMB > maxSizeInMB) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: 'File size is greater than mentioned size'
+        })
+      } else {
+        onFileUpload(e.target.files)
+      }
     }
   }
 
@@ -248,9 +259,11 @@ const FileUploaded = ({
       </Typography>
       <div className="flex my-2 items-center">
         {!isRegistrationEnded && (
-          <Button variant="secondary" onClick={onEdit}>
-            Edit
-          </Button>
+          <div className="">
+            <Button variant="outline" onClick={onEdit}>
+              Edit
+            </Button>
+          </div>
         )}
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
@@ -264,7 +277,7 @@ const FileUploaded = ({
             }
           }}
         >
-          <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
+          <Image src="/eye.svg" alt="upload icon" height={20} width={36} />
         </div>
       </div>
       {fileHelperText && (

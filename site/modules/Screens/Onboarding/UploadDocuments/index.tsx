@@ -164,6 +164,7 @@ const UploadDocumentsScreen = () => {
           hideSubmitButton={draftData?.isRegistrationEnded}
         />
       }
+      navBarText={''}
     >
       <DocumentsSection
         onNominationDocumentUpload={onNominationDocumentUpload}
