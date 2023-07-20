@@ -111,14 +111,10 @@ function SelectedExamAchievements({
     if (isMultiSelectEnabled) {
       return false // Restricted this func to run, If we have multiSelect enabled.
     }
-    const isFound = selectedValues?.find(
-      (el: any) =>
-        el?.examGroup === groupName &&
-        el?.examCategory === examCategory &&
-        el?.year == year &&
-        el?.criteria !== criteria &&
-        el?.achievementName !== competitionName
-    )
+    const isFound = selectedValues?.find((el: any) => (
+      (el?.examGroup === groupName && el?.examCategory === examCategory && el?.year == year) &&
+      ((el?.criteria !== criteria) || (el?.achievementName !== competitionName))
+    ))
     if (isFound) {
       return true
     }
