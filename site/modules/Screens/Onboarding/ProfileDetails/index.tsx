@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Header from '@modules/Screens/Onboarding/Components/Header'
 import ProfileForm from '@modules/Screens/Onboarding/ProfileDetails/ProfileForm'
-import { getAlternateMobile, getMyProfile, updateUserProfile } from '@modules/auth/lib'
+import {
+  getAlternateMobile,
+  getMyProfile,
+  updateUserProfile,
+} from '@modules/auth/lib'
 import Layout from '../Layout'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
@@ -13,6 +17,7 @@ import { useMarvelContext } from '@modules/MarvelContext'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 import { format } from 'date-fns'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
+import { isEmailValid, isPhoneValid } from './utils'
 
 const ProfileDetails = () => {
   const { showNotification } = useNotify()
@@ -23,11 +28,14 @@ const ProfileDetails = () => {
     name: '',
   })
   const [selectedClass, setSelectedClass] = useState<string>('')
+
+  const [emailIsValid, setIfEmailIsValid] = useState<boolean>(true)
+  const [phoneIsValid, setIfPhoneIsValid] = useState<boolean>(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [navBarText, setNavBarText] = useState('Submit')
   const router = useRouter()
-  const { user, handleUserUpdated } = useUI() 
+  const { user, handleUserUpdated } = useUI()
   const { draftData, isLoadingDraftData } = useGetDraftData()
   const { completedStepTill, updateCompletedSteps } = useMarvelContext()
 
@@ -38,7 +46,7 @@ const ProfileDetails = () => {
     async function fetchAlternateNumber() {
       const randomId = localStorage.getItem('randomId') || ''
       const { data } = await getAlternateMobile(randomId, {
-        fields: 'alternateNumber,class,email'
+        fields: 'alternateNumber,class,email',
       })
       const studentProfile = {
         email: studentData?.email,
@@ -52,13 +60,13 @@ const ProfileDetails = () => {
         ...studentProfile,
       })
       if (studentData?.profileId?.class) {
-        const nominationDocsInfo= draftData?.pwMarvelData?.nominationDocsInfo
+        const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
         const studentDocsInfo = draftData?.pwMarvelData?.studentDocsInfo
         const step = studentDocsInfo ? 3 : nominationDocsInfo ? 2 : 1
         setNavBarText('Edit')
         updateCompletedSteps(Math.max(completedStepTill, step))
         setSelectedClass(selectedClass)
-        console.log('selectedClass: ', selectedClass);
+        console.log('selectedClass: ', selectedClass)
       }
     }
     fetchAlternateNumber()
@@ -66,11 +74,41 @@ const ProfileDetails = () => {
 
   // onSubmit Function for first time student onboarding
   const onSubmit = async () => {
+    let isEmailInvalid, isPhoneInvalid
+    if (!isEmailValid(profileData?.email) && !!profileData?.email) {
+      isEmailInvalid = true
+      setIfEmailIsValid(false)
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: 'Invalid Email',
+      })
+    } else {
+      setIfEmailIsValid(true)
+    }
+
+    if (
+      !isPhoneValid(profileData?.alternateNumber) &&
+      !!profileData?.alternateNumber
+    ) {
+      isPhoneInvalid = true
+      setIfPhoneIsValid(false)
+      showNotification({
+        type: NotificationEnums.ERROR,
+        title: 'Invalid Mobile No',
+      })
+    } else {
+      setIfPhoneIsValid(true)
+    }
+
+    if (isPhoneInvalid || isEmailInvalid) {
+      return false
+    }
+
     const dataToSend = {
       email: profileData?.email,
       alternateNumber: profileData?.alternateNumber,
-      ...(!(user?.profileId?.class) && {
-        class: selectedClass
+      ...(!user?.profileId?.class && {
+        class: selectedClass,
       }),
     }
     const randomId = localStorage.getItem('randomId') ?? ''
@@ -90,7 +128,6 @@ const ProfileDetails = () => {
         title: error?.message,
       })
     }
-    
   }
 
   //to toggle state of is edit form and navbar text
@@ -113,7 +150,7 @@ const ProfileDetails = () => {
   }
 
   const shouldSubmitDisable = () => {
-      return !selectedClass
+    return !selectedClass
   }
 
   return (
@@ -142,6 +179,10 @@ const ProfileDetails = () => {
         handleSubmitForm={toggleModal}
         hideSubmitButton={draftData?.isRegistrationEnded}
         shouldSubmitDisabled={shouldSubmitDisable()}
+        isEmailValid={emailIsValid}
+        isPhoneValid={phoneIsValid}
+        setIfEmailIsValid={setIfEmailIsValid}
+        setIfPhoneIsValid={setIfPhoneIsValid}
         registrationDate={format(new Date(user?.createdAt), 'dd MMM yyyy')}
       />
       <Dialog
