@@ -4,6 +4,8 @@ import Registration from './Registration'
 
 const Register = () => {
   const [authState, setAuthState] = useState('REGISTER' as 'REGISTER' | 'OTP')
+  const [fullName, setFullName] = useState('')
+  const [mobile, setMobile] = useState('')
 
   if (authState === 'OTP') {
     return (
@@ -18,9 +20,13 @@ const Register = () => {
   if (authState === 'REGISTER') {
     return (
       <Registration
-        onOTPGet={() => {
+        onOTPGet={(fullName: string, mobile: string) => {
+          setFullName(fullName)
+          setMobile(mobile)
           setAuthState('OTP')
         }}
+        phone={mobile}
+        name={fullName}
       />
     )
   }
