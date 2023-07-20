@@ -232,6 +232,27 @@ const Header: React.FC<HeaderProps> = ({
       ) : (
         ''
       )}
+      <div className="sm:hidden fixed top-[90%] w-full z-50 p-3">
+        {!hideSubmitButton && (
+          <Button
+            onClick={
+              navBarText === 'Edit'
+                ? () => handleEditForm(navBarText)
+                : handleSubmitForm
+            }
+            stretch
+            variant={navBarText === 'Edit' ? 'outline' : 'primary'}
+            preIcon={
+              navBarText === 'Edit' ? (
+                <PencilSquareIcon className="text-primary" width={20} />
+              ) : null
+            }
+            disabled={shouldDisabled}
+          >
+            {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
+          </Button>
+        )}
+      </div>
     </>
   )
 }
