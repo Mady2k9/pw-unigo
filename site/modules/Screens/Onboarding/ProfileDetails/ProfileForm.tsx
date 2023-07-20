@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import s from '@modules/Screens/components.module.css'
 import { Button, useUI } from '@components/ui'
 import { Select } from '@components/ui'
@@ -20,6 +20,10 @@ export interface ProfileFormProps {
   handleEditForm: (navBarText: string) => void
   hideSubmitButton?: boolean
   shouldSubmitDisabled: boolean
+  isEmailValid: boolean
+  isPhoneValid: boolean
+  setIfEmailIsValid: (val: any) => void
+  setIfPhoneIsValid: (val: any) => void
 }
 
 const Content = ({
@@ -33,11 +37,16 @@ const Content = ({
   handleEditForm,
   hideSubmitButton = false,
   shouldSubmitDisabled,
+  isEmailValid,
+  isPhoneValid,
+  setIfEmailIsValid,
+  setIfPhoneIsValid,
 }: ProfileFormProps) => {
   const onClassChange = (classVal: string) => {
     setSelectedClass(classVal)
     // setProfileData({ ...studentData, class: classVal })
   }
+
   const { user } = useUI()
   const [countryNumber, setCountryNumber] = useState(false)
   const showCountryNumber = () => {
@@ -121,13 +130,14 @@ const Content = ({
             <div className={s.right_section_input}>
               <div className="w-full rounded-md bg-white">
                 <TextInput
-                  className="bg-white"
                   label={
                     isEditEnabled && studentData.alternateNumber
                       ? 'Mobile Number'
                       : ''
                   }
+                  invalid={!isPhoneValid}
                   onChange={(mobileNumber) => {
+                    //setIfPhoneIsValid(true)
                     setProfileData({
                       ...studentData,
                       alternateNumber: mobileNumber,
@@ -136,8 +146,7 @@ const Content = ({
                   disabled={shouldDisabled}
                   value={studentData.alternateNumber}
                   placeholder="Enter number"
-                  maxLength={10}
-                  onClick={showCountryNumber}
+                  spellCheck="false"
                   /* preElement={
                     isEditEnabled ? (
                       <div className="text-[16px] font-semibold bg-white  p-2 m-auto">
@@ -160,9 +169,11 @@ const Content = ({
                   label={isEditEnabled && studentData.email ? 'Email' : ''}
                   value={studentData.email}
                   disabled={shouldDisabled}
-                  onChange={(email) =>
+                  onChange={(email) => {
+                    //setIfEmailIsValid(true)
                     setProfileData({ ...studentData, email: email })
-                  }
+                  }}
+                  invalid={!isEmailValid}
                   placeholder="Email id"
                   spellCheck="false"
                   variant={shouldDisabled ? 'gray' : 'flatlogin'}
