@@ -161,7 +161,7 @@ const OTPView = ({ onReset }: { onReset: any }) => {
               onClick={handleSubmit}
               loading={loading || navigating}
               disabled={!isOTPValid(_otp)}
-              className="w-full md:w-[432px] md:h-14 h-12  font-bold "
+              className="w-full md:h-14 h-12  font-bold "
             >
               Login
             </Button>

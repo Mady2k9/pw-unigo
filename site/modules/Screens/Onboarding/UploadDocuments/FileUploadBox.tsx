@@ -248,7 +248,7 @@ const FileUploaded = ({
 }) => {
   const id = uuid()
   const [previewModal, setPreviewModal] = useState(false)
-  const { openPDFViewer } = useUI() 
+  const { openPDFViewer } = useUI()
 
   return (
     <>
@@ -259,22 +259,25 @@ const FileUploaded = ({
       </Typography>
       <div className="flex my-2 items-center">
         {!isRegistrationEnded && (
-          <Button variant="secondary" onClick={onEdit}>
-            Edit
-          </Button>
+          <div className="">
+            <Button variant="outline" onClick={onEdit}>
+              Edit
+            </Button>
+          </div>
         )}
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
           id={`preview-eye-${id}`}
           onClick={() => {
             if (files?.key?.includes('.pdf')) {
-              openPDFViewer(`${files?.baseUrl}${files?.key}`)
+              /* openPDFViewer(`${files?.baseUrl}${files?.key}`) */
+              window.location.href = `${files?.baseUrl}${files?.key}`
             } else {
               setPreviewModal(true)
             }
           }}
         >
-          <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
+          <Image src="/eye.svg" alt="upload icon" height={20} width={36} />
         </div>
       </div>
       {fileHelperText && (
@@ -289,21 +292,21 @@ const FileUploaded = ({
         place="top"
       />
 
-      { 
-        previewModal && (
-          <ActionModal open={previewModal} setOpen={setPreviewModal}>
-            <div className="p-4 relative flex justify-center">
-              <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
-              <div
-                className="absolute -right-1 -top-1"
-                onClick={() => setPreviewModal(false)}
-              >
-                <XMarkIcon className="cursor-pointer" width={20} height={20} />
-              </div>
+      {previewModal && files?.key?.includes('.pdf') ? (
+        window.open(`${files?.baseUrl}${files?.key}`)
+      ) : (
+        <ActionModal open={previewModal} setOpen={setPreviewModal}>
+          <div className="p-4 relative flex justify-center">
+            <img src={`${files?.baseUrl}${files?.key}`} alt="preview-img" />
+            <div
+              className="absolute -right-1 -top-1"
+              onClick={() => setPreviewModal(false)}
+            >
+              <XMarkIcon className="cursor-pointer" width={20} height={20} />
             </div>
+          </div>
         </ActionModal>
-        )
-    }
+      )}
     </>
   )
 }

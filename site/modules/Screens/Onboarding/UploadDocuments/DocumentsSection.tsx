@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import FileUploadBox from './FileUploadBox'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
+import { Button, useUI } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
@@ -191,7 +193,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             <div className="mr-2 text-base font-bold">Nomination Documents</div>
             <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
           </div>
-          <div className="bg-white w-full divide-y overflow-x-auto ">
+          <div className="bg-white w-full divide-y overflow-x-auto sm:pb-0 pb-[80px]">
             <div className="font-bold flex xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] rounded-t-lg border-b-[#ffffff]">
               <div className="w-[6%] p-2">S. no.</div>
               <div className="w-[11%] p-2">Nomination year</div>

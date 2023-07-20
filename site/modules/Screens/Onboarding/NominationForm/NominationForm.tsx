@@ -3,7 +3,8 @@ import SelectedExamAchievements from './SelectedExamAchievements'
 import { generateYearArr } from './utils'
 import { AchievementFEType } from '.'
 import { CheckMarkIcon } from '@assets/images/marvel/checkMark'
-
+import { Button, useUI } from '@components/ui'
+import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const REGSISTARTION_FORM_INSTRUCTION = [
   'To nominate yourself, please select an exam with mentioned criteria.',
@@ -22,9 +23,11 @@ type NominationFormTypes = {
   nominationsFormat: any
   onDeselectValue: (val: AchievementFEType) => void
   isEditEnabled: boolean
+  navBarText: string
   handleSubmitForm?: () => void // TODO - remove optional chaining
   handleEditForm: (navBarText: string) => void
   hideSubmitButton?: boolean
+  shouldSubmitDisabled: boolean
 }
 
 function NominationForm({
@@ -35,7 +38,8 @@ function NominationForm({
   isEditEnabled,
   handleSubmitForm,
   handleEditForm,
-  hideSubmitButton = false
+  hideSubmitButton = false,
+  navBarText,
 }: NominationFormTypes) {
   // TODO: Writting this code only to meet deadlines, otimize it later
 
@@ -81,17 +85,18 @@ function NominationForm({
       return (
         <div
           className={`text-[#1B2124] flex items-center gap-3 justify-between  bg-[#F8F8F8] p-3 border-[#F8F8F8] cursor-pointer ${
-            nomintaionCategory.name === activeExamCategory ?
-            'text-indigo-500 bg-white border-l-2 !border-indigo-500 border-l-2' : 'hover:bg-gray-200'
+            nomintaionCategory.name === activeExamCategory
+              ? 'text-indigo-500 bg-white !border-indigo-500 border-l-2'
+              : 'hover:bg-gray-200'
           }`}
           key={nomintaionCategory.name}
           onClick={() => onExamSelect(nomintaionCategory.name, index)}
         >
           {nomintaionCategory.name}
           <div>
-            {selectedValues?.find(el => el?.examCategory === nomintaionCategory?.name) && (
-              <CheckMarkIcon />
-            )}
+            {selectedValues?.find(
+              (el) => el?.examCategory === nomintaionCategory?.name
+            ) && <CheckMarkIcon />}
           </div>
         </div>
       )
@@ -119,9 +124,9 @@ function NominationForm({
   return (
     <div className="w-full bg-white overflow-y-scroll">
       <div className=" flex justify-center">
-        <div className="md:bg-[#F8F8F8] w-full md:w-[90%] lg:w-[85%] h-fit  rounded-b-xl lg:p-3 items-center relative">
+        <div className="md:bg-[#F8F8F8]  w-[94%] lg:w-[85%] h-fit  rounded-b-xl lg:p-3 items-center relative">
           <div className="">
-            <div className="bg-white rounded-[8px] px-[8px] sm:px-[24px] py-[12px]">
+            <div className="bg-white rounded-md px-[8px] sm:px-[24px] py-[12px] border sm:border-0 border-[#EFEFEF] sm:mt-0 mt-2">
               <div className="text-[16px] font-semibold mb-2">
                 Instructions to fill registration form:
               </div>
@@ -139,7 +144,7 @@ function NominationForm({
                 {/* {Object.keys(nominationsFormat)?.map( */}
                 {renderLeftCategories()}
               </div>
-              <div className="p-4 lg:w-8/12 xl:w-9/12 w-full cursor-pointer">
+              <div className="sm:p-4 lg:w-8/12 xl:w-9/12 w-full cursor-pointer sm:pb-0 pb-[80px]">
                 <p className="text-[#757575] max-[640px]:mt-8">
                   Selected Exam Category: Profile Based scholarship award
                 </p>

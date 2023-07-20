@@ -31,7 +31,7 @@ const Layout = ({ children, header, navBarText }: LayoutProps) => {
       {header}
       {show === true ? <ImportantNoticeData /> : ''}
 
-      <div className="sticky left-0 h-[calc(100vh-80px)] sm:bg-[#f8f8f8] bg-white  z-19 sm:flex">
+      <div className="sticky left-0 h-[calc(100vh-80px)] sm:h-100vh sm:bg-[#f8f8f8] bg-white  z-19 sm:flex mt-[48px] sm:mt-0">
         <Sidebar
           name={name}
           phone={userData?.primaryNumber}

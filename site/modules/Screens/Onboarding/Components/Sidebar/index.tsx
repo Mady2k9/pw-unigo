@@ -323,14 +323,19 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
             >
               <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
               <div className="fixed inset-0 flex md:items-center items-end justify-center md:p-4 ">
-                <Dialog.Panel className="mx-auto w-full md:max-w-[480px] md:max-h-[212px] md:rounded-xl rounded-t-2xl bg-white ring-0 transition-all p-5 relative">
+                <Dialog.Panel className="mx-auto w-full md:max-w-[480px] md:max-h-[212px]  md:rounded-xl rounded-t-2xl bg-white ring-0 transition-all p-5 md:pt-5 pt-0 relative">
                   <div
-                    className="cursor-pointer absolute md:top-4 -top-8 md:bg-none bg-white md:right-4"
+                    className="cursor-pointer absolute md:top-4 -top-10 md:bg-white  bg-slate-100 p-1 rounded-full md:right-4 right-[46%]"
                     onClick={toggleModal}
                   >
-                    <Cross className="h-6 w-6" />
+                    <span className=" ">
+                      <Cross className="h-6 w-6 " />
+                    </span>
                   </div>
-                  <div className="text-center m-2">
+                  <div className="text-center mx-2 mb-2">
+                    <div className="flex justify-center pt-2 pb-4 md:hidden sm:block">
+                      <span className=" bg-slate-300 h-1 w-9 rounded-xl"></span>
+                    </div>
                     <p className="font-bold text-[20px] ">
                       Going to previous step?
                     </p>
@@ -339,7 +344,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                       step?{' '}
                     </p>
                   </div>
-                  <div className="flex justify-center mt-6 text-[16px] font-[600px]">
+                  <div className="flex justify-center mt-6  md:text-base text-[14px] font-[600px]">
                     <button
                       onClick={() => router.push(redirectionData?.router)}
                       className="w-[208px] h-[48px] outline-none border border-[#5A4BDA] rounded-md text-[#5A4BDA]"
