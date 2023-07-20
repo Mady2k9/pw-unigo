@@ -46,7 +46,9 @@ const Header: React.FC<HeaderProps> = ({
     localStorage.clear()
     deleteAllCookies()
     handleUserUpdated()
-    router.push('/')
+    setTimeout(() => {
+      router.push('/')
+    })
   }
   return (
     <>
