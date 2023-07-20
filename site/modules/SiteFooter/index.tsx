@@ -115,10 +115,7 @@ const Footer = () => {
         </button>
       </div>
       <div className="hidden md:block">
-        <div
-          className="flex justify-center flex-row items-center  py-4 gap-6 h-[72px] w-100 bg-[#F8F8F8] z-30 sticky "
-          id="contact"
-        >
+        <div className="flex justify-center flex-row items-center  py-4 gap-6 h-[72px] w-100 bg-[#F8F8F8] z-30 sticky ">
           <span>
             <ChevronUpIcon width={20} height={20} />
           </span>
@@ -129,7 +126,10 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#1B2124] py-4 px-[16px] md:px-4 lg:px-0 static">
+      <div
+        className="bg-[#1B2124] py-4 px-[16px] md:px-4 lg:px-0 static"
+        id="contact"
+      >
         <div className="max-w-6xl py-3 px-0 lg:px-3 grid grid-cols-12 gap-5 mx-auto">
           <div className="col-span-12 lg:col-span-4 md:col-span-12 space-y-2 flex md:justify-start justify-center sm:hidden border-[#ffffff7d] border-b-[1px] pb-6">
             <div className="md:w-80 w-full h-[84px]  border-[1px] border-[#5E6166] rounded-lg grid content-between p-2">

@@ -74,7 +74,10 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
     localStorage.clear()
     deleteAllCookies()
     handleUserUpdated()
-    router.push('/')
+    setTimeout(() => {
+      router.push('/')
+    })
+    /*  router.push('/') */
   }
 
   const handleStepsClasses = (step: number, currentActive: boolean) => {
@@ -138,8 +141,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   onClick={() => {
                     if (completedStepTill === 3 && (navBarText === 'Edit')) {
                       router.push('/profile-details')
-                    }
-                    else if (!isProfileDetailsRoute) {
+                    } else if (!isProfileDetailsRoute) {
                       setIsRedirectionModalOpen(true)
                       setRedirectionData(REDIRECTION_DATA[0])
                     }
@@ -164,8 +166,10 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   onClick={() => {
                     if (completedStepTill === 3 && (navBarText === 'Edit' || isUploadDocRoute)) {
                       router.push('/nomination-form')
-                    }
-                    else if (!isNominationFormRoute && completedStepTill >= 2) {
+                    } else if (
+                      !isNominationFormRoute &&
+                      completedStepTill >= 2
+                    ) {
                       setRedirectionData(REDIRECTION_DATA[1])
                       setIsRedirectionModalOpen(true)
                     }
@@ -209,8 +213,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                   onClick={() => {
                     if (completedStepTill === 3 && navBarText === 'Edit') {
                       router.push('/upload-document')
-                    }
-                    else if (!isUploadDocRoute && completedStepTill === 3) {
+                    } else if (!isUploadDocRoute && completedStepTill === 3) {
                       setRedirectionData(REDIRECTION_DATA[2])
                       setIsRedirectionModalOpen(true)
                     }
