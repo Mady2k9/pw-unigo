@@ -156,7 +156,7 @@ const NominationFormScreen = () => {
         />
       }
     >
-      <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">
+      <div className="sticky left-0 h-100vh bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm
           onValueSelect={onValueSelect}
           selectedValues={selectedValues}

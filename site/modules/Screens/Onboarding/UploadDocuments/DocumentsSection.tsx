@@ -193,7 +193,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             <div className="mr-2 text-base font-bold">Nomination Documents</div>
             <div className="text-[#BF2734] text-xs">(*Mandatory Fields)</div>
           </div>
-          <div className="bg-white w-full divide-y overflow-x-auto ">
+          <div className="bg-white w-full divide-y overflow-x-auto sm:pb-0 pb-[80px]">
             <div className="font-bold flex xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] rounded-t-lg border-b-[#ffffff]">
               <div className="w-[6%] p-2">S. no.</div>
               <div className="w-[11%] p-2">Nomination year</div>
