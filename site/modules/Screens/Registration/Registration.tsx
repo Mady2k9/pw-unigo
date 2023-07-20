@@ -7,15 +7,17 @@ import { TextInput } from '@components/ui/Input'
 import { useRouter } from 'next/router'
 
 type RegisterViewProps = {
-  onOTPGet: () => void
+  onOTPGet: (fullName: string, mobile: string) => void
+  phone: string
+  name: string
 }
 
-const Register = ({ onOTPGet }: RegisterViewProps) => {
+const Register = ({ onOTPGet, name, phone }: RegisterViewProps) => {
   // Form State
   const { otpSent, error, loading, handleRegister } = useAuth()
 
-  const [mobile, setMobile] = useState('')
-  const [firstName, setFullName] = useState('')
+  const [mobile, setMobile] = useState(phone)
+  const [firstName, setFullName] = useState(name)
   const [username, setUsername] = useState('')
 
   const router = useRouter()
@@ -38,7 +40,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
 
   useEffect(() => {
     if (otpSent) {
-      onOTPGet()
+      onOTPGet(firstName, mobile)
     }
   }, [onOTPGet, otpSent])
 
@@ -91,6 +93,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   onChange={setFullName}
                   variant={'flatlogin'}
                   placeholder={'Enter your name'}
+                  value={firstName}
                 />
               </div>
               <div className={'mb-4 w-full'}>
@@ -102,6 +105,7 @@ const Register = ({ onOTPGet }: RegisterViewProps) => {
                   maxLength={10}
                   onChange={setMobile}
                   variant={'flatlogin'}
+                  value={mobile}
                   onClick={showCountryNumber}
                   preElement={
                     <div className="text-[16px] font-semibold bg-white pl-2 ">

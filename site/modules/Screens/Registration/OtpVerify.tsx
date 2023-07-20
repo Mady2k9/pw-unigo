@@ -93,7 +93,13 @@ const RegOtpView = ({ onReset }: { onReset: any }) => {
             <Typography>Enter the OTP sent on your phone number</Typography>
             <div className="inline-flex items-center gap-2">
               <Typography weight={600}>{`+91 ${mobile}`} </Typography>
-              <a href="register">
+              <a
+                onClick={(e) => {
+                  e.preventDefault()
+                  console.log('reset clicked 3')
+                  onReset()
+                }}
+              >
                 <img src="/edit.svg" alt="edit-number" />
               </a>
               <div
