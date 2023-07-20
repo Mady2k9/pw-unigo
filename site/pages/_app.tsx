@@ -7,9 +7,10 @@ import { Head } from '@components/common'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // @ts-ignore
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import NotificationWrapper from '@components/notification/NotificationWrapper'
 import { ManagedUIMinimalContext } from '@components/ui/contextMinimal'
+import { ManagedUIContext } from '@components/ui/context'
+import { MarvelContextWrapper } from '@modules/MarvelContext'
 
 const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>
 export default function MyApp({ Component, ...props }: AppProps) {
@@ -22,10 +23,12 @@ export default function MyApp({ Component, ...props }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <>
         <Head />
-        <ManagedUIMinimalContext>
-          <NotificationWrapper />
-          <Component {...props} />
-        </ManagedUIMinimalContext>
+        <ManagedUIContext>
+          <MarvelContextWrapper>
+            <NotificationWrapper />
+            <Component {...props} />
+          </MarvelContextWrapper>
+        </ManagedUIContext>
       </>
     </QueryClientProvider>
   )

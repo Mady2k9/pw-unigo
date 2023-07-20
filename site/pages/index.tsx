@@ -1,12 +1,34 @@
-import { Footer } from '@components/common'
+import Footer from '@modules/SiteFooter'
 import Header from '@components/common/Header/Header'
-import { Loader, Typography } from '@components/ui'
+import { useEffect } from 'react'
+import { useUI } from '@components/ui'
+import { useRouter } from 'next/router'
+import {
+  Banner,
+  Faq,
+  RewardsCard,
+  NominationSteps,
+  Announcement,
+} from 'modules'
 
 const Home = () => {
+  const { user } = useUI()
+  const router = useRouter()
+  useEffect(() => {
+    if (user) {
+      router.replace('/profile-details')
+    }
+  }, [user])
   return (
-    <div className="flex items-center justify-center">
-      <h1>PW MARVEL</h1>
-    </div>
+    <>
+      <Header variant="MARVELSHeader" />
+      <Announcement />
+      <Banner data={undefined} />
+      <RewardsCard data={undefined} />
+      <NominationSteps data={undefined} />
+      <Faq data={undefined} />
+      <Footer />
+    </>
   )
 }
 
