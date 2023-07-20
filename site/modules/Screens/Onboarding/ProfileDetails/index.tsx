@@ -130,6 +130,7 @@ const ProfileDetails = () => {
           hideSubmitButton={draftData?.isRegistrationEnded}
         />
       }
+      navBarText={navBarText}
     >
       <ProfileForm
         studentData={profileData}

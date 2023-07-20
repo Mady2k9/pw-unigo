@@ -154,6 +154,7 @@ const NominationFormScreen = () => {
           shouldDisabled={shouldSubmitDisable()}
         />
       }
+      navBarText={navBarText}
     >
       <div className="sticky left-0 h-[calc(100vh-80px)] bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm

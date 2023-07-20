@@ -94,7 +94,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 uploadedFile={
                   draftData?.pwMarvelData?.studentDocsInfo?.passportPhoto
                 }
-                fileHelperText={'50 KB max file size, JPG or PNG'}
+                fileHelperText={'5 MB max file size, JPG, PNG or PDF'}
                 onUploadSucces={(res: UploadedFileResponse) =>
                   onStudentDocUpload('passportPhoto', res._id)
                 }
@@ -126,7 +126,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                       draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
                         ?.adhaarFrontPage
                     }
-                    fileHelperText={'50 KB max file size, JPG or PNG'}
+                    fileHelperText={'5 MB max file size, JPG, PNG or PDF'}
                     onUploadSucces={(res: UploadedFileResponse) =>
                       onStudentDocUpload('adhaarInfo.adhaarFrontPage', res._id)
                     }
@@ -144,7 +144,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                       draftData?.pwMarvelData?.studentDocsInfo?.adhaarInfo
                         ?.adhaarBackPage
                     }
-                    fileHelperText={'50 KB max file size, JPG or PNG'}
+                    fileHelperText={'5 MB max file size, JPG, PNG or PDF'}
                     onUploadSucces={(res: UploadedFileResponse) =>
                       onStudentDocUpload('adhaarInfo.adhaarBackPage', res._id)
                     }
@@ -176,7 +176,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                 uploadedFile={
                   draftData?.pwMarvelData?.studentDocsInfo?.reportCard
                 }
-                fileHelperText={'50 KB max file size, JPG or PNG'}
+                fileHelperText={'5 MB max file size, JPG, PNG or PDF'}
                 onUploadSucces={(res: UploadedFileResponse) =>
                   onStudentDocUpload('reportCard', res._id)
                 }
@@ -227,7 +227,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                         <FileUploadBox
                           isRegistrationEnded={draftData?.isRegistrationEnded}
                           uploadedFile={data?.achievementId}
-                          fileHelperText={'50 KB max file size, JPG or PNG'}
+                          fileHelperText={'5 MB max file size, JPG, PNG or PDF'}
                           onUploadSucces={(response: UploadedFileResponse) =>
                             onNominationDocsSuccess(response, data)
                           }

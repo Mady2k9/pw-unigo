@@ -75,7 +75,18 @@ const FileUploadBox = ({
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      onFileUpload(e.target.files)
+      const file = e?.target?.files[0]
+      const fileSizeInMB = file?.size / (1024 * 1024)
+      const maxSizeInMB = 5;
+
+      if (fileSizeInMB > maxSizeInMB) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: 'File size is greater than mentioned size'
+        })
+      } else {
+        onFileUpload(e.target.files)
+      }
     }
   }
 

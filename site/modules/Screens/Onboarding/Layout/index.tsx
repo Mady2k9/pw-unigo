@@ -5,9 +5,10 @@ import ImportantNoticeData from '@modules/ImportantNotices/importantNoticeData'
 type LayoutProps = {
   children: React.ReactNode
   header: React.ReactNode
+  navBarText: string
 }
 
-const Layout = ({ children, header }: LayoutProps) => {
+const Layout = ({ children, header, navBarText }: LayoutProps) => {
   const [userData, setUserData] = useState<any>({})
   const [show, setShow] = useState(false)
 
@@ -36,6 +37,7 @@ const Layout = ({ children, header }: LayoutProps) => {
           phone={userData?.primaryNumber}
           openImportantNotices={openImportantNotices}
           email={userData?.email}
+          navBarText={navBarText}
         />
         {children}
       </div>
