@@ -248,9 +248,11 @@ const FileUploaded = ({
       </Typography>
       <div className="flex my-2 items-center">
         {!isRegistrationEnded && (
-          <Button variant="secondary" onClick={onEdit}>
-            Edit
-          </Button>
+          <div className="">
+            <Button variant="outline" onClick={onEdit}>
+              Edit
+            </Button>
+          </div>
         )}
         <div
           className="bg-indigo-500 flex items-center ml-2 py-2 rounded-md cursor-pointer"
@@ -264,7 +266,7 @@ const FileUploaded = ({
             }
           }}
         >
-          <Image src="/eye.svg" alt="upload icon" height={20} width={30} />
+          <Image src="/eye.svg" alt="upload icon" height={20} width={36} />
         </div>
       </div>
       {fileHelperText && (
