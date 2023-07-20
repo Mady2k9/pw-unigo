@@ -1,6 +1,6 @@
 import { Button, Loader, Typography, useUI } from '@components/ui'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cn from 'clsx'
 import { uploadFile } from '@modules/auth/lib'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
@@ -10,6 +10,8 @@ import useNotify, { NotificationEnums } from '@lib/useNotify'
 import uuid from 'react-uuid'
 import { ActionModal } from '@components/ui/Modal'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+
+const ACCEPTED_FILE_TYPE = ['pdf','jpeg','png', 'jpg']
 
 type FileUploadBoxProps = {
   fileHelperText?: string
@@ -30,6 +32,7 @@ const FileUploadBox = ({
   onEditCallBack = () => {},
   isRegistrationEnded = false,
 }: FileUploadBoxProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null)
   // const [files, setFiles] = useState<FileList | null>()
   const id = uuid()
   const [uploadedFileData, setUploadedFileData] = useState<any>(null)
@@ -84,6 +87,17 @@ const FileUploadBox = ({
           type: NotificationEnums.ERROR,
           title: 'File size is greater than mentioned size'
         })
+        if (fileInputRef?.current?.value) {
+          fileInputRef.current.value = ''
+        }
+      } else if (!ACCEPTED_FILE_TYPE.includes(file?.name?.split('.')?.pop() as string)) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: 'Invalid file Type'
+        })
+        if (fileInputRef?.current?.value) {
+          fileInputRef.current.value = ''
+        }
       } else {
         onFileUpload(e.target.files)
       }
@@ -141,9 +155,10 @@ const FileUploadBox = ({
             <div className="text-indigo-500 cursor-pointer">Choose File</div>
             <input
               type="file"
-              accept=".jpeg,.png,.pdf"
+              accept=".jpeg,.png,.pdf,.jpg"
               className="absolute inset-0 opacity-0"
               onChange={onFileChange}
+              ref={fileInputRef}
             />
           </>
         )}

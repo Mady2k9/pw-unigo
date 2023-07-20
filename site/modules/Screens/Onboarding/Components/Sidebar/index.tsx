@@ -136,7 +136,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                     isProfileDetailsRoute ? s.icon_container_active : ''
                   }`}
                   onClick={() => {
-                    if (completedStepTill === 3 && navBarText === 'Edit') {
+                    if (completedStepTill === 3 && (navBarText === 'Edit')) {
                       router.push('/profile-details')
                     }
                     else if (!isProfileDetailsRoute) {
@@ -156,14 +156,13 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 </span>
                 <div
                   className={`${s.icon_container} ${
+                    isNominationFormRoute ? s.icon_container_active :
                     completedStepTill < 2
                       ? s.icon_container_disabled
-                      : isNominationFormRoute
-                      ? s.icon_container_active
                       : ''
                   }`}
                   onClick={() => {
-                    if (completedStepTill === 3 && navBarText === 'Edit') {
+                    if (completedStepTill === 3 && (navBarText === 'Edit' || isUploadDocRoute)) {
                       router.push('/nomination-form')
                     }
                     else if (!isNominationFormRoute && completedStepTill >= 2) {
@@ -202,10 +201,9 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 </span>
                 <div
                   className={`${s.icon_container} ${
+                    isUploadDocRoute ? s.icon_container_active :
                     completedStepTill !== 3
                       ? s.icon_container_disabled
-                      : isUploadDocRoute
-                      ? s.icon_container_active
                       : ''
                   }`}
                   onClick={() => {
