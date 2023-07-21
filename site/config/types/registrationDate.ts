@@ -22,7 +22,6 @@ export const registrationCloseDate = regCloseDate
   .reverse()
   .join('-')
 
-//console.log('date:::::', registrationCloseDate)
 
 export const registrationDateClosePass = (
   curDateParam: string,
