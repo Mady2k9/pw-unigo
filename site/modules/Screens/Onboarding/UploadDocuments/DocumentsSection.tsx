@@ -216,7 +216,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                   return (
                     <div
                       className="flex text-[#757575] xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
-                      key={achievementName}
+                      key={`${achievementName}__${index}`}
                     >
                       <div className="w-[6%] p-2">{index + 1}</div>
                       <div className="w-[11%] p-2">{year}</div>
