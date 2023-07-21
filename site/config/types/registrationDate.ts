@@ -1,5 +1,5 @@
 export const registrationOpenDate = new Date(2023, 7, 1)
-export const regCloseDate = new Date(2023, 6, 19)
+export const regCloseDate = new Date(2023, 11, 31)
 export const currDate = new Date()
 
 export const currentDate = currDate
@@ -21,7 +21,6 @@ export const registrationCloseDate = regCloseDate
   .split('/')
   .reverse()
   .join('-')
-
 
 export const registrationDateClosePass = (
   curDateParam: string,
