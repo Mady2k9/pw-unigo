@@ -11,6 +11,7 @@ import { Button } from '@components/ui'
 import { useGetDraftData } from '@lib/hooks/marvel/useGetDraftData'
 import { deleteAllCookies } from '@lib/user-utility'
 import useNotify, { NotificationEnums } from '@lib/useNotify'
+import { format } from 'date-fns'
 
 const UploadDocumentsScreen = () => {
   const { showNotification } = useNotify()
@@ -49,10 +50,10 @@ const UploadDocumentsScreen = () => {
 
   const { push } = useRouter()
 
-  console.log({
-    studentDocsInfo,
-    nominationDocsInfo,
-  })
+  // console.log({
+  //   studentDocsInfo,
+  //   nominationDocsInfo,
+  // })
 
   /* const onSubmit = async () => {
     const randomId = localStorage.getItem('randomId') || ''
@@ -165,6 +166,7 @@ const UploadDocumentsScreen = () => {
         />
       }
       navBarText={''}
+      isRegistrationEnded={draftData?.isRegistrationEnded}
     >
       <DocumentsSection
         onNominationDocumentUpload={onNominationDocumentUpload}
@@ -189,7 +191,7 @@ const UploadDocumentsScreen = () => {
             <div className="text-center text-[16px] mt-4">
               You can edit the form till
               <span className="font-semibold text-[18px] mx-1">
-                25th June, 2023
+                {draftData?.registrationEndDate ? format(new Date(draftData?.registrationEndDate), 'dd MMM yyyy') : '-'}
               </span>
               <br />
               After this form will be auto-submitted
