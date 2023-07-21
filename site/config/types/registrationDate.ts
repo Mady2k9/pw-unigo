@@ -1,5 +1,5 @@
 export const registrationOpenDate = new Date(2023, 7, 1)
-export const regCloseDate = new Date(2023, 10, 30)
+export const regCloseDate = new Date(2023, 6, 19)
 export const currDate = new Date()
 
 export const currentDate = currDate
