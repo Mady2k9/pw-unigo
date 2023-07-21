@@ -2,6 +2,7 @@ import React from 'react'
 import cn from 'clsx'
 import s from './nomination-steps.module.css'
 import Container from '@components/ui/Container/Container'
+import { registrationClose } from '@config/types/registrationDate'
 
 export interface NominationStepsProps {
   data: any
@@ -87,14 +88,20 @@ const NominationSteps: React.FC<NominationStepsProps> = (props) => {
           Apply now to be a <span className="text-[#5F43CC]">PW Marvel</span>{' '}
           and stand a chance to win amazing rewards
         </div>
-        <div className="mt-6 mb-10">
-          <a href="/register" className={s.color_btn}>
-            <span className="inline-flex text-white">
-              Register Now
-              <img className="ml-2" src="/right-arrow.svg" alt="right-arrow" />
-            </span>
-          </a>
-        </div>
+        {registrationClose && (
+          <div className="mt-6 mb-10">
+            <a href="/register" className={s.color_btn}>
+              <span className="inline-flex text-white">
+                Register Now
+                <img
+                  className="ml-2"
+                  src="/right-arrow.svg"
+                  alt="right-arrow"
+                />
+              </span>
+            </a>
+          </div>
+        )}
       </Container>
     </section>
   )
