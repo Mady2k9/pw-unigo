@@ -9,7 +9,7 @@ const termsCon = () => {
   return (
     <>
       <Header variant="MARVELSHeader" />
-      <Breadcrumb items={items} title="Rewards" homeLink="/" />
+      <Breadcrumb items={items} title="Terms & Conditions" homeLink="/" />
       <Container className="mx-auto max-w-6xl py-10 flex flex-col">
         <div className="ml-5">
           <ol className="list-decimal my-4 sm:text-[16px] sm:leading-[24px] text-[14px] leading-[22px]">

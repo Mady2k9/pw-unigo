@@ -6,8 +6,8 @@ import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
-  'Passport size photo file size should not exceed more than 20 KB',
-  'Upload front and back side of Adhar card and the file size should not exceed more than 20 KB each',
+  'Passport size photo file size should not exceed more than 5 MB',
+  'Upload front and back side of Adhar card and the file size should not exceed more than 5 MB each',
   'Upload supporting documents i.e. certificate in front of exams selected.',
 ]
 
