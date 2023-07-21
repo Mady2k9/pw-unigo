@@ -36,7 +36,7 @@ const TERMS_AND_CONDITIONS = [
 
 const NominationFormScreen = () => {
   const { showNotification } = useNotify()
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedValues, setSelectedValues] = useState<AchievementFEType[]>([])
   const [nominationsFormat, setNominationsFormat] = useState<any>([])
   const [isChecked, setIsChecked] = useState(false)
@@ -44,6 +44,12 @@ const NominationFormScreen = () => {
   const { draftData, isLoadingDraftData } = useGetDraftData()
   const [navBarText, setNavBarText] = useState('Submit')
   const { updateCompletedSteps, completedStepTill } = useMarvelContext()
+
+  useEffect(() => {
+    if (draftData) {
+      setIsModalOpen(!Boolean(draftData?.isRegistrationEnded))
+    }
+  }, [draftData])
 
   useEffect(() => {
     const nominationDocsInfo = draftData?.pwMarvelData?.nominationDocsInfo
@@ -157,6 +163,7 @@ const NominationFormScreen = () => {
         />
       }
       navBarText={navBarText}
+      isRegistrationEnded={draftData?.isRegistrationEnded}
     >
       <div className="sticky left-0 h-100vh bg-[#f8f8f8] z-19 sm:flex w-full">
         <NominationForm
