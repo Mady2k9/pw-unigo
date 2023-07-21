@@ -213,11 +213,10 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                     year,
                     achievementName,
                   } = data
-                  console.log('data:dhskd ==>', data)
                   return (
                     <div
                       className="flex text-[#757575] xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
-                      key={criteria}
+                      key={achievementName}
                     >
                       <div className="w-[6%] p-2">{index + 1}</div>
                       <div className="w-[11%] p-2">{year}</div>
