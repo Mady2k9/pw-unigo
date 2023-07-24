@@ -4703,8 +4703,9 @@ const Eligibility: React.FC<EligibilityProps> = (props) => {
         <Typography weight={900}>
           <div className="mt-6">
             Note: In case your exam or award are not listed here, you can send
-            your achievements through mail at “email address of pw marvels” to
-            us and our experts will review them.
+            your achievements through mail at{' '}
+            <a href="mailto:marvel@pw.live">marvel@pw.live</a> to us and our
+            experts will review them.
           </div>
         </Typography>
       </Container>
