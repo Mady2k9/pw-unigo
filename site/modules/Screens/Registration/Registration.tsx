@@ -74,7 +74,8 @@ const Register = ({ onOTPGet, name, phone }: RegisterViewProps) => {
                       can fill or edit your nomination form.
                     </li>
                     <li>
-                      The last date for registration and nomination is ____.
+                      The last date for registration and nomination is 31
+                      December 2023.
                     </li>
                   </ul>
                 </Typography>
