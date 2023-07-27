@@ -30,7 +30,7 @@ const termsCon = () => {
               irrevocable.
             </li>
             <li>
-              Only the students of Class 5th to 10th are eligible for
+              Only the students of Class 8th to 11th are eligible for
               self-nomination of PW Marvels.
             </li>
             <li>

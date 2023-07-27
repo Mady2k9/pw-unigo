@@ -3,10 +3,11 @@ import { Typography } from '@components/ui'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import { Dialog } from '@headlessui/react'
 
-function ImportantNoticeData() {
+function ImportantNoticeData({ closeModal }: { closeModal: any }) {
   const [closeNotice, setCloseNotice] = useState(true)
   const closeButton = () => {
-    setCloseNotice(!closeNotice)
+    //setCloseNotice(!closeNotice)
+    closeModal()
   }
 
   return (
