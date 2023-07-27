@@ -70,10 +70,12 @@ const Footer = () => {
   }
   const [showModal, setShowModal] = useState(false)
   const showDataModal = () => {
+    console.log('show modal fire', showModal)
     setShowModal(!showModal)
-    if (showModal) {
+
+    /*  if (showModal) {
       setShowModal(false)
-    }
+    } */
   }
   return (
     <>
@@ -95,7 +97,7 @@ const Footer = () => {
               onClick={showDataModal}
               type="button"
             >
-              <ChevronUpIcon width={20} height={20} />
+              <ChevronUpIcon width={20} height={20} onClick={showDataModal} />
             </button>
           </div>
         </div>
@@ -296,7 +298,11 @@ const Footer = () => {
             </button>
           </div>
         </div> */}
-        {showModal === true ? <ImportantNoticeData /> : ''}
+        {showModal === true ? (
+          <ImportantNoticeData closeModal={showDataModal} />
+        ) : (
+          ''
+        )}
       </div>
     </>
   )
