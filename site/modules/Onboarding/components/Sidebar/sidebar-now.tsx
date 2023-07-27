@@ -25,6 +25,16 @@ const Sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
   const openImportantNotices = () => {
     setShow(!show)
   }
+
+  const [showModal, setShowModal] = useState(false)
+  const showDataModal = () => {
+    console.log('show modal fire', showModal)
+    setShowModal(!showModal)
+
+    /*  if (showModal) {
+      setShowModal(false)
+    } */
+  }
   return (
     <>
       <div className="sm:w-[235px]  flex pt-4 sm:justify-center w-full">
@@ -141,7 +151,7 @@ const Sidebar: React.FC<sidebarProps> = ({ name, phone }) => {
           ''
         )}
       </div>
-      {show === true ? <ImportantNoticeData /> : ''}
+      {show === true ? <ImportantNoticeData closeModal={showDataModal} /> : ''}
     </>
   )
 }
