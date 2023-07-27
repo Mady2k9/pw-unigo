@@ -13,7 +13,7 @@ const items = [
   {
     title: 'Who all can apply for PW Marvels?',
     description:
-      'Any student studying in Class 8th to 10th can apply for the PW Marvels. In order to nominate he/she must have proved himself/herself on National and International level examination/scholarships/awards mentioned in our eligibility criteria.',
+      'Any student studying in Class 8th to 11th can apply for the PW Marvels. In order to nominate he/she must have proved himself/herself on National and International level examination/scholarships/awards mentioned in our eligibility criteria.',
   },
   {
     title: 'How will PW decide who all should be rewarded?',

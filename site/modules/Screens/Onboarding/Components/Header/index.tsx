@@ -203,26 +203,24 @@ const Header: React.FC<HeaderProps> = ({
                   <Typography variant="small" weight={500}>
                     <ol className="list-decimal">
                       <li className="py-3">
-                        Announcement for Registration- 1st JUNE 2023
+                        Announcement for Registration- 1st August 2023
                       </li>
                       <li className="py-3">
-                        LAST date for Nomination- 31st November 2023
+                        LAST date for Nomination- 31st December 2023
                       </li>
                       <li className="py-3">
-                        Announcement of stage 1 qualified students- 10th
-                        december 2023
+                        Announcement of stage 1 qualified students- 14th january
+                        2024
                       </li>
                       <li className="py-3">
-                        Interview round for Qualified students- In month of
-                        December to january
+                        Interaction round for Qualified students- In month of
+                        January 2024 to February 2024
                       </li>
                       <li className="py-3">
-                        Final Result declaration- last week of January or 1st
-                        week of february
+                        Final Result declaration - within february 2024
                       </li>
                       <li className="py-3">
-                        PW marvels felicitation- Last week of February or 1 week
-                        of march
+                        PW marvels felicitation - within february 2024
                       </li>
                     </ol>
                   </Typography>
@@ -234,26 +232,28 @@ const Header: React.FC<HeaderProps> = ({
       ) : (
         ''
       )}
-      <div className="sm:hidden fixed top-[90%] w-full z-50 p-3">
-        {!hideSubmitButton && (
-          <Button
-            onClick={
-              navBarText === 'Edit'
-                ? () => handleEditForm(navBarText)
-                : handleSubmitForm
-            }
-            stretch
-            variant={navBarText === 'Edit' ? 'outline' : 'primary'}
-            preIcon={
-              navBarText === 'Edit' ? (
-                <PencilSquareIcon className="text-primary" width={20} />
-              ) : null
-            }
-            disabled={shouldDisabled}
-          >
-            {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
-          </Button>
-        )}
+      <div className="sm:hidden fixed bottom-[3%] z-50 w-full p-3">
+        <div className="mx-auto w-[120px]">
+          {!hideSubmitButton && (
+            <Button
+              onClick={
+                navBarText === 'Edit'
+                  ? () => handleEditForm(navBarText)
+                  : handleSubmitForm
+              }
+              stretch
+              variant={navBarText === 'Edit' ? 'outline' : 'primary'}
+              preIcon={
+                navBarText === 'Edit' ? (
+                  <PencilSquareIcon className="text-primary" width={20} />
+                ) : null
+              }
+              disabled={shouldDisabled}
+            >
+              {navBarText === 'Edit' ? ' Edit Form' : 'Submit'}
+            </Button>
+          )}
+        </div>
       </div>
     </>
   )

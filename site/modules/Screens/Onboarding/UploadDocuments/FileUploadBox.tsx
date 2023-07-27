@@ -1,6 +1,6 @@
 import { Button, Loader, Typography, useUI } from '@components/ui'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cn from 'clsx'
 import { uploadFile } from '@modules/auth/lib'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
@@ -10,6 +10,8 @@ import useNotify, { NotificationEnums } from '@lib/useNotify'
 import uuid from 'react-uuid'
 import { ActionModal } from '@components/ui/Modal'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+
+const ACCEPTED_FILE_TYPE = ['pdf','jpeg','png', 'jpg']
 
 type FileUploadBoxProps = {
   fileHelperText?: string
@@ -30,10 +32,10 @@ const FileUploadBox = ({
   onEditCallBack = () => {},
   isRegistrationEnded = false,
 }: FileUploadBoxProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null)
   // const [files, setFiles] = useState<FileList | null>()
   const id = uuid()
   const [uploadedFileData, setUploadedFileData] = useState<any>(null)
-  console.log('uploadedFileData: ', uploadedFileData)
   const [isUploading, setIsUploading] = useState(false)
   const { showNotification } = useNotify()
   // const [uploadedFile, setUploadedFile] = useState<any>(null)
@@ -84,6 +86,17 @@ const FileUploadBox = ({
           type: NotificationEnums.ERROR,
           title: 'File size is greater than mentioned size'
         })
+        if (fileInputRef?.current?.value) {
+          fileInputRef.current.value = ''
+        }
+      } else if (!ACCEPTED_FILE_TYPE.includes(file?.name?.split('.')?.pop() as string)) {
+        showNotification({
+          type: NotificationEnums.ERROR,
+          title: 'Invalid file Type'
+        })
+        if (fileInputRef?.current?.value) {
+          fileInputRef.current.value = ''
+        }
       } else {
         onFileUpload(e.target.files)
       }
@@ -129,25 +142,36 @@ const FileUploadBox = ({
 
   return (
     <FileUploadWrapper wrapperClass={wrapperClass} aadharText={aadharText}>
-      <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
-      <div className="relative border-indigo-500 rounded-md py-1 px-4 border my-2 ">
-        {isUploading ? (
-          <div className="flex items-center">
-            <span className="mr-2 text-indigo-500">Uploading</span>
-            <Loader />
+      {
+        isRegistrationEnded ? (
+          <div className='bg-indigo-500 opacity-[0.2] flex items-center mb-2 ml-2 py-2 rounded-md cursor-not-allowed'>
+            <Image src="/eye.svg" alt="upload icon" height={20} width={36} />
           </div>
         ) : (
-          <>
-            <div className="text-indigo-500 cursor-pointer">Choose File</div>
-            <input
-              type="file"
-              accept=".jpeg,.png,.pdf"
-              className="absolute inset-0 opacity-0"
-              onChange={onFileChange}
-            />
-          </>
-        )}
-      </div>
+        <>
+          <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
+          <div className="relative border-indigo-500 rounded-md py-1 px-4 border my-2 ">
+            {isUploading ? (
+              <div className="flex items-center">
+                <span className="mr-2 text-indigo-500">Uploading</span>
+                <Loader />
+              </div>
+            ) : (
+              <>
+                <div className="text-indigo-500 cursor-pointer">Choose File</div>
+                <input
+                  type="file"
+                  accept=".jpeg,.png,.pdf,.jpg"
+                  className="absolute inset-0 opacity-0"
+                  onChange={onFileChange}
+                  ref={fileInputRef}
+                />
+              </>
+            )}
+          </div>
+        </>
+        )
+      }
       {fileHelperText && (
         <div className="text-[10px] text-[#757575] text-center">
           {fileHelperText}
@@ -157,77 +181,77 @@ const FileUploadBox = ({
   )
 }
 
-const FileSelected = ({
-  files,
-  fileHelperText,
-  onEdit,
-  onUploadSucces,
-}: {
-  files: FileList
-  fileHelperText?: string
-  onEdit: () => void
-  onUploadSucces: (res: UploadedFileResponse) => void
-}) => {
-  const { showNotification } = useNotify()
-  const [isUploading, setIsUploading] = useState(false)
-  const [uploadedFile, setUploadedFile] = useState<any>(null)
-  const onFileUpload = async () => {
-    setIsUploading(true)
-    try {
-      const formData = new FormData()
-      for (let file in files) {
-        if (files.hasOwnProperty(file)) {
-          formData.append('file', files[file as any])
-        } else {
-          break
-        }
-      }
-      const randomId = localStorage.getItem('randomId') || ''
-      try {
-        const { data } = await uploadFile(formData, randomId)
-        if (data.success) {
-          onUploadSucces(data.data)
-          setUploadedFile(data.data)
-        }
-      } catch (error: any) {
-        showNotification({
-          type: NotificationEnums.ERROR,
-          title: error?.message,
-        })
-      }
-    } catch (err) {
-      console.error(err)
-    } finally {
-      setIsUploading(false)
-    }
-  }
+// const FileSelected = ({
+//   files,
+//   fileHelperText,
+//   onEdit,
+//   onUploadSucces,
+// }: {
+//   files: FileList
+//   fileHelperText?: string
+//   onEdit: () => void
+//   onUploadSucces: (res: UploadedFileResponse) => void
+// }) => {
+//   const { showNotification } = useNotify()
+//   const [isUploading, setIsUploading] = useState(false)
+//   const [uploadedFile, setUploadedFile] = useState<any>(null)
+//   const onFileUpload = async () => {
+//     setIsUploading(true)
+//     try {
+//       const formData = new FormData()
+//       for (let file in files) {
+//         if (files.hasOwnProperty(file)) {
+//           formData.append('file', files[file as any])
+//         } else {
+//           break
+//         }
+//       }
+//       const randomId = localStorage.getItem('randomId') || ''
+//       try {
+//         const { data } = await uploadFile(formData, randomId)
+//         if (data.success) {
+//           onUploadSucces(data.data)
+//           setUploadedFile(data.data)
+//         }
+//       } catch (error: any) {
+//         showNotification({
+//           type: NotificationEnums.ERROR,
+//           title: error?.message,
+//         })
+//       }
+//     } catch (err) {
+//       console.error(err)
+//     } finally {
+//       setIsUploading(false)
+//     }
+//   }
 
-  if (uploadedFile) {
-    return (
-      <FileUploaded
-        files={uploadedFile}
-        fileHelperText={fileHelperText}
-        onEdit={onEdit}
-      />
-    )
-  }
-  return (
-    <>
-      <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
-      <Button variant="secondary" className="my-2" onClick={onFileUpload}>
-        {isUploading ? (
-          <div className="flex items-center">
-            <span className="mr-2">Uploading</span>
-            <Loader />
-          </div>
-        ) : (
-          'Upload File'
-        )}
-      </Button>
-      <div className="text-[10px] text-[#757575]">{files[0].name}</div>
-    </>
-  )
-}
+//   if (uploadedFile) {
+//     return (
+//       <FileUploaded
+//         files={uploadedFile}
+//         fileHelperText={fileHelperText}
+//         onEdit={onEdit}
+//       />
+//     )
+//   }
+//   return (
+//     <>
+//       <Image src="/upload.svg" alt="upload icon" height={40} width={40} />
+//       <Button variant="secondary" className="my-2" onClick={onFileUpload}>
+//         {isUploading ? (
+//           <div className="flex items-center">
+//             <span className="mr-2">Uploading</span>
+//             <Loader />
+//           </div>
+//         ) : (
+//           'Upload File'
+//         )}
+//       </Button>
+//       <div className="text-[10px] text-[#757575]">{files[0].name}</div>
+//     </>
+//   )
+// }
 
 const textTrim = (text: string = '') => {
   return text?.length > 10

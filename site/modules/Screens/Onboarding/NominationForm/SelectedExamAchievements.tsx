@@ -116,8 +116,7 @@ function SelectedExamAchievements({
         el?.examGroup === groupName &&
         el?.examCategory === examCategory &&
         el?.year == year &&
-        el?.criteria !== criteria &&
-        el?.achievementName !== competitionName
+        (el?.criteria !== criteria || el?.achievementName !== competitionName)
     )
     if (isFound) {
       return true
@@ -144,7 +143,7 @@ function SelectedExamAchievements({
         </div>
       </div>
       {isAccordionOpen && (
-        <div className="text-[#757575] overflow-x-auto">
+        <div className="text-[#757575] overflow-x-auto lg:max-w-full  sm:max-w-[468px]">
           <div className="text-[#1B2124] font-bold flex py-4 mt-5 border-b-2 min-w-[590px] sm:border-0 border border-[#EFEFEF] rounded-t-lg">
             <div className="w-[10%] p-2">Group</div>
             <div className="w-[90%]">

@@ -66,7 +66,6 @@ const ProfileDetails = () => {
         setNavBarText('Edit')
         updateCompletedSteps(Math.max(completedStepTill, step))
         setSelectedClass(selectedClass)
-        console.log('selectedClass: ', selectedClass)
       }
     }
     fetchAlternateNumber()
@@ -167,6 +166,7 @@ const ProfileDetails = () => {
           hideSubmitButton={draftData?.isRegistrationEnded}
         />
       }
+      isRegistrationEnded={draftData?.isRegistrationEnded}
       navBarText={navBarText}
     >
       <ProfileForm

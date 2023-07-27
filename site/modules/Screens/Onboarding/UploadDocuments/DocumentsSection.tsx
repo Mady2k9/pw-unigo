@@ -6,8 +6,8 @@ import { PencilSquareIcon } from '@heroicons/react/24/solid'
 
 const INSRUCTIONS = [
   'For report card please upload the PDF with all the pages including front section of your report card .',
-  'Passport size photo file size should not exceed more than 20 KB',
-  'Upload front and back side of Adhar card and the file size should not exceed more than 20 KB each',
+  'Passport size photo file size should not exceed more than 5 MB',
+  'Upload front and back side of Adhar card and the file size should not exceed more than 5 MB each',
   'Upload supporting documents i.e. certificate in front of exams selected.',
 ]
 
@@ -71,7 +71,7 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             </ol>
           </div>
           <div className="p-3 sm:p-6 flex rounded-md sm:bg-white bg-[#F8F8F8] sm:mt-6 mt-1 mb-3">
-            <div className="text-base font-bold">Personal Information</div>
+            <div className="text-base font-bold">Student Documents</div>
             <div className="text-[#BF2734] pt-1 text-xs ml-1">
               (*Mandatory Fields)
             </div>
@@ -213,11 +213,10 @@ const DocumentsSection: React.FC<DocumentsSectionProps> = ({
                     year,
                     achievementName,
                   } = data
-                  console.log('data:dhskd ==>', data)
                   return (
                     <div
                       className="flex text-[#757575] xl:w-full w-[850px] sm:border-0 border border-[#EFEFEF] border-b-[#ffffff]"
-                      key={criteria}
+                      key={`${achievementName}__${index}`}
                     >
                       <div className="w-[6%] p-2">{index + 1}</div>
                       <div className="w-[11%] p-2">{year}</div>
