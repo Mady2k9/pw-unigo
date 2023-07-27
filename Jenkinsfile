@@ -18,7 +18,7 @@ pipeline {
     }
   }
   environment {
-    serviceName = 'pw-sip'
+    serviceName = ''
     envName = getEnvName()
   }
   stages{

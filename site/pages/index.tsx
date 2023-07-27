@@ -10,19 +10,7 @@ import Why from '@modules/components/Why'
 
 const Home = () => {
   return (
-    <div className="bg-[#f8f8f8]">
-      <div className="mb-3 sticky top-0 bg-white z-50">
-        <Header variant="SIP" />
-      </div>
-      <Hero />
-      <div className="bg-white">
-        <About />
-      </div>
-      <School />
-      <Features />
-      <Why />
-      <Footer variant="LIVE" />
-    </div>
+   <h1>PW UNIGO</h1>
   )
 }
 
