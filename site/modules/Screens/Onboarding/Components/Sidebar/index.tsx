@@ -12,7 +12,7 @@ export interface sidebarProps {
   name: string
   phone: string
   email: string
-  openImportantNotices: any
+  closeModal: any
   navBarText: string
   isRegistrationEnded: boolean
 }
@@ -40,7 +40,8 @@ export const REDIRECTION_DATA = [
 ]
 
 const Sidebar: React.FC<sidebarProps> = (props) => {
-  const { name, phone, email, openImportantNotices, navBarText, isRegistrationEnded } = props
+  const { name, phone, email, closeModal, navBarText, isRegistrationEnded } =
+    props
   const router = useRouter()
   const [isRedirectionModalOpen, setIsRedirectionModalOpen] = useState(false)
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
@@ -62,6 +63,10 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
   )
 
   // const [nominateAgain, setNominateAgain] = useState(false)
+
+  const handleClickNotice = () => {
+    closeModal()
+  }
 
   const toggleModal = () => {
     setIsRedirectionModalOpen(false)
@@ -140,7 +145,11 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                     isProfileDetailsRoute ? s.icon_container_active : ''
                   }`}
                   onClick={() => {
-                    if (isRegistrationEnded || ((completedStepTill === 3) && (navBarText === 'Edit' || isUploadDocRoute))) {
+                    if (
+                      isRegistrationEnded ||
+                      (completedStepTill === 3 &&
+                        (navBarText === 'Edit' || isUploadDocRoute))
+                    ) {
                       router.push('/profile-details')
                     } else if (!isProfileDetailsRoute) {
                       setIsRedirectionModalOpen(true)
@@ -159,13 +168,18 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 </span>
                 <div
                   className={`${s.icon_container} ${
-                    isNominationFormRoute ? s.icon_container_active :
-                    completedStepTill < 2
+                    isNominationFormRoute
+                      ? s.icon_container_active
+                      : completedStepTill < 2
                       ? s.icon_container_disabled
                       : ''
                   }`}
                   onClick={() => {
-                    if (isRegistrationEnded || (completedStepTill === 3 && (navBarText === 'Edit' || isUploadDocRoute))) {
+                    if (
+                      isRegistrationEnded ||
+                      (completedStepTill === 3 &&
+                        (navBarText === 'Edit' || isUploadDocRoute))
+                    ) {
                       router.push('/nomination-form')
                     } else if (
                       !isNominationFormRoute &&
@@ -206,13 +220,17 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 </span>
                 <div
                   className={`${s.icon_container} ${
-                    isUploadDocRoute ? s.icon_container_active :
-                    completedStepTill !== 3
+                    isUploadDocRoute
+                      ? s.icon_container_active
+                      : completedStepTill !== 3
                       ? s.icon_container_disabled
                       : ''
                   }`}
                   onClick={() => {
-                    if (isRegistrationEnded || (completedStepTill === 3 && navBarText === 'Edit')) {
+                    if (
+                      isRegistrationEnded ||
+                      (completedStepTill === 3 && navBarText === 'Edit')
+                    ) {
                       router.push('/upload-document')
                     } else if (!isUploadDocRoute && completedStepTill === 3) {
                       setRedirectionData(REDIRECTION_DATA[2])
@@ -292,7 +310,7 @@ const Sidebar: React.FC<sidebarProps> = (props) => {
                 alt="animated"
               />
               <p
-                onClick={openImportantNotices}
+                onClick={handleClickNotice}
                 className=" text-[#3D3D3D] self-center cursor-pointer"
               >
                 Important Notices

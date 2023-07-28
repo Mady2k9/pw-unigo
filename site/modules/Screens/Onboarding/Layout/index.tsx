@@ -16,7 +16,7 @@ const Layout = ({
   isRegistrationEnded,
 }: LayoutProps) => {
   const [userData, setUserData] = useState<any>({})
-  const [show, setShow] = useState(false)
+  /* const [show, setShow] = useState(false) */
 
   useEffect(() => {
     const user = localStorage.getItem('user')
@@ -24,9 +24,9 @@ const Layout = ({
       setUserData(JSON.parse(user))
     }
   }, [])
-  const openImportantNotices = () => {
+  /* const openImportantNotices = () => {
     setShow(!show)
-  }
+  } */
 
   const [showModal, setShowModal] = useState(false)
   const showDataModal = () => {
@@ -45,14 +45,18 @@ const Layout = ({
   return (
     <>
       {header}
-      {show === true ? <ImportantNoticeData closeModal={showDataModal} /> : ''}
+      {showModal === true ? (
+        <ImportantNoticeData closeModal={showDataModal} />
+      ) : (
+        ''
+      )}
 
       <div className="sticky left-0 h-[calc(100vh-80px)] sm:h-100vh sm:bg-[#f8f8f8] bg-white  z-19 sm:flex mt-[48px] sm:mt-0">
         <Sidebar
           isRegistrationEnded={isRegistrationEnded}
           name={name}
           phone={userData?.primaryNumber}
-          openImportantNotices={openImportantNotices}
+          closeModal={showDataModal}
           email={userData?.email}
           navBarText={navBarText}
         />
