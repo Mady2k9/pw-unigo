@@ -55,7 +55,10 @@ function ContentCountry() {
                 Colleges in Armenia
               </h1>
               <div className="p-4 md:flex border border-[#EFEFEF] md:mb-[14px] mb-[12px]">
-                <div>
+                <div
+                  className="object-left-top
+"
+                >
                   <img
                     src="/image.png"
                     className="sm:w-[154px] w-[89px] mr-4"
