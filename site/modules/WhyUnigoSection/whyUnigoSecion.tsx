@@ -13,19 +13,49 @@ function whyUnigoSecion() {
 
         <div className='sm:flex sm:text-[20px] text-[16px] font-bold sm:justify-between sm:w-[688px] w-[296px] items-center m-auto'> 
             <div>
-            <p className='mb-[10px]'>Counselling Support</p>
-            <p className='mb-[10px]'>Country Selection Support</p>
-            <p className='mb-[10px]'>  University Selection Support</p>
-            <p className='mb-[10px]'>Application Assistance</p>
-            <p className='mb-[10px]'>Post Graduation Support</p>
+              <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Counselling Support</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Country Selection Support</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>  University Selection Support</p>
+            </div>
+            <div className='flex mb-[10px]'>  
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Application Assistance</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Post Graduation Support</p>
+            </div>
             </div>
 
             <div>
-            <p className='mb-[10px]'>Visa Support</p>
-            <p className='mb-[10px]'>Travel & Accommodation</p>
-            <p className='mb-[10px]'>Pre Departure Orientation</p>
-            <p className='mb-[10px]'>Post Arrival Support</p>
-            <p className='mb-[10px]'>Scholarship & Financial Aid</p>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Visa Support</p>
+            </div>
+            <div className='flex mb-[10px]'>  
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Travel & Accommodation</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Pre Departure Orientation</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Post Arrival Support</p>
+            </div>
+            <div className='flex mb-[10px]'> 
+                <img src="check_circle.svg" alt="check circle " />
+            <p className=''>Scholarship & Financial Aid</p>
+            </div>
             </div>
         </div>
     </div>

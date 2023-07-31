@@ -15,16 +15,16 @@ import  CountryBanner from './countryBanner'
 const Home = () => {
   return (
     <>
-  {/* <div>
+  <div>
      
-      <TopUniversity />
+      {/* <TopUniversity /> */}
       <GlobalEducation />
        <WhyUnigoSection />
-  </div> */}
+  </div>
 
-<div>
+{/* <div>
   <CountryBanner />
-</div>
+</div> */}
 
 </>
   )
