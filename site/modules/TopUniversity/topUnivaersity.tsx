@@ -4,10 +4,10 @@ import TopBannerImage from '../../public/Hero.png'
 
 function topUnivaersity() {
   return (
-    <div>
+    <div >
     <Image  src={TopBannerImage} alt='Top-banner'/>
 </div>
   )
 }
 
-export default topUnivaersity
+export default topUnivaersity 

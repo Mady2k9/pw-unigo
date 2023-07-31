@@ -23,32 +23,32 @@ const header = ({ handleState }: { handleState: any }) => {
           </div>
           <div className=" w-fit h-full lg:px-[100px] md:flex hidden">
             <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+              <div className="m-auto text-[16px] font-[600] hover:bg-[#FEF6F7]" >
                 <Link href={'#'}>Russia</Link>
               </div>
             </div>
             <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+              <div className="m-auto text-[16px] font-[600]  hover:bg-[#FEF6F7]">
                 <Link href={'#'}>Armenia</Link>
               </div>
             </div>
             <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+              <div className="m-auto text-[16px] font-[600]  hover:bg-[#FEF6F7]">
                 <Link href={'#'}>Georgia</Link>
               </div>
             </div>
             <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+              <div className="m-auto text-[16px] font-[600]  hover:bg-[#FEF6F7]">
                 <Link href={'#'}>Kazakhstan</Link>
               </div>
             </div>
-            <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+            <div className="h-full flex px-[10px] py-[12px] hover:bg-[#FEF6F7]">
+              <div className="m-auto text-[16px] font-[600]  hover:bg-[#FEF6F7]">
                 <Link href={'#'}>Kyrgyzstan</Link>
               </div>
             </div>
-            <div className="h-full flex px-[10px] py-[12px]">
-              <div className="m-auto text-[16px] font-[600]">
+            <div className="h-full flex px-[10px] py-[12px] hover:bg-[#FEF6F7]">
+              <div className="m-auto text-[16px] font-[600]  ">
                 <Link href={'#'}>Uzbekistan</Link>
               </div>
             </div>
