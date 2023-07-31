@@ -1,4 +1,4 @@
-import { Footer } from '@components/common'
+
 import Header from './header'
 import { Loader, Typography } from '@components/ui'
 import Phn from './assets/phn_icon.svg'
@@ -17,6 +17,7 @@ import { useState } from 'react'
 import Close from './assets/Close.svg'
 import Image from 'next/image'
 import SixthComp from './sixthComp'
+import Footer from './footer'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -80,6 +81,7 @@ const Home = () => {
         <FourthComp />
         <FithComp />
         <SixthComp />
+        <Footer/>
       </div>
       {/* 
 <div>
