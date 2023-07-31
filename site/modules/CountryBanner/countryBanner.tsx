@@ -14,12 +14,21 @@ function CountryBanner() {
     </div>
 
     <div className=' px-[160px] bg-white h-[48px] mb-[24px]'>
-        <div className='flex justify-between w-[60%] text-[#757575] py-[10px]' >
-        <p className='text-[#1B2124]'>Why study in Armenia</p>
-        <div>Colleges</div>
-        <p>Cost</p>
-        <p>Requirements</p>
-        <p>FAQs</p>
+
+        <div className='flex px-[160px] justify-start' >
+
+        <div >
+        <p className='text-[#1B2124] p-[24px]'>Why study in Armenia</p>
+        <span className='w-[100px]'><hr /> </span>
+        </div>
+
+        <div className='flex w-[60%] ml-4 justify-between '>
+        <p className='p-[24px]'>Colleges</p>
+        <p className='p-[24px]'>Cost</p>
+        <p className='p-[24px]'>Requirements</p>
+        <p className='p-[24px]'>FAQs</p>
+        </div>
+
         </div>
     </div>
     <WhyStudyCountry />
