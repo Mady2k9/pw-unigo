@@ -12,7 +12,7 @@ import WhyUnigoSection from './whyUnigoSection'
 import CountryBanner from '../modules/CountryBanner'
 import MiddleNav from '../modules/MiddleNav'
 import CountryColleges from '../modules/CountryColleges'
-import WhyStudyCountry from '../modules/WhyStudyCountry'
+import ContentCountry from '../modules/ContentCountry'
 
 const Home = () => {
   return (
@@ -20,8 +20,8 @@ const Home = () => {
       <Header variant="SIP" />
       <CountryBanner />
       <MiddleNav />
-      <WhyStudyCountry />
-      <CountryColleges />
+      <ContentCountry />
+      {/* <CountryColleges /> */}
       <Footer variant="SIP" />
     </>
   )
