@@ -1,1 +1,7 @@
 export { default as AuthModule } from './auth'
+export { default as GlobalEducation } from './GlobalEducation'
+export { default as TopUniversity } from './TopUniversity'
+export { default as WhyUnigoSection } from './WhyUnigoSection'
+export { default as CountryBanner } from './CountryBanner'
+export { default as CountryColleges } from './CountryColleges'
+export { default as WhyStudyCountry } from './WhyStudyCountry'
