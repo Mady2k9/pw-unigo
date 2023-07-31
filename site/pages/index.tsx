@@ -7,10 +7,26 @@ import { Features } from '@modules/components/Features'
 import Hero from '@modules/components/Hero'
 import School from '@modules/components/School/School'
 import Why from '@modules/components/Why'
+import TopUniversity  from './topUniversity'
+import GlobalEducation from './globalEducation'
+import  WhyUnigoSection  from './whyUnigoSection'
+import  CountryBanner from './countryBanner'
 
 const Home = () => {
   return (
-   <h1>PW UNIGO</h1>
+    <>
+  {/* <div>
+     
+      <TopUniversity />
+      <GlobalEducation />
+       <WhyUnigoSection />
+  </div> */}
+
+<div>
+  <CountryBanner />
+</div>
+
+</>
   )
 }
 
