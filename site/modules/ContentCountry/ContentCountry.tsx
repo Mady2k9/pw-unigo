@@ -5,7 +5,7 @@ function ContentCountry() {
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
-        <Container className="sm:flex w-full max-w-6xl px-4">
+        <Container className="sm:flex w-full max-w-7xl px-4">
           <div className="sm:w-8/12 w-full flex-col sm:pr-2 py-4">
             <div className="p-[24px] bg-white rounded-md drop-shadow-md">
               <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
@@ -52,13 +52,17 @@ function ContentCountry() {
             </div>
             <div className="p-[24px] mt-4 bg-white rounded-md drop-shadow-md">
               <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
-                Why Study in Armenia?
+                Colleges in Armenia
               </h1>
-              <div className="p-[16px] md:flex border border-[#EFEFEF] md:mb-[14px] mb-[12px]">
+              <div className="p-4 md:flex border border-[#EFEFEF] md:mb-[14px] mb-[12px]">
                 <div>
-                  <img src="/CountryImageBanner.png" alt="office" />
+                  <img
+                    src="/image.png"
+                    className="sm:w-[154px] w-[89px] mr-4"
+                    alt="office"
+                  />
                 </div>
-                <div className="w-[490px] h-[154px] ml-[16px]">
+                <div className="">
                   <p className="rounded-lg bg-[#F1EFFF] text-[#5A4BDA] mt-[10px] text-[12px] font-[600] md:w-[59px] w-[147px] mb-[6px] text-center leading-[18px]">
                     Private
                   </p>
@@ -66,10 +70,15 @@ function ContentCountry() {
                     American University of Armenia
                   </p>
                   <div className=" leading-[22px]">
-                    <p className="mb-[10px]">
-                      {' '}
-                      "icon" 40 Baghramyan Ave, Yerevan 0019, Armenia
-                    </p>
+                    <div className="mb-[10px] flex">
+                      <img
+                        src="/map-pin.svg"
+                        className="object-left-top
+"
+                        alt="address"
+                      />
+                      40 Baghramyan Ave, Yerevan 0019, Armenia
+                    </div>
                     <p className="mb-[10px]"> "icon" +374 60 69 40 40</p>
                     <p>"icon" info@aua.am</p>
                   </div>
