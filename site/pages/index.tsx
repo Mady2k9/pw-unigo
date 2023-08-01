@@ -23,10 +23,6 @@ const Home = () => {
       
   </div>
 
-{/* <div>
-  <CountryBanner />
-</div> */}
-
 </>
   )
 }
