@@ -1,13 +1,12 @@
 import CountryCard from './countryCard'
-import logo1 from './assets/image 27.png'
-import logo2 from './assets/image 28.png'
-import logo3 from './assets/image 29.png'
-import logo4 from './assets/image 30.png'
-import logo5 from './assets/image 31.png'
-import logo6 from './assets/image 32.png'
+import logo1 from '../../assets/images/image 27.png'
+import logo2 from '../../assets/images/image 28.png'
+import logo3 from '../../assets/images/image 29.png'
+import logo4 from '../../assets/images/image 30.png'
+import logo5 from '../../assets/images/image 31.png'
+import logo6 from '../../assets/images/image 32.png'
 
-
-const FithComp = () => {
+const PopularCountries = () => {
   return (
     <>
       <div className="w-screen h-fit flex xl:flex-none xl:px-[152px] xl:py-[40px] font-[Gilroy]">
@@ -33,4 +32,4 @@ const FithComp = () => {
     </>
   )
 }
-export default FithComp
+export default PopularCountries

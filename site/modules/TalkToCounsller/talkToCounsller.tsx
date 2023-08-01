@@ -1,7 +1,7 @@
-import pic from './assets/image-4.png'
+import pic from '../../assets/images/image-4.png'
 import Image from 'next/image'
 import { TextInput } from '@components/ui'
-const FourthComp = () => {
+const TalkToCounsller = () => {
   return (
     <>
       <div className="my-auto w-screen px-[16px]  py-[24px] xl:px-[160px] bg-white h-fit sm:h-[524px] flex">
@@ -117,4 +117,4 @@ const FourthComp = () => {
     </>
   )
 }
-export default FourthComp
+export default TalkToCounsller

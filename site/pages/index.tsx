@@ -1,7 +1,6 @@
-import { Footer } from '@components/common'
-import Header from './header'
+import Header from '../modules/Header'
 import { Loader, Typography } from '@components/ui'
-import Phn from './assets/phn_icon.svg'
+import Phn from '../assets/images/phn_icon.svg'
 import About from '@modules/components/About'
 import { Features } from '@modules/components/Features'
 import Hero from '@modules/components/Hero'
@@ -11,12 +10,13 @@ import TopUniversity from './topUniversity'
 import GlobalEducation from './globalEducation'
 import WhyUnigoSection from './whyUnigoSection'
 import CountryBanner from './countryBanner'
-import FourthComp from './fourthComp'
-import FithComp from './fithComp'
+import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
+import FithComp from '../modules/PopularCountries/popularCountries'
 import { useState } from 'react'
-import Close from './assets/Close.svg'
+import Close from '../assets/images/Close.svg'
 import Image from 'next/image'
-import SixthComp from './sixthComp'
+import SixthComp from '../modules/LovedByStudents/lovedByStudents'
+import Footer from '../modules/Footer'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -28,7 +28,7 @@ const Home = () => {
     <>
       <div className="relative">
         {isOpen ? (
-          <div className="sticky left-0 bg-white sm:w-[80%] w-full flex flex-col justify-between h-screen z-[100] top-0 p-[16px] transition-all overscroll-none">
+          <div className="sticky left-0 bg-white sm:w-[80%] w-full flex flex-col justify-between h-screen z-[100] top-0 p-[16px] transition-all duration-500 overscroll-none">
             <div>
               <div className="py-[8px]">
                 <button onClick={handleOpen}>
@@ -80,6 +80,7 @@ const Home = () => {
         <FourthComp />
         <FithComp />
         <SixthComp />
+        <Footer />
       </div>
       {/* 
 <div>

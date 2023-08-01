@@ -3,7 +3,7 @@ import TopUniversity from '../modules/TopUniversity'
 
 function topUniversity() {
   return (
-    <div>
+    <div className='w-screen'>
         <TopUniversity />
     </div>
   )
