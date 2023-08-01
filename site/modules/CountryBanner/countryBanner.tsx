@@ -1,39 +1,26 @@
 import React from 'react'
 import Image from 'next/image'
-import CountryBanners from "../../public/CountryImageBanner.png"
-import CountryColleges  from '../CountryColleges'
-import  WhyStudyCountry  from '../WhyStudyCountry'
+import CountryBanners from '../../public/CountryImageBanner.png'
 
 function CountryBanner() {
   return (
-    <div className='bg-[#F8F8F8]'>
-    <div>
-        <div className='relative '> <Image  src={CountryBanners} alt='Main Banner'/>
-        </div>
-        <div className='absolute  top-[25%] left-0 right-0 text-white text-[40px] justify-center flex '>Study MBBS From Armenia </div>
-    </div>
-
-    <div className=' px-[160px] bg-white h-[48px] mb-[24px]'>
-
-        <div className='flex px-[160px] justify-start' >
-
-        <div >
-        <p className='text-[#1B2124] p-[24px]'>Why study in Armenia</p>
-        <span className='w-[100px]'><hr /> </span>
-        </div>
-
-        <div className='flex w-[60%] ml-4 justify-between '>
-        <p className='p-[24px]'>Colleges</p>
-        <p className='p-[24px]'>Cost</p>
-        <p className='p-[24px]'>Requirements</p>
-        <p className='p-[24px]'>FAQs</p>
-        </div>
-
-        </div>
-    </div>
-    <WhyStudyCountry />
-    <CountryColleges />
-    </div>
+    <>
+      <img
+        className="w-full sm:block hidden"
+        src="/banner-inner-web.png"
+        alt="Main Banner"
+      />
+      <img
+        className="w-full sm:hidden block"
+        src="/banner-inner-mweb.png"
+        alt="Main Banner"
+      />
+      <div className="absolute 2xl:top-[320px] xl:top-[280px] lg:top-[200px] sm:top-[160px] top-[250px] text-white sm:leading-[50px] sm:text-[40px] text-[24px] leading-[32px] font-[700] justify-center flex text-center w-full">
+        Study MBBS From
+        <br />
+        Armenia
+      </div>
+    </>
   )
 }
 
