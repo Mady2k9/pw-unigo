@@ -19,7 +19,7 @@ const PopularCountries = () => {
               Explore the countries we offer our services in
             </p>
           </div>
-          <div className="flex-wrap flex justify-center">
+          <div className="flex-wrap flex justify-between">
             <CountryCard logo={logo1} name={'Russia'} />
             <CountryCard logo={logo2} name={'Armenia'} />
             <CountryCard logo={logo3} name={'Georgia'} />
