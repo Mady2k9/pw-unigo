@@ -3,6 +3,7 @@ import Header from '@components/common/Header/Header'
 import CountryBanner from '../modules/CountryBanner'
 import MiddleNav from '../modules/MiddleNav'
 import ContentCountry from '../modules/ContentCountry'
+import Faq from 'modules/Faq'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <CountryBanner />
       <MiddleNav />
       <ContentCountry />
+      <Faq data={undefined} />
       <Footer variant="SIP" />
     </>
   )
