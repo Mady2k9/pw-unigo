@@ -249,6 +249,99 @@ function ContentCountry() {
               </div>
             </div>
             {/* div end - Colleges in Armenia  */}
+            {/* div start - Cost of studying in Armenia  */}
+            <div className="mt-4 p-[24px] bg-white rounded-md drop-shadow-md">
+              <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
+                Cost of studying in Armenia
+              </h1>
+
+              <table className="table-auto w-full border border-1 rounded-md">
+                <thead>
+                  <tr className="bg-[#F9FAFB] border-b border md:text-[12px] text-[10px] md:leading-[18px] leading-[16px]">
+                    <th className="p-3">LEVEL OF EDUCATION</th>
+                    <th className="p-3">COST FOR INDIAN STUDENTS</th>
+                  </tr>
+                </thead>
+                <tbody className="md:text-[14px] text-[12px] md:leading-[22px] leading-[18px]">
+                  <tr className="text-center  border-b border">
+                    <td className="p-3">Diploma</td>
+                    <td className="p-3">₹ 20,000 - 40,000</td>
+                  </tr>
+                  <tr className="text-center border-b border">
+                    <td className="p-3">Undergraduate Programs</td>
+                    <td className="p-3">₹ 20,000 - 40,000</td>
+                  </tr>
+                  <tr className="text-center border-b border">
+                    <td className="p-3">Postgraduate Programs</td>
+                    <td className="p-3">₹ 20,000 - 40,000</td>
+                  </tr>
+                  <tr className="text-center">
+                    <td className="p-3">English Language Courses</td>
+                    <td className="p-3">₹ 20,000 - 40,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {/* div end - Cost of studying in Armenia  */}
+            {/* div start - Requirements for studying in Armenia */}
+            <div className="mt-4 p-[24px] bg-white rounded-md drop-shadow-md">
+              <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
+                Requirements for studying in Armenia
+              </h1>
+              <div className="font-bold sm:text-[18px] text-[20px] sm:leading-[14px] leading-[22px]">
+                Bachelors Degree
+              </div>
+              <ul className="list-disc pl-4 mt-2 sm:text-[16px] text-[14px] sm:leading-[24px] leading-[22px]">
+                <li>Academic Requirements</li>
+                <ul className="list-disc pl-4 mt-1">
+                  <li>SAT</li>
+                  <li>ACT</li>
+                  <li>Advanced Placement</li>
+                </ul>
+                <li className="mt-2">Specific Tests</li>
+                <ul className="list-disc pl-4 mt-1">
+                  <li>
+                    Undergraduate Medicine and Health Sciences Admission Test
+                    (UMAT) for entry into medical courses.
+                  </li>
+                  <li>Law Admission Test (LAT) for entry into law courses.</li>
+                </ul>
+              </ul>
+              <div className="font-bold sm:text-[18px] text-[20px] sm:leading-[14px] leading-[22px] mt-3">
+                Masters Degree
+              </div>
+              <ul className="list-disc pl-4 mt-2 sm:text-[16px] text-[14px] sm:leading-[24px] leading-[22px]">
+                <li>
+                  Undergraduate qualification equivalent to a bachelor's degree,
+                  honours degree, or graduate diploma in Australia.
+                </li>
+                <li>IELTS Academic - 6.5 or TOEFL - 79</li>
+                <li>GRE/GMAT</li>
+                <li>References, statement of purpose & Resume</li>
+                <li>Work experience proof</li>
+                <li>
+                  A police check or a working with children check from your home
+                  country
+                </li>
+              </ul>
+              <div className="font-bold sm:text-[18px] text-[20px] sm:leading-[14px] leading-[22px] mt-3">
+                Doctorate
+              </div>
+              <ul className="list-disc pl-4 mt-2 sm:text-[16px] text-[14px] sm:leading-[24px] leading-[22px]">
+                <li>
+                  Honours degree, master's degree by coursework with a research
+                  component, or an equivalent certificate from a recognised
+                  university.
+                </li>
+                <li>IELTS Academic - 6.5 or TOEFL - 79</li>
+                <li>Work experience proof</li>
+                <li>
+                  A police check or a working with children check from your home
+                  country
+                </li>
+              </ul>
+            </div>
+            {/* div end - Requirements for studying in Armenia  */}
           </div>
           <div className="lg:w-4/12 sm:w-5/12 w-full sm:pl-2 py-4">
             <div className="sticky top-3 p-[24px] bg-white rounded-md drop-shadow-md">
