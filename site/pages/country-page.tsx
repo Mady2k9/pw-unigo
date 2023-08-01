@@ -1,21 +1,21 @@
-import { Footer } from '@components/common'
-import Header from '@components/common/Header/Header'
 import CountryBanner from '../modules/CountryBanner'
 import MiddleNav from '../modules/MiddleNav'
 import ContentCountry from '../modules/ContentCountry'
 import Faq from 'modules/Faq'
+import Header from '../modules/Header'
+import Footer from '../modules/Footer'
 
-const Home = () => {
+const CountryPage = () => {
   return (
     <>
-      <Header variant="SIP" />
+      <Header handleState={undefined} />
       <CountryBanner />
       <MiddleNav />
       <ContentCountry />
       <Faq data={undefined} />
-      <Footer variant="SIP" />
+      <Footer />
     </>
   )
 }
 
-export default Home
+export default CountryPage
