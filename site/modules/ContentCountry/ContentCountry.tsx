@@ -344,7 +344,7 @@ function ContentCountry() {
             {/* div end - Requirements for studying in Armenia  */}
           </div>
           <div className="lg:w-4/12 sm:w-5/12 w-full sm:pl-2 py-4">
-            <div className="sticky top-3 p-[24px] bg-white rounded-md drop-shadow-md">
+            <div className="sticky top-[135px] p-[24px] bg-white rounded-md drop-shadow-md">
               <h1 className="md:text-[24px]  text-[20px] font-bold mb-[10px] md:leading-[32px] leading-[30px]">
                 Talk to our counsellor
               </h1>
