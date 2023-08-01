@@ -1,7 +1,6 @@
-import { Footer } from '@components/common'
-import Header from '@components/common/Header/Header'
+import Header from '../modules/Header'
 import { Loader, Typography } from '@components/ui'
-
+import Phn from '../assets/images/phn_icon.svg'
 import About from '@modules/components/About'
 import { Features } from '@modules/components/Features'
 import Hero from '@modules/components/Hero'
@@ -11,19 +10,26 @@ import TopUniversity  from '../modules/TopUniversity'
 import GlobalEducation from '../modules/GlobalEducation'
 import  WhyUnigoSection  from '../modules/WhyUnigoSection'
 import  CountryBanner from '../modules/CountryBanner'
+import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
+import FithComp from '../modules/PopularCountries/popularCountries'
+import { useState } from 'react'
+import Close from '../assets/images/Close.svg'
+import Image from 'next/image'
+import SixthComp from '../modules/LovedByStudents/lovedByStudents'
+import Footer from '../modules/Footer'
 
 const Home = () => {
   return (
     <>
-  <div>
-     
+      <Header handleState={undefined} />
       <TopUniversity />
       <GlobalEducation />
-       <WhyUnigoSection />
-      
-  </div>
-
-</>
+      <WhyUnigoSection />
+      <FourthComp />
+      <FithComp />
+      <SixthComp />
+      <Footer />
+    </>
   )
 }
 
