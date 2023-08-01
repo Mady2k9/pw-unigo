@@ -5,7 +5,7 @@ import Faq from 'modules/Faq'
 import Header from '../modules/Header'
 import Footer from '../modules/Footer'
 
-const Home = () => {
+const CountryPage = () => {
   return (
     <>
       <Header handleState={undefined} />
@@ -18,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default CountryPage
