@@ -17,18 +17,22 @@ import Close from '../assets/images/Close.svg'
 import Image from 'next/image'
 import SixthComp from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
+import Faq from '../modules/Faq'
 
 const Home = () => {
   return (
     <>
+    
       <Header handleState={undefined} />
       <TopUniversity />
-      <GlobalEducation />
       <WhyUnigoSection />
+      <GlobalEducation />
       <FourthComp />
       <FithComp />
       <SixthComp />
+      <Faq data={undefined} />
       <Footer />
+
     </>
   )
 }

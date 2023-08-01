@@ -6,6 +6,7 @@ import YT from '../../assets/images/utube.svg'
 import Linnkedin from '../../assets/images/linkedin.svg'
 import TW from '../../assets/images/twitter.svg'
 import Tele from '../../assets/images/telegram.svg'
+import TalkToCounsllerButton from '../TalkCounsellerButton'
 const Footer = () => {
   return (
     <>
@@ -82,6 +83,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+<TalkToCounsllerButton />
     </>
   )
 }
