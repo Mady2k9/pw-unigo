@@ -15,7 +15,7 @@ function globalEducation() {
         </div>
 
         <div className='flex flex-wrap justify-around'>
-        <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] h-[136px] mb-4 '>
+        <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] mb-4 '>
                 <div className='sm:p-[24px] p-[16px] flex items-center justify-between'>
                 <div>
                 <Image height={56} width={56} src={FirstCardImage} alt='demo'/>
@@ -26,7 +26,7 @@ function globalEducation() {
                 </div>
                 </div>
             </div>
-            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] h-[136px] mb-4'>
+            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] mb-4'>
                 <div className='p-[24px] flex items-center justify-between'>
                 <div>
                 <Image  height={56} width={56} src={SecondCardImage} alt='demo'/>
@@ -37,7 +37,7 @@ function globalEducation() {
                 </div>
                 </div>
             </div>
-            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] h-[136px] mb-4'>
+            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] mb-4'>
                 <div className='p-[24px] flex items-center justify-between'>
                 <div>
                 <Image  height={56} width={56} src={ThirdCardImage} alt='demo'/>
@@ -48,7 +48,7 @@ function globalEducation() {
                 </div>
                 </div>
             </div>
-            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] h-[136px] mb-4'>
+            <div className='sm:w-[550px] w-[328px] sm:h-[136px] h-[104px] border-2 border-[#B7B7B7] mb-4'>
                 <div className='p-[24px] flex items-center justify-between'>
                 <div>
                 <Image  height={56} width={56} src={FourthCardImage} alt='demo'/>
@@ -56,7 +56,7 @@ function globalEducation() {
                 <div className='w-[80%] text-left'>
                 <p className='sm:text-[20px] text-[16px] font-[700]'> Complete Support</p>
                 <p className='sm:text-[16px] text-[14px] text-[#3D3D3D] font-[500]'>Get complete support and guidance throughout the entire duration of your course</p>
-                </div>
+                </div> 
                 </div>
             </div>
          
