@@ -13,7 +13,6 @@ const Home = () => {
     <>
       <Header handleState={undefined} />
       <TopUniversity />
-      <GlobalEducation />
       <WhyUnigoSection />
       <GlobalEducation />
       <FourthComp />
