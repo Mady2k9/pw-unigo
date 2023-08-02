@@ -64,4 +64,4 @@ function globalEducation() {
     )
 }
 
-export default globalEducation
+export default GlobalEducation
