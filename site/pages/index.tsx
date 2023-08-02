@@ -4,7 +4,7 @@ import GlobalEducation from '../modules/GlobalEducation'
 import WhyUnigoSection from '../modules/WhyUnigoSection'
 import CountryBanner from '../modules/CountryBanner'
 import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
-import FithComp from '../modules/PopularCountries/popularCountries'
+import PopularCountries from '../modules/PopularCountries/popularCountries'
 import LovedByStudents from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
 import Faq from '../modules/Faq'
@@ -18,7 +18,7 @@ const Home = () => {
       <WhyUnigoSection />
       <GlobalEducation />
       <FourthComp />
-      <FithComp />
+      <PopularCountries />
       <LovedByStudents />
       <Faq data={undefined} />
       <TalkCounsellorButton />
