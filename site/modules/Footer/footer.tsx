@@ -1,4 +1,5 @@
 import Pwlogo from '../../assets/images/image 1.png'
+import Link from 'next/link'
 import Image from 'next/image'
 import Fb from '../../assets/images/fb.svg'
 import Insta from '../../assets/images/inta.svg'
@@ -6,13 +7,13 @@ import YT from '../../assets/images/utube.svg'
 import Linnkedin from '../../assets/images/linkedin.svg'
 import TW from '../../assets/images/twitter.svg'
 import Tele from '../../assets/images/telegram.svg'
-import TalkToCounsllerButton from '../TalkCounsellerButton'
+
 const Footer = () => {
   return (
     <>
-      <div className="w-screen bg-[#F8F8F8] px-[16px] py-[32px] mt-[40px]  md:px-[32px] lg:px-[80px] xl:px-[160px] xl:py-[40px]">
-        <div className=" md:flex">
-          <div className=" mb-[24px] md:mb-0 md:w-[500px] lg:w-[600px] xl:w-[700px] md:mr-[24px] lg:mr-[40px] xl:mr-[64px]">
+      <div className="w-full bg-[#F8F8F8] py-[32px] mt-[40px]">
+        <div className="lg:flex mx-auto max-w-7xl sm:px-6 px-3 justify-between">
+          <div className="lg:w-7/12 w-full">
             <div className="mb-[20px] md:mb-[24px] md:w-[214px] md:h-[60px]">
               <Image src={Pwlogo} alt="logo" />
             </div>
@@ -32,59 +33,81 @@ const Footer = () => {
               and enjoy a healthy, dignified and sustainable quality of life.
             </div>
           </div>
-          <div className=" md:flex">
-            <div className=" mb-[24px] md:mb-0 md:mr-[24px] lg:mr-[40px] xl:mr-[64px]">
-              <div className="text-[16px] md:text-[20px] font-[600]">
+          <div className="lg:w-4/12 sm:w-6/12 w-full sm:flex sm:justify-between">
+            <div className="">
+              <div className="text-[16px] lg:mt-0 mt-[20px] md:text-[20px] font-[600]">
                 Countries
               </div>
-              <div className="text-[14px]  font-[600] text-[#757575]">
-                Russia
-              </div>
-              <div className="text-[14px] font-[600] text-[#757575]">
-                Armenia
-              </div>
-              <div className="text-[14px] font-[600] text-[#757575]">
-                Georgia
-              </div>
-              <div className="text-[14px] font-[600] text-[#757575]">
-                Kazakhstan
-              </div>
-              <div className="text-[14px] font-[600] text-[#757575]">
-                Kyrgyzstan
-              </div>
-              <div className="text-[14px] font-[600] text-[#757575]">
-                Uzbekistan
-              </div>
+              <ul className="text-[14px]  font-[600] text-[#757575]">
+                <li className="mt-3">
+                  <Link href={'#'}>Russia</Link>
+                </li>
+                <li className="mt-3">
+                  <Link href={'#'}>Armenia</Link>
+                </li>
+                <li className="mt-3">
+                  <Link href={'#'}>Georgia</Link>
+                </li>
+                <li className="mt-3">
+                  <Link href={'#'}>Kazakhstan</Link>
+                </li>
+                <li className="mt-3">
+                  <Link href={'#'}>Kyrgyzstan</Link>
+                </li>
+                <li className="mt-3">
+                  <Link href={'#'}>Uzbekistan</Link>
+                </li>
+              </ul>
             </div>
-            <div className="mb-[24px] md:mb-0 w-fit">
+            <div className="mb-[24px] md:mb-0 lg:mt-0 mt-[20px] ">
               <div className="text-[16px] md:text-[20px] font-[600] mb-[10px]">
                 Follow us on :
               </div>
               <div className="flex w-[204px] justify-between">
-                <Image src={Fb} alt="faceBook" height={24} width={24} />
-                <Image src={Insta} alt="Instagram" height={24} width={24} />
-                <Image src={YT} alt="youtube" height={24} width={24} />
-                <Image src={Linnkedin} alt="LinkedIn" height={24} width={24} />
-                <Image src={TW} alt="Twitter" height={24} width={24} />
-                <Image src={Tele} alt="Telegram" height={24} width={24} />
+                <Link href={'https://www.facebook.com/physicswallah'}>
+                  <Image src={Fb} alt="faceBook" height={24} width={24} />
+                </Link>
+                <Link href={'https://www.instagram.com/physicswallah/'}>
+                  <Image src={Insta} alt="Instagram" height={24} width={24} />
+                </Link>
+                <Link href={'https://www.youtube.com/c/PhysicsWallah'}>
+                  <Image src={YT} alt="youtube" height={24} width={24} />
+                </Link>
+                <Link href={'https://www.linkedin.com/company/physicswallah/'}>
+                  <Image
+                    src={Linnkedin}
+                    alt="LinkedIn"
+                    height={24}
+                    width={24}
+                  />
+                </Link>
+                <Link href={'https://twitter.com/physicswallahap?lang=en'}>
+                  <Image src={TW} alt="Twitter" height={24} width={24} />
+                </Link>
+                <Link href={'https://t.me/Physics_Wallah_Official_Channel'}>
+                  <Image src={Tele} alt="Telegram" height={24} width={24} />
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="border-t-[1px] border-[#D9DCE1] md:flex mt-[24px] md:mt-[40px]">
-          <div className="flex w-full md:w-[50%] my-[6px]">
-            <div className="text-[14px] border-r-[2px] border-[#D9DCE1] pr-[12px]">
-              Privacy Policy
+        <div className="sm:flex mt-[24px] sm:mt-[40px] mx-auto max-w-7xl sm:px-6 px-3">
+          <div className="border-t-[1px] border-[#D9DCE1] w-full sm:flex justify-between">
+            <div className="flex my-3">
+              <div className="text-[14px] border-r-[2px] border-[#D9DCE1] pr-[12px]">
+                <Link href={'privacy-policy'}>Privacy Policy</Link>
+              </div>
+              <div className="pl-[12px] text-[14px]">
+                <Link href={'#'}>Terms of use</Link>
+              </div>
             </div>
-            <div className="pl-[12px] text-[14px]">Terms of use</div>
-          </div>
-          <div className="w-full md:w-[50%] md:text-right md:text-[14px] md:font-[600] my-[6px]">
-            Copyright © 2023 PW Foundation Pvt. Ltd. All rights reserved.
+            <div className="sm:text-[14px] sm:font-[600] my-3">
+              Copyright © 2023 PW Foundation Pvt. Ltd. All rights reserved.
+            </div>
           </div>
         </div>
       </div>
 
-<TalkToCounsllerButton />
     </>
   )
 }
