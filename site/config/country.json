@@ -1,396 +1,392 @@
 {
-  "russia": [
-    {
-      "countryName": "Russia",
-      "imageHeader": "",
-      "titleHeader": "Study MBBS from Russia",
-      "whyStudy": {
-        "title": "Why Study in Russia?",
-        "description": "Studying in Russia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
-        "bulletPoint": [
-          {
-            "bulletImage": "",
-            "content": "Rich history & culture"
-          },
-          {
-            "bulletImage": "",
-            "content": "Scenic Landscapes"
-          },
-          {
-            "bulletImage": "",
-            "content": "Warm Hospitality"
-          },
-          {
-            "bulletImage": "",
-            "content": "Affordable Living"
-          },
-          {
-            "bulletImage": "",
-            "content": "Delicious Cuisine"
-          },
-          {
-            "bulletImage": "",
-            "content": "Strong Sense of community"
-          },
-          {
-            "bulletImage": "",
-            "content": "Accessible Education"
-          }
-        ]
-      },
-      "colleges": {
-        "title": "Colleges in Russia",
-        "collegeDetails": [
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Russian University of Russia",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          }
-        ]
-      },
-      "cost": {
-        "title": "Cost of studying in Russia",
-        "headers": [
-          {
-            "display": "LEVEL OF EDUCATION",
-            "key": "education"
-          },
-          {
-            "display": "COST FOR INDIAN STUDENTS",
-            "key": "cost"
-          }
-        ],
-        "content": [
-          {
-            "education": "Diploma",
-            "cost": "20,000 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "Undergraduate Programs",
-            "cost": "20,000 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "Postgraduate Programs",
-            "cost": "20,000 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "English Language Courses",
-            "cost": "20,000 - 40,000",
-            "currency": "$"
-          }
-        ]
-      },
-      "requirement": {
-        "title": "Requirements for studying in Russia",
-        "description": "Requirements for studying in Russia Dscription"
-      },
-      "tabs": [
+  "russia": {
+    "countryName": "Russia",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Russia",
+    "whyStudy": {
+      "title": "Why Study in Russia?",
+      "description": "Studying in Russia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
         {
-          "name": "Why study in russia",
-          "key": "why-study-in-russia"
+          "bulletImage": "",
+          "content": "Rich history & culture"
         },
         {
-          "name": "Colleges",
-          "key": "colleges"
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
         },
         {
-          "name": "Cost",
-          "key": "cost"
+          "bulletImage": "",
+          "content": "Warm Hospitality"
         },
         {
-          "name": "Requirements",
-          "key": "requirements"
+          "bulletImage": "",
+          "content": "Affordable Living"
         },
         {
-          "name": "FAQs",
-          "key": "faqs"
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
         }
       ]
-    }
-  ],
-  "armenia": [
-    {
-      "countryName": "Armenia",
-      "imageHeader": "",
-      "titleHeader": "Study MBBS from Armenia",
-      "whyStudy": {
-        "title": "Why Study in Armenia?",
-        "description": "Studying in Armenia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
-        "bulletPoint": [
-          {
-            "bulletImage": "",
-            "content": "Rich history & culture"
-          },
-          {
-            "bulletImage": "",
-            "content": "Scenic Landscapes"
-          },
-          {
-            "bulletImage": "",
-            "content": "Warm Hospitality"
-          },
-          {
-            "bulletImage": "",
-            "content": "Affordable Living"
-          },
-          {
-            "bulletImage": "",
-            "content": "Delicious Cuisine"
-          },
-          {
-            "bulletImage": "",
-            "content": "Strong Sense of community"
-          },
-          {
-            "bulletImage": "",
-            "content": "Accessible Education"
-          }
-        ]
-      },
-      "colleges": {
-        "title": "Colleges in Armenia",
-        "collegeDetails": [
-          {
-            "name": "Armenia University of Russia 1",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Armenia University of Russia 2",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Armenia University of Armenia 3",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Armenia University of Armenia 4",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Armenia University of Armenia 5",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          },
-          {
-            "name": "Armenia University of Armenia 6",
-            "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
-            "phone": "+374 60 69 40 40",
-            "email": "info@aua.am",
-            "imageUrl": "",
-            "tag": [
-              {
-                "type": "Private"
-              },
-              {
-                "type": "Public"
-              }
-            ]
-          }
-        ]
-      },
-      "cost": {
-        "title": "Cost of studying in Armenia",
-        "headers": [
-          {
-            "display": "LEVEL OF EDUCATION",
-            "key": "education"
-          },
-          {
-            "display": "COST FOR INDIAN STUDENTS",
-            "key": "cost"
-          }
-        ],
-        "content": [
-          {
-            "education": "Diploma",
-            "cost": "20,000 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "Undergraduate Programs",
-            "cost": "20,001 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "Postgraduate Programs",
-            "cost": "20,002 - 40,000",
-            "currency": "$"
-          },
-          {
-            "education": "English Language Courses",
-            "cost": "20,003 - 40,000",
-            "currency": "$"
-          }
-        ]
-      },
-      "requirement": {
-        "title": "Requirements for studying in Armenia",
-        "description": "Requirements for studying in Armenia Dscription"
-      },
-      "tabs": [
+    },
+    "colleges": {
+      "title": "Colleges in Russia",
+      "collegeDetails": [
         {
-          "name": "Why study in russia",
-          "key": "why-study-in-russia"
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
         },
         {
-          "name": "Colleges",
-          "key": "colleges"
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
         },
         {
-          "name": "Cost",
-          "key": "cost"
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
         },
         {
-          "name": "Requirements",
-          "key": "requirements"
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
         },
         {
-          "name": "FAQs",
-          "key": "faqs"
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Russian University of Russia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
         }
       ]
-    }
-  ]
+    },
+    "cost": {
+      "title": "Cost of studying in Russia",
+      "headers": [
+        {
+          "display": "LEVEL OF EDUCATION",
+          "key": "education"
+        },
+        {
+          "display": "COST FOR INDIAN STUDENTS",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Diploma",
+          "cost": "20,000 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "Undergraduate Programs",
+          "cost": "20,000 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "Postgraduate Programs",
+          "cost": "20,000 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "English Language Courses",
+          "cost": "20,000 - 40,000",
+          "currency": "$"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Russia",
+      "description": "Requirements for studying in Russia Dscription"
+    },
+    "tabs": [
+      {
+        "name": "Why study in russia",
+        "key": "why-study-in-russia"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ]
+  },
+  "armenia": {
+    "countryName": "Armenia",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Armenia",
+    "whyStudy": {
+      "title": "Why Study in Armenia?",
+      "description": "Studying in Armenia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Armenia",
+      "collegeDetails": [
+        {
+          "name": "Armenia University of Russia 1",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Armenia University of Russia 2",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Armenia University of Armenia 3",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Armenia University of Armenia 4",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Armenia University of Armenia 5",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        },
+        {
+          "name": "Armenia University of Armenia 6",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            },
+            {
+              "type": "Public"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Armenia",
+      "headers": [
+        {
+          "display": "LEVEL OF EDUCATION",
+          "key": "education"
+        },
+        {
+          "display": "COST FOR INDIAN STUDENTS",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Diploma",
+          "cost": "20,000 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "Undergraduate Programs",
+          "cost": "20,001 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "Postgraduate Programs",
+          "cost": "20,002 - 40,000",
+          "currency": "$"
+        },
+        {
+          "education": "English Language Courses",
+          "cost": "20,003 - 40,000",
+          "currency": "$"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Armenia",
+      "description": "Requirements for studying in Armenia Dscription"
+    },
+    "tabs": [
+      {
+        "name": "Why study in russia",
+        "key": "why-study-in-russia"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ]
+  }
 }

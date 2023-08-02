@@ -5,25 +5,32 @@ import ContentCountry from '../modules/ContentCountry'
 import Faq from 'modules/Faq'
 import Header from '@modules/Header'
 import Footer from '@modules/Footer'
+import { useRouter } from 'next/router'
 
 import CountryDetail from '@config/country.json'
 
-const CountryPage = () => {
-  const [jsonData, setJsonData] = useState(CountryDetail)
+const Country = () => {
+  //const [jsonData, setJsonData] = useState(CountryDetail)
+
+  /*  const { asPath, pathname } = useRouter()
+
+  const countryPath = asPath
+  const countryName = countryPath.replace(/\//g, '') */
+  //console.log(countryName)
 
   const countryBanner = [
     {
-      image: jsonData.russia[0].imageHeader,
-      title: jsonData.russia[0].titleHeader,
+      image: CountryDetail.russia.imageHeader,
+      title: CountryDetail.russia.titleHeader,
     },
   ]
-  const countryNavData = jsonData.russia[0].tabs
+  const countryNavData = CountryDetail.russia.tabs
   const countryContents = [
     {
-      whystudy: jsonData.russia[0].whyStudy,
-      colleges: jsonData.russia[0].colleges,
-      cost: jsonData.russia[0].cost,
-      requirement: jsonData.russia[0].requirement,
+      whystudy: CountryDetail.russia.whyStudy,
+      colleges: CountryDetail.russia.colleges,
+      cost: CountryDetail.russia.cost,
+      requirement: CountryDetail.russia.requirement,
     },
   ]
   return (
@@ -38,4 +45,4 @@ const CountryPage = () => {
   )
 }
 
-export default CountryPage
+export default Country

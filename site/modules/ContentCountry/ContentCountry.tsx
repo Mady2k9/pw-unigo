@@ -13,7 +13,7 @@ export interface CountryContentProps {
 
 const countryContent: React.FC<CountryContentProps> = (props) => {
   const { contentItems } = props
-  console.log('contents :: ', contentItems)
+  //console.log('contents :: ', contentItems)
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
