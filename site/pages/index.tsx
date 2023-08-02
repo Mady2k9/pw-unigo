@@ -1,3 +1,5 @@
+
+
 import Header from '../modules/Header'
 import { Loader, Typography } from '@components/ui'
 import Phn from '../assets/images/phn_icon.svg'
@@ -6,10 +8,10 @@ import { Features } from '@modules/components/Features'
 import Hero from '@modules/components/Hero'
 import School from '@modules/components/School/School'
 import Why from '@modules/components/Why'
-import TopUniversity  from '../modules/TopUniversity'
+import TopUniversity from '../modules/TopUniversity'
 import GlobalEducation from '../modules/GlobalEducation'
-import  WhyUnigoSection  from '../modules/WhyUnigoSection'
-import  CountryBanner from '../modules/CountryBanner'
+import WhyUnigoSection from '../modules/WhyUnigoSection'
+import CountryBanner from '../modules/CountryBanner'
 import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
 import FithComp from '../modules/PopularCountries/popularCountries'
 import { useState } from 'react'
@@ -22,7 +24,7 @@ import Faq from '../modules/Faq'
 const Home = () => {
   return (
     <>
-    
+
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
@@ -32,7 +34,6 @@ const Home = () => {
       <SixthComp />
       <Faq data={undefined} />
       <Footer />
-
     </>
   )
 }
