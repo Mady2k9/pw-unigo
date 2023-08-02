@@ -1,1 +1,1 @@
-export { default } from './whyUnigoSection'
+export { default } from './whyUnigoSecion'

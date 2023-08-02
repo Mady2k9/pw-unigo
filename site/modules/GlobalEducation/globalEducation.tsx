@@ -3,8 +3,8 @@ import React from 'react'
 function GlobalEducation() {
     return (
         // <div className=' sm:py-[40px] py-[24px] px-[16px] xl:px-[160px]'>
-        <div className=' sm:py-[40px] py-[24px] px-3 md:px-6'>
-            <div className=' bg-[#FEF6F7] rounded-2xl max-w-7xl m-auto sm:p-[48px] p-[16px]'>
+        <div className=' sm:py-[40px] py-[24px] px-3 max-w-7xl m-auto md:px-6'>
+            <div className=' bg-[#FEF6F7] rounded-2xl  sm:p-[48px] p-[16px]'>
                 <div className='text-center sm:mb-[40px] mb-[16px]'>
                     <h1 className='sm:text-[32px] text-[20px] font-bold md:leading-[48px] leading-[30px]'>Empowering your path to </h1>
                     <h2 className='text-[#DA1F3D] sm:text-[32px] text-[20px] font-bold md:leading-[48px] leading-[30px]'>Global Education</h2>
