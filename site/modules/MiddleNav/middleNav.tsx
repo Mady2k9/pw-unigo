@@ -31,7 +31,7 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <>
-      <div className="w-full border-b-2 border-b-grey-600 sticky top-[79px] z-10 bg-white">
+      <div className="w-full border-b-2 border-b-grey-600 sticky sm:top-[79px] top-[59px] z-20 bg-white">
         <Container className="w-full max-w-7xl px-4">
           <Tabs
             currentIndex={activeTab}
