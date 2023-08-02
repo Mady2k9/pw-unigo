@@ -1,4 +1,3 @@
-export { default as AuthModule } from './auth'
 export { default as GlobalEducation } from './GlobalEducation'
 export { default as TopUniversity } from './TopUniversity'
 export { default as WhyUnigoSection } from './WhyUnigoSection'
