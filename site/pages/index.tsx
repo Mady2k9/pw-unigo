@@ -17,7 +17,6 @@ import Close from '../assets/images/Close.svg'
 import Image from 'next/image'
 import SixthComp from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
-import PrivacyPolicy from '../modules/PrivacyPolicy'
 import Faq from '../modules/Faq'
 
 const Home = () => {
@@ -30,7 +29,6 @@ const Home = () => {
       <FourthComp />
       <FithComp />
       <SixthComp />
-      <PrivacyPolicy />
       <Faq data={'hello'} />
       <Footer />
     </>
