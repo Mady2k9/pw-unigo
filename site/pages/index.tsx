@@ -10,7 +10,7 @@ import TopUniversity from '../modules/TopUniversity'
 import GlobalEducation from '../modules/GlobalEducation'
 import WhyUnigoSection from '../modules/WhyUnigoSection'
 import CountryBanner from '../modules/CountryBanner'
-import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
+import TalkToCounsller from '../modules/TalkToCounsller/talkToCounsller'
 import FithComp from '../modules/PopularCountries/popularCountries'
 import { useState } from 'react'
 import Close from '../assets/images/Close.svg'
@@ -24,13 +24,12 @@ const Home = () => {
   return (
     <>
       <Header handleState={undefined} />
-      {/* <TopUniversity />
+      <TopUniversity />
       <GlobalEducation />
       <WhyUnigoSection />
-      <FourthComp />
+      <TalkToCounsller />
       <FithComp />
-      <SixthComp /> */}
-      <PrivacyPolicy />
+      <SixthComp />
       <Faq data={'hello'} />
       <Footer />
     </>
