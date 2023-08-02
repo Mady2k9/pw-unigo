@@ -3,8 +3,8 @@ import CountryBanner from '../modules/CountryBanner'
 import MiddleNav from '../modules/MiddleNav'
 import ContentCountry from '../modules/ContentCountry'
 import Faq from 'modules/Faq'
-import Header from '../modules/Header'
-import Footer from '../modules/Footer'
+import Header from '@modules/Header'
+import Footer from '@modules/Footer'
 
 import CountryDetail from '@config/country.json'
 
