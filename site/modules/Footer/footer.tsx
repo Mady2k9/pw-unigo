@@ -63,15 +63,33 @@ const Footer = () => {
               <div className="text-[16px] md:text-[20px] font-[600] mb-[10px]">
                 Follow us on :
               </div>
-              <div className="flex w-[204px] justify-between">
+              <div className="flex w-[204px] justify-between ">
                 <Link href={'https://www.facebook.com/physicswallah'}>
-                  <Image src={Fb} alt="faceBook" height={24} width={24} />
+                  <Image
+                    src={Fb}
+                    alt="faceBook"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
                 </Link>
                 <Link href={'https://www.instagram.com/physicswallah/'}>
-                  <Image src={Insta} alt="Instagram" height={24} width={24} />
+                  <Image
+                    src={Insta}
+                    alt="Instagram"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
                 </Link>
                 <Link href={'https://www.youtube.com/c/PhysicsWallah'}>
-                  <Image src={YT} alt="youtube" height={24} width={24} />
+                  <Image
+                    src={YT}
+                    alt="youtube"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
                 </Link>
                 <Link href={'https://www.linkedin.com/company/physicswallah/'}>
                   <Image
@@ -79,13 +97,26 @@ const Footer = () => {
                     alt="LinkedIn"
                     height={24}
                     width={24}
+                    className="cursor-pointer"
                   />
                 </Link>
                 <Link href={'https://twitter.com/physicswallahap?lang=en'}>
-                  <Image src={TW} alt="Twitter" height={24} width={24} />
+                  <Image
+                    src={TW}
+                    alt="Twitter"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
                 </Link>
                 <Link href={'https://t.me/Physics_Wallah_Official_Channel'}>
-                  <Image src={Tele} alt="Telegram" height={24} width={24} />
+                  <Image
+                    src={Tele}
+                    alt="Telegram"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
                 </Link>
               </div>
             </div>
@@ -107,7 +138,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
     </>
   )
 }
