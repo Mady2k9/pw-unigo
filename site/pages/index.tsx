@@ -10,11 +10,11 @@ import FithComp from '../modules/PopularCountries/popularCountries'
 import SixthComp from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
 import Faq from '../modules/Faq'
+import TalkCounsellorButton from '@modules/TalkCounsellerButton'
 
 const Home = () => {
   return (
-    <>
-
+    <div className='relative'>
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
@@ -23,8 +23,9 @@ const Home = () => {
       <FithComp />
       <SixthComp />
       <Faq data={undefined} />
+      <TalkCounsellorButton />
       <Footer />
-    </>
+    </div>
   )
 }
 
