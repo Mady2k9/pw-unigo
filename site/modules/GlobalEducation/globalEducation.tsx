@@ -1,6 +1,6 @@
 import React from 'react'
 
-function globalEducation() {
+function GlobalEducation() {
     return (
         // <div className=' sm:py-[40px] py-[24px] px-[16px] xl:px-[160px]'>
         <div className=' sm:py-[40px] py-[24px] px-3 md:px-6'>
