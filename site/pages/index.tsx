@@ -24,13 +24,13 @@ const Home = () => {
   return (
     <>
       <Header handleState={undefined} />
-      {/* <TopUniversity />
+      <TopUniversity />
       <GlobalEducation />
       <WhyUnigoSection />
       <FourthComp />
       <FithComp />
-      <SixthComp /> */}
-      <PrivacyPolicy />
+      <SixthComp />
+      {/* <PrivacyPolicy /> */}
       <Faq data={'hello'} />
       <Footer />
     </>
