@@ -4,7 +4,7 @@ import GlobalEducation from '../modules/GlobalEducation'
 import WhyUnigoSection from '../modules/WhyUnigoSection'
 import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
 import FithComp from '../modules/PopularCountries/popularCountries'
-import SixthComp from '../modules/LovedByStudents/lovedByStudents'
+import LovedByStudents from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
 import Faq from '../modules/Faq'
 
@@ -17,7 +17,7 @@ const Home = () => {
       <GlobalEducation />
       <FourthComp />
       <FithComp />
-      <SixthComp />
+      <LovedByStudents />
       <Faq data={'hello'} />
       <Footer />
     </>
