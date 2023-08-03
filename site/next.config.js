@@ -1,5 +1,6 @@
 module.exports = {
   reactStrictMode: true,
+  basePath: '',
   images: {
     remotePatterns: [
       {
@@ -8,5 +9,13 @@ module.exports = {
       },
     ],
     domains: [],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/about-us',
+        destination: '/about',
+      },
+    ]
   },
 }
