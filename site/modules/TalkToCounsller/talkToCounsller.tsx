@@ -1,26 +1,53 @@
 import pic from '../../assets/images/image-4.png'
 import Image from 'next/image'
-import { TextInput } from '@components/ui'
+import { TextInput, Typography } from '@components/ui'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Button } from '@components/ui'
+import OtpInput from 'react-otp-input'
+import { isPhoneValid, isNameValid } from '@lib/validations'
 
 const TalkToCounsller = () => {
   const [showModal, setShowModal] = useState(false)
+  const [counter, setCounter] = useState(0)
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [canResend, setCanResend] = useState(false)
+  const [optSent, setOptSent] = useState(false)
+
+  const reduceCounter = () => {
+    if (counter === 1) {
+      setCanResend(true)
+    }
+    setCounter(counter - 1)
+  }
+
+  useEffect(() => {
+    if (counter > 0) {
+      setTimeout(() => {
+        reduceCounter()
+      }, 1000)
+    }
+  }, [counter])
+
+  useEffect(() => {
+    reduceCounter()
+  }, [])
 
   const handleSubmit = () => {
-    setShowModal(!showModal)
+    // setShowModal(!showModal)
   }
   return (
     <>
       <div className="my-auto max-w-6xl m-auto px-3 xl:px-0">
-        <div className="rounded-[8px] sm:rounded-[16px] bg-[#1B2124] sm:relative w-fit sm:w-full m-auto p-[16px] lg:p-0 ">
-          {/* first div */}
-          <div className=" h-full hidden lg:block">
-            <Image src={pic} alt="bg" className="rounded-[8px]" />
+        <div className="rounded-[8px] sm:rounded-[16px] bg-[#1B2124] sm:relative w-fit sm:w-full m-auto p-[16px] lg:p-0  overflow-hidden">
+          <div className="hidden lg:block">
+            <img src="/image-41.png" alt="bg" className="h-[450px]" />
           </div>
           <div className=" lg:absolute top-0 h-fit w-full lg:bg-transparent flex ">
-            <div className="md:mx-[48px] md:my-[36px] md:w-full justify-between  sm:flex">
+            <div className="md:mx-[48px] md:my-[36px] md:w-full justify-between sm:flex">
               <div className="my-auto text-white font-[Gilroy] lg:mr-0 sm:p-[16px] md:p-0">
                 <p className="font-bold text-[20px] lg:leadig-[48px] lg:text-[32px] ">
                   What are you waiting for?
@@ -42,12 +69,14 @@ const TalkToCounsller = () => {
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
+                    invalid={!isNameValid(name)}
+                    onChange={setName}
+                    value={name}
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
                     label="Student Name*"
-                    onChange={function noRefCheck() {}}
                     placeholder="Student Name*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
@@ -63,19 +92,20 @@ const TalkToCounsller = () => {
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
+                    onChange={setEmail}
+                    value={email}
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
                     label="Email*"
-                    onChange={function noRefCheck() {}}
                     placeholder="Email*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
                     spellCheck="false"
                   />
                 </div>
-                <div className=" mb-[16px]">
+                <div className=" mb-[16px] relative">
                   <TextInput
                     action={{
                       disabled: true,
@@ -83,18 +113,52 @@ const TalkToCounsller = () => {
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
+                    invalid={!isPhoneValid(phone)}
+                    onChange={setPhone}
+                    value={phone}
+                    maxLength={10}
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
                     label="Mobile Number*"
-                    onChange={function noRefCheck() {}}
                     placeholder="Mobile Number*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
                     spellCheck="false"
                   />
+
+                  {optSent ? (
+                    <Button
+                      disabled
+                      className="absolute right-3 bottom-5"
+                      type="button"
+                      variant="naked"
+                      onClick={() => {}}
+                    >
+                      OTP Sent
+                    </Button>
+                  ) : (
+                    <Button
+                      className="absolute right-3 bottom-5"
+                      type="button"
+                      variant="naked"
+                      disabled={!isPhoneValid(phone)}
+                      onClick={() => {
+                        // getOTP()
+                        setCounter(10)
+                        setCanResend(false)
+                        setOptSent(true)
+                        setTimeout(() => {
+                          reduceCounter()
+                        }, 1000)
+                      }}
+                    >
+                      Get OTP
+                    </Button>
+                  )}
                 </div>
+
                 <div className="mb-[16px]">
                   <TextInput
                     action={{
@@ -115,6 +179,40 @@ const TalkToCounsller = () => {
                   />
                 </div>
 
+                {/* Resend OTP in */}
+
+                {optSent ? (
+                  <>
+                    {canResend ? (
+                      <div className="mt-[-5px] text-right w-full">
+                        <Button
+                          className="mb-[10px] "
+                          type="button"
+                          variant="naked"
+                          onClick={() => {
+                            // getOTP()
+                            setCounter(10)
+                            setCanResend(false)
+                            setOptSent(true)
+                            setTimeout(() => {
+                              reduceCounter()
+                            }, 1000)
+                          }}
+                        >
+                          Resend OTP
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="mt-[-10px] mb-[10px]">
+                        <div className="text-[14px] leading-[22px] text-[#3D3D3D] text-right">
+                          00:{String(counter).padStart(2, '0')}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  ''
+                )}
                 <button
                   onClick={handleSubmit}
                   className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
@@ -135,7 +233,7 @@ const TalkToCounsller = () => {
         <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
 
         <div className="fixed inset-0 flex items-end justify-center">
-          <Dialog.Panel className="m-auto  max-w-[480px] h-[272px] rounded-lg bg-white ring-1 transition-all px-5 pb-5 relative">
+          <Dialog.Panel className="m-auto  max-w-[480px] rounded-lg bg-white ring-1 transition-all px-5 pb-5 relative">
             <div
               className="cursor-pointer  flex justify-center absolute w-full top-1 right-1"
               onClick={handleSubmit}
