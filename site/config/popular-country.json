@@ -1,0 +1,34 @@
+{
+  "popular-country": [
+    {
+      "name": "Russia",
+      "image": "../../assets/images/image 27.png",
+      "url": "/country/russia"
+    },
+    {
+      "name": "Armenia",
+      "image": "../../assets/images/image 28.png",
+      "url": "/country/armenia"
+    },
+    {
+      "name": "Georgia",
+      "image": "xyz.png",
+      "url": "/country/georgia"
+    },
+    {
+      "name": "Kazakhstan",
+      "image": "xyz.png",
+      "url": "/country/kazakhstan"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "image": "xyz.png",
+      "url": "/country/kyrgyzstan"
+    },
+    {
+      "name": "Uzbekistan",
+      "image": "xyz.png",
+      "url": "/country/uzbekistan"
+    }
+  ]
+}

@@ -39,6 +39,17 @@ function GlobalEducation() {
               <img src="check_circle.svg" alt="check circle " />
               <p className="">Post Graduation Support</p>
             </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Pre-Departure Orientation</p>
+            </div>
+
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">
+                NExT/FMGE Prep (both online and offline classes)
+              </p>
+            </div>
           </div>
 
           <div>
@@ -61,6 +72,14 @@ function GlobalEducation() {
             <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
               <img src="check_circle.svg" alt="check circle " />
               <p className="">Scholarship & Financial Aid</p>
+            </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Educational Guidance</p>
+            </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Alumni Network</p>
             </div>
           </div>
         </div>

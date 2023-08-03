@@ -7,6 +7,7 @@ import { Typography } from '@components/ui'
 import { Fragment, useRef, useState, useEffect } from 'react'
 import { Menu, Transition, Dialog } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import navbar from '@config/navbar.json'
 
 const header = ({ handleState }: { handleState: any }) => {
   const handleClick = () => {
@@ -18,7 +19,7 @@ const header = ({ handleState }: { handleState: any }) => {
     setOpen(!open)
   }
 
-  const items = [
+  /* const items = [
     {
       name: 'Russia',
       url: '#',
@@ -43,7 +44,9 @@ const header = ({ handleState }: { handleState: any }) => {
       name: 'Uzbekistan',
       url: '#',
     },
-  ]
+  ] */
+
+  const items = navbar.menu
 
   const toggleModal = () => {}
   return (
