@@ -3,7 +3,7 @@ import TopUniversity from '../modules/TopUniversity'
 import GlobalEducation from '../modules/GlobalEducation'
 import WhyUnigoSection from '../modules/WhyUnigoSection'
 import CountryBanner from '../modules/CountryBanner'
-import FourthComp from '../modules/TalkToCounsller/talkToCounsller'
+import TalkToCounsller from '../modules/TalkToCounsller/talkToCounsller'
 import PopularCountries from '../modules/PopularCountries/popularCountries'
 import LovedByStudents from '../modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
@@ -68,7 +68,7 @@ const Home = () => {
       <TopUniversity />
       <WhyUnigoSection />
       <GlobalEducation />
-      <FourthComp />
+      <TalkToCounsller />
       <PopularCountries />
       <LovedByStudents />
       <Faq
