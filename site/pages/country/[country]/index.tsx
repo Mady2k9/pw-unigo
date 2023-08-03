@@ -6,7 +6,6 @@ import Faq from 'modules/Faq'
 import Header from '@modules/Header'
 import Footer from '@modules/Footer'
 import { useRouter } from 'next/router'
-
 import CountryDetail from '@config/country.json'
 
 const Country = (params: any) => {
