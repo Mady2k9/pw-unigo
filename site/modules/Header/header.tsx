@@ -51,7 +51,7 @@ const header = ({ handleState }: { handleState: any }) => {
   const toggleModal = () => {}
   return (
     <>
-      <div className=" sticky top-0 md:h-[80px] h-[60px] flex bg-white  border-b-[1px] w-screen z-[10] px-[10px] ">
+      <div className=" sticky top-0 md:h-[80px] h-[60px] flex bg-white  border-b-[1px] w-screen z-[10] xl:px-0 px-[10px] ">
         <div className="sticky flex justify-between w-screen items-center lg:hidden">
           <div className="h-[32px] w-[32px]  my-auto" onClick={toggleMenu}>
             <Image src={Bar} alt="hambuger menu" />
@@ -62,7 +62,7 @@ const header = ({ handleState }: { handleState: any }) => {
           <div className="w-[32px]"></div>
         </div>
         <div className=" w-screen lg:block hidden ">
-          <div className="  h-full items-center bg-white max-w-7xl mx-auto flex justify-between ">
+          <div className="h-full items-center bg-white max-w-6xl mx-auto flex justify-between ">
             <div className="lg:h-fit my-auto h-[33px] w-[123px]">
               <Image src={Pwlogo} alt="logo" />
             </div>
