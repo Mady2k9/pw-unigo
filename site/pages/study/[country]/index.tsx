@@ -23,7 +23,7 @@ const Country = (params: any) => {
 
   const countryName = params.router.query.country
 
-  //console.log('country name', countryName)
+  console.log('country name', countryName)
 
   const countryBanner = [
     {
@@ -32,10 +32,7 @@ const Country = (params: any) => {
     },
   ]
 
-  /* const countryNav = CountryDetail.russia.tabs
-  const newData = { ...countryNav, russia: countryName }
-  console.log('nwData', newData)
-  console.log('countrydata', countryNav) */
+  //const countryNavData = `CountryDetail.${countryName}.tabs`
   const countryNavData = CountryDetail.russia.tabs
 
   const countryContents = [
