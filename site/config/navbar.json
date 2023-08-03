@@ -2,27 +2,27 @@
   "menu": [
     {
       "name": "Russia",
-      "url": "russia"
+      "url": "/country/russia"
     },
     {
       "name": "Armenia",
-      "url": "/armenia"
+      "url": "/country/armenia"
     },
     {
       "name": "Georgia",
-      "url": "/georgia"
+      "url": "/country/georgia"
     },
     {
       "name": "Kazakhstan",
-      "url": "/kazakhstan"
+      "url": "/country/kazakhstan"
     },
     {
       "name": "Kyrgyzstan",
-      "url": "/kyrgyzstan"
+      "url": "/country/kyrgyzstan"
     },
     {
       "name": "Uzbekistan",
-      "url": "/uzbekistan"
+      "url": "/country/uzbekistan"
     }
   ]
 }
