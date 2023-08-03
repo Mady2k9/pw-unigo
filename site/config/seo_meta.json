@@ -1,12 +1,12 @@
 {
-  "title": "PW Vidyapeeth School Centre",
+  "title": "PW Unigo",
   "titleTemplate": "%s - Physics Wallah",
-  "description": "The PW Vidyapeeth School Centre, a new-age Hi-Tech classrooms designed to train students for academic and competitive success.",
+  "description": "",
   "openGraph": {
-    "title": "PW Vidyapeeth School Centre",
-    "description": "The PW Vidyapeeth School Centre, a new-age Hi-Tech classrooms designed to train students for academic and competitive success.",
+    "title": "PW Unigo",
+    "description": "",
     "type": "website",
-    "url": "https://pw.live/sip",
+    "url": "",
     "site_name": "Physics Wallah",
     "images": [
       {
