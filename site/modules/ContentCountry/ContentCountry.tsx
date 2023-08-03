@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Container from '@components/ui/Container/Container'
 import { TextInput } from '@components/ui'
+import TalkToCounsller from '@modules/TalkToCounsller/talkToCounsller'
 
 export interface CountryContentProps {
   contentItems: {
@@ -143,89 +144,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 Talk to our counsellor
               </h1>
               <div className="bg-transparent sm:bg-white  sm:pt-[18px] rounded-[6px]">
-                <div className="mb-[16px]">
-                  <TextInput
-                    action={{
-                      disabled: true,
-                      loading: false,
-                      onAction: function noRefCheck() {},
-                      text: '',
-                    }}
-                    autoCapitalize="off"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="text-input-1"
-                    label="Student Name*"
-                    onChange={function noRefCheck() {}}
-                    placeholder="Student Name*"
-                    preElement={[]}
-                    setRef={function noRefCheck() {}}
-                    spellCheck="false"
-                    className="pr-2"
-                  />
-                </div>
-                <div className="mb-[16px]">
-                  <TextInput
-                    action={{
-                      disabled: true,
-                      loading: false,
-                      onAction: function noRefCheck() {},
-                      text: '',
-                    }}
-                    autoCapitalize="off"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="text-input-1"
-                    label="Email*"
-                    onChange={function noRefCheck() {}}
-                    placeholder="Email*"
-                    preElement={[]}
-                    setRef={function noRefCheck() {}}
-                    spellCheck="false"
-                  />
-                </div>
-                <div className=" mb-[16px]">
-                  <TextInput
-                    action={{
-                      disabled: true,
-                      loading: false,
-                      onAction: function noRefCheck() {},
-                      text: '',
-                    }}
-                    autoCapitalize="off"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="text-input-1"
-                    label="Mobile Number*"
-                    onChange={function noRefCheck() {}}
-                    placeholder="Mobile Number*"
-                    preElement={[]}
-                    setRef={function noRefCheck() {}}
-                    spellCheck="false"
-                  />
-                </div>
-                <div className="mb-[16px]">
-                  <TextInput
-                    action={{
-                      disabled: true,
-                      loading: false,
-                      onAction: function noRefCheck() {},
-                      text: '',
-                    }}
-                    autoCapitalize="off"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="text-input-1"
-                    onChange={function noRefCheck() {}}
-                    placeholder="OTP"
-                    preElement={[]}
-                    setRef={function noRefCheck() {}}
-                    spellCheck="false"
-                  />
-                </div>
-                <button className="w-full h-[48px] bg-[#1B2124] rounded-[6px] text-white text-[16px]">
-                  Submit
-                </button>
+                <TalkToCounsller />
               </div>
             </div>
           </div>
