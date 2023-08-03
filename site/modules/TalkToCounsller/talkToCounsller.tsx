@@ -3,9 +3,14 @@ import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
 import { useEffect, useState } from 'react'
 import { Button } from '@components/ui'
-import OtpInput from 'react-otp-input'
-import { isPhoneValid, isNameValid } from '@lib/validations'
+import {
+  isPhoneValid,
+  isValidFullName,
+  isOTPValid,
+  isEmailValid,
+} from '@lib/validations'
 import { useAuth } from '@lib/hooks/useAuth'
+import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 
 const TalkToCounsller = () => {
   const [showModal, setShowModal] = useState(false)
@@ -13,17 +18,28 @@ const TalkToCounsller = () => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
+  const [otp, setOtp] = useState('')
   const [canResend, setCanResend] = useState(false)
+  const [isPhoneValidCheck, setIsPhoneValidCheck] = useState(false)
+  const [isValidFullNameCheck, setisValidFullNameCheck] = useState(false)
+  const [isOTPValidCheck, setIsOTPValidCheck] = useState(false)
+  const [isEmailValidCheck, setIsEmailValidCheck] = useState(false)
+
   const [optSent, setOptSent] = useState(false)
   const { handleGenerateOTP, handleRegister, otpSent, error, loading } =
     useAuth()
 
   const handleOTP = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
-    const response = await handleGenerateOTP(phone)
-    console.log(response)
-    if (response.success) {
-      console.log('otp sent')
+    if (isPhoneValid(phone)) {
+      setIsPhoneValidCheck(true)
+      const response = await handleGenerateOTP(phone)
+      console.log(response)
+      if (response) {
+        console.log('OTP SENT')
+      }
+    } else {
+      setIsPhoneValidCheck(false)
     }
   }
 
@@ -46,8 +62,35 @@ const TalkToCounsller = () => {
     reduceCounter()
   }, [])
 
-  const handleSubmit = () => {
-    // setShowModal(!showModal)
+  console.log(isValidFullName(name))
+  console.log(isEmailValid(email))
+  console.log(isPhoneValid(phone))
+  console.log(isOTPValid(otp))
+
+  const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault()
+    useUnigoFormSubmit()
+    if (
+      isValidFullName(name) &&
+      isEmailValid(email) &&
+      isPhoneValid(phone) &&
+      isOTPValid(otp)
+    ) {
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(true)
+      setIsOTPValidCheck(true)
+      handleSubmit(e)
+    } else {
+      if (!isValidFullName(name)) setisValidFullNameCheck(false)
+      else setisValidFullNameCheck(true)
+      if (!isEmailValid(email)) setIsEmailValidCheck(false)
+      else setIsEmailValidCheck(true)
+      if (!isPhoneValid(phone)) setIsPhoneValidCheck(false)
+      else setIsPhoneValidCheck(true)
+      if (!isOTPValid(otp)) setIsOTPValidCheck(false)
+      else setIsOTPValidCheck(true)
+    }
   }
   return (
     <>
@@ -79,7 +122,7 @@ const TalkToCounsller = () => {
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
-                    invalid={!isNameValid(name)}
+                    invalid={!isValidFullName(name)}
                     onChange={setName}
                     value={name}
                     autoCapitalize="off"
@@ -91,7 +134,7 @@ const TalkToCounsller = () => {
                     preElement={[]}
                     setRef={function noRefCheck() {}}
                     spellCheck="false"
-                    className="pr-2"
+                    className="pr-2 "
                   />
                 </div>
                 <div className="mb-[16px]">
@@ -102,6 +145,7 @@ const TalkToCounsller = () => {
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
+                    invalid={!isEmailValid(email)}
                     onChange={setEmail}
                     value={email}
                     autoCapitalize="off"
@@ -172,16 +216,19 @@ const TalkToCounsller = () => {
                 <div className="mb-[16px]">
                   <TextInput
                     action={{
-                      disabled: true,
                       loading: false,
                       onAction: function noRefCheck() {},
                       text: '',
                     }}
+                    disabled={!optSent}
+                    invalid={!isOTPValid(otp)}
+                    onChange={setOtp}
+                    value={otp}
+                    maxLength={6}
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
-                    onChange={function noRefCheck() {}}
                     placeholder="OTP"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
@@ -220,11 +267,11 @@ const TalkToCounsller = () => {
                 ) : (
                   ''
                 )}
-                {!isNameValid(name) || !isPhoneValid(phone) ? (
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full h-[48px] bg-[#e9798b] sm:bg-[#767a7c] rounded-[6px] text-white text-[16px] cursor-not-allowed"
-                  >
+                {!isValidFullName(name) ||
+                !isEmailValid(email) ||
+                !isPhoneValid(phone) ||
+                !isOTPValid(otp) ? (
+                  <button className="w-full h-[48px] bg-[#e9798b] sm:bg-[#767a7c] rounded-[6px] text-white text-[16px] cursor-not-allowed">
                     Submit
                   </button>
                 ) : (

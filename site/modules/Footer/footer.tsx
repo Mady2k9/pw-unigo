@@ -71,7 +71,7 @@ const Footer = () => {
               <div className="text-[16px] md:text-[20px] font-[600] mb-[10px]">
                 Follow us on :
               </div>
-              <div className="flex w-[204px] justify-between">
+              <div className="flex w-[204px] justify-between ">
                 <Link href={'https://www.facebook.com/physicswallah'}>
                   <Image
                     src={Fb}
