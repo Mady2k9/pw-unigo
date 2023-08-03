@@ -23,7 +23,7 @@ const TalkToCounsller = () => {
     const response = await handleGenerateOTP(phone)
     console.log(response)
     if (response.success) {
-      console.log('ho gaya')
+      console.log('otp sent')
     }
   }
 
