@@ -39,7 +39,7 @@ const Country = () => {
       <CountryBanner bannerItems={countryBanner} />
       <MiddleNav items={countryNavData} />
       <ContentCountry contentItems={countryContents} />
-      <Faq data={undefined} />
+      <Faq items={[]} heading={''} subheading={''} />
       <Footer />
     </>
   )
