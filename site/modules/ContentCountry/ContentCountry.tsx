@@ -6,7 +6,7 @@ export interface CountryContentProps {
   contentItems: {
     whystudy: any
     colleges: any
-    //cost: any
+    cost: any
     requirement: any
   }[]
 }
@@ -99,7 +99,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 ))}
               </div>
 
-              {/* <div className="mt-4 p-[24px] bg-white rounded-md drop-shadow-md">
+              <div className="mt-4 p-[24px] bg-white rounded-md drop-shadow-md">
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.cost?.title}
                 </h1>
@@ -121,13 +121,18 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     ))}
                   </tbody>
                 </table>
-              </div> */}
+              </div>
 
               <div className="mt-4 p-[24px] bg-white rounded-md drop-shadow-md">
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.requirement?.title}
                 </h1>
-                {item?.requirement?.description}
+
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item?.requirement?.description,
+                  }}
+                ></div>
               </div>
             </div>
           ))}

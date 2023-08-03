@@ -23,10 +23,10 @@ const TalkToCounsller = () => {
             <div className="md:mx-[48px] md:my-[36px] md:w-full justify-between  sm:flex">
               <div className="my-auto text-white font-[Gilroy] lg:mr-0 sm:p-[16px] md:p-0">
                 <p className="font-bold text-[20px] lg:leadig-[48px] lg:text-[32px] ">
-                  What are you waiting for?
+                  Don't let your dreams be dreams.
                 </p>
                 <p className="font-bold text-[20px] lg:leadig-[48px] lg:text-[32px] ">
-                  Make your dream come true today!
+                  Make them a reality!
                 </p>
                 <p className="text-[14px] lg:leading-[28px] lg:text-[18px] ">
                   Talk to our counsellors today and get all your doubts

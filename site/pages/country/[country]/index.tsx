@@ -9,48 +9,10 @@ import { useRouter } from 'next/router'
 
 import CountryDetail from '@config/country.json'
 
-const items = [
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-  {
-    title: 'How do I Share my Referral Code?',
-    description:
-      'Just Click on Refer & Earn on Menu of App, Click on the share button',
-  },
-]
-
 const Country = (params: any) => {
-  //console.log('params', params.router.query.country)
-  //const [jsonData, setJsonData] = useState(CountryDetail)
-
-  //const { asPath, pathname } = useRouter()
-
-  //const path = useRouter()
-
-  //const countryPath = path
-  //const countryName = countryPath.replace(/\//g, '')
-  //console.log('path:::', countryPath)
-
   type CountryNameType = keyof typeof CountryDetail
 
   const countryName: CountryNameType = params.router.query.country || ''
-
-  //const countryData = CountryDetail
-
-  //console.log('country name', countryName)
 
   const countryBanner = [
     {
@@ -61,8 +23,6 @@ const Country = (params: any) => {
 
   const countryNavData = CountryDetail[countryName]?.tabs || []
 
-  //const countryNavData = CountryDetail.russia.tabs
-
   const countryContents = [
     {
       whystudy: CountryDetail[countryName]?.whyStudy || [],
@@ -71,6 +31,9 @@ const Country = (params: any) => {
       requirement: CountryDetail[countryName]?.requirement || [],
     },
   ]
+
+  const items = CountryDetail[countryName]?.faqs || []
+
   return (
     <>
       <Header handleState={undefined} />
