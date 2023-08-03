@@ -1,5 +1,3 @@
-import pic from '../../assets/images/image-4.png'
-import Image from 'next/image'
 import { TextInput, Typography } from '@components/ui'
 import { Dialog } from '@headlessui/react'
 import { Cross } from '@components/icons'
@@ -7,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '@components/ui'
 import OtpInput from 'react-otp-input'
 import { isPhoneValid, isNameValid } from '@lib/validations'
+import { useAuth } from '@lib/hooks/useAuth'
 
 const TalkToCounsller = () => {
   const [showModal, setShowModal] = useState(false)
@@ -16,6 +15,17 @@ const TalkToCounsller = () => {
   const [name, setName] = useState('')
   const [canResend, setCanResend] = useState(false)
   const [optSent, setOptSent] = useState(false)
+  const { handleGenerateOTP, handleRegister, otpSent, error, loading } =
+    useAuth()
+
+  const handleOTP = async (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault()
+    const response = await handleGenerateOTP(phone)
+    console.log(response)
+    if (response.success) {
+      console.log('ho gaya')
+    }
+  }
 
   const reduceCounter = () => {
     if (counter === 1) {
@@ -76,7 +86,7 @@ const TalkToCounsller = () => {
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
-                    label="Student Name*"
+                    // label="Student Name*"
                     placeholder="Student Name*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
@@ -98,7 +108,7 @@ const TalkToCounsller = () => {
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
-                    label="Email*"
+                    // label="Email*"
                     placeholder="Email*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
@@ -121,7 +131,7 @@ const TalkToCounsller = () => {
                     autoComplete="off"
                     autoCorrect="off"
                     id="text-input-1"
-                    label="Mobile Number*"
+                    // label="Mobile Number*"
                     placeholder="Mobile Number*"
                     preElement={[]}
                     setRef={function noRefCheck() {}}
@@ -144,8 +154,8 @@ const TalkToCounsller = () => {
                       type="button"
                       variant="naked"
                       disabled={!isPhoneValid(phone)}
-                      onClick={() => {
-                        // getOTP()
+                      onClick={(e) => {
+                        handleOTP(e)
                         setCounter(10)
                         setCanResend(false)
                         setOptSent(true)
@@ -178,9 +188,6 @@ const TalkToCounsller = () => {
                     spellCheck="false"
                   />
                 </div>
-
-                {/* Resend OTP in */}
-
                 {optSent ? (
                   <>
                     {canResend ? (
@@ -213,12 +220,21 @@ const TalkToCounsller = () => {
                 ) : (
                   ''
                 )}
-                <button
-                  onClick={handleSubmit}
-                  className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
-                >
-                  Submit
-                </button>
+                {!isNameValid(name) || !isPhoneValid(phone) ? (
+                  <button
+                    onClick={handleSubmit}
+                    className="w-full h-[48px] bg-[#e9798b] sm:bg-[#767a7c] rounded-[6px] text-white text-[16px] cursor-not-allowed"
+                  >
+                    Submit
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmit}
+                    className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
+                  >
+                    Submit
+                  </button>
+                )}
               </div>
             </div>
           </div>
