@@ -64,7 +64,7 @@ const header = ({ handleState }: { handleState: any }) => {
           <div className="w-[32px]"></div>
         </div>
         <div className=" w-screen lg:block hidden ">
-          <div className="  h-full items-center bg-white max-w-7xl sm:px-6 px-3 mx-auto flex justify-between ">
+          <div className="  h-full items-center bg-white max-w-6xl  mx-auto flex justify-between ">
             <div className="lg:h-fit my-auto h-[33px] w-[123px] cursor-pointer">
               <Link href={'/'}>
                 <Image src={Pwlogo} alt="logo" />
@@ -82,10 +82,12 @@ const header = ({ handleState }: { handleState: any }) => {
               ))}
             </div>
             <div className="w-fit h-full flex items-center ">
-              <button className="p-3  flex h-[48px] m-auto items-center border-[1px] border-[#414347] rounded-[6px]">
-                <Image src={Phn} alt="phone" />
-                <p className="ml-[8px]">9513766500</p>
-              </button>
+              <Link href="tel:9513766500">
+                <button className="p-3  flex h-[48px] m-auto items-center border-[1px] border-[#414347] rounded-[6px]">
+                  <Image src={Phn} alt="phone" />
+                  <p className="ml-[8px]">9513766500</p>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -137,10 +139,12 @@ const header = ({ handleState }: { handleState: any }) => {
 
                         <div className="flex justify-center">
                           <div className="p-4">
-                            <button className="p-3 flex h-[48px] w-[92vw] items-center justify-center border-[1px] border-[#414347] rounded-[6px]">
-                              <Image src={Phn} alt="phone" />
-                              <p className="ml-[8px]">9513766500</p>
-                            </button>
+                            <Link href="tel:9513766500">
+                              <button className="p-3 flex h-[48px] w-[92vw] items-center justify-center border-[1px] border-[#414347] rounded-[6px]">
+                                <Image src={Phn} alt="phone" />
+                                <p className="ml-[8px]">9513766500</p>
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>

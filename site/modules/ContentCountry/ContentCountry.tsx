@@ -17,7 +17,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
   //console.log('contents :: ', contentItems)
   return (
     <>
-      <div className="bg-[#F8F8F8] w-full">
+      <div className="bg-[#F8F8F8] w-full ">
         <Container className="sm:flex w-full max-w-7xl px-4">
           {contentItems?.map((item) => (
             <div className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">

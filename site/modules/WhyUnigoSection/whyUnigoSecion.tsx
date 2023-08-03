@@ -2,7 +2,7 @@ import React from 'react'
 
 function whyUnigoSecion() {
   return (
-    <div className="  max-w-6xl m-auto py-[24px] xl:px-0 px-3">
+    <div className="  max-w-6xl m-auto py-[24px]  xl:px-0 px-[10px]">
       <div className=" text-center  m-auto mb-[32px]">
         <h1 className="font-[700] sm:text-[40px] text-[24px] sm:leading-[50px] leading-[32px]">
           Why Choose PW Unigo?

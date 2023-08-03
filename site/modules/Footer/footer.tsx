@@ -11,7 +11,7 @@ import Tele from '../../assets/images/telegram.svg'
 const Footer = () => {
   return (
     <>
-      <div className="w-full bg-[#F8F8F8] py-[32px] mt-[40px]">
+      <div className="w-full bg-[#F8F8F8] py-[32px] mt-[40px] xl:px-0 px-[10px]">
         <div className="lg:flex mx-auto max-w-6xl xl:px-0 px-3 justify-between">
           <div className="lg:w-7/12 w-full">
             <div className="mb-[20px] md:mb-[24px] md:w-[214px] md:h-[60px]">

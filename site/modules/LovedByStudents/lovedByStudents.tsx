@@ -3,7 +3,7 @@ import Card from './card'
 const LovedByStudents = () => {
   return (
     <>
-      <div className="bg-[#FEF6F7] sm:py-[40px] py-[24px]">
+      <div className="bg-[#FEF6F7] sm:py-[40px] py-[24px] xl:px-0 px-[10px]">
         <div className="text-[20px] md:text-[32px] font-[700] mb-[16px] lg:mb-[34px] text-center">
           ❤️ Loved by students worldwide
         </div>

@@ -1,7 +1,7 @@
 import Header from '../modules/Header'
 import TopUniversity from '../modules/TopUniversity'
-import GlobalEducation from '../modules/GlobalEducation'
-import WhyUnigoSection from '../modules/WhyUnigoSection'
+import GlobalEducation from '@modules/GlobalEducation'
+import WhyUnigoSection from '@modules/WhyUnigoSection'
 import CountryBanner from '../modules/CountryBanner'
 import TalkToCounsllerHome from '../modules/TalkToCounsller/talkToCounsllerHome'
 import PopularCountries from '../modules/PopularCountries/popularCountries'
@@ -63,7 +63,7 @@ const items = [
 
 const Home = () => {
   return (
-    <div className="relative">
+    <div className="relative ">
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
