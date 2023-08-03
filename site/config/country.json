@@ -1,0 +1,1634 @@
+{
+  "russia": {
+    "countryName": "Russia",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Russia",
+    "whyStudy": {
+      "title": "Why Study in Russia?",
+      "description": "Studying in Russia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Russia",
+      "collegeDetails": [
+        {
+          "name": "Mordovia State University",
+          "address": "68 Bolshevistskaya St., Saransk, Republic of Mordovia, 430005, Russia",
+          "phone": "+7 (8342) 47-30-06",
+          "email": "",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kazan State Medical University",
+          "address": "49 Kremlevskaya St., Kazan, Tatarstan, 420008, Russia",
+          "phone": "+7 (843) 233-70-02",
+          "email": "iinfo@kpfu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kursk State Medical University",
+          "address": "3 Karl Marx St., Kursk, Russia, 305041",
+          "phone": "+7 (4712) 50-60-00",
+          "email": "rector@kursksmu.net",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Bashkir State Medical University",
+          "address": "3 Lenina St., Ufa, Bashkortostan, 450008, Russia",
+          "phone": "+7 (347) 273-88-80",
+          "email": "bashedu@bashgmu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Crimea Federal University",
+          "address": "5/7 Lenin Blvd., Simferopol, Crimea, 295051, Russia",
+          "phone": "+7 (3652) 24-35-01",
+          "email": "csmu-simf@yandex.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kazan Federal Medical University",
+          "address": "49 Kremlevskaya St., Kazan, Tatarstan, 420008, Russia",
+          "phone": "+7 (843) 233-70-02",
+          "email": "info@kpfu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Rostov State Medical University",
+          "address": "29 Nakhichevansky Lane, Rostov-on-Don, Russia, 344022",
+          "phone": "+7 (863) 253-14-58",
+          "email": "rsmu@rsmu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Northern State Medical University",
+          "address": "51 Troitsky Ave., Arkhangelsk, Russia, 163000",
+          "phone": "+7 (8182) 65-10-15",
+          "email": "irector@nsmu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Ulyanovsk State University",
+          "address": "42 L. Tolstogo St., Ulyanovsk, Russia, 432017",
+          "phone": "+7 (8422) 41-33-11",
+          "email": "info@ulsu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Peoples Friendship University",
+          "address": "6 Miklukho-Maklaya St., Moscow, Russia, 117198",
+          "phone": "+7 (495) 955-09-09",
+          "email": " info@rudn.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Far Eastern Federal University",
+          "address": "10 Ajax Bay St., Russky Island, Vladivostok, Russia, 690922",
+          "phone": "+7 (423) 245-34-34",
+          "email": "info@dvfu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Altai State University",
+          "address": "61 Lenin Ave., Barnaul, Russia, 656049",
+          "phone": "+7 (3852) 366-007",
+          "email": "support@asu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "North Ossetian State Medical Academy",
+          "address": "44 Digorskoye Highway, Vladikavkaz, North Ossetia-Alania, Russia, 362021",
+          "phone": "+7 (8672) 54-77-27",
+          "email": "info@nosma.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Volgograd State Medical University",
+          "address": "1 Pavshikh Bortsov Sq., Volgograd, Russia, 400131",
+          "phone": "+7 (8442) 39-52-38",
+          "email": "info@volgmed.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Samara State Medical University",
+          "address": "89 Chapaevskaya St., Samara, Russia, 443099",
+          "phone": "+7 (846) 332-27-22",
+          "email": "rector@samsmu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Northern west state , st petter burges State Medical University",
+          "address": "41 Kirochnaya St., Saint Petersburg, Russia, 191015",
+          "phone": "+7 (812) 328-94-21",
+          "email": "mail@szgmu.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Russia",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "12-16 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "25,000-40,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "6,000-10,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "30-40 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Russia",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidate s applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC)</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in russia",
+        "key": "why-study-in-russia"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Russia?",
+        "description": "MBBS in Russia is one of the most affordable options for students considering MBBS abroad. Depending upon which university you have chosen, MBBS fees in Russia can vary anywhere between INR 15 Lakhs to INR 50 Lakhs for the entire MBBS course duration."
+      },
+      {
+        "title": "Is MBBS in Russia a good idea for Indian medical students?",
+        "description": "Yes, studying MBBS in Russia is one of the best choices for all Indian students who, despite qualifying for the NEET exam, could not secure their seats in India. At times, even those who had a chance of studying MBBS in a private medical university often prefer studying MBBS in Russia as it promises a higher quality of education and is affordable."
+      },
+      {
+        "title": "Is NEET required for MBBS in Russia?",
+        "description": "Yes, as per the current norms, any Indian student who aspires to become a doctor or even pursue medicine has to appear and qualify for the NEET exam. This is also mandatory for those who wish to study MBBS in Russia. A NEET score card is valid for three years, during which the students can apply to the university of their choice."
+      },
+      {
+        "title": "What after MBBS in Russia?",
+        "description": "There are plenty of options and opportunities for the students once they complete their MBBS in Russia. They can choose to appear and qualify for the medical licensing exam of any country they plan to practise in, including India, or choose a specialisation or post-grad studies."
+      }
+    ]
+  },
+  "armenia": {
+    "countryName": "Armenia",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Armenia",
+    "whyStudy": {
+      "title": "Why Study in Armenia?",
+      "description": "Studying in Armenia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Armenia",
+      "collegeDetails": [
+        {
+          "name": "American University of Armenia",
+          "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
+          "phone": "+374 60 69 40 40",
+          "email": "info@aua.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Armenian State Medical University",
+          "address": "2 Koryun St, Yerevan 0025, Armenia",
+          "phone": "+374 10 57 71 20",
+          "email": "rector@asmu.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "European Medical Center",
+          "address": "7/1 Amiryan St, Yerevan 0010, Armenia",
+          "phone": "+374 10 56 11 00",
+          "email": "info@emc.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Gyumri State Medical University",
+          "address": "7/1 Spandaryan St, Gyumri 3103, Armenia",
+          "phone": "+374 312 3-40-63",
+          "email": "gsmu@gsu.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Lori State Medical University",
+          "address": "11/2 Shirakatsi St, Vanadzor 2004, Armenia",
+          "phone": "+374 322 4-32-27",
+          "email": "lsmu_v@rambler.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Mkhitar Heratsi Medical College",
+          "address": "15/22 Abovyan St, Yerevan 0010, Armenia",
+          "phone": "+374 10 58 02 57",
+          "email": "info@mkmk.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Spitak State Medical College",
+          "address": "9 V. Sargsyan St, Spitak 4502, Armenia",
+          "phone": "+374 255 2-43-74",
+          "email": "spitakcolleg@rambler.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Yerevan Haybusak University",
+          "address": "28 Azatutyan Ave, Yerevan 0014, Armenia",
+          "phone": "+374 10 60 20 50",
+          "email": "info@haybusak.org",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Yerevan State Medical University",
+          "address": "2 Koryun St, Yerevan 0025, Armenia",
+          "phone": "+374 10 56 52 81",
+          "email": "info@ysmu.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Armenian Medical Institute",
+          "address": "58 Teryan St, Yerevan 0009, Armenia",
+          "phone": "+374 10 52 57 01",
+          "email": "info@ami.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Mkhitar Gosh Armenian-Russian International University",
+          "address": "66 Teryan St, Yerevan 0009, Armenia",
+          "phone": "+374 10 56 46 57",
+          "email": "info@agmu.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "ST. Tereza Medical University",
+          "address": "39/19 Tumanyan St, Yerevan 0002, Armenia",
+          "phone": "+374 10 54 13 56",
+          "email": "info@terezaseminary.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "The University of Traditional Medicine",
+          "address": "1 Poghosyan St, Yerevan 0010, Armenia",
+          "phone": "+374 10 52 90 51",
+          "email": "info@utm.am",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Armenia",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "13-17 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "30,000-50,000/year ",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "7,000-10,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "3,000-5,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "30-40 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Armenia",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidates applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC))</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in armenia",
+        "key": "why-study-in-armenia"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Armenia? ",
+        "description": "The cost of studying MBBS in Armenia varies depending on the university and the program, but it typically ranges from 1.75 lakhs to 3 lakhs INR per year."
+      },
+      {
+        "title": "Is MBBS in Armenia a good idea for Indian medical students? ",
+        "description": "MBBS in Armenia can be a good option for Indian medical students who are looking for a high-quality education at an affordable price. The universities in Armenia are accredited by the World Health Organization (WHO) and the Medical Council of India (MCI), and the degrees they offer are recognized worldwide."
+      },
+      {
+        "title": "Is NEET required for MBBS in Armenia?",
+        "description": " No, NEET is not required for MBBS in Armenia. However, students must have passed their 10+2 with at least 50% marks in Physics, Chemistry, and Biology. They may also be required to take an entrance exam."
+      },
+      {
+        "title": "What after MBBS in Armenia? ",
+        "description": "After completing MBBS in Armenia, Indian students can either return to India and practice medicine or continue their studies in a postgraduate program. They can also work in other countries, as the degrees they earn in Armenia are recognized worldwide."
+      }
+    ]
+  },
+  "georgia": {
+    "countryName": "Georgia",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Georgia",
+    "whyStudy": {
+      "title": "Why Study in Georgia?",
+      "description": "Studying in Georgia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Georgia",
+      "collegeDetails": [
+        {
+          "name": "Georgian National University (SEU)",
+          "address": "2/5 Kakutsa Cholokashvili Ave, Tbilisi 0179, Georgia",
+          "phone": "+995 32 241 55 51",
+          "email": "info@seu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Tbilisi State Medical University (1)",
+          "address": "33 Vazha-Pshavela Ave, Tbilisi 0160, Georgia",
+          "phone": "+995 32 272 12 46",
+          "email": "info@tsmu.edu",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Ivane Javakhishvili Tbilisi State University",
+          "address": "1 Chavchavadze Ave, Tbilisi 0179, Georgia",
+          "phone": "+995 32 222 00 09",
+          "email": "info@tsu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Georgian American University",
+          "address": "2/5 Kakutsa Cholokashvili Ave, Tbilisi 0179, Georgia",
+          "phone": "+995 32 255 11 01",
+          "email": "info@gau.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "East European University (EEU)",
+          "address": "85 Merab Aleksidze St, Tbilisi 0179, Georgia",
+          "phone": "+995 32 255 11 11",
+          "email": "info@eeu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Tbilisi Medical Academy",
+          "address": "68 I. Chavchavadze Ave, Tbilisi 0179, Georgia",
+          "phone": "+995 32 255 12 90",
+          "email": "info@tma.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "New Vision University, Georgia",
+          "address": "22 P. Kavtaradze St, Tbilisi 0179, Georgia",
+          "phone": "+995 32 252 00 00",
+          "email": "info@newvision.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Batumi Shota Rustaveli State University",
+          "address": "35 Ninoshvili St, Batumi 6010, Georgia",
+          "phone": "+995 422 27 00 55",
+          "email": "info@bsu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "David Agmashenebeli University of Georgia",
+          "address": "13 B. Andronikashvili St, Tbilisi 0112, Georgia",
+          "phone": "+995 32 233 50 41",
+          "email": "info@davita.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Akaki Tsereteli State University",
+          "address": "59a Chavchavadze St, Kutaisi 4600, Georgia",
+          "phone": "+995 431 25 34 61",
+          "email": "info@atsu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "European University (Formerly: European Teaching University)",
+          "address": "13 Lado Asatiani St, Tbilisi 0105, Georgia",
+          "phone": "+995 32 292 17 00",
+          "email": "info@eu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "David Tvildiani Medical University",
+          "address": "1/4 Ljubljana St, Tbilisi 0186, Georgia",
+          "phone": "+995 32 230 30 00",
+          "email": "info@dtmu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Caucasus International University",
+          "address": "84a Merab Aleksidze St, Tbilisi 0179, Georgia",
+          "phone": "+995 32 298 51 00",
+          "email": "info@ciu.edu.ge",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "Tbilisi Medical University Hippocrates",
+          "address": "77a M. Kostava St, Tbilisi 0171, Georgia",
+          "phone": "+995 32 255 57 58",
+          "email": "info@tbilisimedicaluniversity.com",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Georgia",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "15-20 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "50,000-75,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "10,000-15,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "35-50 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Georgia",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidates applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC))</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in georgia",
+        "key": "why-study-in-georgia"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Georgia?",
+        "description": "The cost of studying MBBS in Georgia varies depending on the university and the program, but it typically ranges from 1.5 lakhs to 2.5 lakhs INR per year."
+      },
+      {
+        "title": "Is MBBS in Georgia a good idea for Indian medical students? ",
+        "description": "MBBS in Georgia can be a good option for Indian medical students who are looking for a high-quality education at an affordable price. The universities in Georgia are accredited by the World Health Organization (WHO) and the Medical Council of India (MCI), and the degrees they offer are recognized worldwide."
+      },
+      {
+        "title": "Is NEET required for MBBS in Georgia? ",
+        "description": "  No, NEET is not required for MBBS in Georgia. However, students must have passed their 10+2 with at least 50% marks in Physics, Chemistry, and Biology. They may also be required to take an entrance exam."
+      },
+      {
+        "title": "What after MBBS in Georgia?",
+        "description": "After completing MBBS in Georgia, Indian students can either return to India and practice medicine or continue their studies in a postgraduate program. They can also work in other countries, as the degrees they earn in Georgia are recognized worldwide."
+      }
+    ]
+  },
+  "kazakhstan": {
+    "countryName": "Kazakhstan",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Kazakhstan",
+    "whyStudy": {
+      "title": "Why Study in Kazakhstan?",
+      "description": "Studying in Kazakhstan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Kazakhstan",
+      "collegeDetails": [
+        {
+          "name": "South Kazakhstan Medical Academy",
+          "address": "1-University Street, Shymkent, Kazakhstan",
+          "phone": "+7 7252 301 231",
+          "email": "info@szgmu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Astana Medical University",
+          "address": "51a Beibitshilik Street, Nur-Sultan, Kazakhstan",
+          "phone": "+7 7172 690 524",
+          "email": "info@amu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Al Farabi Kazakh National University",
+          "address": "71 al-Farabi Avenue, Almaty, Kazakhstan",
+          "phone": "+7 7272 393 777",
+          "email": "info@kaznu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kokshetau State University",
+          "address": "76 Abay Street, Kokshetau, Kazakhstan",
+          "phone": "+7 7162 259 101",
+          "email": "rector@ksu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "North Kazakhstan State University",
+          "address": "86 Pravda Street, Petropavlovsk, Kazakhstan",
+          "phone": "+7 7152 450 214",
+          "email": "nkzu@rambler.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "West Kazakhstan State Medical University",
+          "address": "68 Gagarin Street, Aktobe, Kazakhstan",
+          "phone": "+7 7132 501 706",
+          "email": " info@zkgmu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Karaganda State Medical University",
+          "address": "40 Gogol Street, Karaganda, Kazakhstan",
+          "phone": "+7 7212 422 125",
+          "email": "kargmu@mail.ru",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Semey State Medical University",
+          "address": "103 Abay Avenue, Semey, Kazakhstan",
+          "phone": "+7 7222 329 090",
+          "email": "smu.semkaz@gmail.com",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kazakh-Russian Medical University",
+          "address": " 94 Tole bi Street, Almaty, Kazakhstan",
+          "phone": "+7 7272 727 825",
+          "email": "knmu@kaznmu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kazakh National Medical University",
+          "address": "94 Tole bi Street, Almaty, Kazakhstan",
+          "phone": "+7 7272 727 825",
+          "email": "knmu@kaznmu.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "International Medical School, UIB, Aimaty",
+          "address": "11 Korgalzhyn Highway, Nur-Sultan, Kazakhstan ",
+          "phone": "+7 7172 646 113",
+          "email": "info@uib.kz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Kazakhstan",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "15-22 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "40,000-60,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "8,000-12,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "35-50 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Kazakhstan",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidates applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC))</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in kazakhstan",
+        "key": "why-study-in-kazakhstan"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Kazakhstan?",
+        "description": "The cost of studying MBBS in Kazakhstan varies depending on the university and the program, but it typically ranges from 15 lakhs to 50 lakhs INR per year."
+      },
+      {
+        "title": "Is MBBS in Kazakhstan a good idea for Indian medical students?",
+        "description": "MBBS in Kazakhstan can be a good option for Indian medical students who are looking for a high-quality education at an affordable price. The universities in Kazakhstan are accredited by the World Health Organization (WHO) and the Medical Council of India (MCI), and the degrees they offer are recognized worldwide."
+      },
+      {
+        "title": "Is NEET required for MBBS in Kazakhstan?",
+        "description": " Yes, NEET is required for MBBS in Kazakhstan. However, students who have qualified NEET in the previous 3 years can apply for admission without having to take the Kazakhstan entrance exam."
+      },
+      {
+        "title": "What after MBBS in Kazakhstan? ",
+        "description": "After completing MBBS in Kazakhstan, Indian students can either return to India and practice medicine or continue their studies in a postgraduate program. They can also work in other countries, as the degrees they earn in Kazakhstan are recognized worldwide."
+      }
+    ]
+  },
+  "kyrgyzstan": {
+    "countryName": "Kyrgyzstan",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Kyrgyzstan",
+    "whyStudy": {
+      "title": "Why Study in Kyrgyzstan?",
+      "description": "Studying in Kyrgyzstan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Kyrgyzstan",
+      "collegeDetails": [
+        {
+          "name": "Kyrgyz State Medical Academy",
+          "address": "92, Akhunbaev Street, Bishkek, Kyrgyz Republic",
+          "phone": "+996 312 611 272",
+          "email": "info@kgma.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Osh State University",
+          "address": "15, Jibek Jolu (Lenin) Street, Osh, Kyrgyz Republic",
+          "phone": "+996 3222 36222",
+          "email": "info@oshmed.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Jalalabad Medical University",
+          "address": "",
+          "phone": "+996 3722 55560",
+          "email": "info@jalalabadmu.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Kyrgyz Russian Slavic University",
+          "address": "",
+          "phone": "+996 312 543126",
+          "email": " info@krsu.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Asian Medical Institute",
+          "address": "",
+          "phone": "+996 312 972111 ",
+          "email": "info@asmi.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "International School of Medicine",
+          "address": "",
+          "phone": "+996 312 906500",
+          "email": "info@ism.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        },
+        {
+          "name": "IMI Academy of Bishkek",
+          "address": "",
+          "phone": " +996 556 340130",
+          "email": "info@imi.edu.kg",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Private"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Kyrgyzstan",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "15-20 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "50,000-75,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "10,000-15,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "35-50 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Kyrgyzstan",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidates applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC))</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in kyrgyzstan",
+        "key": "why-study-in-kyrgyzstan"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Kyrgyzstan? ",
+        "description": "The cost of studying MBBS in Kyrgyzstan varies depending on the university and the program, but it typically ranges from 1.5 lakhs to 3 lakhs INR per year."
+      },
+      {
+        "title": "Is MBBS in Kyrgyzstan a good idea for Indian medical students? ",
+        "description": "MBBS in Kyrgyzstan can be a good option for Indian medical students who are looking for a high-quality education at an affordable price. The universities in Kyrgyzstan are accredited by the World Health Organization (WHO) and the Medical Council of India (MCI), and the degrees they offer are recognized worldwide."
+      },
+      {
+        "title": "Is NEET required for MBBS in Kyrgyzstan? ",
+        "description": "No, NEET is not required for MBBS in Kyrgyzstan. However, students must have passed their 10+2 with at least 50% marks in Physics, Chemistry, and Biology. They may also be required to take an entrance exam."
+      },
+      {
+        "title": "What after MBBS in Kyrgyzstan?",
+        "description": " After completing MBBS in Kyrgyzstan, Indian students can either return to India and practice medicine or continue their studies in a postgraduate program. They can also work in other countries, as the degrees they earn in Kyrgyzstan are recognized worldwide."
+      }
+    ]
+  },
+  "uzbekistan": {
+    "countryName": "Uzbekistan",
+    "imageHeader": "",
+    "titleHeader": "Study MBBS from Uzbekistan",
+    "whyStudy": {
+      "title": "Why Study in Uzbekistan?",
+      "description": "Studying in Uzbekistan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
+      "bulletPoint": [
+        {
+          "bulletImage": "",
+          "content": "Rich history & culture"
+        },
+        {
+          "bulletImage": "",
+          "content": "Scenic Landscapes"
+        },
+        {
+          "bulletImage": "",
+          "content": "Warm Hospitality"
+        },
+        {
+          "bulletImage": "",
+          "content": "Affordable Living"
+        },
+        {
+          "bulletImage": "",
+          "content": "Delicious Cuisine"
+        },
+        {
+          "bulletImage": "",
+          "content": "Strong Sense of community"
+        },
+        {
+          "bulletImage": "",
+          "content": "Accessible Education"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Colleges in Uzbekistan",
+      "collegeDetails": [
+        {
+          "name": "Samarkand State Medical University",
+          "address": "18, University Blvd, Samarkand, Uzbekistan",
+          "phone": "+998 66 239 34 68",
+          "email": "info@sammi.uz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Tashkent Medical Academy",
+          "address": "2 Farobi St, Tashkent 100109, Uzbekistan",
+          "phone": "+998 71 268 83 59",
+          "email": "info@tma.uz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Fergana Medical Institute",
+          "address": "10 Istikbol St, Fergana 150100, Uzbekistan",
+          "phone": "+998 73 244 33 03",
+          "email": "ergmi.info@gmail.com",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Andijan State Medical Institute",
+          "address": "2 Mirdustim St, Andijan 170100, Uzbekistan",
+          "phone": "+998 74 225 14 94",
+          "email": "info@adti.uz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Tashkent State Dental and Medical Institute",
+          "address": "3 Alimkhan St, Tashkent 100021, Uzbekistan",
+          "phone": "+998 71 267 51 12",
+          "email": " info@tdmi.uz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        },
+        {
+          "name": "Bukhara Medical University",
+          "address": "1 K. Murtazaev St, Bukhara 200100, Uzbekistan",
+          "phone": "+998 65 224 34 02",
+          "email": " info@bukmedu.uz",
+          "imageUrl": "",
+          "tag": [
+            {
+              "type": "Government"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "title": "Cost of studying in Uzbekistan",
+      "headers": [
+        {
+          "display": "Expense",
+          "key": "education"
+        },
+        {
+          "display": "Average Cost (INR)",
+          "key": "cost"
+        }
+      ],
+      "content": [
+        {
+          "education": "Tuition fees",
+          "cost": "15-20 lakhs/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Hostel accommodation",
+          "cost": "50,000-75,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Food",
+          "cost": "10,000-15,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Books and stationery ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Transportation",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Miscellaneous ",
+          "cost": "5,000-7,000/year",
+          "currency": "₹"
+        },
+        {
+          "education": "Total ",
+          "cost": "35-50 lakhs",
+          "currency": "₹"
+        }
+      ]
+    },
+    "requirement": {
+      "title": "Requirements for studying in Uzbekistan",
+      "description": "<h1>Eligibility criteria:</h1><ul>  <li>A score of 50% in 12th class</li>  <li>Minimum 18 years old</li> <li>candidates applying for MBBS must fulfil all the requirements in the guidelines of national medical commission (NMC))</li>  <li>Must have qualified NEET exam</li>  </ul><h1>Documents required:</h1><ul> <li>Valid passport with a minimum validity of 1 year.</li>  <li>10th &12th certificate</li>  <li>NEET qualified score card</li>  <li>Birth certificate, aadhar card, and PAN card</li>  <li>3 passport size photographs</li> </ul>"
+    },
+    "tabs": [
+      {
+        "name": "Why study in uzbekistan",
+        "key": "why-study-in-uzbekistan"
+      },
+      {
+        "name": "Colleges",
+        "key": "colleges"
+      },
+      {
+        "name": "Cost",
+        "key": "cost"
+      },
+      {
+        "name": "Requirements",
+        "key": "requirements"
+      },
+      {
+        "name": "FAQs",
+        "key": "faqs"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How much does it cost to study MBBS in Uzbekistan? ",
+        "description": "The cost of studying MBBS in Uzbekistan varies depending on the university and the program, but it typically ranges from 2.5 lakhs to 3.5 lakhs INR per year."
+      },
+      {
+        "title": "Is MBBS in Uzbekistan a good idea for Indian medical students?",
+        "description": " MBBS in Uzbekistan can be a good option for Indian medical students who are looking for a high-quality education at an affordable price. The universities in Uzbekistan are accredited by the World Health Organization (WHO) and the Medical Council of India (MCI), and the degrees they offer are recognized worldwide."
+      },
+      {
+        "title": "Is NEET required for MBBS in Uzbekistan?",
+        "description": " No, NEET is not required for MBBS in Uzbekistan. However, students must have passed their 10+2 with at least 50% marks in Physics, Chemistry, and Biology. They may also be required to take an entrance exam."
+      },
+      {
+        "title": "What after MBBS in Uzbekistan?",
+        "description": "After completing MBBS in Uzbekistan, Indian students can either return to India and practice medicine or continue their studies in a postgraduate program. They can also work in other countries, as the degrees they earn in Uzbekistan are recognized worldwide."
+      }
+    ]
+  }
+}

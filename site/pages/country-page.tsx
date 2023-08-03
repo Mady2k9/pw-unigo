@@ -32,9 +32,9 @@ const CountryPage = () => {
   return (
     <>
       <Header handleState={undefined} />
-      <CountryBanner />
-      <MiddleNav />
-      <ContentCountry />
+      <CountryBanner bannerItems={[]} />
+      <MiddleNav items={[]} />
+      <ContentCountry contentItems={[]} />
       <Faq
         items={items}
         heading="You have questions. We have answers!"

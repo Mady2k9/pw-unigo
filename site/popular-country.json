@@ -1,0 +1,28 @@
+{
+  "popular-country": [
+    {
+      "name": "Russia",
+      "img-url": "xyz.png"
+    },
+    {
+      "name": "Armenia",
+      "img-url": "xyz.png"
+    },
+    {
+      "name": "Georgia",
+      "img-url": "xyz.png"
+    },
+    {
+      "name": "Kazakhstan",
+      "img-url": "xyz.png"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "img-url": "xyz.png"
+    },
+    {
+      "name": "Uzbekistan",
+      "img-url": "xyz.png"
+    }
+  ]
+}
