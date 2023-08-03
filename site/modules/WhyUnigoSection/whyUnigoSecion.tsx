@@ -2,8 +2,7 @@ import React from 'react'
 
 function whyUnigoSecion() {
   return (
-    <div className="  max-w-7xl m-auto py-[24px] px-3 md:px-6 ">
-
+    <div className="  max-w-6xl m-auto py-[24px] xl:px-0 px-3">
       <div className=" text-center  m-auto mb-[32px]">
         <h1 className="font-[700] sm:text-[40px] text-[24px] sm:leading-[50px] leading-[32px]">
           Why Choose PW Unigo?
@@ -15,8 +14,12 @@ function whyUnigoSecion() {
       </div>
       <div className="sm:grid sm:grid-cols-2 flex flex-col justify-center gap-[20px] ">
         <div className="border border-[#B7B7B7] rounded p-[16px] flex items-center gap-[24px]  ">
-          <img className='w-[56px] h-[56px] ' src="why_choose_icon1.svg" alt="demo" />
-          <div className=' lg:gap-y-[10px] flex flex-col gap-y-[4px]'>
+          <img
+            className="w-[56px] h-[56px] "
+            src="why_choose_icon1.svg"
+            alt="demo"
+          />
+          <div className=" lg:gap-y-[10px] flex flex-col gap-y-[4px]">
             <p className="sm:text-[20px] text-[16px] font-bold leading-[24px]">
               One to one counselling
             </p>
@@ -26,47 +29,57 @@ function whyUnigoSecion() {
           </div>
         </div>
         <div className="border border-[#B7B7B7] rounded p-[16px] flex  items-center gap-[24px] ">
+          <img
+            className="w-[56px] h-[56px]"
+            src="why_choose_icon2.svg"
+            alt="demo"
+          />
 
-          <img className='w-[56px] h-[56px]' src="why_choose_icon2.svg" alt="demo" />
-
-          <div className=' lg:gap-y-[10px] flex flex-col gap-y-[4px]'>
+          <div className=" lg:gap-y-[10px] flex flex-col gap-y-[4px]">
             <p className="sm:text-[20px] text-[16px] font-[700] leading-[24px]">
               Academic Program
             </p>
             <p className="sm:text-[16px] text-[14px] text-[#3D3D3D] font-[500] leading-[22px]">
-              PW Unigo provides preparation modules for you to ace standardized tests
+              PW Unigo provides preparation modules for you to ace standardized
+              tests
             </p>
           </div>
         </div>
         <div className="border border-[#B7B7B7] rounded p-[16px] flex  items-center gap-[24px]">
+          <img
+            className="w-[56px] h-[56px] "
+            src="why_choose_icon3.svg"
+            alt="demo"
+          />
 
-          <img className='w-[56px] h-[56px] ' src="why_choose_icon3.svg" alt="demo" />
-
-          <div className=' lg:gap-y-[10px] flex flex-col gap-y-[4px] \' >
+          <div className=" lg:gap-y-[10px] flex flex-col gap-y-[4px] \">
             <p className="sm:text-[20px] text-[16px] font-[700] leading-[24px]">
               Student Community
             </p>
             <p className="sm:text-[16px] text-[14px] text-[#3D3D3D] font-[500] leading-[22px]">
-              Discover and connect with like-minded peers in your field of interest
+              Discover and connect with like-minded peers in your field of
+              interest
             </p>
           </div>
         </div>
         <div className="border border-[#B7B7B7] rounded p-[16px] flex  items-center gap-[24px]">
+          <img
+            className="w-[56px] h-[56px] "
+            src="why_choose_icon4.svg"
+            alt="demo"
+          />
 
-          <img className='w-[56px] h-[56px] ' src="why_choose_icon4.svg" alt="demo" />
-
-          <div className=' lg:gap-y-[10px] flex flex-col gap-y-[4px] '>
+          <div className=" lg:gap-y-[10px] flex flex-col gap-y-[4px] ">
             <p className="sm:text-[20px] text-[16px] font-[700] leading-[24px]">
               Complete Support
             </p>
             <p className="sm:text-[16px] text-[14px] text-[#3D3D3D] font-[500] leading-[22px]">
-              Get complete support and guidance throughout the entire duration of your course
+              Get complete support and guidance throughout the entire duration
+              of your course
             </p>
           </div>
         </div>
-
       </div>
-
 
       {/* <div className="lg:flex justify-center gap-2 ">
       <div className="px-[16px] sm:p-0">

@@ -13,8 +13,7 @@ const TalkToCounsller = () => {
   }
   return (
     <>
-      <span id="TalkToCounsellor" className="absolute top-10"></span>
-      <div className="my-auto w-screen px-3 py-5 md:px-6 max-w-7xl m-auto ">
+      <div className="my-auto max-w-6xl m-auto px-3 xl:px-0">
         <div className="rounded-[8px] sm:rounded-[16px] bg-[#1B2124] sm:relative w-fit sm:w-full m-auto p-[16px] lg:p-0 ">
           {/* first div */}
           <div className=" h-full hidden lg:block">

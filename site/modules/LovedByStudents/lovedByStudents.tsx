@@ -7,7 +7,7 @@ const LovedByStudents = () => {
         <div className="text-[20px] md:text-[32px] font-[700] mb-[16px] lg:mb-[34px] text-center">
           ❤️ Loved by students worldwide
         </div>
-        <div className="mx-auto max-w-7xl sm:px-6 px-3 overflow-x-auto">
+        <div className="mx-auto max-w-6xl xl:px-0 px-3 overflow-x-auto">
           <div className="flex mt-2 lg:p-0 gap-5">
             <Card
               testimonial={

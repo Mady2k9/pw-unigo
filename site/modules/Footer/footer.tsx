@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <>
       <div className="w-full bg-[#F8F8F8] py-[32px] mt-[40px]">
-        <div className="lg:flex mx-auto max-w-7xl sm:px-6 px-3 justify-between">
+        <div className="lg:flex mx-auto max-w-6xl xl:px-0 px-3 justify-between">
           <div className="lg:w-7/12 w-full">
             <div className="mb-[20px] md:mb-[24px] md:w-[214px] md:h-[60px]">
               <Image src={Pwlogo} alt="logo" />
@@ -122,7 +122,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="sm:flex mt-[24px] sm:mt-[40px] mx-auto max-w-7xl sm:px-6 px-3">
+        <div className="sm:flex mt-[24px] sm:mt-[40px] mx-auto max-w-6xl xl:px-0 px-3">
           <div className="border-t-[1px] border-[#D9DCE1] w-full sm:flex justify-between">
             <div className="flex my-3">
               <div className="text-[14px] border-r-[2px] border-[#D9DCE1] pr-[12px]">

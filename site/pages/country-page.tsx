@@ -5,6 +5,29 @@ import Faq from 'modules/Faq'
 import Header from '@modules/Header'
 import Footer from '@modules/Footer'
 
+const items = [
+  {
+    title: 'How do I Share my Referral Code?',
+    description:
+      'Just Click on Refer & Earn on Menu of App, Click on the share button',
+  },
+  {
+    title: 'How do I Share my Referral Code?',
+    description:
+      'Just Click on Refer & Earn on Menu of App, Click on the share button',
+  },
+  {
+    title: 'How do I Share my Referral Code?',
+    description:
+      'Just Click on Refer & Earn on Menu of App, Click on the share button',
+  },
+  {
+    title: 'How do I Share my Referral Code?',
+    description:
+      'Just Click on Refer & Earn on Menu of App, Click on the share button',
+  },
+]
+
 const CountryPage = () => {
   return (
     <>
@@ -12,7 +35,11 @@ const CountryPage = () => {
       <CountryBanner />
       <MiddleNav />
       <ContentCountry />
-      <Faq data={undefined} />
+      <Faq
+        items={items}
+        heading="You have questions. We have answers!"
+        subheading="Check out the most commonly asked questions and their answers."
+      />
       <Footer />
     </>
   )

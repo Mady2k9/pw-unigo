@@ -10,9 +10,9 @@ import Link from 'next/link'
 const PopularCountries = () => {
   return (
     <>
-      <div className="mx-auto max-w-7xl sm:px-6 px-3 overflow-x-auto py-[24px] sm:py-[40px]">
+      <div className="mx-auto max-w-6xl xl:px-0 px-3 py-[24px] sm:py-[40px]">
         <div className=" flex flex-col items-center text-[#1B2124] md:mb-[24px]">
-          <p className="text-[20px] sm:text-[32px] font-bold ">
+          <p className="text-[20px] sm:text-[32px] font-bold text-center">
             Popular Countries To Study Abroad
           </p>
           <p className="text-[14px] sm:text-[18px]">
