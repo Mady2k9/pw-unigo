@@ -154,4 +154,8 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
   )
 }
 
+<<<<<<< HEAD
 export default countryContent
+=======
+export default ContentCountry
+>>>>>>> 2d57d401d80d2332431c12d35439435a2b062fea

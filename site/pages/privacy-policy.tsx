@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Header handleState={undefined} />
       <PrivacyPolicy />
-      <Faq data={undefined} />
+      <Faq items={[]} heading={''} subheading={''} />
       <Footer />
     </>
   )
