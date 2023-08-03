@@ -32,7 +32,7 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
   return (
     <>
       <div className="w-full border-b-2 border-b-grey-600 sticky sm:top-[79px] top-[59px] z-20 bg-white">
-        <Container className="w-full max-w-7xl px-4">
+        <Container className="w-full max-w-6xl px-3 xl:px-0">
           <Tabs
             currentIndex={activeTab}
             items={items}
