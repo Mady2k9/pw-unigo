@@ -2,6 +2,9 @@ def getEnvName() {
     if (env.BRANCH_NAME == 'main') {
         return 'production'
     }
+    else if (env.BRANCH_NAME == 'pre-prod') {
+        return 'pre-prod'
+    }
     else if (env.BRANCH_NAME == 'staging') {
         return 'staging'
     }
@@ -18,7 +21,7 @@ pipeline {
     }
   }
   environment {
-    serviceName = 'pw-marvel'
+    serviceName = 'pw-unigo'
     envName = getEnvName()
   }
   stages{

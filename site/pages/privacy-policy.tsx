@@ -1,18 +1,17 @@
-import Footer from '@modules/SiteFooter'
-import Header from '@components/common/Header/Header'
-import Breadcrumb from '../modules/Breadcrumb'
-import PrivatePolicy from '../modules/PrivatePolicy'
-const items = [{ name: 'Private Policy', url: '/' }]
+import Header from '../modules/Header'
+import Footer from '../modules/Footer'
+import PrivacyPolicy from '../modules/PrivacyPolicy'
+import Faq from '@modules/Faq'
 
-const PrivacyPolicy = () => {
+const Home = () => {
   return (
     <>
-      <Header variant="MARVELSHeader" />
-      <Breadcrumb items={items} title={'Private & Policy'} homeLink={''} />
-      <PrivatePolicy data={undefined} />
+      <Header handleState={undefined} />
+      <PrivacyPolicy />
+      <Faq data={undefined} />
       <Footer />
     </>
   )
 }
 
-export default PrivacyPolicy
+export default Home

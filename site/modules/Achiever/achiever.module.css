@@ -1,9 +1,0 @@
-.heading {
-  @apply sm:text-[32px] sm:leading-[48px] text-[18px] leading-[26px] sm:font-[500] font-[600];
-  margin-top: 10px;
-  color: #1b2124;
-}
-
-.text {
-  @apply sm:text-[16px] sm:leading-[24px]  text-[14px] leading-[22px] sm:font-[500] sm:text-[#3D3D3D] text-[#646464];
-}
