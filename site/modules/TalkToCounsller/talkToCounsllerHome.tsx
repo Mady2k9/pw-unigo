@@ -131,7 +131,8 @@ const TalkToCounsllerHome = () => {
 
   return (
     <>
-      <div className="my-auto max-w-6xl m-auto px-3 xl:px-0">
+      <div className="my-auto max-w-6xl m-auto px-3 xl:px-0 relative">
+        <div id="TalkToCounsellor" className="absolute top-[-120px]"></div>
         <div className="rounded-[8px] sm:rounded-[16px] bg-[#1B2124] sm:relative w-fit sm:w-full m-auto p-[16px] lg:p-0  overflow-hidden">
           <div className="hidden lg:block">
             <img src="/image-41.png" alt="bg" className="h-[450px]" />
