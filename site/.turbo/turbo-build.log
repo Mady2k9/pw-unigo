@@ -1,32 +1,20 @@
-[35mpw-live-v2:build[0m: cache hit, replaying output [2m6c5e1ce8e2412352[0m
+[35mpw-live-v2:build[0m: cache hit, replaying output [2m930dfbc34c2a637a[0m
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/ayushvishwakarma/Desktop/PhysicsWallah/pw-sip/site
+[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/uttamsharma/Desktop/unigo/pw-unigo/site
 [35mpw-live-v2:build: [0m> next build
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/ayushvishwakarma/Desktop/PhysicsWallah/pw-sip/site/.env
+[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/uttamsharma/Desktop/unigo/pw-unigo/site/.env
 [35mpw-live-v2:build: [0minfo  - Linting and checking validity of types...
-[35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
-[35mpw-live-v2:build: [0minfo  - Compiled successfully
-[35mpw-live-v2:build: [0minfo  - Collecting page data...
-[35mpw-live-v2:build: [0minfo  - Generating static pages (0/4)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (1/4)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (2/4)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (3/4)
-[35mpw-live-v2:build: [0minfo  - Generating static pages (4/4)
-[35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
+[35mpw-live-v2:build: [0mFailed to compile.
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0mRoute (pages)                              Size     First Load JS
-[35mpw-live-v2:build: [0m┌ ○ /                                      4.64 kB         163 kB
-[35mpw-live-v2:build: [0m├   /_app                                  0 B             119 kB
-[35mpw-live-v2:build: [0m├ ○ /404                                   46.8 kB         165 kB
-[35mpw-live-v2:build: [0m├   └ css/83e12858ee69e379.css             242 B
-[35mpw-live-v2:build: [0m└ ○ /school/all                            617 B           159 kB
-[35mpw-live-v2:build: [0m+ First Load JS shared by all              131 kB
-[35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js   45.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/main-18d9a05c10f45fd9.js        31.2 kB
-[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-e5e18523fa91a391.js  41.4 kB
-[35mpw-live-v2:build: [0m  ├ chunks/webpack-28ba801a7017a0d3.js     772 B
-[35mpw-live-v2:build: [0m  └ css/4dc411a51e1e030c.css               12.2 kB
+[35mpw-live-v2:build: [0m./shared/lib/events/index.ts:3:10
+[35mpw-live-v2:build: [0mType error: Module '"firebase"' has no exported member 'initializeApp'. Did you mean to use 'import initializeApp from "firebase"' instead?
 [35mpw-live-v2:build: [0m
-[35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
-[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m[0m [90m 1 | [39m[36mimport[39m { [33mEventType[39m } [36mfrom[39m [32m'./events'[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m 2 | [39m[0m
+[35mpw-live-v2:build: [0m[0m[31m[1m>[22m[39m[90m 3 | [39m[36mimport[39m { initializeApp } [36mfrom[39m [32m'firebase/app'[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m   | [39m         [31m[1m^[22m[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m 4 | [39m[36mimport[39m {[0m
+[35mpw-live-v2:build: [0m[0m [90m 5 | [39m  getAnalytics[33m,[39m[0m
+[35mpw-live-v2:build: [0m[0m [90m 6 | [39m  logEvent [36mas[39m gaLogEvent[33m,[39m[0m
+[35mpw-live-v2:build: [0m ELIFECYCLE  Command failed with exit code 1.
