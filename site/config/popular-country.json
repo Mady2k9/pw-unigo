@@ -3,32 +3,32 @@
     {
       "name": "Russia",
       "image": "../../assets/images/image 27.png",
-      "url": "/country/russia"
+      "url": "/countries/russia"
     },
     {
       "name": "Armenia",
       "image": "../../assets/images/image 28.png",
-      "url": "/country/armenia"
+      "url": "/countries/armenia"
     },
     {
       "name": "Georgia",
       "image": "xyz.png",
-      "url": "/country/georgia"
+      "url": "/countries/georgia"
     },
     {
       "name": "Kazakhstan",
       "image": "xyz.png",
-      "url": "/country/kazakhstan"
+      "url": "/countries/kazakhstan"
     },
     {
       "name": "Kyrgyzstan",
       "image": "xyz.png",
-      "url": "/country/kyrgyzstan"
+      "url": "/countries/kyrgyzstan"
     },
     {
       "name": "Uzbekistan",
       "image": "xyz.png",
-      "url": "/country/uzbekistan"
+      "url": "/countries/uzbekistan"
     }
   ]
 }
