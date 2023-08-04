@@ -141,7 +141,7 @@ const Footer = () => {
         <div className="sm:flex mt-[24px] mx-auto max-w-6xl xl:px-0 px-3">
           <div className="border-t-[1px] border-[#D9DCE1] w-full sm:flex justify-between">
             <div className="flex my-3">
-              <div className="text-[14px] border-r-[2px] border-[#D9DCE1] pr-[12px]">
+              <div className="text-[14px] pr-[12px]">
                 <Link href={'/privacy-policy'}>Privacy Policy</Link>
               </div>
               {/* <div className="pl-[12px] text-[14px]">

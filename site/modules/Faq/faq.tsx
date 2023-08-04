@@ -8,15 +8,15 @@ export interface FaqProps {
   items: { title: string; description: string }[]
   heading: string
   subheading: string
-  onLastWheel: any
 }
 
 const Faq: React.FC<FaqProps> = (props) => {
-  const { items, heading, subheading, onLastWheel } = props
+  const { items, heading, subheading } = props
   const rootClassName = cn(s.root, {})
   return (
     <>
-      <section className="mt-[20px]" onWheel={onLastWheel}>
+      <section className="mt-[20px] relative">
+        <div id="faq" className="absolute top-[-140px]"></div>
         <Container className="mx-auto max-w-6xl">
           <div className="flex justify-center">
             <span className={s.heading}>{heading}</span>

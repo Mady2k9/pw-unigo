@@ -22,7 +22,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
           {contentItems?.map((item) => (
             <div className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
               <div className="p-[24px] bg-white relative rounded-md drop-shadow-md">
-              <div id="whyStudy" className="absolute top-[-130px]"></div>
+                <div id="whyStudy" className="absolute top-[-130px]"></div>
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.whystudy?.title}
                 </h1>
@@ -39,27 +39,26 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 </div>
               </div>
 
-              <div
-                className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
-                 <div id="colleges" className="absolute top-[-130px]"></div>
+              <div className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
+                <div id="colleges" className="absolute top-[-130px]"></div>
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.colleges?.title}
                 </h1>
 
                 {item?.colleges?.collegeDetails?.map((detail: any) => (
                   <div className="p-4 md:flex border sm:border-[#EFEFEF] border-[#D9DCE1]  md:mb-[14px] mb-[12px] rounded-md">
-                    <div className="mr-4">
+                    <div className="mr-4 sm:w-[150px] mb-3 w-[89px]">
                       <img
                         src="/image.png"
-                        className="sm:w-[154px] w-[89px] mb-3"
+                        className="sm:w-[150px] w-[89px]"
                         alt="office"
                       />
                     </div>
-                    <div className="">
+                    <div className="w-full">
                       {detail.tag.map((tagType: any) => (
-                        <p className="rounded-lg bg-[#F1EFFF] text-[#5A4BDA] text-[12px] font-[600] md:w-[59px] w-[147px] mb-[6px] text-center leading-[18px]">
+                        <div className="rounded-lg bg-[#F1EFFF] text-[#5A4BDA] text-[12px] font-[600] px-3 w-fit mb-[6px] text-center leading-[18px]">
                           {tagType?.type}
-                        </p>
+                        </div>
                       ))}
 
                       <p className="text-[18px] font-[600] mb-[6px] leading-[28px]">
@@ -101,7 +100,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
               </div>
 
               <div className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
-              <div id='cost' className="absolute top-[-130px]"></div>
+                <div id="cost" className="absolute top-[-130px]"></div>
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.cost?.title}
                 </h1>
@@ -126,7 +125,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
               </div>
 
               <div className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
-              <div id='requirement' className="absolute top-[-130px]"></div>
+                <div id="requirement" className="absolute top-[-130px]"></div>
                 <h1 className="md:text-[32px] text-[20px] font-bold mb-[10px] md:leading-[48px] leading-[30px]">
                   {item?.requirement?.title}
                 </h1>

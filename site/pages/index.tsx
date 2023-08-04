@@ -82,8 +82,8 @@ const Home = () => {
         items={items}
         heading="You have questions. We have answers!"
         subheading="Check out the most commonly asked questions and their answers."
-        onLastWheel={onFirstScroll}
       />
+      <div onWheel={onFirstScroll}></div>
       {scroll ? <TalkCounsellorButton /> : ''}
       <Footer />
     </div>
