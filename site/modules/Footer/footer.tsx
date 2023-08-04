@@ -48,22 +48,22 @@ const Footer = () => {
               </div>
               <ul className="text-[14px]  font-[600] text-[#757575]">
                 <li className="mt-3">
-                  <Link href={'/country/russia'}>Russia</Link>
+                  <Link href={'/countries/russia'}>Russia</Link>
                 </li>
                 <li className="mt-3">
-                  <Link href={'/country/armenia'}>Armenia</Link>
+                  <Link href={'/countries/armenia'}>Armenia</Link>
                 </li>
                 <li className="mt-3">
-                  <Link href={'/country/georgia'}>Georgia</Link>
+                  <Link href={'/countries/georgia'}>Georgia</Link>
                 </li>
                 <li className="mt-3">
-                  <Link href={'/country/kazakhstan'}>Kazakhstan</Link>
+                  <Link href={'/countries/kazakhstan'}>Kazakhstan</Link>
                 </li>
                 <li className="mt-3">
-                  <Link href={'/country/kyrgyzstan'}>Kyrgyzstan</Link>
+                  <Link href={'/countries/kyrgyzstan'}>Kyrgyzstan</Link>
                 </li>
                 <li className="mt-3">
-                  <Link href={'/country/uzbekistan'}>Uzbekistan</Link>
+                  <Link href={'/countries/uzbekistan'}>Uzbekistan</Link>
                 </li>
               </ul>
             </div>
@@ -130,15 +130,23 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="sm:flex mt-[24px] sm:mt-[40px] mx-auto max-w-6xl xl:px-0 px-3">
+        <div className="sm:flex mt-[24px]  mx-auto max-w-6xl xl:px-0 px-3">
+          <div className="text-[16px] md:text-[16px] font-[600] mb-[10px]">
+            For Support & Enquiries:{' '}
+            <a className="text-[#757575]" href="mailto:support@pwunigo.com">
+              support@pwunigo.com
+            </a>
+          </div>
+        </div>
+        <div className="sm:flex mt-[24px] mx-auto max-w-6xl xl:px-0 px-3">
           <div className="border-t-[1px] border-[#D9DCE1] w-full sm:flex justify-between">
             <div className="flex my-3">
               <div className="text-[14px] border-r-[2px] border-[#D9DCE1] pr-[12px]">
                 <Link href={'/privacy-policy'}>Privacy Policy</Link>
               </div>
-              <div className="pl-[12px] text-[14px]">
-                <Link href={'#'}>Terms of use</Link>
-              </div>
+              {/* <div className="pl-[12px] text-[14px]">
+                <a href="javascript:void(0)">Terms of use</a>
+              </div> */}
             </div>
             <div className="sm:text-[14px] sm:font-[600] my-3">
               Copyright © 2023 PW Foundation Pvt. Ltd. All rights reserved.
