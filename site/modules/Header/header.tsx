@@ -125,7 +125,10 @@ const header = ({ handleState }: { handleState: any }) => {
                           </div>
 
                           {items?.map((item, index) => (
-                            <div className=" border-[#D9DCE1] border-b-[1px] py-3 ">
+                            <div
+                              className=" border-[#D9DCE1] border-b-[1px] py-3 "
+                              onClick={toggleMenu}
+                            >
                               <Link href={item.url}>
                                 <span className="text-sm font-semibold">
                                   <Typography variant="small" weight={600}>

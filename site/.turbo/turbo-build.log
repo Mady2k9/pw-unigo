@@ -33,7 +33,7 @@
 [35mpw-live-v2:build: [0m├   └ css/83e12858ee69e379.css             242 B
 [35mpw-live-v2:build: [0m├ ○ /card                                  651 B           128 kB
 [35mpw-live-v2:build: [0m├ ○ /country-page                          549 B           147 kB
-[35mpw-live-v2:build: [0m├ ○ /country/[country]                     669 B           153 kB
+[35mpw-live-v2:build: [0m├ ○ /countries/[country]                     669 B           153 kB
 [35mpw-live-v2:build: [0m├ ○ /oldcountry                            493 B           153 kB
 [35mpw-live-v2:build: [0m├ ○ /privacy-policy                        1.65 kB         142 kB
 [35mpw-live-v2:build: [0m├   └ css/4dd9f842f8d98a05.css             550 B

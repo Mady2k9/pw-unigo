@@ -11,24 +11,24 @@ const LovedByStudents = () => {
           <div className="flex mt-2 lg:p-0 gap-5">
             <Card
               testimonial={
-                'Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.'
+                'Participating in the study abroad program was truly a life-changing experience for me. I had the privilege of studying in a foreign country, immersing myself in a new culture, and making lifelong friends from all around the world. The academic opportunities provided were exceptional, and the professors were both knowledgeable and approachable.'
               }
-              name={'Ashpreet Singh'}
-              designation={'MS in UX Design, Washington University'}
+              name={'Rishabh Kumar'}
+              designation={'MBBS, East West University'}
             />
             <Card
               testimonial={
-                'Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.'
+                "My decision to join the study abroad program was undoubtedly the best choice I've made during my college years. The international exposure I gained opened my mind to diverse perspectives and helped me become more adaptable to different environments"
               }
-              name={'Ashpreet Singh'}
-              designation={'MS in UX Design, Washington University'}
+              name={'Abhishek Takki'}
+              designation={'MBBS, south Kazakhstan medical Academy'}
             />
             <Card
               testimonial={
-                'Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.'
+                "The study abroad experience also allowed me to become more independent, responsible, and confident in my abilities. Exploring the country's cultural heritage, trying new cuisines, and participating in various social activities added an extra layer of excitement to my journey"
               }
               name={'Ashpreet Singh'}
-              designation={'MS in UX Design, Washington University'}
+              designation={'MBBS, International Higher School Of Medicine'}
             />
           </div>
         </div>

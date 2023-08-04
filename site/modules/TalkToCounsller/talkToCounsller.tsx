@@ -210,23 +210,29 @@ const TalkToCounsller = () => {
             OTP Sent
           </Button>
         ) : (
-          <Button
-            className="absolute right-3 bottom-5"
-            type="button"
-            variant="naked"
-            disabled={!isPhoneValid(phone)}
-            onClick={(e) => {
-              handleOTP(e)
-              setCounter(10)
-              setCanResend(false)
-              setOptSent(true)
-              setTimeout(() => {
-                reduceCounter()
-              }, 1000)
-            }}
-          >
-            Get OTP
-          </Button>
+          <>
+            {isPhoneValid(phone) ? (
+              <Button
+                className="absolute right-3 bottom-5"
+                type="button"
+                variant="naked"
+                disabled={!isPhoneValid(phone)}
+                onClick={(e) => {
+                  handleOTP(e)
+                  setCounter(10)
+                  setCanResend(false)
+                  setOptSent(true)
+                  setTimeout(() => {
+                    reduceCounter()
+                  }, 1000)
+                }}
+              >
+                Get OTP
+              </Button>
+            ) : (
+              ''
+            )}
+          </>
         )}
       </div>
       <div className="mb-[16px]">
