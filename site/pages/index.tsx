@@ -9,6 +9,7 @@ import LovedByStudents from '@modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
 import Faq from '../modules/Faq'
 import TalkCounsellorButton from '@modules/TalkCounsellerButton'
+import { useState } from 'react'
 
 const items = [
   {
@@ -62,6 +63,12 @@ const items = [
 ]
 
 const Home = () => {
+  const [scroll, setScroll] = useState<boolean>(false)
+  const onFirstScroll = () => {
+    setScroll(true)
+    console.log(scroll)
+  }
+
   return (
     <div className="relative ">
       <Header handleState={undefined} />
@@ -76,7 +83,8 @@ const Home = () => {
         heading="You have questions. We have answers!"
         subheading="Check out the most commonly asked questions and their answers."
       />
-      <TalkCounsellorButton />
+      <div onWheel={onFirstScroll}></div>
+      {scroll ? <TalkCounsellorButton /> : ''}
       <Footer />
     </div>
   )
