@@ -14,15 +14,17 @@ function topUnivaersity() {
           src="hero_mweb.svg"
           alt="Top banner"
         />
-        <div className="absolute top-[20%] md:top-[4%] lg:top-[3%] xl:top-[20%] 2xl:top-[35%] font-[700] justify-center text-center w-full">
-          <div className="lg:w-[824px] md:w-[500px] w-[310px] m-auto">
-            <p className="lg:text-[64px] md:text-[30px] text-[32px] font-[600] leading-[48px] sm:leading-[24px] lg:leading-[80px]">
+        <div className="absolute top-[20px] sm:top-[10px] lg:top-[40px] xl:top-[70px] 2xl:top-[300px] justify-center text-center w-full">
+          <div className="xl:w-[824px] w-[310px] sm:w-[700px] m-auto">
+            <div className='mb-[12px] text-[32px] sm:text-[36px] xl:text-[64px] font-semibold leading-[38px] sm:leading-[40px] xl:leading-[80px]'>
+            <p>
               PW UniGo
             </p>
-            <p className="lg:text-[64px] md:text-[28px] text-[32px] font-[600] leading-[48px] lg:leading-[80px] text-[#DA1F3D]">
+            <p className='text-[#DA1F3D]'>
               The world is your classroom
             </p>
-            <p className="lg:text-[20px] sm:text-[14px] text-[16px] font-[600] lg:leading-[30px] leading-[24px] mt-[12px] mb-[32px]">
+            </div>
+            <p className=" font-[600] mb-[22px] sm:mb-[10px] text-[16px] sm:text-[16px] xl:text-[20px] leading-[24px] sm:leading-[26px] lg:leading-[30px]">
               Let PW Unigo be your guiding light as you navigate the world of
               global education. We are here to empower you, uplift you, and
               support you every step of the way. Let's begin this extraordinary
@@ -30,9 +32,9 @@ function topUnivaersity() {
               heartfelt support, creating an environment where you feel nurtured
               and motivated to achieve greatness
             </p>
-            <button className=" bg-[#DA1F3D] text-white  p-[14px] text-[18px] leading-[28px] rounded-md">
+           <a href='#TalkToCounsellor'> <button className=" bg-[#DA1F3D] text-white  px-[24px] py-[12px] sm:py-[14px] sm:text-[18px] text-[16px] rounded-md">
               Talk to a counsellor
-            </button>
+            </button></a>
           </div>
         </div>
       </div>
