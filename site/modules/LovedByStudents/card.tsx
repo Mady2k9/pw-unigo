@@ -15,7 +15,7 @@ const Card = ({
         <div className="w-[40px] h-[30px] mb-[14px] ">
           <Image src={Coma} alt="quote icon" />
         </div>
-        <div className="text-[14px] md:text-[16px] mb-[24px]">
+        <div className="text-[14px] md:text-[16px] mb-[24px] h-[200px]">
           {testimonial}
         </div>
         <div className="text-[16px] md:text-[18px] font-[700]">{name}</div>
