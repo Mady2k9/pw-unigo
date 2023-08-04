@@ -22,25 +22,25 @@ const PopularCountries = () => {
           </p>
         </div>
         <div className="flex-wrap flex justify-center lg:gap-6 sm:gap-4 gap-3 my-3">
-          <Link href={'/country/russia'}>
+          <a href={'/country/russia'}>
             <CountryCard logo={logo1} name={'Russia'} />
-          </Link>
+          </a>
 
-          <Link href={'/country/armenia'}>
+          <a href={'/country/armenia'}>
             <CountryCard logo={logo2} name={'Armenia'} />
-          </Link>
-          <Link href={'/country/georgia'}>
+          </a>
+          <a href={'/country/georgia'}>
             <CountryCard logo={logo3} name={'Georgia'} />
-          </Link>
-          <Link href={'/country/kazakhstan'}>
+          </a>
+          <a href={'/country/kazakhstan'}>
             <CountryCard logo={logo4} name={'Kazakhstan'} />
-          </Link>
-          <Link href={'/country/kyrgyzstan'}>
+          </a>
+          <a href={'/country/kyrgyzstan'}>
             <CountryCard logo={logo5} name={'Kyrgyzstan'} />
-          </Link>
-          <Link href={'/country/uzbekistan'}>
+          </a>
+          <a href={'/country/uzbekistan'}>
             <CountryCard logo={logo6} name={'Uzbekistan'} />
-          </Link>
+          </a>
         </div>
       </div>
     </>
