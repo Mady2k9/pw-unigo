@@ -64,7 +64,7 @@ const header = ({ handleState }: { handleState: any }) => {
           <div className="w-[32px]"></div>
         </div>
         <div className=" w-screen lg:block hidden ">
-          <div className="  h-full items-center bg-white max-w-6xl  mx-auto flex justify-between ">
+          <div className="  h-full items-center bg-white max-w-6xl xl:px-0 px-3 mx-auto flex justify-between ">
             <div className="lg:h-fit my-auto h-[33px] w-[123px] cursor-pointer">
               <Link href={'/'}>
                 <Image src={Pwlogo} alt="logo" />

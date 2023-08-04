@@ -12,6 +12,7 @@ import {
 import { useAuth } from '@lib/hooks/useAuth'
 import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 import { submitUnigoFormFetcher } from '@lib/api/fetchers/unigo-fetecher'
+import { getUnigoOTPFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { router } from 'next/client'
 
 const TalkToCounsller = () => {
@@ -33,6 +34,9 @@ const TalkToCounsller = () => {
   const { handleGenerateOTP, handleRegister, otpSent, error, loading } =
     useAuth()
 
+  // getUnigoOTPFetcher
+  // getUnigoOTP
+
   const handleModalClose = () => {
     setShowModal(false)
     setPhone('')
@@ -48,7 +52,7 @@ const TalkToCounsller = () => {
     e.preventDefault()
     if (isPhoneValid(phone)) {
       setIsPhoneValidCheck(true)
-      const response = await handleGenerateOTP(phone)
+      const response = await getUnigoOTPFetcher({ phone, countryCode: '+91' })
       console.log(response)
       if (response) {
         console.log('OTP SENT')
@@ -256,8 +260,9 @@ const TalkToCounsller = () => {
                 className="mb-[10px] "
                 type="button"
                 variant="naked"
-                onClick={() => {
+                onClick={(e) => {
                   // getOTP()
+                  handleOTP(e)
                   setCounter(10)
                   setOtpError(false)
                   setCanResend(false)
