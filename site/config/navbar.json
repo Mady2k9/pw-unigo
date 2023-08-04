@@ -1,0 +1,28 @@
+{
+  "menu": [
+    {
+      "name": "Russia",
+      "url": "/country/russia"
+    },
+    {
+      "name": "Armenia",
+      "url": "/country/armenia"
+    },
+    {
+      "name": "Georgia",
+      "url": "/country/georgia"
+    },
+    {
+      "name": "Kazakhstan",
+      "url": "/country/kazakhstan"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "url": "/country/kyrgyzstan"
+    },
+    {
+      "name": "Uzbekistan",
+      "url": "/country/uzbekistan"
+    }
+  ]
+}

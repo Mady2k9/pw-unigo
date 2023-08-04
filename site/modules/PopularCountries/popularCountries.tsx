@@ -6,8 +6,10 @@ import logo4 from '../../assets/images/image 30.png'
 import logo5 from '../../assets/images/image 31.png'
 import logo6 from '../../assets/images/image 32.png'
 import Link from 'next/link'
+//import PopularCountry from '@config/popular-country.json'
 
 const PopularCountries = () => {
+  //console.log('PopularCountry', PopularCountry['popular-country'])
   return (
     <>
       <div className="mx-auto max-w-6xl xl:px-0 px-3 py-[24px] sm:py-[40px]">
@@ -20,24 +22,25 @@ const PopularCountries = () => {
           </p>
         </div>
         <div className="flex-wrap flex justify-center lg:gap-6 sm:gap-4 gap-3 my-3">
-          <Link href={'#'}>
+          <a href={'/country/russia'}>
             <CountryCard logo={logo1} name={'Russia'} />
-          </Link>
-          <Link href={'#'}>
+          </a>
+
+          <a href={'/country/armenia'}>
             <CountryCard logo={logo2} name={'Armenia'} />
-          </Link>
-          <Link href={'#'}>
+          </a>
+          <a href={'/country/georgia'}>
             <CountryCard logo={logo3} name={'Georgia'} />
-          </Link>
-          <Link href={'#'}>
+          </a>
+          <a href={'/country/kazakhstan'}>
             <CountryCard logo={logo4} name={'Kazakhstan'} />
-          </Link>
-          <Link href={'#'}>
+          </a>
+          <a href={'/country/kyrgyzstan'}>
             <CountryCard logo={logo5} name={'Kyrgyzstan'} />
-          </Link>
-          <Link href={'#'}>
+          </a>
+          <a href={'/country/uzbekistan'}>
             <CountryCard logo={logo6} name={'Uzbekistan'} />
-          </Link>
+          </a>
         </div>
       </div>
     </>

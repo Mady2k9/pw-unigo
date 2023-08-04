@@ -3,7 +3,7 @@ import React from 'react'
 function GlobalEducation() {
   return (
     // <div className=' sm:py-[40px] py-[24px] px-[16px] xl:px-[160px]'>
-    <div className=" sm:py-[40px] py-[24px] max-w-6xl m-auto xl:px-0 px-3">
+    <div className=" sm:py-[40px] py-[24px] max-w-6xl m-auto  xl:px-0 px-[10px]">
       <div className=" bg-[#FEF6F7] rounded-2xl  sm:p-[48px] p-[16px]">
         <div className="text-center sm:mb-[40px] mb-[16px]">
           <h1 className="sm:text-[32px] text-[20px] font-bold md:leading-[48px] leading-[30px]">
@@ -39,6 +39,17 @@ function GlobalEducation() {
               <img src="check_circle.svg" alt="check circle " />
               <p className="">Post Graduation Support</p>
             </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Pre-Departure Orientation</p>
+            </div>
+
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">
+                NExT/FMGE Prep (both online and offline classes)
+              </p>
+            </div>
           </div>
 
           <div>
@@ -61,6 +72,14 @@ function GlobalEducation() {
             <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
               <img src="check_circle.svg" alt="check circle " />
               <p className="">Scholarship & Financial Aid</p>
+            </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Educational Guidance</p>
+            </div>
+            <div className="flex md:mb-[10px] mb-[16px] gap-[8px]">
+              <img src="check_circle.svg" alt="check circle " />
+              <p className="">Alumni Network</p>
             </div>
           </div>
         </div>
