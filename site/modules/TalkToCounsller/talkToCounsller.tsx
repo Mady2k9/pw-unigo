@@ -256,8 +256,9 @@ const TalkToCounsller = () => {
                 className="mb-[10px] "
                 type="button"
                 variant="naked"
-                onClick={() => {
+                onClick={(e) => {
                   // getOTP()
+                  handleOTP(e)
                   setCounter(10)
                   setOtpError(false)
                   setCanResend(false)
