@@ -6,7 +6,7 @@
 }
 
 .heading {
-  @apply sm:text-[32px] sm:leading-[48px] text-[18px] leading-[26px];
+  @apply sm:text-[32px] sm:leading-[48px] text-[20px] leading-[30px];
   margin-top: 10px;
   font-weight: 700;
   text-align: center;
