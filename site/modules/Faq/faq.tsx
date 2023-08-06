@@ -6,20 +6,23 @@ import Container from '@components/ui/Container/Container'
 
 export interface FaqProps {
   items: { title: string; description: string }[]
-  heading: string
   subheading: string
 }
 
 const Faq: React.FC<FaqProps> = (props) => {
-  const { items, heading, subheading } = props
+  const { items, subheading } = props
   const rootClassName = cn(s.root, {})
   return (
     <>
       <section className="mt-[20px] relative">
-        <div id="faq" className="absolute top-[-140px]"></div>
+        <div id="faq" className="absolute  sm:top-[-140px] top-[-110px]"></div>
         <Container className="mx-auto max-w-6xl">
           <div className="flex justify-center">
-            <span className={s.heading}>{heading}</span>
+            <span className={s.heading}>
+              You have questions.
+              <br className="sm:hidden" />
+              <p className="hidden">&nbsp;</p> We have answers!
+            </span>
           </div>
           <div className="flex justify-center">
             <span className={s.heading_top}>{subheading}</span>
