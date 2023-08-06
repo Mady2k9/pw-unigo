@@ -7,32 +7,32 @@ const Home = () => {
   const items = [
     {
       title: 'How do I Share my Referral Code?',
-      description:'Just Click on Refer & Earn on Menu of App, Click on the share button'   
-     },
-    {
-      title: 'How do I Share my Referral Code?',
-      description:'Just Click on Refer & Earn on Menu of App, Click on the share button'   
+      description:
+        'Just Click on Refer & Earn on Menu of App, Click on the share button',
     },
     {
       title: 'How do I Share my Referral Code?',
-      description:'Just Click on Refer & Earn on Menu of App, Click on the share button' 
+      description:
+        'Just Click on Refer & Earn on Menu of App, Click on the share button',
     },
     {
       title: 'How do I Share my Referral Code?',
-      description:'Just Click on Refer & Earn on Menu of App, Click on the share button' 
+      description:
+        'Just Click on Refer & Earn on Menu of App, Click on the share button',
     },
-    
+    {
+      title: 'How do I Share my Referral Code?',
+      description:
+        'Just Click on Refer & Earn on Menu of App, Click on the share button',
+    },
   ]
 
-
   return (
-
     <>
       <Header handleState={undefined} />
       <PrivacyPolicy />
       <Faq
         items={items}
-        heading="You have questions. We have answers!"
         subheading="Check out the most commonly asked questions and their answers."
       />
       <Footer />

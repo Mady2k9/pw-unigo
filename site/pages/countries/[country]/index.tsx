@@ -7,6 +7,7 @@ import Header from '@modules/Header'
 import Footer from '@modules/Footer'
 import { useRouter } from 'next/router'
 import CountryDetail from '@config/country.json'
+import TalkCounsellorButton from '@modules/TalkCounsellerButton'
 
 const Country = (params: any) => {
   type CountryNameType = keyof typeof CountryDetail
@@ -42,10 +43,12 @@ const Country = (params: any) => {
       <ContentCountry contentItems={countryContents} />
       <Faq
         items={items}
-        heading="You have questions. We have answers!"
         subheading="Check out the most commonly asked questions and their answers."
       />
       <Footer />
+      <div className="sm:hidden">
+        <TalkCounsellorButton />
+      </div>
     </>
   )
 }

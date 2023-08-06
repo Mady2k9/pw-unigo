@@ -17,11 +17,11 @@ const Footer = () => {
             <div className="mb-[20px] md:mb-[24px] md:w-[214px] md:h-[60px]">
               <Image src={Pwlogo} alt="logo" />
             </div>
-            {/* <div className="text-[12px] md:text-[14px] mb-[20px] md:mb-[24px]">
+            <div className="text-[12px] md:text-[14px] mb-[20px] md:mb-[24px]">
               We understand that every student has different needs and
               capabilities, which is why we create such a wonderful and unique
               curriculum that is the best fit for every student.
-            </div> */}
+            </div>
             <div className="text-[14px] md:text-[16px] font-[700] mb-[8px]">
               About PW Unigo
             </div>
@@ -33,12 +33,13 @@ const Footer = () => {
               program dedicated to opening pathways to global education. We
               understand the challenges faced by Indian students seeking
               overseas education. The fear of being misled or cheated is all too
-              real. At PW Unigo, we stand as a beacon of trust, ensuring that
+              real.
+              {/* At PW Unigo, we stand as a beacon of trust, ensuring that
               every step you take towards global education is a step towards a
               brighter future. We leave no stone unturned when it comes to
               ensuring the authenticity of universities abroad. Our team
               personally visits and verifies the institutions, ensuring that
-              your educational dreams rest on a solid foundation.
+              your educational dreams rest on a solid foundation. */}
             </div>
           </div>
           <div className="lg:w-4/12 sm:w-6/12 w-full sm:flex sm:justify-between">
