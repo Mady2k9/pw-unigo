@@ -74,18 +74,17 @@ const Home = () => {
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
-      <GlobalEducation />
-      <TalkToCounsllerHome />
-      <PopularCountries />
-      <LovedByStudents />
       <div
         onWheel={onFirstScroll}
         onMouseEnter={onFirstScroll}
         onScroll={onFirstScroll}
       >
+        <GlobalEducation />
+        <TalkToCounsllerHome />
+        <PopularCountries />
+        <LovedByStudents />
         <Faq
           items={items}
-          heading="You have questions. We have answers!"
           subheading="Check out the most commonly asked questions and their answers."
         />
         <Footer />
