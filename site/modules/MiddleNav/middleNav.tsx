@@ -16,23 +16,19 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
   const [activeTab, setActiveTab] = useState(0)
   const router = useRouter()
 
-  const handleClick= (index:any)=>{
-    if(index===0){
-      router.push("#whyStudy")
+  const handleClick = (index: any) => {
+    if (index === 0) {
+      router.push('#whyStudy')
+    } else if (index === 1) {
+      router.push('#colleges')
+    } else if (index === 2) {
+      router.push('#cost')
+    } else if (index === 3) {
+      router.push('#requirement')
+    } else if (index === 4) {
+      router.push('#faq')
     }
-    else if(index===1){
-      router.push("#colleges")
-    }
-    else if(index===2  ){
-      router.push("#cost")
-    }
-    else if(index===3  ){
-      router.push("#requirement")
-    }
-    else if(index===4  ){
-      router.push("#faq")
-    }
-     }
+  }
 
   return (
     <>
