@@ -35,7 +35,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 <div className="w-[260px] h-[280px] md:leading-[28px] leading-[22px] md:text-[18px] text-[14px] ">
                   {item?.whystudy?.bulletPoint?.map((point: any) => (
                     <p className="mb-[12px] flex gap-2">
-                      <img src="/red-check.svg" alt="check" />
+                      <img src={point?.bulletImage} alt="check" />
                       {point?.content}
                     </p>
                   ))}
@@ -55,7 +55,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                   <div className="p-4 md:flex border sm:border-[#EFEFEF] border-[#D9DCE1]  md:mb-[14px] mb-[12px] rounded-md">
                     <div className="mr-4 sm:w-[150px] mb-3 w-[89px]">
                       <img
-                        src="/image.png"
+                        src={detail?.imageUrl}
                         className="sm:w-[150px] w-[89px]"
                         alt="office"
                       />
@@ -80,26 +80,34 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                         </div>
                         {detail?.name}
                       </div>
-                      <div className="flex mb-2">
-                        <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
-                          <img
-                            src="/phone.svg"
-                            className="sm:w-[24px] w-[18px]"
-                            alt="phone"
-                          />
+                      {detail?.phone ? (
+                        <div className="flex mb-2">
+                          <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
+                            <img
+                              src="/phone.svg"
+                              className="sm:w-[24px] w-[18px]"
+                              alt="phone"
+                            />
+                          </div>
+                          <a href={'tel:' + detail.phone}>{detail.phone}</a>
                         </div>
-                        {detail.phone}
-                      </div>
-                      <div className="flex mb-2">
-                        <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
-                          <img
-                            src="/envelope.svg"
-                            className="sm:w-[24px] w-[18px]"
-                            alt="envelope"
-                          />
+                      ) : (
+                        ''
+                      )}
+                      {detail?.email ? (
+                        <div className="flex mb-2">
+                          <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
+                            <img
+                              src="/envelope.svg"
+                              className="sm:w-[24px] w-[18px]"
+                              alt="envelope"
+                            />
+                          </div>
+                          <a href={'mailto:' + detail.email}> {detail.email}</a>
                         </div>
-                        {detail?.email}
-                      </div>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 ))}

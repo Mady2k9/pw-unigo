@@ -64,22 +64,26 @@ const items = [
 
 const Home = () => {
   const [scroll, setScroll] = useState(false)
-  const onFirstScroll = () => {
-    setScroll(true)
-    console.log(scroll)
-  }
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 650) {
+    const handleScroll = () => {
+      const current = document.getElementById('TalkToCounsellorID')?.offsetTop
+      if (current && window.scrollY > current + 55) {
         setScroll(true)
       } else {
         setScroll(false)
       }
-    })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   return (
-    <div className="relative ">
+    <div className="relative">
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
