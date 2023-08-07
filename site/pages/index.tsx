@@ -9,7 +9,7 @@ import LovedByStudents from '@modules/LovedByStudents/lovedByStudents'
 import Footer from '../modules/Footer'
 import Faq from '../modules/Faq'
 import TalkCounsellorButton from '@modules/TalkCounsellerButton'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const items = [
   {
@@ -63,33 +63,36 @@ const items = [
 ]
 
 const Home = () => {
-  const [scroll, setScroll] = useState<boolean>(false)
+  const [scroll, setScroll] = useState(false)
   const onFirstScroll = () => {
     setScroll(true)
     console.log(scroll)
   }
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 650) {
+        setScroll(true)
+      } else {
+        setScroll(false)
+      }
+    })
+  }, [])
 
   return (
     <div className="relative ">
       <Header handleState={undefined} />
       <TopUniversity />
       <WhyUnigoSection />
-      <div
-        onWheel={onFirstScroll}
-        onMouseEnter={onFirstScroll}
-        onScroll={onFirstScroll}
-      >
-        <GlobalEducation />
-        <TalkToCounsllerHome />
-        <PopularCountries />
-        <LovedByStudents />
-        <Faq
-          items={items}
-          subheading="Check out the most commonly asked questions and their answers."
-        />
-        <Footer />
-      </div>
-      {scroll ? <TalkCounsellorButton /> : ''}
+      <GlobalEducation />
+      <TalkToCounsllerHome />
+      <PopularCountries />
+      <LovedByStudents />
+      <Faq
+        items={items}
+        subheading="Check out the most commonly asked questions and their answers."
+      />
+      <Footer />
+      {scroll && <TalkCounsellorButton />}
     </div>
   )
 }
