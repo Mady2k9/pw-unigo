@@ -1,0 +1,7 @@
+version: '2'
+services:
+  nodeserver:
+    container_name: penpencil-marketplace-frontend-service
+    image: 682917649829.dkr.ecr.ap-south-1.amazonaws.com/penpencil-marketplace-frontend-dev:latest
+    build:
+      context: .

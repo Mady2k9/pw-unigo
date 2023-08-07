@@ -1,0 +1,15 @@
+[submodule "site/modules/auth"]
+	path = site/modules/auth
+	url = https://gitlab.com/penpencil-services/frontend/modules/auth.git
+[submodule "site/shared/lib"]
+	path = site/shared/lib
+	url = https://gitlab.com/penpencil-services/frontend/pw-ui-lib.git
+[submodule "site/shared/components/core"]
+	path = site/shared/components/core
+	url = https://gitlab.com/penpencil-services/frontend/pw-ui-components-core.git
+[submodule "site/shared/components/styles"]
+	path = site/shared/components/styles
+	url = https://gitlab.com/penpencil-services/frontend/pw-ui-components-styles.git
+[submodule "site/shared/components/k8"]
+	path = site/shared/components/k8
+	url = https://gitlab.com/penpencil-services/frontend/pw-ui-components-styles-k8.git

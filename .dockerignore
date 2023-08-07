@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.git
+**/.DS_Store
+**/node_modules
+.gitlab-ci.yml
+deployment-*
+cicd
+Jenkinsfile
+.gitignore
+.dockerignore

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+  <g id="Group_19192" data-name="Group 19192" transform="translate(-11 -63.5)">
+    <rect id="Rectangle_7846" data-name="Rectangle 7846" width="24" height="24" transform="translate(11 63.5)" fill="none"/>
+    <path id="Icon_material-picture-as-pdf" data-name="Icon material-picture-as-pdf" d="M17.762,3H7.921A1.645,1.645,0,0,0,6.28,4.64v9.841a1.645,1.645,0,0,0,1.64,1.64h9.841a1.645,1.645,0,0,0,1.64-1.64V4.64A1.645,1.645,0,0,0,17.762,3ZM10.791,9.151a1.229,1.229,0,0,1-1.23,1.23h-.82v1.64H7.511V7.1h2.05a1.229,1.229,0,0,1,1.23,1.23Zm4.1,1.64a1.229,1.229,0,0,1-1.23,1.23h-2.05V7.1h2.05a1.229,1.229,0,0,1,1.23,1.23Zm3.28-2.46h-1.23v.82h1.23v1.23h-1.23v1.64h-1.23V7.1h2.46Zm-9.431.82h.82v-.82h-.82ZM4.64,6.28H3V17.762A1.645,1.645,0,0,0,4.64,19.4H16.122v-1.64H4.64Zm8.2,4.511h.82V8.331h-.82Z" transform="translate(11.918 64.299)" fill="#594cda"/>
+  </g>
+</svg>

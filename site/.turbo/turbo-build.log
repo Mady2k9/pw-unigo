@@ -1,0 +1,50 @@
+[35mpw-live-v2:build[0m: cache hit, replaying output [2ma9aba067711bc770[0m
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m> pw-live-v2@0.0.1 build /Users/uttamsharma/Desktop/unigo/pw-unigo/site
+[35mpw-live-v2:build: [0m> next build
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0minfo  - Loaded env from /Users/uttamsharma/Desktop/unigo/pw-unigo/site/.env
+[35mpw-live-v2:build: [0minfo  - Linting and checking validity of types...
+[35mpw-live-v2:build: [0minfo  - Creating an optimized production build...
+[35mpw-live-v2:build: [0mBrowserslist: caniuse-lite is outdated. Please run:
+[35mpw-live-v2:build: [0m  npx browserslist@latest --update-db
+[35mpw-live-v2:build: [0m  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+[35mpw-live-v2:build: [0mBrowserslist: caniuse-lite is outdated. Please run:
+[35mpw-live-v2:build: [0m  npx update-browserslist-db@latest
+[35mpw-live-v2:build: [0m  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[35mpw-live-v2:build: [0minfo  - Compiled successfully
+[35mpw-live-v2:build: [0minfo  - Collecting page data...
+[35mpw-live-v2:build: [0m[Function: TabItem]
+[35mpw-live-v2:build: [0m[Function: TabItem]
+[35mpw-live-v2:build: [0m[Function: TabItem]
+[35mpw-live-v2:build: [0minfo  - Generating static pages (0/10)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (2/10)
+[35mpw-live-v2:build: [0m[Function: TabItem]
+[35mpw-live-v2:build: [0minfo  - Generating static pages (4/10)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (7/10)
+[35mpw-live-v2:build: [0minfo  - Generating static pages (10/10)
+[35mpw-live-v2:build: [0minfo  - Finalizing page optimization...
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0mRoute (pages)                              Size     First Load JS
+[35mpw-live-v2:build: [0m┌ ○ /                                      5.91 kB         150 kB
+[35mpw-live-v2:build: [0m├   └ css/11ccf8daef59dbca.css             1.34 kB
+[35mpw-live-v2:build: [0m├   /_app                                  0 B             123 kB
+[35mpw-live-v2:build: [0m├ ○ /404                                   46.8 kB         170 kB
+[35mpw-live-v2:build: [0m├   └ css/83e12858ee69e379.css             242 B
+[35mpw-live-v2:build: [0m├ ○ /card                                  651 B           128 kB
+[35mpw-live-v2:build: [0m├ ○ /country-page                          549 B           147 kB
+[35mpw-live-v2:build: [0m├ ○ /countries/[country]                     669 B           153 kB
+[35mpw-live-v2:build: [0m├ ○ /oldcountry                            493 B           153 kB
+[35mpw-live-v2:build: [0m├ ○ /privacy-policy                        1.65 kB         142 kB
+[35mpw-live-v2:build: [0m├   └ css/4dd9f842f8d98a05.css             550 B
+[35mpw-live-v2:build: [0m├ ○ /sixthComp                             868 B           128 kB
+[35mpw-live-v2:build: [0m└ ○ /topUniversity                         898 B           124 kB
+[35mpw-live-v2:build: [0m+ First Load JS shared by all              137 kB
+[35mpw-live-v2:build: [0m  ├ chunks/framework-4060c47b783167f7.js   45.2 kB
+[35mpw-live-v2:build: [0m  ├ chunks/main-009709876a66b911.js        35.1 kB
+[35mpw-live-v2:build: [0m  ├ chunks/pages/_app-df944d1e5bc2fdb0.js  41.6 kB
+[35mpw-live-v2:build: [0m  ├ chunks/webpack-69bfa6990bb9e155.js     769 B
+[35mpw-live-v2:build: [0m  └ css/23b1d4b362da9331.css               14.3 kB
+[35mpw-live-v2:build: [0m
+[35mpw-live-v2:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
+[35mpw-live-v2:build: [0m
