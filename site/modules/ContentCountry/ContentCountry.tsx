@@ -80,26 +80,34 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                         </div>
                         {detail?.name}
                       </div>
-                      <div className="flex mb-2">
-                        <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
-                          <img
-                            src="/phone.svg"
-                            className="sm:w-[24px] w-[18px]"
-                            alt="phone"
-                          />
+                      {detail?.phone ? (
+                        <div className="flex mb-2">
+                          <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
+                            <img
+                              src="/phone.svg"
+                              className="sm:w-[24px] w-[18px]"
+                              alt="phone"
+                            />
+                          </div>
+                          <a href={'tel:' + detail.phone}>{detail.phone}</a>
                         </div>
-                        {detail.phone}
-                      </div>
-                      <div className="flex mb-2">
-                        <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
-                          <img
-                            src="/envelope.svg"
-                            className="sm:w-[24px] w-[18px]"
-                            alt="envelope"
-                          />
+                      ) : (
+                        ''
+                      )}
+                      {detail?.email ? (
+                        <div className="flex mb-2">
+                          <div className="items-baseline sm:w-[24px] w-[18px] mr-2">
+                            <img
+                              src="/envelope.svg"
+                              className="sm:w-[24px] w-[18px]"
+                              alt="envelope"
+                            />
+                          </div>
+                          <a href={'mailto:' + detail.email}> {detail.email}</a>
                         </div>
-                        {detail?.email}
-                      </div>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 ))}

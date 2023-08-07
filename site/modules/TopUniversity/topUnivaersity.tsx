@@ -29,7 +29,7 @@ function topUnivaersity() {
                 excellence with heartfelt support, creating an environment where
                 you feel nurtured and motivated to achieve greatness
               </p>
-              <a href="#TalkToCounsellor">
+              <a href="#TalkToCounsellor" id="TalkToCounsellorID">
                 <button className=" bg-[#DA1F3D] text-white  px-[24px] py-[12px] sm:py-[14px] sm:text-[18px] text-[16px] rounded-md">
                   Talk to a counsellor
                 </button>
