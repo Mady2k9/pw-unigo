@@ -1,38 +1,39 @@
 {
   "russia": {
     "countryName": "Russia",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Russia",
     "whyStudy": {
       "title": "Why Study in Russia?",
       "description": "Studying in Russia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -45,7 +46,7 @@
           "address": "68 Bolshevistskaya St., Saransk, Republic of Mordovia, 430005, Russia",
           "phone": "+7 (8342) 47-30-06",
           "email": "",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -57,7 +58,7 @@
           "address": "49 Kremlevskaya St., Kazan, Tatarstan, 420008, Russia",
           "phone": "+7 (843) 233-70-02",
           "email": "iinfo@kpfu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -69,7 +70,7 @@
           "address": "3 Karl Marx St., Kursk, Russia, 305041",
           "phone": "+7 (4712) 50-60-00",
           "email": "rector@kursksmu.net",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -81,7 +82,7 @@
           "address": "3 Lenina St., Ufa, Bashkortostan, 450008, Russia",
           "phone": "+7 (347) 273-88-80",
           "email": "bashedu@bashgmu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -93,7 +94,7 @@
           "address": "5/7 Lenin Blvd., Simferopol, Crimea, 295051, Russia",
           "phone": "+7 (3652) 24-35-01",
           "email": "csmu-simf@yandex.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -105,7 +106,7 @@
           "address": "49 Kremlevskaya St., Kazan, Tatarstan, 420008, Russia",
           "phone": "+7 (843) 233-70-02",
           "email": "info@kpfu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -117,7 +118,7 @@
           "address": "29 Nakhichevansky Lane, Rostov-on-Don, Russia, 344022",
           "phone": "+7 (863) 253-14-58",
           "email": "rsmu@rsmu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -129,7 +130,7 @@
           "address": "51 Troitsky Ave., Arkhangelsk, Russia, 163000",
           "phone": "+7 (8182) 65-10-15",
           "email": "irector@nsmu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -141,7 +142,7 @@
           "address": "42 L. Tolstogo St., Ulyanovsk, Russia, 432017",
           "phone": "+7 (8422) 41-33-11",
           "email": "info@ulsu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -153,7 +154,7 @@
           "address": "6 Miklukho-Maklaya St., Moscow, Russia, 117198",
           "phone": "+7 (495) 955-09-09",
           "email": " info@rudn.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -165,7 +166,7 @@
           "address": "10 Ajax Bay St., Russky Island, Vladivostok, Russia, 690922",
           "phone": "+7 (423) 245-34-34",
           "email": "info@dvfu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -177,7 +178,7 @@
           "address": "61 Lenin Ave., Barnaul, Russia, 656049",
           "phone": "+7 (3852) 366-007",
           "email": "support@asu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -189,7 +190,7 @@
           "address": "44 Digorskoye Highway, Vladikavkaz, North Ossetia-Alania, Russia, 362021",
           "phone": "+7 (8672) 54-77-27",
           "email": "info@nosma.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -201,7 +202,7 @@
           "address": "1 Pavshikh Bortsov Sq., Volgograd, Russia, 400131",
           "phone": "+7 (8442) 39-52-38",
           "email": "info@volgmed.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -213,7 +214,7 @@
           "address": "89 Chapaevskaya St., Samara, Russia, 443099",
           "phone": "+7 (846) 332-27-22",
           "email": "rector@samsmu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -225,7 +226,7 @@
           "address": "41 Kirochnaya St., Saint Petersburg, Russia, 191015",
           "phone": "+7 (812) 328-94-21",
           "email": "mail@szgmu.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -290,7 +291,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in russia",
+        "name": "Why study in Russia?",
         "key": "why-study-in-russia"
       },
       {
@@ -331,38 +332,39 @@
   },
   "armenia": {
     "countryName": "Armenia",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Armenia",
     "whyStudy": {
       "title": "Why Study in Armenia?",
       "description": "Studying in Armenia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -375,7 +377,7 @@
           "address": "40 Baghramyan Ave, Yerevan 0019, Armenia",
           "phone": "+374 60 69 40 40",
           "email": "info@aua.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -387,7 +389,7 @@
           "address": "2 Koryun St, Yerevan 0025, Armenia",
           "phone": "+374 10 57 71 20",
           "email": "rector@asmu.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -399,7 +401,7 @@
           "address": "7/1 Amiryan St, Yerevan 0010, Armenia",
           "phone": "+374 10 56 11 00",
           "email": "info@emc.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -411,7 +413,7 @@
           "address": "7/1 Spandaryan St, Gyumri 3103, Armenia",
           "phone": "+374 312 3-40-63",
           "email": "gsmu@gsu.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -423,7 +425,7 @@
           "address": "11/2 Shirakatsi St, Vanadzor 2004, Armenia",
           "phone": "+374 322 4-32-27",
           "email": "lsmu_v@rambler.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -435,7 +437,7 @@
           "address": "15/22 Abovyan St, Yerevan 0010, Armenia",
           "phone": "+374 10 58 02 57",
           "email": "info@mkmk.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -447,7 +449,7 @@
           "address": "9 V. Sargsyan St, Spitak 4502, Armenia",
           "phone": "+374 255 2-43-74",
           "email": "spitakcolleg@rambler.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -459,7 +461,7 @@
           "address": "28 Azatutyan Ave, Yerevan 0014, Armenia",
           "phone": "+374 10 60 20 50",
           "email": "info@haybusak.org",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -471,7 +473,7 @@
           "address": "2 Koryun St, Yerevan 0025, Armenia",
           "phone": "+374 10 56 52 81",
           "email": "info@ysmu.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -483,7 +485,7 @@
           "address": "58 Teryan St, Yerevan 0009, Armenia",
           "phone": "+374 10 52 57 01",
           "email": "info@ami.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -495,7 +497,7 @@
           "address": "66 Teryan St, Yerevan 0009, Armenia",
           "phone": "+374 10 56 46 57",
           "email": "info@agmu.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -507,7 +509,7 @@
           "address": "39/19 Tumanyan St, Yerevan 0002, Armenia",
           "phone": "+374 10 54 13 56",
           "email": "info@terezaseminary.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -519,7 +521,7 @@
           "address": "1 Poghosyan St, Yerevan 0010, Armenia",
           "phone": "+374 10 52 90 51",
           "email": "info@utm.am",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -584,7 +586,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in armenia",
+        "name": "Why study in Armenia?",
         "key": "why-study-in-armenia"
       },
       {
@@ -625,38 +627,39 @@
   },
   "georgia": {
     "countryName": "Georgia",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Georgia",
     "whyStudy": {
       "title": "Why Study in Georgia?",
       "description": "Studying in Georgia not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -669,7 +672,7 @@
           "address": "2/5 Kakutsa Cholokashvili Ave, Tbilisi 0179, Georgia",
           "phone": "+995 32 241 55 51",
           "email": "info@seu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -681,7 +684,7 @@
           "address": "33 Vazha-Pshavela Ave, Tbilisi 0160, Georgia",
           "phone": "+995 32 272 12 46",
           "email": "info@tsmu.edu",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -693,7 +696,7 @@
           "address": "1 Chavchavadze Ave, Tbilisi 0179, Georgia",
           "phone": "+995 32 222 00 09",
           "email": "info@tsu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -705,7 +708,7 @@
           "address": "2/5 Kakutsa Cholokashvili Ave, Tbilisi 0179, Georgia",
           "phone": "+995 32 255 11 01",
           "email": "info@gau.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -717,7 +720,7 @@
           "address": "85 Merab Aleksidze St, Tbilisi 0179, Georgia",
           "phone": "+995 32 255 11 11",
           "email": "info@eeu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -729,7 +732,7 @@
           "address": "68 I. Chavchavadze Ave, Tbilisi 0179, Georgia",
           "phone": "+995 32 255 12 90",
           "email": "info@tma.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -741,7 +744,7 @@
           "address": "22 P. Kavtaradze St, Tbilisi 0179, Georgia",
           "phone": "+995 32 252 00 00",
           "email": "info@newvision.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -753,7 +756,7 @@
           "address": "35 Ninoshvili St, Batumi 6010, Georgia",
           "phone": "+995 422 27 00 55",
           "email": "info@bsu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -765,7 +768,7 @@
           "address": "13 B. Andronikashvili St, Tbilisi 0112, Georgia",
           "phone": "+995 32 233 50 41",
           "email": "info@davita.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -777,7 +780,7 @@
           "address": "59a Chavchavadze St, Kutaisi 4600, Georgia",
           "phone": "+995 431 25 34 61",
           "email": "info@atsu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -789,7 +792,7 @@
           "address": "13 Lado Asatiani St, Tbilisi 0105, Georgia",
           "phone": "+995 32 292 17 00",
           "email": "info@eu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -801,7 +804,7 @@
           "address": "1/4 Ljubljana St, Tbilisi 0186, Georgia",
           "phone": "+995 32 230 30 00",
           "email": "info@dtmu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -813,7 +816,7 @@
           "address": "84a Merab Aleksidze St, Tbilisi 0179, Georgia",
           "phone": "+995 32 298 51 00",
           "email": "info@ciu.edu.ge",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -825,7 +828,7 @@
           "address": "77a M. Kostava St, Tbilisi 0171, Georgia",
           "phone": "+995 32 255 57 58",
           "email": "info@tbilisimedicaluniversity.com",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -890,7 +893,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in georgia",
+        "name": "Why study in Georgia?",
         "key": "why-study-in-georgia"
       },
       {
@@ -931,38 +934,39 @@
   },
   "kazakhstan": {
     "countryName": "Kazakhstan",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Kazakhstan",
     "whyStudy": {
       "title": "Why Study in Kazakhstan?",
       "description": "Studying in Kazakhstan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -975,7 +979,7 @@
           "address": "1-University Street, Shymkent, Kazakhstan",
           "phone": "+7 7252 301 231",
           "email": "info@szgmu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -987,7 +991,7 @@
           "address": "51a Beibitshilik Street, Nur-Sultan, Kazakhstan",
           "phone": "+7 7172 690 524",
           "email": "info@amu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -999,7 +1003,7 @@
           "address": "71 al-Farabi Avenue, Almaty, Kazakhstan",
           "phone": "+7 7272 393 777",
           "email": "info@kaznu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1011,7 +1015,7 @@
           "address": "76 Abay Street, Kokshetau, Kazakhstan",
           "phone": "+7 7162 259 101",
           "email": "rector@ksu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1023,7 +1027,7 @@
           "address": "86 Pravda Street, Petropavlovsk, Kazakhstan",
           "phone": "+7 7152 450 214",
           "email": "nkzu@rambler.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1035,7 +1039,7 @@
           "address": "68 Gagarin Street, Aktobe, Kazakhstan",
           "phone": "+7 7132 501 706",
           "email": " info@zkgmu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1047,7 +1051,7 @@
           "address": "40 Gogol Street, Karaganda, Kazakhstan",
           "phone": "+7 7212 422 125",
           "email": "kargmu@mail.ru",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1059,7 +1063,7 @@
           "address": "103 Abay Avenue, Semey, Kazakhstan",
           "phone": "+7 7222 329 090",
           "email": "smu.semkaz@gmail.com",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1071,7 +1075,7 @@
           "address": " 94 Tole bi Street, Almaty, Kazakhstan",
           "phone": "+7 7272 727 825",
           "email": "knmu@kaznmu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1083,7 +1087,7 @@
           "address": "94 Tole bi Street, Almaty, Kazakhstan",
           "phone": "+7 7272 727 825",
           "email": "knmu@kaznmu.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1095,7 +1099,7 @@
           "address": "11 Korgalzhyn Highway, Nur-Sultan, Kazakhstan ",
           "phone": "+7 7172 646 113",
           "email": "info@uib.kz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -1160,7 +1164,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in kazakhstan",
+        "name": "Why study in Kazakhstan?",
         "key": "why-study-in-kazakhstan"
       },
       {
@@ -1201,38 +1205,39 @@
   },
   "kyrgyzstan": {
     "countryName": "Kyrgyzstan",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Kyrgyzstan",
     "whyStudy": {
       "title": "Why Study in Kyrgyzstan?",
       "description": "Studying in Kyrgyzstan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -1245,7 +1250,7 @@
           "address": "92, Akhunbaev Street, Bishkek, Kyrgyz Republic",
           "phone": "+996 312 611 272",
           "email": "info@kgma.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1257,7 +1262,7 @@
           "address": "15, Jibek Jolu (Lenin) Street, Osh, Kyrgyz Republic",
           "phone": "+996 3222 36222",
           "email": "info@oshmed.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1269,7 +1274,7 @@
           "address": "",
           "phone": "+996 3722 55560",
           "email": "info@jalalabadmu.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1281,7 +1286,7 @@
           "address": "",
           "phone": "+996 312 543126",
           "email": " info@krsu.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1293,7 +1298,7 @@
           "address": "",
           "phone": "+996 312 972111 ",
           "email": "info@asmi.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -1305,7 +1310,7 @@
           "address": "",
           "phone": "+996 312 906500",
           "email": "info@ism.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -1317,7 +1322,7 @@
           "address": "",
           "phone": " +996 556 340130",
           "email": "info@imi.edu.kg",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Private"
@@ -1382,7 +1387,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in kyrgyzstan",
+        "name": "Why study in Kyrgyzstan?",
         "key": "why-study-in-kyrgyzstan"
       },
       {
@@ -1423,38 +1428,39 @@
   },
   "uzbekistan": {
     "countryName": "Uzbekistan",
-    "imageHeader": "",
+    "imageHeader": "/banner-inner-web.png",
+    "mobImageHeader": "/banner-inner-mweb.png",
     "titleHeader": "Study MBBS from Uzbekistan",
     "whyStudy": {
       "title": "Why Study in Uzbekistan?",
       "description": "Studying in Uzbekistan not only provides access to quality education but also offers a unique blend of cultural experiences, affordability, and a safe and supportive environment, making it an attractive choice for students looking to broaden their horizons and embark on a memorable academic journey.",
       "bulletPoint": [
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Rich history & culture"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Scenic Landscapes"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Warm Hospitality"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Affordable Living"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Delicious Cuisine"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Strong Sense of community"
         },
         {
-          "bulletImage": "",
+          "bulletImage": "/red-check.svg",
           "content": "Accessible Education"
         }
       ]
@@ -1467,7 +1473,7 @@
           "address": "18, University Blvd, Samarkand, Uzbekistan",
           "phone": "+998 66 239 34 68",
           "email": "info@sammi.uz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1479,7 +1485,7 @@
           "address": "2 Farobi St, Tashkent 100109, Uzbekistan",
           "phone": "+998 71 268 83 59",
           "email": "info@tma.uz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1491,7 +1497,7 @@
           "address": "10 Istikbol St, Fergana 150100, Uzbekistan",
           "phone": "+998 73 244 33 03",
           "email": "ergmi.info@gmail.com",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1503,7 +1509,7 @@
           "address": "2 Mirdustim St, Andijan 170100, Uzbekistan",
           "phone": "+998 74 225 14 94",
           "email": "info@adti.uz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1515,7 +1521,7 @@
           "address": "3 Alimkhan St, Tashkent 100021, Uzbekistan",
           "phone": "+998 71 267 51 12",
           "email": " info@tdmi.uz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1527,7 +1533,7 @@
           "address": "1 K. Murtazaev St, Bukhara 200100, Uzbekistan",
           "phone": "+998 65 224 34 02",
           "email": " info@bukmedu.uz",
-          "imageUrl": "",
+          "imageUrl": "/image.png",
           "tag": [
             {
               "type": "Government"
@@ -1592,7 +1598,7 @@
     },
     "tabs": [
       {
-        "name": "Why study in uzbekistan",
+        "name": "Why study in Uzbekistan?",
         "key": "why-study-in-uzbekistan"
       },
       {
