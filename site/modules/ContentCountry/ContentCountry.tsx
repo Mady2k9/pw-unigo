@@ -35,7 +35,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 <div className="w-[260px] h-[280px] md:leading-[28px] leading-[22px] md:text-[18px] text-[14px] ">
                   {item?.whystudy?.bulletPoint?.map((point: any) => (
                     <p className="mb-[12px] flex gap-2">
-                      <img src="/red-check.svg" alt="check" />
+                      <img src={point?.bulletImage} alt="check" />
                       {point?.content}
                     </p>
                   ))}
@@ -55,7 +55,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                   <div className="p-4 md:flex border sm:border-[#EFEFEF] border-[#D9DCE1]  md:mb-[14px] mb-[12px] rounded-md">
                     <div className="mr-4 sm:w-[150px] mb-3 w-[89px]">
                       <img
-                        src="/image.png"
+                        src={detail?.imageUrl}
                         className="sm:w-[150px] w-[89px]"
                         alt="office"
                       />
