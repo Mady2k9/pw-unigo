@@ -17,6 +17,7 @@ const Country = (params: any) => {
   const countryBanner = [
     {
       image: CountryDetail[countryName]?.imageHeader || '',
+      mobImage: CountryDetail[countryName]?.mobImageHeader || '',
       title: CountryDetail[countryName]?.titleHeader || '',
     },
   ]
