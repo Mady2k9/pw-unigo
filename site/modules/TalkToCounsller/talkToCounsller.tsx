@@ -10,10 +10,12 @@ import {
   isEmailValid,
 } from '@lib/validations'
 import { useAuth } from '@lib/hooks/useAuth'
+import warning from '../../assets/images/Warning.svg';
 import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 import { submitUnigoFormFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { getUnigoOTPFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { router } from 'next/client'
+import Image from 'next/image'
 
 const TalkToCounsller = () => {
   const [showModal, setShowModal] = useState(false)
@@ -24,6 +26,7 @@ const TalkToCounsller = () => {
   const [otp, setOtp] = useState('')
   const [canResend, setCanResend] = useState(false)
   const [otpError, setOtpError] = useState(false)
+  const [showError, setShowError] = useState('')
 
   const [isPhoneValidCheck, setIsPhoneValidCheck] = useState(true)
   const [isValidFullNameCheck, setisValidFullNameCheck] = useState(true)
@@ -80,21 +83,78 @@ const TalkToCounsller = () => {
   useEffect(() => {
     reduceCounter()
   }, [])
-
+const handleNameValidation =() =>{
+  if(!isValidFullName(name)){
+    setShowError('Student Name is invalid')
+    setisValidFullNameCheck(false)
+  }
+  else{
+    setShowError('')
+    setisValidFullNameCheck(true)
+  }
+}
+const handleEmailValidation = () => {
+  if(!isEmailValid(email)){
+    setShowError('Email Id is invalid')
+    setIsEmailValidCheck(false)
+  }
+  else{
+    setShowError('')
+    setIsEmailValidCheck(true)
+  }
+}
+const handlePhoneValidation = () =>{
+  if(!isPhoneValid(phone)){
+    setShowError('Phone Number is invalid')
+    setIsPhoneValidCheck(false)
+  }
+  else{
+    setShowError('')
+    setIsPhoneValidCheck(true)
+  }
+}
+const handleOTPValidation = () =>{
+  if(!isOTPValid(otp)){
+    setShowError('Otp is invalid')
+    setIsOTPValidCheck(false)
+  }
+  else{
+    setShowError('')
+    setIsOTPValidCheck(true)
+  }
+}
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
     // useUnigoFormSubmit()
-    if (
-      isValidFullName(name) &&
-      isEmailValid(email) &&
-      isPhoneValid(phone) &&
-      isOTPValid(otp)
-    ) {
-      setisValidFullNameCheck(true)
-      setIsEmailValidCheck(true)
-      setIsPhoneValidCheck(true)
-      setIsOTPValidCheck(true)
-
+    if(name === '' || phone === '' || email === '' || otp === ''){
+      setisValidFullNameCheck(name? true: false)
+      setIsEmailValidCheck(email? true: false)
+      setIsPhoneValidCheck(phone? true :false)
+      setIsOTPValidCheck(otp? true: false)
+      setShowError('All Fields are mandatory')
+    }
+    // else if(!isValidFullName(name)){
+    //   setShowError('Student Name is invalid')
+    //   setisValidFullNameCheck(false)
+    // }
+    // else if(!isEmailValid(email)){
+    //   setShowError('Email Id is invalid')
+    //   setIsEmailValidCheck(false)
+    // }
+    // else if(!isPhoneValid(phone)){
+    //   setShowError('Phone Number is invalid')
+    //   setIsPhoneValidCheck(false)
+    // }
+    // else if(!isOTPValid(otp)){
+    //   setShowError('Otp is invalid')
+    //   setIsOTPValidCheck(false)
+    // }
+    else if(isValidFullNameCheck && isPhoneValidCheck && isEmailValidCheck && isOTPValidCheck){
+      // setShowError('')
+      // setisValidFullNameCheck(true)
+      // setIsEmailValidCheck(true)
+      // setIsPhoneValidCheck(true)
+      // setIsOTPValidCheck(true)
       submitUnigoFormFetcher({
         name,
         countryCode: '+91',
@@ -111,21 +171,15 @@ const TalkToCounsller = () => {
         function (err: any) {
           console.log('fail', err)
           if (err == true) {
-            setOtpError(true)
+         //   setOtpError(true)
+         setShowError('Otp is invalid')
           }
         }
       )
-    } else {
-      if (!isValidFullName(name)) setisValidFullNameCheck(false)
-      else setisValidFullNameCheck(true)
-      if (!isEmailValid(email)) setIsEmailValidCheck(false)
-      else setIsEmailValidCheck(true)
-      if (!isPhoneValid(phone)) setIsPhoneValidCheck(false)
-      else setIsPhoneValidCheck(true)
-      if (!isOTPValid(otp)) setIsOTPValidCheck(false)
-      else setIsOTPValidCheck(true)
-    }
+     }
+
   }
+
   return (
     <>
       <div className="mb-[16px]">
@@ -136,9 +190,10 @@ const TalkToCounsller = () => {
             onAction: function noRefCheck() {},
             text: '',
           }}
-          // invalid={!isValidFullName(name)}
+          //invalid={!isValidFullName(name)}
           invalid={!isValidFullNameCheck}
           onChange={setName}
+          onBlur={handleNameValidation}
           value={name}
           autoCapitalize="off"
           autoComplete="off"
@@ -149,7 +204,8 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
-          className="pr-2 "
+          className="pr-2"
+          noChangeValidate
         />
       </div>
       <div className="mb-[16px]">
@@ -163,6 +219,7 @@ const TalkToCounsller = () => {
           // invalid={!isEmailValid(email)}
           invalid={!isEmailValidCheck}
           onChange={setEmail}
+          onBlur={handleEmailValidation}
           value={email}
           autoCapitalize="off"
           autoComplete="off"
@@ -173,6 +230,7 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
       </div>
       <div className=" mb-[16px] relative">
@@ -186,6 +244,7 @@ const TalkToCounsller = () => {
           // invalid={!isPhoneValid(phone)}
           invalid={!isPhoneValidCheck}
           onChange={setPhone}
+          onBlur={handlePhoneValidation}
           value={phone}
           maxLength={10}
           autoCapitalize="off"
@@ -197,6 +256,7 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
 
         {optSent ? (
@@ -246,6 +306,7 @@ const TalkToCounsller = () => {
           // invalid={!isOTPValid(otp)}
           invalid={!isOTPValidCheck}
           onChange={setOtp}
+          onBlur={handleOTPValidation}
           value={otp}
           maxLength={6}
           autoCapitalize="off"
@@ -256,6 +317,7 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
       </div>
       {optSent ? (
@@ -292,15 +354,25 @@ const TalkToCounsller = () => {
       ) : (
         ''
       )}
-      {otpError ? (
-        <div className="text-[#ff0000] mt-[-10px] mb-[10px]">
-          otp is invalid
+      {showError ? (
+        <div className="text-[#BF2734] text-[12px] mt-[-12px] mb-[10px] flex flex-row items-center ">
+         <Image src={warning}
+                    alt=""
+                    height={12}
+                    width={14}
+                  />
+      <div className='mb-[-2px] ml-[5px] '>  {showError}</div>
         </div>
       ) : (
         ''
       )}
-
-      {!isValidFullName(name) ||
+  <button
+          onClick={handleSubmit}
+          className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
+        >
+          Submit
+        </button>
+      {/* {!isValidFullName(name) ||
       !isEmailValid(email) ||
       !isPhoneValid(phone) ||
       !isOTPValid(otp) ? (
@@ -314,7 +386,7 @@ const TalkToCounsller = () => {
         >
           Submit
         </button>
-      )}
+      )} */}
 
       <Dialog
         className={'relative z-[999999]'}
