@@ -83,78 +83,45 @@ const TalkToCounsller = () => {
   useEffect(() => {
     reduceCounter()
   }, [])
-const handleNameValidation =() =>{
-  if(!isValidFullName(name)){
-    setShowError('Student Name is invalid')
-    setisValidFullNameCheck(false)
-  }
-  else{
-    setShowError('')
-    setisValidFullNameCheck(true)
-  }
-}
-const handleEmailValidation = () => {
-  if(!isEmailValid(email)){
-    setShowError('Email Id is invalid')
-    setIsEmailValidCheck(false)
-  }
-  else{
-    setShowError('')
-    setIsEmailValidCheck(true)
-  }
-}
-const handlePhoneValidation = () =>{
-  if(!isPhoneValid(phone)){
-    setShowError('Phone Number is invalid')
-    setIsPhoneValidCheck(false)
-  }
-  else{
-    setShowError('')
-    setIsPhoneValidCheck(true)
-  }
-}
-const handleOTPValidation = () =>{
-  if(!isOTPValid(otp)){
-    setShowError('Otp is invalid')
-    setIsOTPValidCheck(false)
-  }
-  else{
-    setShowError('')
-    setIsOTPValidCheck(true)
-  }
-}
+
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
     // useUnigoFormSubmit()
     if(name === '' || phone === '' || email === '' || otp === ''){
       setisValidFullNameCheck(name? true: false)
       setIsEmailValidCheck(email? true: false)
-      setIsPhoneValidCheck(phone? true :false)
+      setIsPhoneValidCheck(phone? true: false)
       setIsOTPValidCheck(otp? true: false)
       setShowError('All Fields are mandatory')
     }
-    // else if(!isValidFullName(name)){
-    //   setShowError('Student Name is invalid')
-    //   setisValidFullNameCheck(false)
-    // }
-    // else if(!isEmailValid(email)){
-    //   setShowError('Email Id is invalid')
-    //   setIsEmailValidCheck(false)
-    // }
-    // else if(!isPhoneValid(phone)){
-    //   setShowError('Phone Number is invalid')
-    //   setIsPhoneValidCheck(false)
-    // }
-    // else if(!isOTPValid(otp)){
-    //   setShowError('Otp is invalid')
-    //   setIsOTPValidCheck(false)
-    // }
-    else if(isValidFullNameCheck && isPhoneValidCheck && isEmailValidCheck && isOTPValidCheck){
-      // setShowError('')
-      // setisValidFullNameCheck(true)
-      // setIsEmailValidCheck(true)
-      // setIsPhoneValidCheck(true)
-      // setIsOTPValidCheck(true)
+    else if(!isValidFullName(name)){
+      setShowError('Student Name is invalid')
+      setisValidFullNameCheck(false)
+    }
+    else if(!isEmailValid(email)){
+      setShowError('Email Id is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(false)
+    }
+    else if(!isPhoneValid(phone)){
+      setShowError('Phone Number is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(false)
+    }
+    else if(!isOTPValid(otp)){
+      setShowError('Otp is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(true)
+      setIsOTPValidCheck(false)
+    }
+    else {
+      setShowError('')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(true)
+      setIsOTPValidCheck(true)
       submitUnigoFormFetcher({
         name,
         countryCode: '+91',
@@ -178,6 +145,7 @@ const handleOTPValidation = () =>{
       )
      }
 
+
   }
 
   return (
@@ -193,7 +161,6 @@ const handleOTPValidation = () =>{
           //invalid={!isValidFullName(name)}
           invalid={!isValidFullNameCheck}
           onChange={setName}
-          onBlur={handleNameValidation}
           value={name}
           autoCapitalize="off"
           autoComplete="off"
@@ -219,7 +186,6 @@ const handleOTPValidation = () =>{
           // invalid={!isEmailValid(email)}
           invalid={!isEmailValidCheck}
           onChange={setEmail}
-          onBlur={handleEmailValidation}
           value={email}
           autoCapitalize="off"
           autoComplete="off"
@@ -244,7 +210,6 @@ const handleOTPValidation = () =>{
           // invalid={!isPhoneValid(phone)}
           invalid={!isPhoneValidCheck}
           onChange={setPhone}
-          onBlur={handlePhoneValidation}
           value={phone}
           maxLength={10}
           autoCapitalize="off"
@@ -306,7 +271,6 @@ const handleOTPValidation = () =>{
           // invalid={!isOTPValid(otp)}
           invalid={!isOTPValidCheck}
           onChange={setOtp}
-          onBlur={handleOTPValidation}
           value={otp}
           maxLength={6}
           autoCapitalize="off"
@@ -372,22 +336,6 @@ const handleOTPValidation = () =>{
         >
           Submit
         </button>
-      {/* {!isValidFullName(name) ||
-      !isEmailValid(email) ||
-      !isPhoneValid(phone) ||
-      !isOTPValid(otp) ? (
-        <button className="w-full h-[48px] bg-[#e9798b] sm:bg-[#767a7c] rounded-[6px] text-white text-[16px] cursor-not-allowed">
-          Submit
-        </button>
-      ) : (
-        <button
-          onClick={handleSubmit}
-          className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
-        >
-          Submit
-        </button>
-      )} */}
-
       <Dialog
         className={'relative z-[999999]'}
         open={showModal}
