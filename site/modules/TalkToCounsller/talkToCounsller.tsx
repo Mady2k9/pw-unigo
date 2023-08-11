@@ -10,7 +10,7 @@ import {
   isEmailValid,
 } from '@lib/validations'
 import { useAuth } from '@lib/hooks/useAuth'
-import warning from '../../assets/images/Warning.svg';
+import warning from '../../assets/images/Warning.svg'
 import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 import { submitUnigoFormFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { getUnigoOTPFetcher } from '@lib/api/fetchers/unigo-fetecher'
@@ -87,36 +87,31 @@ const TalkToCounsller = () => {
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
     // useUnigoFormSubmit()
-    if(name === '' || phone === '' || email === '' || otp === ''){
-      setisValidFullNameCheck(name? true: false)
-      setIsEmailValidCheck(email? true: false)
-      setIsPhoneValidCheck(phone? true: false)
-      setIsOTPValidCheck(otp? true: false)
+    if (name === '' || phone === '' || email === '') {
+      setisValidFullNameCheck(name ? true : false)
+      setIsEmailValidCheck(email ? true : false)
+      setIsPhoneValidCheck(phone ? true : false)
+      // setIsOTPValidCheck(otp ? true : false)
       setShowError('All Fields are mandatory')
-    }
-    else if(!isValidFullName(name)){
+    } else if (!isValidFullName(name)) {
       setShowError('Student Name is invalid')
       setisValidFullNameCheck(false)
-    }
-    else if(!isEmailValid(email)){
+    } else if (!isEmailValid(email)) {
       setShowError('Email Id is invalid')
       setisValidFullNameCheck(true)
       setIsEmailValidCheck(false)
-    }
-    else if(!isPhoneValid(phone)){
+    } else if (!isPhoneValid(phone)) {
       setShowError('Phone Number is invalid')
       setisValidFullNameCheck(true)
       setIsEmailValidCheck(true)
       setIsPhoneValidCheck(false)
-    }
-    else if(!isOTPValid(otp)){
+    } else if (!isOTPValid(otp)) {
       setShowError('Otp is invalid')
       setisValidFullNameCheck(true)
       setIsEmailValidCheck(true)
       setIsPhoneValidCheck(true)
       setIsOTPValidCheck(false)
-    }
-    else {
+    } else {
       setShowError('')
       setisValidFullNameCheck(true)
       setIsEmailValidCheck(true)
@@ -138,14 +133,12 @@ const TalkToCounsller = () => {
         function (err: any) {
           console.log('fail', err)
           if (err == true) {
-         //   setOtpError(true)
-         setShowError('Otp is invalid')
+            //   setOtpError(true)
+            setShowError('Otp is invalid')
           }
         }
       )
-     }
-
-
+    }
   }
 
   return (
@@ -319,23 +312,19 @@ const TalkToCounsller = () => {
         ''
       )}
       {showError ? (
-        <div className="text-[#BF2734] text-[12px] mt-[-12px] mb-[10px] flex flex-row items-center ">
-         <Image src={warning}
-                    alt=""
-                    height={12}
-                    width={14}
-                  />
-      <div className='mb-[-2px] ml-[5px] '>  {showError}</div>
+        <div className="text-[#BF2734] text-[12px] mb-[10px] flex flex-row items-center absolute mt-[-25px]">
+          <Image src={warning} alt="" height={12} width={14} />
+          <div className="mb-[-2px] ml-[5px] "> {showError}</div>
         </div>
       ) : (
         ''
       )}
-  <button
-          onClick={handleSubmit}
-          className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
-        >
-          Submit
-        </button>
+      <button
+        onClick={handleSubmit}
+        className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
+      >
+        Submit
+      </button>
       <Dialog
         className={'relative z-[999999]'}
         open={showModal}
