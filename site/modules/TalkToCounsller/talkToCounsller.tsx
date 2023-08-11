@@ -25,9 +25,8 @@ const TalkToCounsller = () => {
   const [name, setName] = useState('')
   const [otp, setOtp] = useState('')
   const [canResend, setCanResend] = useState(false)
-  const [otpError, setOtpError] = useState(false)
   const [showError, setShowError] = useState('')
-
+  const [isDisablePhoneFiled, setIsDisablePhoneField] = useState(false)
   const [isPhoneValidCheck, setIsPhoneValidCheck] = useState(true)
   const [isValidFullNameCheck, setisValidFullNameCheck] = useState(true)
   const [isOTPValidCheck, setIsOTPValidCheck] = useState(true)
@@ -133,7 +132,6 @@ const TalkToCounsller = () => {
         function (err: any) {
           console.log('fail', err)
           if (err == true) {
-            //   setOtpError(true)
             setShowError('Otp is invalid')
           }
         }
@@ -202,6 +200,7 @@ const TalkToCounsller = () => {
           }}
           // invalid={!isPhoneValid(phone)}
           invalid={!isPhoneValidCheck}
+          disabled={isDisablePhoneFiled}
           onChange={setPhone}
           value={phone}
           maxLength={10}
@@ -236,6 +235,7 @@ const TalkToCounsller = () => {
                 variant="naked"
                 disabled={!isPhoneValid(phone)}
                 onClick={(e) => {
+                  setIsDisablePhoneField(true)
                   handleOTP(e)
                   setCounter(10)
                   setCanResend(false)
@@ -252,8 +252,9 @@ const TalkToCounsller = () => {
             )}
           </>
         )}
+         
       </div>
-      <div className="mb-[16px]">
+      <div className="mb-[10px]">
         <TextInput
           action={{
             loading: false,
@@ -277,19 +278,29 @@ const TalkToCounsller = () => {
           noChangeValidate
         />
       </div>
-      {optSent ? (
+      <div className='flex flex-row justify-between'>
+  <div>
+  {showError ? (
+        <div className="text-[#BF2734] text-[12px] flex flex-row min-w-max ">
+          <Image src={warning} alt="" height={12} width={14} />
+          <div className='mb-[-2px] ml-[5px] '>  {showError}</div>
+        </div>
+      ) : (
+        ''
+      )}
+  </div>
+  <div className='flex flex-col items-end'>
+   {optSent ? (
         <>
           {canResend ? (
-            <div className="mt-[-5px] text-right w-full">
               <Button
-                className="mb-[10px] "
+                className="mb-[5px] mt-[2px] text-[14px] "
                 type="button"
                 variant="naked"
                 onClick={(e) => {
                   // getOTP()
                   handleOTP(e)
                   setCounter(10)
-                  setOtpError(false)
                   setCanResend(false)
                   setOptSent(true)
                   setTimeout(() => {
@@ -299,29 +310,40 @@ const TalkToCounsller = () => {
               >
                 Resend OTP
               </Button>
-            </div>
           ) : (
-            <div className="mt-[-10px] mb-[10px]">
               <div className="text-[14px] leading-[22px] text-[#3D3D3D] text-right">
                 00:{String(counter).padStart(2, '0')}
               </div>
-            </div>
           )}
+               <Button
+                className="mb-[10px] "
+                type="button"
+                variant="naked"
+                onClick={(e) => {
+                  // getOTP()
+                  setIsDisablePhoneField(false)
+                  handleOTP(e)
+                  setCounter(10)
+                  setCanResend(false)
+                  setOptSent(false)
+                  setTimeout(() => {
+                    reduceCounter()
+                  }, 1000)
+                }}
+              >
+               Change Number
+              </Button>
         </>
       ) : (
         ''
       )}
-      {showError ? (
-        <div className="text-[#BF2734] text-[12px] mb-[10px] flex flex-row items-center absolute mt-[-25px]">
-          <Image src={warning} alt="" height={12} width={14} />
-          <div className="mb-[-2px] ml-[5px] "> {showError}</div>
-        </div>
-      ) : (
-        ''
-      )}
+   </div>
+      </div>
+  
+      
       <button
         onClick={handleSubmit}
-        className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
+        className="w-full h-[48px] mt-[10px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
       >
         Submit
       </button>
