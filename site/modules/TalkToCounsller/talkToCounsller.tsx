@@ -116,6 +116,7 @@ const TalkToCounsller = () => {
       setIsEmailValidCheck(true)
       setIsPhoneValidCheck(true)
       setIsOTPValidCheck(true)
+      setIsDisablePhoneField(false)
       submitUnigoFormFetcher({
         name,
         countryCode: '+91',
