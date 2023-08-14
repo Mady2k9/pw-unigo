@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import CountryBanner from '@modules/CountryBanner'
 import MiddleNav from '@modules/MiddleNav'
-import ContentCountry from '@modules/ContentCountry'
-import Faq from '@modules/Faq'
 import Header from '@modules/Header'
 import Footer from '@modules/Footer'
 import { useRouter } from 'next/router'
 import CountryDetail from '@config/country.json'
 import TalkCounsellorButton from '@modules/TalkCounsellerButton'
+import ContentCountry from '@modules/ContentCountry/ContentCountryAndFaq'
 
 const Country = (params: any) => {
   type CountryNameType = keyof typeof CountryDetail
@@ -33,19 +32,38 @@ const Country = (params: any) => {
     },
   ]
 
-  const items = CountryDetail[countryName]?.faqs || []
+  const faqs = CountryDetail[countryName]?.faqs || []
+
+  // tab managers
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabClick = (index: number) => {
+    if (index === 0) {
+      router.push('#whyStudy')
+    } else if (index === 1) {
+      router.push('#colleges')
+    } else if (index === 2) {
+      router.push('#cost')
+    } else if (index === 3) {
+      router.push('#requirement')
+    } else if (index === 4) {
+      router.push('#faq')
+    }
+    setActiveTab(index);
+  }
+
+  const highlightTab = (index: number) => {
+    setActiveTab(index);
+  }
 
   return (
     <>
       <Header handleState={undefined} />
       <CountryBanner bannerItems={countryBanner} />
 
-      <MiddleNav items={countryNavData} />
-      <ContentCountry contentItems={countryContents} />
-      <Faq
-        items={items}
-        subheading="Check out the most commonly asked questions and their answers."
-      />
+      <MiddleNav activeTab={activeTab} handleClick={handleTabClick} countryContents={countryContents} items={countryNavData} />
+      <ContentCountry faqs={faqs} activeTab={activeTab} highlightTab={highlightTab} contentItems={countryContents} />
       <Footer />
       <div className="sm:hidden">
         <TalkCounsellorButton />

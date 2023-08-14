@@ -1,27 +1,76 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, memo } from 'react'
 import Container from '@components/ui/Container/Container'
 import { TextInput } from '@components/ui'
 import TalkToCounsller from '@modules/TalkToCounsller/talkToCounsller'
-
+import Faq from '@modules/Faq'
+import { useIntersectionObserver } from '@lib/hooks/useIntersectionObserver'
 export interface CountryContentProps {
   contentItems: {
     whystudy: any
     colleges: any
     cost: any
     requirement: any
-  }[]
+  }[];
+  highlightTab: (tabIndex: number) => void;
+  activeTab: number;
+  faqs: { title: string; description: string }[]
 }
 
-const countryContent: React.FC<CountryContentProps> = (props) => {
-  const { contentItems } = props
-  //console.log('contents :: ', contentItems)
+const CountryContent: React.FC<CountryContentProps> = (props) => {
+  const { contentItems, highlightTab, activeTab, faqs } = props
+
+  // section refs
+  const whyStudy = useRef<HTMLDivElement | null>(null);
+  const college = useRef<HTMLDivElement | null>(null);
+  const cost = useRef<HTMLDivElement | null>(null);
+  const requirement = useRef<HTMLDivElement | null>(null);
+  const faq = useRef<HTMLDivElement | null>(null);
+  const observerOptions = {
+    rootMargin: '-100px'
+  }
+
+  // section visibility
+  const whyStudyVisible = useIntersectionObserver(whyStudy, {})?.isIntersecting;
+  const collegeVisible = useIntersectionObserver(college, observerOptions)?.isIntersecting;
+  const costVisible = useIntersectionObserver(cost, observerOptions)?.isIntersecting;
+  const requirementVisible = useIntersectionObserver(requirement, observerOptions)?.isIntersecting;
+  const faqVisible = useIntersectionObserver(faq, observerOptions)?.isIntersecting;
+  let lastTimeout: ReturnType<typeof setTimeout>;
+
+  const getComponentIndex = (): number => {
+    if(faqVisible) return 4;
+    if(requirementVisible) return 3;
+    if(costVisible) return 2;
+    if(collegeVisible) return 1;
+    if(whyStudyVisible) return 0;
+    return activeTab;
+  }
+
+  useEffect(() => {
+    if(whyStudyVisible || collegeVisible || costVisible || requirement || faqVisible) {
+      if (lastTimeout) clearTimeout(lastTimeout);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // to stop observer from interfearing with scroll on tab click
+      lastTimeout = setTimeout(function() {
+        const newTab = getComponentIndex();
+        if(activeTab !== newTab) {
+          highlightTab(newTab);
+        }
+      }, 500);
+    }
+
+    return () => {
+      clearTimeout(lastTimeout);
+    }
+  }, [whyStudyVisible, collegeVisible, costVisible, requirementVisible, faqVisible]);
+
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
         <Container className="sm:flex w-full max-w-6xl px-3 xl:px-0 ">
           {contentItems?.map((item) => (
-            <div className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
-              <div className="p-[24px] bg-white relative rounded-md drop-shadow-md">
+            <div key={item.whystudy.title} className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
+              <div ref={whyStudy} className="p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="whyStudy"
                   className="absolute sm:top-[-130px] top-[-117px]"
@@ -42,7 +91,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 </div>
               </div>
 
-              <div className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
+              <div ref={college} className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="colleges"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -113,7 +162,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 ))}
               </div>
 
-              <div className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
+              <div ref={cost} className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
                 <div
                   id="cost"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -141,7 +190,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 </table>
               </div>
 
-              <div className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <div ref={requirement} className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="requirement"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -175,8 +224,14 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
           </div>
         </Container>
       </div>
+      <div ref={faq}>
+        <Faq
+          items={faqs}
+          subheading="Check out the most commonly asked questions and their answers."
+        />
+      </div>
     </>
   )
 }
 
-export default countryContent
+export default memo(CountryContent);
