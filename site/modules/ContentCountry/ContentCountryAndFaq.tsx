@@ -19,42 +19,29 @@ export interface CountryContentProps {
 const CountryContent: React.FC<CountryContentProps> = (props) => {
   const { contentItems, highlightTab, activeTab, faqs } = props
 
+  const sections = ['whyStudy', 'college', 'cost', 'requirement', 'faq'];
+
   // section refs
-  const whyStudy = useRef<HTMLDivElement | null>(null);
-  const college = useRef<HTMLDivElement | null>(null);
-  const cost = useRef<HTMLDivElement | null>(null);
-  const requirement = useRef<HTMLDivElement | null>(null);
-  const faq = useRef<HTMLDivElement | null>(null);
+  const sectionRefs = sections.map(() => useRef(null));;
+
   const observerOptions = {
     rootMargin: '-100px'
   }
 
   // section visibility
-  const whyStudyVisible = useIntersectionObserver(whyStudy, {})?.isIntersecting;
-  const collegeVisible = useIntersectionObserver(college, observerOptions)?.isIntersecting;
-  const costVisible = useIntersectionObserver(cost, observerOptions)?.isIntersecting;
-  const requirementVisible = useIntersectionObserver(requirement, observerOptions)?.isIntersecting;
-  const faqVisible = useIntersectionObserver(faq, observerOptions)?.isIntersecting;
+  const observers = sectionRefs.map((ref) => useIntersectionObserver(ref, observerOptions));
+
   let lastTimeout: ReturnType<typeof setTimeout>;
 
-  const getComponentIndex = (): number => {
-    if(faqVisible) return 4;
-    if(requirementVisible) return 3;
-    if(costVisible) return 2;
-    if(collegeVisible) return 1;
-    if(whyStudyVisible) return 0;
-    return activeTab;
-  }
-
   useEffect(() => {
-    if(whyStudyVisible || collegeVisible || costVisible || requirement || faqVisible) {
+    let visibleSection = observers.findIndex(visibility => visibility?.isIntersecting === true)
+    if(visibleSection) {
       if (lastTimeout) clearTimeout(lastTimeout);
       // eslint-disable-next-line react-hooks/exhaustive-deps
       // to stop observer from interfearing with scroll on tab click
       lastTimeout = setTimeout(function() {
-        const newTab = getComponentIndex();
-        if(activeTab !== newTab) {
-          highlightTab(newTab);
+        if(activeTab !== visibleSection) {
+          highlightTab(visibleSection);
         }
       }, 500);
     }
@@ -62,7 +49,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
     return () => {
       clearTimeout(lastTimeout);
     }
-  }, [whyStudyVisible, collegeVisible, costVisible, requirementVisible, faqVisible]);
+  }, [observers]);
 
   return (
     <>
@@ -70,7 +57,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
         <Container className="sm:flex w-full max-w-6xl px-3 xl:px-0 ">
           {contentItems?.map((item) => (
             <div key={item.whystudy.title} className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
-              <div ref={whyStudy} className="p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <div ref={sectionRefs[0]} className="p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="whyStudy"
                   className="absolute sm:top-[-130px] top-[-117px]"
@@ -91,7 +78,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                 </div>
               </div>
 
-              <div ref={college} className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
+              <div ref={sectionRefs[1]} className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="colleges"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -162,7 +149,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                 ))}
               </div>
 
-              <div ref={cost} className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
+              <div ref={sectionRefs[2]} className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
                 <div
                   id="cost"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -190,7 +177,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                 </table>
               </div>
 
-              <div ref={requirement} className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <div ref={sectionRefs[3]} className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="requirement"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -224,7 +211,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
           </div>
         </Container>
       </div>
-      <div ref={faq}>
+      <div ref={sectionRefs[4]}>
         <Faq
           items={faqs}
           subheading="Check out the most commonly asked questions and their answers."
