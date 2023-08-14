@@ -10,7 +10,7 @@ import {
   isEmailValid,
 } from '@lib/validations'
 import { useAuth } from '@lib/hooks/useAuth'
-import warning from '../../assets/images/Warning.svg'
+import warning from '../../public/warning.svg'
 import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 import { submitUnigoFormFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { getUnigoOTPFetcher } from '@lib/api/fetchers/unigo-fetecher'
