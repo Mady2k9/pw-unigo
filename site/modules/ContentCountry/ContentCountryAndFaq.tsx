@@ -28,22 +28,26 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
     rootMargin: '-100px'
   }
 
+  const observerOptionsForSmallerComponents = {
+    threshold: 1
+  }
+
   // section visibility
-  const observers = sectionRefs.map((ref) => useIntersectionObserver(ref, observerOptions));
+  const observers = sectionRefs.map((ref, index) => useIntersectionObserver(ref, index > 1 ? observerOptionsForSmallerComponents : observerOptions));
 
   let lastTimeout: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
-    let visibleSection = observers.findIndex(visibility => visibility?.isIntersecting === true)
-    if(visibleSection) {
-      if (lastTimeout) clearTimeout(lastTimeout);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      // to stop observer from interfearing with scroll on tab click
-      lastTimeout = setTimeout(function() {
-        if(activeTab !== visibleSection) {
+    let visibleSection = observers.findLastIndex(visibility => visibility?.isIntersecting === true)
+    if(visibleSection > -1 && activeTab !== visibleSection) {
+      if (lastTimeout) { 
+        clearTimeout(lastTimeout)
+      } else {
+        // to stop observer from interfearing with scroll on tab click
+        lastTimeout = setTimeout(function() {
           highlightTab(visibleSection);
-        }
-      }, 500);
+        }, 500);
+      }
     }
 
     return () => {
