@@ -1,1 +1,1 @@
-export { default } from './ContentCountry'
+export { default } from './ContentCountryAndFaq'
