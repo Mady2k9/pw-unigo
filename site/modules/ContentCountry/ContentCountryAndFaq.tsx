@@ -24,40 +24,48 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
   const sectionRefs = sections.map(() => useRef(null));
 
   const observerOptions = {
-    rootMargin: '-100px'
-  }
-
-  const observerOptionsForSmallerComponents = {
-    threshold: 1
+    rootMargin: '-121px 0px 0px 0px'
   }
   
   // section visibility
-  const observers = sectionRefs.map((ref, index) => useIntersectionObserver(ref, index > 1 ? observerOptionsForSmallerComponents : observerOptions));
+  const observers = sectionRefs.map((ref) => useIntersectionObserver(ref, observerOptions));
 
   let lastTimeout: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
-    let visibleSection = observers?.findIndex(visibility => visibility?.isIntersecting === true)
-    if(visibleSection > -1 && activeTab !== visibleSection) {
-      if (lastTimeout) { 
-        clearTimeout(lastTimeout)
+    let maxIntersectionRatio = 0;
+    let mostVisibleSection = -1;
+    console.log('observer', observers)
+    observers.forEach((observer, index) => {
+      if (observer && observer.isIntersecting) {
+        const intersectionRatio = observer.intersectionRatio;
+        if (intersectionRatio > maxIntersectionRatio) {
+          maxIntersectionRatio = intersectionRatio;
+          mostVisibleSection = index;
+        }
+      }
+    });
+  
+    if (mostVisibleSection > -1 && activeTab !== mostVisibleSection) {
+      if (lastTimeout) {
+        clearTimeout(lastTimeout);
       } else {
-        // to stop observer from interfearing with scroll on tab click
-        lastTimeout = setTimeout(function() {
-          highlightTab(visibleSection);
-        }, 500);
+        lastTimeout = setTimeout(() => {
+          highlightTab(mostVisibleSection);
+        }, 400);
       }
     }
-
+  
     return () => {
       clearTimeout(lastTimeout);
-    }
+    };
   }, [observers]);
+  
 
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
-        <Container className="sm:flex w-full max-w-6xl px-3 xl:px-0 ">
+        <Container className="sm:flex h-full w-full max-w-6xl px-3 xl:px-0 ">
           {contentItems?.map((item) => (
             <div key={item.whystudy.title} className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
               <div ref={sectionRefs[0]} className="p-[24px] bg-white relative rounded-md drop-shadow-md">
