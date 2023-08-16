@@ -22,7 +22,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
   const sections = ['whyStudy', 'college', 'cost', 'requirement', 'faq'];
 
   // section refs
-  const sectionRefs = sections.map(() => useRef(null));;
+  const sectionRefs = sections.map(() => useRef(null));
 
   const observerOptions = {
     rootMargin: '-100px'
