@@ -37,7 +37,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
   let lastTimeout: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
-    let visibleSection = observers.findLastIndex(visibility => visibility?.isIntersecting === true)
+    let visibleSection = observers?.findIndex(visibility => visibility?.isIntersecting === true)
     if(visibleSection > -1 && activeTab !== visibleSection) {
       if (lastTimeout) { 
         clearTimeout(lastTimeout)
