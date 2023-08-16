@@ -20,7 +20,6 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
   const { contentItems, highlightTab, activeTab, faqs } = props
 
   const sections = ['whyStudy', 'college', 'cost', 'requirement', 'faq'];
-
   // section refs
   const sectionRefs = sections.map(() => useRef(null));
 
