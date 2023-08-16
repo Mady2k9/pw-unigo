@@ -31,7 +31,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
   const observerOptionsForSmallerComponents = {
     threshold: 1
   }
-
+  
   // section visibility
   const observers = sectionRefs.map((ref, index) => useIntersectionObserver(ref, index > 1 ? observerOptionsForSmallerComponents : observerOptions));
 
