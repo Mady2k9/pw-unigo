@@ -1,74 +1,27 @@
-import React, { useEffect, useRef, memo, useState } from 'react'
+import React, { useState } from 'react'
 import Container from '@components/ui/Container/Container'
 import { TextInput } from '@components/ui'
 import TalkToCounsller from '@modules/TalkToCounsller/talkToCounsller'
-import Faq from '@modules/Faq'
-import { useIntersectionObserver } from '@lib/hooks/useIntersectionObserver'
+
 export interface CountryContentProps {
   contentItems: {
     whystudy: any
     colleges: any
     cost: any
     requirement: any
-  }[];
-  highlightTab: (tabIndex: number) => void;
-  activeTab: number;
-  faqs: { title: string; description: string }[];
+  }[]
 }
 
-const CountryContent: React.FC<CountryContentProps> = (props) => {
-  const { contentItems, highlightTab, activeTab, faqs } = props
-  const [scrollActive, setScrollActive] = useState(false);
-
-  useEffect(() => {
-    const startScroll = () => {
-      setScrollActive(true);
-    }
-    const scrollEnd = () => {
-      setScrollActive(false);
-    }
-
-    document.addEventListener('scroll', startScroll);
-    document.addEventListener('scrollend', scrollEnd)
-    return () => {
-      document.removeEventListener('scroll', startScroll);
-      document.removeEventListener('scrollend', scrollEnd)
-    }
-  }, [])
-
-  const sections = ['whyStudy', 'college', 'cost', 'requirement', 'faq'];
-  // section refs
-  const sectionRefs = sections.map(() => useRef(null));
-
-  const observerOptions = {
-    rootMargin: '-100px 0px 0px 0px',
-  }
-  
-  // section visibility
-  const observers = sectionRefs.map((ref) => useIntersectionObserver(ref, observerOptions));
-
-  useEffect(() => {
-    let mostVisibleSection = -1;
-    console.log(observers)
-    observers.forEach((observer, index) => {
-      if (observer && observer.isIntersecting) {
-        mostVisibleSection = index;
-      }
-    });
-  
-    if (mostVisibleSection > -1 && activeTab !== mostVisibleSection) {
-      !scrollActive && highlightTab(mostVisibleSection);
-    }
-  }, [observers]);
-  
-
+const countryContent: React.FC<CountryContentProps> = (props) => {
+  const { contentItems } = props
+  //console.log('contents :: ', contentItems)
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
         <Container className="sm:flex h-full w-full max-w-6xl px-3 xl:px-0 ">
           {contentItems?.map((item) => (
-            <div key={item.whystudy.title} className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
-              <div ref={sectionRefs[0]} className="p-[24px] bg-white relative rounded-md drop-shadow-md">
+            <div className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
+              <section className="p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="whyStudy"
                   className="absolute sm:top-[-130px] top-[-117px]"
@@ -87,9 +40,9 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                     </p>
                   ))}
                 </div>
-              </div>
+              </section>
 
-              <div ref={sectionRefs[1]} className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
+              <section className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="colleges"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -158,9 +111,9 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </section>
 
-              <div ref={sectionRefs[2]} className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
+              <section className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
                 <div
                   id="cost"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -186,9 +139,9 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </section>
 
-              <div ref={sectionRefs[3]} className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <section className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="requirement"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -202,7 +155,7 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
                     __html: item?.requirement?.description,
                   }}
                 ></div>
-              </div>
+              </section>
             </div>
           ))}
 
@@ -222,14 +175,8 @@ const CountryContent: React.FC<CountryContentProps> = (props) => {
           </div>
         </Container>
       </div>
-      <div ref={sectionRefs[4]}>
-        <Faq
-          items={faqs}
-          subheading="Check out the most commonly asked questions and their answers."
-        />
-      </div>
     </>
   )
 }
 
-export default memo(CountryContent);
+export default countryContent
