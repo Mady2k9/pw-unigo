@@ -27,8 +27,6 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
   }
 
   useEffect(() => {
-    const menuScroll = document.getElementById('menu')
-
     const handleScroll = () => {
       const sections = document.querySelectorAll('section')
       sections.forEach((section: HTMLElement | undefined, index) => {
@@ -36,7 +34,6 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
           const positionTop = section.getBoundingClientRect()
           if (positionTop.top < 132) {
             setActiveTab(index)
-            menuScroll?.scrollTo(index * 100, 0)
           }
         }
       })
