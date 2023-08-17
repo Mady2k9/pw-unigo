@@ -42,7 +42,7 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
       if (section) {
         const positionTop = section.getBoundingClientRect()
         if (positionTop.top < 132) {
-          setActiveTab(index)
+          setActiveTab(index === 0 ? 0 : index - 1)
         }
       }
     })
