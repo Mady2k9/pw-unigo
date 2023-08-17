@@ -29,7 +29,6 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
     }
   }
 
-
   const handleScrollTimed = () => {
     clearTimeout(timeoutRef?.current?.timer);
     timeoutRef.current.timer= setTimeout(() => {
