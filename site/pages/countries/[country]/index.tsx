@@ -38,8 +38,9 @@ const Country = (params: any) => {
   return (
     <>
       <Header handleState={undefined} />
-      <CountryBanner bannerItems={countryBanner} />
-
+      <section>
+        <CountryBanner bannerItems={countryBanner} />
+      </section>
       <MiddleNav items={countryNavData} />
       <ContentCountry contentItems={countryContents} />
       <Faq
