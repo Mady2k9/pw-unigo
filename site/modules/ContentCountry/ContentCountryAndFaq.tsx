@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react'
+import React, { useEffect, useRef, memo, useState } from 'react'
 import Container from '@components/ui/Container/Container'
 import { TextInput } from '@components/ui'
 import TalkToCounsller from '@modules/TalkToCounsller/talkToCounsller'
@@ -13,52 +13,52 @@ export interface CountryContentProps {
   }[];
   highlightTab: (tabIndex: number) => void;
   activeTab: number;
-  faqs: { title: string; description: string }[]
+  faqs: { title: string; description: string }[];
 }
 
 const CountryContent: React.FC<CountryContentProps> = (props) => {
   const { contentItems, highlightTab, activeTab, faqs } = props
+  const [scrollActive, setScrollActive] = useState(false);
+
+  useEffect(() => {
+    const startScroll = () => {
+      setScrollActive(true);
+    }
+    const scrollEnd = () => {
+      setScrollActive(false);
+    }
+
+    document.addEventListener('scroll', startScroll);
+    document.addEventListener('scrollend', scrollEnd)
+    return () => {
+      document.removeEventListener('scroll', startScroll);
+      document.removeEventListener('scrollend', scrollEnd)
+    }
+  }, [])
 
   const sections = ['whyStudy', 'college', 'cost', 'requirement', 'faq'];
   // section refs
   const sectionRefs = sections.map(() => useRef(null));
 
   const observerOptions = {
-    rootMargin: '-121px 0px 0px 0px'
+    rootMargin: '-100px 0px 0px 0px',
   }
   
   // section visibility
   const observers = sectionRefs.map((ref) => useIntersectionObserver(ref, observerOptions));
 
-  let lastTimeout: ReturnType<typeof setTimeout>;
-
   useEffect(() => {
-    let maxIntersectionRatio = 0;
     let mostVisibleSection = -1;
-    console.log('observer', observers)
+    console.log(observers)
     observers.forEach((observer, index) => {
       if (observer && observer.isIntersecting) {
-        const intersectionRatio = observer.intersectionRatio;
-        if (intersectionRatio > maxIntersectionRatio) {
-          maxIntersectionRatio = intersectionRatio;
-          mostVisibleSection = index;
-        }
+        mostVisibleSection = index;
       }
     });
   
     if (mostVisibleSection > -1 && activeTab !== mostVisibleSection) {
-      if (lastTimeout) {
-        clearTimeout(lastTimeout);
-      } else {
-        lastTimeout = setTimeout(() => {
-          highlightTab(mostVisibleSection);
-        }, 400);
-      }
+      !scrollActive && highlightTab(mostVisibleSection);
     }
-  
-    return () => {
-      clearTimeout(lastTimeout);
-    };
   }, [observers]);
   
 
