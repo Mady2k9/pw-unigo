@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
-import CountryBanners from '../../public/CountryImageBanner.png'
+import React, { useState, useEffect } from 'react'
 import { Tabs } from '@components/ui'
 //export interface MiddleNavProps {}
 import Container from '@components/ui/Container/Container'
 import { useRouter } from 'next/router'
-//import CountryDetail from '@config/country.json'
-
 export interface MiddleNavProps {
   items: { name: string; key: string }[]
 }
 
-const middleNav: React.FC<MiddleNavProps> = (props) => {
+const MiddleNav: React.FC<MiddleNavProps> = (props) => {
   const { items } = props
   const [activeTab, setActiveTab] = useState(0)
   const router = useRouter()
@@ -30,6 +26,26 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
     }
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section')
+      sections.forEach((section: HTMLElement | undefined, index) => {
+        if (section) {
+          const positionTop = section.getBoundingClientRect()
+          if (positionTop.top < 132) {
+            setActiveTab(index)
+          }
+        }
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
     <>
       <div className="w-full border-b-2 border-b-grey-600 sticky sm:top-[79px] top-[59px] z-20 bg-white">
@@ -47,4 +63,4 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
     </>
   )
 }
-export default middleNav
+export default MiddleNav
