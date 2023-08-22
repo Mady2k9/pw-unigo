@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
-import CountryBanners from '../../public/CountryImageBanner.png'
+import React, { useState, useEffect, useRef } from 'react'
 import { Tabs } from '@components/ui'
 //export interface MiddleNavProps {}
 import Container from '@components/ui/Container/Container'
 import { useRouter } from 'next/router'
-//import CountryDetail from '@config/country.json'
-
 export interface MiddleNavProps {
   items: { name: string; key: string }[]
 }
 
-const middleNav: React.FC<MiddleNavProps> = (props) => {
+const MiddleNav: React.FC<MiddleNavProps> = (props) => {
   const { items } = props
   const [activeTab, setActiveTab] = useState(0)
   const router = useRouter()
+  const timeoutRef = useRef<{ timer: ReturnType<typeof setTimeout> | number }>({
+    timer: 0 
+  });
 
   const handleClick = (index: any) => {
     if (index === 0) {
@@ -29,6 +28,34 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
       router.push('#faq')
     }
   }
+
+  const handleScrollTimed = () => {
+    clearTimeout(timeoutRef?.current?.timer);
+    timeoutRef.current.timer= setTimeout(() => {
+      handleScroll();
+    }, 100)
+  }
+
+  const handleScroll = () => {
+    const sections = document.querySelectorAll('section')
+    sections.forEach((section: HTMLElement | undefined, index) => {
+      if (section) {
+        const positionTop = section.getBoundingClientRect()
+        if (positionTop.top < 132) {
+          setActiveTab(index === 0 ? 0 : index - 1)
+        }
+      }
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScrollTimed)
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollTimed)
+      clearTimeout(timeoutRef?.current?.timer);
+    }
+  }, [])
 
   return (
     <>
@@ -47,4 +74,4 @@ const middleNav: React.FC<MiddleNavProps> = (props) => {
     </>
   )
 }
-export default middleNav
+export default MiddleNav

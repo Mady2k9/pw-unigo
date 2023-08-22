@@ -10,10 +10,12 @@ import {
   isEmailValid,
 } from '@lib/validations'
 import { useAuth } from '@lib/hooks/useAuth'
+import warning from '../../public/warning.svg'
 import useUnigoFormSubmit from '@lib/hooks/unigo-form/useUnigoFormSubmit'
 import { submitUnigoFormFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { getUnigoOTPFetcher } from '@lib/api/fetchers/unigo-fetecher'
 import { router } from 'next/client'
+import Image from 'next/image'
 
 const TalkToCounsller = () => {
   const [showModal, setShowModal] = useState(false)
@@ -23,8 +25,8 @@ const TalkToCounsller = () => {
   const [name, setName] = useState('')
   const [otp, setOtp] = useState('')
   const [canResend, setCanResend] = useState(false)
-  const [otpError, setOtpError] = useState(false)
-
+  const [showError, setShowError] = useState('')
+  const [isDisablePhoneFiled, setIsDisablePhoneField] = useState(false)
   const [isPhoneValidCheck, setIsPhoneValidCheck] = useState(true)
   const [isValidFullNameCheck, setisValidFullNameCheck] = useState(true)
   const [isOTPValidCheck, setIsOTPValidCheck] = useState(true)
@@ -84,17 +86,37 @@ const TalkToCounsller = () => {
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
     // useUnigoFormSubmit()
-    if (
-      isValidFullName(name) &&
-      isEmailValid(email) &&
-      isPhoneValid(phone) &&
-      isOTPValid(otp)
-    ) {
+    if (name === '' || phone === '' || email === '') {
+      setisValidFullNameCheck(name ? true : false)
+      setIsEmailValidCheck(email ? true : false)
+      setIsPhoneValidCheck(phone ? true : false)
+      // setIsOTPValidCheck(otp ? true : false)
+      setShowError('All Fields are mandatory')
+    } else if (!isValidFullName(name)) {
+      setShowError('Student Name is invalid')
+      setisValidFullNameCheck(false)
+    } else if (!isEmailValid(email)) {
+      setShowError('Email Id is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(false)
+    } else if (!isPhoneValid(phone)) {
+      setShowError('Phone Number is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(false)
+    } else if (!isOTPValid(otp)) {
+      setShowError('Otp is invalid')
+      setisValidFullNameCheck(true)
+      setIsEmailValidCheck(true)
+      setIsPhoneValidCheck(true)
+      setIsOTPValidCheck(false)
+    } else {
+      setShowError('')
       setisValidFullNameCheck(true)
       setIsEmailValidCheck(true)
       setIsPhoneValidCheck(true)
       setIsOTPValidCheck(true)
-
+      setIsDisablePhoneField(false)
       submitUnigoFormFetcher({
         name,
         countryCode: '+91',
@@ -111,21 +133,13 @@ const TalkToCounsller = () => {
         function (err: any) {
           console.log('fail', err)
           if (err == true) {
-            setOtpError(true)
+            setShowError('Otp is invalid')
           }
         }
       )
-    } else {
-      if (!isValidFullName(name)) setisValidFullNameCheck(false)
-      else setisValidFullNameCheck(true)
-      if (!isEmailValid(email)) setIsEmailValidCheck(false)
-      else setIsEmailValidCheck(true)
-      if (!isPhoneValid(phone)) setIsPhoneValidCheck(false)
-      else setIsPhoneValidCheck(true)
-      if (!isOTPValid(otp)) setIsOTPValidCheck(false)
-      else setIsOTPValidCheck(true)
     }
   }
+
   return (
     <>
       <div className="mb-[16px]">
@@ -136,7 +150,7 @@ const TalkToCounsller = () => {
             onAction: function noRefCheck() {},
             text: '',
           }}
-          // invalid={!isValidFullName(name)}
+          //invalid={!isValidFullName(name)}
           invalid={!isValidFullNameCheck}
           onChange={setName}
           value={name}
@@ -149,7 +163,8 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
-          className="pr-2 "
+          className="pr-2"
+          noChangeValidate
         />
       </div>
       <div className="mb-[16px]">
@@ -173,6 +188,7 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
       </div>
       <div className=" mb-[16px] relative">
@@ -185,6 +201,7 @@ const TalkToCounsller = () => {
           }}
           // invalid={!isPhoneValid(phone)}
           invalid={!isPhoneValidCheck}
+          disabled={isDisablePhoneFiled}
           onChange={setPhone}
           value={phone}
           maxLength={10}
@@ -197,6 +214,7 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
 
         {optSent ? (
@@ -218,6 +236,7 @@ const TalkToCounsller = () => {
                 variant="naked"
                 disabled={!isPhoneValid(phone)}
                 onClick={(e) => {
+                  setIsDisablePhoneField(true)
                   handleOTP(e)
                   setCounter(10)
                   setCanResend(false)
@@ -234,8 +253,9 @@ const TalkToCounsller = () => {
             )}
           </>
         )}
+         
       </div>
-      <div className="mb-[16px]">
+      <div className="mb-[10px]">
         <TextInput
           action={{
             loading: false,
@@ -256,21 +276,32 @@ const TalkToCounsller = () => {
           preElement={[]}
           setRef={function noRefCheck() {}}
           spellCheck="false"
+          noChangeValidate
         />
       </div>
-      {optSent ? (
+      <div className='flex flex-row justify-between'>
+  <div>
+  {showError ? (
+        <div className="text-[#BF2734] text-[12px] flex flex-row min-w-max ">
+          <Image src={warning} alt="" height={12} width={14} />
+          <div className='mb-[-2px] ml-[5px] '>  {showError}</div>
+        </div>
+      ) : (
+        ''
+      )}
+  </div>
+  <div className='flex flex-col items-end'>
+   {optSent ? (
         <>
           {canResend ? (
-            <div className="mt-[-5px] text-right w-full">
               <Button
-                className="mb-[10px] "
+                className="mb-[5px] mt-[2px] text-[14px] "
                 type="button"
                 variant="naked"
                 onClick={(e) => {
                   // getOTP()
                   handleOTP(e)
                   setCounter(10)
-                  setOtpError(false)
                   setCanResend(false)
                   setOptSent(true)
                   setTimeout(() => {
@@ -280,42 +311,43 @@ const TalkToCounsller = () => {
               >
                 Resend OTP
               </Button>
-            </div>
           ) : (
-            <div className="mt-[-10px] mb-[10px]">
               <div className="text-[14px] leading-[22px] text-[#3D3D3D] text-right">
                 00:{String(counter).padStart(2, '0')}
               </div>
-            </div>
           )}
+               <Button
+                className="mb-[10px] "
+                type="button"
+                variant="naked"
+                onClick={(e) => {
+                  // getOTP()
+                  setIsDisablePhoneField(false)
+                  handleOTP(e)
+                  setCounter(10)
+                  setCanResend(false)
+                  setOptSent(false)
+                  setTimeout(() => {
+                    reduceCounter()
+                  }, 1000)
+                }}
+              >
+               Change Number
+              </Button>
         </>
       ) : (
         ''
       )}
-      {otpError ? (
-        <div className="text-[#ff0000] mt-[-10px] mb-[10px]">
-          otp is invalid
-        </div>
-      ) : (
-        ''
-      )}
-
-      {!isValidFullName(name) ||
-      !isEmailValid(email) ||
-      !isPhoneValid(phone) ||
-      !isOTPValid(otp) ? (
-        <button className="w-full h-[48px] bg-[#e9798b] sm:bg-[#767a7c] rounded-[6px] text-white text-[16px] cursor-not-allowed">
-          Submit
-        </button>
-      ) : (
-        <button
-          onClick={handleSubmit}
-          className="w-full h-[48px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
-        >
-          Submit
-        </button>
-      )}
-
+   </div>
+      </div>
+  
+      
+      <button
+        onClick={handleSubmit}
+        className="w-full h-[48px] mt-[10px] bg-[#DA1F3D] sm:bg-[#1B2124] rounded-[6px] text-white text-[16px]"
+      >
+        Submit
+      </button>
       <Dialog
         className={'relative z-[999999]'}
         open={showModal}
