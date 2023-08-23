@@ -113,7 +113,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                 ))}
               </section>
 
-              <section className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
+              {/* <section className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
                 <div
                   id="cost"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -139,7 +139,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </section> */}
 
               <section className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
