@@ -12,27 +12,27 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
   const [activeTab, setActiveTab] = useState(0)
   const router = useRouter()
   const timeoutRef = useRef<{ timer: ReturnType<typeof setTimeout> | number }>({
-    timer: 0 
-  });
+    timer: 0,
+  })
 
   const handleClick = (index: any) => {
     if (index === 0) {
       router.push('#whyStudy')
     } else if (index === 1) {
       router.push('#colleges')
+      // } else if (index === 2) {
+      //   router.push('#cost')
     } else if (index === 2) {
-      router.push('#cost')
-    } else if (index === 3) {
       router.push('#requirement')
-    } else if (index === 4) {
+    } else if (index === 3) {
       router.push('#faq')
     }
   }
 
   const handleScrollTimed = () => {
-    clearTimeout(timeoutRef?.current?.timer);
-    timeoutRef.current.timer= setTimeout(() => {
-      handleScroll();
+    clearTimeout(timeoutRef?.current?.timer)
+    timeoutRef.current.timer = setTimeout(() => {
+      handleScroll()
     }, 100)
   }
 
@@ -53,7 +53,7 @@ const MiddleNav: React.FC<MiddleNavProps> = (props) => {
 
     return () => {
       window.removeEventListener('scroll', handleScrollTimed)
-      clearTimeout(timeoutRef?.current?.timer);
+      clearTimeout(timeoutRef?.current?.timer)
     }
   }, [])
 
