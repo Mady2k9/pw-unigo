@@ -18,10 +18,10 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
   return (
     <>
       <div className="bg-[#F8F8F8] w-full">
-        <Container className="sm:flex w-full max-w-6xl px-3 xl:px-0 ">
+        <Container className="sm:flex h-full w-full max-w-6xl px-3 xl:px-0 ">
           {contentItems?.map((item) => (
             <div className="lg:w-8/12 sm:w-7/12 w-full flex-col sm:pr-2 py-4">
-              <div className="p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <section className="p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="whyStudy"
                   className="absolute sm:top-[-130px] top-[-117px]"
@@ -40,9 +40,9 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     </p>
                   ))}
                 </div>
-              </div>
+              </section>
 
-              <div className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
+              <section className="p-4 mt-4 bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="colleges"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -111,9 +111,9 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </section>
 
-              <div className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
+              {/* <section className="mt-4 p-[24px] bg-white rounded-md relative drop-shadow-md">
                 <div
                   id="cost"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -139,9 +139,9 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </section> */}
 
-              <div className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
+              <section className="mt-4 p-[24px] bg-white relative rounded-md drop-shadow-md">
                 <div
                   id="requirement"
                   className="absolute sm:top-[-130px] top-[-110px]"
@@ -155,7 +155,7 @@ const countryContent: React.FC<CountryContentProps> = (props) => {
                     __html: item?.requirement?.description,
                   }}
                 ></div>
-              </div>
+              </section>
             </div>
           ))}
 

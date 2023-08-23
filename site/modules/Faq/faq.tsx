@@ -15,7 +15,7 @@ const Faq: React.FC<FaqProps> = (props) => {
   return (
     <>
       <section className="mt-[20px] relative">
-        <div id="faq" className="absolute  sm:top-[-140px] top-[-110px]"></div>
+        <div id="faq" className="absolute  sm:top-[-130px] top-[-110px]"></div>
         <Container className="mx-auto max-w-6xl">
           <div className="flex justify-center">
             <span className={s.heading}>
