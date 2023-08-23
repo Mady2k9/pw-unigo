@@ -299,10 +299,6 @@
         "key": "colleges"
       },
       {
-        "name": "Cost",
-        "key": "cost"
-      },
-      {
         "name": "Requirements",
         "key": "requirements"
       },
@@ -592,10 +588,6 @@
       {
         "name": "Colleges",
         "key": "colleges"
-      },
-      {
-        "name": "Cost",
-        "key": "cost"
       },
       {
         "name": "Requirements",
@@ -901,10 +893,6 @@
         "key": "colleges"
       },
       {
-        "name": "Cost",
-        "key": "cost"
-      },
-      {
         "name": "Requirements",
         "key": "requirements"
       },
@@ -1172,10 +1160,6 @@
         "key": "colleges"
       },
       {
-        "name": "Cost",
-        "key": "cost"
-      },
-      {
         "name": "Requirements",
         "key": "requirements"
       },
@@ -1395,10 +1379,6 @@
         "key": "colleges"
       },
       {
-        "name": "Cost",
-        "key": "cost"
-      },
-      {
         "name": "Requirements",
         "key": "requirements"
       },
@@ -1604,10 +1584,6 @@
       {
         "name": "Colleges",
         "key": "colleges"
-      },
-      {
-        "name": "Cost",
-        "key": "cost"
       },
       {
         "name": "Requirements",
