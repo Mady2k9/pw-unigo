@@ -82,10 +82,10 @@ const header = ({ handleState }: { handleState: any }) => {
               ))}
             </div>
             <div className="w-fit h-full flex items-center ">
-              <Link href="tel:9513766500">
+              <Link href="tel:8448691290">
                 <button className="p-3  flex h-[48px] m-auto items-center border-[1px] border-[#414347] rounded-[6px]">
                   <Image src={Phn} alt="phone" />
-                  <p className="ml-[8px]">9513766500</p>
+                  <p className="ml-[8px]">8448691290</p>
                 </button>
               </Link>
             </div>
@@ -142,10 +142,10 @@ const header = ({ handleState }: { handleState: any }) => {
 
                         <div className="flex justify-center">
                           <div className="p-4">
-                            <Link href="tel:9513766500">
+                            <Link href="tel:8448691290">
                               <button className="p-3 flex h-[48px] w-[92vw] items-center justify-center border-[1px] border-[#414347] rounded-[6px]">
                                 <Image src={Phn} alt="phone" />
-                                <p className="ml-[8px]">9513766500</p>
+                                <p className="ml-[8px]">8448691290</p>
                               </button>
                             </Link>
                           </div>
